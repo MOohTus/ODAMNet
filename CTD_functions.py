@@ -18,19 +18,19 @@ def readCTDFile(CTDFile):
     Read CTD File
 
     This file contains one column of chemical MeSH IDs or chemical names.
-    One name per line.
+    A line can contain several MeSH or chemical names, separated by ";"
 
     :param str CTDFile: File path of the chemical name (or MeSH ID) list.
 
     :return:
-        - **lChemName** (*list*) – List of chemical names
+        - **chemNameList** (*list*) – List of chemical names
     """
     chemNameList = []
     try:
         with open(CTDFile, 'r') as CTDFileHandler:
             for line in CTDFileHandler:
                 chemNameList.append(line.rstrip())
-            return chemNameList
+        return chemNameList
     except IOError:
         print("I/O error while reading CTD file.")
 
@@ -40,6 +40,7 @@ def CTDrequest(chemName, association):
     Function requests CTD database.
 
     Search all genes which interact with the chemical given in input.
+    Could be several chemicals names. Analysis will be done like if it's only one chemical.
     If hierarchicalAssociations is used, chemical related to the chemical given in input are used as query.
     Focus on genes present in Homo sapiens.
 
@@ -47,7 +48,8 @@ def CTDrequest(chemName, association):
     :param str association: association name (hierarchicalAssociations or directAssociations)
 
     :return:
-        - **homoGenesDict** (*dict*) – Dictionary of genes which interact with chemicals given in input (only Homo sapiens)
+        - **homoGenesList** (*list*) – List of genes which interact with chemicals given in input (only Homo sapiens)
+        - **chemMeSH** (*str*) – Composition of MeSH ID from chemicals given in input
     """
     # Parameters
     URL = "http://ctdbase.org/tools/batchQuery.go"
@@ -82,14 +84,16 @@ def CTDrequest(chemName, association):
     # len(homoResultsList)
     # len(resultsList)
 
-    # Write result into file
+    # Build name of output results file
     for chem in chemName.split("|"):
-        if(chem in meshNamesDict):
+        if chem in meshNamesDict:
             chemMeSHList.append(meshNamesDict[chem.lower()])
         else:
             chemMeSHList.append(chem)
     chemMeSH = "_".join(chemMeSHList)
     resultFileName = "test/CTD_request_" + chemMeSH + ".tsv"
+
+    # Write result into file
     with open(resultFileName, 'w') as outputFileHandler:
         for resultLine in homoResultsList:
             outputFileHandler.write("\t".join(resultLine))
@@ -100,20 +104,22 @@ def CTDrequest(chemName, association):
 
 def CTDrequestFromList(chemList, association):
     """
+    Make CTD request for each chemical present in the list given in input.
+    Each element can be composed of one or more element.
+    If several element, the analysis will be done like if there is only one chemical.
 
-    :param chemList:
-    :param association:
+    :param list chemList: List of chemical to request to CTD (MeSH IDs or chemical names)
+    :param str association: association name (hierarchicalAssociations or directAssociations)
 
     :return:
+        - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
     """
     # Parameters
-    chemTargetsList = []
     chemTargetsDict = {}
-
+    # For each chemical, request CTD
     for chem in chemList:
         chemNamesList = chem.rstrip().split(';')
         chemNamesString = "|".join(chemNamesList)
         chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association)
         chemTargetsDict[chemNames] = chemTargetsList
-
     return chemTargetsDict

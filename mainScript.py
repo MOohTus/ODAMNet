@@ -50,18 +50,12 @@ if __name__ == "__main__":
     else:
         association = 'hierarchicalAssociations'
 
-    # Parameters
-    chemNameList = []
-    chemTargetsDict = {}
-    WPGeneRDDict = {}
-    WPBackgroundGenes = []
-
     # Read CTD file and request CTD database
     chemNameList = CTD.readCTDFile(CTDFile)
     chemTargetsDict = CTD.CTDrequestFromList(chemList=chemNameList, association=association)
 
     # Search Rare Diseases pathways and extract all genes from WP
-    WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(resultFileName="test/WP_request.tsv")
+    WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest()
     WPBackgroundGenes = WP.allGenesFromWP()
 
     # Overlap between our target list from CTD and WP of interest

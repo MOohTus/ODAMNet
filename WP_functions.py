@@ -15,18 +15,22 @@ from SPARQLWrapper import SPARQLWrapper, TSV
 def readRequestResultsWP(request):
     """
     Read request from WP.
+    Parse and extract information from request.
 
-    :param request: request from WikiPathway
+    :param bytes request: request from WikiPathway
+
     :return:
+        - **dictionary** (*dictionary*) – Dict of genes for each WikiPathway
+        - **WPdictionary** (*dictionary*) – Dict of titles for each WikiPathway
     """
     # Parameters
     dictionary = {}
     WPdictionary = {}
 
     # Read and extract elements from WP
-    requestSring = request.decode()
-    requestSring = requestSring.replace('\"', '')
-    listOfPathways = requestSring.rstrip().split('\n')
+    requestString = request.decode()
+    requestString = requestString.replace('\"', '')
+    listOfPathways = requestString.rstrip().split('\n')
     for line in listOfPathways:
         listLine = line.split('\t')
         if listLine[2] != 'HGNC':
@@ -39,7 +43,7 @@ def readRequestResultsWP(request):
     return dictionary, WPdictionary
 
 
-def rareDiseasesWPrequest(resultFileName):
+def rareDiseasesWPrequest():
     """
     Function requests WikiPathway database.
 
@@ -47,15 +51,15 @@ def rareDiseasesWPrequest(resultFileName):
     Focus on pathways related with Homo sapiens.
     Write results into result file.
 
-    :param str resultFileName: output file name where write request results
-
     :return:
-        - **genesDict** (*dictionary*) – Dict of genes for each WikiPathway found
+        - **genesDict** (*dictionary*) – Dict of genes for each RD WikiPathway
+        - **WPDict** (*dictionary*) – Dict of titles for each RD WikiPathway
     """
     # Parameters
     genesDict = {}
     WPDict = {}
     outputList = []
+    resultFileName = "WP_RareDiseases_request.tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
 
@@ -113,7 +117,6 @@ def allGenesFromWP():
         - **geneSetWP** (*list*) – List of uniq genes found in Homo sapiens WP
     """
     # Parameters
-    allGenesList = []
     geneSetWP = []
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
