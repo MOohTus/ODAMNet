@@ -35,7 +35,7 @@ def readCTDFile(CTDFile):
         print("I/O error while reading CTD file.")
 
 
-def CTDrequest(chemName, association, resultFileName):
+def CTDrequest(chemName, association):
     """
     Function requests CTD database.
 
@@ -45,10 +45,9 @@ def CTDrequest(chemName, association, resultFileName):
 
     :param str chemName: chemical name of MeSH ids string
     :param str association: association name (hierarchicalAssociations or directAssociations)
-    :param str resultFileName: output file name where write request results
 
     :return:
-        - **homoGenesList** (*list*) – List of genes which interact with chemicals given in input (only Homo sapiens)
+        - **homoGenesDict** (*dict*) – Dictionary of genes which interact with chemicals given in input (only Homo sapiens)
     """
     # Parameters
     URL = "http://ctdbase.org/tools/batchQuery.go"
@@ -56,7 +55,8 @@ def CTDrequest(chemName, association, resultFileName):
               'inputTermSearchType': association}
     homoResultsList = []
     homoGenesList = []
-    # resultsList = []
+    meshNamesDict = {}
+    chemMeSHList = []
 
     # Request CTD
     requestResult = requests.get(url=URL, params=PARAMS)
@@ -75,15 +75,45 @@ def CTDrequest(chemName, association, resultFileName):
                     homoResultsList.append(elementList)
                     if elementList[4] not in homoGenesList:
                         homoGenesList.append(elementList[4])
+                    if elementList[1].lower() not in meshNamesDict:
+                        meshNamesDict[elementList[1].lower()] = elementList[2]
 
     # Result len
     # len(homoResultsList)
     # len(resultsList)
 
     # Write result into file
+    for chem in chemName.split("|"):
+        if(chem in meshNamesDict):
+            chemMeSHList.append(meshNamesDict[chem.lower()])
+        else:
+            chemMeSHList.append(chem)
+    chemMeSH = "_".join(chemMeSHList)
+    resultFileName = "test/CTD_request_" + chemMeSH + ".tsv"
     with open(resultFileName, 'w') as outputFileHandler:
         for resultLine in homoResultsList:
             outputFileHandler.write("\t".join(resultLine))
             outputFileHandler.write("\n")
 
-    return homoGenesList
+    return chemMeSH, homoGenesList
+
+
+def CTDrequestFromList(chemList, association):
+    """
+
+    :param chemList:
+    :param association:
+
+    :return:
+    """
+    # Parameters
+    chemTargetsList = []
+    chemTargetsDict = {}
+
+    for chem in chemList:
+        chemNamesList = chem.rstrip().split(';')
+        chemNamesString = "|".join(chemNamesList)
+        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association)
+        chemTargetsDict[chemNames] = chemTargetsList
+
+    return chemTargetsDict
