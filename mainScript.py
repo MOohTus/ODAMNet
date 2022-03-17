@@ -42,8 +42,9 @@ if __name__ == "__main__":
     argsDict = vars(args)
 
     # Input parameters
-    CTDFile = "test/CTDFile_byMeSH_inputFile.txt"
-    # CTDFile = argsDict['CTDFile']
+    # CTDFile = "test/CTDFile_byMeSH_inputFile.txt"
+    # CTDFile = "test/CTDFile_byNames_inputFile.txt"
+    CTDFile = argsDict['CTDFile']
     if argsDict['directAssociations']:
         association = 'directAssociations'
     else:
@@ -51,14 +52,13 @@ if __name__ == "__main__":
 
     # Parameters
     chemNameList = []
-    chemTargetsList = []
+    chemTargetsDict = {}
     WPGeneRDDict = {}
     WPBackgroundGenes = []
 
     # Read CTD file and request CTD database
     chemNameList = CTD.readCTDFile(CTDFile)
-    chemName = "|".join(chemNameList)
-    chemTargetsList = CTD.CTDrequest(chemName=chemName, association=association, resultFileName="test/CTD_request.tsv")
+    chemTargetsDict = CTD.CTDrequestFromList(chemList=chemNameList, association=association)
 
     # Search Rare Diseases pathways and extract all genes from WP
     WPGeneRDDict = WP.rareDiseasesWPrequest(resultFileName="test/WP_request.tsv")
