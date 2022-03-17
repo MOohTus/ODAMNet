@@ -58,10 +58,10 @@ if __name__ == "__main__":
     # Read CTD file and request CTD database
     chemNameList = CTD.readCTDFile(CTDFile)
     chemName = "|".join(chemNameList)
-    chemTargetsList = CTD.CTDrequest(chemName=chemName, association=association, resultFileName="CTD_request.tsv")
+    chemTargetsList = CTD.CTDrequest(chemName=chemName, association=association, resultFileName="test/CTD_request.tsv")
 
     # Search Rare Diseases pathways and extract all genes from WP
-    WPGeneRDDict = WP.rareDiseasesWPrequest(resultFileName="WP_request.tsv")
+    WPGeneRDDict = WP.rareDiseasesWPrequest(resultFileName="test/WP_request.tsv")
     WPBackgroundGenes = WP.allGenesFromWP()
 
     # Overlap between our target list from CTD and WP of interest
