@@ -61,7 +61,11 @@ if __name__ == "__main__":
     chemTargetsDict = CTD.CTDrequestFromList(chemList=chemNameList, association=association)
 
     # Search Rare Diseases pathways and extract all genes from WP
-    WPGeneRDDict = WP.rareDiseasesWPrequest(resultFileName="test/WP_request.tsv")
+    WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(resultFileName="test/WP_request.tsv")
     WPBackgroundGenes = WP.allGenesFromWP()
 
     # Overlap between our target list from CTD and WP of interest
+    methods.overlapAnalysis(chemTargetsDict=chemTargetsDict,
+                            WPGeneRDDict=WPGeneRDDict,
+                            WPBackgroundGenes=WPBackgroundGenes,
+                            WPDict=WPDict)

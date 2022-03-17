@@ -8,7 +8,7 @@ WikiPathways functions
 """
 
 # Libraries
-from SPARQLWrapper import SPARQLWrapper, CSV
+from SPARQLWrapper import SPARQLWrapper, TSV
 
 
 # Functions
@@ -21,20 +21,22 @@ def readRequestResultsWP(request):
     """
     # Parameters
     dictionary = {}
+    WPdictionary = {}
 
     # Read and extract elements from WP
     requestSring = request.decode()
     requestSring = requestSring.replace('\"', '')
     listOfPathways = requestSring.rstrip().split('\n')
     for line in listOfPathways:
-        listLine = line.split(',')
-        if listLine[1] != 'HGNC':
-            listLine[1] = listLine[1].split('/')[4]
+        listLine = line.split('\t')
+        if listLine[2] != 'HGNC':
+            listLine[2] = listLine[2].split('/')[4]
         if listLine[0] in dictionary.keys():
-            dictionary[listLine[0]].append(listLine[1])
+            dictionary[listLine[0]].append(listLine[2])
         else:
-            dictionary[listLine[0]] = [listLine[1]]
-    return dictionary
+            dictionary[listLine[0]] = [listLine[2]]
+            WPdictionary[listLine[0]] = listLine[1]
+    return dictionary, WPdictionary
 
 
 def rareDiseasesWPrequest(resultFileName):
@@ -52,18 +54,20 @@ def rareDiseasesWPrequest(resultFileName):
     """
     # Parameters
     genesDict = {}
+    WPDict = {}
     outputList = []
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
-    sparql.setReturnFormat(CSV)
+    sparql.setReturnFormat(TSV)
 
     # Query - Extract gene HGNC ID from RD pathways
     sparql.setQuery("""
-    SELECT DISTINCT ?WPID (?hgncId as ?HGNC)
+    SELECT DISTINCT ?WPID (?title as ?pathways) (?hgncId as ?HGNC)
         WHERE {
           {
             ?pathway wp:ontologyTag cur:RareDiseases ;
                     a wp:Pathway ;
                     wp:organismName "Homo sapiens" ;
+                    dc:title ?title ; 
                     dcterms:identifier ?WPID.
             ?gene a wp:GeneProduct ;
                     dcterms:isPartOf ?pathway ;
@@ -74,6 +78,7 @@ def rareDiseasesWPrequest(resultFileName):
             ?pathway wp:ontologyTag cur:RareDiseases ;
                     a wp:Pathway ;
                     wp:organismName "Homo sapiens" ;
+                    dc:title ?title ;
                     dcterms:identifier ?WPID.
             ?protein a wp:Protein ;
                     dcterms:isPartOf ?pathway ;
@@ -83,7 +88,7 @@ def rareDiseasesWPrequest(resultFileName):
     """)
     try:
         genesReq = sparql.queryAndConvert()
-        genesDict = readRequestResultsWP(genesReq)
+        genesDict, WPDict = readRequestResultsWP(genesReq)
     except Exception as e:
         print(e)
 
@@ -91,13 +96,13 @@ def rareDiseasesWPrequest(resultFileName):
     for key in genesDict:
         size = str(len(genesDict[key]))
         composition = ' '.join(genesDict[key])
-        outputList.append(''.join([key, '\t', size, '\t', composition, '\n']))
+        outputList.append(''.join([key, '\t', WPDict[key], '\t', size, '\t', composition, '\n']))
     # Write results into file - Write size and composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
         for line in outputList:
             outputFileHandler.write(line)
 
-    return genesDict
+    return genesDict, WPDict
 
 
 def allGenesFromWP():
@@ -111,7 +116,7 @@ def allGenesFromWP():
     allGenesList = []
     geneSetWP = []
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
-    sparql.setReturnFormat(CSV)
+    sparql.setReturnFormat(TSV)
 
     # Query - Extract all genes from Human WP (HGNC ID)
     sparql.setQuery("""

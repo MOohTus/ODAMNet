@@ -15,7 +15,7 @@ from statsmodels.stats.multitest import multipletests
 
 
 # Functions
-def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames):
+def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict):
     """
     Calculate overlap between target genes and Rase Diseases WP
 
@@ -59,7 +59,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames):
             pval = hypergeom.sf(x - 1, M, n, N)
 
             WPIDs.append(WP)
-            WPTitles.append(WP)
+            WPTitles.append(WPDict[WP])
             WPsizes.append(n)
             TargetSizes.append(N)
             intersectionSizes.append(x)
@@ -84,12 +84,12 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames):
                        })
 
     # Write into a file
-    df.to_csv('test/Overlap_' + chemNames + '_wittRDWP.csv', ';', index=False)
+    df.to_csv('test/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
 
     # return df
 
 
-def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes):
+def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes,WPDict):
     """
     :param chemTargetsDict:
     :param WPGeneRDDict:
@@ -101,4 +101,5 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes):
         overlap(targetGeneSet=set(chemTargetsDict[chem]),
                 WPGenesDict=WPGeneRDDict,
                 WPBackgroundGenesSet=set(WPBackgroundGenes),
-                chemNames=chem)
+                chemNames=chem,
+                WPDict=WPDict)
