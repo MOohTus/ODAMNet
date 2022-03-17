@@ -11,6 +11,8 @@ mainScript
 from argparse import ArgumentParser
 from distutils import util
 import CTD_functions as CTD
+import WP_functions as WP
+import methods_functions as methods
 
 # Script version
 VERSION = '1.0'
@@ -49,14 +51,17 @@ if __name__ == "__main__":
 
     # Parameters
     chemNameList = []
-    homoGenesList = []
-    WPDict = {}
+    chemTargetsList = []
+    WPGeneRDDict = {}
+    WPBackgroundGenes = []
 
     # Read CTD file and request CTD database
     chemNameList = CTD.readCTDFile(CTDFile)
     chemName = "|".join(chemNameList)
-    homoGenesList = CTD.CTDrequest(chemName=chemName, association=association, resultFileName="CTD_request.tsv")
+    chemTargetsList = CTD.CTDrequest(chemName=chemName, association=association, resultFileName="CTD_request.tsv")
 
-    # Read WP file and request WP
-    # WPNameList = readWPFile("/home/morgane/Documents/05_EJPR_RD/WF_Environment/script/WPFile_WPID.txt")
+    # Search Rare Diseases pathways and extract all genes from WP
+    WPGeneRDDict = WP.rareDiseasesWPrequest(resultFileName="WP_request.tsv")
+    WPBackgroundGenes = WP.allGenesFromWP()
 
+    # Overlap between our target list from CTD and WP of interest
