@@ -42,9 +42,9 @@ if __name__ == "__main__":
     argsDict = vars(args)
 
     # Input parameters
-    # CTDFile = "test/CTDFile_byMeSH_inputFile.txt"
-    CTDFile = "test/CTDFile_byNames_inputFile.txt"
-    # CTDFile = argsDict['CTDFile']
+    # CTDFile = "test/InputData/CTDFile_byMeSH_inputFile.txt"
+    # CTDFile = "test/InputData/CTDFile_byNames_inputFile.txt"
+    CTDFile = argsDict['CTDFile']
     if argsDict['directAssociations']:
         association = 'directAssociations'
     else:

@@ -91,7 +91,7 @@ def CTDrequest(chemName, association):
         else:
             chemMeSHList.append(chem)
     chemMeSH = "_".join(chemMeSHList)
-    resultFileName = "test/CTD_request_" + chemMeSH + ".tsv"
+    resultFileName = "test/OutputFiles/CTD_request_" + chemMeSH + ".tsv"
 
     # Write result into file
     with open(resultFileName, 'w') as outputFileHandler:

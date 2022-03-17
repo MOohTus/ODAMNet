@@ -35,7 +35,6 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict)
         - **df** (*pd.DataFrame*) – Data frame of overlap metrics for each rare diseases WP
     """
     # Parameters
-    # WP = "WP2059"
     WPIDs = []
     WPTitles = []
     WPsizes = []
@@ -88,7 +87,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict)
                        })
 
     # Write into a file
-    df.to_csv('test/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
+    df.to_csv('test/OutputFiles/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
 
     # return df
 

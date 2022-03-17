@@ -59,7 +59,7 @@ def rareDiseasesWPrequest():
     genesDict = {}
     WPDict = {}
     outputList = []
-    resultFileName = "WP_RareDiseases_request.tsv"
+    resultFileName = "test/OutputFiles/WP_RareDiseases_request.tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
 
