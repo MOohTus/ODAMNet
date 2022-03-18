@@ -44,6 +44,7 @@ if __name__ == "__main__":
     # Input parameters
     # CTDFile = "test/InputData/CTDFile_byMeSH_inputFile.txt"
     # CTDFile = "test/InputData/CTDFile_byNames_inputFile.txt"
+    # CTDFile = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/InputData/InputFile_CTD_sevMeSH.txt"
     CTDFile = argsDict['CTDFile']
     if argsDict['directAssociations']:
         association = 'directAssociations'
