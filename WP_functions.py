@@ -43,13 +43,15 @@ def readRequestResultsWP(request):
     return dictionary, WPdictionary
 
 
-def rareDiseasesWPrequest():
+def rareDiseasesWPrequest(outputPath):
     """
     Function requests WikiPathway database.
 
     Search all WikiPathways related to Rare Diseases.
     Focus on pathways related with Homo sapiens.
     Write results into result file.
+
+    :param str outputPath: Folder path to save the results
 
     :return:
         - **genesDict** (*dictionary*) – Dict of genes for each RD WikiPathway
@@ -59,7 +61,7 @@ def rareDiseasesWPrequest():
     genesDict = {}
     WPDict = {}
     outputList = []
-    resultFileName = "test/OutputFiles/WP_RareDiseases_request.tsv"
+    resultFileName = outputPath + "/WP_RareDiseases_request.tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
 

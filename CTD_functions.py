@@ -35,7 +35,7 @@ def readCTDFile(CTDFile):
         print("I/O error while reading CTD file.")
 
 
-def CTDrequest(chemName, association):
+def CTDrequest(chemName, association, outputPath):
     """
     Function requests CTD database.
 
@@ -46,6 +46,7 @@ def CTDrequest(chemName, association):
 
     :param str chemName: chemical name of MeSH ids string
     :param str association: association name (hierarchicalAssociations or directAssociations)
+    :param str outputPath: Folder path to save the results
 
     :return:
         - **homoGenesList** (*list*) – List of genes which interact with chemicals given in input (only Homo sapiens)
@@ -91,7 +92,7 @@ def CTDrequest(chemName, association):
         else:
             chemMeSHList.append(chem)
     chemMeSH = "_".join(chemMeSHList)
-    resultFileName = "test/OutputFiles/CTD_request_" + chemMeSH + ".tsv"
+    resultFileName = outputPath + "/CTD_request_" + chemMeSH + ".tsv"
 
     # Write result into file
     with open(resultFileName, 'w') as outputFileHandler:
@@ -102,7 +103,7 @@ def CTDrequest(chemName, association):
     return chemMeSH, homoGenesList
 
 
-def CTDrequestFromList(chemList, association):
+def CTDrequestFromList(chemList, association, outputPath):
     """
     Make CTD request for each chemical present in the list given in input.
     Each element can be composed of one or more element.
@@ -110,6 +111,7 @@ def CTDrequestFromList(chemList, association):
 
     :param list chemList: List of chemical to request to CTD (MeSH IDs or chemical names)
     :param str association: association name (hierarchicalAssociations or directAssociations)
+    :param str outputPath: Folder path to save the results
 
     :return:
         - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
@@ -120,6 +122,6 @@ def CTDrequestFromList(chemList, association):
     for chem in chemList:
         chemNamesList = chem.rstrip().split(';')
         chemNamesString = "|".join(chemNamesList)
-        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association)
+        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association, outputPath=outputPath)
         chemTargetsDict[chemNames] = chemTargetsList
     return chemTargetsDict

@@ -13,6 +13,7 @@ from distutils import util
 import CTD_functions as CTD
 import WP_functions as WP
 import methods_functions as methods
+import os
 
 # Script version
 VERSION = '1.0'
@@ -26,11 +27,12 @@ def argumentParserFunction():
     :return:
         - **parser** (*argparse.ArgumentParser*) – List of arguments
     """
-    parser = ArgumentParser(description="mainScript")
+    parser = ArgumentParser(description='mainScript')
     parser.add_argument('-v', '--version', action='version', version=VERSION)
-    parser.add_argument('-c', '--CTDFile', required=True, help="File path of the chemical name (or MeDH ID) list")
+    parser.add_argument('-c', '--CTDFile', required=True, help='File path of the chemical name (or MeDH ID) list')
     parser.add_argument('--directAssociations', required=True, type=util.strtobool,
-                        help="Direct associations (only chem) or hierarchical associations (chem + all related chem) - False / True")
+                        help='Direct associations (only chem) or hierarchical associations (chem + all related chem) - False / True')
+    parser.add_argument('-o', '--outputPath', default='OutputResults', help='Folder path for writing results')
     return parser
 
 
@@ -50,17 +52,23 @@ if __name__ == "__main__":
         association = 'directAssociations'
     else:
         association = 'hierarchicalAssociations'
+    outputPath = argsDict['outputPath']
+
+    # Check if outputPath exist and create it if does not
+    if not os.path.exists(outputPath):
+        os.mkdir(outputPath)
 
     # Read CTD file and request CTD database
     chemNameList = CTD.readCTDFile(CTDFile)
-    chemTargetsDict = CTD.CTDrequestFromList(chemList=chemNameList, association=association)
+    chemTargetsDict = CTD.CTDrequestFromList(chemList=chemNameList, association=association, outputPath=outputPath)
 
     # Search Rare Diseases pathways and extract all genes from WP
-    WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest()
+    WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
     WPBackgroundGenes = WP.allGenesFromWP()
 
     # Overlap between our target list from CTD and WP of interest
     methods.overlapAnalysis(chemTargetsDict=chemTargetsDict,
                             WPGeneRDDict=WPGeneRDDict,
                             WPBackgroundGenes=WPBackgroundGenes,
-                            WPDict=WPDict)
+                            WPDict=WPDict,
+                            outputPath=outputPath)

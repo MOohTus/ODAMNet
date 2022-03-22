@@ -15,7 +15,7 @@ from statsmodels.stats.multitest import multipletests
 
 
 # Functions
-def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict):
+def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
     """
     Calculate overlap between target genes and Rase Diseases WP
 
@@ -30,6 +30,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict)
     :param set WPBackgroundGenesSet: Set of all HGNC inside WikiPathway for Homo sapiens
     :param str chemNames: MeSH ID of chemical of interest
     :param dict WPDict: Dictionary of WP composed of title of them
+    :param str outputPath: Folder path to save the results
 
     :return:
         - **df** (*pd.DataFrame*) – Data frame of overlap metrics for each rare diseases WP
@@ -87,12 +88,12 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict)
                        })
 
     # Write into a file
-    df.to_csv('test/OutputFiles/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
+    df.to_csv(outputPath + '/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
 
     # return df
 
 
-def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict):
+def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
     """
     For each chemical given in input, calculate overlap with RD WP.
 
@@ -100,6 +101,7 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict):
     :param dict WPGeneRDDict: Dictionary of Rare Diseases WP
     :param list WPBackgroundGenes: List of uniq genes found in Homo sapiens WP
     :param dict WPDict: Dict of titles for each RD WikiPathway
+    :param str outputPath: Folder path to save the results
     """
     # For each chemical targets, calculate overlap with RD WP
     for chem in chemTargetsDict:
@@ -107,4 +109,5 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict):
                 WPGenesDict=WPGeneRDDict,
                 WPBackgroundGenesSet=set(WPBackgroundGenes),
                 chemNames=chem,
-                WPDict=WPDict)
+                WPDict=WPDict,
+                outputPath=outputPath)
