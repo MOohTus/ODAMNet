@@ -9,6 +9,7 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 """
 
 # Libraries
+import multixrank
 import pandas as pd
 from scipy.stats import hypergeom
 from statsmodels.stats.multitest import multipletests
@@ -111,3 +112,22 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
                 chemNames=chem,
                 WPDict=WPDict,
                 outputPath=outputPath)
+
+
+def RWR(configPath, networksPath, outputPath, sifPathName, top):
+    """
+
+    :return:
+    """
+    # Parameters
+    configPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/Networks/config_minimal.yml"
+    networksPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/Networks"
+    outputPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/RWR_output"
+    sifPathName = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/RWR_output/RWR_vitaminA_top3.sif"
+    top = 3
+
+    # Analysis
+    multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
+    ranking_df = multixrank_obj.random_walk_rank()
+    multixrank_obj.write_ranking(ranking_df, path=outputPath)
+    multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
