@@ -94,13 +94,11 @@ def argumentParserFunction():
 
     # RWR analysis
     parser_RWR = subparsers.add_parser('RWR', help='RWR analysis using chemical names as seeds')
-    parser_RWR.add_argument('-c', '--CTDFile', required=True, help='File path of the chemical name (or MeDH ID) list')
-    # parser_RWR.add_argument('-s', '--seedPath', required=True, help='Seed file path')
     parser_RWR.add_argument('--configPath', required=True, help='Configuration for RWR file path')
     parser_RWR.add_argument('-n', '--networksPath', required=True, help='Networks folder path')
     parser_RWR.add_argument('-o', '--outputPath', required=True, help='Output file name path')
     parser_RWR.add_argument('--sifPath', required=True, help='SIF file name path')
-    parser_RWR.add_argument('--top', default=3, help='Top number of results for SIF file')
+    parser_RWR.add_argument('--top', type=int, default=3, help='Top number of results for SIF file')
     parser_RWR.set_defaults(func=RWR_analysis)
 
     return(parser)

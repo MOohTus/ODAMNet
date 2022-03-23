@@ -116,16 +116,15 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
 
 def RWR(configPath, networksPath, outputPath, sifPathName, top):
     """
+    Perform a Random Walk with Restart analysis on different multiplex and networks.
+    You have to specify seeds and networks.
 
-    :return:
+    :param str configPath: Configuration file name path
+    :param str networksPath: Networks path name
+    :param str outputPath: Output folder path name
+    :param str sifPathName: Result file name path to write SIF result file
+    :param int top: Number of results to report in SIF file
     """
-    # Parameters
-    configPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/Networks/config_minimal.yml"
-    networksPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/Networks"
-    outputPath = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/RWR_output"
-    sifPathName = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/RWR_output/RWR_vitaminA_top3.sif"
-    top = 3
-
     # Analysis
     multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
     ranking_df = multixrank_obj.random_walk_rank()
