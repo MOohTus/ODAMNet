@@ -14,6 +14,7 @@ import CTD_functions as CTD
 import WP_functions as WP
 import methods_functions as methods
 import os
+import sys
 
 # Script version
 VERSION = '1.0'
@@ -110,5 +111,7 @@ if __name__ == "__main__":
     parser = argumentParserFunction()
     args = parser.parse_args()
     argsDict = vars(args)
-    args.func(argsDict)
-
+    if bool(argsDict):
+        args.func(argsDict)
+    else:
+        parser.print_help(sys.stderr)
