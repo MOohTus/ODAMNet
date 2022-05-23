@@ -81,7 +81,7 @@ def argumentParserFunction():
     :return:
         - **parser** (*argparse.ArgumentParser*) – List of arguments
     """
-    parser = ArgumentParser(description='mainScript')
+    parser = ArgumentParser(description='Perform overlap analyse between chemicals and rare diseases at different levels !')
     parser.add_argument('-v', '--version', action='version', version=VERSION)
     subparsers = parser.add_subparsers(title='Required mode', help='Choose which analysis you want to perform', metavar='overlap | RWR')
 
