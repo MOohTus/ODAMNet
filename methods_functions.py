@@ -130,3 +130,15 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     ranking_df = multixrank_obj.random_walk_rank()
     multixrank_obj.write_ranking(ranking_df, path=outputPath)
     multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
+
+
+def DOMINO(genesFileName, networkFileName):
+    """
+
+    :param genesFileName:
+    :param networkFileName:
+    :return:
+    """
+    # Analysis
+    print("Hello")
+

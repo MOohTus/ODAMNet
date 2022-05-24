@@ -74,6 +74,20 @@ def RWR_analysis(argsDict):
     methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
 
 
+def DOMINO_analysis(argsDict):
+    """
+    Perform DOMINO (active modules identification) analysis
+
+    :param argparse.ArgumentParser argsDict: List of arguments for DOMINO analysis
+    """
+    # Parameters
+    networkName = argsDict['networkFileName']
+    genesSetName = argsDict['genesFileName']
+
+    # DOMINO analysis
+    methods.DOMINO(genesFileName=genesSetName, networkFileName=networkName)
+
+
 def argumentParserFunction():
     """
     Argument parser function.
@@ -83,7 +97,7 @@ def argumentParserFunction():
     """
     parser = ArgumentParser(description='Perform overlap analyse between chemicals and rare diseases at different levels !')
     parser.add_argument('-v', '--version', action='version', version=VERSION)
-    subparsers = parser.add_subparsers(title='Required mode', help='Choose which analysis you want to perform', metavar='overlap | RWR')
+    subparsers = parser.add_subparsers(title='Required mode', help='Choose which analysis you want to perform', metavar='overlap | RWR | DOMINO')
 
     # Overlap analysis
     parser_overlap = subparsers.add_parser('overlap', help='Overlap analysis between genes targeted by chemical and rare diseases pathways')
@@ -102,7 +116,13 @@ def argumentParserFunction():
     parser_RWR.add_argument('--top', type=int, default=3, help='Top number of results for SIF file')
     parser_RWR.set_defaults(func=RWR_analysis)
 
-    return(parser)
+    # DOMINO analysis
+    parser_DOMINO = subparsers.add_parser('DOMINO', help='DOMINO analysis using chemical target genes')
+    parser_DOMINO.add_argument('-n', '--networkFileName', required=True, help='Network file name')
+    parser_DOMINO.add_argument('-g', '--genesFileName', required=True, help='Active gene set file name')
+    parser_DOMINO.set_defaults(func=DOMINO_analysis)
+
+    return parser
 
 
 # Main
