@@ -9,6 +9,7 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 """
 
 # Libraries
+import multixrank
 import pandas as pd
 from scipy.stats import hypergeom
 from statsmodels.stats.multitest import multipletests
@@ -111,3 +112,21 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
                 chemNames=chem,
                 WPDict=WPDict,
                 outputPath=outputPath)
+
+
+def RWR(configPath, networksPath, outputPath, sifPathName, top):
+    """
+    Perform a Random Walk with Restart analysis on different multiplex and networks.
+    You have to specify seeds and networks.
+
+    :param str configPath: Configuration file name path
+    :param str networksPath: Networks path name
+    :param str outputPath: Output folder path name
+    :param str sifPathName: Result file name path to write SIF result file
+    :param int top: Number of results to report in SIF file
+    """
+    # Analysis
+    multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
+    ranking_df = multixrank_obj.random_walk_rank()
+    multixrank_obj.write_ranking(ranking_df, path=outputPath)
+    multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
