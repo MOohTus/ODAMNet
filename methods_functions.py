@@ -9,11 +9,12 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 """
 
 # Libraries
+import requests
+import os
 import multixrank
 import pandas as pd
 from scipy.stats import hypergeom
 from statsmodels.stats.multitest import multipletests
-
 
 # Functions
 def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
@@ -89,7 +90,8 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
                        })
 
     # Write into a file
-    df.to_csv(outputPath + '/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
+    dfSorted = df.sort_values(by=['pAdjusted'])
+    dfSorted.to_csv(outputPath + '/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
 
     # return df
 
@@ -132,13 +134,49 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
 
 
-def DOMINO(genesFileName, networkFileName):
+def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
     """
 
     :param genesFileName:
     :param networkFileName:
     :return:
     """
-    # Analysis
-    print("Hello")
+    # genesFileName = '20220603_Analysis/OutputDOMINOResults/DOMINO_inputGeneList_D014801.txt'
+    # genesFileName = 'InputFile_DOMINO_tnfa_active_genes_file.txt'
+    # networkFileName = 'InputData/InputFile_DOMINO_string.sif'
+    # networkFileName = 'InputFile_DOMINO_string.sif'
+    # outputPath=outputPath
+    # chemMeSH=chemMeSH
+    # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
+
+    # Input file names
+    data_dict = {
+        'Network file name': os.path.basename(networkFileName),
+        'Active gene file name': os.path.basename(genesFileName)
+    }
+    # Input file contents
+    files_dict = {
+        'Network file contents': open(networkFileName, 'rb'),
+        'Active gene file contents': open(genesFileName, 'rb')
+    }
+
+    # Request and run DOMINO
+    response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
+
+    #
+    response_dict = response.json()
+    activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
+
+    if(len(activeModules_list.keys()) > 0):
+        # Write results into file
+        resultOutput = outputPath + "/DOMINO_" + chemMeSH + "_activeModules.txt"
+        with open(resultOutput, 'w') as outputFileHandler:
+            for module in activeModules_list:
+                for gene in activeModules_list[module]:
+                    line = gene + "\t" + module + "\n"
+                    outputFileHandler.write(line)
+    else:
+        print("No Active Modules detected")
+
+    return activeModules_list
 
