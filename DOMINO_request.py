@@ -36,4 +36,3 @@ response
 response.text
 
 response_dict = response.json()
-
