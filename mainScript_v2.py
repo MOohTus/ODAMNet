@@ -178,6 +178,7 @@ def argumentParserFunction():
     # parser_DOMINO.add_argument('-g', '--genesFileName', required=True, help='Active gene set file name')
     # Optional
     parser_DOMINO.add_argument('-o', '--outputPath', default='OutputResults', help='Folder path for writing results')
+    parser_DOMINO.add_argument('--nbPub', type=int, default=2, help='Number of references needed to keep an interaction')
     # parser_DOMINO_optional.add_argument('-h', '--help', action = 'help', default = SUPPRESS, help = 'Show this help message and exit')
     parser_DOMINO.set_defaults(func=DOMINO_analysis)
 
