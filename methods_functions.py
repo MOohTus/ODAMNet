@@ -95,6 +95,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     dfSorted = df.sort_values(by=['pAdjusted'])
     dfSorted.to_csv(outputPath + '/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
 
+    print('\tOverlap analysis done!')
     # return df
 
 
@@ -143,13 +144,13 @@ def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
     :param networkFileName:
     :return:
     """
-    # genesFileName = '20220603_Analysis/OutputDOMINOResults/DOMINO_inputGeneList_D014801.txt'
-    # genesFileName = 'InputFile_DOMINO_tnfa_active_genes_file.txt'
-    # networkFileName = 'InputData/InputFile_DOMINO_string.sif'
-    # networkFileName = 'InputFile_DOMINO_string.sif'
+    # Debug part
+    # genesFileName = 'TestDOMINO/OutputDOMINOResults_old/DOMINO_inputGeneList_D014801.txt'
+    # networkFileName = 'test/InputData/InputFile_PPI_2016.sif'
     # outputPath=outputPath
     # chemMeSH=chemMeSH
-    # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
+    # # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
+    # os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject')
 
     # Input file names
     data_dict = {
@@ -179,6 +180,9 @@ def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
                 for gene in activeModules_list[module]:
                     line = gene + "\t" + module + "\n"
                     outputFileHandler.write(line)
+        # Add chemMeSH into AM name
+        activeModules_list = {f'AM_{activeModules_list}_' + chemMeSH: v for activeModules_list, v in
+        activeModules_list.items()}
     else:
         print("No Active Modules detected")
 
