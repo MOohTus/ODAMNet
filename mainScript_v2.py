@@ -6,6 +6,9 @@
 
 mainScript
 """
+# Debug part
+# import os, sys
+# sys.path.append('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/')
 
 # Libraries
 from argparse import ArgumentParser, SUPPRESS
@@ -13,8 +16,7 @@ from distutils import util
 import CTD_functions as CTD
 import WP_functions as WP
 import methods_functions as methods
-import os
-import sys
+import os, sys
 
 # Script version
 VERSION = '1.0'
@@ -26,14 +28,15 @@ def overlap_analysis(argsDict):
 
     :param argparse.ArgumentParser argsDict: List of arguments for overlap analysis
     """
-    # Input parameters
+    # Debug part
     # CTDFile = "test/InputData/CTDFile_byMeSH_inputFile.txt"
     # CTDFile = "test/InputData/CTDFile_byNames_inputFile.txt"
     # CTDFile = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/InputData/InputFile_CTD_sevMeSH.txt"
     # CTDFile = 'D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test\\InputData\\InputFile_CTD_sevMeSH.txt'
+
+    # Input parameters
     argsDict['outputPath'] = argsDict['outputPath'] + "/OutputOverlapResults/"
     outputPath = argsDict['outputPath']
-    print('\n')
 
     # Read CTD file and request CTD database
     chemNameList, chemTargetsDict = CTD.targetExtraction(argsDict=argsDict)
@@ -75,14 +78,24 @@ def DOMINO_analysis(argsDict):
 
     :param argparse.ArgumentParser argsDict: List of arguments for DOMINO analysis
     """
-    # Parameters
+    # Debug part
     # argsDict = {}
     # argsDict['CTDFile'] = 'D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test\\InputData\\InputFile_CTD_1MeSH.txt'
     # argsDict['directAssociations'] = True
     # argsDict['networkFileName'] = 'D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test\\InputData\\InputFile_DOMINO_string.sif'
     # argsDict['outputPath'] = 'D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test\\20220603_Analysis\\'
     # chemMeSH = 'D014801'
+    # Debug part
+    # argsDict = {}
+    # argsDict['CTDFile'] = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/InputData/InputFile_CTD_vitaminAD.txt'
+    # argsDict['directAssociations'] = True
+    # argsDict['networkFileName'] = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/InputData/InputFile_PPI_2016.sif'
+    # argsDict['outputPath'] = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/TestDOMINO/'
+    # argsDict['nbPub'] = 2
+    # chemMeSH = 'D014801'
 
+
+    # Parameters
     argsDict['outputPath'] = argsDict['outputPath'] + "/OutputDOMINOResults/"
     networkName = argsDict['networkFileName']
     outputPath = argsDict['outputPath']
@@ -97,6 +110,7 @@ def DOMINO_analysis(argsDict):
 
     # DOMINO analysis for each environmental factor
     for chemMeSH in chemTargetsDict:
+        print(chemMeSH + " analysis :")
         # Write genes list into result files
         resultFileName = outputPath + "/DOMINO_inputGeneList_" + chemMeSH + ".txt"
         with open(resultFileName, 'w') as outputFileHandler:
@@ -109,11 +123,12 @@ def DOMINO_analysis(argsDict):
                                                outputPath=outputPath,
                                                chemMeSH=chemMeSH)
         # Run Overlap
-        methods.overlapAnalysis(chemTargetsDict=resultsDict[chemMeSH].keys(),
+        methods.overlapAnalysis(chemTargetsDict=resultsDict[chemMeSH],
                                 WPGeneRDDict=WPGeneRDDict,
                                 WPBackgroundGenes=WPBackgroundGenes,
                                 WPDict=WPDict,
                                 outputPath=outputPath)
+        print(chemMeSH + " analysis done!\n")
 
 
 def argumentParserFunction():
