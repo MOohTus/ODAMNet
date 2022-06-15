@@ -113,10 +113,11 @@ def CTDrequest(chemName, association, outputPath, nbPub):
             outputFileHandler.write("\t".join(resultLine))
             outputFileHandler.write("\n")
 
+    print('\n')
     print(chemMeSH + " - Total number of interactions in the request : " + str(len(homoResultsList)))
     print(chemMeSH + " - Number of uniq chemicals in the request : " + str(len(meshNamesDict)))
     print(chemMeSH + " - Number of uniq target genes : " + str(len(homoGenesList)))
-    print('\n')
+
 
     return chemMeSH, homoGenesList
 
@@ -170,6 +171,7 @@ def targetExtraction(argsDict):
         os.makedirs(outputPath, exist_ok=True)
 
     # Read CTD file and request CTD database
+    print('\nTarget extraction:')
     chemNameList = readCTDFile(CTDFile)
     chemTargetsDict = CTDrequestFromList(chemList=chemNameList, association=association, outputPath=outputPath, nbPub=nbPub)
 
