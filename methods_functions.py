@@ -15,6 +15,8 @@ import multixrank
 import pandas as pd
 from scipy.stats import hypergeom
 from statsmodels.stats.multitest import multipletests
+from alive_progress import alive_bar
+
 
 # Functions
 def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
@@ -161,9 +163,11 @@ def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
     }
 
     # Request and run DOMINO
-    response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
+    with alive_bar(title='Search active modules using DOMINO', theme='musical') as bar:
+        response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
+        bar()
 
-    #
+    # Parse the result request
     response_dict = response.json()
     activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
 
