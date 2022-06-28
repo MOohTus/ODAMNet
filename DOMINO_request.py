@@ -36,12 +36,12 @@ os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/t
 ## --> DON'T WORK
 ## SYMBOLS
 
-geneSet = 'InputFile_DOMINO_D014801_ENSEMBL.txt'
+# geneSet = 'InputFile_DOMINO_D014801_ENSEMBL.txt'
 # network = 'InputFile_DOMINO_string.sif'
 ## --> WORK
 ## ENSEMBL
 
-# geneSet = 'InputFile_DOMINO_D014801.txt'
+geneSet = 'DOMINO_inputGeneList_D014807.txt'
 network = 'InputFile_PPI_2016.sif'
 ## --> DON'T WORK
 ## SYMBOLS

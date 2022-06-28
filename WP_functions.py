@@ -111,7 +111,7 @@ def rareDiseasesWPrequest(outputPath):
     return genesDict, WPDict
 
 
-def allGenesFromWP():
+def allGenesFromWP(outputPath):
     """
     Extract all gene HGNC ID from Homo sapiens WP
 
@@ -120,8 +120,10 @@ def allGenesFromWP():
     """
     # Parameters
     geneSetWP = []
+    resultFileName = outputPath + "/WP_listOfAllHumanGenes.tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
+
 
     # Query - Extract all genes from Human WP (HGNC ID)
     sparql.setQuery("""
@@ -157,4 +159,58 @@ def allGenesFromWP():
     except Exception as e:
         print(e)
 
+    with open(resultFileName, 'w') as outputFileHandler:
+        for gene in geneSetWP:
+            outputFileHandler.write('%s\n' % gene)
+
+    return geneSetWP
+
+
+def readGMTFile(GMTFileName):
+    """
+    """
+    # Debug part
+    # GMTFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/WP_RareDiseases_request.tsv'
+
+    # Parameters
+    WPDict = {}
+    genesDict = {}
+
+    # Read GMT file
+    with open(GMTFileName, 'r') as GMTFileHandler:
+        for line in GMTFileHandler:
+            lineList = line.rstrip('\n').split('\t')
+            WPID = lineList[0]
+            genesList = lineList[3].split(' ')
+            description = lineList[1]
+            # Dictionary of description
+            if WPID in WPDict:
+                WPDict[WPID] = " ".join([WPDict[WPID], description])
+            else:
+                WPDict[WPID] = description
+            # Dictionary of genes
+            if WPID in genesDict:
+                genesDict[WPID] = " ".join([WPDict[WPID], genesList])
+            else:
+                genesDict[WPID] = genesList
+
+    # Return
+    return genesDict, WPDict
+
+
+def readUniversFile(UniversFileName):
+    """
+    """
+    # Debug part
+    # UniversFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults//WP_listOfAllHumanGenes.tsv'
+
+    # Parameters
+    geneSetWP = []
+
+    # Read file with all genes inside univers
+    with open(UniversFileName, 'r') as universFileHandler:
+        for line in universFileHandler:
+            geneSetWP.append(line.rstrip('\n'))
+
+    # Return
     return geneSetWP

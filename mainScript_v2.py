@@ -156,8 +156,7 @@ def argumentParserFunction():
                                          help='Direct associations (only chem) or hierarchical associations (chem + all related chem) - False / True')
     # Optional
     parser_overlap.add_argument('-o', '--outputPath', default='OutputResults', help='Folder path for writing results')
-    parser_overlap.add_argument('-r', '--nbPub', default=2, type=int,
-                                help='Number of references needed to keep an interaction')
+    parser_overlap.add_argument('--nbPub', type=int, default=2, help='Number of references needed to keep an interaction')
     # parser_overlap_optional.add_argument('-h', '--help', action = 'help', default = SUPPRESS, help = 'Show this help message and exit')
     parser_overlap.set_defaults(func=overlap_analysis)
 
