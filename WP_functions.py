@@ -11,6 +11,11 @@ WikiPathways functions
 from SPARQLWrapper import SPARQLWrapper, TSV
 
 
+# Debugging part / Global parameters
+# UniversFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults//WP_listOfAllHumanGenes.tsv'
+# GMTFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/WP_RareDiseases_request.tsv'
+
+
 # Functions
 def readRequestResultsWP(request):
     """
@@ -113,7 +118,10 @@ def rareDiseasesWPrequest(outputPath):
 
 def allGenesFromWP(outputPath):
     """
-    Extract all gene HGNC ID from Homo sapiens WP
+    Extract all gene HGNC ID from Homo sapiens WP.
+    Write request result into output file.
+
+    :param str outputPath: Folder path to save the results
 
     :return:
         - **geneSetWP** (*list*) – List of uniq genes found in Homo sapiens WP
@@ -123,7 +131,6 @@ def allGenesFromWP(outputPath):
     resultFileName = outputPath + "/WP_listOfAllHumanGenes.tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
-
 
     # Query - Extract all genes from Human WP (HGNC ID)
     sparql.setQuery("""
@@ -168,10 +175,15 @@ def allGenesFromWP(outputPath):
 
 def readGMTFile(GMTFileName):
     """
-    """
-    # Debug part
-    # GMTFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/WP_RareDiseases_request.tsv'
+    Read a GMT file from WP.
+    Request made : all pathways labeled as Rare Diseases pathways.
 
+    :param str GMTFileName: GMT file name
+
+    :return:
+        - **genesDict** (*dictionary*) – Dict of genes for each WikiPathway
+        - **WPDict** (*dictionary*) – Dict of titles for each WikiPathway
+    """
     # Parameters
     WPDict = {}
     genesDict = {}
@@ -200,10 +212,15 @@ def readGMTFile(GMTFileName):
 
 def readUniversFile(UniversFileName):
     """
-    """
-    # Debug part
-    # UniversFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults//WP_listOfAllHumanGenes.tsv'
+    Open and read a file to extract list of genes.
+    The file is composed of one column of genes.
+    These genes are all human genes in WP.
 
+    :param str UniversFileName: Univers file name
+
+    :return:
+        - **geneSetWP** (*list*) – List of genes that composed the Univers (WP for human)
+    """
     # Parameters
     geneSetWP = []
 
