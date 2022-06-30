@@ -173,61 +173,98 @@ def allGenesFromWP(outputPath):
     return geneSetWP
 
 
-def readGMTFile(GMTFileName):
-    """
-    Read a GMT file from WP.
-    Request made : all pathways labeled as Rare Diseases pathways.
-
-    :param str GMTFileName: GMT file name
-
-    :return:
-        - **genesDict** (*dictionary*) – Dict of genes for each WikiPathway
-        - **WPDict** (*dictionary*) – Dict of titles for each WikiPathway
-    """
+def readGMTFile(GMTFile):
     # Parameters
     WPDict = {}
     genesDict = {}
 
     # Read GMT file
-    with open(GMTFileName, 'r') as GMTFileHandler:
-        for line in GMTFileHandler:
-            lineList = line.rstrip('\n').split('\t')
-            WPID = lineList[0]
-            genesList = lineList[3].split(' ')
-            description = lineList[1]
-            # Dictionary of description
-            if WPID in WPDict:
-                WPDict[WPID] = " ".join([WPDict[WPID], description])
-            else:
-                WPDict[WPID] = description
-            # Dictionary of genes
-            if WPID in genesDict:
-                genesDict[WPID] = " ".join([WPDict[WPID], genesList])
-            else:
-                genesDict[WPID] = genesList
+    for line in GMTFile:
+        lineList = line.rstrip('\n').split('\t')
+        WPID = lineList[0]
+        genesList = lineList[3].split(' ')
+        description = lineList[1]
+        # Dictionary of description
+        if WPID in WPDict:
+            WPDict[WPID] = " ".join([WPDict[WPID], description])
+        else:
+            WPDict[WPID] = description
+        # Dictionary of genes
+        if WPID in genesDict:
+            genesDict[WPID] = " ".join([WPDict[WPID], genesList])
+        else:
+            genesDict[WPID] = genesList
 
     # Return
     return genesDict, WPDict
 
 
-def readUniversFile(UniversFileName):
-    """
-    Open and read a file to extract list of genes.
-    The file is composed of one column of genes.
-    These genes are all human genes in WP.
+# def readGMTFile(GMTFileName):
+#     """
+#     Read a GMT file from WP.
+#     Request made : all pathways labeled as Rare Diseases pathways.
+#
+#     :param str GMTFileName: GMT file name
+#
+#     :return:
+#         - **genesDict** (*dictionary*) – Dict of genes for each WikiPathway
+#         - **WPDict** (*dictionary*) – Dict of titles for each WikiPathway
+#     """
+#     # Parameters
+#     WPDict = {}
+#     genesDict = {}
+#
+#     # Read GMT file
+#     with open(GMTFileName, 'r') as GMTFileHandler:
+#         for line in GMTFileHandler:
+#             lineList = line.rstrip('\n').split('\t')
+#             WPID = lineList[0]
+#             genesList = lineList[3].split(' ')
+#             description = lineList[1]
+#             # Dictionary of description
+#             if WPID in WPDict:
+#                 WPDict[WPID] = " ".join([WPDict[WPID], description])
+#             else:
+#                 WPDict[WPID] = description
+#             # Dictionary of genes
+#             if WPID in genesDict:
+#                 genesDict[WPID] = " ".join([WPDict[WPID], genesList])
+#             else:
+#                 genesDict[WPID] = genesList
+#
+#     # Return
+#     return genesDict, WPDict
 
-    :param str UniversFileName: Univers file name
 
-    :return:
-        - **geneSetWP** (*list*) – List of genes that composed the Univers (WP for human)
-    """
+def readUniversFile(UniversFile):
     # Parameters
     geneSetWP = []
 
     # Read file with all genes inside univers
-    with open(UniversFileName, 'r') as universFileHandler:
-        for line in universFileHandler:
-            geneSetWP.append(line.rstrip('\n'))
+    for line in UniversFile:
+        geneSetWP.append(line.rstrip('\n'))
 
     # Return
     return geneSetWP
+
+# def readUniversFile(UniversFileName):
+#     """
+#     Open and read a file to extract list of genes.
+#     The file is composed of one column of genes.
+#     These genes are all human genes in WP.
+#
+#     :param str UniversFileName: Univers file name
+#
+#     :return:
+#         - **geneSetWP** (*list*) – List of genes that composed the Univers (WP for human)
+#     """
+#     # Parameters
+#     geneSetWP = []
+#
+#     # Read file with all genes inside univers
+#     with open(UniversFileName, 'r') as universFileHandler:
+#         for line in universFileHandler:
+#             geneSetWP.append(line.rstrip('\n'))
+#
+#     # Return
+#     return geneSetWP

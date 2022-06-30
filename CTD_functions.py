@@ -22,59 +22,99 @@ import os
 # outputPath = '/home/morgane/'
 
 # Functions
-def readListFile(listFileName):
-    """
-    Read a list file (composed of gene names or chemical names)
+# def readListFile(listFileName):
+#     """
+#     Read a list file (composed of gene names or chemical names)
+#
+#     :param str listFileName:
+#     :return:
+#         - **featureNameList** (*list*) – List of feature names
+#     """
+#     featureNameList = []
+#     try:
+#         with open(listFileName, 'r') as listFileHandler:
+#             for line in listFileHandler:
+#                 featureNameList.append(line.rstrip())
+#         return featureNameList
+#     except IOError:
+#         print("I/O error while reading input file.")
 
-    :param str listFileName:
-    :return:
-        - **featureNameList** (*list*) – List of feature names
-    """
+
+def readListFile(listFile):
     featureNameList = []
-    try:
-        with open(listFileName, 'r') as listFileHandler:
-            for line in listFileHandler:
-                featureNameList.append(line.rstrip())
-        return featureNameList
-    except IOError:
-        print("I/O error while reading input file.")
+    for line in listFile.readlines():
+        featureNameList.append(line.rstrip())
+    return featureNameList
 
 
-def readCTDFile(CTDFileName, nbPub):
-    """
-    Read CTD File.
-    This file is created from the CTD request using an environmental factor (Raw file)
-
-    :param str CTDFileName:
-    :return:
-        - **chemNameList** (*list*) – List of chemical names
-    """
-
-    # CTDFile = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/CTD_request_D014801.tsv"
-
+def readCTDFile(CTDFile, nbPub, outputPath):
+    # Parameters
     targetGenesList = []
     targetGenesDict = {}
     chemNameList = []
+    outputLines = []
 
-    try:
-        with open(CTDFileName, 'r') as CTDFileHandler:
-            for line in CTDFileHandler:
-                lineList = line.rstrip().split("\t")
-                if len(lineList[8].split("|")) >= nbPub:
-                    # Gene name extraction
-                    geneName = lineList[4]
-                    if geneName not in targetGenesList:
-                        targetGenesList.append(geneName)
-                    # Query name extraction
-                    chemName = lineList[0].upper()
-                    if chemName not in chemNameList:
-                        chemNameList.append(chemName)
-            # Dictionary creation
-            targetGenesDict["_".join([chemName])] = targetGenesList
-        # Return
-        return targetGenesDict
-    except IOError:
-        print("I/O error while reading CTD file.")
+    for line in CTDFile:
+        lineList = line.rstrip().split("\t")
+        if len(lineList[8].split("|")) >= nbPub:
+            outputLines.append("\t".join(lineList))
+            # Gene name extraction
+            geneName = lineList[4]
+            if geneName not in targetGenesList:
+                targetGenesList.append(geneName)
+            # Query name extraction
+            chemName = lineList[0].upper()
+            if chemName not in chemNameList:
+                chemNameList.append(chemName)
+    # Dictionary creation
+    targetGenesDict["_".join([chemName])] = targetGenesList
+
+    # Write filtered result into file
+    filteredResultFileName = outputPath + "/CTD_requestFiltered_" + "_".join([chemName]) + ".tsv"
+    with open(filteredResultFileName, 'w') as outputFileHandler:
+        for line in outputLines:
+            outputFileHandler.write(line)
+            outputFileHandler.write("\n")
+
+    # Return
+    return targetGenesDict
+
+
+# def readCTDFile(CTDFileName, nbPub):
+#     """
+#     Read CTD File.
+#     This file is created from the CTD request using an environmental factor (Raw file)
+#
+#     :param str CTDFileName:
+#     :return:
+#         - **chemNameList** (*list*) – List of chemical names
+#     """
+#
+#     # CTDFile = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/CTD_request_D014801.tsv"
+#
+#     targetGenesList = []
+#     targetGenesDict = {}
+#     chemNameList = []
+#
+#     try:
+#         with open(CTDFileName, 'r') as CTDFileHandler:
+#             for line in CTDFileHandler:
+#                 lineList = line.rstrip().split("\t")
+#                 if len(lineList[8].split("|")) >= nbPub:
+#                     # Gene name extraction
+#                     geneName = lineList[4]
+#                     if geneName not in targetGenesList:
+#                         targetGenesList.append(geneName)
+#                     # Query name extraction
+#                     chemName = lineList[0].upper()
+#                     if chemName not in chemNameList:
+#                         chemNameList.append(chemName)
+#             # Dictionary creation
+#             targetGenesDict["_".join([chemName])] = targetGenesList
+#         # Return
+#         return targetGenesDict
+#     except IOError:
+#         print("I/O error while reading CTD file.")
 
 
 def CTDrequest(chemName, association, outputPath, nbPub):
@@ -203,9 +243,9 @@ def targetExtraction(CTDFile, directAssociations, outputPath, nbPub):
     else:
         association = 'hierarchicalAssociations'
 
-    # Check if outputPath exist and create it if does not
-    if not os.path.exists(outputPath):
-        os.makedirs(outputPath, exist_ok=True)
+    # # Check if outputPath exist and create it if does not
+    # if not os.path.exists(outputPath):
+    #     os.makedirs(outputPath, exist_ok=True)
 
     # Read CTD file and request CTD database
     # print('\nCTD request: ')
