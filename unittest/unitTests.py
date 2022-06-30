@@ -11,7 +11,8 @@ class TestFeaturesInputMethods(unittest.TestCase):
         # Parameters
         expectedOutput = []
         # Run function
-        outputList = CTD.readListFile(listFileName=inputFile)
+        with open(inputFile, 'r') as inputFileHandler:
+            outputList = CTD.readListFile(listFile=inputFileHandler)
         with open(expectedOutputFile, 'r') as expectedOutputHandler:
             for line in expectedOutputHandler:
                 expectedOutput.append(line.rstrip())
@@ -26,7 +27,8 @@ class TestFeaturesInputMethods(unittest.TestCase):
         expectedOutputList = []
         expectedOutputDict = {}
         # Run function
-        outputDict = CTD.readCTDFile(CTDFileName=inputFile, nbPub=2)
+        with open(inputFile, 'r') as inputFileHandler:
+            outputDict = CTD.readCTDFile(CTDFile=inputFileHandler, nbPub=2)
         for i in outputDict:
             outputDict[i] = outputDict[i].sort()
         with open(expectedOutputFile, 'r') as expectedOutputHandler:
@@ -42,8 +44,10 @@ class TestFeaturesInputMethods(unittest.TestCase):
         outputFile = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/unittest/'
         expectedOutputFile = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/unittest/CTD_request_D014801.tsv'
         # Run function
-        outputDict = CTD.targetExtraction(CTDFile=inputFile, directAssociations=False, outputPath=outputFile, nbPub=2)
-        expectedOutputDict = CTD.readCTDFile(CTDFileName=expectedOutputFile, nbPub=2)
+        with open(inputFile, 'r') as inputFileHandler:
+            outputDict = CTD.targetExtraction(CTDFile=inputFileHandler, directAssociations=False, outputPath=outputFile, nbPub=2)
+        with open(expectedOutputFile, 'r') as expectedFileHandler:
+            expectedOutputDict = CTD.readCTDFile(CTDFile=expectedFileHandler, nbPub=2)
         # Compare
         self.assertEqual(outputDict, expectedOutputDict)
 
