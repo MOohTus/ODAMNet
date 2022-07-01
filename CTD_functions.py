@@ -8,9 +8,9 @@ CTD functions
 """
 
 # Libraries
+from datetime import datetime
 import requests
 import re
-import os
 
 
 # Debugging part / Global parameters
@@ -161,7 +161,7 @@ def CTDrequest(chemName, association, outputPath, nbPub):
                 if elementList[6] == "Homo sapiens":
                     homoResultsList.append(elementList)
                     refList = elementList[8].split("|")
-                    if(len(refList) >= nbPub):
+                    if len(refList) >= nbPub:
                         homoResultsListReferences.append(elementList)
                         if elementList[4] not in homoGenesList:
                             homoGenesList.append(elementList[4])
@@ -179,8 +179,9 @@ def CTDrequest(chemName, association, outputPath, nbPub):
         else:
             chemMeSHList.append(chem)
     chemMeSH = "_".join(chemMeSHList)
-    resultFileName = outputPath + "/CTD_request_" + chemMeSH + ".tsv"
-    filteredResultFileName = outputPath + "/CTD_requestFiltered_" + chemMeSH + ".tsv"
+    date = datetime.today().strftime('%Y_%m_%d')
+    resultFileName = outputPath + "/CTD_request_" + chemMeSH + "_" + date + ".tsv"
+    filteredResultFileName = outputPath + "/CTD_requestFiltered_" + chemMeSH + "_" + date + ".tsv"
 
     # Write result into file
     with open(resultFileName, 'w') as outputFileHandler:

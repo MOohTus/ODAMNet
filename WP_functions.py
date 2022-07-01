@@ -9,6 +9,7 @@ WikiPathways functions
 
 # Libraries
 from SPARQLWrapper import SPARQLWrapper, TSV
+from datetime import datetime
 
 
 # Debugging part / Global parameters
@@ -66,7 +67,8 @@ def rareDiseasesWPrequest(outputPath):
     genesDict = {}
     WPDict = {}
     outputList = []
-    resultFileName = outputPath + "/WP_RareDiseases_request.tsv"
+    date = datetime.today().strftime('%Y_%m_%d')
+    resultFileName = outputPath + "/WP_RareDiseases_request_" + date + ".tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
 
@@ -128,7 +130,8 @@ def allGenesFromWP(outputPath):
     """
     # Parameters
     geneSetWP = []
-    resultFileName = outputPath + "/WP_listOfAllHumanGenes.tsv"
+    date = datetime.today().strftime('%Y_%m_%d')
+    resultFileName = outputPath + "/WP_listOfAllHumanGenes_" + date + ".tsv"
     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
     sparql.setReturnFormat(TSV)
 

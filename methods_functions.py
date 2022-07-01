@@ -138,29 +138,16 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     pass
 
 
-def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
-    """
-
-    :param genesFileName:
-    :param networkFileName:
-    :return:
-    """
-    # Debug part
-    # genesFileName = 'TestDOMINO/OutputDOMINOResults_old/DOMINO_inputGeneList_D014801.txt'
-    # networkFileName = 'test/InputData/InputFile_PPI_2016.sif'
-    # outputPath=outputPath
-    # chemMeSH=chemMeSH
-    # # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
-    # os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject')
-
+def DOMINO(genesFileName, networkFile, outputPath, featureName):
+    """"""
     # Input file names
     data_dict = {
-        'Network file name': os.path.basename(networkFileName),
+        'Network file name': os.path.basename(networkFile.name),
         'Active gene file name': os.path.basename(genesFileName)
     }
     # Input file contents
     files_dict = {
-        'Network file contents': open(networkFileName, 'rb'),
+        'Network file contents': open(networkFile.name, 'rb'),
         'Active gene file contents': open(genesFileName, 'rb')
     }
 
@@ -169,23 +156,101 @@ def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
         response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
         bar()
 
-    # Parse the result request
-    response_dict = response.json()
-    activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
+        # Parse the result request
+        response_dict = response.json()
+        activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
 
-    if(len(activeModules_list.keys()) > 0):
+    if len(activeModules_list.keys()) > 0:
         # Write results into file
-        resultOutput = outputPath + "/DOMINO_" + chemMeSH + "_activeModules.txt"
+        resultOutput = outputPath + "/DOMINO_" + featureName + "_activeModules.txt"
         with open(resultOutput, 'w') as outputFileHandler:
             for module in activeModules_list:
                 for gene in activeModules_list[module]:
                     line = gene + "\t" + module + "\n"
                     outputFileHandler.write(line)
         # Add chemMeSH into AM name
-        activeModules_list = {f'AM_{activeModules_list}_' + chemMeSH: v for activeModules_list, v in
-        activeModules_list.items()}
+        activeModules_list = {f'AM_{activeModules_list}_' + featureName: v for activeModules_list, v in
+                              activeModules_list.items()}
     else:
         print("No Active Modules detected")
 
     return activeModules_list
+
+
+def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
+    """ """
+    # Parameters
+    resultsDict = {}
+    # For each feature, search active modules using DOMINO
+    for featureName in featuresDict:
+        print(featureName + " analysis :")
+        # Write genes list into result file
+        resultFileName = outputPath + "/DOMINO_inputGeneList_" + featureName + ".txt"
+        with open(resultFileName, 'w') as outputFileHandler:
+            for gene in featuresDict[featureName]:
+                outputFileHandler.write(gene)
+                outputFileHandler.write('\n')
+        # Run DOMINO
+        resultsDict[featureName] = DOMINO(genesFileName=resultFileName,
+                                          networkFile=networkFile,
+                                          outputPath=outputPath,
+                                          featureName=featureName)
+        # Run Overlap
+        overlapAnalysis(chemTargetsDict=resultsDict[featureName],
+                        WPGeneRDDict=WPGeneRDDict,
+                        WPBackgroundGenes=WPBackgroundGenes,
+                        WPDict=WPDict,
+                        outputPath=outputPath)
+        print(featureName + " analysis done!\n")
+
+# def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
+#     """
+#
+#     :param genesFileName:
+#     :param networkFileName:
+#     :return:
+#     """
+#     # Debug part
+#     # genesFileName = 'TestDOMINO/OutputDOMINOResults_old/DOMINO_inputGeneList_D014801.txt'
+#     # networkFileName = 'test/InputData/InputFile_PPI_2016.sif'
+#     # outputPath=outputPath
+#     # chemMeSH=chemMeSH
+#     # # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
+#     # os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject')
+#
+#     # Input file names
+#     data_dict = {
+#         'Network file name': os.path.basename(networkFileName),
+#         'Active gene file name': os.path.basename(genesFileName)
+#     }
+#     # Input file contents
+#     files_dict = {
+#         'Network file contents': open(networkFileName, 'rb'),
+#         'Active gene file contents': open(genesFileName, 'rb')
+#     }
+#
+#     # Request and run DOMINO
+#     with alive_bar(title='Search active modules using DOMINO', theme='musical') as bar:
+#         response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
+#         bar()
+#
+#     # Parse the result request
+#     response_dict = response.json()
+#     activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
+#
+#     if(len(activeModules_list.keys()) > 0):
+#         # Write results into file
+#         resultOutput = outputPath + "/DOMINO_" + chemMeSH + "_activeModules.txt"
+#         with open(resultOutput, 'w') as outputFileHandler:
+#             for module in activeModules_list:
+#                 for gene in activeModules_list[module]:
+#                     line = gene + "\t" + module + "\n"
+#                     outputFileHandler.write(line)
+#         # Add chemMeSH into AM name
+#         activeModules_list = {f'AM_{activeModules_list}_' + chemMeSH: v for activeModules_list, v in
+#         activeModules_list.items()}
+#     else:
+#         print("No Active Modules detected")
+#
+#     return activeModules_list
 
