@@ -18,6 +18,7 @@ from click_option_group import optgroup, RequiredMutuallyExclusiveOptionGroup
 import click
 import customClick as customClick
 import os
+import multixrank
 
 
 # Script version
@@ -139,10 +140,14 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 
 
 @main.command()
+@click.option('--configPath', 'configPath', type=click.Path(), required=True)
+@click.option('--networksPath', 'networksPath', type=click.Path(), required=True)
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
-def multiXrank(outputPath):
+@click.option('--sifPathName', 'sifPathName', type=str, required=True)
+@click.option('--top', 'top', type=int, default=10)
+def multiXrank(configPath, networksPath, outputPath, sifPathName, top):
     """"""
-    print("multiXrank analysis")
+    methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
 
 
 if __name__ == '__main__':
