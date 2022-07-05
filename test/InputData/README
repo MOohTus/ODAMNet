@@ -1,0 +1,7 @@
+##
+awk -F"\t" 'BEGIN{print "node_1\tcombined_score\tnode_2"} {print $1"\tppi\t"$2}' InputFile_DOMINO_PPI_Janv2021.gr > InputFile_DOMINO_PPI_Janv2021.sif
+
+##
+cut -f1 InputFile_DOMINO_D014801_corresTable.txt | sort | uniq > InputFile_DOMINO_D014801_ENSEMBL.txt
+
+awk -F" " 'BEGIN{print "node_1\tcombined_score\tnode_2"} {print $1"\tppi\t"$2}' PPI_2016-11-23.gr > InputFile_PPI_2016.sif

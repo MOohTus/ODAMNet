@@ -1,0 +1,9 @@
+## VITAMIN A COMPARISON
+orsum.py --gmt 00_Data/WP_RareDiseases_request.gmt --files 00_Data/Overlap_D014801_withRDWP_orderedNames.lst 00_Data/Overlap_AM_2_D014801_withRDWP.lst 00_Data/Overlap_AM_3_D014801_withRDWP.lst 00_Data/Overlap_AM_4_D014801_withRDWP.lst 00_Data/Overlap_AM_6_D014801_withRDWP.lst 00_Data/Overlap_AM_7_D014801_withRDWP.lst 00_Data/Overlap_AM_10_D014801_withRDWP.lst --outputFolder D014801_overlap_vs_domino_orsum --minTermSize 0 --fileAliases Overlap AM_2 AM_3 AM_4 AM_6 AM_7 AM_10
+
+orsum.py --gmt 00_Data/WP_RareDiseases_request.gmt --files 00_Data/Overlap_D014801_withRDWP_orderedNames.lst 00_Data/Overlap_AM_D014801_withRDWP.csv --fileAliases Overlap DOMINO --outputFolder D014801_global_overlap_vs_domino_orsum --minTermSize 0
+
+## VITAMIN D COMPARISON
+orsum.py --gmt 00_Data/WP_RareDiseases_request.gmt --files 00_Data/Overlap_D014807_withRDWP_orderedNames.lst 00_Data/Overlap_AM_2_D014807_withRDWP.lst 00_Data/Overlap_AM_3_D014807_withRDWP.lst 00_Data/Overlap_AM_4_D014807_withRDWP.lst 00_Data/Overlap_AM_6_D014807_withRDWP.lst 00_Data/Overlap_AM_7_D014807_withRDWP.lst 00_Data/Overlap_AM_8_D014807_withRDWP.lst 00_Data/Overlap_AM_9_D014807_withRDWP.lst 00_Data/Overlap_AM_10_D014807_withRDWP.lst 00_Data/Overlap_AM_17_D014807_withRDWP.lst --fileAliases Overlap AM_2 AM_3 AM_4 AM_6 AM_7 AM_8  AM_9 AM_10 AM_17 --outputFolder D014807_overlap_vs_domino_orsum --minTermSize 0
+
+orsum.py --gmt 00_Data/WP_RareDiseases_request.gmt --files 00_Data/Overlap_D014807_withRDWP_orderedNames.lst 00_Data/Overlap_AM_D014807_withRDWP.csv --fileAliases Overlap DOMINO --outputFolder D014807_global_overlap_vs_domino_orsum --minTermSize 0

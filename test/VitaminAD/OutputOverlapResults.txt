@@ -1,0 +1,14 @@
+CTD request: 
+D014801 - Total number of interactions in the request : 8208
+D014801 - Number of uniq chemicals in the request : 10
+D014801 - Number of uniq target genes : 2136
+
+
+D014807 - Total number of interactions in the request : 3505
+D014807 - Number of uniq chemicals in the request : 36
+D014807 - Number of uniq target genes : 334
+
+
+	Overlap analysis done!
+	Overlap analysis done!
+Overlap analysis finished

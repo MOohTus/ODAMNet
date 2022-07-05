@@ -1,0 +1,24 @@
+multiplex:
+    1:
+        layers:
+            - multiplex/1/Complexes_Nov2020.gr
+            - multiplex/1/PPI_Jan2021.gr
+            - multiplex/1/Reactome_Nov2020.gr
+    2:
+        layers:
+            - multiplex/2/disease_disease_final_Sept2020.gr
+    3:
+        layers:
+            - multiplex/3/drugbank-chem-chem.gr
+bipartite:
+    bipartite/Bipartite_geneDiseases_Sept2020_filter0.2.gr:
+        source: 2
+        target: 1
+    bipartite/3_1.gr:
+        source: 3
+        target: 1
+    bipartite/3_2.gr:
+        source: 3
+        target: 2
+seed:
+    seeds.txt

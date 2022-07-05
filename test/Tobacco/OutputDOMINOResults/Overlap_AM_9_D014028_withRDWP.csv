@@ -1,0 +1,103 @@
+WPID;WPTitle;WPSize;TargetSize;IntersectionSize;UniversSize;pValue;pAdjusted;Intersection
+WP2059;Alzheimer's disease and miRNA effects;275;40;1;12387;0.5932133114329432;1.0;SLC25A5
+WP5101;Congenital generalized lipodystrophy (CGL);18;40;0;12387;1.0;1.0;
+WP5087;Malignant pleural mesothelioma;436;40;3;12387;0.16554377037508422;1.0;ITGA6 PTEN RPS6KB2
+WP5074;Kallmann syndrome;23;40;0;12387;1.0;1.0;
+WP5053;Development of ureteric collection system;60;40;0;12387;1.0;1.0;
+WP5052;Nephrogenesis;18;40;0;12387;1.0;1.0;
+WP5037;Riboflavin and CoQ disorders;14;40;0;12387;1.0;1.0;
+WP5031;Biotin metabolism, including IMDs;9;40;0;12387;1.0;1.0;
+WP5030;Ethylmalonic encephalopathy;3;40;0;12387;1.0;1.0;
+WP4971;Phosphoinositides metabolism;49;40;1;12387;0.14682859319432848;1.0;PTEN
+WP4950;16p11.2 distal deletion syndrome;33;40;0;12387;1.0;1.0;
+WP4949;16p11.2 proximal deletion syndrome;81;40;1;12387;0.23113420964013517;1.0;PTEN
+WP4947;Nitric oxide metabolism in cystic fibrosis;13;40;0;12387;1.0;1.0;
+WP4942;15q13.3 copy number variation syndrome;32;40;0;12387;1.0;1.0;
+WP4940;15q11.2 copy number variation syndrome;10;40;0;12387;1.0;1.0;
+WP4932;7q11.23 copy number variation syndrome;113;40;0;12387;1.0;1.0;
+WP4906;3q29 copy number variation syndrome;75;40;0;12387;1.0;1.0;
+WP4905;1q21.1 copy number variation syndrome;36;40;0;12387;1.0;1.0;
+WP4879;Overlap between signal transduction pathways contributing to LMNA laminopathies;57;40;0;12387;1.0;1.0;
+WP4871;Kisspeptin/kisspeptin receptor system in the ovary;39;40;1;12387;0.11868173516375384;1.0;PRKCD
+WP4844;Influence of laminopathies on Wnt signaling;37;40;0;12387;1.0;1.0;
+WP4842;Mammalian disorder of sexual development;25;40;0;12387;1.0;1.0;
+WP5102;Familial partial lipodystrophy (FPLD);30;40;0;12387;1.0;1.0;
+WP5103;Progeria-associated lipodystrophy;22;40;0;12387;1.0;1.0;
+WP5104;Acquired partial lipodystrophy / Barraquer-Simons syndrome;10;40;0;12387;1.0;1.0;
+WP5108;Familial  hyperlipidemia type 1;18;40;0;12387;1.0;1.0;
+WP5222;2q13 copy number variation syndrome;68;40;1;12387;0.1979130913999539;1.0;LGALS3
+WP5221;2q11.2 copy number variation syndrome;65;40;0;12387;1.0;1.0;
+WP5202;Alstrom syndrome;33;40;0;12387;1.0;1.0;
+WP5200;Dravet syndrome;18;40;0;12387;1.0;1.0;
+WP5195;Disorders in ketolysis;5;40;0;12387;1.0;1.0;
+WP5193;Cholesterol synthesis disorders;18;40;0;12387;1.0;1.0;
+WP5190;Creatine pathway;5;40;0;12387;1.0;1.0;
+WP5189;Copper metabolism;4;40;0;12387;1.0;1.0;
+WP5178;Disorders of fructose metabolism;14;40;0;12387;1.0;1.0;
+WP5176;Disorders of bile acid synthesis and biliary transport;20;40;0;12387;1.0;1.0;
+WP4830;GDNF/RET signaling axis;23;40;0;12387;1.0;1.0;
+WP5175;Disorders in ketone body synthesis;5;40;0;12387;1.0;1.0;
+WP5171;Leukotriene metabolic pathway;13;40;0;12387;1.0;1.0;
+WP5169;Hemesynthesis defects and porphyrias;9;40;0;12387;1.0;1.0;
+WP5166;Glyoxylate metabolism;11;40;0;12387;1.0;1.0;
+WP5124;Alzheimer's disease;262;40;1;12387;0.5753489625934847;1.0;SLC25A5
+WP5120;Inclusion body myositis;11;40;0;12387;1.0;1.0;
+WP5114;Nucleotide excision repair in xeroderma pigmentosum ;74;40;0;12387;1.0;1.0;
+WP5112;Familial hyperlipidemia type 5;15;40;0;12387;1.0;1.0;
+WP5111;Familial hyperlipidemia type 4;22;40;0;12387;1.0;1.0;
+WP5110;Familial hyperlipidemia type 3;13;40;0;12387;1.0;1.0;
+WP5109;Familial hyperlipidemia type 2;16;40;0;12387;1.0;1.0;
+WP5173;Disorders of galactose metabolism ;13;40;0;12387;1.0;1.0;
+WP4823;Genes controlling nephrogenesis;44;40;0;12387;1.0;1.0;
+WP4814;Somatic sex determination;14;40;0;12387;1.0;1.0;
+WP4804;Cholesterol biosynthesis with skeletal dysplasias;7;40;0;12387;1.0;1.0;
+WP4299;Lamin A-processing pathway;3;40;0;12387;1.0;1.0;
+WP4298;Acute viral myocarditis;85;40;0;12387;1.0;1.0;
+WP4297;Thiamine metabolic pathways;9;40;0;12387;1.0;1.0;
+WP4292;Methionine metabolism leading to sulfur amino acids and related disorders;11;40;0;12387;1.0;1.0;
+WP4288;MTHFR deficiency;24;40;0;12387;1.0;1.0;
+WP4271;Vitamin B12 disorders;13;40;0;12387;1.0;1.0;
+WP4259;Disorders of folate metabolism and transport;13;40;0;12387;1.0;1.0;
+WP4236;Krebs cycle disorders;7;40;0;12387;1.0;1.0;
+WP4228;Vitamin B6-dependent and responsive disorders;4;40;0;12387;1.0;1.0;
+WP4225;Pyrimidine metabolism and related diseases;17;40;0;12387;1.0;1.0;
+WP4312;Rett syndrome causing genes;48;40;0;12387;1.0;1.0;
+WP4224;Purine metabolism and related disorders;22;40;0;12387;1.0;1.0;
+WP4157;GABA metabolism (aka GHB);6;40;0;12387;1.0;1.0;
+WP4156;Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine;2;40;0;12387;1.0;1.0;
+WP4153;Degradation pathway of sphingolipids, including diseases;10;40;0;12387;1.0;1.0;
+WP3998;Prader-Willi and Angelman syndrome;66;40;0;12387;1.0;1.0;
+WP3995;Prion disease pathway;33;40;0;12387;1.0;1.0;
+WP3853;ERK pathway in Huntington's disease;15;40;0;12387;1.0;1.0;
+WP3584;MECP2 and associated Rett syndrome;73;40;1;12387;0.21085283622480347;1.0;PTEN
+WP3569;Fanconi Anemia Pathway;39;40;0;12387;1.0;1.0;
+WP2447;Amyotrophic lateral sclerosis (ALS);38;40;0;12387;1.0;1.0;
+WP2371;Parkinson's disease pathway;47;40;0;12387;1.0;1.0;
+WP4220;Neurotransmitter disorders;4;40;0;12387;1.0;1.0;
+WP5223;2q21.1 copy number variation syndrome;42;40;0;12387;1.0;1.0;
+WP4320;Effect of progerin on genes involved in Hutchinson-Gilford progeria syndrome;37;40;0;12387;1.0;1.0;
+WP4506;Tyrosine metabolism;4;40;0;12387;1.0;1.0;
+WP4803;Ciliopathies;184;40;0;12387;1.0;1.0;
+WP4792;Purine metabolism;13;40;0;12387;1.0;1.0;
+WP4746;Thyroid hormones production and peripheral downstream signaling effects;92;40;0;12387;1.0;1.0;
+WP4688;Serine metabolism;8;40;0;12387;1.0;1.0;
+WP4686;Leucine, isoleucine and valine metabolism;24;40;0;12387;1.0;1.0;
+WP4673;Male infertility;145;40;0;12387;1.0;1.0;
+WP4657;22q11.2 copy number variation syndrome;149;40;0;12387;1.0;1.0;
+WP4656;Joubert syndrome;76;40;0;12387;1.0;1.0;
+WP4595;Urea cycle and associated pathways;24;40;0;12387;1.0;1.0;
+WP4577;Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway;44;40;0;12387;1.0;1.0;
+WP4504;Cysteine and methionine catabolism;15;40;0;12387;1.0;1.0;
+WP4549;Fragile X syndrome;112;40;1;12387;0.30503253803521185;1.0;PTEN
+WP4541;Hippo-Merlin signaling dysregulation;120;40;1;12387;0.3229495755627105;1.0;ITGA6
+WP4540;Hippo signaling regulation pathways;98;40;1;12387;0.2725591000223582;1.0;PRKCD
+WP4535;Envelope proteins and their potential roles in EDMD physiopathology;46;40;0;12387;1.0;1.0;
+WP4524;Alternative pathway of fetal androgen synthesis;11;40;0;12387;1.0;1.0;
+WP4523;Classical pathway of steroidogenesis with glucocorticoid and mineralocorticoid metabolism;16;40;0;12387;1.0;1.0;
+WP4522;Metabolic pathway of LDL, HDL and TG, including diseases;17;40;0;12387;1.0;1.0;
+WP4521;Glycosylation and related congenital defects;25;40;0;12387;1.0;1.0;
+WP4519;Cerebral organic acidurias, including diseases;8;40;0;12387;1.0;1.0;
+WP4518;Gamma-glutamyl cycle for the biosynthesis and degradation of glutathione, including diseases;6;40;0;12387;1.0;1.0;
+WP4507;Molybdenum cofactor (Moco) biosynthesis;7;40;0;12387;1.0;1.0;
+WP4545;Oxysterols derived from cholesterol;46;40;0;12387;1.0;1.0;
+WP5224;2q37 copy number variation syndrome;168;40;0;12387;1.0;1.0;

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>DOMINO</title>
+
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- cytoscape.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.17/cytoscape.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-euler@1.2.1/cytoscape-euler.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+  
+    <script>
+
+      let showGeneSymbols = () => {
+        clear()
+        window.cy.nodes().map(cur => { 
+                                        cur.data("label", cur.data("gene_symbol"));
+                                        cur.select(); // data("selected", true);
+                                        print(
+                                          cur.data("eid"),
+                                          cur.data("gene_symbol"),
+                                          !!cur.data("score") ? "yes" : "no"
+                                          );
+      })
+
+      }
+
+      let generateTable = () => {
+       let ctable = [];
+       if (ctable.length==0) return;
+  let properties= ["index", "GO id", "GO term", "Ontology", "pval", "qval"]//Object.getOwnPropertyNames(ctable[0])
+  let table = "<table class='table table-striped table-bordered' id='goTable'> <thead>"
+  table += "<tr>"
+  for (let j = 0; j < properties.length; j++) {
+    table += "<th scope='col'>" + properties[j] + "</th>"
+  }
+  table += "</tr> </thead> <tbody>"
+  for (let i = 0; i < ctable.length; i++) {
+    table += "<tr style='font-weight:"+ (ctable[i]['qval']<=0.05 ? "bold" : "normal") +"'>"
+    for (let j = 0; j < properties.length; j++) {
+      table += "<td>" + ctable[i][properties[j]] + "</td>"
+    }
+    table += "</tr>"
+  }
+  table += "</tbody></table>"
+  document.getElementById("hg_report").innerHTML = table;
+  document.getElementById("hg_total_number").innerHTML = "<h3>Total number of enriched groups (qval<0.05): " + (ctable.filter(cur => cur['qval'] <= 0.05).length) + "</h3>";
+  $('#goTable').DataTable();
+  $('#geneTable').DataTable();
+ 
+}
+
+</script>
+
+<script>
+
+  function rainbow(max, h, s, l) {
+    if (Array.isArray(h)) {
+      if (h.length > 1) {
+        return [10, 10, 10];
+      }
+      h = h[0];
+    }
+
+    h = h / max;
+
+    var r, g, b;
+
+    if (s == 0) {
+      r = g = b = l; // achromatic
+    } else {
+      var hue2rgb = function hue2rgb(p, q, t) {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+        return p;
+      };
+
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1 / 3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1 / 3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  }
+
+  function bwr(max, h, s, l) {
+    if (Array.isArray(h)) {
+      if (h.length > 1) {
+        return [10, 10, 10];
+      }
+      h = h[0];
+    }
+    if (h == undefined) {
+      return [10, 10, 10];
+    }
+
+    h = h / max;
+    console.log(h + " " + max);
+
+    var r, g, b;
+
+    if (s == 0) {
+          r = g = b = l; // achromatic
+        } else {
+          if (h > 0.5) {
+            r = 1;
+            g = 1 - Math.abs(h - 0.5) / 0.5;
+            b = 1 - Math.abs(h - 0.5) / 0.5;
+          } else {
+            r = h / 0.5;
+            g = h / 0.5;
+            b = 1;
+          }
+        }
+
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+      }
+
+      function load_network(elements) {
+        let div_id = "cytoscapeweb";
+        let cy = cytoscape({
+          container: document.getElementById(div_id),
+          elements: elements,
+          minZoom: 0.25, 
+          maxZoom: 4,
+          style: [
+            // the stylesheet for the graph
+            {
+              selector: "node",
+              style: {
+                label: "data(label)",
+                "background-color": function(x) {
+                  return x.data().node_color != undefined
+                  ? x.data().node_color
+                  : "#666";
+                },
+                "border-color": function(x) {
+                  return x.data().line_color != undefined
+                  ? x.data().line_color
+                  : "#666";
+                },
+                "border-width": "7px"
+              }
+            },
+            {
+              selector: "edge",
+              style: {
+                // 'z-compound-depth': function (ele) { return ele.data()['label'] == undefined ? 'bottom' : 'top'; },
+
+                "z-index": function(ele) {
+                  console.log(
+                    ele.data()["label"] == undefined ? "bottom" : "top"
+                    );
+                  return ele.data()["label"] == undefined ? 0 : 1;
+                }
+              }
+            }
+            ],
+            layout: {
+              name: "euler",
+              randomize: true,
+              animate: false,
+              springCoeff: edge => 0.00008,
+              fit: true
+            }
+          });
+        cy.on("select", function(event) {
+          if (event.target.isEdge()) return;
+          print(
+            event.target.data().eid,
+            !!event.target.data().gene_symbol
+            ? event.target.data().gene_symbol
+            : "", 
+            event.target.data().score ? "yes": "no");
+          event.target.data(
+            "label",
+            !!event.target.data().gene_symbol
+            ? event.target.data().gene_symbol
+            : event.target.data().eid
+            );
+          console.log(event);
+        });
+
+        cy.on("unselect", function(event) {
+          if (event.target.isEdge()) return;
+          clear();
+          event.target.data("label", "");
+          selectedIds = event.cy
+          .$(":selected")
+          .jsons()
+          .map(cur => cur.data);
+          for (var i = 0; i < selectedIds.length; i++) {
+            print(
+              selectedIds[i].eid,
+              selectedIds[i].gene_symbol,
+              !!selectedIds[i].score ? "yes" : "no"
+              );
+          }
+
+          console.log(event);
+        });
+        cy.on('cxttap', "node", function(event) {
+        
+            window.open("https://www.genecards.org/cgi-bin/carddisp.pl?gene="+(event.target.data().gene_symbol ? event.target.data().gene_symbol : event.target.data().eid), '_blank') 
+
+        });
+        clear();
+        selectedIds = cy
+        .$(":selected")
+        .jsons()
+        .filter(cur => !!!cur.data["source"]);
+        for (var i = 0; i < selectedIds.length; i++) {
+          print(
+            selectedIds[i].data.eid,
+            !!selectedIds[i].data.gene_symbol
+            ? selectedIds[i].data.gene_symbol
+            : "",
+            !!selectedIds[i].data.score ? "yes" : "no"
+            );
+        }
+
+        return cy;
+      }
+      function clear() {
+        document.getElementById("note").innerHTML = "";
+      }
+
+      function print(id, name, isActive) {
+        document.getElementById("note").innerHTML += "<tr style='color:" + (isActive == "yes" ?  "red" : "blue") +"'>" +
+        "<td>" +
+        name+
+        "</td><td>" +
+        id +
+        "</td></tr>";
+      }
+
+      function enableGraphZoom(event) {
+          if (event.key=="Shift"){
+              window.cy.userZoomingEnabled(true);
+          }
+      }
+      function disableGraphZoom(event) {
+          if (event.key=="Shift"){
+              window.cy.userZoomingEnabled(false);
+          }
+      }
+     window.onload = () => {
+        let data = [{"data": {"id": "MED24", "eid": "MED24", "gene_symbol": "MED24", "score": 0}, "label": "MED24", "selected": true}, {"data": {"id": "PPARG", "eid": "PPARG", "gene_symbol": "PPARG", "score": 1}, "label": "PPARG", "selected": true}, {"data": {"id": "PNRC1", "eid": "PNRC1", "gene_symbol": "PNRC1", "score": 0}, "label": "PNRC1", "selected": true}, {"data": {"id": "HNF4A", "eid": "HNF4A", "gene_symbol": "HNF4A", "score": 1}, "label": "HNF4A", "selected": true}, {"data": {"id": "NR2F6", "eid": "NR2F6", "gene_symbol": "NR2F6", "score": 0}, "label": "NR2F6", "selected": true}, {"data": {"id": "NCOA1", "eid": "NCOA1", "gene_symbol": "NCOA1", "score": 1}, "label": "NCOA1", "selected": true}, {"data": {"id": "NR0B2", "eid": "NR0B2", "gene_symbol": "NR0B2", "score": 0}, "label": "NR0B2", "selected": true}, {"data": {"id": "VDR", "eid": "VDR", "gene_symbol": "VDR", "score": 1}, "label": "VDR", "selected": true}, {"data": {"id": "NFKBIB", "eid": "NFKBIB", "gene_symbol": "NFKBIB", "score": 0}, "label": "NFKBIB", "selected": true}, {"data": {"id": "THRB", "eid": "THRB", "gene_symbol": "THRB", "score": 0}, "label": "THRB", "selected": true}, {"data": {"id": "PPARGC1A", "eid": "PPARGC1A", "gene_symbol": "PPARGC1A", "score": 1}, "label": "PPARGC1A", "selected": true}, {"data": {"id": "RARB", "eid": "RARB", "gene_symbol": "RARB", "score": 0}, "label": "RARB", "selected": true}, {"data": {"id": "HR", "eid": "HR", "gene_symbol": "HR", "score": 1}, "label": "HR", "selected": true}, {"data": {"id": "TDG", "eid": "TDG", "gene_symbol": "TDG", "score": 0}, "label": "TDG", "selected": true}, {"data": {"id": "MMRN2", "eid": "MMRN2", "gene_symbol": "MMRN2", "score": 0}, "label": "MMRN2", "selected": true}, {"data": {"id": "SRF", "eid": "SRF", "gene_symbol": "SRF", "score": 0}, "label": "SRF", "selected": true}, {"data": {"id": "ESRRB", "eid": "ESRRB", "gene_symbol": "ESRRB", "score": 0}, "label": "ESRRB", "selected": true}, {"data": {"id": "NCOA2", "eid": "NCOA2", "gene_symbol": "NCOA2", "score": 1}, "label": "NCOA2", "selected": true}, {"data": {"id": "NR2F1", "eid": "NR2F1", "gene_symbol": "NR2F1", "score": 0}, "label": "NR2F1", "selected": true}, {"data": {"id": "MED12", "eid": "MED12", "gene_symbol": "MED12", "score": 0}, "label": "MED12", "selected": true}, {"data": {"id": "NR1I3", "eid": "NR1I3", "gene_symbol": "NR1I3", "score": 0}, "label": "NR1I3", "selected": true}, {"data": {"id": "KDM5A", "eid": "KDM5A", "gene_symbol": "KDM5A", "score": 0}, "label": "KDM5A", "selected": true}, {"data": {"id": "RXRA", "eid": "RXRA", "gene_symbol": "RXRA", "score": 1}, "label": "RXRA", "selected": true}, {"data": {"id": "ALOX15B", "eid": "ALOX15B", "gene_symbol": "ALOX15B", "score": 0}, "label": "ALOX15B", "selected": true}, {"data": {"id": "KLF5", "eid": "KLF5", "gene_symbol": "KLF5", "score": 1}, "label": "KLF5", "selected": true}, {"data": {"id": "NCOR1", "eid": "NCOR1", "gene_symbol": "NCOR1", "score": 1}, "label": "NCOR1", "selected": true}, {"data": {"id": "CNOT2", "eid": "CNOT2", "gene_symbol": "CNOT2", "score": 0}, "label": "CNOT2", "selected": true}, {"data": {"id": "SMARCD3", "eid": "SMARCD3", "gene_symbol": "SMARCD3", "score": 0}, "label": "SMARCD3", "selected": true}, {"data": {"id": "NR1H4", "eid": "NR1H4", "gene_symbol": "NR1H4", "score": 0}, "label": "NR1H4", "selected": true}, {"data": {"id": "RXRG", "eid": "RXRG", "gene_symbol": "RXRG", "score": 0}, "label": "RXRG", "selected": true}, {"data": {"id": "NR1I2", "eid": "NR1I2", "gene_symbol": "NR1I2", "score": 1}, "label": "NR1I2", "selected": true}, {"data": {"id": "ZNHIT3", "eid": "ZNHIT3", "gene_symbol": "ZNHIT3", "score": 0}, "label": "ZNHIT3", "selected": true}, {"data": {"id": "NR5A2", "eid": "NR5A2", "gene_symbol": "NR5A2", "score": 0}, "label": "NR5A2", "selected": true}, {"data": {"id": "NRBF2", "eid": "NRBF2", "gene_symbol": "NRBF2", "score": 0}, "label": "NRBF2", "selected": true}, {"data": {"id": "PPARA", "eid": "PPARA", "gene_symbol": "PPARA", "score": 1}, "label": "PPARA", "selected": true}, {"data": {"id": "MMS19", "eid": "MMS19", "gene_symbol": "MMS19", "score": 0}, "label": "MMS19", "selected": true}, {"data": {"id": "NCOA3", "eid": "NCOA3", "gene_symbol": "NCOA3", "score": 1}, "label": "NCOA3", "selected": true}, {"data": {"id": "MED1", "eid": "MED1", "gene_symbol": "MED1", "score": 0}, "label": "MED1", "selected": true}, {"data": {"id": "NCOR2", "eid": "NCOR2", "gene_symbol": "NCOR2", "score": 1}, "label": "NCOR2", "selected": true}, {"data": {"id": "NR1D1", "eid": "NR1D1", "gene_symbol": "NR1D1", "score": 0}, "label": "NR1D1", "selected": true}, {"data": {"id": "TRIP4", "eid": "TRIP4", "gene_symbol": "TRIP4", "score": 0}, "label": "TRIP4", "selected": true}, {"data": {"id": "SREBF1", "eid": "SREBF1", "gene_symbol": "SREBF1", "score": 0}, "label": "SREBF1", "selected": true}, {"data": {"id": "PROX1", "eid": "PROX1", "gene_symbol": "PROX1", "score": 0}, "label": "PROX1", "selected": true}, {"data": {"id": "EDF1", "eid": "EDF1", "gene_symbol": "EDF1", "score": 0}, "label": "EDF1", "selected": true}, {"data": {"id": "HELZ2", "eid": "HELZ2", "gene_symbol": "HELZ2", "score": 0}, "label": "HELZ2", "selected": true}, {"data": {"id": "MECR", "eid": "MECR", "gene_symbol": "MECR", "score": 0}, "label": "MECR", "selected": true}, {"data": {"id": "MED21", "eid": "MED21", "gene_symbol": "MED21", "score": 0}, "label": "MED21", "selected": true}, {"data": {"id": "RARG", "eid": "RARG", "gene_symbol": "RARG", "score": 0}, "label": "RARG", "selected": true}, {"data": {"id": "NRIP1", "eid": "NRIP1", "gene_symbol": "NRIP1", "score": 0}, "label": "NRIP1", "selected": true}, {"data": {"id": "CHD9", "eid": "CHD9", "gene_symbol": "CHD9", "score": 0}, "label": "CHD9", "selected": true}, {"data": {"id": "JAZF1", "eid": "JAZF1", "gene_symbol": "JAZF1", "score": 0}, "label": "JAZF1", "selected": true}, {"data": {"id": "ESRRG", "eid": "ESRRG", "gene_symbol": "ESRRG", "score": 0}, "label": "ESRRG", "selected": true}, {"data": {"id": "THRA", "eid": "THRA", "gene_symbol": "THRA", "score": 0}, "label": "THRA", "selected": true}, {"data": {"id": "CEP350", "eid": "CEP350", "gene_symbol": "CEP350", "score": 0}, "label": "CEP350", "selected": true}, {"data": {"id": "RORB", "eid": "RORB", "gene_symbol": "RORB", "score": 0}, "label": "RORB", "selected": true}, {"data": {"id": "JAML", "eid": "JAML", "gene_symbol": "JAML", "score": 0}, "label": "JAML", "selected": true}, {"data": {"id": "CXADR", "eid": "CXADR", "gene_symbol": "CXADR", "score": 1}, "label": "CXADR", "selected": true}, {"data": {"id": "POU1F1", "eid": "POU1F1", "gene_symbol": "POU1F1", "score": 0}, "label": "POU1F1", "selected": true}, {"data": {"id": "IQCK", "eid": "IQCK", "gene_symbol": "IQCK", "score": 0}, "label": "IQCK", "selected": true}, {"data": {"id": "RAD54L2", "eid": "RAD54L2", "gene_symbol": "RAD54L2", "score": 0}, "label": "RAD54L2", "selected": true}, {"data": {"id": "ZBTB20", "eid": "ZBTB20", "gene_symbol": "ZBTB20", "score": 0}, "label": "ZBTB20", "selected": true}, {"data": {"id": "PNRC2", "eid": "PNRC2", "gene_symbol": "PNRC2", "score": 0}, "label": "PNRC2", "selected": true}, {"data": {"id": "NSD1", "eid": "NSD1", "gene_symbol": "NSD1", "score": 0}, "label": "NSD1", "selected": true}, {"data": {"id": "MED14", "eid": "MED14", "gene_symbol": "MED14", "score": 0}, "label": "MED14", "selected": true}, {"data": {"id": "NR1H3", "eid": "NR1H3", "gene_symbol": "NR1H3", "score": 0}, "label": "NR1H3", "selected": true}, {"data": {"id": "DAP3", "eid": "DAP3", "gene_symbol": "DAP3", "score": 0}, "label": "DAP3", "selected": true}, {"data": {"id": "TBL1X", "eid": "TBL1X", "gene_symbol": "TBL1X", "score": 0}, "label": "TBL1X", "selected": true}, {"data": {"id": "RXRB", "eid": "RXRB", "gene_symbol": "RXRB", "score": 0}, "label": "RXRB", "selected": true}, {"data": {"id": "NR3C2", "eid": "NR3C2", "gene_symbol": "NR3C2", "score": 0}, "label": "NR3C2", "selected": true}, {"data": {"id": "PSMC5", "eid": "PSMC5", "gene_symbol": "PSMC5", "score": 0}, "label": "PSMC5", "selected": true}, {"data": {"id": "PPARD", "eid": "PPARD", "gene_symbol": "PPARD", "score": 1}, "label": "PPARD", "selected": true}, {"data": {"id": "NKX2-1", "eid": "NKX2-1", "gene_symbol": "NKX2-1", "score": 0}, "label": "NKX2-1", "selected": true}, {"data": {"id": "NR6A1", "eid": "NR6A1", "gene_symbol": "NR6A1", "score": 0}, "label": "NR6A1", "selected": true}, {"data": {"id": "ROBO4", "eid": "ROBO4", "gene_symbol": "ROBO4", "score": 0}, "label": "ROBO4", "selected": true}, {"data": {"id": "ESR2", "eid": "ESR2", "gene_symbol": "ESR2", "score": 0}, "label": "ESR2", "selected": true}, {"data": {"id": "RORA", "eid": "RORA", "gene_symbol": "RORA", "score": 0}, "label": "RORA", "selected": true}, {"data": {"id": "AKAP13", "eid": "AKAP13", "gene_symbol": "AKAP13", "score": 0}, "label": "AKAP13", "selected": true}, {"data": {"id": "ESRRA", "eid": "ESRRA", "gene_symbol": "ESRRA", "score": 0}, "label": "ESRRA", "selected": true}, {"data": {"id": "TNP1", "eid": "TNP1", "gene_symbol": "TNP1", "score": 0}, "label": "TNP1", "selected": true}, {"data": {"id": "TXNRD2", "eid": "TXNRD2", "gene_symbol": "TXNRD2", "score": 0}, "label": "TXNRD2", "selected": true}, {"data": {"id": "MED10", "eid": "MED10", "gene_symbol": "MED10", "score": 0}, "label": "MED10", "selected": true}, {"data": {"id": "PRDX6", "eid": "PRDX6", "gene_symbol": "PRDX6", "score": 0}, "label": "PRDX6", "selected": true}, {"data": {"id": "HNF4G", "eid": "HNF4G", "gene_symbol": "HNF4G", "score": 0}, "label": "HNF4G", "selected": true}, {"data": {"id": "NCOA4", "eid": "NCOA4", "gene_symbol": "NCOA4", "score": 0}, "label": "NCOA4", "selected": true}, {"data": {"id": "MED16", "eid": "MED16", "gene_symbol": "MED16", "score": 0}, "label": "MED16", "selected": true}, {"data": {"id": "NR1H2", "eid": "NR1H2", "gene_symbol": "NR1H2", "score": 0}, "label": "NR1H2", "selected": true}, {"data": {"id": "MED17", "eid": "MED17", "gene_symbol": "MED17", "score": 0}, "label": "MED17", "selected": true}, {"data": {"id": "FABP1", "eid": "FABP1", "gene_symbol": "FABP1", "score": 0}, "label": "FABP1", "selected": true}, {"data": {"id": "NCOA6", "eid": "NCOA6", "gene_symbol": "NCOA6", "score": 0}, "label": "NCOA6", "selected": true}, {"data": {"id": "MED25", "eid": "MED25", "gene_symbol": "MED25", "score": 0}, "label": "MED25", "selected": true}, {"data": {"id": "NR3C1", "eid": "NR3C1", "gene_symbol": "NR3C1", "score": 0}, "label": "NR3C1", "selected": true}, {"data": {"id": "TGS1", "eid": "TGS1", "gene_symbol": "TGS1", "score": 0}, "label": "TGS1", "selected": true}, {"data": {"id": "ARID1A", "eid": "ARID1A", "gene_symbol": "ARID1A", "score": 0}, "label": "ARID1A", "selected": true}, {"data": {"id": "NR0B1", "eid": "NR0B1", "gene_symbol": "NR0B1", "score": 0}, "label": "NR0B1", "selected": true}, {"data": {"id": "RARA", "eid": "RARA", "gene_symbol": "RARA", "score": 0}, "label": "RARA", "selected": true}, {"data": {"id": "C1D", "eid": "C1D", "gene_symbol": "C1D", "score": 0}, "label": "C1D", "selected": true}, {"data": {"id": "NR2C2", "eid": "NR2C2", "gene_symbol": "NR2C2", "score": 0}, "label": "NR2C2", "selected": true}, {"data": {"id": "NR0B1_ESRRG", "source": "NR0B1", "target": "ESRRG"}, "label": "-"}, {"data": {"id": "NR0B1_RORA", "source": "NR0B1", "target": "RORA"}, "label": "-"}, {"data": {"id": "NR0B1_NRIP1", "source": "NR0B1", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "NR0B1_NR3C1", "source": "NR0B1", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "NR0B1_SREBF1", "source": "NR0B1", "target": "SREBF1"}, "label": "-"}, {"data": {"id": "NR0B1_PPARG", "source": "NR0B1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NR0B1_ESRRA", "source": "NR0B1", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "ESRRG_PSMC5", "source": "ESRRG", "target": "PSMC5"}, "label": "-"}, {"data": {"id": "ESRRG_NRIP1", "source": "ESRRG", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "ESRRG_PNRC2", "source": "ESRRG", "target": "PNRC2"}, "label": "-"}, {"data": {"id": "ESRRG_PROX1", "source": "ESRRG", "target": "PROX1"}, "label": "-"}, {"data": {"id": "ESRRG_NCOA1", "source": "ESRRG", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "ESRRG_ESRRA", "source": "ESRRG", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "ESRRG_NR0B2", "source": "ESRRG", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "ESRRG_PPARGC1A", "source": "ESRRG", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "ESRRG_PNRC1", "source": "ESRRG", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "RXRG_NR1H2", "source": "RXRG", "target": "NR1H2"}, "label": "-"}, {"data": {"id": "RXRG_NR1H3", "source": "RXRG", "target": "NR1H3"}, "label": "-"}, {"data": {"id": "RXRG_RARB", "source": "RXRG", "target": "RARB"}, "label": "-"}, {"data": {"id": "RXRG_PPARD", "source": "RXRG", "target": "PPARD"}, "label": "-"}, {"data": {"id": "RXRG_RARA", "source": "RXRG", "target": "RARA"}, "label": "-"}, {"data": {"id": "RXRG_PPARA", "source": "RXRG", "target": "PPARA"}, "label": "-"}, {"data": {"id": "RXRG_NCOR2", "source": "RXRG", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "RXRG_THRB", "source": "RXRG", "target": "THRB"}, "label": "-"}, {"data": {"id": "RXRG_NR1H4", "source": "RXRG", "target": "NR1H4"}, "label": "-"}, {"data": {"id": "RXRG_VDR", "source": "RXRG", "target": "VDR"}, "label": "-"}, {"data": {"id": "RXRG_SRF", "source": "RXRG", "target": "SRF"}, "label": "-"}, {"data": {"id": "RXRG_NR0B2", "source": "RXRG", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "RXRG_RARG", "source": "RXRG", "target": "RARG"}, "label": "-"}, {"data": {"id": "RXRG_NR1I2", "source": "RXRG", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "ESR2_PSMC5", "source": "ESR2", "target": "PSMC5"}, "label": "-"}, {"data": {"id": "ESR2_MED21", "source": "ESR2", "target": "MED21"}, "label": "-"}, {"data": {"id": "ESR2_NFKBIB", "source": "ESR2", "target": "NFKBIB"}, "label": "-"}, {"data": {"id": "ESR2_NRIP1", "source": "ESR2", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "ESR2_MMS19", "source": "ESR2", "target": "MMS19"}, "label": "-"}, {"data": {"id": "ESR2_PNRC2", "source": "ESR2", "target": "PNRC2"}, "label": "-"}, {"data": {"id": "ESR2_MED12", "source": "ESR2", "target": "MED12"}, "label": "-"}, {"data": {"id": "ESR2_MED17", "source": "ESR2", "target": "MED17"}, "label": "-"}, {"data": {"id": "ESR2_MED1", "source": "ESR2", "target": "MED1"}, "label": "-"}, {"data": {"id": "ESR2_NCOA3", "source": "ESR2", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "ESR2_ZNHIT3", "source": "ESR2", "target": "ZNHIT3"}, "label": "-"}, {"data": {"id": "ESR2_NCOA1", "source": "ESR2", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "ESR2_NCOA2", "source": "ESR2", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "ESR2_KLF5", "source": "ESR2", "target": "KLF5"}, "label": "-"}, {"data": {"id": "ESR2_NCOA6", "source": "ESR2", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "ESR2_TRIP4", "source": "ESR2", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "ESR2_MED10", "source": "ESR2", "target": "MED10"}, "label": "-"}, {"data": {"id": "ESR2_DAP3", "source": "ESR2", "target": "DAP3"}, "label": "-"}, {"data": {"id": "ESR2_PPARGC1A", "source": "ESR2", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "ESR2_MED14", "source": "ESR2", "target": "MED14"}, "label": "-"}, {"data": {"id": "ESR2_MED24", "source": "ESR2", "target": "MED24"}, "label": "-"}, {"data": {"id": "ESR2_MED16", "source": "ESR2", "target": "MED16"}, "label": "-"}, {"data": {"id": "ESR2_PNRC1", "source": "ESR2", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "FABP1_PPARA", "source": "FABP1", "target": "PPARA"}, "label": "-"}, {"data": {"id": "FABP1_PPARG", "source": "FABP1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "PSMC5_RORA", "source": "PSMC5", "target": "RORA"}, "label": "-"}, {"data": {"id": "PSMC5_NR1H3", "source": "PSMC5", "target": "NR1H3"}, "label": "-"}, {"data": {"id": "PSMC5_RARB", "source": "PSMC5", "target": "RARB"}, "label": "-"}, {"data": {"id": "PSMC5_PPARD", "source": "PSMC5", "target": "PPARD"}, "label": "-"}, {"data": {"id": "PSMC5_RARA", "source": "PSMC5", "target": "RARA"}, "label": "-"}, {"data": {"id": "PSMC5_RXRA", "source": "PSMC5", "target": "RXRA"}, "label": "-"}, {"data": {"id": "PSMC5_THRB", "source": "PSMC5", "target": "THRB"}, "label": "-"}, {"data": {"id": "PSMC5_ESRRA", "source": "PSMC5", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "PSMC5_VDR", "source": "PSMC5", "target": "VDR"}, "label": "-"}, {"data": {"id": "PSMC5_RARG", "source": "PSMC5", "target": "RARG"}, "label": "-"}, {"data": {"id": "PSMC5_NR3C2", "source": "PSMC5", "target": "NR3C2"}, "label": "-"}, {"data": {"id": "PSMC5_NR1I2", "source": "PSMC5", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "PSMC5_NR1I3", "source": "PSMC5", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "PSMC5_RORB", "source": "PSMC5", "target": "RORB"}, "label": "-"}, {"data": {"id": "PSMC5_HNF4G", "source": "PSMC5", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "RORA_PNRC2", "source": "RORA", "target": "PNRC2"}, "label": "-"}, {"data": {"id": "RORA_PROX1", "source": "RORA", "target": "PROX1"}, "label": "-"}, {"data": {"id": "RORA_NCOA1", "source": "RORA", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "RORA_NSD1", "source": "RORA", "target": "NSD1"}, "label": "-"}, {"data": {"id": "RORA_PNRC1", "source": "RORA", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "RORA_SMARCD3", "source": "RORA", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "MED21_THRA", "source": "MED21", "target": "THRA"}, "label": "-"}, {"data": {"id": "MED21_HNF4A", "source": "MED21", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "MED21_THRB", "source": "MED21", "target": "THRB"}, "label": "-"}, {"data": {"id": "NR1H2_RARA", "source": "NR1H2", "target": "RARA"}, "label": "-"}, {"data": {"id": "NR1H2_NRIP1", "source": "NR1H2", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "NR1H2_RXRB", "source": "NR1H2", "target": "RXRB"}, "label": "-"}, {"data": {"id": "NR1H2_MED1", "source": "NR1H2", "target": "MED1"}, "label": "-"}, {"data": {"id": "NR1H2_RXRA", "source": "NR1H2", "target": "RXRA"}, "label": "-"}, {"data": {"id": "NR1H2_NCOA3", "source": "NR1H2", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "NR1H2_NCOR2", "source": "NR1H2", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "NR1H2_NCOA1", "source": "NR1H2", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "NR1H2_NCOR1", "source": "NR1H2", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NR1H2_VDR", "source": "NR1H2", "target": "VDR"}, "label": "-"}, {"data": {"id": "NR1H2_NCOA6", "source": "NR1H2", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NR1H2_NR0B2", "source": "NR1H2", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "NR1H3_EDF1", "source": "NR1H3", "target": "EDF1"}, "label": "-"}, {"data": {"id": "NR1H3_NRIP1", "source": "NR1H3", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "NR1H3_RXRB", "source": "NR1H3", "target": "RXRB"}, "label": "-"}, {"data": {"id": "NR1H3_MED1", "source": "NR1H3", "target": "MED1"}, "label": "-"}, {"data": {"id": "NR1H3_NR3C1", "source": "NR1H3", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "NR1H3_PPARA", "source": "NR1H3", "target": "PPARA"}, "label": "-"}, {"data": {"id": "NR1H3_RXRA", "source": "NR1H3", "target": "RXRA"}, "label": "-"}, {"data": {"id": "NR1H3_NCOA3", "source": "NR1H3", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "NR1H3_NCOR2", "source": "NR1H3", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "NR1H3_NCOA1", "source": "NR1H3", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "NR1H3_NCOR1", "source": "NR1H3", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NR1H3_NCOA6", "source": "NR1H3", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NR1H3_NR0B2", "source": "NR1H3", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "NR1H3_CEP350", "source": "NR1H3", "target": "CEP350"}, "label": "-"}, {"data": {"id": "RARB_RXRB", "source": "RARB", "target": "RXRB"}, "label": "-"}, {"data": {"id": "RARB_NCOR2", "source": "RARB", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "RARB_NCOA1", "source": "RARB", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "RARB_ARID1A", "source": "RARB", "target": "ARID1A"}, "label": "-"}, {"data": {"id": "RARB_HR", "source": "RARB", "target": "HR"}, "label": "-"}, {"data": {"id": "RARB_PNRC1", "source": "RARB", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "RARB_SMARCD3", "source": "RARB", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "EDF1_RXRA", "source": "EDF1", "target": "RXRA"}, "label": "-"}, {"data": {"id": "EDF1_PPARG", "source": "EDF1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "EDF1_NR5A2", "source": "EDF1", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NFKBIB_RXRA", "source": "NFKBIB", "target": "RXRA"}, "label": "-"}, {"data": {"id": "NFKBIB_NCOR2", "source": "NFKBIB", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "NFKBIB_PPARG", "source": "NFKBIB", "target": "PPARG"}, "label": "-"}, {"data": {"id": "PPARD_RXRB", "source": "PPARD", "target": "RXRB"}, "label": "-"}, {"data": {"id": "PPARD_TNP1", "source": "PPARD", "target": "TNP1"}, "label": "-"}, {"data": {"id": "PPARD_RXRA", "source": "PPARD", "target": "RXRA"}, "label": "-"}, {"data": {"id": "PPARD_NCOA3", "source": "PPARD", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "PPARD_NCOR2", "source": "PPARD", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "PPARD_PROX1", "source": "PPARD", "target": "PROX1"}, "label": "-"}, {"data": {"id": "PPARD_NCOA1", "source": "PPARD", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "PPARD_NCOA2", "source": "PPARD", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "PPARD_NCOR1", "source": "PPARD", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "PPARD_NR0B2", "source": "PPARD", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "PPARD_PPARGC1A", "source": "PPARD", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "PPARD_PRDX6", "source": "PPARD", "target": "PRDX6"}, "label": "-"}, {"data": {"id": "PPARD_CEP350", "source": "PPARD", "target": "CEP350"}, "label": "-"}, {"data": {"id": "RAD54L2_NR3C1", "source": "RAD54L2", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "RAD54L2_RXRA", "source": "RAD54L2", "target": "RXRA"}, "label": "-"}, {"data": {"id": "RAD54L2_PPARG", "source": "RAD54L2", "target": "PPARG"}, "label": "-"}, {"data": {"id": "RAD54L2_NR5A2", "source": "RAD54L2", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "RARA_NRIP1", "source": "RARA", "target": "NRIP1"}, "label": "-"}, {"data": {"id": "RARA_RXRB", "source": "RARA", "target": "RXRB"}, "label": "-"}, {"data": {"id": "RARA_MMS19", "source": "RARA", "target": "MMS19"}, "label": "-"}, {"data": {"id": "RARA_NRBF2", "source": "RARA", "target": "NRBF2"}, "label": "-"}, {"data": {"id": "RARA_MED1", "source": "RARA", "target": "MED1"}, "label": "-"}, {"data": {"id": "RARA_KDM5A", "source": "RARA", "target": "KDM5A"}, "label": "-"}, {"data": {"id": "RARA_RXRA", "source": "RARA", "target": "RXRA"}, "label": "-"}, {"data": {"id": "RARA_NCOA3", "source": "RARA", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "RARA_TDG", "source": "RARA", "target": "TDG"}, "label": "-"}, {"data": {"id": "RARA_NCOR2", "source": "RARA", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "RARA_NCOA1", "source": "RARA", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "RARA_MECR", "source": "RARA", "target": "MECR"}, "label": "-"}, {"data": {"id": "RARA_NCOA2", "source": "RARA", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "RARA_NSD1", "source": "RARA", "target": "NSD1"}, "label": "-"}, {"data": {"id": "RARA_NCOR1", "source": "RARA", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "RARA_ARID1A", "source": "RARA", "target": "ARID1A"}, "label": "-"}, {"data": {"id": "RARA_KLF5", "source": "RARA", "target": "KLF5"}, "label": "-"}, {"data": {"id": "RARA_SRF", "source": "RARA", "target": "SRF"}, "label": "-"}, {"data": {"id": "RARA_NCOA6", "source": "RARA", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "RARA_TRIP4", "source": "RARA", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "RARA_NR0B2", "source": "RARA", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "RARA_NKX2-1", "source": "RARA", "target": "NKX2-1"}, "label": "-"}, {"data": {"id": "RARA_PRDX6", "source": "RARA", "target": "PRDX6"}, "label": "-"}, {"data": {"id": "RARA_MED25", "source": "RARA", "target": "MED25"}, "label": "-"}, {"data": {"id": "RARA_HR", "source": "RARA", "target": "HR"}, "label": "-"}, {"data": {"id": "RARA_SMARCD3", "source": "RARA", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "NRIP1_RXRB", "source": "NRIP1", "target": "RXRB"}, "label": "-"}, {"data": {"id": "NRIP1_THRA", "source": "NRIP1", "target": "THRA"}, "label": "-"}, {"data": {"id": "NRIP1_NR3C1", "source": "NRIP1", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "NRIP1_PPARA", "source": "NRIP1", "target": "PPARA"}, "label": "-"}, {"data": {"id": "NRIP1_RXRA", "source": "NRIP1", "target": "RXRA"}, "label": "-"}, {"data": {"id": "NRIP1_HNF4A", "source": "NRIP1", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "NRIP1_PPARG", "source": "NRIP1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NRIP1_THRB", "source": "NRIP1", "target": "THRB"}, "label": "-"}, {"data": {"id": "NRIP1_ESRRA", "source": "NRIP1", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "NRIP1_ESRRB", "source": "NRIP1", "target": "ESRRB"}, "label": "-"}, {"data": {"id": "NRIP1_VDR", "source": "NRIP1", "target": "VDR"}, "label": "-"}, {"data": {"id": "NRIP1_NR5A2", "source": "NRIP1", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NRIP1_RORB", "source": "NRIP1", "target": "RORB"}, "label": "-"}, {"data": {"id": "RXRB_NR3C1", "source": "RXRB", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "RXRB_NR2C2", "source": "RXRB", "target": "NR2C2"}, "label": "-"}, {"data": {"id": "RXRB_PPARG", "source": "RXRB", "target": "PPARG"}, "label": "-"}, {"data": {"id": "RXRB_THRB", "source": "RXRB", "target": "THRB"}, "label": "-"}, {"data": {"id": "RXRB_NCOA1", "source": "RXRB", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "RXRB_VDR", "source": "RXRB", "target": "VDR"}, "label": "-"}, {"data": {"id": "RXRB_AKAP13", "source": "RXRB", "target": "AKAP13"}, "label": "-"}, {"data": {"id": "RXRB_RARG", "source": "RXRB", "target": "RARG"}, "label": "-"}, {"data": {"id": "RXRB_NR1I2", "source": "RXRB", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "THRA_C1D", "source": "THRA", "target": "C1D"}, "label": "-"}, {"data": {"id": "THRA_MED1", "source": "THRA", "target": "MED1"}, "label": "-"}, {"data": {"id": "THRA_RXRA", "source": "THRA", "target": "RXRA"}, "label": "-"}, {"data": {"id": "THRA_TDG", "source": "THRA", "target": "TDG"}, "label": "-"}, {"data": {"id": "THRA_NCOR2", "source": "THRA", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "THRA_NCOA1", "source": "THRA", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "THRA_NCOR1", "source": "THRA", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "THRA_AKAP13", "source": "THRA", "target": "AKAP13"}, "label": "-"}, {"data": {"id": "THRA_TBL1X", "source": "THRA", "target": "TBL1X"}, "label": "-"}, {"data": {"id": "THRA_NCOA6", "source": "THRA", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "THRA_NR0B2", "source": "THRA", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "THRA_DAP3", "source": "THRA", "target": "DAP3"}, "label": "-"}, {"data": {"id": "THRA_MED25", "source": "THRA", "target": "MED25"}, "label": "-"}, {"data": {"id": "TNP1_PPARA", "source": "TNP1", "target": "PPARA"}, "label": "-"}, {"data": {"id": "TNP1_PPARG", "source": "TNP1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "MMS19_NCOA3", "source": "MMS19", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "MMS19_THRB", "source": "MMS19", "target": "THRB"}, "label": "-"}, {"data": {"id": "C1D_NCOR2", "source": "C1D", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "C1D_THRB", "source": "C1D", "target": "THRB"}, "label": "-"}, {"data": {"id": "C1D_NCOR1", "source": "C1D", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "C1D_NR1D1", "source": "C1D", "target": "NR1D1"}, "label": "-"}, {"data": {"id": "NRBF2_PPARA", "source": "NRBF2", "target": "PPARA"}, "label": "-"}, {"data": {"id": "NRBF2_RXRA", "source": "NRBF2", "target": "RXRA"}, "label": "-"}, {"data": {"id": "NRBF2_THRB", "source": "NRBF2", "target": "THRB"}, "label": "-"}, {"data": {"id": "PNRC2_HNF4A", "source": "PNRC2", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "PNRC2_RARG", "source": "PNRC2", "target": "RARG"}, "label": "-"}, {"data": {"id": "PNRC2_NR5A2", "source": "PNRC2", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "PNRC2_HNF4G", "source": "PNRC2", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "MED12_SREBF1", "source": "MED12", "target": "SREBF1"}, "label": "-"}, {"data": {"id": "MED12_VDR", "source": "MED12", "target": "VDR"}, "label": "-"}, {"data": {"id": "MED12_PPARGC1A", "source": "MED12", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "MED17_SREBF1", "source": "MED17", "target": "SREBF1"}, "label": "-"}, {"data": {"id": "MED17_HNF4A", "source": "MED17", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "MED17_PPARGC1A", "source": "MED17", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "MED1_NR3C1", "source": "MED1", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "MED1_SREBF1", "source": "MED1", "target": "SREBF1"}, "label": "-"}, {"data": {"id": "MED1_RXRA", "source": "MED1", "target": "RXRA"}, "label": "-"}, {"data": {"id": "MED1_HNF4A", "source": "MED1", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "MED1_PPARG", "source": "MED1", "target": "PPARG"}, "label": "-"}, {"data": {"id": "MED1_TGS1", "source": "MED1", "target": "TGS1"}, "label": "-"}, {"data": {"id": "MED1_POU1F1", "source": "MED1", "target": "POU1F1"}, "label": "-"}, {"data": {"id": "MED1_VDR", "source": "MED1", "target": "VDR"}, "label": "-"}, {"data": {"id": "MED1_NCOA6", "source": "MED1", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "MED1_PPARGC1A", "source": "MED1", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "KDM5A_NR3C1", "source": "KDM5A", "target": "NR3C1"}, "label": "-"}, {"data": {"id": "KDM5A_VDR", "source": "KDM5A", "target": "VDR"}, "label": "-"}, {"data": {"id": "NR3C1_NCOA3", "source": "NR3C1", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "NR3C1_NCOA4", "source": "NR3C1", "target": "NCOA4"}, "label": "-"}, {"data": {"id": "NR3C1_TDG", "source": "NR3C1", "target": "TDG"}, "label": "-"}, {"data": {"id": "NR3C1_NCOR2", "source": "NR3C1", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "NR3C1_NCOA1", "source": "NR3C1", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "NR3C1_NCOA2", "source": "NR3C1", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "NR3C1_NCOR1", "source": "NR3C1", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NR3C1_POU1F1", "source": "NR3C1", "target": "POU1F1"}, "label": "-"}, {"data": {"id": "NR3C1_NCOA6", "source": "NR3C1", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NR3C1_DAP3", "source": "NR3C1", "target": "DAP3"}, "label": "-"}, {"data": {"id": "NR3C1_NR3C2", "source": "NR3C1", "target": "NR3C2"}, "label": "-"}, {"data": {"id": "NR3C1_PPARGC1A", "source": "NR3C1", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "NR3C1_MED14", "source": "NR3C1", "target": "MED14"}, "label": "-"}, {"data": {"id": "NR3C1_NR2F6", "source": "NR3C1", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "NR3C1_MED25", "source": "NR3C1", "target": "MED25"}, "label": "-"}, {"data": {"id": "NR3C1_ZBTB20", "source": "NR3C1", "target": "ZBTB20"}, "label": "-"}, {"data": {"id": "SREBF1_HNF4A", "source": "SREBF1", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "SREBF1_MED14", "source": "SREBF1", "target": "MED14"}, "label": "-"}, {"data": {"id": "SREBF1_MED24", "source": "SREBF1", "target": "MED24"}, "label": "-"}, {"data": {"id": "SREBF1_MED25", "source": "SREBF1", "target": "MED25"}, "label": "-"}, {"data": {"id": "SREBF1_SMARCD3", "source": "SREBF1", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "PPARA_RXRA", "source": "PPARA", "target": "RXRA"}, "label": "-"}, {"data": {"id": "PPARA_NCOA3", "source": "PPARA", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "PPARA_NCOR2", "source": "PPARA", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "PPARA_NCOA1", "source": "PPARA", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "PPARA_MECR", "source": "PPARA", "target": "MECR"}, "label": "-"}, {"data": {"id": "PPARA_NCOA2", "source": "PPARA", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "PPARA_NCOR1", "source": "PPARA", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "PPARA_POU1F1", "source": "PPARA", "target": "POU1F1"}, "label": "-"}, {"data": {"id": "PPARA_AKAP13", "source": "PPARA", "target": "AKAP13"}, "label": "-"}, {"data": {"id": "PPARA_DAP3", "source": "PPARA", "target": "DAP3"}, "label": "-"}, {"data": {"id": "PPARA_HELZ2", "source": "PPARA", "target": "HELZ2"}, "label": "-"}, {"data": {"id": "PPARA_PPARGC1A", "source": "PPARA", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "PPARA_MED24", "source": "PPARA", "target": "MED24"}, "label": "-"}, {"data": {"id": "PPARA_CEP350", "source": "PPARA", "target": "CEP350"}, "label": "-"}, {"data": {"id": "PPARA_CHD9", "source": "PPARA", "target": "CHD9"}, "label": "-"}, {"data": {"id": "RXRA_NCOA3", "source": "RXRA", "target": "NCOA3"}, "label": "-"}, {"data": {"id": "RXRA_NCOA4", "source": "RXRA", "target": "NCOA4"}, "label": "-"}, {"data": {"id": "RXRA_TDG", "source": "RXRA", "target": "TDG"}, "label": "-"}, {"data": {"id": "RXRA_NCOR2", "source": "RXRA", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "RXRA_PPARG", "source": "RXRA", "target": "PPARG"}, "label": "-"}, {"data": {"id": "RXRA_THRB", "source": "RXRA", "target": "THRB"}, "label": "-"}, {"data": {"id": "RXRA_NR1H4", "source": "RXRA", "target": "NR1H4"}, "label": "-"}, {"data": {"id": "RXRA_NCOA1", "source": "RXRA", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "RXRA_NCOA2", "source": "RXRA", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "RXRA_NSD1", "source": "RXRA", "target": "NSD1"}, "label": "-"}, {"data": {"id": "RXRA_NCOR1", "source": "RXRA", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "RXRA_KLF5", "source": "RXRA", "target": "KLF5"}, "label": "-"}, {"data": {"id": "RXRA_VDR", "source": "RXRA", "target": "VDR"}, "label": "-"}, {"data": {"id": "RXRA_SRF", "source": "RXRA", "target": "SRF"}, "label": "-"}, {"data": {"id": "RXRA_NCOA6", "source": "RXRA", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "RXRA_TRIP4", "source": "RXRA", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "RXRA_NR0B2", "source": "RXRA", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "RXRA_RARG", "source": "RXRA", "target": "RARG"}, "label": "-"}, {"data": {"id": "RXRA_NR3C2", "source": "RXRA", "target": "NR3C2"}, "label": "-"}, {"data": {"id": "RXRA_NR1I2", "source": "RXRA", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "RXRA_NR1I3", "source": "RXRA", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "RXRA_PPARGC1A", "source": "RXRA", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "RXRA_MED24", "source": "RXRA", "target": "MED24"}, "label": "-"}, {"data": {"id": "RXRA_NR2F6", "source": "RXRA", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "RXRA_MED25", "source": "RXRA", "target": "MED25"}, "label": "-"}, {"data": {"id": "RXRA_ROBO4", "source": "RXRA", "target": "ROBO4"}, "label": "-"}, {"data": {"id": "RXRA_SMARCD3", "source": "RXRA", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "RXRA_JAZF1", "source": "RXRA", "target": "JAZF1"}, "label": "-"}, {"data": {"id": "RXRA_ALOX15B", "source": "RXRA", "target": "ALOX15B"}, "label": "-"}, {"data": {"id": "NR2C2_HNF4A", "source": "NR2C2", "target": "HNF4A"}, "label": "-"}, {"data": {"id": "NR2C2_JAZF1", "source": "NR2C2", "target": "JAZF1"}, "label": "-"}, {"data": {"id": "NCOA3_NCOR2", "source": "NCOA3", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "NCOA3_PPARG", "source": "NCOA3", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NCOA3_THRB", "source": "NCOA3", "target": "THRB"}, "label": "-"}, {"data": {"id": "NCOA3_NCOR1", "source": "NCOA3", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NCOA3_ESRRA", "source": "NCOA3", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "NCOA3_ESRRB", "source": "NCOA3", "target": "ESRRB"}, "label": "-"}, {"data": {"id": "NCOA3_VDR", "source": "NCOA3", "target": "VDR"}, "label": "-"}, {"data": {"id": "NCOA3_NR0B2", "source": "NCOA3", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "NCOA3_RARG", "source": "NCOA3", "target": "RARG"}, "label": "-"}, {"data": {"id": "NCOA3_NKX2-1", "source": "NCOA3", "target": "NKX2-1"}, "label": "-"}, {"data": {"id": "NCOA3_NR5A2", "source": "NCOA3", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NCOA3_NR2F1", "source": "NCOA3", "target": "NR2F1"}, "label": "-"}, {"data": {"id": "NCOA3_NR1I2", "source": "NCOA3", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOA3_NR1I3", "source": "NCOA3", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "NCOA3_IQCK", "source": "NCOA3", "target": "IQCK"}, "label": "-"}, {"data": {"id": "NCOA4_PPARG", "source": "NCOA4", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NCOA4_VDR", "source": "NCOA4", "target": "VDR"}, "label": "-"}, {"data": {"id": "HNF4A_ZNHIT3", "source": "HNF4A", "target": "ZNHIT3"}, "label": "-"}, {"data": {"id": "HNF4A_NCOR2", "source": "HNF4A", "target": "NCOR2"}, "label": "-"}, {"data": {"id": "HNF4A_PROX1", "source": "HNF4A", "target": "PROX1"}, "label": "-"}, {"data": {"id": "HNF4A_NCOA1", "source": "HNF4A", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "HNF4A_NCOA2", "source": "HNF4A", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "HNF4A_TGS1", "source": "HNF4A", "target": "TGS1"}, "label": "-"}, {"data": {"id": "HNF4A_NCOA6", "source": "HNF4A", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "HNF4A_MED10", "source": "HNF4A", "target": "MED10"}, "label": "-"}, {"data": {"id": "HNF4A_NR0B2", "source": "HNF4A", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "HNF4A_NR1I3", "source": "HNF4A", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "HNF4A_PPARGC1A", "source": "HNF4A", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "HNF4A_MED14", "source": "HNF4A", "target": "MED14"}, "label": "-"}, {"data": {"id": "HNF4A_MED24", "source": "HNF4A", "target": "MED24"}, "label": "-"}, {"data": {"id": "HNF4A_MED16", "source": "HNF4A", "target": "MED16"}, "label": "-"}, {"data": {"id": "HNF4A_PNRC1", "source": "HNF4A", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "TDG_VDR", "source": "TDG", "target": "VDR"}, "label": "-"}, {"data": {"id": "ZNHIT3_PPARG", "source": "ZNHIT3", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NCOR2_PPARG", "source": "NCOR2", "target": "PPARG"}, "label": "-"}, {"data": {"id": "NCOR2_THRB", "source": "NCOR2", "target": "THRB"}, "label": "-"}, {"data": {"id": "NCOR2_NR1H4", "source": "NCOR2", "target": "NR1H4"}, "label": "-"}, {"data": {"id": "NCOR2_NCOR1", "source": "NCOR2", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NCOR2_CNOT2", "source": "NCOR2", "target": "CNOT2"}, "label": "-"}, {"data": {"id": "NCOR2_KLF5", "source": "NCOR2", "target": "KLF5"}, "label": "-"}, {"data": {"id": "NCOR2_VDR", "source": "NCOR2", "target": "VDR"}, "label": "-"}, {"data": {"id": "NCOR2_TBL1X", "source": "NCOR2", "target": "TBL1X"}, "label": "-"}, {"data": {"id": "NCOR2_SRF", "source": "NCOR2", "target": "SRF"}, "label": "-"}, {"data": {"id": "NCOR2_NCOA6", "source": "NCOR2", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NCOR2_RARG", "source": "NCOR2", "target": "RARG"}, "label": "-"}, {"data": {"id": "NCOR2_NR1I2", "source": "NCOR2", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOR2_NR1D1", "source": "NCOR2", "target": "NR1D1"}, "label": "-"}, {"data": {"id": "PPARG_NCOA1", "source": "PPARG", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "PPARG_NCOA2", "source": "PPARG", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "PPARG_NSD1", "source": "PPARG", "target": "NSD1"}, "label": "-"}, {"data": {"id": "PPARG_NCOR1", "source": "PPARG", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "PPARG_POU1F1", "source": "PPARG", "target": "POU1F1"}, "label": "-"}, {"data": {"id": "PPARG_KLF5", "source": "PPARG", "target": "KLF5"}, "label": "-"}, {"data": {"id": "PPARG_VDR", "source": "PPARG", "target": "VDR"}, "label": "-"}, {"data": {"id": "PPARG_NCOA6", "source": "PPARG", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "PPARG_TRIP4", "source": "PPARG", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "PPARG_NR0B2", "source": "PPARG", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "PPARG_PPARGC1A", "source": "PPARG", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "PPARG_MED24", "source": "PPARG", "target": "MED24"}, "label": "-"}, {"data": {"id": "PPARG_ROBO4", "source": "PPARG", "target": "ROBO4"}, "label": "-"}, {"data": {"id": "PPARG_SMARCD3", "source": "PPARG", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "PPARG_CEP350", "source": "PPARG", "target": "CEP350"}, "label": "-"}, {"data": {"id": "PPARG_ZBTB20", "source": "PPARG", "target": "ZBTB20"}, "label": "-"}, {"data": {"id": "PPARG_JAZF1", "source": "PPARG", "target": "JAZF1"}, "label": "-"}, {"data": {"id": "PPARG_ALOX15B", "source": "PPARG", "target": "ALOX15B"}, "label": "-"}, {"data": {"id": "PROX1_ESRRA", "source": "PROX1", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "PROX1_NR3C2", "source": "PROX1", "target": "NR3C2"}, "label": "-"}, {"data": {"id": "THRB_NCOA1", "source": "THRB", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "THRB_NCOA2", "source": "THRB", "target": "NCOA2"}, "label": "-"}, {"data": {"id": "THRB_NSD1", "source": "THRB", "target": "NSD1"}, "label": "-"}, {"data": {"id": "THRB_NCOR1", "source": "THRB", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "THRB_TBL1X", "source": "THRB", "target": "TBL1X"}, "label": "-"}, {"data": {"id": "THRB_NCOA6", "source": "THRB", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "THRB_TRIP4", "source": "THRB", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "THRB_PPARGC1A", "source": "THRB", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "THRB_NR2F6", "source": "THRB", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "THRB_ROBO4", "source": "THRB", "target": "ROBO4"}, "label": "-"}, {"data": {"id": "NR1H4_NCOA1", "source": "NR1H4", "target": "NCOA1"}, "label": "-"}, {"data": {"id": "NR1H4_NCOA6", "source": "NR1H4", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NR1H4_PPARGC1A", "source": "NR1H4", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "NR1H4_SMARCD3", "source": "NR1H4", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "NCOA1_NCOR1", "source": "NCOA1", "target": "NCOR1"}, "label": "-"}, {"data": {"id": "NCOA1_ARID1A", "source": "NCOA1", "target": "ARID1A"}, "label": "-"}, {"data": {"id": "NCOA1_ESRRA", "source": "NCOA1", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "NCOA1_VDR", "source": "NCOA1", "target": "VDR"}, "label": "-"}, {"data": {"id": "NCOA1_SRF", "source": "NCOA1", "target": "SRF"}, "label": "-"}, {"data": {"id": "NCOA1_NCOA6", "source": "NCOA1", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NCOA1_TRIP4", "source": "NCOA1", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "NCOA1_RARG", "source": "NCOA1", "target": "RARG"}, "label": "-"}, {"data": {"id": "NCOA1_NKX2-1", "source": "NCOA1", "target": "NKX2-1"}, "label": "-"}, {"data": {"id": "NCOA1_NR5A2", "source": "NCOA1", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NCOA1_NR6A1", "source": "NCOA1", "target": "NR6A1"}, "label": "-"}, {"data": {"id": "NCOA1_NR3C2", "source": "NCOA1", "target": "NR3C2"}, "label": "-"}, {"data": {"id": "NCOA1_NR1I2", "source": "NCOA1", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOA1_NR1I3", "source": "NCOA1", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "NCOA1_PPARGC1A", "source": "NCOA1", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "NCOA1_NR2F6", "source": "NCOA1", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "NCOA1_RORB", "source": "NCOA1", "target": "RORB"}, "label": "-"}, {"data": {"id": "NCOA1_HNF4G", "source": "NCOA1", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "NCOA1_CXADR", "source": "NCOA1", "target": "CXADR"}, "label": "-"}, {"data": {"id": "NCOA2_ESRRB", "source": "NCOA2", "target": "ESRRB"}, "label": "-"}, {"data": {"id": "NCOA2_VDR", "source": "NCOA2", "target": "VDR"}, "label": "-"}, {"data": {"id": "NCOA2_NKX2-1", "source": "NCOA2", "target": "NKX2-1"}, "label": "-"}, {"data": {"id": "NCOA2_NR2F1", "source": "NCOA2", "target": "NR2F1"}, "label": "-"}, {"data": {"id": "NCOA2_NR1I2", "source": "NCOA2", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOA2_TXNRD2", "source": "NCOA2", "target": "TXNRD2"}, "label": "-"}, {"data": {"id": "TGS1_NCOA6", "source": "TGS1", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "NSD1_ESRRA", "source": "NSD1", "target": "ESRRA"}, "label": "-"}, {"data": {"id": "NSD1_VDR", "source": "NSD1", "target": "VDR"}, "label": "-"}, {"data": {"id": "NSD1_NR5A2", "source": "NSD1", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NSD1_NR6A1", "source": "NSD1", "target": "NR6A1"}, "label": "-"}, {"data": {"id": "NSD1_NR2F1", "source": "NSD1", "target": "NR2F1"}, "label": "-"}, {"data": {"id": "NSD1_NR2F6", "source": "NSD1", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "NSD1_RORB", "source": "NSD1", "target": "RORB"}, "label": "-"}, {"data": {"id": "NSD1_HNF4G", "source": "NSD1", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "NCOR1_CNOT2", "source": "NCOR1", "target": "CNOT2"}, "label": "-"}, {"data": {"id": "NCOR1_POU1F1", "source": "NCOR1", "target": "POU1F1"}, "label": "-"}, {"data": {"id": "NCOR1_KLF5", "source": "NCOR1", "target": "KLF5"}, "label": "-"}, {"data": {"id": "NCOR1_VDR", "source": "NCOR1", "target": "VDR"}, "label": "-"}, {"data": {"id": "NCOR1_TBL1X", "source": "NCOR1", "target": "TBL1X"}, "label": "-"}, {"data": {"id": "NCOR1_RARG", "source": "NCOR1", "target": "RARG"}, "label": "-"}, {"data": {"id": "NCOR1_NR1I2", "source": "NCOR1", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOR1_TXNRD2", "source": "NCOR1", "target": "TXNRD2"}, "label": "-"}, {"data": {"id": "NCOR1_NR1D1", "source": "NCOR1", "target": "NR1D1"}, "label": "-"}, {"data": {"id": "NCOR1_CXADR", "source": "NCOR1", "target": "CXADR"}, "label": "-"}, {"data": {"id": "ARID1A_RARG", "source": "ARID1A", "target": "RARG"}, "label": "-"}, {"data": {"id": "ESRRA_NR0B2", "source": "ESRRA", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "ESRRA_PPARGC1A", "source": "ESRRA", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "ESRRA_SMARCD3", "source": "ESRRA", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "POU1F1_VDR", "source": "POU1F1", "target": "VDR"}, "label": "-"}, {"data": {"id": "POU1F1_NR1I2", "source": "POU1F1", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "POU1F1_NR1I3", "source": "POU1F1", "target": "NR1I3"}, "label": "-"}, {"data": {"id": "VDR_NCOA6", "source": "VDR", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "VDR_NR0B2", "source": "VDR", "target": "NR0B2"}, "label": "-"}, {"data": {"id": "VDR_MED14", "source": "VDR", "target": "MED14"}, "label": "-"}, {"data": {"id": "VDR_HR", "source": "VDR", "target": "HR"}, "label": "-"}, {"data": {"id": "VDR_MMRN2", "source": "VDR", "target": "MMRN2"}, "label": "-"}, {"data": {"id": "TBL1X_HR", "source": "TBL1X", "target": "HR"}, "label": "-"}, {"data": {"id": "SRF_NCOA6", "source": "SRF", "target": "NCOA6"}, "label": "-"}, {"data": {"id": "SRF_TRIP4", "source": "SRF", "target": "TRIP4"}, "label": "-"}, {"data": {"id": "NCOA6_NR1I2", "source": "NCOA6", "target": "NR1I2"}, "label": "-"}, {"data": {"id": "NCOA6_PPARGC1A", "source": "NCOA6", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "NCOA6_TXNRD2", "source": "NCOA6", "target": "TXNRD2"}, "label": "-"}, {"data": {"id": "NCOA6_RORB", "source": "NCOA6", "target": "RORB"}, "label": "-"}, {"data": {"id": "NR0B2_RARG", "source": "NR0B2", "target": "RARG"}, "label": "-"}, {"data": {"id": "NR0B2_NR5A2", "source": "NR0B2", "target": "NR5A2"}, "label": "-"}, {"data": {"id": "NR0B2_HNF4G", "source": "NR0B2", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "RARG_NR2F6", "source": "RARG", "target": "NR2F6"}, "label": "-"}, {"data": {"id": "RARG_PNRC1", "source": "RARG", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "RARG_SMARCD3", "source": "RARG", "target": "SMARCD3"}, "label": "-"}, {"data": {"id": "NR5A2_PNRC1", "source": "NR5A2", "target": "PNRC1"}, "label": "-"}, {"data": {"id": "NR1I2_PPARGC1A", "source": "NR1I2", "target": "PPARGC1A"}, "label": "-"}, {"data": {"id": "NR1I3_CHD9", "source": "NR1I3", "target": "CHD9"}, "label": "-"}, {"data": {"id": "PPARGC1A_MED14", "source": "PPARGC1A", "target": "MED14"}, "label": "-"}, {"data": {"id": "PRDX6_HNF4G", "source": "PRDX6", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "PNRC1_RORB", "source": "PNRC1", "target": "RORB"}, "label": "-"}, {"data": {"id": "PNRC1_HNF4G", "source": "PNRC1", "target": "HNF4G"}, "label": "-"}, {"data": {"id": "CXADR_JAML", "source": "CXADR", "target": "JAML"}, "label": "-"}];
+        let max_score =
+        Math.max(
+          ...data.map(cur => {
+            return cur["data"]["score"];
+          }).filter(cur => !!cur)
+          ) + 1;
+        let max_module =
+        Math.max(
+          ...data.map(cur => {
+            return !!cur["data"]["modules"] ? cur["data"]["modules"] : [];
+          })
+          .reduce((a, c) => a.concat(c), [])
+          ) + 1;
+        data = data.map(cur => {cur["label"] = !!cur["data"]["gene_symbol"] ? cur["data"]["gene_symbol"] : cur["data"]["eid"];
+          cur["data"]["node_color"] = bwr(
+            1,
+            cur["data"]["score"],
+            1,
+            1
+            );
+          cur["data"]["line_color"] = rainbow(
+            1,
+            cur["data"]["modules"],
+            0.75,
+            0.75
+            );
+          return cur;})
+        let cy1 = load_network(data)
+        cy1.userZoomingEnabled(false)
+        window.cy=cy1;
+        generateTable();
+        showGeneSymbols();
+     };
+
+    </script>
+
+
+
+
+    <style>
+    /* The Cytoscape Web container must have its dimensions set. */
+    html,
+    body {
+      position: relative;
+      height: 100% !important;
+      width: 100% !important;
+      padding: 0;
+      margin: 0;
+      }
+
+      #cy1, #cy2 {
+        width: 100% !important;
+        height: 100% !important;
+        }
+
+        .image-wrapper {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          opacity: 1;
+          }
+
+          .image-wrapper.fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            }
+          </style>
+        </head>
+
+        <body style='overflow-x:hidden' onkeydown="enableGraphZoom(event);" onkeyup="disableGraphZoom(event);">
+          <noscript>
+            You need to enable JavaScript to run this app.
+          </noscript>
+          <div class='container-fluid'>
+            <div class='row' style="margin-top:10px;margin-left:1px">
+                <div class='col-md-4' style="background-color: #EEEEEE; border-width: 10px; padding-left: 0px; padding-right: 0px; border: solid #AAAAAA; border-width: 1px; padding: 5px; border-radius: 5px;">
+                <div class='row'>
+                <div class='col-md-6' style="display:flex;">
+                   <div style="height: 30px; width: 30px; background-color: red; border:solid 2px #AAAAAA; border-radius: 50%;"></div>
+                   <div style="margin-left: 10px; font-size: 16pt">Active genes</div>
+                 </div>
+                <div class='col-md-6' style="display:flex;">
+                   <div style="height: 30px; width: 30px; background-color: blue; border:solid 2px #AAAAAA; border-radius: 50%;"></div>
+                   <div style="margin-left: 10px; font-size: 16pt">Non-active genes</div>
+                 </div>
+            </div>
+            </div>
+            </div>
+            <div class='row' style="width: 100vw">
+              <div class='col-md-12'>
+               <div id="cytoscapeweb" style="height: 85vh;width: 100vw">
+               </div>
+             </div>
+           </div>
+           <div class='row' style="height: 50vh;width: 100vw">
+             <div class='col-md-12'>
+               <div id="num_of_enriched_terms_title"></div>
+
+               <div id="num_of_enriched_terms"></div>
+               <div class='row' style='margin-bottom: 15px'>
+                 <div class='col-md-2'>
+                   <button onclick="showGeneSymbols()" class="btn btn-primary"> show details for all genes/nodes</button>
+                 </div>
+               </div>
+               <div class='row'>
+                 <div class='col-md-4' style='height:600px; overflow-y: scroll'>
+                   <div><h3>Total number of genes: 97 </h3></div>
+                   <table class="table table-striped table-bordered" id="geneTable" >
+                    <thead>
+                      <tr>
+                        <th scope="col">Gene name</th>
+                        <th scope="col">ENSG id</th>
+                      </tr>
+                    </thead>
+                    <tbody div id="note"></tbody>
+                  </table>
+                </div>
+                <div class='col-md-8' style='height:600px; overflow-y: scroll; padding-left:30px; right:16px'>
+                 <div id="hg_total_number"></div>
+                 <div id="hg_report"></div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+
+  </html>

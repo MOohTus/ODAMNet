@@ -1,0 +1,15 @@
+# With WP request
+python3.9 mainScript_click.py overlap --factorList examples/InputData/InputFile_factorsList.tsv --directAssociation False --nbPub 2 --outputPath examples/
+python3.9 mainScript_click.py overlap --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv --nbPub 2 --outputPath examples/
+python3.9 mainScript_click.py overlap --geneList examples/InputData/InputFile_genesList_D014801.tsv --outputPath examples/
+
+# With WP files
+python3.9 mainScript_click.py overlap --factorList examples/InputData/InputFile_factorsList.tsv --directAssociation False --nbPub 2 --outputPath examples/ --WP_GMT examples/InputData/Input_WP_RareDiseases_request_2022_07_01.tsv --universFile examples/InputData/Input_WP_listOfAllHumanGenes_2022_07_01.tsv
+python3.9 mainScript_click.py overlap --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv --nbPub 2 --outputPath examples/ --WP_GMT examples/InputData/Input_WP_RareDiseases_request_2022_07_01.tsv --universFile examples/InputData/Input_WP_listOfAllHumanGenes_2022_07_01.tsv
+python3.9 mainScript_click.py overlap --geneList examples/InputData/InputFile_genesList_D014801.tsv --outputPath examples/ --WP_GMT examples/InputData/Input_WP_RareDiseases_request_2022_07_01.tsv --universFile examples/InputData/Input_WP_listOfAllHumanGenes_2022_07_01.tsv
+
+# DOMINO analysis with WP request
+python3.9 mainScript_click.py domino --factorList examples/InputData/InputFile_factorsList.tsv --directAssociation False --nbPub 2 --outputPath examples/ -n examples/InputData/InputFile_DOMINO_PPI_2016.sif
+
+# MultiXrank analysis
+python3.9 mainScript_click.py multixrank --configPath examples/InputData/config_minimal.yml --networksPath examples/InputData/ --outputPath examples/ --sifPathName examples/TEST.sif
