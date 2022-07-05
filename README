@@ -1,6 +1,5 @@
 python mainScript_v2.py overlap -c test/InputData/InputFile_CTD_1MeSH.txt --directAssociations True -o test/20220603_Analysis/
 
-#
 
 ## OVERLAP ANALYSIS FOR PRESENTATION
 ## PRELIMINARY RESULTS
