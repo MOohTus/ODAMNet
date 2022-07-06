@@ -140,14 +140,64 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 
 
 @main.command()
+@optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
+@optgroup.option('--factorList', 'factorListFile', type=click.File(), help='Factor list input data file')
+@optgroup.option('--CTD_file', 'CTD_file', type=click.File(), help='CTD results request file')
+@optgroup.option('--geneList', 'geneListFile', type=click.File(), help='Genes list input data file')
+@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True)
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True)
+@click.option('--WP_GMT', 'WP_GMT', type=click.File())
 @click.option('--configPath', 'configPath', type=click.Path(), required=True)
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True)
+@click.option('--diseaseNetworkPath', 'diseaseNetworkPath', type=click.Path())
+@click.option('--seedsFile', 'seedsFile', type=click.File(), cls=customClick.RequiredIf, required_if='diseaseNetworkPath')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
 @click.option('--sifPathName', 'sifPathName', type=str, required=True)
 @click.option('--top', 'top', type=int, default=10)
-def multiXrank(configPath, networksPath, outputPath, sifPathName, top):
+def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, configPath, networksPath, diseaseNetworkPath, outputPath, sifPathName, top):
     """"""
-    methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
+
+    # Parameters
+    outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
+    pathwayName = networksPath + "/multiplex/WP_RareDiseasesNetwork.sif"
+    pathwayOutputLines = []
+
+    # Check if outputPath exist and create it if does not
+    if not os.path.exists(outputPath):
+        os.makedirs(outputPath, exist_ok=True)
+
+    # Create WP network file
+    if diseaseNetworkPath:
+        # Rare Diseases pathways and extract all genes from WP
+        if WP_GMT:
+            # Files reading
+            WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
+        else:
+            # Request WP
+            WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        # Create diseases pathway
+        for id in WPGeneRDDict:
+            if id != "WPID":
+                for gene in WPGeneRDDict[id]:
+                    pathwayOutputLines.append([id, gene])
+        with open(pathwayName, 'w') as outputFile:
+            for line in pathwayOutputLines:
+                outputFile.write("\t".join(line))
+                outputFile.write("\n")
+
+    # Seeds initiation
+    if factorListFile:
+        # Analysis from factor list
+        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation,
+                                            outputPath=outputPath, nbPub=nbPub)
+    if geneListFile:
+        # Analysis from gene list
+        featuresDict["genesList"] = CTD.readListFile(listFile=geneListFile)
+    if CTD_file:
+        # Analysis from CTD file
+        featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
+
+    # methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
 
 
 if __name__ == '__main__':
