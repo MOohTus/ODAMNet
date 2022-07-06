@@ -149,12 +149,13 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 @click.option('--WP_GMT', 'WP_GMT', type=click.File())
 @click.option('--configPath', 'configPath', type=click.Path(), required=True)
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True)
-@click.option('--diseaseNetworkPath', 'diseaseNetworkPath', type=click.Path())
-@click.option('--seedsFile', 'seedsFile', type=click.File(), cls=customClick.RequiredIf, required_if='diseaseNetworkPath')
+@click.option('--diseaseNetworkPath', 'diseaseNetworkPath', type=click.Path(), cls=customClick.RequiredIf, required_if='diseaseNetworkPath')
+@click.option('--seedsFile', 'seedsFile', type=click.File(), required=True)
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
 @click.option('--sifPathName', 'sifPathName', type=str, required=True)
 @click.option('--top', 'top', type=int, default=10)
-def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, configPath, networksPath, diseaseNetworkPath, outputPath, sifPathName, top):
+def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, configPath,
+               networksPath, seedsFile, diseaseNetworkPath, outputPath, sifPathName, top):
     """"""
 
     # Parameters
@@ -199,6 +200,11 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
 
     # methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
 
+
+@main.command()
+@
+def functionName():
+    pass
 
 if __name__ == '__main__':
     main()
