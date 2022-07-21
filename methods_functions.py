@@ -131,11 +131,12 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     :param int top: Number of results to report in SIF file
     """
     # Analysis
-    multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
-    ranking_df = multixrank_obj.random_walk_rank()
-    multixrank_obj.write_ranking(ranking_df, path=outputPath)
-    multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
-    pass
+    with alive_bar(title='Random walks through the networks', theme='musical') as bar:
+        multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
+        ranking_df = multixrank_obj.random_walk_rank()
+        multixrank_obj.write_ranking(ranking_df, path=outputPath)
+        multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
+        bar()
 
 
 def DOMINO(genesFileName, networkFile, outputPath, featureName):

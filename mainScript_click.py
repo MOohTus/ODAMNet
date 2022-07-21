@@ -19,6 +19,7 @@ import click
 import customClick as customClick
 import os
 import multixrank
+from alive_progress import alive_bar
 
 
 # Script version
@@ -228,23 +229,25 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
 
-    # Check if seed is in the multiplex, if doesn't remove it
-    for root, dirs, files in os.walk(networksPath + "/multiplex"):
-        for filename in files:
-            with open(root + "/" + filename, "r") as networkFileHandler:
-                for line in networkFileHandler:
-                    nodes = line.strip().split("\t")
-                    for n in nodes:
-                        if n not in nodesList:
-                            nodesList.append(n)
-    # Write gene list into seed file
-    for factor in featuresDict:
-        seedList = []
-        for gene in featuresDict[factor]:
-            if gene in nodesList:
-                seedList.append(gene)
-        seedsFile.write("\n".join(seedList))
-        seedsFile.write("\n")
+    with alive_bar(title='Seed file creation', theme='musical') as bar:
+        # Check if seed is in the multiplex, if doesn't remove it
+        for root, dirs, files in os.walk(networksPath + "/multiplex"):
+            for filename in files:
+                with open(root + "/" + filename, "r") as networkFileHandler:
+                    for line in networkFileHandler:
+                        nodes = line.strip().split("\t")
+                        for n in nodes:
+                            if n not in nodesList:
+                                nodesList.append(n)
+        # Write gene list into seed file
+        for factor in featuresDict:
+            seedList = []
+            for gene in featuresDict[factor]:
+                if gene in nodesList:
+                    seedList.append(gene)
+            seedsFile.write("\n".join(seedList))
+            seedsFile.write("\n")
+        bar()
 
     # Run multiXrank
     methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
