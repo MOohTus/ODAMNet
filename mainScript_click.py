@@ -142,14 +142,18 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 @main.command('networkCreation')
 @click.option('--WP_GMT', 'WP_GMT', type=click.File(), help='GMT file name (e.g. from WP request)')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network output path')
-@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', help='Network output name', show_default=True)
+@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.gr', help='Network output name', show_default=True)
+@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True, help='Bipartite output path')
+@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv', help='Bipartite output name', show_default=True)
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', help='Output path name (for WP request)', show_default=True)
-def createNetworkFileFromWP(WP_GMT, networksPath, networksName, outputPath):
+def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
     """Create network SIF file from WP request or WP GMT file"""
     # Parameters
-    outputPath = os.path.join(outputPath, 'OuputCreateNetworkFromWP')
+    outputPath = os.path.join(outputPath, 'OutputCreateNetworkFromWP')
     pathwayName = networksPath + "/" + networksName
-    pathwayOutputLines = []
+    bipartiteName = bipartitePath + "/" + bipartiteName
+    WPID = []
+    bipartiteOutputLines = []
 
     # Check if outputPath exist and create it if does not
     if not os.path.exists(outputPath):
@@ -157,6 +161,9 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, outputPath):
     # Check if networksPath exist and create it if does not
     if not os.path.exists(networksPath):
         os.makedirs(networksPath, exist_ok=True)
+    # Check if bipartitePath exist and create it if does not
+    if not os.path.exists(bipartitePath):
+        os.makedirs(bipartitePath, exist_ok=True)
 
     # Extract all rare disease genes from WP
     if WP_GMT:
@@ -166,15 +173,21 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, outputPath):
         # From request
         WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
 
-    # Create diseases pathway
+    # Create gene symbols and diseases bipartite
     for id in WPGeneRDDict:
         if id != "WPID":
+            if id not in WPID:
+                WPID.append(id)
             for gene in WPGeneRDDict[id]:
-                pathwayOutputLines.append([id, gene])
-    with open(pathwayName, 'w') as outputFile:
-        for line in pathwayOutputLines:
-            outputFile.write("\t".join(line))
-            outputFile.write("\n")
+                bipartiteOutputLines.append([id, gene])
+    with open(bipartiteName, 'w') as bipartiteOutputFile:
+        for line in bipartiteOutputLines:
+            bipartiteOutputFile.write("\t".join(line))
+            bipartiteOutputFile.write("\n")
+    with open(pathwayName, 'w') as networkOutputFile:
+        for id in WPID:
+            networkOutputFile.write("\t".join([id, id]))
+            networkOutputFile.write("\n")
 
 
 @main.command()
@@ -188,39 +201,20 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, outputPath):
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True)
 @click.option('--seedsFile', 'seedsFile', type=click.File(mode='w'), required=True)
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
-@click.option('--sifPathName', 'sifPathName', type=str, required=True)
+@click.option('--sifFileName', 'sifFileName', type=str, required=True)
 @click.option('--top', 'top', type=int, default=10)
-def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, configPath,
-               networksPath, seedsFile, diseaseNetworkPath, outputPath, sifPathName, top):
+def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,
+               networksPath, seedsFile, outputPath, sifFileName, top):
     """"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
-    pathwayName = networksPath + "/multiplex/WP_RareDiseasesNetwork.sif"
-    pathwayOutputLines = []
+    sifPathName = os.path.join(outputPath, sifFileName)
     featuresDict = {}
+    nodesList = []
 
     # Check if outputPath exist and create it if does not
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
-
-    # # Create WP network file
-    # if diseaseNetworkPath:
-    #     # Rare Diseases pathways and extract all genes from WP
-    #     if WP_GMT:
-    #         # Files reading
-    #         WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
-    #     else:
-    #         # Request WP
-    #         WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
-    #     # Create diseases pathway
-    #     for id in WPGeneRDDict:
-    #         if id != "WPID":
-    #             for gene in WPGeneRDDict[id]:
-    #                 pathwayOutputLines.append([id, gene])
-    #     with open(pathwayName, 'w') as outputFile:
-    #         for line in pathwayOutputLines:
-    #             outputFile.write("\t".join(line))
-    #             outputFile.write("\n")
 
     # Seeds initiation
     if factorListFile:
@@ -233,11 +227,27 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
+
+    # Check if seed is in the multiplex, if doesn't remove it
+    for root, dirs, files in os.walk(networksPath + "/multiplex"):
+        for filename in files:
+            with open(root + "/" + filename, "r") as networkFileHandler:
+                for line in networkFileHandler:
+                    nodes = line.strip().split("\t")
+                    for n in nodes:
+                        if n not in nodesList:
+                            nodesList.append(n)
     # Write gene list into seed file
     for factor in featuresDict:
-        seedsFile.write("\n".join(featuresDict[factor]))
+        seedList = []
+        for gene in featuresDict[factor]:
+            if gene in nodesList:
+                seedList.append(gene)
+        seedsFile.write("\n".join(seedList))
+        seedsFile.write("\n")
 
-    # methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
+    # Run multiXrank
+    methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
 
 
 if __name__ == '__main__':
