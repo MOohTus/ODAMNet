@@ -18,7 +18,6 @@ from click_option_group import optgroup, RequiredMutuallyExclusiveOptionGroup
 import click
 import customClick as customClick
 import os
-import multixrank
 from alive_progress import alive_bar
 
 
@@ -196,17 +195,17 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
 @optgroup.option('--factorList', 'factorListFile', type=click.File(), help='Factor list input data file')
 @optgroup.option('--CTD_file', 'CTD_file', type=click.File(), help='CTD results request file')
 @optgroup.option('--geneList', 'geneListFile', type=click.File(), help='Genes list input data file')
-@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True)
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True)
-@click.option('--configPath', 'configPath', type=click.Path(), required=True)
-@click.option('--networksPath', 'networksPath', type=click.Path(), required=True)
-@click.option('--seedsFile', 'seedsFile', type=click.File(mode='w'), required=True)
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
-@click.option('--sifFileName', 'sifFileName', type=str, required=True)
-@click.option('--top', 'top', type=int, default=10)
+@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True, help='If true, extract targets only for the input molecules. If false, extract targets for the descendant molecules too.')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of minimum references to keep the CTD interaction')
+@click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Config path name with the analysis configurations')
+@click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network directory path')
+@click.option('--seedsFile', 'seedsFile', type=click.File(mode='w'), required=True, help='Seeds file path name')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True, help='Output path directory name')
+@click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF')
+@click.option('--top', 'top', type=int, default=10, show_default=True, help='Top number of results to write into output file')
 def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,
                networksPath, seedsFile, outputPath, sifFileName, top):
-    """"""
+    """ Performs a Random Walk with Restart through heterogeneous multilayers"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
     sifPathName = os.path.join(outputPath, sifFileName)
