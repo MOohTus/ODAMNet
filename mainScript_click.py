@@ -202,7 +202,6 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
 
 
 @main.command()
-@
 def functionName():
     pass
 
