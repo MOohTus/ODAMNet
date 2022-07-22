@@ -1,0 +1,16 @@
+Functions
+====================
+
+.. automodule:: mainScript_click
+  :members:
+
+.. automodule:: methods_functions
+  :members:
+
+.. automodule:: CTD_functions
+  :members:
+
+.. automodule:: WP_functions
+  :members:
+
+  EnvironmentalProject's doctrings
