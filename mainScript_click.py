@@ -19,6 +19,7 @@ import click
 import customClick as customClick
 import os
 from alive_progress import alive_bar
+import shutil as shutil
 
 
 # Script version
@@ -199,16 +200,15 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of minimum references to keep the CTD interaction')
 @click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Config path name with the analysis configurations')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network directory path')
-@click.option('--seedsFile', 'seedsFile', type=click.File(mode='w'), required=True, help='Seeds file path name')
+@click.option('--seedsFile', 'seedsFileName', type=str, required=True, help='Seeds file path name')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True, help='Output path directory name')
 @click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF')
 @click.option('--top', 'top', type=int, default=10, show_default=True, help='Top number of results to write into output file')
 def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,
-               networksPath, seedsFile, outputPath, sifFileName, top):
-    """ Performs a Random Walk with Restart through heterogeneous multilayers"""
+               networksPath, seedsFileName, outputPath, sifFileName, top):
+    """ Performs a Random Walk with Restart through heterogeneous multilayer"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
-    sifPathName = os.path.join(outputPath, sifFileName)
     featuresDict = {}
     nodesList = []
 
@@ -228,8 +228,8 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
 
-    with alive_bar(title='Seed file creation', theme='musical') as bar:
-        # Check if seed is in the multiplex, if doesn't remove it
+    # Extract nodes from multilayer
+    with alive_bar(title='Extract nodes from multilayer', theme='musical') as bar:
         for root, dirs, files in os.walk(networksPath + "/multiplex"):
             for filename in files:
                 with open(root + "/" + filename, "r") as networkFileHandler:
@@ -238,18 +238,31 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
                         for n in nodes:
                             if n not in nodesList:
                                 nodesList.append(n)
-        # Write gene list into seed file
-        for factor in featuresDict:
-            seedList = []
-            for gene in featuresDict[factor]:
-                if gene in nodesList:
-                    seedList.append(gene)
-            seedsFile.write("\n".join(seedList))
-            seedsFile.write("\n")
         bar()
 
-    # Run multiXrank
-    methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=outputPath, sifPathName=sifPathName, top=top)
+    # Remove seed that are missing in network
+    # Run RWR
+    for factor in featuresDict:
+        # Output names creation
+        analysisOutputPath = outputPath + "/RWR_" + factor
+        sifPathName = os.path.join(analysisOutputPath, sifFileName)
+
+        # Check if outputPath exist and create it if does not
+        if not os.path.exists(analysisOutputPath):
+            os.makedirs(analysisOutputPath, exist_ok=True)
+
+        # Write gene list into seed file
+        seedList = []
+        for gene in featuresDict[factor]:
+            if gene in nodesList:
+                seedList.append(gene)
+        with open(seedsFileName, 'w') as seedFileHandler:
+            seedFileHandler.write("\n".join(seedList))
+            seedFileHandler.write("\n")
+        # Run multiXrank
+        shutil.copyfile(seedsFileName, analysisOutputPath + '/' + os.path.basename(seedsFileName))
+        methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=analysisOutputPath, sifPathName=sifPathName, top=top)
+
 
 
 if __name__ == '__main__':
