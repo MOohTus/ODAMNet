@@ -3,16 +3,38 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to EnvironmentProject's documentation!
-==============================================
+EnvironmentProject's documentation
+==================================
+
+.. important::
+   From EJP RD project
+
+.. toctree::
+   :caption: Quickstart
+   :titlesonly:
+
+   pages/Installation
+   pages/usage/Quickstart
+
+.. toctree::
+   :caption: Methods
+   :titlesonly:
+
+   pages/Methods
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Usage
 
-   usage/functions
-   usage/Quickstart
+   pages/analysis/requestAnalysis
+   pages/analysis/filesAnalysis
+   pages/analysis/genericAnalysis
+   pages/analysis/parameters
 
+.. toctree::
+   :caption: Functions description
+
+   pages/functions
 
 
 Indices and tables
