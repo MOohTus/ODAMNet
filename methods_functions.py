@@ -21,7 +21,7 @@ from alive_progress import alive_bar
 # Functions
 def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
     """
-    Calculate overlap between target genes and Rase Diseases WP
+    Calculate overlap.rst between target genes and Rase Diseases WP
 
     Metrics :
         - M is the population size (Nb of genes inside WikiPathway for Homo sapiens pathways)
@@ -37,7 +37,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     :param str outputPath: Folder path to save the results
 
     :return:
-        - **df** (*pd.DataFrame*) – Data frame of overlap metrics for each rare diseases WP
+        - **df** (*pd.DataFrame*) – Data frame of overlap.rst metrics for each rare diseases WP
     """
     # Parameters
     WPIDs = []
@@ -49,7 +49,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     pValues = []
     intersections = []
 
-    # Calculate pvalue overlap for each RD WP found
+    # Calculate pvalue overlap.rst for each RD WP found
     for WP in WPGenesDict:
         if WP != "WPID":
             WPGeneSet = set(WPGenesDict[WP])
@@ -101,7 +101,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
 
 def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
     """
-    For each chemical given in input, calculate overlap with RD WP.
+    For each chemical given in input, calculate overlap.rst with RD WP.
 
     :param dict chemTargetsDict: Dict composed of interaction genes list for each chemical
     :param dict WPGeneRDDict: Dictionary of Rare Diseases WP
@@ -109,7 +109,7 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
     :param dict WPDict: Dict of titles for each RD WikiPathway
     :param str outputPath: Folder path to save the results
     """
-    # For each chemical targets, calculate overlap with RD WP
+    # For each chemical targets, calculate overlap.rst with RD WP
     for chem in chemTargetsDict:
         overlap(targetGeneSet=set(chemTargetsDict[chem]),
                 WPGenesDict=WPGeneRDDict,
