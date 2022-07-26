@@ -1,3 +1,0 @@
-## 
-for i in `ls Overlap_AM_*_D014801_withRDWP.csv`; do awk -F";" '{if($8 <=0.05){print $0}}' $i; done | sort | uniq > Overlap_AM_D014801_PathwaysOverlapSignificant.csv
-for i in `ls Overlap_AM_*_D014807_withRDWP.csv`; do awk -F";" '{if($8 <=0.05){print $0}}' $i; done | sort | uniq > Overlap_AM_D014807_PathwaysOverlapSignificant.csv

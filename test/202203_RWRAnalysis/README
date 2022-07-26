@@ -1,3 +1,0 @@
-##
-sh /home/morgane/Documents/07_SideProjects/05_NeuropathieAxoneGeant/03_GAN_RWR_MH_drugNetwork_Mars2021/createTable4Cytoscape.sh RWR_2Seeds_top10.csv ~/Bureau/07_SideProjects/05_NeuropathieAxoneGeant/00_Data/OMIM_jan2021.tab ~/Documents/06_Data/NETWORKS/02_MAJ_Anthony2020/drugbankID_communName.txt
-sh /home/morgane/Documents/07_SideProjects/05_NeuropathieAxoneGeant/03_GAN_RWR_MH_drugNetwork_Mars2021/createTable4Cytoscape.sh RWR_2Seeds_top10.csv ~/Bureau/07_SideProjects/05_NeuropathieAxoneGeant/00_Data/OMIM_jan2021.tab ~/Documents/06_Data/NETWORKS/02_MAJ_Anthony2020/drugbankID_communName.txt UMLS_OMIM.csv
