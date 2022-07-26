@@ -65,7 +65,7 @@ Calcul the overlap between target genes and Rare Disease pathways. Search the di
 
 .. code-block:: bash
 
-   python3 main.py overlap --
+   python3 main.py overlap --factorList FILENAME
 
 Active Module Identification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -74,7 +74,7 @@ The target gene list is extended to others related genes.
 
 .. code-block:: bash
 
-   python3 main.py domino --
+   python3 main.py domino --factorList FILENAME --networkFile FILENAME
 
 Network and bipartite creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,12 +82,12 @@ To incorporate the Rare Disease pathways from WP to the next approach, you need 
 
 .. code-block:: bash
 
-   python3 main.py networkCreation --
+   python3 main.py networkCreation --networksPath PATH --bipartitePath PATH
 
 Random Walk with Restart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+The third approach mesures the proximity of every gene within a multilayer to the target genes. It's a diffusion analysis from the factors through different molecular interactions. 
 
 .. code-block:: bash
 
-   python3 main.py multixrank --
+   python3 main.py multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
