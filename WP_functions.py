@@ -271,3 +271,18 @@ def readUniversFile(UniversFile):
 #
 #     # Return
 #     return geneSetWP
+
+
+
+def readBackgroundsFile(backgroundsFile):
+    """
+    """
+    backgroundDict = {}
+    # Read backgrounds file
+    for background in backgroundsFile:
+        name = background
+        with open(background, 'r') as bgFile:
+            for line in bgFile:
+                elList = line.strip()
+
+
