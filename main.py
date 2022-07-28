@@ -21,42 +21,50 @@ import os
 from alive_progress import alive_bar
 import shutil as shutil
 
-
 # Script version
 VERSION = '1.0'
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 
-@click.group(context_settings=CONTEXT_SETTINGS)
+@click.group(context_settings=CONTEXT_SETTINGS, cls=customClick.NaturalOrderGroup)
 @click.version_option(VERSION)
 def main():
-    """Analyse the link between environmental factors and rare disease pathways.
+    """
+    [OPTIONS] = overlap | domino | multixrank | networkCreation
+
+    Analyse the link between environmental factors and rare disease pathways.
     Select the approach you want to perform :
 
-    overlap.rst | domino | multiXrank | networkCreation
+    overlap | domino | multixrank
+
+    If you need to create a network diseases from WP select : networkCreation
     """
     pass
 
 
-@main.command(short_help="Perform overlap analysis", context_settings=CONTEXT_SETTINGS)
+@main.command(short_help='Perform overlap analysis', context_settings=CONTEXT_SETTINGS)
 @optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('--factorList', 'factorListFile', type=click.File(), help='Factor list input data file')
-@optgroup.option('--CTD_file', 'CTD_file', type=click.File(), help='CTD results request file')
-@optgroup.option('--geneList', 'geneListFile', type=click.File(), help='Genes list input data file')
-@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True)
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True)
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='universFile')
-@click.option('--universFile', 'universFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT', help='Universe file name with gene names. ')
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
-def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, universFile, outputPath):
-    """Perform overlap.rst analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway"""
+@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
+@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
+              help='True: Only chem targets \\ False:Chem + descendants targets')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
+              help='Pathways of interest in GMT like format. ')
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
+              help='Background genes file name. ')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
+              help='Output folder name')
+def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, backgroundFile, outputPath):
+    """Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway"""
 
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
     featuresDict = {}
 
-    # Check if outputPath exist and create it if does not
+    # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
 
@@ -64,7 +72,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     if WP_GMT:
         # Files reading
         WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
-        WPBackgroundGenes = WP.readUniversFile(UniversFile=universFile)
+        WPBackgroundGenes = WP.readUniversFile(UniversFile=backgroundFile)
     else:
         # Request WP
         WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
@@ -72,10 +80,11 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
 
     if factorListFile:
         # Analysis from factor list
-        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation, outputPath=outputPath, nbPub=nbPub)
+        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation,
+                                            outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict["genesList"] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
@@ -90,25 +99,30 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     print('Overlap analysis finished')
 
 
-@main.command(short_help="Active Module Identification analysis", context_settings=CONTEXT_SETTINGS)
+@main.command(short_help='Active Module Identification analysis', context_settings=CONTEXT_SETTINGS)
 @optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('--factorList', 'factorListFile', type=click.File(), help='Factor list input data file')
-@optgroup.option('--CTD_file', 'CTD_file', type=click.File(), help='CTD results request file')
-@optgroup.option('--geneList', 'geneListFile', type=click.File(), help='Genes list input data file')
-@click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True)
-@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True)
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True)
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='universFile')
-@click.option('--universFile', 'universFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT', help='Universe file name with gene names. ')
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults')
-def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociation, nbPub, WP_GMT, universFile, outputPath):
-    """DOMINO analysis using chemical target genes"""
+@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
+@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
+              help='True: Only chem targets \\ False:Chem + descendants targets')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True, help='Network file name')
+@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
+              help='Pathways of interest in GMT like format. ')
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
+              help='Background genes file name. ')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
+              help='Output folder name')
+def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociation, nbPub, WP_GMT, backgroundFile,
+           outputPath):
+    """DOMINO defines the target genes as active genes and search active modules through a given network."""
 
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputDOMINOResults')
     featuresDict = {}
 
-    # Check if outputPath exist and create it if does not
+    # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
 
@@ -116,7 +130,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     if WP_GMT:
         # Files reading
         WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
-        WPBackgroundGenes = WP.readUniversFile(UniversFile=universFile)
+        WPBackgroundGenes = WP.readUniversFile(UniversFile=backgroundFile)
     else:
         # Request WP
         WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
@@ -128,7 +142,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
                                             outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict["genesList"] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
@@ -142,29 +156,33 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
                                      outputPath=outputPath)
 
 
-@main.command('networkCreation', short_help="Create network and bipartite", context_settings=CONTEXT_SETTINGS)
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), help='GMT file name (e.g. from WP request)')
-@click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network output path')
-@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.gr', help='Network output name', show_default=True, metavar="FILENAME")
-@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True, help='Bipartite output path')
-@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv', help='Bipartite output name', show_default=True, metavar="FILENAME")
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', help='Output path name (for WP request)', show_default=True)
+@main.command('networkCreation', short_help='Create network and bipartite', context_settings=CONTEXT_SETTINGS)
+@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
+              help='Pathways of interest in GMT like format (e.g. from WP request).')
+@click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Output path where save the network')
+@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
+              metavar='FILENAME', help='Network output name')
+@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True, help='Output path where save the bipartite')
+@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
+              show_default=True, metavar='FILENAME', help='Bipartite output name')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
+              help='Output path name (for complementary output files)')
 def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
     """Create network SIF file from WP request or WP GMT file"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputCreateNetworkFromWP')
-    pathwayName = networksPath + "/" + networksName
-    bipartiteName = bipartitePath + "/" + bipartiteName
+    pathwayName = networksPath + '/' + networksName
+    bipartiteName = bipartitePath + '/' + bipartiteName
     WPID = []
     bipartiteOutputLines = []
 
-    # Check if outputPath exist and create it if does not
+    # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
-    # Check if networksPath exist and create it if does not
+    # Check if networksPath exist and create it if it does not exist
     if not os.path.exists(networksPath):
         os.makedirs(networksPath, exist_ok=True)
-    # Check if bipartitePath exist and create it if does not
+    # Check if bipartitePath exist and create it if it does not exist
     if not os.path.exists(bipartitePath):
         os.makedirs(bipartitePath, exist_ok=True)
 
@@ -177,44 +195,47 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
         WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
 
     # Create gene symbols and diseases bipartite
-    for id in WPGeneRDDict:
-        if id != "WPID":
-            if id not in WPID:
-                WPID.append(id)
-            for gene in WPGeneRDDict[id]:
-                bipartiteOutputLines.append([id, gene])
+    for ID in WPGeneRDDict:
+        if ID != 'WPID':
+            if ID not in WPID:
+                WPID.append(ID)
+            for gene in WPGeneRDDict[ID]:
+                bipartiteOutputLines.append([ID, gene])
     with open(bipartiteName, 'w') as bipartiteOutputFile:
         for line in bipartiteOutputLines:
-            bipartiteOutputFile.write("\t".join(line))
-            bipartiteOutputFile.write("\n")
+            bipartiteOutputFile.write('\t'.join(line))
+            bipartiteOutputFile.write('\n')
     with open(pathwayName, 'w') as networkOutputFile:
-        for id in WPID:
-            networkOutputFile.write("\t".join([id, id]))
-            networkOutputFile.write("\n")
+        for ID in WPID:
+            networkOutputFile.write('\t'.join([ID, ID]))
+            networkOutputFile.write('\n')
 
 
-@main.command(short_help="Random Walk with Restart Analysis", context_settings=CONTEXT_SETTINGS)
+@main.command(short_help='Random Walk with Restart Analysis', context_settings=CONTEXT_SETTINGS)
 @optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('--factorList', 'factorListFile', type=click.File(), help='Factor list input data file')
-@optgroup.option('--CTD_file', 'CTD_file', type=click.File(), help='CTD results request file')
-@optgroup.option('--geneList', 'geneListFile', type=click.File(), help='Genes list input data file')
-@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True, help='If true, extract targets only for the input molecules. If false, extract targets for the descendant molecules too.')
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of minimum references to keep the CTD interaction')
-@click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Config path name with the analysis configurations')
+@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
+@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
+              help='True: Only chem targets \\ False:Chem + descendants targets')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Configurations path name')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network directory path')
-@click.option('--seedsFile', 'seedsFileName', type=str, required=True, help='Seeds file path name', metavar="FILENAME")
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True, help='Output path directory name')
-@click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF', metavar="FILENAME")
+@click.option('--seedsFile', 'seedsFileName', type=str, required=True, help='Seeds file path name', metavar='FILENAME')
+@click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF',
+              metavar='FILENAME')
 @click.option('--top', 'top', type=int, default=10, show_default=True, help='Top number of results to write into output file')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
+              help='Output folder name')
 def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,
                networksPath, seedsFileName, outputPath, sifFileName, top):
-    """Performs a Random Walk with Restart through heterogeneous multilayer"""
+    """Performs a Random Walk with Restart through heterogeneous multilayer using the target genes as seeds"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
     featuresDict = {}
     nodesList = []
 
-    # Check if outputPath exist and create it if does not
+    # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
 
@@ -225,18 +246,18 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
                                             outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict["genesList"] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
 
     # Extract nodes from multilayer
     with alive_bar(title='Extract nodes from multilayer', theme='musical') as bar:
-        for root, dirs, files in os.walk(networksPath + "/multiplex"):
+        for root, dirs, files in os.walk(networksPath + '/multiplex'):
             for filename in files:
-                with open(root + "/" + filename, "r") as networkFileHandler:
+                with open(root + '/' + filename, 'r') as networkFileHandler:
                     for line in networkFileHandler:
-                        nodes = line.strip().split("\t")
+                        nodes = line.strip().split('\t')
                         for n in nodes:
                             if n not in nodesList:
                                 nodesList.append(n)
@@ -246,10 +267,10 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
     # Run RWR
     for factor in featuresDict:
         # Output names creation
-        analysisOutputPath = outputPath + "/RWR_" + factor
+        analysisOutputPath = outputPath + '/RWR_' + factor
         sifPathName = os.path.join(analysisOutputPath, sifFileName)
 
-        # Check if outputPath exist and create it if does not
+        # Check if outputPath exist and create it if it does not exist
         if not os.path.exists(analysisOutputPath):
             os.makedirs(analysisOutputPath, exist_ok=True)
 
@@ -259,16 +280,13 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
             if gene in nodesList:
                 seedList.append(gene)
         with open(seedsFileName, 'w') as seedFileHandler:
-            seedFileHandler.write("\n".join(seedList))
-            seedFileHandler.write("\n")
+            seedFileHandler.write('\n'.join(seedList))
+            seedFileHandler.write('\n')
         # Run multiXrank
         shutil.copyfile(seedsFileName, analysisOutputPath + '/' + os.path.basename(seedsFileName))
-        methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=analysisOutputPath, sifPathName=sifPathName, top=top)
+        methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=analysisOutputPath,
+                    sifPathName=sifPathName, top=top)
 
 
 if __name__ == '__main__':
     main()
-
-
-
-

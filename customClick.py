@@ -10,6 +10,7 @@ Custom click class to add some functionalities.
 import click
 
 # From : https://stackoverflow.com/questions/44247099/click-command-line-interfaces-make-options-required-if-other-optional-option-is
+# From : https://github.com/pallets/click/issues/513
 
 
 class RequiredIf(click.Option):
@@ -37,3 +38,11 @@ class RequiredIf(click.Option):
                     )
                 )
         return super(RequiredIf, self).handle_parse_result(ctx, opts, args)
+
+
+class NaturalOrderGroup(click.Group):
+    """
+    Display options as they are defined (default is alphabetic order)
+    """
+    def list_commands(self, ctx):
+        return self.commands.keys()
