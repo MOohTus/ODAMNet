@@ -241,13 +241,14 @@ def allGenesFromWP(outputPath):
         for line in outputList:
             outputFileHandler.write(line)
 
-    backgroundsDict = {'WikiPathway': []}
+    bgName = 'WikiPathway_' + date
+    backgroundsDict = {bgName: []}
 
     for pathway in genesDict:
         #if pathway != 'WPID':
         for gene in genesDict[pathway]:
-            if gene not in backgroundsDict['WikiPathway']:
-                backgroundsDict['WikiPathway'].append(gene)
+            if gene not in backgroundsDict[bgName]:
+                backgroundsDict[bgName].append(gene)
 
     return backgroundsDict
 

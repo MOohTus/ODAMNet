@@ -20,6 +20,7 @@ import customClick as customClick
 import os
 from alive_progress import alive_bar
 import shutil as shutil
+from datetime import datetime
 
 # Script version
 VERSION = '1.0'
@@ -62,6 +63,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
 
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
+    date = datetime.today().strftime('%Y_%m_%d')
     featuresDict = {}
     backgroundGenesDict = {}
     pathwaysOfInterestList = []
@@ -79,9 +81,9 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     else:
         # Request WP
         WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-        backgroundGenesDict["WP"] = WP.allGenesFromWP(outputPath=outputPath)
+        backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
         for pathway in pathwayOfInterestList:
-            pathwaysOfInterestList.append([pathway, "WP"])
+            pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
 
     if factorListFile:
         # Analysis from factor list
