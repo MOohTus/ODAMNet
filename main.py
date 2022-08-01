@@ -63,6 +63,8 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
     featuresDict = {}
+    backgroundGenesDict = {}
+    pathwaysOfInterestList = []
 
     # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
@@ -71,12 +73,15 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     # Rare Diseases pathways and extract all genes from WP
     if WP_GMT:
         # Files reading
-        WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
-        WPBackgroundGenes = WP.readUniversFile(UniversFile=backgroundFile)
+        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
+        backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile)
+        pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
     else:
         # Request WP
-        WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
-        WPBackgroundGenes = WP.allGenesFromWP(outputPath=outputPath)
+        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        backgroundGenesDict["WP"] = WP.allGenesFromWP(outputPath=outputPath)
+        for pathway in pathwayOfInterestList:
+            pathwaysOfInterestList.append([pathway, "WP"])
 
     if factorListFile:
         # Analysis from factor list
@@ -92,7 +97,8 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
     # Overlap between our features list and pathways of interest
     methods.overlapAnalysis(chemTargetsDict=featuresDict,
                             WPGeneRDDict=WPGeneRDDict,
-                            WPBackgroundGenes=WPBackgroundGenes,
+                            backgroundGenesDict=backgroundGenesDict,
+                            pathwaysOfInterestList=pathwaysOfInterestList,
                             WPDict=WPDict,
                             outputPath=outputPath)
 

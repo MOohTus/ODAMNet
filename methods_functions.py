@@ -19,7 +19,7 @@ from alive_progress import alive_bar
 
 
 # Functions
-def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
+def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict, outputPath):
     """
     Calculate overlap.rst between target genes and Rase Diseases WP
 
@@ -43,6 +43,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     WPIDs = []
     WPTitles = []
     WPsizes = []
+    sourcesList = []
     TargetSizes = []
     intersectionSizes = []
     universSizes = []
@@ -50,31 +51,35 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     intersections = []
 
     # Calculate pvalue overlap.rst for each RD WP found
-    for WP in WPGenesDict:
-        if WP != "WPID":
-            WPGeneSet = set(WPGenesDict[WP])
+    for pathway in pathwaysOfInterestList:
+        pathwayName = pathway[0]
+        source = pathway[1]
 
-            # Metrics calculation
-            M = len(WPBackgroundGenesSet)
-            n = len(WPGeneSet)
-            N = len(targetGeneSet.intersection(WPBackgroundGenesSet))  # Taking only genes that are also in background
-            intersection = list(WPGeneSet.intersection(targetGeneSet))
-            x = len(intersection)
-            # print(M, n, N, x)
+        genesSet = set(WPGenesDict[pathwayName])
+        backgroundGenesSet = set(backgroundGenesDict[source])
 
-            # Hyper geometric test
-            pval = hypergeom.sf(x - 1, M, n, N)
+        # Metrics calculation
+        M = len(backgroundGenesSet)
+        n = len(genesSet)
+        N = len(targetGeneSet.intersection(backgroundGenesSet))  # Taking only genes that are also in background
+        intersection = list(genesSet.intersection(targetGeneSet))
+        x = len(intersection)
+        # print(pathwayName, M, n, N, x)
 
-            # Fill variable to store information and metrics
-            WPIDs.append(WP)
-            WPTitles.append(WPDict[WP])
-            WPsizes.append(n)
-            TargetSizes.append(N)
-            intersectionSizes.append(x)
-            universSizes.append(M)
-            pValues.append(pval)
-            intersection.sort()
-            intersections.append(' '.join(intersection))
+        # Hyper geometric test
+        pval = hypergeom.sf(x - 1, M, n, N)
+
+        # Fill variable to store information and metrics
+        WPIDs.append(pathwayName)
+        WPTitles.append(WPDict[pathwayName])
+        WPsizes.append(n)
+        sourcesList.append(source)
+        TargetSizes.append(N)
+        intersectionSizes.append(x)
+        universSizes.append(M)
+        pValues.append(pval)
+        intersection.sort()
+        intersections.append(' '.join(intersection))
 
     # Multiple tests to correct pvalue
     reject, pValsAdj, alphacSidak, alphacBonf = multipletests(pValues, alpha=0.05, method='fdr_bh')
@@ -82,6 +87,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     # Final
     df = pd.DataFrame({'WPID': WPIDs,
                        'WPTitle': WPTitles,
+                       'Source': sourcesList,
                        'WPSize': WPsizes,
                        'TargetSize': TargetSizes,
                        'IntersectionSize': intersectionSizes,
@@ -99,7 +105,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     # return df
 
 
-def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
+def overlapAnalysis(chemTargetsDict, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList, WPDict, outputPath):
     """
     For each chemical given in input, calculate overlap.rst with RD WP.
 
@@ -113,7 +119,8 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
     for chem in chemTargetsDict:
         overlap(targetGeneSet=set(chemTargetsDict[chem]),
                 WPGenesDict=WPGeneRDDict,
-                WPBackgroundGenesSet=set(WPBackgroundGenes),
+                backgroundGenesDict=backgroundGenesDict,
+                pathwaysOfInterestList=pathwaysOfInterestList,
                 chemNames=chem,
                 WPDict=WPDict,
                 outputPath=outputPath)
