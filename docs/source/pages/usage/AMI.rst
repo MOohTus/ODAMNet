@@ -8,7 +8,6 @@ Different approaches are implemented in this tool to analysis link between envir
    :nested: full
    :commands: domino
 
-
 Up to date analysis - Vitamin A :
 ===================================
 
@@ -38,6 +37,29 @@ Optionals options :
 -o, --outputPath PATH
     Name of the folder where save the results
     [default: OutputResults]
+
+Command line :
+^^^^^^^^^^^^^^^^^^^
+
+.. tabs::
+
+    .. group-tab:: short
+
+        .. code-block:: bash
+
+            python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv \
+                                    --directAssociation FALSE \
+                                    --nbPub 2 \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example1/
+
 
 Default parameters :
 ^^^^^^^^^^^^^^^^^^^^^^

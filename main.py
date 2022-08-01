@@ -129,6 +129,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputDOMINOResults')
     featuresDict = {}
+    pathwaysOfInterestList = []
 
     # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
@@ -137,12 +138,15 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     # Rare Diseases pathways and extract all genes from WP
     if WP_GMT:
         # Files reading
-        WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
-        WPBackgroundGenes = WP.readUniversFile(UniversFile=backgroundFile)
+        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
+        backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile)
+        pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
     else:
         # Request WP
-        WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
-        WPBackgroundGenes = WP.allGenesFromWP(outputPath=outputPath)
+        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
+        for pathway in pathwayOfInterestList:
+            pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
 
     if factorListFile:
         # Analysis from factor list
