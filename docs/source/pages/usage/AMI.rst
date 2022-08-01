@@ -60,19 +60,6 @@ Command line :
                                     --networkFile examples/InputData/PPI_network_2016.sif \
                                     --outputPath examples/OutputResults_example1/
 
-
-Default parameters :
-^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
-
-   python3 main.py domino
-
-Vitamin A analysis :
-^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
-
-   python3 main.py domino
-
 Specific version - Vitamin A :
 ===============================
 
@@ -104,18 +91,30 @@ Optionals options :
     Name of the folder where save the results
     [default: OutputResults]
 
-Default parameters :
-^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
+Command line :
+^^^^^^^^^^^^^^^^^^^
 
-   python3 main.py domino
+.. tabs::
 
-Vitamin A analysis :
-^^^^^^^^^^^^^^^^^^^^^
+    .. group-tab:: short
 
-.. code-block:: bash
+        .. code-block:: bash
 
-   python3 main.py domino
+            python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  \
+                                    --nbPub 2 \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example3/
 
 
 Global analysis - Data as you want :
@@ -149,6 +148,26 @@ Optionals options :
 Vitamin A analysis with data from paper *(Ozisik, 2022)*:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+Command line :
+^^^^^^^^^^^^^^^^^^^
 
-   python3 main.py domino
+.. tabs::
+
+    .. group-tab:: short
+
+        .. code-block:: bash
+
+            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example3/
