@@ -1,0 +1,14 @@
+WPID;WPTitle;Source;WPSize;TargetSize;IntersectionSize;UniversSize;pValue;pAdjusted;Intersection
+GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;54;7;18089;3.988040837916897e-05;0.0005184453089291967;COL4A1 LAMA5 NID1 PDGFA PDGFB PDGFRA PKD1
+GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;54;6;18089;0.000291190862937106;0.0018927406090911887;LAMA5 NID1 PDGFA PDGFB PDGFRA PKD1
+GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;54;2;18089;0.03336170352524449;0.14456738194272614;LAMA5 PKD1
+WP:WP4823;Genes controlling nephrogenesis;hsapiens.WP.name.gmt;43;44;1;7411;0.2264675004692304;0.7360193765249987;PDGFB
+PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;54;0;18089;1.0;1.0;
+REAC:R-HSA-2022377;Metabolism of Angiotensinogen to Angiotensins;hsapiens.REAC.name.gmt;18;50;0;10531;1.0;1.0;
+REAC:R-HSA-8853659;RET signaling;hsapiens.REAC.name.gmt;38;50;0;10531;1.0;1.0;
+REAC:R-HSA-195721;Signaling by WNT;hsapiens.REAC.name.gmt;328;50;1;10531;0.7952214494841515;1.0;CAV1
+REAC:R-HSA-157118;Signaling by NOTCH;hsapiens.REAC.name.gmt;233;50;1;10531;0.6741504834914941;1.0;PSENEN
+REAC:R-HSA-5358351;Signaling by Hedgehog;hsapiens.REAC.name.gmt;149;50;0;10531;1.0;1.0;
+WP:WP5053;Development of ureteric collection system;hsapiens.WP.name.gmt;47;44;0;7411;1.0;1.0;
+WP:WP5052;Nephrogenesis;hsapiens.WP.name.gmt;17;44;0;7411;1.0;1.0;
+WP:WP4830;GDNF/RET signalling axis;hsapiens.WP.name.gmt;23;44;0;7411;1.0;1.0;
