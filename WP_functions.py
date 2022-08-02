@@ -8,6 +8,8 @@ WikiPathways functions
 """
 
 # Libraries
+import os.path
+
 from SPARQLWrapper import SPARQLWrapper, TSV
 from datetime import datetime
 
@@ -67,9 +69,10 @@ def rareDiseasesWPrequest(outputPath):
     genesDict = {}
     WPDict = {}
     outputList = []
+    pathwayOfInterestList = []
     date = datetime.today().strftime('%Y_%m_%d')
-    resultFileName = outputPath + "/WP_RareDiseases_request_" + date + ".tsv"
-    sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
+    resultFileName = outputPath + '/WP_RareDiseases_request_' + date + '.gmt'
+    sparql = SPARQLWrapper('https://sparql.wikipathways.org/sparql')
     sparql.setReturnFormat(TSV)
 
     # Query - Extract gene HGNC ID from RD pathways
@@ -107,15 +110,74 @@ def rareDiseasesWPrequest(outputPath):
 
     # Parsing for output
     for key in genesDict:
-        size = str(len(genesDict[key]))
-        composition = ' '.join(genesDict[key])
-        outputList.append(''.join([key, '\t', WPDict[key], '\t', size, '\t', composition, '\n']))
+        composition = '\t'.join(genesDict[key])
+        outputList.append(''.join([key, '\t', WPDict[key], '\t', composition, '\n']))
+        if key != 'WPID':
+            pathwayOfInterestList.append(key)
     # Write results into file - Write size and composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
         for line in outputList:
             outputFileHandler.write(line)
 
-    return genesDict, WPDict
+    return genesDict, WPDict, pathwayOfInterestList
+
+
+# def allGenesFromWP(outputPath):
+#     """
+#     Extract all gene HGNC ID from Homo sapiens WP.
+#     Write request result into output file.
+#
+#     :param str outputPath: Folder path to save the results
+#
+#     :return:
+#         - **geneSetWP** (*list*) – List of uniq genes found in Homo sapiens WP
+#     """
+#     # Parameters
+#     geneSetWP = []
+#     date = datetime.today().strftime('%Y_%m_%d')
+#     resultFileName = outputPath + "/WP_listOfAllHumanGenes_" + date + ".tsv"
+#     sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
+#     sparql.setReturnFormat(TSV)
+#
+#     # Query - Extract all genes from Human WP (HGNC ID)
+#     sparql.setQuery("""
+#     SELECT DISTINCT (?hgncId as ?HGNC)
+#         WHERE {
+#           {
+#             ?pathway a wp:Pathway ;
+#                     wp:organismName "Homo sapiens" ;
+#                     dcterms:identifier ?WPID.
+#             ?gene a wp:GeneProduct ;
+#                     dcterms:isPartOf ?pathway ;
+#                     wp:bdbHgncSymbol ?hgncId .
+#             }
+#           UNION
+#           {
+#             ?pathway a wp:Pathway ;
+#                     wp:organismName "Homo sapiens" ;
+#                     dcterms:identifier ?WPID.
+#             ?protein a wp:Protein ;
+#                     dcterms:isPartOf ?pathway ;
+#                     wp:bdbHgncSymbol ?hgncId .
+#             }
+#         } ORDER BY ?HGNC
+#     """)
+#     try:
+#         allGenesReq = sparql.queryAndConvert()
+#         allGenesString = allGenesReq.decode()
+#         allGenesString = allGenesString.replace('\"', '')
+#         allGenesList = allGenesString.rstrip().split('\n')
+#         for gene in allGenesList:
+#             if gene != 'HGNC':
+#                 geneSetWP.append(gene.split('/')[4])
+#     except Exception as e:
+#         print(e)
+#
+#     with open(resultFileName, 'w') as outputFileHandler:
+#         for gene in geneSetWP:
+#             outputFileHandler.write('%s\n' % gene)
+#
+#     return geneSetWP
 
 
 def allGenesFromWP(outputPath):
@@ -129,77 +191,91 @@ def allGenesFromWP(outputPath):
         - **geneSetWP** (*list*) – List of uniq genes found in Homo sapiens WP
     """
     # Parameters
-    geneSetWP = []
+    genesDict = {}
+    WPDict = {}
+    outputList = []
     date = datetime.today().strftime('%Y_%m_%d')
-    resultFileName = outputPath + "/WP_listOfAllHumanGenes_" + date + ".tsv"
-    sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
+    resultFileName = outputPath + '/WP_allPathways_request_' + date + '.gmt'
+    sparql = SPARQLWrapper('https://sparql.wikipathways.org/sparql')
     sparql.setReturnFormat(TSV)
 
     # Query - Extract all genes from Human WP (HGNC ID)
     sparql.setQuery("""
-    SELECT DISTINCT (?hgncId as ?HGNC)
-        WHERE {
-          {
-            ?pathway a wp:Pathway ;
-                    wp:organismName "Homo sapiens" ;
-                    dcterms:identifier ?WPID.
-            ?gene a wp:GeneProduct ;
-                    dcterms:isPartOf ?pathway ;
-                    wp:bdbHgncSymbol ?hgncId .
-            }
-          UNION
-          {
-            ?pathway a wp:Pathway ;
-                    wp:organismName "Homo sapiens" ;
-                    dcterms:identifier ?WPID.
-            ?protein a wp:Protein ;
-                    dcterms:isPartOf ?pathway ;
-                    wp:bdbHgncSymbol ?hgncId .
-            }
-        } ORDER BY ?HGNC
-    """)
+        SELECT DISTINCT ?WPID (?title as ?pathways) (?hgncId as ?HGNC)
+            WHERE {
+              {
+                ?pathway a wp:Pathway ;
+                        wp:organismName "Homo sapiens" ;
+                        dcterms:identifier ?WPID.
+                ?gene a wp:GeneProduct ;
+                        dcterms:isPartOf ?pathway ;
+                        wp:bdbHgncSymbol ?hgncId .
+                }
+              UNION
+              {
+                ?pathway a wp:Pathway ;
+                        wp:organismName "Homo sapiens" ;
+                        dcterms:identifier ?WPID.
+                ?protein a wp:Protein ;
+                        dcterms:isPartOf ?pathway ;
+                        wp:bdbHgncSymbol ?hgncId .
+                }
+            } ORDER BY ?HGNC
+        """)
     try:
-        allGenesReq = sparql.queryAndConvert()
-        allGenesString = allGenesReq.decode()
-        allGenesString = allGenesString.replace('\"', '')
-        allGenesList = allGenesString.rstrip().split('\n')
-        for gene in allGenesList:
-            if gene != 'HGNC':
-                geneSetWP.append(gene.split('/')[4])
+        genesReq = sparql.queryAndConvert()
+        genesDict, WPDict = readRequestResultsWP(genesReq)
     except Exception as e:
         print(e)
 
+    # Parsing for output
+    for key in genesDict:
+        composition = '\t'.join(genesDict[key])
+        outputList.append(''.join([key, '\t', WPDict[key], '\t', composition, '\n']))
+    # Write results into file - Write size and composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
-        for gene in geneSetWP:
-            outputFileHandler.write('%s\n' % gene)
+        for line in outputList:
+            outputFileHandler.write(line)
 
-    return geneSetWP
+    bgName = 'WikiPathway_' + date
+    backgroundsDict = {bgName: []}
+
+    for pathway in genesDict:
+        for gene in genesDict[pathway]:
+            if gene not in backgroundsDict[bgName]:
+                backgroundsDict[bgName].append(gene)
+
+    return backgroundsDict
 
 
 def readGMTFile(GMTFile):
     # Parameters
     WPDict = {}
     genesDict = {}
+    pathwaysOfInterestList = []
 
     # Read GMT file
     for line in GMTFile:
         lineList = line.rstrip('\n').split('\t')
         WPID = lineList[0]
-        genesList = lineList[3].split(' ')
+        genesList = lineList[2:]
         description = lineList[1]
         # Dictionary of description
         if WPID in WPDict:
-            WPDict[WPID] = " ".join([WPDict[WPID], description])
+            WPDict[WPID] = ' '.join([WPDict[WPID], description])
         else:
             WPDict[WPID] = description
         # Dictionary of genes
         if WPID in genesDict:
-            genesDict[WPID] = " ".join([WPDict[WPID], genesList])
+            genesDict[WPID] = ' '.join([WPDict[WPID], genesList])
         else:
             genesDict[WPID] = genesList
+        # List of pathways of interest
+        if WPID != 'WPID':
+            pathwaysOfInterestList.append(WPID)
 
     # Return
-    return genesDict, WPDict
+    return genesDict, WPDict, pathwaysOfInterestList
 
 
 # def readGMTFile(GMTFileName):
@@ -240,6 +316,15 @@ def readGMTFile(GMTFile):
 
 
 def readUniversFile(UniversFile):
+    """
+    Read a file to extract list of genes
+    The file is composed of one column of genes
+    These gene are all human genes in WP
+
+    :param str UniversFile: Univers file content
+    :return:
+        - **geneSetWP** (*list*) – List of genes that composed the Univers (WP for human)
+    """
     # Parameters
     geneSetWP = []
 
@@ -271,3 +356,36 @@ def readUniversFile(UniversFile):
 #
 #     # Return
 #     return geneSetWP
+
+
+# REPLACE readUniversFile() function
+def readBackgroundsFile(backgroundsFile):
+    """
+    Read a backgrounds file
+    Each line contains a background file name source correspondant of each pathway of interest
+    The order of sources depends on the order of pathways of interest.
+
+    :param filename backgroundsFile: File name of the background source of each pathway of interest
+
+    :return:
+        - **backgroundsDict** (*dict*) – Dictionary of the background genes from different sources
+        - **backgroundsList** (*list*) – List of the background gene sources to use
+    """
+    # Parameters
+    backgroundsDict = {}
+    backgroundsList = []
+    folder = os.path.dirname(backgroundsFile.name)
+    # Read backgrounds file
+    for background in backgroundsFile:
+        background = background.strip()
+        backgroundsList.append(background)
+        name = background
+        if name not in backgroundsDict:
+            backgroundsDict[name] = []
+            with open((folder + '/' + background), 'r') as bgFile:
+                for line in bgFile:
+                    linesList = line.strip().split('\t')
+                    for gene in linesList[2:]:
+                        if gene not in backgroundsDict[name] and gene != 'HGNC':
+                            backgroundsDict[name].append(gene)
+    return backgroundsDict, backgroundsList

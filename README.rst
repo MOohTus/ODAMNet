@@ -32,14 +32,6 @@ Python modules required are listed in the requierements.txt file. To install the
 
    python3 install requierements.txt
 
-MultiXrank is needeed too. Too install it, clone the github repository and install it from the directory : 
-
-.. code-block:: bash
-
-   git clone https://github.com/anthbapt/multixrank.git
-   cd multixrank
-   python3 setup.py install
-
 Usage
 ----------------
 

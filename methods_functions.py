@@ -19,7 +19,7 @@ from alive_progress import alive_bar
 
 
 # Functions
-def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict, outputPath):
+def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict, outputPath):
     """
     Calculate overlap.rst between target genes and Rase Diseases WP
 
@@ -31,7 +31,8 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
 
     :param set targetGeneSet: Set of HGNC targets
     :param dict WPGenesDict: Dictionary of Rare Diseases WP
-    :param set WPBackgroundGenesSet: Set of all HGNC inside WikiPathway for Homo sapiens
+    :param set backgroundGenesDict:
+    :param set pathwaysOfInterestList:
     :param str chemNames: MeSH ID of chemical of interest
     :param dict WPDict: Dictionary of WP composed of title of them
     :param str outputPath: Folder path to save the results
@@ -43,6 +44,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     WPIDs = []
     WPTitles = []
     WPsizes = []
+    sourcesList = []
     TargetSizes = []
     intersectionSizes = []
     universSizes = []
@@ -50,31 +52,35 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     intersections = []
 
     # Calculate pvalue overlap.rst for each RD WP found
-    for WP in WPGenesDict:
-        if WP != "WPID":
-            WPGeneSet = set(WPGenesDict[WP])
+    for pathway in pathwaysOfInterestList:
+        pathwayName = pathway[0]
+        source = pathway[1]
 
-            # Metrics calculation
-            M = len(WPBackgroundGenesSet)
-            n = len(WPGeneSet)
-            N = len(targetGeneSet.intersection(WPBackgroundGenesSet))  # Taking only genes that are also in background
-            intersection = list(WPGeneSet.intersection(targetGeneSet))
-            x = len(intersection)
-            # print(M, n, N, x)
+        genesSet = set(WPGenesDict[pathwayName])
+        backgroundGenesSet = set(backgroundGenesDict[source])
 
-            # Hyper geometric test
-            pval = hypergeom.sf(x - 1, M, n, N)
+        # Metrics calculation
+        M = len(backgroundGenesSet)
+        n = len(genesSet)
+        N = len(targetGeneSet.intersection(backgroundGenesSet))  # Taking only genes that are also in background
+        intersection = list(genesSet.intersection(targetGeneSet))
+        x = len(intersection)
+        # print(pathwayName, M, n, N, x)
 
-            # Fill variable to store information and metrics
-            WPIDs.append(WP)
-            WPTitles.append(WPDict[WP])
-            WPsizes.append(n)
-            TargetSizes.append(N)
-            intersectionSizes.append(x)
-            universSizes.append(M)
-            pValues.append(pval)
-            intersection.sort()
-            intersections.append(' '.join(intersection))
+        # Hyper geometric test
+        pval = hypergeom.sf(x - 1, M, n, N)
+
+        # Fill variable to store information and metrics
+        WPIDs.append(pathwayName)
+        WPTitles.append(WPDict[pathwayName])
+        WPsizes.append(n)
+        sourcesList.append(source)
+        TargetSizes.append(N)
+        intersectionSizes.append(x)
+        universSizes.append(M)
+        pValues.append(pval)
+        intersection.sort()
+        intersections.append(' '.join(intersection))
 
     # Multiple tests to correct pvalue
     reject, pValsAdj, alphacSidak, alphacBonf = multipletests(pValues, alpha=0.05, method='fdr_bh')
@@ -82,6 +88,7 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     # Final
     df = pd.DataFrame({'WPID': WPIDs,
                        'WPTitle': WPTitles,
+                       'Source': sourcesList,
                        'WPSize': WPsizes,
                        'TargetSize': TargetSizes,
                        'IntersectionSize': intersectionSizes,
@@ -99,13 +106,14 @@ def overlap(targetGeneSet, WPGenesDict, WPBackgroundGenesSet, chemNames, WPDict,
     # return df
 
 
-def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
+def overlapAnalysis(chemTargetsDict, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList, WPDict, outputPath):
     """
     For each chemical given in input, calculate overlap.rst with RD WP.
 
     :param dict chemTargetsDict: Dict composed of interaction genes list for each chemical
     :param dict WPGeneRDDict: Dictionary of Rare Diseases WP
-    :param list WPBackgroundGenes: List of uniq genes found in Homo sapiens WP
+    :param list backgroundGenesDict:
+    :param list pathwaysOfInterestList:
     :param dict WPDict: Dict of titles for each RD WikiPathway
     :param str outputPath: Folder path to save the results
     """
@@ -113,7 +121,8 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, WPBackgroundGenes, WPDict, ou
     for chem in chemTargetsDict:
         overlap(targetGeneSet=set(chemTargetsDict[chem]),
                 WPGenesDict=WPGeneRDDict,
-                WPBackgroundGenesSet=set(WPBackgroundGenes),
+                backgroundGenesDict=backgroundGenesDict,
+                pathwaysOfInterestList=pathwaysOfInterestList,
                 chemNames=chem,
                 WPDict=WPDict,
                 outputPath=outputPath)
@@ -178,7 +187,8 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
     return activeModules_list
 
 
-def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
+def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList,
+                             WPDict, outputPath):
     """ """
     # Parameters
     resultsDict = {}
@@ -199,7 +209,8 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgrou
         # Run Overlap
         overlapAnalysis(chemTargetsDict=resultsDict[featureName],
                         WPGeneRDDict=WPGeneRDDict,
-                        WPBackgroundGenes=WPBackgroundGenes,
+                        backgroundGenesDict=backgroundGenesDict,
+                        pathwaysOfInterestList=pathwaysOfInterestList,
                         WPDict=WPDict,
                         outputPath=outputPath)
         print(featureName + " analysis done!\n")
@@ -254,4 +265,3 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgrou
 #         print("No Active Modules detected")
 #
 #     return activeModules_list
-
