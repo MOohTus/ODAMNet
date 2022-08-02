@@ -8,6 +8,7 @@ Different approaches are implemented in this tool to analysis link between envir
    :nested: short
 
 .. toctree::
+   :maxdepth: 1
    :titlesonly:
    :hidden:
 

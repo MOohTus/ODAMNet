@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
 
   
   
@@ -195,7 +196,7 @@ Analysis calling</p>
 Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.overlap">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetGeneSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPBackgroundGenesSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chemNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlap" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetGeneSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chemNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate overlap.rst between target genes and Rase Diseases WP</p>
 <dl class="simple">
 <dt>Metrics :</dt><dd><ul class="simple">
@@ -228,7 +229,7 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.overlapAnalysis">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemTargetsDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPBackgroundGenes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlapAnalysis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemTargetsDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlapAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each chemical given in input, calculate overlap.rst with RD WP.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -268,7 +269,7 @@ You have to specify seeds and networks.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINOandOverlapAnalysis">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPBackgroundGenes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -425,7 +426,41 @@ Write request result into output file.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="WP_functions.readUniversFile">
 <span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readUniversFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UniversFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readUniversFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Read a file to extract list of genes
+The file is composed of one column of genes
+These gene are all human genes in WP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>UniversFile</strong> (<em>str</em>) – Univers file content</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>geneSetWP</strong> (<em>list</em>) – List of genes that composed the Univers (WP for human)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="WP_functions.readBackgroundsFile">
+<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readBackgroundsFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">backgroundsFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readBackgroundsFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a backgrounds file
+Each line contains a background file name source correspondant of each pathway of interest
+The order of sources depends on the order of pathways of interest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>backgroundsFile</strong> (<em>filename</em>) – File name of the background source of each pathway of interest</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>backgroundsDict</strong> (<em>dict</em>) – Dictionary of the background genes from different sources</p></li>
+<li><p><strong>backgroundsList</strong> (<em>list</em>) – List of the background gene sources to use</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 

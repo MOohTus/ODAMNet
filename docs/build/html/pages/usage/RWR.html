@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
 
   
   
@@ -37,6 +38,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -96,9 +98,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="Quickstart.html">Quickstart</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overlap.html">Overlap analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="AMI.html">Active Module Identification (AMI)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AMI.html#up-to-date-analysis-vitamin-a">Up to date analysis - Vitamin A :</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AMI.html#specific-version-vitamin-a">Specific version - Vitamin A :</a></li>
-<li class="toctree-l2"><a class="reference internal" href="AMI.html#global-analysis-data-as-you-want">Global analysis - Data as you want :</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newNetwork.html">Creation of bipartite and network</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Random Walk with Restart (RWR)</a></li>
 </ul>
@@ -306,6 +305,208 @@ Select the approach you want to perform :</p>
 </dl>
 </dd></dl>
 
+</section>
+</section>
+<section id="up-to-date-analysis-vitamin-a">
+<h2>Up to date analysis - Vitamin A :<a class="headerlink" href="#up-to-date-analysis-vitamin-a" title="Permalink to this headline">¶</a></h2>
+<section id="required-options">
+<h3>Required options :<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
+The user can gives several chemicals in the same line : they will be grouped for the analysis.</p>
+</dd>
+<dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
+<dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+The short one contains the network and bipartite trees and the path of the seed file.
+If the user want more details go the the multiXrank’s documentation :
+<a class="reference external" href="https://github.com/anthbapt/multixrank">github</a> /
+<a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">doc</a></p>
+</dd>
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>The path of the repository that contains the multiplex folder.</p>
+</dd>
+<dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>The path name of the seed file. This file contains the list of genes (g.e. target genes, interested genes)
+that are used as seed to start the walk.</p>
+</dd>
+<dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
+<dd><p>Output file name to save the result into a SIF file.</p>
+</dd>
+</dl>
+</section>
+<section id="optionals-options">
+<h3>Optionals options :<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
+<dd><p>If TRUE, only the genes targeted by the chemical are extracted.
+If FALSE, the genes targeted by the chemical and all the descendant molecules are extracted.
+[default: True]</p>
+</dd>
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>In CTD, an interaction between a gene and a molecule can have references.
+The user can set a threshold on the number of publications needed to extract the interaction.
+[default: 2]</p>
+</dd>
+<dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
+<dd><p>Threshold used to create the SIF network results.</p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where save the results
+[default: OutputResults]</p>
+</dd>
+</dl>
+</section>
+<section id="vitamin-a-analysis-command-line">
+<h3>Vitamin A analysis - Command line :<a class="headerlink" href="#vitamin-a-analysis-command-line" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-0-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-0-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-0-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
+                             --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                             --networksPath examples/InputData/ <span class="se">\</span>
+                             --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                             --sifFileName example1_resultsNetwork.sif
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-ZGV0YWlsZWQ=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
+                             --directAssociation False <span class="se">\</span>
+                             --nbPub <span class="m">2</span> <span class="se">\</span>
+                             --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                             --networksPath examples/InputData/ <span class="se">\</span>
+                             --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                             --sifFileName example1_resultsNetwork.sif <span class="se">\</span>
+                             --top <span class="m">10</span> <span class="se">\</span>
+                             --outputPath examples/OutputResults_example1/
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="specific-version-vitamin-a">
+<h2>Specific version - Vitamin A :<a class="headerlink" href="#specific-version-vitamin-a" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>Required options :<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
+<dd><p>It’s a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.</p>
+</dd>
+<dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
+<dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+The short one contains the network and bipartite trees and the path of the seed file.
+If the user want more details go the the multiXrank’s documentation :
+<a class="reference external" href="https://github.com/anthbapt/multixrank">github</a> /
+<a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">doc</a></p>
+</dd>
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>The path of the repository that contains the multiplex folder.</p>
+</dd>
+<dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>The path name of the seed file. This file contains the list of genes (g.e. target genes, interested genes)
+that are used as seed to start the walk.</p>
+</dd>
+<dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
+<dd><p>Output file name to save the result into a SIF file.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Optionals options :<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>In CTD, an interaction between a gene and a molecule can have references.
+The user can set a threshold on the number of publications needed to extract the interaction.
+[default: 2]</p>
+</dd>
+<dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
+<dd><p>Threshold used to create the SIF network results.</p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where save the results
+[default: OutputResults]</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Vitamin A analysis - Command line :<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-1-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-1-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-1-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv <span class="se">\</span>
+                             --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                             --networksPath examples/InputData/ <span class="se">\</span>
+                             --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                             --sifFileName example2_resultsNetwork.sif
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-ZGV0YWlsZWQ=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv <span class="se">\</span>
+                            --nbPub <span class="m">2</span> <span class="se">\</span>
+                            --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                            --networksPath examples/InputData/ <span class="se">\</span>
+                            --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName example2_resultsNetwork.sif <span class="se">\</span>
+                            --top <span class="m">10</span> <span class="se">\</span>
+                            --outputPath examples/OutputResults_example2/
+</pre></div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="global-analysis-data-as-you-want">
+<h2>Global analysis - Data as you want :<a class="headerlink" href="#global-analysis-data-as-you-want" title="Permalink to this headline">¶</a></h2>
+<section id="id4">
+<h3>Required options :<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of gens of interest. One gene per line.</p>
+</dd>
+<dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
+<dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+The short one contains the network and bipartite trees and the path of the seed file.
+If the user want more details go the the multiXrank’s documentation :
+<a class="reference external" href="https://github.com/anthbapt/multixrank">github</a> /
+<a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">doc</a></p>
+</dd>
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>The path of the repository that contains the multiplex folder.</p>
+</dd>
+<dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>The path name of the seed file. This file contains the list of genes (g.e. target genes, interested genes)
+that are used as seed to start the walk.</p>
+</dd>
+<dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
+<dd><p>Output file name to save the result into a SIF file.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Optionals options :<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<dl class="option-list">
+<dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
+<dd><p>Threshold used to create the SIF network results.</p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where save the results
+[default: OutputResults]</p>
+</dd>
+</dl>
+</section>
+<section id="vitamin-a-analysis-with-data-from-paper-ozisik-2022">
+<h3>Vitamin A analysis with data from paper <em>(Ozisik, 2022)</em>:<a class="headerlink" href="#vitamin-a-analysis-with-data-from-paper-ozisik-2022" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-2-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-2-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-2-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                             --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                             --networksPath examples/InputData/ <span class="se">\</span>
+                             --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                             --sifFileName example3_resultsNetwork.sif
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-ZGV0YWlsZWQ=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                            --configPath examples/InputData/config_minimal.yml <span class="se">\</span>
+                            --networksPath examples/InputData/ <span class="se">\</span>
+                            --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName example3_resultsNetwork.sif <span class="se">\</span>
+                            --top <span class="m">10</span> <span class="se">\</span>
+                            --outputPath examples/OutputResults_example3/
+</pre></div>
+</div>
+</div></div>
 </section>
 </section>
 </section>

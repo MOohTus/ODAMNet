@@ -1,5 +1,5 @@
 Active Module Identification (AMI)
-===================================
+-------------------------------------
 
 Different approaches are implemented in this tool to analysis link between environmental factor and rare disease pathways.
 
@@ -7,7 +7,6 @@ Different approaches are implemented in this tool to analysis link between envir
    :prog: main
    :nested: full
    :commands: domino
-
 
 Up to date analysis - Vitamin A :
 ===================================
@@ -39,17 +38,27 @@ Optionals options :
     Name of the folder where save the results
     [default: OutputResults]
 
-Default parameters :
-^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
+Command line :
+^^^^^^^^^^^^^^^^^^^
 
-   python3 main.py domino
+.. tabs::
 
-Vitamin A analysis :
-^^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
+    .. group-tab:: short
 
-   python3 main.py domino
+        .. code-block:: bash
+
+            python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv \
+                                    --directAssociation FALSE \
+                                    --nbPub 2 \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example1/
 
 Specific version - Vitamin A :
 ===============================
@@ -82,18 +91,30 @@ Optionals options :
     Name of the folder where save the results
     [default: OutputResults]
 
-Default parameters :
-^^^^^^^^^^^^^^^^^^^^^
-.. code-block:: bash
+Command line :
+^^^^^^^^^^^^^^^^^^^
 
-   python3 main.py domino
+.. tabs::
 
-Vitamin A analysis :
-^^^^^^^^^^^^^^^^^^^^^
+    .. group-tab:: short
 
-.. code-block:: bash
+        .. code-block:: bash
 
-   python3 main.py domino
+            python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  \
+                                    --nbPub 2 \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example2/
 
 
 Global analysis - Data as you want :
@@ -127,6 +148,26 @@ Optionals options :
 Vitamin A analysis with data from paper *(Ozisik, 2022)*:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+Command line :
+^^^^^^^^^^^^^^^^^^^
 
-   python3 main.py domino
+.. tabs::
+
+    .. group-tab:: short
+
+        .. code-block:: bash
+
+            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
+                                    --networkFile examples/InputData/PPI_network_2016.sif
+
+    .. group-tab:: detailed
+
+        .. code-block:: bash
+
+            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
+                                    --networkFile examples/InputData/PPI_network_2016.sif \
+                                    --outputPath examples/OutputResults_example3/

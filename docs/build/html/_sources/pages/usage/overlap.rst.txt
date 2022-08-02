@@ -82,8 +82,8 @@ Default parameters :
 .. code-block:: bash
 
    python3 main.py overlap  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv \
-                            --WP_GMT examples/InputData/InputFile_WP_RareDiseases_request_2022_07_01.tsv \
-                            --backgroundFile examples/InputData/InputFile_WP_listOfAllHumanGenes_2022_07_01.tsv
+                            --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                            --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv
 
 Vitamin A analysis :
 ^^^^^^^^^^^^^^^^^^^^^
@@ -91,8 +91,8 @@ Vitamin A analysis :
 .. code-block:: bash
 
    python3 main.py overlap  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv \
-                            --WP_GMT examples/InputData/InputFile_WP_RareDiseases_request_2022_07_01.tsv \
-                            --backgroundFile examples/InputData/InputFile_WP_listOfAllHumanGenes_2022_07_01.tsv \
+                            --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                            --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
                             --nbPub 2 \
                             --outputPath examples/OutputResults_example2/
 
@@ -126,7 +126,37 @@ Vitamin A analysis with data from paper *(Ozisik, 2022)*:
 
 .. code-block:: bash
 
-   python3 main.py overlap  --geneList examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv \
-                            --WP_GMT examples/InputData/InputFile_WP_RareDiseases_request_2022_07_01.tsv \
-                            --backgroundFile examples/InputData/InputFile_WP_listOfAllHumanGenes_2022_07_01.tsv \
+   python3 main.py overlap  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                            --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                            --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
                             --outputPath examples/OutputResults_example3/
+
+.. tabs::
+
+    .. group-tab:: example 1
+
+        .. code-block:: bash
+
+           python3 main.py overlap  --factorList examples/InputData/InputFile_factorsList.csv \
+                                    --directAssociation FALSE \
+                                    --nbPub 2 \
+                                    --outputPath examples/OutputResults_example1/
+
+    .. group-tab:: example 2
+
+        .. code-block:: bash
+
+           python3 main.py overlap  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --nbPub 2 \
+                                    --outputPath examples/OutputResults_example2/
+
+    .. group-tab:: example 3
+
+        .. code-block:: bash
+
+           python3 main.py overlap  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
+                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
+                                    --outputPath examples/OutputResults_example3/
