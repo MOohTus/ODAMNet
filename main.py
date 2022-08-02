@@ -296,6 +296,7 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
             seedFileHandler.write('\n')
         # Run multiXrank
         shutil.copyfile(seedsFileName, analysisOutputPath + '/' + os.path.basename(seedsFileName))
+        shutil.copyfile(configPath, analysisOutputPath + '/' + os.path.basename(configPath))
         methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=analysisOutputPath,
                     sifPathName=sifPathName, top=top)
 
