@@ -170,14 +170,13 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 
 
 @main.command('networkCreation', short_help='Create network and bipartite', context_settings=CONTEXT_SETTINGS)
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
-              help='Pathways of interest in GMT like format (e.g. from WP request).')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Output path where save the network')
 @click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
               metavar='FILENAME', help='Network output name')
 @click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True, help='Output path where save the bipartite')
 @click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
               show_default=True, metavar='FILENAME', help='Bipartite output name')
+@click.option('--WP_GMT', 'WP_GMT', type=click.File(), help='Pathways of interest in GMT like format (e.g. from WP request).')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output path name (for complementary output files)')
 def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
@@ -202,10 +201,10 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
     # Extract all rare disease genes from WP
     if WP_GMT:
         # From file
-        WPGeneRDDict, WPDict = WP.readGMTFile(GMTFile=WP_GMT)
+        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
     else:
         # From request
-        WPGeneRDDict, WPDict = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
 
     # Create gene symbols and diseases bipartite
     for ID in WPGeneRDDict:
