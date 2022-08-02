@@ -114,7 +114,7 @@ Command line :
                                     --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
                                     --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
                                     --networkFile examples/InputData/PPI_network_2016.sif \
-                                    --outputPath examples/OutputResults_example3/
+                                    --outputPath examples/OutputResults_example2/
 
 
 Global analysis - Data as you want :
