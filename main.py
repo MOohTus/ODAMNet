@@ -20,7 +20,6 @@ import customClick as customClick
 import os
 from alive_progress import alive_bar
 import shutil as shutil
-from datetime import datetime
 
 # Script version
 VERSION = '1.0'
@@ -63,9 +62,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
 
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
-    date = datetime.today().strftime('%Y_%m_%d')
     featuresDict = {}
-    backgroundGenesDict = {}
     pathwaysOfInterestList = []
 
     # Check if outputPath exist and create it if it does not exist
