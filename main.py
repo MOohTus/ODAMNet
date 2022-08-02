@@ -163,7 +163,8 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     methods.DOMINOandOverlapAnalysis(featuresDict=featuresDict,
                                      networkFile=networkFile,
                                      WPGeneRDDict=WPGeneRDDict,
-                                     WPBackgroundGenes=WPBackgroundGenes,
+                                     backgroundGenesDict=backgroundGenesDict,
+                                     pathwaysOfInterestList=pathwaysOfInterestList,
                                      WPDict=WPDict,
                                      outputPath=outputPath)
 

@@ -185,7 +185,7 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
     return activeModules_list
 
 
-def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgroundGenes, WPDict, outputPath):
+def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList, WPDict, outputPath):
     """ """
     # Parameters
     resultsDict = {}
@@ -206,7 +206,8 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, WPBackgrou
         # Run Overlap
         overlapAnalysis(chemTargetsDict=resultsDict[featureName],
                         WPGeneRDDict=WPGeneRDDict,
-                        WPBackgroundGenes=WPBackgroundGenes,
+                        backgroundGenesDict=backgroundGenesDict,
+                        pathwaysOfInterestList=pathwaysOfInterestList,
                         WPDict=WPDict,
                         outputPath=outputPath)
         print(featureName + " analysis done!\n")
