@@ -53,6 +53,7 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     targetGenesDict = {}
     chemNameList = []
     outputLines = []
+    chemName = ''
 
     for line in CTDFile:
         lineList = line.rstrip().split("\t")
@@ -111,7 +112,6 @@ def readCTDFile(CTDFile, nbPub, outputPath):
 #                         chemNameList.append(chemName)
 #             # Dictionary creation
 #             targetGenesDict["_".join([chemName])] = targetGenesList
-#         # Return
 #         return targetGenesDict
 #     except IOError:
 #         print("I/O error while reading CTD file.")
@@ -154,13 +154,13 @@ def CTDrequest(chemName, association, outputPath, nbPub):
         elementList = element.split("\t")
         # resultsList.append(elementList)
         if re.match('#', elementList[0]):
-            elementList[0] = re.sub('# ', "", elementList[0])
+            elementList[0] = re.sub('# ', '', elementList[0])
             homoResultsList.append(elementList)
         else:
             if re.match(PARAMS['inputTerms'].lower(), elementList[0]):
-                if elementList[6] == "Homo sapiens":
+                if elementList[6] == 'Homo sapiens':
                     homoResultsList.append(elementList)
-                    refList = elementList[8].split("|")
+                    refList = elementList[8].split('|')
                     if len(refList) >= nbPub:
                         homoResultsListReferences.append(elementList)
                         if elementList[4] not in homoGenesList:
@@ -173,27 +173,27 @@ def CTDrequest(chemName, association, outputPath, nbPub):
     # len(resultsList)
 
     # Build name of output results file
-    for chem in chemName.split("|"):
+    for chem in chemName.split('|'):
         if chem in meshNamesDict:
             chemMeSHList.append(meshNamesDict[chem.lower()])
         else:
             chemMeSHList.append(chem)
-    chemMeSH = "_".join(chemMeSHList)
+    chemMeSH = '_'.join(chemMeSHList)
     date = datetime.today().strftime('%Y_%m_%d')
-    resultFileName = outputPath + "/CTD_request_" + chemMeSH + "_" + date + ".tsv"
-    filteredResultFileName = outputPath + "/CTD_requestFiltered_" + chemMeSH + "_" + date + ".tsv"
+    resultFileName = outputPath + '/CTD_request_' + chemMeSH + '_' + date + '.tsv'
+    filteredResultFileName = outputPath + '/CTD_requestFiltered_' + chemMeSH + '_' + date + '.tsv'
 
     # Write result into file
     with open(resultFileName, 'w') as outputFileHandler:
         for resultLine in homoResultsList:
-            outputFileHandler.write("\t".join(resultLine))
-            outputFileHandler.write("\n")
+            outputFileHandler.write('\t'.join(resultLine))
+            outputFileHandler.write('\n')
 
     # Write filtered result into file
     with open(filteredResultFileName, 'w') as outputFileHandler:
         for resultLine in homoResultsListReferences:
-            outputFileHandler.write("\t".join(resultLine))
-            outputFileHandler.write("\n")
+            outputFileHandler.write('\t'.join(resultLine))
+            outputFileHandler.write('\n')
 
     # print(chemMeSH + " - Total number of interactions in the request : " + str(len(homoResultsList)))
     # print(chemMeSH + " - Number of uniq chemicals in the request : " + str(len(meshNamesDict)))
@@ -223,7 +223,7 @@ def CTDrequestFromList(chemList, association, outputPath, nbPub):
     # For each chemical, request CTD
     for chem in chemList:
         chemNamesList = chem.rstrip().split(';')
-        chemNamesString = "|".join(chemNamesList)
+        chemNamesString = '|'.join(chemNamesList)
         chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association, outputPath=outputPath, nbPub=nbPub)
         chemTargetsDict[chemNames] = chemTargetsList
     return chemTargetsDict
@@ -236,7 +236,11 @@ def targetExtraction(CTDFile, directAssociations, outputPath, nbPub):
     Save results into output file
     Return the gene targets list
 
-    :param argsDict:
+    :param CTDFile:
+    :param directAssociations:
+    :param outputPath:
+    :param nbPub:
+
     :return:
     """
     if directAssociations:
@@ -244,13 +248,14 @@ def targetExtraction(CTDFile, directAssociations, outputPath, nbPub):
     else:
         association = 'hierarchicalAssociations'
 
-    # # Check if outputPath exist and create it if does not
+    # # Check if outputPath exist and create it if it does not
     # if not os.path.exists(outputPath):
     #     os.makedirs(outputPath, exist_ok=True)
 
     # Read CTD file and request CTD database
     # print('\nCTD request: ')
     chemNameList = readListFile(CTDFile)
-    chemTargetsDict = CTDrequestFromList(chemList=chemNameList, association=association, outputPath=outputPath, nbPub=nbPub)
+    chemTargetsDict = CTDrequestFromList(chemList=chemNameList, association=association,
+                                         outputPath=outputPath, nbPub=nbPub)
 
     return chemTargetsDict

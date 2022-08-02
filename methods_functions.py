@@ -31,7 +31,8 @@ def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestL
 
     :param set targetGeneSet: Set of HGNC targets
     :param dict WPGenesDict: Dictionary of Rare Diseases WP
-    :param set WPBackgroundGenesSet: Set of all HGNC inside WikiPathway for Homo sapiens
+    :param set backgroundGenesDict:
+    :param set pathwaysOfInterestList:
     :param str chemNames: MeSH ID of chemical of interest
     :param dict WPDict: Dictionary of WP composed of title of them
     :param str outputPath: Folder path to save the results
@@ -111,7 +112,8 @@ def overlapAnalysis(chemTargetsDict, WPGeneRDDict, backgroundGenesDict, pathways
 
     :param dict chemTargetsDict: Dict composed of interaction genes list for each chemical
     :param dict WPGeneRDDict: Dictionary of Rare Diseases WP
-    :param list WPBackgroundGenes: List of uniq genes found in Homo sapiens WP
+    :param list backgroundGenesDict:
+    :param list pathwaysOfInterestList:
     :param dict WPDict: Dict of titles for each RD WikiPathway
     :param str outputPath: Folder path to save the results
     """
@@ -185,7 +187,8 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
     return activeModules_list
 
 
-def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList, WPDict, outputPath):
+def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList,
+                             WPDict, outputPath):
     """ """
     # Parameters
     resultsDict = {}
@@ -262,4 +265,3 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, background
 #         print("No Active Modules detected")
 #
 #     return activeModules_list
-

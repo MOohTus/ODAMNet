@@ -50,7 +50,8 @@ def main():
 @optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
               help='True: Only chem targets \\ False:Chem + descendants targets')
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
+              help='Number of references needed at least to keep an interaction')
 @click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
@@ -111,7 +112,8 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
 @optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
               help='True: Only chem targets \\ False:Chem + descendants targets')
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
+              help='Number of references needed at least to keep an interaction')
 @click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True, help='Network file name')
 @click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
@@ -167,13 +169,16 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 
 
 @main.command('networkCreation', short_help='Create network and bipartite', context_settings=CONTEXT_SETTINGS)
-@click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Output path where save the network')
+@click.option('--networksPath', 'networksPath', type=click.Path(), required=True,
+              help='Output path where save the network')
 @click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
               metavar='FILENAME', help='Network output name')
-@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True, help='Output path where save the bipartite')
+@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True,
+              help='Output path where save the bipartite')
 @click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
               show_default=True, metavar='FILENAME', help='Bipartite output name')
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), help='Pathways of interest in GMT like format (e.g. from WP request).')
+@click.option('--WP_GMT', 'WP_GMT', type=click.File(),
+              help='Pathways of interest in GMT like format (e.g. from WP request).')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output path name (for complementary output files)')
 def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
@@ -227,13 +232,15 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
 @optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
               help='True: Only chem targets \\ False:Chem + descendants targets')
-@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True, help='Number of references needed at least to keep an interaction')
+@click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
+              help='Number of references needed at least to keep an interaction')
 @click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Configurations path name')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network directory path')
 @click.option('--seedsFile', 'seedsFileName', type=str, required=True, help='Seeds file path name', metavar='FILENAME')
 @click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF',
               metavar='FILENAME')
-@click.option('--top', 'top', type=int, default=10, show_default=True, help='Top number of results to write into output file')
+@click.option('--top', 'top', type=int, default=10, show_default=True,
+              help='Top number of results to write into output file')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
 def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,

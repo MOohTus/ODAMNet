@@ -71,8 +71,8 @@ def rareDiseasesWPrequest(outputPath):
     outputList = []
     pathwayOfInterestList = []
     date = datetime.today().strftime('%Y_%m_%d')
-    resultFileName = outputPath + "/WP_RareDiseases_request_" + date + ".gmt"
-    sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
+    resultFileName = outputPath + '/WP_RareDiseases_request_' + date + '.gmt'
+    sparql = SPARQLWrapper('https://sparql.wikipathways.org/sparql')
     sparql.setReturnFormat(TSV)
 
     # Query - Extract gene HGNC ID from RD pathways
@@ -110,9 +110,7 @@ def rareDiseasesWPrequest(outputPath):
 
     # Parsing for output
     for key in genesDict:
-        # size = str(len(genesDict[key]))
         composition = '\t'.join(genesDict[key])
-        # outputList.append(''.join([key, '\t', WPDict[key], '\t', size, '\t', composition, '\n']))
         outputList.append(''.join([key, '\t', WPDict[key], '\t', composition, '\n']))
         if key != 'WPID':
             pathwayOfInterestList.append(key)
@@ -197,8 +195,8 @@ def allGenesFromWP(outputPath):
     WPDict = {}
     outputList = []
     date = datetime.today().strftime('%Y_%m_%d')
-    resultFileName = outputPath + "/WP_allPathways_request_" + date + ".gmt"
-    sparql = SPARQLWrapper("https://sparql.wikipathways.org/sparql")
+    resultFileName = outputPath + '/WP_allPathways_request_' + date + '.gmt'
+    sparql = SPARQLWrapper('https://sparql.wikipathways.org/sparql')
     sparql.setReturnFormat(TSV)
 
     # Query - Extract all genes from Human WP (HGNC ID)
@@ -232,9 +230,7 @@ def allGenesFromWP(outputPath):
 
     # Parsing for output
     for key in genesDict:
-        # size = str(len(genesDict[key]))
         composition = '\t'.join(genesDict[key])
-        # outputList.append(''.join([key, '\t', WPDict[key], '\t', size, '\t', composition, '\n']))
         outputList.append(''.join([key, '\t', WPDict[key], '\t', composition, '\n']))
     # Write results into file - Write size and composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
@@ -245,7 +241,6 @@ def allGenesFromWP(outputPath):
     backgroundsDict = {bgName: []}
 
     for pathway in genesDict:
-        #if pathway != 'WPID':
         for gene in genesDict[pathway]:
             if gene not in backgroundsDict[bgName]:
                 backgroundsDict[bgName].append(gene)
@@ -267,12 +262,12 @@ def readGMTFile(GMTFile):
         description = lineList[1]
         # Dictionary of description
         if WPID in WPDict:
-            WPDict[WPID] = " ".join([WPDict[WPID], description])
+            WPDict[WPID] = ' '.join([WPDict[WPID], description])
         else:
             WPDict[WPID] = description
         # Dictionary of genes
         if WPID in genesDict:
-            genesDict[WPID] = " ".join([WPDict[WPID], genesList])
+            genesDict[WPID] = ' '.join([WPDict[WPID], genesList])
         else:
             genesDict[WPID] = genesList
         # List of pathways of interest
@@ -394,4 +389,3 @@ def readBackgroundsFile(backgroundsFile):
                         if gene not in backgroundsDict[name] and gene != 'HGNC':
                             backgroundsDict[name].append(gene)
     return backgroundsDict, backgroundsList
-
