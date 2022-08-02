@@ -1,5 +1,5 @@
 WPID	pathways	HGNC
-WP4153	Degradation pathway of sphingolipids, including diseases	GLB1 HEXA ARSA GLA GM2A HEXB NEU1 NEU3 NEU2 NEU4
-WP4156	Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine	PTS GCH1
-WP4157	GABA metabolism (aka GHB)	DPEP1 ALDH5A1 ABAT PON3 AKR7A2 ADHFE1
-WP4220	Neurotransmitter disorders	MAOA TH DDC DBH
+WP4153	Degradation pathway of sphingolipids, including diseases	GLB1	HEXA	ARSA	GLA	GM2A	HEXB	NEU1	NEU3	NEU2	NEU4
+WP4156	Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine	PTS	GCH1
+WP4157	GABA metabolism (aka GHB)	DPEP1	ALDH5A1	ABAT	PON3	AKR7A2	ADHFE1
+WP4220	Neurotransmitter disorders	MAOA	TH	DDC	DBH

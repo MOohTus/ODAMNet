@@ -12,7 +12,10 @@ This script tests some functions from different modules inside the project.
 # Libraries
 import unittest
 import os
+import filecmp
 import WP_functions as WP
+from datetime import datetime
+import methods_functions as methods
 
 
 class TestMethodsFromWPModule(unittest.TestCase):
@@ -74,29 +77,83 @@ class TestMethodsFromWPModule(unittest.TestCase):
         # Parameters
         outputPath = 'test_WPFunctions/'
         backgroundGenesList_expectedFile = 'test_WPFunctions/bgGenesWP_2022_07_expected.csv'
-        WPBackgroundGenesDict_expected = {'WikiPathway': []}
+        date = datetime.today().strftime('%Y_%m_%d')
+        bgName = 'WikiPathway_' + date
+        WPBackgroundGenesDict_expected = {bgName: []}
         # Read background genes file
         with open(backgroundGenesList_expectedFile, 'r') as backgroundGenesList_expected:
             for line in backgroundGenesList_expected:
-                WPBackgroundGenesDict_expected['WikiPathway'].append(line.strip())
+                WPBackgroundGenesDict_expected[bgName].append(line.strip())
         # Run command
         WPBackgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
         # Compare
-        WPBackgroundGenesDict['WikiPathway'].sort()
-        WPBackgroundGenesDict_expected['WikiPathway'].sort()
-        self.assertEqual(len(WPBackgroundGenesDict['WikiPathway']), len(WPBackgroundGenesDict_expected['WikiPathway']))
+        WPBackgroundGenesDict[bgName].sort()
+        WPBackgroundGenesDict_expected[bgName].sort()
+        self.assertEqual(len(WPBackgroundGenesDict[bgName]), len(WPBackgroundGenesDict_expected[bgName]))
         self.assertEqual(WPBackgroundGenesDict, WPBackgroundGenesDict_expected)
 
     def test_rareDiseasesWPrequest(self):
         # Parameters
         outputPath = 'test_WPFunctions/'
-        pIfInt_GMT_File = 'test_WPFunctions/WP_RareDiseases_request_2022_07_29.gmt'
-        # Expected results
-        WPGeneRDDict_expected, WPDict_expected, pathwaysOfInterestList_expected = WP.readGMTFile(pIfInt_GMT_File)
+        date = datetime.today().strftime('%Y_%m_%d')
+        pIfInt_GMT_File = 'test_WPFunctions/WP_RareDiseases_request_' + date + '.gmt'
         # Run command
         WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        # Expected results
+        with open(pIfInt_GMT_File, 'r') as expectedGMTFile:
+            WPGeneRDDict_expected, WPDict_expected, pathwaysOfInterestList_expected = WP.readGMTFile(expectedGMTFile)
         # Compare
         self.assertEqual(pathwaysOfInterestList, pathwaysOfInterestList_expected)
+
+
+class TestOverlapAnalysis(unittest.TestCase):
+
+    def test_overlap_from1Source(self):
+        # Init
+        targetGeneSet = set(['gene1', 'gene2', 'gene3', 'gene4'])
+        WPGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
+                       'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
+                       'Pathway3': ['gene1', 'gene10']}
+        backgroundGenesDict = {'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10']}
+        pathwaysOfInterestList = [['Pathway1', 'Source1'], ['Pathway2', 'Source1'], ['Pathway3', 'Source1']]
+        chemNames = 'unittests_source1'
+        WPDict = {'Pathway1': 'Pathway1 from source 1',
+                  'Pathway2': 'Pathway2 from source 1',
+                  'Pathway3': 'Pathway3 from source 1'}
+        outputPath = '.'
+        # Run overlap analysis
+        methods.overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict, outputPath)
+        # Compare
+        self.assertTrue(filecmp.cmp(f1='Overlap_unittests_source1_withRDWP.csv',
+                                    f2='Overlap_unittests_source1_withRDWP_expected.csv',
+                                    shallow=False))
+
+    def test_overlap_fromDifferentSources(self):
+        # Init
+        targetGeneSet = set(['gene1', 'gene2', 'gene3', 'gene4'])
+        WPGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
+                       'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
+                       'Pathway3': ['gene1', 'gene10'],
+                       'Pathway4': ['gene1', 'gene4', 'gene5', 'gene8', 'gene10']}
+        backgroundGenesDict = {
+            'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10'],
+            'Source2': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9'],
+            'Source3': ['gene1', 'gene20', 'gene3', 'gene4', 'gene50', 'gene6', 'gene10']}
+        pathwaysOfInterestList = [
+            ['Pathway1', 'Source1'], ['Pathway2', 'Source2'], ['Pathway3', 'Source3'], ['Pathway4', 'Source1']]
+        chemNames = 'unittests_manySources'
+        WPDict = {'Pathway1': 'Pathway1 from source 1',
+                  'Pathway2': 'Pathway2 from source 2',
+                  'Pathway3': 'Pathway3 from source 3',
+                  'Pathway4': 'Pathway4 from source 1'}
+        outputPath = '.'
+        # Run overlap analysis
+        methods.overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict,
+                        outputPath)
+        # Compare
+        self.assertTrue(filecmp.cmp(f1='Overlap_unittests_manySources_withRDWP.csv',
+                                    f2='Overlap_unittests_manySources_withRDWP_expected.csv',
+                                    shallow=False))
 
 
 if __name__ == '__main__':
