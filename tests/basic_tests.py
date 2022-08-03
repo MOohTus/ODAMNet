@@ -14,40 +14,41 @@ import unittest
 import os
 import filecmp
 import WP_functions as WP
+import CTD_functions as CTD
 from datetime import datetime
 import methods_functions as methods
 
 
 class TestMethodsFromWPModule(unittest.TestCase):
 
-    def test_readBackgroundsFile(self):
-        # Parameters
-        backgroundsDict_expected = {}
-        backgroundsList_expected = []
-        # Input
-        backgroundsFile = 'test_WPFunctions/backgroundsFile.tsv'
-        backgroundsDict_expectedFiles = ['test_WPFunctions/source1.gmt.expectedList.tsv',
-                                         'test_WPFunctions/source2.gmt.expectedList.tsv',
-                                         'test_WPFunctions/source3.gmt.expectedList.tsv',
-                                         'test_WPFunctions/source4.gmt.expectedList.tsv']
-        backgroundsList_expectedFile = 'test_WPFunctions/expectedBgList.tsv'
-        # Read background expected files
-        for file in backgroundsDict_expectedFiles:
-            with open(file, 'r') as fileHandler:
-                name = os.path.basename(file).split('.exp')[0]
-                backgroundsDict_expected[name] = []
-                for line in fileHandler:
-                    backgroundsDict_expected[name].append(line.strip())
-        # Read list of source expected
-        with open(backgroundsList_expectedFile, 'r') as fileHandler:
-            for line in fileHandler:
-                linesList = line.strip().split('\t')
-                backgroundsList_expected.append(linesList[1])
-        # Run function
-        with open(backgroundsFile, 'r') as bgFile:
-            backgroundsDict, backgroundsList = WP.readBackgroundsFile(bgFile)
-        # Compare
-        self.assertEqual(backgroundsList, backgroundsList_expected)
+    # def test_readBackgroundsFile(self):
+    #     # Parameters
+    #     backgroundsDict_expected = {}
+    #     backgroundsList_expected = []
+    #     # Input
+    #     backgroundsFile = 'test_WPFunctions/backgroundsFile.tsv'
+    #     backgroundsDict_expectedFiles = ['test_WPFunctions/source1.gmt.expectedList.tsv',
+    #                                      'test_WPFunctions/source2.gmt.expectedList.tsv',
+    #                                      'test_WPFunctions/source3.gmt.expectedList.tsv',
+    #                                      'test_WPFunctions/source4.gmt.expectedList.tsv']
+    #     backgroundsList_expectedFile = 'test_WPFunctions/expectedBgList.tsv'
+    #     # Read background expected files
+    #     for file in backgroundsDict_expectedFiles:
+    #         with open(file, 'r') as fileHandler:
+    #             name = os.path.basename(file).split('.exp')[0]
+    #             backgroundsDict_expected[name] = []
+    #             for line in fileHandler:
+    #                 backgroundsDict_expected[name].append(line.strip())
+    #     # Read list of source expected
+    #     with open(backgroundsList_expectedFile, 'r') as fileHandler:
+    #         for line in fileHandler:
+    #             linesList = line.strip().split('\t')
+    #             backgroundsList_expected.append(linesList[1])
+    #     # Run function
+    #     with open(backgroundsFile, 'r') as bgFile:
+    #         backgroundsDict, backgroundsList = WP.readBackgroundsFile(bgFile)
+    #     # Compare
+    #     self.assertEqual(backgroundsList, backgroundsList_expected)
 
     def test_readGMTFile(self):
         # Parameters
@@ -154,6 +155,35 @@ class TestOverlapAnalysis(unittest.TestCase):
         self.assertTrue(filecmp.cmp(f1='Overlap_unittests_manySources_withRDWP.csv',
                                     f2='Overlap_unittests_manySources_withRDWP_expected.csv',
                                     shallow=False))
+
+
+class TestMethodFunctions(unittest.TestCase):
+
+    def test_intersectionFunction(self):
+        # GMT files
+        GMTFile = 'test_methodFunctions/PathwaysOfInterestBackground.txt'
+        with open(GMTFile, 'r') as GMTFileContent:
+            bgDict, bgList = WP.readBackgroundsFile(GMTFileContent)
+        for bg in bgDict:
+            print(bg, len(bgDict[bg]))
+            with open('test_methodFunctions/' + bg + '.list', 'w') as output:
+                output.write("\n".join(bgDict[bg]))
+                output.write("\n")
+        # Genes file
+        genesFile = 'test_methodFunctions/VitA-Balmer2002-Genes.txt'
+        with open(genesFile, 'r') as inputFileHandler:
+            geneList = CTD.readListFile(listFile=inputFileHandler)
+        with open('test_methodFunctions/genesList.list', 'w') as output:
+            output.write("\n".join(geneList))
+            output.write("\n")
+        # Comparison
+        genesSet = set(geneList)
+        for bg in bgDict:
+            bgSet = set(bgDict[bg])
+            intersectionSet = genesSet.intersection(bgSet)
+            with open('test_methodFunctions/' + bg + 'intersection.list', 'w') as output:
+                output.write("\n".join(intersectionSet))
+                output.write("\n")
 
 
 if __name__ == '__main__':
