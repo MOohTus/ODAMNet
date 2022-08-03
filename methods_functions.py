@@ -13,6 +13,7 @@ import requests
 import os
 import multixrank
 import pandas as pd
+import networkx as nx
 from scipy.stats import hypergeom
 from statsmodels.stats.multitest import multipletests
 from alive_progress import alive_bar
@@ -215,53 +216,76 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, background
                         outputPath=outputPath)
         print(featureName + " analysis done!\n")
 
-# def DOMINO(genesFileName, networkFileName, outputPath, chemMeSH):
-#     """
-#
-#     :param genesFileName:
-#     :param networkFileName:
-#     :return:
-#     """
-#     # Debug part
-#     # genesFileName = 'TestDOMINO/OutputDOMINOResults_old/DOMINO_inputGeneList_D014801.txt'
-#     # networkFileName = 'test/InputData/InputFile_PPI_2016.sif'
-#     # outputPath=outputPath
-#     # chemMeSH=chemMeSH
-#     # # os.chdir('D:\\Morgane\\Work\\MMG\\05_EJP_RD\\WF_Environment\\EnvironmentProject\\test')
-#     # os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject')
-#
-#     # Input file names
-#     data_dict = {
-#         'Network file name': os.path.basename(networkFileName),
-#         'Active gene file name': os.path.basename(genesFileName)
-#     }
-#     # Input file contents
-#     files_dict = {
-#         'Network file contents': open(networkFileName, 'rb'),
-#         'Active gene file contents': open(genesFileName, 'rb')
-#     }
-#
-#     # Request and run DOMINO
-#     with alive_bar(title='Search active modules using DOMINO', theme='musical') as bar:
-#         response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
-#         bar()
-#
-#     # Parse the result request
-#     response_dict = response.json()
-#     activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
-#
-#     if(len(activeModules_list.keys()) > 0):
-#         # Write results into file
-#         resultOutput = outputPath + "/DOMINO_" + chemMeSH + "_activeModules.txt"
-#         with open(resultOutput, 'w') as outputFileHandler:
-#             for module in activeModules_list:
-#                 for gene in activeModules_list[module]:
-#                     line = gene + "\t" + module + "\n"
-#                     outputFileHandler.write(line)
-#         # Add chemMeSH into AM name
-#         activeModules_list = {f'AM_{activeModules_list}_' + chemMeSH: v for activeModules_list, v in
-#         activeModules_list.items()}
-#     else:
-#         print("No Active Modules detected")
-#
-#     return activeModules_list
+
+
+def DOMINOOutput(networkFileName, AMIFileName, outputPath):
+    # Input parameters
+    # outputPath = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example3/OutputDOMINOResults/'
+    # AMIFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example3/OutputDOMINOResults/DOMINO_genesList_activeModules.txt'
+    # networkFileName= '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/PPI_network_2016.sif'
+    edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
+    nList = []
+    edgeNumberList = []
+    nodeNumberList = []
+    # Create network graph
+    network_df = pd.read_csv(networkFileName, delimiter="\t")
+    df = pd.DataFrame({'node_1': network_df['node_1'],
+                       'node_2': network_df['node_2'],
+                       'link': network_df['link']})
+    network_graph = nx.from_pandas_edgelist(network_df, 'node_1', 'node_2', 'link')
+    # network_graph.number_of_edges()
+    # network_graph.number_of_nodes()
+    # Read AMI results
+    AMI_dict = {}
+    with open(AMIFileName, 'r') as AMIFile:
+        for line in AMIFile:
+            line_list = line.strip().split('\t')
+            AMI = line_list[1]
+            gene = line_list[0]
+            if AMI not in AMI_dict:
+                AMI_dict[AMI] = [gene]
+            else:
+                AMI_dict[AMI].append(gene)
+    # Extract subgraph
+    for n in AMI_dict:
+        AMIlist = AMI_dict[n]
+        # Extract active module network
+        network_subgraph = network_graph.subgraph(AMIlist)
+        subgraph_df = nx.to_pandas_edgelist(network_subgraph)
+        subgraph_df['AMI_number'] = n
+        # Metrics about active modules
+        nList.append(n)
+        edgeNumberList.append(network_subgraph.number_of_edges())
+        nodeNumberList.append(network_subgraph.number_of_nodes())
+        # Add the subnetwork edges into a dataframe
+        edges_df = pd.concat([edges_df, subgraph_df], ignore_index=True)
+    # Display metrics
+    metrics_df = pd.DataFrame({'AMINumber': nList,
+                               'EdgesNumber': edgeNumberList,
+                               'NodesNUmber': nodeNumberList})
+    print(metrics_df)
+    # Write results into files
+    metrics_df.to_csv(outputPath + 'metrics.csv', index=False, sep='\t')
+    edges_df.to_csv(outputPath + 'edges.csv', index=False, sep='\t')
+
+    # number = '1'
+    # AMIlist = AMI_dict[number]
+    # network_subgraph = network_graph.subgraph(AMIlist)
+    # nx.set_node_attributes(network_subgraph, 1, name='AMI_number')
+    # network_subgraph.number_of_edges()
+    # network_subgraph.number_of_nodes()
+    # list(network_subgraph.nodes().data())
+    # nx.write_edgelist(network_subgraph, outputPath + 'AMI_1.gr', delimiter='\t')
+
+    # subgraph_df = nx.to_pandas_edgelist(network_subgraph)
+    # subgraph_df['AMI_number'] = number
+
+    # pd.DataFrame.from_dict(dict(network_subgraph.nodes(data=True)), orient='index')
+    # pd.DataFrame.from_dict(network_subgraph.nodes, orient='index')
+
+    # edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
+    # edges_df = edges_df.append(subgraph_df, ignore_index=True)
+    #
+    # edges_df = pd.concat([edges_df, subgraph_df])
+
+
