@@ -12,6 +12,7 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 import requests
 import os
 import multixrank
+import fnmatch
 import pandas as pd
 import networkx as nx
 from scipy.stats import hypergeom
@@ -171,19 +172,29 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
         response_dict = response.json()
         activeModules_list = response_dict['algOutput']['DefaultSet']['modules']
 
+    # Read genes file
+    genesList = []
+    with open(genesFileName, 'r') as geneFile:
+        for gene in geneFile:
+            genesList.append(gene.strip())
+
     if len(activeModules_list.keys()) > 0:
         # Write results into file
-        resultOutput = outputPath + "/DOMINO_" + featureName + "_activeModules.txt"
+        resultOutput = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
         with open(resultOutput, 'w') as outputFileHandler:
+            outputFileHandler.write('geneSymbol\tActiveModule\tactiveGene\n')
             for module in activeModules_list:
                 for gene in activeModules_list[module]:
-                    line = gene + "\t" + module + "\n"
+                    active = False
+                    if gene in genesList:
+                        active = True
+                    line = gene + '\t' + module + '\t' + str(active) + '\n'
                     outputFileHandler.write(line)
         # Add chemMeSH into AM name
         activeModules_list = {f'AM_{activeModules_list}_' + featureName: v for activeModules_list, v in
                               activeModules_list.items()}
     else:
-        print("No Active Modules detected")
+        print('No Active Modules detected')
 
     return activeModules_list
 
@@ -195,9 +206,10 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, background
     resultsDict = {}
     # For each feature, search active modules using DOMINO
     for featureName in featuresDict:
-        print(featureName + " analysis :")
+        print(featureName + ' analysis :')
+        print('number of active genes : ' + str(len(featuresDict[featureName])))
         # Write genes list into result file
-        resultFileName = outputPath + "/DOMINO_inputGeneList_" + featureName + ".txt"
+        resultFileName = outputPath + '/DOMINO_inputGeneList_' + featureName + '.txt'
         with open(resultFileName, 'w') as outputFileHandler:
             for gene in featuresDict[featureName]:
                 outputFileHandler.write(gene)
@@ -214,78 +226,113 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, background
                         pathwaysOfInterestList=pathwaysOfInterestList,
                         WPDict=WPDict,
                         outputPath=outputPath)
-        print(featureName + " analysis done!\n")
+        # Output
+        AMIFileName = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
+        DOMINOOutput(networkFile, AMIFileName, featureName, outputPath)
+        print(featureName + ' analysis done!\n')
 
 
 
-def DOMINOOutput(networkFileName, AMIFileName, outputPath):
-    # Input parameters
-    # outputPath = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example3/OutputDOMINOResults/'
-    # AMIFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example3/OutputDOMINOResults/DOMINO_genesList_activeModules.txt'
-    # networkFileName= '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/PPI_network_2016.sif'
+def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
+    # Output file name
+    AMoutput = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
+    metricsOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetworkMetrics.txt'
+    networkOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetwork.txt'
+    overlapOutput = outputPath + '/DOMINO_' + featureName + '_overlapAMresults4Cytoscape.txt'
+    # Parameters
+    AM_dict = {}
     edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
-    nList = []
+    AMNumbersList = []
+    AMOverlapList = []
     edgeNumberList = []
     nodeNumberList = []
+    overlapOutputLinesList = []
+    AMIOutputLinesList = []
+
     # Create network graph
     network_df = pd.read_csv(networkFileName, delimiter="\t")
-    df = pd.DataFrame({'node_1': network_df['node_1'],
-                       'node_2': network_df['node_2'],
-                       'link': network_df['link']})
     network_graph = nx.from_pandas_edgelist(network_df, 'node_1', 'node_2', 'link')
-    # network_graph.number_of_edges()
-    # network_graph.number_of_nodes()
-    # Read AMI results
-    AMI_dict = {}
+
+    # Read Active Module composition
     with open(AMIFileName, 'r') as AMIFile:
         for line in AMIFile:
             line_list = line.strip().split('\t')
-            AMI = line_list[1]
+            AM = line_list[1]
             gene = line_list[0]
-            if AMI not in AMI_dict:
-                AMI_dict[AMI] = [gene]
+            if AM not in AM_dict:
+                AM_dict[AM] = [gene]
             else:
-                AMI_dict[AMI].append(gene)
-    # Extract subgraph
-    for n in AMI_dict:
-        AMIlist = AMI_dict[n]
-        # Extract active module network
-        network_subgraph = network_graph.subgraph(AMIlist)
-        subgraph_df = nx.to_pandas_edgelist(network_subgraph)
-        subgraph_df['AMI_number'] = n
-        # Metrics about active modules
-        nList.append(n)
-        edgeNumberList.append(network_subgraph.number_of_edges())
-        nodeNumberList.append(network_subgraph.number_of_nodes())
-        # Add the subnetwork edges into a dataframe
-        edges_df = pd.concat([edges_df, subgraph_df], ignore_index=True)
-    # Display metrics
-    metrics_df = pd.DataFrame({'AMINumber': nList,
+                AM_dict[AM].append(gene)
+
+    # Extract active module networks
+    for AMnb in AM_dict:
+        if AMnb != 'ActiveModule':
+            AMlist = AM_dict[AMnb]
+            # Extract active module network
+            network_subgraph = network_graph.subgraph(AMlist)
+            subgraph_df = nx.to_pandas_edgelist(network_subgraph)
+            subgraph_df['AMI_number'] = AMnb
+            # Metrics about active modules
+            AMNumbersList.append(AMnb)
+            edgeNumberList.append(network_subgraph.number_of_edges())
+            nodeNumberList.append(network_subgraph.number_of_nodes())
+            # Add the subnetwork edges into a dataframe
+            edges_df = pd.concat([edges_df, subgraph_df], ignore_index=True)
+    # Write active module networks into output file
+    edges_df.to_csv(networkOutput, index=False, sep='\t')
+    # Data frame of metrics
+    metrics_df = pd.DataFrame({'AMINumber': AMNumbersList,
                                'EdgesNumber': edgeNumberList,
-                               'NodesNUmber': nodeNumberList})
-    print(metrics_df)
-    # Write results into files
-    metrics_df.to_csv(outputPath + 'metrics.csv', index=False, sep='\t')
-    edges_df.to_csv(outputPath + 'edges.csv', index=False, sep='\t')
+                               'NodesNumber': nodeNumberList})
 
-    # number = '1'
-    # AMIlist = AMI_dict[number]
-    # network_subgraph = network_graph.subgraph(AMIlist)
-    # nx.set_node_attributes(network_subgraph, 1, name='AMI_number')
-    # network_subgraph.number_of_edges()
-    # network_subgraph.number_of_nodes()
-    # list(network_subgraph.nodes().data())
-    # nx.write_edgelist(network_subgraph, outputPath + 'AMI_1.gr', delimiter='\t')
+    # Parse overlap results
+    overlapFilesList = fnmatch.filter(os.listdir(outputPath), 'Overlap_AM_*')
+    for file in overlapFilesList:
+        AMnb = file.split('_')[2]
+        with open(outputPath + '/' + file, 'r') as overlapResults:
+            overlapResults.readline()
+            for line in overlapResults:
+                lineList = line.strip().split(';')
+                padj = lineList[8]
+                if float(padj) <= 0.05:
+                    if AMnb not in AMOverlapList:
+                        AMOverlapList.append(AMnb)
+                    termID = lineList[0]
+                    termTitle = lineList[1]
+                    genesList = lineList[9].split(' ')
+                    for gene in genesList:
+                        overlapOutputLinesList.append([gene, AMnb, termID, termTitle, padj])
+    # Write into output file
+    with open(overlapOutput, 'w') as overlapOutputHandler:
+        overlapOutputHandler.write('geneSymbol\tAM_number\ttermID\ttermTitle\toverlap_padj\n')
+        for line in overlapOutputLinesList:
+            overlapOutputHandler.write('\t'.join(line))
+            overlapOutputHandler.write('\n')
 
-    # subgraph_df = nx.to_pandas_edgelist(network_subgraph)
-    # subgraph_df['AMI_number'] = number
+    # Add overlap significant in activeModuleFile
+    activeGenesDict = dict.fromkeys(list(AM_dict.keys()), 0)
+    with open(AMoutput, 'r') as AMIinputHandler:
+        header = AMIinputHandler.readline().strip().split('\t')
+        for line in AMIinputHandler:
+            lineList = line.strip().split('\t')
+            if lineList[2] == 'True':
+                activeGenesDict[lineList[1]] = activeGenesDict[lineList[1]] + 1
+            if lineList[1] in AMOverlapList:
+                lineList.append('True')
+            else:
+                lineList.append('False')
+            AMIOutputLinesList.append(lineList)
+    # Write into activeModuleFile
+    with open(AMoutput, 'w') as AMIoutputHandler:
+        header.append('overlapSignificant\n')
+        AMIoutputHandler.write('\t'.join(header))
+        for line in AMIOutputLinesList:
+            AMIoutputHandler.write('\t'.join(line))
+            AMIoutputHandler.write('\n')
 
-    # pd.DataFrame.from_dict(dict(network_subgraph.nodes(data=True)), orient='index')
-    # pd.DataFrame.from_dict(network_subgraph.nodes, orient='index')
-
-    # edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
-    # edges_df = edges_df.append(subgraph_df, ignore_index=True)
-    #
-    # edges_df = pd.concat([edges_df, subgraph_df])
-
+    # Write metrics into file
+    activeGenes_df = pd.DataFrame({'AMINumber': list(activeGenesDict.keys()),
+                                   'activeGenesNumber': list(activeGenesDict.values())})
+    metrics_df = pd.merge(metrics_df, activeGenes_df, on='AMINumber')
+    metrics_df.to_csv(metricsOutput, index=False, sep='\t')
 
