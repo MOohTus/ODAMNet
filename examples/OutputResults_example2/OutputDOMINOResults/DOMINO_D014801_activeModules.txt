@@ -1,627 +1,618 @@
-MCM10	1
-CDKN2A	1
-MCM3	1
-CCNE1	1
-CAMK1G	1
-CDC45	1
-RBL1	1
-E2F5	1
-FEN1	1
-CCNA2	1
-SSBP1	1
-CDK1	1
-CCND1	1
-ARID4A	1
-B3GALNT1	1
-CDC6	1
-CDK4	1
-IL15RA	1
-CPEB4	1
-TOB1	1
-H1F0	1
-CCNB1IP1	1
-CCNB1	1
-MTR	1
-ACLY	1
-CDKN2AIP	1
-KIF26B	1
-CDK2	1
-DBF4	1
-MCM4	1
-FBXO31	1
-CDT1	1
-PROCA1	1
-CCNA1	1
-CDKN1C	1
-CCNE2	1
-CCP110	1
-CCNF	1
-USP26	1
-CDKN1B	1
-SPDYA	1
-CDC7	1
-MCM6	1
-SKP2	1
-MMRN1	1
-GRAMD4	1
-RBL2	1
-GNL3	1
-MYBL2	1
-PRC1	1
-POLA1	1
-HIST1H1A	1
-HIST3H2BB	1
-CKS1B	1
-CCNB2	1
-KLHDC9	1
-CDK2AP1	1
-ORC6	1
-HIST1H1B	1
-CKS2	1
-MCM2	1
-MS4A3	1
-CDKN3	1
-NPAT	1
-LBX1	1
-ORC4	1
-TSPYL2	1
-TFDP1	1
-RPA2	1
-ORC5	1
-MARCKS	1
-ORC2	1
-ORC3	1
-FOXM1	1
-NUDT2	1
-HERC5	1
-MCM5	1
-TUBA1C	1
-CAMK1	1
-GMNN	1
-MCM7	1
-RPA1	1
-USP37	1
-CCNB3	1
-C12orf65	1
-UHRF2	1
-KAT7	1
-ORC1	1
-BRF1	1
-HIST1H1D	1
-KMT2E	1
-LAMB2	1
-PHLDA3	1
-C14orf80	2
-DDIT3	2
-BATF	2
-CEBPE	2
-ATF3	2
-DBP	2
-CEBPA	2
-IL7	2
-DNMT3L	2
-JUN	2
-RUNX2	2
-RBM14	2
-JUNB	2
-ZNF595	2
-APLP2	2
-TCFL5	2
-USF1	2
-ZSCAN31	2
-MAFG	2
-NFE2L3	2
-ATF5	2
-CEBPB	2
-MED23	2
-EPAS1	2
-MAFK	2
-ETS2	2
-SPIB	2
-ARL6IP4	2
-FOS	2
-BATF2	2
-BACH1	2
-MAFB	2
-OVOL1	2
-MAFF	2
-BATF3	2
-HOXD12	2
-SPI1	2
-RUNX1	2
-FOSL2	2
-SRA1	2
-ATF2	2
-NFE2L2	2
-ATF1	2
-C19orf68	2
-GTF2A1L	2
-EGR1	2
-MAZ	2
-BACH2	2
-NFE2	2
-MAF	2
-LUZP4	2
-SPEN	2
-EGLN3	2
-CEBPG	2
-JUND	2
-LINC00461	2
-ATF4	2
-RPS6KA2	2
-SLC25A12	2
-TSC22D3	2
-KDM2B	2
-NFIL3	2
-FOSL1	2
-SOX9	2
-ETS1	2
-SNAPC5	2
-NFE2L1	2
-USF2	2
-HOXA5	2
-GRB10	3
-CNOT9	3
-IL2RG	3
-IL4	3
-GDNF	3
-GFRA2	3
-DDR2	3
-SHC1	3
-TYK2	3
-STAT1	3
-IL27RA	3
-OSM	3
-LIFR	3
-IFNGR1	3
-IFNG	3
-GIGYF2	3
-IGF1R	3
-JAK1	3
-SOCS3	3
-GFRA1	3
-EPOR	3
-PTPN11	3
-NRTN	3
-FRS2	3
-NTRK3	3
-CNTFR	3
-IL6ST	3
-DMRTA1	3
-STAT5B	3
-WSB1	3
-CSF3R	3
-GIGYF1	3
-TMEM39B	3
-IL13RA1	3
-IL10RA	3
-IL10	3
-CSF2RB	3
-CISH	3
-PPP1R3B	3
-IFNAR2	3
-PRMT3	3
-SH2B1	3
-NTRK2	3
-RACK1	3
-BDNF	3
-NTF3	3
-IL15	3
-FAU	3
-RET	3
-JAK2	3
-STAT5A	3
-WSB2	3
-STAT2	3
-IFNAR1	3
-IRS1	3
-DDR1	3
-IL13	3
-IL2RB	3
-IL4R	3
-MT-ND4L	3
-LIF	3
-IFNGR2	3
-JAK3	3
-CNTF	3
-INSR	3
-ELP2	3
-MMP2	4
-NID1	4
-COL2A1	4
-ITGB3	4
-NID2	4
-CCL3	4
-PLG	4
-MAG	4
-COL3A1	4
-FLNB	4
-REG3A	4
-ASB2	4
-COL1A1	4
-SERPING1	4
-IGFBP6	4
-MASP1	4
-COL4A1	4
-ELANE	4
-NOV	4
-LAMA3	4
-NMRK2	4
-PAPPA2	4
-TF	4
-IGFBP3	4
-FLNA	4
-ENO1	4
-IGFBP4	4
-COCH	4
-IDE	4
-MMP3	4
-INS	4
-FGA	4
-PDGFA	4
-IGFBP5	4
-ITGB6	4
-IGFBP7	4
-PZP	4
-PKD1	4
-ELN	4
-BCAN	4
-IGF1	4
-TFPI	4
-AMBP	4
-COL7A1	4
-IGF2	4
-COL5A1	4
-NES	4
-COL1A2	4
-MMP7	4
-PCSK4	4
-COL6A1	4
-LTBP1	4
-PRTN3	4
-SDC2	4
-HSPG2	4
-SERPINA1	4
-MASP2	4
-PRELP	4
-IGFALS	4
-TIMP4	4
-CYR61	4
-ACHE	4
-IGSF1	4
-SERPINB1	4
-SPARC	4
-F7	4
-THBS2	4
-THBS1	4
-ITGAV	4
-PDGFB	4
-PCSK9	4
-IGFBP1	4
-F3	4
-RAX	5
-PAX6	5
-LEF1	5
-PITX2	5
-SSX4	5
-XBP1	5
-CDX1	5
-SOX2	5
-PRDM1	5
-TLE2	5
-MSX1	5
-ZDHHC2	5
-MSX2	5
-TLE1	5
-SIX3	5
-DLX5	5
-HK3	5
-MITF	5
-HOXC8	5
-EN1	5
-PAX9	5
-FUBP3	5
-DLX2	5
-HDGF	5
-CAMTA2	5
-NKX2-5	5
-NR4A3	5
-FOXD3	5
-POU5F1	5
-H1FX	5
-HOXB1	5
-VSX2	5
-ITGA1	6
-DAG1	6
-PLAT	6
-ITGAL	6
-SERPINA5	6
-LAMA5	6
-ITGA3	6
-SHARPIN	6
-SERPINI1	6
-CAV3	6
-PDIA3	6
-ADAM10	6
-SERPINB2	6
-ITGA2	6
-MMP9	6
-SCAMP5	6
-PLAUR	6
-CXCL5	6
-HLA-E	6
-GRAMD1C	6
-SERPINE1	6
-ICAM1	6
-ULBP2	6
-KLRD1	6
-ITGAM	6
-ITGB1	6
-LAMA2	6
-PDGFC	6
-CALR	6
-MEP1A	6
-FBLN2	6
-SERPINE2	6
-LAMA1	6
-KNG1	6
-AUP1	6
-PLAU	6
-PDGFRA	6
-CAV1	6
-CXCL6	6
-CD151	6
-LRP5L	7
-PLK1	7
-GTSE1	7
-UBE3D	7
-UBE2C	7
-PTTG1	7
-FZR1	7
-MAD2L1BP	7
-CDC20	7
-ANAPC7	7
-RDH12	7
-BUB1	7
-KRBA1	7
-EXOC3	7
-BUB3	7
-PIM1	7
-SPATC1	7
-SPOUT1	7
-SIRT2	7
-FOXO1	7
-MAD2L1	7
-BUB1B	7
-MST1	7
-ANAPC5	7
-VRK3	7
-REV3L	7
-MAD2L2	7
-DUSP8	7
-CDC25A	7
-C6orf136	7
-KLHL22	7
-DNHD1	7
-UBE2S	7
-CCR3	8
-SDC4	8
-TGFB3	8
-ITIH1	8
-LACRT	8
-CCL3L3	8
-PTX3	8
-ACKR2	8
-PSENEN	8
-MEP1B	8
-TGFB2	8
-ITIH3	8
-ACKR1	8
-VCAN	8
-FBN2	8
-VASN	8
-HRG	8
-CCL2	8
-FCN3	8
-F2	8
-CCL23	8
-FCN2	8
-CCL11	8
-FN1	8
-PF4	8
-FBN1	8
-TNFAIP6	8
-CCL20	8
-TGFBR3	8
-FCN1	8
-CCL7	8
-F10	8
-C4BPB	8
-CCL27	8
-CXCL12	8
-VTN	8
-CCR1	8
-CCR6	8
-F5	8
-F8	8
-PROS1	8
-THBD	8
-BCL2	9
-MEX3D	9
-BID	9
-CAPN2	9
-BOK	9
-MCL1	9
-PMAIP1	9
-EFNA2	9
-ZHX1	9
-BCL2A1	9
-BBC3	9
-BAK1	9
-VDAC1	9
-ITPR1	9
-AHCYL1	9
-BCL2L11	9
-BAX	9
-AVEN	9
-BCL2L1	9
-BCL2L2	9
-BMF	9
-METTL23	9
-DAD1	9
-HRK	9
-IDH1	9
-BIK	9
-DYNLL1	9
-BNIP1	9
-NDFIP1	10
-PTEN	10
-S100A8	10
-S100A9	10
-RPL10A	10
-SIGLEC9	10
-LGALS3BP	10
-SIGLEC6	10
-GSTM3	10
-GSTM1	10
-PELO	10
-ATP5A1	10
-HSD17B1	10
-EEF2	10
-EEF2KMT	10
-FCGR2A	10
-LGALS3	10
-SSR4	10
-SIGLEC11	10
-MGAM	10
-NCF1	10
-MYOF	10
-PDCD11	10
-RPL22L1	10
-NOXA1	10
-KBTBD4	10
-METTL26	10
-OTUD3	10
-ITGA6	10
-NCF2	10
-CD6	10
-LGALS1	10
-CYBA	10
-NOXO1	10
-PRKCD	10
-ART3	10
-ALCAM	10
-TXN	10
-SIGLEC7	10
-SIGLEC10	10
-MYO1B	10
-GSTM2	10
-C1GALT1C1	10
-NCF4	10
-SLC25A5	10
-MED29	11
-THRB	11
-MED12	11
-NR1I2	11
-SRF	11
-MMS19	11
-PPARGC1A	11
-HR	11
-MMRN2	11
-ROBO4	11
-TBL1X	11
-TDG	11
-MED21	11
-NCOA2	11
-C1D	11
-TXNRD2	11
-TGS1	11
-PSMC5	11
-MED28	11
-VDR	11
-MED1	11
-NANOG	11
-ADAT3	11
-NCOA6	11
-MED14	11
-KDM5A	11
-MED18	11
-VHLL	12
-HIF1A	12
-NAA15	12
-NAA50	12
-JADE1	12
-ING4	12
-MEAF6	12
-SAT2	12
-KLF4	12
-VHL	12
-DGKI	12
-OS9	12
-DCSTAMP	12
-CCDC94	12
-ZNF281	12
-EGLN1	12
-NAA10	12
-CD8A	13
-HLA-G	13
-TFRC	13
-HFE	13
-HLA-B	13
-LILRB2	13
-CD1B	13
-B2M	13
-KIR2DL3	13
-HLA-C	13
-HLA-A	13
-LILRB1	13
-HLA-F	13
-KIR2DL4	13
-VIPR1	13
-KIR2DL1	13
-FCGRT	13
-ALB	13
-CXCR4	13
-KIR2DS2	13
-ARHGEF4	13
-PRB3	13
-ONECUT1	14
-NR3C2	14
-NR2C2	14
-NR5A2	14
-ESRRG	14
-ESR2	14
-NRBF2	14
-MED10	14
-THRA	14
-NCOA1	14
-MED25	14
-RORA	14
-NKX2-1	14
-NSD1	14
-MED16	14
-NR1H2	14
-PROX1	14
-NR6A1	14
-NR0B2	14
-ZXDC	14
-IQCK	14
-NR2F1	14
-ESRRA	14
-CXADR	14
-HNF4G	14
-NCOA3	14
-PNRC1	14
-NR1H3	14
-TRIP11	14
-ESRRB	14
-NRIP1	14
-SREBF1	14
-HNF4A	14
-TRIP4	14
-TMEM161A	14
-MED17	14
-RXRA	14
-ING3	14
-ACSL1	14
-RGN	14
+geneSymbol	ActiveModule	activeGene	overlapSignificant
+ARID4A	1	False	False
+CCNA2	1	True	False
+USP37	1	False	False
+CDC6	1	True	False
+B3GALNT1	1	False	False
+RBL1	1	False	False
+E2F5	1	True	False
+CDK2	1	True	False
+PHLDA3	1	False	False
+LAMB2	1	False	False
+ORC5	1	True	False
+ORC1	1	True	False
+CDT1	1	True	False
+LBX1	1	False	False
+RBL2	1	True	False
+HERC5	1	False	False
+CDKN3	1	True	False
+MS4A3	1	False	False
+CCNB3	1	False	False
+PRC1	1	False	False
+CCNB1IP1	1	False	False
+CCNB1	1	True	False
+CPEB4	1	True	False
+TOB1	1	False	False
+UHRF2	1	False	False
+CDKN2A	1	True	False
+MTR	1	False	False
+HIST3H2BB	1	False	False
+POLA1	1	False	False
+TUBA1C	1	False	False
+GRAMD4	1	False	False
+MCM5	1	False	False
+MCM3	1	True	False
+TFDP1	1	True	False
+NUDT2	1	False	False
+MCM6	1	True	False
+PROCA1	1	False	False
+CCNA1	1	True	False
+RPA2	1	False	False
+MCM4	1	True	False
+CCNE1	1	True	False
+NPAT	1	False	False
+CDK2AP1	1	False	False
+CAMK1G	1	False	False
+CDC45	1	True	False
+CDC7	1	True	False
+KAT7	1	False	False
+ACLY	1	False	False
+CDKN1C	1	True	False
+CCNE2	1	True	False
+H1F0	1	False	False
+CDK1	1	True	False
+CCND1	1	True	False
+FBXO31	1	False	False
+ORC3	1	False	False
+DBF4	1	False	False
+MMRN1	1	False	False
+MCM7	1	True	False
+HIST1H1B	1	False	False
+IL15RA	1	False	False
+CDK4	1	True	False
+SKP2	1	True	False
+FOXM1	1	False	False
+GNL3	1	True	False
+CDKN2AIP	1	False	False
+CKS2	1	False	False
+CCNB2	1	True	False
+MCM2	1	False	False
+FEN1	1	True	False
+KLHDC9	1	False	False
+SPDYA	1	False	False
+CDKN1B	1	True	False
+KMT2E	1	False	False
+HIST1H1A	1	False	False
+CAMK1	1	True	False
+ORC4	1	False	False
+HIST1H1D	1	False	False
+GMNN	1	False	False
+MCM10	1	True	False
+SSBP1	1	False	False
+ORC2	1	False	False
+CCP110	1	False	False
+CCNF	1	True	False
+TSPYL2	1	False	False
+MYBL2	1	True	False
+KIF26B	1	False	False
+ORC6	1	False	False
+C12orf65	1	False	False
+BRF1	1	False	False
+CKS1B	1	False	False
+USP26	1	False	False
+MARCKS	1	False	False
+RPA1	1	False	False
+PSENEN	2	False	True
+MMP7	2	True	True
+CCR3	2	True	True
+ACKR1	2	False	True
+TNFAIP6	2	True	True
+CCL7	2	True	True
+SDC2	2	True	True
+SERPINA5	2	False	True
+CCL27	2	False	True
+SERPINA1	2	False	True
+FCN2	2	False	True
+PCSK9	2	False	True
+SDC4	2	False	True
+BCAN	2	False	True
+CCL23	2	False	True
+FCN1	2	False	True
+HRG	2	False	True
+SERPINI1	2	False	True
+ITIH1	2	False	True
+REG3A	2	False	True
+LAMA3	2	True	True
+KLRD1	2	False	True
+SERPINB2	2	True	True
+MEP1B	2	False	True
+THBS2	2	False	True
+ITIH3	2	False	True
+HSPG2	2	True	True
+FBN2	2	True	True
+THBD	2	True	True
+CCL2	2	True	True
+F2	2	False	True
+TGFBR3	2	False	True
+LAMA2	2	False	True
+VCAN	2	False	True
+CXCL12	2	True	True
+C4BPB	2	False	True
+PF4	2	False	True
+VASN	2	False	True
+MMP2	2	True	True
+PDGFC	2	False	True
+SERPINE1	2	False	True
+PRELP	2	False	True
+CAV3	2	False	True
+FCN3	2	False	True
+LAMA5	2	False	True
+TGFB3	2	True	True
+MMP3	2	True	True
+PDGFRA	2	True	True
+VTN	2	False	True
+TGFB2	2	True	True
+HLA-E	2	True	True
+CCL3L3	2	False	True
+F8	2	False	True
+ACKR2	2	False	True
+SCAMP5	2	False	True
+CCL11	2	False	True
+CALR	2	False	True
+DAG1	2	True	True
+CCR1	2	True	True
+PTX3	2	True	True
+FBN1	2	True	True
+CAV1	2	False	True
+F5	2	True	True
+ULBP2	2	False	True
+PLAU	2	True	True
+SERPINE2	2	True	True
+ELN	2	False	True
+F10	2	False	True
+CCR6	2	False	True
+TIMP4	2	False	True
+PLAT	2	True	True
+FBLN2	2	False	True
+PZP	2	False	True
+FN1	2	True	True
+CCL20	2	True	True
+LACRT	2	False	True
+PROS1	2	True	True
+SOX9	3	True	True
+RUNX2	3	True	True
+MAFF	3	True	True
+OVOL1	3	False	True
+HOXD12	3	False	True
+MAFB	3	True	True
+MAZ	3	True	True
+JUN	3	True	True
+TSC22D3	3	True	True
+RPS6KA2	3	False	True
+DNMT3L	3	False	True
+ATF3	3	True	True
+LUZP4	3	False	True
+FOSL2	3	True	True
+LINC00461	3	False	True
+JUND	3	True	True
+BATF2	3	True	True
+DBP	3	False	True
+ARL6IP4	3	False	True
+FOS	3	True	True
+CEBPB	3	True	True
+MED23	3	False	True
+JUNB	3	True	True
+ZNF595	3	False	True
+C19orf68	3	False	True
+EGLN3	3	False	True
+EPAS1	3	True	True
+MAFG	3	False	True
+NFE2L3	3	True	True
+CEBPA	3	True	True
+CEBPG	3	True	True
+BATF3	3	False	True
+CEBPE	3	True	True
+ATF2	3	False	True
+C14orf80	3	False	True
+DDIT3	3	True	True
+NFE2L1	3	False	True
+SLC25A12	3	False	True
+NFE2L2	3	True	True
+MAFK	3	False	True
+IL7	3	False	True
+NFIL3	3	False	True
+HOXA5	3	False	True
+RUNX1	3	True	True
+RBM14	3	False	True
+APLP2	3	True	True
+FOSL1	3	False	True
+SPI1	3	True	True
+SPIB	3	False	True
+BACH1	3	False	True
+USF2	3	False	True
+MAF	3	True	True
+ETS1	3	False	True
+ETS2	3	False	True
+ATF4	3	False	True
+BACH2	3	False	True
+NFE2	3	False	True
+USF1	3	False	True
+TCFL5	3	True	True
+BATF	3	False	True
+SRA1	3	False	True
+EGR1	3	True	True
+ZSCAN31	3	False	True
+ATF1	3	False	True
+SNAPC5	3	False	True
+SPEN	3	False	True
+ATF5	3	False	True
+KDM2B	3	False	True
+GTF2A1L	3	False	True
+WSB2	4	False	True
+CSF3R	4	True	True
+PPP1R3B	4	True	True
+IFNAR2	4	False	True
+GDNF	4	True	True
+GFRA2	4	False	True
+RACK1	4	False	True
+JAK1	4	True	True
+IL10RA	4	True	True
+IL10	4	True	True
+ELP2	4	False	True
+STAT5B	4	True	True
+IL2RG	4	False	True
+IL4	4	True	True
+WSB1	4	True	True
+EPOR	4	False	True
+PTPN11	4	True	True
+NTRK3	4	True	True
+FRS2	4	False	True
+CISH	4	False	True
+NRTN	4	False	True
+GFRA1	4	True	True
+IRS1	4	False	True
+DDR1	4	True	True
+IL6ST	4	True	True
+OSM	4	False	True
+LIFR	4	True	True
+IL13RA1	4	True	True
+IL13	4	False	True
+TMEM39B	4	False	True
+IL2RB	4	False	True
+STAT1	4	True	True
+CNTFR	4	False	True
+IFNG	4	True	True
+IFNGR2	4	False	True
+IL15	4	False	True
+JAK3	4	False	True
+NTF3	4	True	True
+BDNF	4	True	True
+CSF2RB	4	False	True
+INSR	4	False	True
+GRB10	4	True	True
+SHC1	4	False	True
+DMRTA1	4	False	True
+IL4R	4	False	True
+NTRK2	4	True	True
+SH2B1	4	False	True
+GIGYF1	4	False	True
+IL27RA	4	False	True
+CNTF	4	False	True
+CNOT9	4	False	True
+STAT5A	4	False	True
+PRMT3	4	False	True
+IFNGR1	4	True	True
+IGF1R	4	False	True
+JAK2	4	False	True
+IFNAR1	4	False	True
+STAT2	4	True	True
+MT-ND4L	4	False	True
+LIF	4	False	True
+GIGYF2	4	False	True
+SOCS3	4	False	True
+RET	4	True	True
+FAU	4	False	True
+TYK2	4	False	True
+DDR2	4	True	True
+MEP1A	5	False	True
+ITGA2	5	False	True
+KNG1	5	False	True
+ACHE	5	False	True
+ENO1	5	True	True
+CXCL5	5	False	True
+MASP2	5	False	True
+AUP1	5	False	True
+MMP9	5	True	True
+SERPING1	5	True	True
+PLAUR	5	True	True
+GRAMD1C	5	True	True
+PLG	5	False	True
+LAMA1	5	True	True
+ITGA1	5	True	True
+ITGAM	5	True	True
+ITGA3	5	False	True
+ITGB1	5	True	True
+ITGAL	5	True	True
+CXCL6	5	False	True
+SHARPIN	5	False	True
+FLNA	5	False	True
+CD151	5	False	True
+SERPINB1	5	True	True
+ICAM1	5	True	True
+F7	5	False	True
+COL1A2	5	True	True
+PRTN3	5	True	True
+ELANE	5	False	True
+ADAM10	5	True	True
+PDIA3	5	False	True
+F3	5	True	True
+MASP1	5	False	True
+AMBP	5	False	True
+RAX	6	True	False
+PAX6	6	True	False
+PAX9	6	False	False
+FUBP3	6	True	False
+DLX2	6	False	False
+MSX2	6	True	False
+PITX2	6	True	False
+LEF1	6	False	False
+HK3	6	True	False
+MITF	6	False	False
+NR4A3	6	True	False
+SIX3	6	True	False
+TLE2	6	False	False
+EN1	6	False	False
+SSX4	6	False	False
+XBP1	6	True	False
+FOXD3	6	False	False
+POU5F1	6	True	False
+PRDM1	6	True	False
+TLE1	6	False	False
+H1FX	6	False	False
+CDX1	6	False	False
+SOX2	6	True	False
+MSX1	6	True	False
+HOXC8	6	False	False
+CAMTA2	6	True	False
+NKX2-5	6	False	False
+VSX2	6	False	False
+HDGF	6	False	False
+ZDHHC2	6	False	False
+HOXB1	6	True	False
+DLX5	6	False	False
+TDG	7	False	True
+VDR	7	True	True
+IRX4	7	False	True
+RARA	7	True	True
+CEP350	7	False	True
+PPARG	7	True	True
+NR0B1	7	False	True
+PPARGC1A	7	False	True
+NR1I2	7	True	True
+ZDHHC12	7	False	True
+RXRB	7	True	True
+NANOG	7	True	True
+MED12	7	False	True
+HR	7	True	True
+TBL1X	7	True	True
+MED29	7	False	True
+MED1	7	True	True
+RXRG	7	True	True
+THRA	7	True	True
+RGN	7	False	True
+ALOX15B	7	False	True
+TRIP11	7	False	True
+MED18	7	False	True
+TRIP4	7	False	True
+NR2F2	7	True	True
+MED14	7	False	True
+RAD54L2	7	False	True
+RXRA	7	True	True
+MED28	7	False	True
+PRDX6	7	False	True
+ONECUT1	7	False	True
+NR3C1	7	True	True
+NRBF2	7	False	True
+THRB	7	True	True
+MMS19	7	False	True
+MAP4	7	False	True
+KLF5	7	False	True
+ZBTB20	7	False	True
+NCOA4	7	False	True
+ESRRB	7	False	True
+NCOA3	7	True	True
+NCOR2	7	False	True
+IQCK	7	True	True
+C1D	7	False	True
+NFKBIB	7	False	True
+MMRN2	7	False	True
+KDM5A	7	True	True
+NCOR1	7	False	True
+NR2F1	7	True	True
+POU1F1	7	False	True
+ROBO4	7	False	True
+EDF1	7	False	True
+PPARD	7	True	True
+JAZF1	7	False	True
+MED25	7	False	True
+ADAT3	7	False	True
+ARID1A	7	False	True
+GTSE1	8	True	False
+PLK1	8	True	False
+SPOUT1	8	False	False
+ANAPC5	8	True	False
+FZR1	8	False	False
+KLHL22	8	False	False
+BUB1	8	True	False
+CDC20	8	True	False
+FOXO1	8	True	False
+MST1	8	False	False
+MAD2L1BP	8	False	False
+EXOC3	8	True	False
+BUB3	8	False	False
+C6orf136	8	False	False
+ANAPC7	8	False	False
+UBE2C	8	False	False
+UBE3D	8	True	False
+DNHD1	8	False	False
+SIRT2	8	False	False
+BUB1B	8	False	False
+PTTG1	8	True	False
+MAD2L1	8	True	False
+RDH12	8	False	False
+PIM1	8	True	False
+KRBA1	8	False	False
+CDC25A	8	True	False
+DUSP8	8	False	False
+SPATC1	8	False	False
+REV3L	8	True	False
+MAD2L2	8	False	False
+VRK3	8	False	False
+LRP5L	8	False	False
+UBE2S	8	True	False
+BAK1	9	True	True
+VDAC1	9	False	True
+CAPN2	9	False	True
+BCL2	9	True	True
+BIK	9	False	True
+BID	9	True	True
+ZHX1	9	True	True
+ITPR1	9	True	True
+HRK	9	False	True
+BCL2L11	9	True	True
+BAX	9	True	True
+BCL2L2	9	False	True
+PMAIP1	9	True	True
+IDH1	9	True	True
+DAD1	9	False	True
+MCL1	9	True	True
+DYNLL1	9	False	True
+MEX3D	9	False	True
+BOK	9	False	True
+BBC3	9	False	True
+EFNA2	9	False	True
+BCL2L1	9	True	True
+METTL23	9	False	True
+BMF	9	False	True
+AVEN	9	False	True
+AHCYL1	9	False	True
+BNIP1	9	False	True
+BCL2A1	9	True	True
+ART3	10	False	False
+PRKCD	10	True	False
+MGAM	10	False	False
+NCF1	10	True	False
+SIGLEC10	10	False	False
+LGALS3BP	10	True	False
+ATP5A1	10	False	False
+PTEN	10	True	False
+HSD17B1	10	True	False
+SSR4	10	False	False
+SLC25A5	10	False	False
+GSTM1	10	True	False
+GSTM2	10	False	False
+CD6	10	False	False
+LGALS1	10	True	False
+C1GALT1C1	10	False	False
+LGALS3	10	True	False
+NDFIP1	10	False	False
+EEF2KMT	10	True	False
+EEF2	10	False	False
+FCGR2A	10	False	False
+SIGLEC11	10	False	False
+TXN	10	False	False
+CYBA	10	True	False
+NOXO1	10	False	False
+SIGLEC6	10	False	False
+OTUD3	10	False	False
+PELO	10	True	False
+METTL26	10	False	False
+ALCAM	10	False	False
+NOXA1	10	False	False
+SIGLEC7	10	False	False
+GSTM3	10	False	False
+MYOF	10	True	False
+NCF4	10	False	False
+S100A9	10	True	False
+S100A8	10	True	False
+RPL22L1	10	False	False
+MYO1B	10	False	False
+RPL10A	10	False	False
+KBTBD4	10	False	False
+NCF2	10	True	False
+PDCD11	10	False	False
+SIGLEC9	10	False	False
+ITGA6	10	True	False
+IGFBP7	11	True	True
+IGFBP5	11	True	True
+IDE	11	False	True
+SPARC	11	False	True
+COL6A1	11	True	True
+MAG	11	False	True
+PDGFB	11	False	True
+CYR61	11	False	True
+TFPI	11	False	True
+ITGB3	11	False	True
+PKD1	11	False	True
+IGFALS	11	False	True
+LTBP1	11	False	True
+PDGFA	11	False	True
+IGFBP1	11	False	True
+THBS1	11	True	True
+IGF2	11	True	True
+IGSF1	11	False	True
+ITGB6	11	False	True
+ITGAV	11	True	True
+INS	11	True	True
+FLNB	11	True	True
+IGFBP4	11	True	True
+PAPPA2	11	False	True
+CCL3	11	True	True
+COL3A1	11	False	True
+COL5A1	11	False	True
+NID2	11	False	True
+PCSK4	11	False	True
+COL1A1	11	True	True
+TF	11	False	True
+NMRK2	11	False	True
+IGFBP3	11	True	True
+ASB2	11	False	True
+COCH	11	False	True
+NID1	11	False	True
+IGF1	11	True	True
+COL4A1	11	False	True
+NES	11	True	True
+NOV	11	False	True
+COL2A1	11	False	True
+IGFBP6	11	True	True
+COL7A1	11	False	True
+FGA	11	False	True
+DCSTAMP	12	False	False
+OS9	12	True	False
+NAA10	12	True	False
+NAA50	12	False	False
+CCDC94	12	False	False
+JADE1	12	True	False
+ZNF281	12	False	False
+EGLN1	12	True	False
+ING4	12	False	False
+SAT2	12	False	False
+HIF1A	12	True	False
+MEAF6	12	False	False
+VHL	12	False	False
+DGKI	12	True	False
+VHLL	12	False	False
+KLF4	12	True	False
+NAA15	12	True	False
+KIR2DL1	13	False	False
+HLA-C	13	True	False
+CD8A	13	False	False
+HLA-G	13	True	False
+KIR2DL3	13	False	False
+HFE	13	False	False
+TFRC	13	True	False
+CD1B	13	False	False
+B2M	13	True	False
+ALB	13	True	False
+FCGRT	13	True	False
+KIR2DS2	13	False	False
+LILRB1	13	False	False
+KIR2DL4	13	False	False
+PRB3	13	False	False
+HLA-F	13	True	False
+LILRB2	13	False	False
+CXCR4	13	True	False
+HLA-B	13	True	False
+ARHGEF4	13	False	False
+VIPR1	13	False	False
+HLA-A	13	False	False

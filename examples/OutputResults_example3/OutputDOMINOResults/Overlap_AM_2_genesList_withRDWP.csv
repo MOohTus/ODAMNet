@@ -1,8 +1,8 @@
 WPID;WPTitle;Source;WPSize;TargetSize;IntersectionSize;UniversSize;pValue;pAdjusted;Intersection
-PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;24;0;18089;1.0;1.0;
-GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;24;1;18089;0.34419115439655085;1.0;CA2
-GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;24;1;18089;0.3361695801525077;1.0;CA2
-GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;24;0;18089;1.0;1.0;
+PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;23;0;18089;1.0;1.0;
+GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;23;1;18089;0.33255351222300106;1.0;CA2
+GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;23;1;18089;0.3247319614383761;1.0;CA2
+GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;23;0;18089;1.0;1.0;
 REAC:R-HSA-2022377;Metabolism of Angiotensinogen to Angiotensins;hsapiens.REAC.name.gmt;18;22;0;10531;1.0;1.0;
 REAC:R-HSA-8853659;RET signaling;hsapiens.REAC.name.gmt;38;22;0;10531;1.0;1.0;
 REAC:R-HSA-195721;Signaling by WNT;hsapiens.REAC.name.gmt;328;22;0;10531;1.0;1.0;

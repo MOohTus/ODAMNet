@@ -11,6 +11,7 @@ This script tests some functions from different modules inside the project.
 
 # Libraries
 import unittest
+import requests
 import os
 import filecmp
 import WP_functions as WP
@@ -184,6 +185,55 @@ class TestMethodFunctions(unittest.TestCase):
             with open('test_methodFunctions/' + bg + 'intersection.list', 'w') as output:
                 output.write("\n".join(intersectionSet))
                 output.write("\n")
+
+    def test_dominoRequest(self):
+        # Input names
+        genesFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt'
+        networkFile = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/PPI_network_2016.sif'
+        outputFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/tests/DOMINO_outputTests.tsv'
+        genesList = []
+        # Request domino
+        data_dict = {
+            'Network file name': os.path.basename(networkFile),
+            'Active gene file name': os.path.basename(genesFileName)
+        }
+        # Input file contents
+        files_dict = {
+            'Network file contents': open(networkFile, 'rb'),
+            'Active gene file contents': open(genesFileName, 'rb')
+        }
+        response = requests.post(url='http://domino.cs.tau.ac.il/upload', data=data_dict, files=files_dict)
+        response_dict = response.json()
+        nodes = response_dict['algOutput']['DefaultSet']['nodes']
+        nodes.sort()
+        with open(genesFileName, 'r') as genesFile:
+            for line in genesFile:
+                genesList.append(line.strip())
+        genesList.sort()
+        # Compare
+        nodesSet = set(nodes)
+        genesSet = set(genesList)
+        len(genesSet.intersection(nodesSet))
+        #
+        activeModules_dict = response_dict['algOutput']['DefaultSet']['modules']
+        with open(outputFileName, 'w') as outputFileHandler:
+            outputFileHandler.write('geneSymbol\tActiveModule\tactiveGene\n')
+            for module in activeModules_dict:
+                for gene in activeModules_dict[module]:
+                    active = False
+                    if gene in genesList:
+                        active = True
+                    line = gene + '\t' + module + '\t' + str(active) + '\n'
+                    outputFileHandler.write(line)
+
+    def test_DOMINOOutputFunction(self):
+        # Parameters
+        networkFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/PPI_network_2016.sif'
+        AMIFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example1/OutputDOMINOResults/DOMINO_D014801_activeModules.txt'
+        featureName = 'D014801'
+        outputPath = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example1/OutputDOMINOResults/'
+        # Create output from DOMINO results
+        methods.DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath)
 
 
 if __name__ == '__main__':
