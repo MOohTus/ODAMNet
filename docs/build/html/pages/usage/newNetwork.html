@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Creation of bipartite and network &mdash; EnvironmentProject 1 documentation</title>
@@ -124,6 +123,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-CTD_functions">CTD functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-WP_functions">WP functions</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Output.html">Output files</a></li>
+</ul>
 
             
           
@@ -192,10 +196,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="creation-of-bipartite-and-network">
+  <div class="section" id="creation-of-bipartite-and-network">
 <h1>Creation of bipartite and network<a class="headerlink" href="#creation-of-bipartite-and-network" title="Permalink to this headline">¶</a></h1>
 <p>Different approaches are implemented in this tool to analysis link between environmental factor and rare disease pathways.</p>
-<section id="main">
+<div class="section" id="main">
 <h2>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
 <p>[OPTIONS] = overlap | domino | multixrank | networkCreation</p>
 <p>Analyse the link between environmental factors and rare disease pathways.
@@ -212,7 +216,7 @@ Select the approach you want to perform :</p>
 <dd><p>Show the version and exit.</p>
 </dd></dl>
 
-<section id="main-networkcreation">
+<div class="section" id="main-networkcreation">
 <h3>networkCreation<a class="headerlink" href="#main-networkcreation" title="Permalink to this headline">¶</a></h3>
 <p>Create network SIF file from WP request or WP GMT file</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main networkCreation <span class="o">[</span>OPTIONS<span class="o">]</span>
@@ -270,14 +274,14 @@ Select the approach you want to perform :</p>
 </dl>
 </dd></dl>
 
-</section>
-</section>
+</div>
+</div>
 <p>To create a network diseases (disconnected one) from WikiPathway Rare Disease pathways.
 Create a SIF (Simple interaction file) with three columns : source node, interaction type and target node.
 It’s a tab-separated file.</p>
-<section id="up-to-date-analysis-wp-disease-network">
+<div class="section" id="up-to-date-analysis-wp-disease-network">
 <h2>Up to date analysis - WP disease network :<a class="headerlink" href="#up-to-date-analysis-wp-disease-network" title="Permalink to this headline">¶</a></h2>
-<section id="required-options">
+<div class="section" id="required-options">
 <h3>Required options :<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
@@ -289,8 +293,8 @@ the data from WikiPathway.</p>
 WikiPathway.</p>
 </dd>
 </dl>
-</section>
-<section id="optionals-options">
+</div>
+<div class="section" id="optionals-options">
 <h3>Optionals options :<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
@@ -307,8 +311,8 @@ analysis using RWR, each disease is link to itself.
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="command-line">
+</div>
+<div class="section" id="command-line">
 <h3>Command line :<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-0-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-0-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-0-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py networkCreation --networksPath examples/InputData/multiplex/2/ <span class="se">\</span>
@@ -323,11 +327,11 @@ analysis using RWR, each disease is link to itself.
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-<section id="specific-version-wp-disease-network">
+</div>
+</div>
+<div class="section" id="specific-version-wp-disease-network">
 <h2>Specific version - WP disease network :<a class="headerlink" href="#specific-version-wp-disease-network" title="Permalink to this headline">¶</a></h2>
-<section id="id1">
+<div class="section" id="id1">
 <h3>Required options :<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
@@ -342,8 +346,8 @@ WikiPathway.</p>
 <dd><p>Pathways file name that the user want to extract the genes to build the network</p>
 </dd>
 </dl>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Optionals options :<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
@@ -371,11 +375,11 @@ analysis using RWR, each disease is link to itself.
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-<section id="global-analysis-data-as-you-want">
+</div>
+</div>
+<div class="section" id="global-analysis-data-as-you-want">
 <h2>Global analysis - Data as you want :<a class="headerlink" href="#global-analysis-data-as-you-want" title="Permalink to this headline">¶</a></h2>
-<section id="id3">
+<div class="section" id="id3">
 <h3>Required options :<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
@@ -390,8 +394,8 @@ WikiPathway.</p>
 <dd><p>Pathways file name that the user want to extract the genes to build the network</p>
 </dd>
 </dl>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h3>Optionals options :<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
@@ -414,9 +418,9 @@ analysis using RWR, each disease is link to itself.
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

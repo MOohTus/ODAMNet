@@ -70,11 +70,11 @@ Required options :
     It's a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.
 
 --WP_GMT FILENAME
-    Gene composition of each rare disease pathways of interest from Wikipathway. It's a GMT file-like (e.g. created with an up to date analysis).
+    Gene composition of each rare disease pathways of interest from WikiPathways. It's a GMT file-like (e.g. created with an up to date analysis).
     Refers to XXX to have more information about the format.
 
 --backgroundFile FILENAME
-    List of all genes present in the Wikipathway database (i.e. human genes).
+    List of all genes present in the WikiPathways database (i.e. human genes).
 
 -n, --networkFile FILENAME
     Network file name (e.g. PPI network).

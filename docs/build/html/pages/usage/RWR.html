@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Random Walk with Restart (RWR) &mdash; EnvironmentProject 1 documentation</title>
@@ -124,6 +123,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-CTD_functions">CTD functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-WP_functions">WP functions</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Output.html">Output files</a></li>
+</ul>
 
             
           
@@ -192,10 +196,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="random-walk-with-restart-rwr">
+  <div class="section" id="random-walk-with-restart-rwr">
 <h1>Random Walk with Restart (RWR)<a class="headerlink" href="#random-walk-with-restart-rwr" title="Permalink to this headline">¶</a></h1>
 <p>Different approaches are implemented in this tool to analysis link between environmental factor and rare disease pathways.</p>
-<section id="main">
+<div class="section" id="main">
 <h2>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
 <p>[OPTIONS] = overlap | domino | multixrank | networkCreation</p>
 <p>Analyse the link between environmental factors and rare disease pathways.
@@ -212,7 +216,7 @@ Select the approach you want to perform :</p>
 <dd><p>Show the version and exit.</p>
 </dd></dl>
 
-<section id="main-multixrank">
+<div class="section" id="main-multixrank">
 <h3>multixrank<a class="headerlink" href="#main-multixrank" title="Permalink to this headline">¶</a></h3>
 <p>Performs a Random Walk with Restart through heterogeneous multilayer using the target genes as seeds</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main multixrank <span class="o">[</span>OPTIONS<span class="o">]</span>
@@ -305,11 +309,11 @@ Select the approach you want to perform :</p>
 </dl>
 </dd></dl>
 
-</section>
-</section>
-<section id="up-to-date-analysis-vitamin-a">
+</div>
+</div>
+<div class="section" id="up-to-date-analysis-vitamin-a">
 <h2>Up to date analysis - Vitamin A :<a class="headerlink" href="#up-to-date-analysis-vitamin-a" title="Permalink to this headline">¶</a></h2>
-<section id="required-options">
+<div class="section" id="required-options">
 <h3>Required options :<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
@@ -334,8 +338,8 @@ that are used as seed to start the walk.</p>
 <dd><p>Output file name to save the result into a SIF file.</p>
 </dd>
 </dl>
-</section>
-<section id="optionals-options">
+</div>
+<div class="section" id="optionals-options">
 <h3>Optionals options :<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
@@ -356,8 +360,8 @@ The user can set a threshold on the number of publications needed to extract the
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="vitamin-a-analysis-command-line">
+</div>
+<div class="section" id="vitamin-a-analysis-command-line">
 <h3>Vitamin A analysis - Command line :<a class="headerlink" href="#vitamin-a-analysis-command-line" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-0-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-0-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-0-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
@@ -379,11 +383,11 @@ The user can set a threshold on the number of publications needed to extract the
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-<section id="specific-version-vitamin-a">
+</div>
+</div>
+<div class="section" id="specific-version-vitamin-a">
 <h2>Specific version - Vitamin A :<a class="headerlink" href="#specific-version-vitamin-a" title="Permalink to this headline">¶</a></h2>
-<section id="id1">
+<div class="section" id="id1">
 <h3>Required options :<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
@@ -407,8 +411,8 @@ that are used as seed to start the walk.</p>
 <dd><p>Output file name to save the result into a SIF file.</p>
 </dd>
 </dl>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Optionals options :<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
@@ -424,8 +428,8 @@ The user can set a threshold on the number of publications needed to extract the
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h3>Vitamin A analysis - Command line :<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-1-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-1-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-1-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv <span class="se">\</span>
@@ -446,11 +450,11 @@ The user can set a threshold on the number of publications needed to extract the
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-<section id="global-analysis-data-as-you-want">
+</div>
+</div>
+<div class="section" id="global-analysis-data-as-you-want">
 <h2>Global analysis - Data as you want :<a class="headerlink" href="#global-analysis-data-as-you-want" title="Permalink to this headline">¶</a></h2>
-<section id="id4">
+<div class="section" id="id4">
 <h3>Required options :<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
@@ -474,8 +478,8 @@ that are used as seed to start the walk.</p>
 <dd><p>Output file name to save the result into a SIF file.</p>
 </dd>
 </dl>
-</section>
-<section id="id5">
+</div>
+<div class="section" id="id5">
 <h3>Optionals options :<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
@@ -486,8 +490,8 @@ that are used as seed to start the walk.</p>
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="vitamin-a-analysis-with-data-from-paper-ozisik-2022">
+</div>
+<div class="section" id="vitamin-a-analysis-with-data-from-paper-ozisik-2022">
 <h3>Vitamin A analysis with data from paper <em>(Ozisik, 2022)</em>:<a class="headerlink" href="#vitamin-a-analysis-with-data-from-paper-ozisik-2022" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-c2hvcnQ=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-c2hvcnQ=" name="c2hvcnQ=" role="tab" tabindex="0">short</button><button aria-controls="panel-2-ZGV0YWlsZWQ=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-ZGV0YWlsZWQ=" name="ZGV0YWlsZWQ=" role="tab" tabindex="-1">detailed</button></div><div aria-labelledby="tab-2-c2hvcnQ=" class="sphinx-tabs-panel group-tab" id="panel-2-c2hvcnQ=" name="c2hvcnQ=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank   --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt <span class="se">\</span>
@@ -507,9 +511,9 @@ that are used as seed to start the walk.</p>
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

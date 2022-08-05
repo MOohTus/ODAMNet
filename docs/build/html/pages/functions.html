@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Main script &mdash; EnvironmentProject 1 documentation</title>
@@ -44,6 +43,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Input files" href="analysis/Input.html" />
     <link rel="prev" title="Resume of the main required parameters" href="analysis/parameters.html" /> 
 </head>
 
@@ -116,6 +116,11 @@
 <li class="toctree-l1"><a class="reference internal" href="#module-CTD_functions">CTD functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#module-WP_functions">WP functions</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="analysis/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/Output.html">Output files</a></li>
+</ul>
 
             
           
@@ -182,14 +187,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="module-main">
+  <div class="section" id="module-main">
 <span id="main-script"></span><h1>Main script<a class="headerlink" href="#module-main" title="Permalink to this headline">¶</a></h1>
 <p>&#64;author: Morgane T.</p>
 <p>Main script
 Using click for argument parsing
 Analysis calling</p>
-</section>
-<section id="module-methods_functions">
+</div>
+<div class="section" id="module-methods_functions">
 <span id="method-functions"></span><h1>Method functions<a class="headerlink" href="#module-methods_functions" title="Permalink to this headline">¶</a></h1>
 <p>&#64;author: Morgane T. and Ozan O.</p>
 <p>Script of methods that we can apply to CTD and WP lists
@@ -212,7 +217,8 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>targetGeneSet</strong> (<em>set</em>) – Set of HGNC targets</p></li>
 <li><p><strong>WPGenesDict</strong> (<em>dict</em>) – Dictionary of Rare Diseases WP</p></li>
-<li><p><strong>WPBackgroundGenesSet</strong> (<em>set</em>) – Set of all HGNC inside WikiPathway for Homo sapiens</p></li>
+<li><p><strong>backgroundGenesDict</strong> (<em>set</em>) – </p></li>
+<li><p><strong>pathwaysOfInterestList</strong> (<em>set</em>) – </p></li>
 <li><p><strong>chemNames</strong> (<em>str</em>) – MeSH ID of chemical of interest</p></li>
 <li><p><strong>WPDict</strong> (<em>dict</em>) – Dictionary of WP composed of title of them</p></li>
 <li><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results</p></li>
@@ -236,7 +242,8 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>chemTargetsDict</strong> (<em>dict</em>) – Dict composed of interaction genes list for each chemical</p></li>
 <li><p><strong>WPGeneRDDict</strong> (<em>dict</em>) – Dictionary of Rare Diseases WP</p></li>
-<li><p><strong>WPBackgroundGenes</strong> (<em>list</em>) – List of uniq genes found in Homo sapiens WP</p></li>
+<li><p><strong>backgroundGenesDict</strong> (<em>list</em>) – </p></li>
+<li><p><strong>pathwaysOfInterestList</strong> (<em>list</em>) – </p></li>
 <li><p><strong>WPDict</strong> (<em>dict</em>) – Dict of titles for each RD WikiPathway</p></li>
 <li><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results</p></li>
 </ul>
@@ -272,8 +279,13 @@ You have to specify seeds and networks.</p>
 <span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</section>
-<section id="module-CTD_functions">
+<dl class="py function">
+<dt class="sig sig-object py" id="methods_functions.DOMINOOutput">
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">networkFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AMIFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOOutput" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-CTD_functions">
 <span id="ctd-functions"></span><h1>CTD functions<a class="headerlink" href="#module-CTD_functions" title="Permalink to this headline">¶</a></h1>
 <p>&#64;author: Morgane T.</p>
 <p>CTD functions</p>
@@ -347,7 +359,12 @@ Save results into output file
 Return the gene targets list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>argsDict</strong> – </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CTDFile</strong> – </p></li>
+<li><p><strong>directAssociations</strong> – </p></li>
+<li><p><strong>outputPath</strong> – </p></li>
+<li><p><strong>nbPub</strong> – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -355,8 +372,8 @@ Return the gene targets list</p>
 </dl>
 </dd></dl>
 
-</section>
-<section id="module-WP_functions">
+</div>
+<div class="section" id="module-WP_functions">
 <span id="wp-functions"></span><h1>WP functions<a class="headerlink" href="#module-WP_functions" title="Permalink to this headline">¶</a></h1>
 <p>&#64;author: Morgane T.</p>
 <p>WikiPathways functions</p>
@@ -462,7 +479,7 @@ The order of sources depends on the order of pathways of interest.</p>
 </dl>
 </dd></dl>
 
-</section>
+</div>
 
 
            </div>
@@ -470,6 +487,7 @@ The order of sources depends on the order of pathways of interest.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="analysis/Input.html" class="btn btn-neutral float-right" title="Input files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="analysis/parameters.html" class="btn btn-neutral float-left" title="Resume of the main required parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

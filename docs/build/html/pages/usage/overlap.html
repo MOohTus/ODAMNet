@@ -4,8 +4,7 @@
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Overlap analysis &mdash; EnvironmentProject 1 documentation</title>
@@ -124,6 +123,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-CTD_functions">CTD functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functions.html#module-WP_functions">WP functions</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Output.html">Output files</a></li>
+</ul>
 
             
           
@@ -192,10 +196,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="overlap-analysis">
+  <div class="section" id="overlap-analysis">
 <h1>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Different approaches are implemented in this tool to analysis link between environmental factor and rare disease pathways.</p>
-<section id="main">
+<div class="section" id="main">
 <h2>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h2>
 <p>[OPTIONS] = overlap | domino | multixrank | networkCreation</p>
 <p>Analyse the link between environmental factors and rare disease pathways.
@@ -212,7 +216,7 @@ Select the approach you want to perform :</p>
 <dd><p>Show the version and exit.</p>
 </dd></dl>
 
-<section id="main-overlap">
+<div class="section" id="main-overlap">
 <h3>overlap<a class="headerlink" href="#main-overlap" title="Permalink to this headline">¶</a></h3>
 <p>Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main overlap <span class="o">[</span>OPTIONS<span class="o">]</span>
@@ -282,11 +286,11 @@ Select the approach you want to perform :</p>
 </dl>
 </dd></dl>
 
-</section>
-</section>
-<section id="up-to-date-analysis-vitamin-a">
+</div>
+</div>
+<div class="section" id="up-to-date-analysis-vitamin-a">
 <h2>Up to date analysis - Vitamin A :<a class="headerlink" href="#up-to-date-analysis-vitamin-a" title="Permalink to this headline">¶</a></h2>
-<section id="required-options">
+<div class="section" id="required-options">
 <h3>Required options :<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
@@ -294,8 +298,8 @@ Select the approach you want to perform :</p>
 The user can gives several chemicals in the same line : they will be grouped for the analysis.</p>
 </dd>
 </dl>
-</section>
-<section id="optionals-options">
+</div>
+<div class="section" id="optionals-options">
 <h3>Optionals options :<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
@@ -312,14 +316,14 @@ If FALSE, the genes targeted by the chemical and all the descendant molecules ar
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="default-parameters">
+</div>
+<div class="section" id="default-parameters">
 <h3>Default parameters :<a class="headerlink" href="#default-parameters" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --factorList examples/InputData/InputFile_factorsList.csv
 </pre></div>
 </div>
-</section>
-<section id="vitamin-a-analysis">
+</div>
+<div class="section" id="vitamin-a-analysis">
 <h3>Vitamin A analysis :<a class="headerlink" href="#vitamin-a-analysis" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap  --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
                          --directAssociation FALSE <span class="se">\</span>
@@ -327,26 +331,26 @@ If FALSE, the genes targeted by the chemical and all the descendant molecules ar
                          --outputPath examples/OutputResults_example1/
 </pre></div>
 </div>
-</section>
-</section>
-<section id="specific-version-vitamin-a">
+</div>
+</div>
+<div class="section" id="specific-version-vitamin-a">
 <h2>Specific version - Vitamin A :<a class="headerlink" href="#specific-version-vitamin-a" title="Permalink to this headline">¶</a></h2>
-<section id="id1">
+<div class="section" id="id1">
 <h3>Required options :<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
 <dd><p>It’s a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.</p>
 </dd>
 <dt><kbd><span class="option">--WP_GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Gene composition of each rare disease pathways of interest from Wikipathway. It’s a GMT file-like (e.g. created with an up to date analysis).
+<dd><p>Gene composition of each rare disease pathways of interest from WikiPathways. It’s a GMT file-like (e.g. created with an up to date analysis).
 Refers to XXX to have more information about the format.</p>
 </dd>
 <dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of all genes present in the Wikipathway database (i.e. human genes).</p>
+<dd><p>List of all genes present in the WikiPathways database (i.e. human genes).</p>
 </dd>
 </dl>
-</section>
-<section id="id2">
+</div>
+<div class="section" id="id2">
 <h3>Optionals options :<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
@@ -358,16 +362,16 @@ Refers to XXX to have more information about the format.</p>
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="id3">
+</div>
+<div class="section" id="id3">
 <h3>Default parameters :<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv <span class="se">\</span>
                          --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt <span class="se">\</span>
                          --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv
 </pre></div>
 </div>
-</section>
-<section id="id4">
+</div>
+<div class="section" id="id4">
 <h3>Vitamin A analysis :<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv <span class="se">\</span>
                          --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt <span class="se">\</span>
@@ -376,11 +380,11 @@ Refers to XXX to have more information about the format.</p>
                          --outputPath examples/OutputResults_example2/
 </pre></div>
 </div>
-</section>
-</section>
-<section id="global-analysis-data-as-you-want">
+</div>
+</div>
+<div class="section" id="global-analysis-data-as-you-want">
 <h2>Global analysis - Data as you want :<a class="headerlink" href="#global-analysis-data-as-you-want" title="Permalink to this headline">¶</a></h2>
-<section id="id5">
+<div class="section" id="id5">
 <h3>Required options :<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
@@ -394,8 +398,8 @@ Refers to XXX to have more information about the format.</p>
 <dd><p>Name list of the different background source (each background contain the list of all genes).</p>
 </dd>
 </dl>
-</section>
-<section id="id6">
+</div>
+<div class="section" id="id6">
 <h3>Optionals options :<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
@@ -403,8 +407,8 @@ Refers to XXX to have more information about the format.</p>
 [default: OutputResults]</p>
 </dd>
 </dl>
-</section>
-<section id="vitamin-a-analysis-with-data-from-paper-ozisik-2022">
+</div>
+<div class="section" id="vitamin-a-analysis-with-data-from-paper-ozisik-2022">
 <h3>Vitamin A analysis with data from paper <em>(Ozisik, 2022)</em>:<a class="headerlink" href="#vitamin-a-analysis-with-data-from-paper-ozisik-2022" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt <span class="se">\</span>
                          --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
@@ -433,9 +437,9 @@ Refers to XXX to have more information about the format.</p>
 </pre></div>
 </div>
 </div></div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
 
            </div>

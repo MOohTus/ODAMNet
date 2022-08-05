@@ -36,6 +36,12 @@ EnvironmentProject's documentation
 
    pages/functions
 
+.. toctree::
+   :caption: File formats
+
+   pages/analysis/Input
+   pages/analysis/Output
+
 
 Indices and tables
 ==================
