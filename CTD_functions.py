@@ -8,47 +8,40 @@ CTD functions
 """
 
 # Libraries
-from datetime import datetime
 import requests
 import re
+from datetime import datetime
 from alive_progress import alive_bar
 
 
-# Debugging part / Global parameters
-# CTDFile = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/InputData/InputFile_CTD_vitaminAD.txt'
-# association = 'hierarchicalAssociations'
-# nbPub = 2
-# listFileName = CTDFile
-# chemList = featureNameList
-# outputPath = '/home/morgane/'
+def readFeaturesFile(featuresFile):
+    """
+    Read a list file (composed of gene names or chemical names).
 
-# Functions
-# def readListFile(listFileName):
-#     """
-#     Read a list file (composed of gene names or chemical names)
-#
-#     :param str listFileName:
-#     :return:
-#         - **featureNameList** (*list*) – List of feature names
-#     """
-#     featureNameList = []
-#     try:
-#         with open(listFileName, 'r') as listFileHandler:
-#             for line in listFileHandler:
-#                 featureNameList.append(line.rstrip())
-#         return featureNameList
-#     except IOError:
-#         print("I/O error while reading input file.")
+    :param FILE featuresFile: content of the features file
+    :return:
+        - **featureNamesList** (*list*) – List of feature names
+    """
+    # Parameters
+    featureNamesList = []
 
+    for line in featuresFile.readlines():
+        featureNamesList.append(line.rstrip())
 
-def readListFile(listFile):
-    featureNameList = []
-    for line in listFile.readlines():
-        featureNameList.append(line.rstrip())
-    return featureNameList
+    # Return
+    return featureNamesList
 
 
 def readCTDFile(CTDFile, nbPub, outputPath):
+    """
+    Read CTD file, created from a request.
+
+    :param FILE CTDFile: Content of the CTD file
+    :param int nbPub: number of paper to keep an interaction
+    :param PATH outputPath: output path directory name
+    :return:
+        - **targetGenesDict** (*dict*) – Dictionary of genes for each chemical as query
+    """
     # Parameters
     targetGenesList = []
     targetGenesDict = {}
@@ -57,8 +50,8 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     chemName = ''
 
     for line in CTDFile:
-        lineList = line.rstrip().split("\t")
-        if len(lineList[8].split("|")) >= nbPub:
+        lineList = line.rstrip().split('\t')
+        if len(lineList[8].split('|')) >= nbPub:
             outputLines.append("\t".join(lineList))
             # Gene name extraction
             geneName = lineList[4]
@@ -72,50 +65,14 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     targetGenesDict["_".join([chemName])] = targetGenesList
 
     # Write filtered result into file
-    filteredResultFileName = outputPath + "/CTD_requestFiltered_" + "_".join([chemName]) + ".tsv"
+    filteredResultFileName = outputPath + '/CTD_requestFiltered_' + '_'.join([chemName]) + '.tsv'
     with open(filteredResultFileName, 'w') as outputFileHandler:
         for line in outputLines:
             outputFileHandler.write(line)
-            outputFileHandler.write("\n")
+            outputFileHandler.write('\n')
 
     # Return
     return targetGenesDict
-
-
-# def readCTDFile(CTDFileName, nbPub):
-#     """
-#     Read CTD File.
-#     This file is created from the CTD request using an environmental factor (Raw file)
-#
-#     :param str CTDFileName:
-#     :return:
-#         - **chemNameList** (*list*) – List of chemical names
-#     """
-#
-#     # CTDFile = "/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/CTD_request_D014801.tsv"
-#
-#     targetGenesList = []
-#     targetGenesDict = {}
-#     chemNameList = []
-#
-#     try:
-#         with open(CTDFileName, 'r') as CTDFileHandler:
-#             for line in CTDFileHandler:
-#                 lineList = line.rstrip().split("\t")
-#                 if len(lineList[8].split("|")) >= nbPub:
-#                     # Gene name extraction
-#                     geneName = lineList[4]
-#                     if geneName not in targetGenesList:
-#                         targetGenesList.append(geneName)
-#                     # Query name extraction
-#                     chemName = lineList[0].upper()
-#                     if chemName not in chemNameList:
-#                         chemNameList.append(chemName)
-#             # Dictionary creation
-#             targetGenesDict["_".join([chemName])] = targetGenesList
-#         return targetGenesDict
-#     except IOError:
-#         print("I/O error while reading CTD file.")
 
 
 def CTDrequest(chemName, association, outputPath, nbPub):
@@ -137,8 +94,8 @@ def CTDrequest(chemName, association, outputPath, nbPub):
         - **chemMeSH** (*str*) – Composition of MeSH ID from chemicals given in input
     """
     # Parameters
-    URL = "http://ctdbase.org/tools/batchQuery.go"
-    PARAMS = {'inputType': "chem", 'inputTerms': chemName, 'report': "genes_curated", 'format': "tsv",
+    URL = 'http://ctdbase.org/tools/batchQuery.go'
+    PARAMS = {'inputType': "chem", 'inputTerms': chemName, 'report': 'genes_curated', 'format': 'tsv',
               'inputTermSearchType': association}
     homoResultsList = []
     homoResultsListReferences = []
@@ -153,7 +110,6 @@ def CTDrequest(chemName, association, outputPath, nbPub):
     # Extract results only for Homo sapiens
     for element in requestResultList:
         elementList = element.split("\t")
-        # resultsList.append(elementList)
         if re.match('#', elementList[0]):
             elementList[0] = re.sub('# ', '', elementList[0])
             homoResultsList.append(elementList)
@@ -168,10 +124,6 @@ def CTDrequest(chemName, association, outputPath, nbPub):
                             homoGenesList.append(elementList[4])
                     if elementList[1].lower() not in meshNamesDict:
                         meshNamesDict[elementList[1].lower()] = elementList[2]
-
-    # Result len
-    # len(homoResultsList)
-    # len(resultsList)
 
     # Build name of output results file
     for chem in chemName.split('|'):
@@ -192,6 +144,8 @@ def CTDrequest(chemName, association, outputPath, nbPub):
 
     # Write filtered result into file
     with open(filteredResultFileName, 'w') as outputFileHandler:
+        outputFileHandler.write('\t'.join(homoResultsList[0]))
+        outputFileHandler.write('\n')
         for resultLine in homoResultsListReferences:
             outputFileHandler.write('\t'.join(resultLine))
             outputFileHandler.write('\n')
@@ -204,7 +158,7 @@ def CTDrequest(chemName, association, outputPath, nbPub):
     return chemMeSH, homoGenesList
 
 
-def CTDrequestFromList(chemList, association, outputPath, nbPub):
+def CTDrequestFromFeaturesList(chemList, association, outputPath, nbPub):
     """
     Make CTD request for each chemical present in the list given in input.
     Each element can be composed of one or more element.
@@ -215,50 +169,52 @@ def CTDrequestFromList(chemList, association, outputPath, nbPub):
     :param str outputPath: Folder path to save the results
     :param int nbPub: Number of references needed to keep an interaction
 
-
     :return:
         - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
     """
     # Parameters
     chemTargetsDict = {}
+
     # For each chemical, request CTD
-    with alive_bar(title='Request CTD', theme='musical') as bar:
-        for chem in chemList:
-            chemNamesList = chem.rstrip().split(';')
-            chemNamesString = '|'.join(chemNamesList)
-            chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association, outputPath=outputPath, nbPub=nbPub)
-            chemTargetsDict[chemNames] = chemTargetsList
-        bar()
+    for chem in chemList:
+        chemNamesList = chem.rstrip().split(';')
+        chemNamesString = '|'.join(chemNamesList)
+        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association,
+                                                outputPath=outputPath, nbPub=nbPub)
+        chemTargetsDict[chemNames] = chemTargetsList
+
+    # Return
     return chemTargetsDict
 
 
-def targetExtraction(CTDFile, directAssociations, outputPath, nbPub):
+def targetGenesExtraction(chemicalsFile, directAssociations, outputPath, nbPub):
     """
     Read environmental factor file
     Request CTD and extract target genes
     Save results into output file
     Return the gene targets list
 
-    :param CTDFile:
-    :param directAssociations:
-    :param outputPath:
-    :param nbPub:
+    :param FILE chemicalsFile: content of the chemicals file list
+    :param bool directAssociations: Chemical only or descendants too
+    :param PATH outputPath: folder path name to save results
+    :param int nbPub: number of paper to keep an interaction
 
     :return:
+        - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
     """
+    # Parameters
     if directAssociations:
         association = 'directAssociations'
     else:
         association = 'hierarchicalAssociations'
 
-    # # Check if outputPath exist and create it if it does not
-    # if not os.path.exists(outputPath):
-    #     os.makedirs(outputPath, exist_ok=True)
-
     # Read CTD file and request CTD database
     # print('\nCTD request: ')
-    chemNameList = readListFile(CTDFile)
-    chemTargetsDict = CTDrequestFromList(chemList=chemNameList, association=association,
-                                         outputPath=outputPath, nbPub=nbPub)
+    with alive_bar(title='Request CTD', theme='musical') as bar:
+        chemNameList = readFeaturesFile(featuresFile=chemicalsFile)
+        chemTargetsDict = CTDrequestFromFeaturesList(chemList=chemNameList, association=association,
+                                                     outputPath=outputPath, nbPub=nbPub)
+        bar()
 
+    # Return
     return chemTargetsDict
