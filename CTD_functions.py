@@ -5,6 +5,12 @@
 @author: Morgane T.
 
 CTD functions
+
+Script to manage the input genes list reading.
+Genes list could come from
+    - a chemical list and requested from CTD
+    - a CTD file (file created by request CTD)
+    - a list of interested genes
 """
 
 # Libraries
@@ -14,6 +20,7 @@ from datetime import datetime
 from alive_progress import alive_bar
 
 
+# Functions
 def readFeaturesFile(featuresFile):
     """
     Read a list file (composed of gene names or chemical names).
