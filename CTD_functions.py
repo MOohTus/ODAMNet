@@ -11,6 +11,7 @@ CTD functions
 from datetime import datetime
 import requests
 import re
+from alive_progress import alive_bar
 
 
 # Debugging part / Global parameters
@@ -221,11 +222,13 @@ def CTDrequestFromList(chemList, association, outputPath, nbPub):
     # Parameters
     chemTargetsDict = {}
     # For each chemical, request CTD
-    for chem in chemList:
-        chemNamesList = chem.rstrip().split(';')
-        chemNamesString = '|'.join(chemNamesList)
-        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association, outputPath=outputPath, nbPub=nbPub)
-        chemTargetsDict[chemNames] = chemTargetsList
+    with alive_bar(title='Request CTD', theme='musical') as bar:
+        for chem in chemList:
+            chemNamesList = chem.rstrip().split(';')
+            chemNamesString = '|'.join(chemNamesList)
+            chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association, outputPath=outputPath, nbPub=nbPub)
+            chemTargetsDict[chemNames] = chemTargetsList
+        bar()
     return chemTargetsDict
 
 

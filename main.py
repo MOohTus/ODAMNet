@@ -78,10 +78,12 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
         pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
     else:
         # Request WP
-        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-        backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
-        for pathway in pathwayOfInterestList:
-            pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+        with alive_bar(title='Request WikiPathways', theme='musical') as bar:
+            WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+            backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
+            for pathway in pathwayOfInterestList:
+                pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+            bar()
 
     if factorListFile:
         # Analysis from factor list
@@ -142,10 +144,12 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
         pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
     else:
         # Request WP
-        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-        backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
-        for pathway in pathwayOfInterestList:
-            pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+        with alive_bar(title='Request WikiPathways', theme='musical') as bar:
+            WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+            backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
+            for pathway in pathwayOfInterestList:
+                pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+            bar()
 
     if factorListFile:
         # Analysis from factor list

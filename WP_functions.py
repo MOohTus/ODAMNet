@@ -12,11 +12,7 @@ import os.path
 
 from SPARQLWrapper import SPARQLWrapper, TSV
 from datetime import datetime
-
-
-# Debugging part / Global parameters
-# UniversFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults//WP_listOfAllHumanGenes.tsv'
-# GMTFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/test/VitaminAD/OutputOverlapResults/WP_RareDiseases_request.tsv'
+from alive_progress import alive_bar
 
 
 # Functions
@@ -376,16 +372,18 @@ def readBackgroundsFile(backgroundsFile):
     backgroundsList = []
     folder = os.path.dirname(backgroundsFile.name)
     # Read backgrounds file
-    for background in backgroundsFile:
-        background = background.strip()
-        backgroundsList.append(background)
-        name = background
-        if name not in backgroundsDict:
-            backgroundsDict[name] = []
-            with open((folder + '/' + background), 'r') as bgFile:
-                for line in bgFile:
-                    linesList = line.strip().split('\t')
-                    for gene in linesList[2:]:
-                        if gene not in backgroundsDict[name] and gene != 'HGNC':
-                            backgroundsDict[name].append(gene)
+    with alive_bar(title='Background genes dictionary creation', theme='musical') as bar:
+        for background in backgroundsFile:
+            background = background.strip()
+            backgroundsList.append(background)
+            name = background
+            if name not in backgroundsDict:
+                backgroundsDict[name] = []
+                with open((folder + '/' + background), 'r') as bgFile:
+                    for line in bgFile:
+                        linesList = line.strip().split('\t')
+                        for gene in linesList[2:]:
+                            if gene not in backgroundsDict[name] and gene != 'HGNC':
+                                backgroundsDict[name].append(gene)
+        bar()
     return backgroundsDict, backgroundsList
