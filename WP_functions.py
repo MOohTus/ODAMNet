@@ -243,6 +243,7 @@ def readBackgroundsFile(backgroundsFile):
     backgroundsDict = {}
     backgroundsList = []
     folder = os.path.dirname(backgroundsFile.name)
+
     # Read backgrounds file
     with alive_bar(title='Background genes dictionary creation', theme='musical') as bar:
         for background in backgroundsFile:
@@ -259,5 +260,6 @@ def readBackgroundsFile(backgroundsFile):
                             if gene not in backgroundsDict[name] and gene != 'HGNC':
                                 backgroundsDict[name].append(gene)
         bar()
+
     # Return
     return backgroundsDict, backgroundsList

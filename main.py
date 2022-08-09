@@ -52,13 +52,13 @@ def main():
               help='True: Only chem targets \\ False:Chem + descendants targets')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
+@click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
               help='Background genes file name. ')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
-def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP_GMT, backgroundFile, outputPath):
+def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile, outputPath):
     """Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway"""
 
     # Parameters
@@ -71,39 +71,41 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
         os.makedirs(outputPath, exist_ok=True)
 
     # Rare Diseases pathways and extract all genes from WP
-    if WP_GMT:
+    if pathOfInterestGMT:
         # Files reading
-        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
         backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile)
         pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
+        analysisName = 'pathOfInterest'
     else:
         # Request WP
         with alive_bar(title='Request WikiPathways', theme='musical') as bar:
-            WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-            backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
+            pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+            backgroundGenesDict = WP.allHumanGenesFromWP(outputPath=outputPath)
             for pathway in pathwayOfInterestList:
                 pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+            analysisName = 'RDpathwaysFromWP'
             bar()
 
     if factorListFile:
         # Analysis from factor list
-        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation,
-                                            outputPath=outputPath, nbPub=nbPub)
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+                                                 outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
 
     # Overlap between our features list and pathways of interest
-    methods.overlapAnalysis(chemTargetsDict=featuresDict,
-                            WPGeneRDDict=WPGeneRDDict,
-                            backgroundGenesDict=backgroundGenesDict,
+    methods.overlapAnalysis(targetGenesDict=featuresDict,
+                            pathOfInterestGenesDict=pathOfInterestGenesDict,
+                            pathOfInterestNamesDict=pathOfInterestNamesDict,
                             pathwaysOfInterestList=pathwaysOfInterestList,
-                            WPDict=WPDict,
-                            outputPath=outputPath)
-
+                            backgroundGenesDict=backgroundGenesDict,
+                            outputPath=outputPath,
+                            analysisName=analysisName)
     print('Overlap analysis finished')
 
 
@@ -117,16 +119,15 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, WP
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
 @click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True, help='Network file name')
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
+@click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
               help='Background genes file name. ')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
-def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociation, nbPub, WP_GMT, backgroundFile,
+def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
            outputPath):
     """DOMINO defines the target genes as active genes and search active modules through a given network."""
-
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputDOMINOResults')
     featuresDict = {}
@@ -137,27 +138,29 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
         os.makedirs(outputPath, exist_ok=True)
 
     # Rare Diseases pathways and extract all genes from WP
-    if WP_GMT:
+    if pathOfInterestGMT:
         # Files reading
-        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
         backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile)
         pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
+        analysisName = 'pathOfInterest'
     else:
         # Request WP
         with alive_bar(title='Request WikiPathways', theme='musical') as bar:
-            WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-            backgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
+            pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+            backgroundGenesDict = WP.allHumanGenesFromWP(outputPath=outputPath)
             for pathway in pathwayOfInterestList:
                 pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
+            analysisName = 'RDpathwaysFromWP'
             bar()
 
     if factorListFile:
         # Analysis from factor list
-        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation,
-                                            outputPath=outputPath, nbPub=nbPub)
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+                                                 outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
@@ -165,11 +168,12 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     # DOMINO analysis for each environmental factor
     methods.DOMINOandOverlapAnalysis(featuresDict=featuresDict,
                                      networkFile=networkFile,
-                                     WPGeneRDDict=WPGeneRDDict,
-                                     backgroundGenesDict=backgroundGenesDict,
+                                     pathOfInterestGenesDict=pathOfInterestGenesDict,
+                                     pathOfInterestNamesDict=pathOfInterestNamesDict,
                                      pathwaysOfInterestList=pathwaysOfInterestList,
-                                     WPDict=WPDict,
-                                     outputPath=outputPath)
+                                     backgroundGenesDict=backgroundGenesDict,
+                                     outputPath=outputPath,
+                                     analysisName=analysisName)
 
 
 @main.command('networkCreation', short_help='Create network and bipartite', context_settings=CONTEXT_SETTINGS)
@@ -181,17 +185,17 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
               help='Output path where save the bipartite')
 @click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
               show_default=True, metavar='FILENAME', help='Bipartite output name')
-@click.option('--WP_GMT', 'WP_GMT', type=click.File(),
+@click.option('--GMT', 'pathOfInterestGMT', type=click.File(),
               help='Pathways of interest in GMT like format (e.g. from WP request).')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output path name (for complementary output files)')
-def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
+def createNetworkFileFromWP(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
     """Create network SIF file from WP request or WP GMT file"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputCreateNetworkFromWP')
     pathwayName = networksPath + '/' + networksName
     bipartiteName = bipartitePath + '/' + bipartiteName
-    WPID = []
+    pathwayIDs = []
     bipartiteOutputLines = []
 
     # Check if outputPath exist and create it if it does not exist
@@ -205,26 +209,26 @@ def createNetworkFileFromWP(WP_GMT, networksPath, networksName, bipartitePath, b
         os.makedirs(bipartitePath, exist_ok=True)
 
     # Extract all rare disease genes from WP
-    if WP_GMT:
+    if pathOfInterestGMT:
         # From file
-        WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=WP_GMT)
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
     else:
         # From request
-        WPGeneRDDict, WPDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
 
     # Create gene symbols and diseases bipartite
-    for ID in WPGeneRDDict:
+    for ID in pathOfInterestGenesDict:
         if ID != 'WPID':
-            if ID not in WPID:
-                WPID.append(ID)
-            for gene in WPGeneRDDict[ID]:
+            if ID not in pathwayIDs:
+                pathwayIDs.append(ID)
+            for gene in pathOfInterestGenesDict[ID]:
                 bipartiteOutputLines.append([ID, gene])
     with open(bipartiteName, 'w') as bipartiteOutputFile:
         for line in bipartiteOutputLines:
             bipartiteOutputFile.write('\t'.join(line))
             bipartiteOutputFile.write('\n')
     with open(pathwayName, 'w') as networkOutputFile:
-        for ID in WPID:
+        for ID in pathwayIDs:
             networkOutputFile.write('\t'.join([ID, ID]))
             networkOutputFile.write('\n')
 
@@ -262,11 +266,11 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
     # Seeds initiation
     if factorListFile:
         # Analysis from factor list
-        featuresDict = CTD.targetExtraction(CTDFile=factorListFile, directAssociations=directAssociation,
-                                            outputPath=outputPath, nbPub=nbPub)
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+                                                 outputPath=outputPath, nbPub=nbPub)
     if geneListFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readListFile(listFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)

@@ -21,9 +21,10 @@ from alive_progress import alive_bar
 
 
 # Functions
-def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict, outputPath):
+def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList,
+            backgroundGenesDict, featureName, outputPath, analysisName):
     """
-    Calculate overlap.rst between target genes and Rase Diseases WP
+    Calculate overlap between target genes and pathways of interest
 
     Metrics :
         - M is the population size (Nb of genes inside WikiPathway for Homo sapiens pathways)
@@ -32,33 +33,31 @@ def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestL
         - x is the number of drawn “successes” (Nb of genes shared between target list and RD WP)
 
     :param set targetGeneSet: Set of HGNC targets
-    :param dict WPGenesDict: Dictionary of Rare Diseases WP
-    :param set backgroundGenesDict:
-    :param set pathwaysOfInterestList:
-    :param str chemNames: MeSH ID of chemical of interest
-    :param dict WPDict: Dictionary of WP composed of title of them
+    :param dict pathOfInterestGenesDict: Dictionary of pathways of interest
+    :param dict pathOfInterestNamesDict: Dictionary of WP composed of title of them
+    :param set pathwaysOfInterestList: Pathways of interest list and their associated background name
+    :param set backgroundGenesDict: Dict of background genes
+    :param str featureName: feature name (g.e. MeSH ID or chemical name etc.)
     :param str outputPath: Folder path to save the results
-
-    :return:
-        - **df** (*pd.DataFrame*) – Data frame of overlap.rst metrics for each rare diseases WP
+    :param str analysisName: Analysis name for the output name file
     """
     # Parameters
-    WPIDs = []
-    WPTitles = []
-    WPsizes = []
-    sourcesList = []
-    TargetSizes = []
-    intersectionSizes = []
-    universSizes = []
-    pValues = []
-    intersections = []
+    pathwayIDsList = []
+    pathwayNamesList = []
+    pathwaySizesList = []
+    pathwayBgList = []
+    targetSizesList = []
+    intersectionSizesList = []
+    bgSizesList = []
+    pValuesList = []
+    intersectionsList = []
 
     # Calculate pvalue overlap.rst for each RD WP found
     for pathway in pathwaysOfInterestList:
         pathwayName = pathway[0]
         source = pathway[1]
 
-        genesSet = set(WPGenesDict[pathwayName])
+        genesSet = set(pathOfInterestGenesDict[pathwayName])
         backgroundGenesSet = set(backgroundGenesDict[source])
 
         # Metrics calculation
@@ -73,61 +72,64 @@ def overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestL
         pval = hypergeom.sf(x - 1, M, n, N)
 
         # Fill variable to store information and metrics
-        WPIDs.append(pathwayName)
-        WPTitles.append(WPDict[pathwayName])
-        WPsizes.append(n)
-        sourcesList.append(source)
-        TargetSizes.append(N)
-        intersectionSizes.append(x)
-        universSizes.append(M)
-        pValues.append(pval)
+        pathwayIDsList.append(pathwayName)
+        pathwayNamesList.append(pathOfInterestNamesDict[pathwayName])
+        pathwaySizesList.append(n)
+        pathwayBgList.append(source)
+        targetSizesList.append(N)
+        intersectionSizesList.append(x)
+        bgSizesList.append(M)
+        pValuesList.append(pval)
         intersection.sort()
-        intersections.append(' '.join(intersection))
+        intersectionsList.append(' '.join(intersection))
 
     # Multiple tests to correct pvalue
-    reject, pValsAdj, alphacSidak, alphacBonf = multipletests(pValues, alpha=0.05, method='fdr_bh')
+    reject, pValsAdjList, alphacSidak, alphacBonf = multipletests(pValuesList, alpha=0.05, method='fdr_bh')
 
     # Final
-    df = pd.DataFrame({'WPID': WPIDs,
-                       'WPTitle': WPTitles,
-                       'Source': sourcesList,
-                       'WPSize': WPsizes,
-                       'TargetSize': TargetSizes,
-                       'IntersectionSize': intersectionSizes,
-                       'UniversSize': universSizes,
-                       'pValue': pValues,
-                       'pAdjusted': pValsAdj,
-                       'Intersection': intersections
+    df = pd.DataFrame({'PathwayIDs': pathwayIDsList,
+                       'PathwayNames': pathwayNamesList,
+                       'PathwayBackgroundNames': pathwayBgList,
+                       'PathwaySizes': pathwaySizesList,
+                       'TargetSizes': targetSizesList,
+                       'IntersectionSize': intersectionSizesList,
+                       'BackgroundSizes': bgSizesList,
+                       'pValue': pValuesList,
+                       'pAdjusted': pValsAdjList,
+                       'Intersection': intersectionsList
                        })
 
     # Write into a file
     dfSorted = df.sort_values(by=['pAdjusted'])
-    dfSorted.to_csv(outputPath + '/Overlap_' + chemNames + '_withRDWP.csv', ';', index=False)
+    dfSorted.to_csv(outputPath + '/Overlap_' + featureName + '_with ' + analysisName + '.csv', ';', index=False)
 
     print('\tOverlap analysis done!')
     # return df
 
 
-def overlapAnalysis(chemTargetsDict, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList, WPDict, outputPath):
+def overlapAnalysis(targetGenesDict, pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList,
+                    backgroundGenesDict, outputPath, analysisName):
     """
     For each chemical given in input, calculate overlap.rst with RD WP.
 
-    :param dict chemTargetsDict: Dict composed of interaction genes list for each chemical
-    :param dict WPGeneRDDict: Dictionary of Rare Diseases WP
-    :param list backgroundGenesDict:
-    :param list pathwaysOfInterestList:
-    :param dict WPDict: Dict of titles for each RD WikiPathway
+    :param dict targetGenesDict: Dict composed of interaction genes list for each chemical
+    :param dict pathOfInterestGenesDict: Dict of pathways of interest genes
+    :param dict pathOfInterestNamesDict: Dict of pathways of interest names
+    :param list pathwaysOfInterestList: Pathways of interest list and their associated background name
+    :param list backgroundGenesDict: Dict of background genes
     :param str outputPath: Folder path to save the results
+    :param str analysisName: Analysis name for the output name file
     """
     # For each chemical targets, calculate overlap.rst with RD WP
-    for chem in chemTargetsDict:
-        overlap(targetGeneSet=set(chemTargetsDict[chem]),
-                WPGenesDict=WPGeneRDDict,
-                backgroundGenesDict=backgroundGenesDict,
+    for chem in targetGenesDict:
+        overlap(targetGeneSet=set(targetGenesDict[chem]),
+                pathOfInterestGenesDict=pathOfInterestGenesDict,
+                pathOfInterestNamesDict=pathOfInterestNamesDict,
                 pathwaysOfInterestList=pathwaysOfInterestList,
-                chemNames=chem,
-                WPDict=WPDict,
-                outputPath=outputPath)
+                backgroundGenesDict=backgroundGenesDict,
+                featureName=chem,
+                outputPath=outputPath,
+                analysisName=analysisName)
 
 
 def RWR(configPath, networksPath, outputPath, sifPathName, top):
@@ -151,7 +153,16 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
 
 
 def DOMINO(genesFileName, networkFile, outputPath, featureName):
-    """"""
+    """
+    Run active modules identification analysis on the DOMINO server
+
+    :param genesFileName: active genes file name (g.e. list of genes of interest)
+    :param networkFile: content of the network file
+    :param outputPath: output path name to save the results
+    :param featureName: feature name (g.e. chemical name)
+    :return:
+        - **activeModulesDict** (*dict*) – Dict of active modules identified
+    """
     # Input file names
     data_dict = {
         'Network file name': os.path.basename(networkFile.name),
@@ -178,11 +189,11 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
         for gene in geneFile:
             genesList.append(gene.strip())
 
+    # Write results into file
     if len(activeModules_list.keys()) > 0:
-        # Write results into file
         resultOutput = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
         with open(resultOutput, 'w') as outputFileHandler:
-            outputFileHandler.write('geneSymbol\tActiveModule\tactiveGene\n')
+            outputFileHandler.write('GeneSymbol\tActiveModule\tActiveGene\n')
             for module in activeModules_list:
                 for gene in activeModules_list[module]:
                     active = False
@@ -190,18 +201,31 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
                         active = True
                     line = gene + '\t' + module + '\t' + str(active) + '\n'
                     outputFileHandler.write(line)
-        # Add chemMeSH into AM name
+        # Add feature name into AM name
         activeModules_list = {f'AM_{activeModules_list}_' + featureName: v for activeModules_list, v in
                               activeModules_list.items()}
     else:
         print('No Active Modules detected')
 
+    # Return
     return activeModules_list
 
 
-def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, backgroundGenesDict, pathwaysOfInterestList,
-                             WPDict, outputPath):
-    """ """
+def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict, pathOfInterestNamesDict,
+                             pathwaysOfInterestList, backgroundGenesDict, outputPath, analysisName):
+    """
+    For each genes list, run an active module identification.
+    For each AM identified, run an overlap analysis against the pathways of interest.
+
+    :param featuresDict: Dict of list of genes
+    :param networkFile: content of network file
+    :param pathOfInterestGenesDict: Genes dict of pathways of interest
+    :param pathOfInterestNamesDict: Names dict of pathways of interest
+    :param pathwaysOfInterestList: List of pathways of interest and their bg name associated
+    :param backgroundGenesDict: Dict of background genes
+    :param outputPath: output path name to save results
+    :param str analysisName: Analysis name for the output name file
+    """
     # Parameters
     resultsDict = {}
     # For each feature, search active modules using DOMINO
@@ -220,17 +244,18 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, WPGeneRDDict, background
                                           outputPath=outputPath,
                                           featureName=featureName)
         # Run Overlap
-        overlapAnalysis(chemTargetsDict=resultsDict[featureName],
-                        WPGeneRDDict=WPGeneRDDict,
-                        backgroundGenesDict=backgroundGenesDict,
+        overlapAnalysis(targetGenesDict=resultsDict[featureName],
+                        pathOfInterestGenesDict=pathOfInterestGenesDict,
+                        pathOfInterestNamesDict=pathOfInterestNamesDict,
                         pathwaysOfInterestList=pathwaysOfInterestList,
-                        WPDict=WPDict,
-                        outputPath=outputPath)
+                        backgroundGenesDict=backgroundGenesDict,
+                        outputPath=outputPath,
+                        analysisName=analysisName)
+
         # Output
         AMIFileName = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
         DOMINOOutput(networkFile, AMIFileName, featureName, outputPath)
         print(featureName + ' analysis done!\n')
-
 
 
 def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
