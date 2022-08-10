@@ -186,7 +186,7 @@ def allHumanGenesFromWP(outputPath):
     # Remove redundancy
     for pathway in genesWPDict:
         for gene in genesWPDict[pathway]:
-            if gene not in backgroundsDict[bgName]:
+            if gene not in backgroundsDict[bgName] and gene != 'HGNC':
                 backgroundsDict[bgName].append(gene)
 
     # Return

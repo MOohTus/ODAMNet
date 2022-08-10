@@ -70,11 +70,7 @@ class TestReadingFileFunction(unittest.TestCase):
         self.assertEqual(pathOfInterestNamesDict, pathOfInterestNamesDict_expected)
         self.assertEqual(pathwaysOfInterestList, pathwaysOfInterestList_expected)
 
-
-        pass
-
     def test_readBackgroundFile(self):
-        pass
         # Parameters
         bgFileName = 'TestReadingFileFunction/backgroundsFile.txt'
         bgList_expected = ['source1.gmt', 'source2.gmt', 'source3.gmt', 'source3.gmt', 'source4.gmt',
@@ -102,6 +98,9 @@ class TestReadingFileFunction(unittest.TestCase):
 
 
 class TestRequestFunctions(unittest.TestCase):
+    """
+    Test request functions from CTD_functions and WP_functions
+    """
 
     def test1_targetGenesExtraction_1Chem(self):
         """
@@ -220,53 +219,54 @@ class TestRequestFunctions(unittest.TestCase):
         self.assertEqual(chemTargetsDict, chemTargetsDict_expected)
 
     def test_rareDiseasesWPrequest(self):
-        pass
+        # Parameters
+        outputPath = 'TestRequestFunctions/'
+        date = datetime.today().strftime('%Y_%m_%d')
+        GMTFileName = outputPath + '/WP_RareDiseases_request_' + date + '.gmt'
+        # Function calling
+        genesWPDict, namesWPDict, WPnamesList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+        # Expected results
+        with open(GMTFileName, 'r') as GMTFile:
+            genesWPDict_expected, namesWPDict_expected, WPnamesList_expected = WP.readGMTFile(GMTFile=GMTFile)
+        # Comparison
+        self.assertEqual(genesWPDict, genesWPDict_expected)
+        self.assertEqual(namesWPDict, namesWPDict_expected)
+        self.assertEqual(WPnamesList, WPnamesList_expected)
 
     def test_allHumanGenesFromWP(self):
-        pass
+        # Parameters
+        outputPath = 'TestRequestFunctions/'
+        outputBgFileName = 'TestRequestFunctions/backgroundsFile.txt'
+        date = datetime.today().strftime('%Y_%m_%d')
+        bgName = 'WikiPathway_' + date
+        with open(outputBgFileName, 'w') as output:
+            bgFileName_expected = 'WP_allPathways_request_' + date + '.gmt'
+            output.write(bgFileName_expected)
+            output.write('\n')
+        # Function calling
+        bgDict = WP.allHumanGenesFromWP(outputPath=outputPath)
+        # Expected results
+        with open(outputBgFileName, 'r') as bgFile_expected:
+            bgDict_expected, bgList_expected = WP.readBackgroundsFile(backgroundsFile=bgFile_expected)
+        # Comparison
+        bgDict[bgName].sort()
+        bgDict_expected[bgFileName_expected].sort()
+        self.assertEqual(len(bgDict[bgName]), len(bgDict_expected[bgFileName_expected]))
+        self.assertEqual(bgDict[bgName], bgDict_expected[bgFileName_expected])
 
 
+class TestNetworkCreationFunction(unittest.TestCase):
+    pass
 
 
+class TestOverlapAnalysis(unittest.TestCase):
+    pass
 
 
+class TestDOMINOAnalysis(unittest.TestCase):
+    pass
 
 
-
-# class TestMethodsFromWPModule(unittest.TestCase):
-#
-#     def test_allGenesFromWP(self):
-#         # Parameters
-#         outputPath = 'test_WPFunctions/'
-#         backgroundGenesList_expectedFile = 'test_WPFunctions/bgGenesWP_2022_07_expected.csv'
-#         date = datetime.today().strftime('%Y_%m_%d')
-#         bgName = 'WikiPathway_' + date
-#         WPBackgroundGenesDict_expected = {bgName: []}
-#         # Read background genes file
-#         with open(backgroundGenesList_expectedFile, 'r') as backgroundGenesList_expected:
-#             for line in backgroundGenesList_expected:
-#                 WPBackgroundGenesDict_expected[bgName].append(line.strip())
-#         # Run command
-#         WPBackgroundGenesDict = WP.allGenesFromWP(outputPath=outputPath)
-#         # Compare
-#         WPBackgroundGenesDict[bgName].sort()
-#         WPBackgroundGenesDict_expected[bgName].sort()
-#         self.assertEqual(len(WPBackgroundGenesDict[bgName]), len(WPBackgroundGenesDict_expected[bgName]))
-#         self.assertEqual(WPBackgroundGenesDict, WPBackgroundGenesDict_expected)
-#
-#     def test_rareDiseasesWPrequest(self):
-#         # Parameters
-#         outputPath = 'test_WPFunctions/'
-#         date = datetime.today().strftime('%Y_%m_%d')
-#         pIfInt_GMT_File = 'test_WPFunctions/WP_RareDiseases_request_' + date + '.gmt'
-#         # Run command
-#         WPGeneRDDict, WPDict, pathwaysOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-#         # Expected results
-#         with open(pIfInt_GMT_File, 'r') as expectedGMTFile:
-#             WPGeneRDDict_expected, WPDict_expected, pathwaysOfInterestList_expected = WP.readGMTFile(expectedGMTFile)
-#         # Compare
-#         self.assertEqual(pathwaysOfInterestList, pathwaysOfInterestList_expected)
-#
 #
 # class TestOverlapAnalysis(unittest.TestCase):
 #
