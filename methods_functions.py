@@ -101,7 +101,7 @@ def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pat
 
     # Write into a file
     dfSorted = df.sort_values(by=['pAdjusted'])
-    dfSorted.to_csv(outputPath + '/Overlap_' + featureName + '_with ' + analysisName + '.csv', ';', index=False)
+    dfSorted.to_csv(outputPath + '/Overlap_' + featureName + '_with' + analysisName + '.csv', ';', index=False)
 
     print('\tOverlap analysis done!')
     # return df

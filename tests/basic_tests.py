@@ -104,7 +104,7 @@ class TestRequestFunctions(unittest.TestCase):
     Test request functions from CTD_functions and WP_functions
     """
 
-    def test1_targetGenesExtraction_1Chem(self):
+    def test_targetGenesExtraction_1Chem(self):
         """
         test1 : one chemical or two in the same line - Complete test
         """
@@ -134,7 +134,7 @@ class TestRequestFunctions(unittest.TestCase):
                     # Comparison
                     self.assertEqual(chemTargetsDict, chemTargetsDict_expected)
 
-    def test1_targetGenesExtraction_1Chem(self):
+    def test_targetGenesExtraction_1Chem(self):
         """
         test1 : one chemical or two in the same line - Short version
         """
@@ -161,7 +161,7 @@ class TestRequestFunctions(unittest.TestCase):
             # Comparison
             self.assertEqual(chemTargetsDict, chemTargetsDict_expected)
 
-    def test2_targetGenesExtraction_severalChem(self):
+    def test_targetGenesExtraction_severalChem(self):
         """
         test2 : two lines of uniq chemical
         """
@@ -190,7 +190,7 @@ class TestRequestFunctions(unittest.TestCase):
         self.assertEqual(chemList, chemList_expected)
         self.assertEqual(chemTargetsDict, chemTargetsDict_expected)
 
-    def test3_targetGenesExtraction_mix(self):
+    def test_targetGenesExtraction_mix(self):
         """
         test3 : one two chemical line and one uniq chemical
         """
@@ -281,64 +281,70 @@ class TestNetworkCreationFunction(unittest.TestCase):
         self.assertTrue(filecmp.cmp(f1=networkName, f2=networkName_expected, shallow=False))
 
 
-
 class TestOverlapAnalysis(unittest.TestCase):
-    pass
 
+    def test_overlap_1Bg(self):
+        # Parameters
+        targetGeneSet = {'gene1', 'gene2', 'gene3', 'gene4', 'gene18'}
+        pathOfInterestGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
+                                   'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
+                                   'Pathway3': ['gene1', 'gene10']}
+        pathOfInterestNamesDict = {'Pathway1': 'Pathway1 from source 1',
+                                   'Pathway2': 'Pathway2 from source 1',
+                                   'Pathway3': 'Pathway3 from source 1'}
+        pathwaysOfInterestList = [['Pathway1', 'Source1'], ['Pathway2', 'Source1'], ['Pathway3', 'Source1']]
+        backgroundGenesDict = {'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10']}
+        featureName = 'unittests_source1'
+        outputPath = 'TestOverlapAnalysis/'
+        analysisName = 'test'
+        # Function calling
+        methods.overlap(targetGeneSet=targetGeneSet,
+                        pathOfInterestGenesDict=pathOfInterestGenesDict,
+                        pathOfInterestNamesDict=pathOfInterestNamesDict,
+                        pathwaysOfInterestList=pathwaysOfInterestList,
+                        backgroundGenesDict=backgroundGenesDict,
+                        featureName=featureName, outputPath=outputPath, analysisName=analysisName)
+        # Comparison
+        self.assertTrue(filecmp.cmp(f1='TestOverlapAnalysis/Overlap_unittests_source1_withtest.csv',
+                                    f2='TestOverlapAnalysis/Overlap_unittests_source1_withtest_expected.csv',
+                                    shallow=False))
+
+    def test_overlap_severalBg(self):
+        # Parameters
+        targetGeneSet = {'gene1', 'gene2', 'gene3', 'gene4', 'gene10'}
+        pathOfInterestGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
+                                   'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
+                                   'Pathway3': ['gene1', 'gene10'],
+                                   'Pathway4': ['gene1', 'gene3', 'gene4', 'gene8', 'gene10']}
+        pathOfInterestNamesDict = {'Pathway1': 'Pathway1 from source 1',
+                                   'Pathway2': 'Pathway2 from source 2',
+                                   'Pathway3': 'Pathway3 from source 3',
+                                   'Pathway4': 'Pathway4 from source 1'}
+        pathwaysOfInterestList = [
+            ['Pathway1', 'Source1'], ['Pathway2', 'Source2'], ['Pathway3', 'Source3'], ['Pathway4', 'Source1']]
+        backgroundGenesDict = {
+            'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10'],
+            'Source2': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9'],
+            'Source3': ['gene1', 'gene20', 'gene3', 'gene4', 'gene50', 'gene6', 'gene10']}
+        featureName = 'unittests_multipleSources'
+        outputPath = 'TestOverlapAnalysis/'
+        analysisName = 'test'
+        # Function calling
+        methods.overlap(targetGeneSet=targetGeneSet,
+                        pathOfInterestGenesDict=pathOfInterestGenesDict,
+                        pathOfInterestNamesDict=pathOfInterestNamesDict,
+                        pathwaysOfInterestList=pathwaysOfInterestList,
+                        backgroundGenesDict=backgroundGenesDict,
+                        featureName=featureName, outputPath=outputPath, analysisName=analysisName)
+        # Comparison
+        self.assertTrue(filecmp.cmp(f1='TestOverlapAnalysis/Overlap_unittests_multipleSources_withtest.csv',
+                                    f2='TestOverlapAnalysis/Overlap_unittests_multipleSources_withtest_expected.csv',
+                                    shallow=False))
 
 class TestDOMINOAnalysis(unittest.TestCase):
     pass
 
 
-#
-# class TestOverlapAnalysis(unittest.TestCase):
-#
-#     def test_overlap_from1Source(self):
-#         # Init
-#         targetGeneSet = set(['gene1', 'gene2', 'gene3', 'gene4'])
-#         WPGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
-#                        'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
-#                        'Pathway3': ['gene1', 'gene10']}
-#         backgroundGenesDict = {'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10']}
-#         pathwaysOfInterestList = [['Pathway1', 'Source1'], ['Pathway2', 'Source1'], ['Pathway3', 'Source1']]
-#         chemNames = 'unittests_source1'
-#         WPDict = {'Pathway1': 'Pathway1 from source 1',
-#                   'Pathway2': 'Pathway2 from source 1',
-#                   'Pathway3': 'Pathway3 from source 1'}
-#         outputPath = '.'
-#         # Run overlap analysis
-#         methods.overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict, outputPath)
-#         # Compare
-#         self.assertTrue(filecmp.cmp(f1='Overlap_unittests_source1_withRDWP.csv',
-#                                     f2='Overlap_unittests_source1_withRDWP_expected.csv',
-#                                     shallow=False))
-#
-#     def test_overlap_fromDifferentSources(self):
-#         # Init
-#         targetGeneSet = set(['gene1', 'gene2', 'gene3', 'gene4'])
-#         WPGenesDict = {'Pathway1': ['gene1', 'gene2', 'gene4', 'gene6', 'gene8'],
-#                        'Pathway2': ['gene1', 'gene3', 'gene5', 'gene7', 'gene9'],
-#                        'Pathway3': ['gene1', 'gene10'],
-#                        'Pathway4': ['gene1', 'gene4', 'gene5', 'gene8', 'gene10']}
-#         backgroundGenesDict = {
-#             'Source1': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9', 'gene10'],
-#             'Source2': ['gene1', 'gene2', 'gene3', 'gene4', 'gene5', 'gene6', 'gene7', 'gene8', 'gene9'],
-#             'Source3': ['gene1', 'gene20', 'gene3', 'gene4', 'gene50', 'gene6', 'gene10']}
-#         pathwaysOfInterestList = [
-#             ['Pathway1', 'Source1'], ['Pathway2', 'Source2'], ['Pathway3', 'Source3'], ['Pathway4', 'Source1']]
-#         chemNames = 'unittests_manySources'
-#         WPDict = {'Pathway1': 'Pathway1 from source 1',
-#                   'Pathway2': 'Pathway2 from source 2',
-#                   'Pathway3': 'Pathway3 from source 3',
-#                   'Pathway4': 'Pathway4 from source 1'}
-#         outputPath = '.'
-#         # Run overlap analysis
-#         methods.overlap(targetGeneSet, WPGenesDict, backgroundGenesDict, pathwaysOfInterestList, chemNames, WPDict,
-#                         outputPath)
-#         # Compare
-#         self.assertTrue(filecmp.cmp(f1='Overlap_unittests_manySources_withRDWP.csv',
-#                                     f2='Overlap_unittests_manySources_withRDWP_expected.csv',
-#                                     shallow=False))
 #
 #
 # class TestMethodFunctions(unittest.TestCase):
