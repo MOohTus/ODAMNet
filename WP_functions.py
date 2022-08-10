@@ -259,6 +259,7 @@ def readBackgroundsFile(backgroundsFile):
                         for gene in linesList[2:]:
                             if gene not in backgroundsDict[name] and gene != 'HGNC':
                                 backgroundsDict[name].append(gene)
+            backgroundsDict[name].sort()
         bar()
 
     # Return

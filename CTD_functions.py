@@ -54,11 +54,12 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     targetGenesDict = {}
     chemNameList = []
     outputLines = []
-    chemName = ''
 
     for line in CTDFile:
         lineList = line.rstrip().split('\t')
-        if len(lineList[8].split('|')) >= nbPub:
+        if lineList[0] == 'Input':
+            header = '\t'.join(lineList)
+        elif len(lineList[8].split('|')) >= nbPub:
             outputLines.append("\t".join(lineList))
             # Gene name extraction
             geneName = lineList[4]
@@ -69,11 +70,14 @@ def readCTDFile(CTDFile, nbPub, outputPath):
             if chemName not in chemNameList:
                 chemNameList.append(chemName)
     # Dictionary creation
-    targetGenesDict["_".join([chemName])] = targetGenesList
+    featureName = '_'.join(chemNameList)
+    targetGenesDict[featureName] = targetGenesList
 
     # Write filtered result into file
-    filteredResultFileName = outputPath + '/CTD_requestFiltered_' + '_'.join([chemName]) + '.tsv'
+    filteredResultFileName = outputPath + '/CTD_requestFiltered_' + featureName + '.tsv'
     with open(filteredResultFileName, 'w') as outputFileHandler:
+        outputFileHandler.write(header)
+        outputFileHandler.write('\n')
         for line in outputLines:
             outputFileHandler.write(line)
             outputFileHandler.write('\n')
