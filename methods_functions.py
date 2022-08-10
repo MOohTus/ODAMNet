@@ -361,3 +361,34 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
     metrics_df = pd.merge(metrics_df, activeGenes_df, on='AMINumber')
     metrics_df.to_csv(metricsOutput, index=False, sep='\t')
 
+
+def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGenesDict):
+    """
+    Create a bipartite between genes symbols and pathways of interest
+    Create a disconnected network between pathways of interest
+
+    :param filename bipartiteName: bipartite file name
+    :param FILENAME networkName: network file name
+    :param dict pathOfInterestGenesDict: dict of pathways of interest
+    """
+    # Parameters
+    pathwayIDs = []
+    bipartiteOutputLines = []
+    # For each pathway of interest
+    # Take ID and genes into lists
+    for ID in pathOfInterestGenesDict:
+        if ID != 'WPID':
+            if ID not in pathwayIDs:
+                pathwayIDs.append(ID)
+            for gene in pathOfInterestGenesDict[ID]:
+                bipartiteOutputLines.append([ID, gene])
+    # Write ID and genes into bipartite file
+    with open(bipartiteName, 'w') as bipartiteOutputFile:
+        for line in bipartiteOutputLines:
+            bipartiteOutputFile.write('\t'.join(line))
+            bipartiteOutputFile.write('\n')
+    # Write ID and ID into network file
+    with open(networkName, 'w') as networkOutputFile:
+        for ID in pathwayIDs:
+            networkOutputFile.write('\t'.join([ID, ID]))
+            networkOutputFile.write('\n')

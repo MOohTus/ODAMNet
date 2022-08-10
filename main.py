@@ -193,10 +193,8 @@ def createNetworkFileFromWP(pathOfInterestGMT, networksPath, networksName, bipar
     """Create network SIF file from WP request or WP GMT file"""
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputCreateNetworkFromWP')
-    pathwayName = networksPath + '/' + networksName
-    bipartiteName = bipartitePath + '/' + bipartiteName
-    pathwayIDs = []
-    bipartiteOutputLines = []
+    networkFileName = networksPath + '/' + networksName
+    bipartiteFileName = bipartitePath + '/' + bipartiteName
 
     # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
@@ -216,21 +214,10 @@ def createNetworkFileFromWP(pathOfInterestGMT, networksPath, networksName, bipar
         # From request
         pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
 
-    # Create gene symbols and diseases bipartite
-    for ID in pathOfInterestGenesDict:
-        if ID != 'WPID':
-            if ID not in pathwayIDs:
-                pathwayIDs.append(ID)
-            for gene in pathOfInterestGenesDict[ID]:
-                bipartiteOutputLines.append([ID, gene])
-    with open(bipartiteName, 'w') as bipartiteOutputFile:
-        for line in bipartiteOutputLines:
-            bipartiteOutputFile.write('\t'.join(line))
-            bipartiteOutputFile.write('\n')
-    with open(pathwayName, 'w') as networkOutputFile:
-        for ID in pathwayIDs:
-            networkOutputFile.write('\t'.join([ID, ID]))
-            networkOutputFile.write('\n')
+    # Create network and bipartite
+    methods.createNetworkandBipartiteFiles(bipartiteName=bipartiteFileName,
+                                           networkName=networkFileName,
+                                           pathOfInterestGenesDict=pathOfInterestGenesDict)
 
 
 @main.command(short_help='Random Walk with Restart Analysis', context_settings=CONTEXT_SETTINGS)

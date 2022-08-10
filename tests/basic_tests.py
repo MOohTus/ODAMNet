@@ -24,7 +24,6 @@ class TestReadingFileFunction(unittest.TestCase):
     """
     Test reading file functions from CTD_functions and WP_functions
     """
-
     def test_readFeaturesFile(self):
         # Parameters
         featuresFileName = 'TestReadingFileFunction/featureNames.csv'
@@ -71,6 +70,9 @@ class TestReadingFileFunction(unittest.TestCase):
         self.assertEqual(pathwaysOfInterestList, pathwaysOfInterestList_expected)
 
     def test_readBackgroundFile(self):
+        """
+        test_readBackgroundFile
+        """
         # Parameters
         bgFileName = 'TestReadingFileFunction/backgroundsFile.txt'
         bgList_expected = ['source1.gmt', 'source2.gmt', 'source3.gmt', 'source3.gmt', 'source4.gmt',
@@ -234,6 +236,9 @@ class TestRequestFunctions(unittest.TestCase):
         self.assertEqual(WPnamesList, WPnamesList_expected)
 
     def test_allHumanGenesFromWP(self):
+        """
+        test_allHumanGenesFromWP
+        """
         # Parameters
         outputPath = 'TestRequestFunctions/'
         outputBgFileName = 'TestRequestFunctions/backgroundsFile.txt'
@@ -256,7 +261,25 @@ class TestRequestFunctions(unittest.TestCase):
 
 
 class TestNetworkCreationFunction(unittest.TestCase):
-    pass
+
+    def test_createNetworkandBipartiteFiles(self):
+        # Parameters
+        pathwaysOfInterestDict = {'P1': ['G1', 'G2', 'G3', 'G4'],
+                                  'P2': ['G10'],
+                                  'P3': ['G100', 'G200', 'G300', 'G400', 'G500'],
+                                  'P4': ['G1000', 'G2000', 'G3000', 'G4000']}
+        bipartiteName = 'TestCreateNetworkFunction/bipartite.sif'
+        networkName = 'TestCreateNetworkFunction/network.sif'
+        bipartiteName_expected = 'TestCreateNetworkFunction/bipartite_expected.sif'
+        networkName_expected = 'TestCreateNetworkFunction/network_expected.sif'
+        # Function calling
+        methods.createNetworkandBipartiteFiles(bipartiteName=bipartiteName,
+                                               networkName=networkName,
+                                               pathOfInterestGenesDict=pathwaysOfInterestDict)
+        # Comparison
+        self.assertTrue(filecmp.cmp(f1=bipartiteName, f2=bipartiteName_expected, shallow=False))
+        self.assertTrue(filecmp.cmp(f1=networkName, f2=networkName_expected, shallow=False))
+
 
 
 class TestOverlapAnalysis(unittest.TestCase):
