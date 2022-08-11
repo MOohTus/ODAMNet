@@ -275,7 +275,7 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
     AMIOutputLinesList = []
 
     # Create network graph
-    network_df = pd.read_csv(networkFileName, delimiter="\t")
+    network_df = pd.read_csv(networkFileName, delimiter='\t')
     network_graph = nx.from_pandas_edgelist(network_df, 'node_1', 'node_2', 'link')
 
     # Read Active Module composition
@@ -357,7 +357,7 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
 
     # Write metrics into file
     activeGenes_df = pd.DataFrame({'AMINumber': list(activeGenesDict.keys()),
-                                   'activeGenesNumber': list(activeGenesDict.values())})
+                                   'ActiveGenesNumber': list(activeGenesDict.values())})
     metrics_df = pd.merge(metrics_df, activeGenes_df, on='AMINumber')
     metrics_df.to_csv(metricsOutput, index=False, sep='\t')
 

@@ -11,7 +11,8 @@ This script tests some functions from different modules inside the project.
 
 # Libraries
 import unittest
-import requests
+import pandas as pd
+import networkx as nx
 import os
 import filecmp
 import WP_functions as WP
@@ -341,11 +342,51 @@ class TestOverlapAnalysis(unittest.TestCase):
                                     f2='TestOverlapAnalysis/Overlap_unittests_multipleSources_withtest_expected.csv',
                                     shallow=False))
 
+
 class TestDOMINOAnalysis(unittest.TestCase):
-    pass
+
+    def test_DOMINOOutputFunction(self):
+        # Parameters
+        networkFileName = 'TestDOMINOmethods/network.sif'
+        AMIFileName = 'TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModules.txt'
+        featureName = 'testDOMINOoutput'
+        outputPath = 'TestDOMINOmethods/'
+        AMIFileInit = ['geneSymbol\tActiveModule\tActiveGene\n',
+                       'g1\t1\tFalse\n', 'g2\t1\tFalse\n', 'g5\t1\tFalse\n', 'g4\t1\tTrue\n', 'g20\t1\tFalse\n',
+                       'g16\t3\tFalse\n', 'g7\t3\tFalse\n', 'g17\t3\tTrue\n', 'g6\t3\tTrue\n',
+                       'g14\t2\tTrue\n', 'g18\t2\tFalse\n', 'g9\t2\tFalse\n', 'g13\t2\tFalse\n']
+        # Function calling
+        with open(AMIFileName, 'w') as outputHandler:
+            for line in AMIFileInit:
+                outputHandler.write(line)
+        methods.DOMINOOutput(networkFileName=networkFileName, AMIFileName=AMIFileName,
+                             featureName=featureName, outputPath=outputPath)
+        # Comparison of AMI network
+        network_df = pd.read_csv('TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModulesNetwork.txt', delimiter='\t')
+        network_graph = nx.from_pandas_edgelist(network_df, 'source', 'target', 'link')
+        network_df_expected = pd.read_csv('TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModulesNetwork.txt', delimiter='\t')
+        network_graph_expected = nx.from_pandas_edgelist(network_df_expected, 'source', 'target', 'link')
+        self.assertTrue(network_graph.nodes, network_graph_expected.nodes)
+        self.assertTrue(network_graph.edges, network_graph_expected.edges)
+        # Comparison of AM metadata
+        AMI_metadataFileName = 'TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModules.txt'
+        AMI_metadataFileName_expected = 'TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModules_expected.txt'
+        AMI_df = pd.read_csv(AMI_metadataFileName, delimiter='\t')
+        AMI_df = AMI_df.sort_values(by='geneSymbol')
+        AMI_df_expected = pd.read_csv(AMI_metadataFileName_expected, delimiter='\t')
+        AMI_df_expected = AMI_df_expected.sort_values(by='geneSymbol')
+        pd.testing.assert_frame_equal(AMI_df, AMI_df_expected)
+        # Comparison of metrics
+        metricsFileName = 'TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModulesNetworkMetrics.txt'
+        metricsFileName_expected = 'TestDOMINOmethods/DOMINO_testDOMINOoutput_activeModulesNetworkMetrics_expected.txt'
+        metrics_df = pd.read_csv(metricsFileName, delimiter='\t')
+        metrics_df = metrics_df.sort_values(by='AMINumber')
+        metrics_df_expected = pd.read_csv(metricsFileName_expected, delimiter='\t')
+        metrics_df_expected = metrics_df_expected.sort_values(by='AMINumber')
+        pd.testing.assert_frame_equal(metrics_df.reset_index(drop=True), metrics_df_expected.reset_index(drop=True))
 
 
-#
+
 #
 # class TestMethodFunctions(unittest.TestCase):
 #
