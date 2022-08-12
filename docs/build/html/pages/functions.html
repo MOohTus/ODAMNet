@@ -104,7 +104,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis/requestAnalysis.html">Request analysis: up to date data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/requestAnalysis.html">Example 1 : request analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysis/filesAnalysis.html">Specific version of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysis/genericAnalysis.html">Generic analysis : with the data you want</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysis/parameters.html">Resume of the main required parameters</a></li>
@@ -201,8 +201,8 @@ Analysis calling</p>
 Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.overlap">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetGeneSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chemNames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate overlap.rst between target genes and Rase Diseases WP</p>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetGeneSet</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestNamesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysisName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate overlap between target genes and pathways of interest</p>
 <dl class="simple">
 <dt>Metrics :</dt><dd><ul class="simple">
 <li><p>M is the population size (Nb of genes inside WikiPathway for Homo sapiens pathways)</p></li>
@@ -216,36 +216,32 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>targetGeneSet</strong> (<em>set</em>) – Set of HGNC targets</p></li>
-<li><p><strong>WPGenesDict</strong> (<em>dict</em>) – Dictionary of Rare Diseases WP</p></li>
-<li><p><strong>backgroundGenesDict</strong> (<em>set</em>) – </p></li>
-<li><p><strong>pathwaysOfInterestList</strong> (<em>set</em>) – </p></li>
-<li><p><strong>chemNames</strong> (<em>str</em>) – MeSH ID of chemical of interest</p></li>
-<li><p><strong>WPDict</strong> (<em>dict</em>) – Dictionary of WP composed of title of them</p></li>
+<li><p><strong>pathOfInterestGenesDict</strong> (<em>dict</em>) – Dictionary of pathways of interest</p></li>
+<li><p><strong>pathOfInterestNamesDict</strong> (<em>dict</em>) – Dictionary of WP composed of title of them</p></li>
+<li><p><strong>pathwaysOfInterestList</strong> (<em>set</em>) – Pathways of interest list and their associated background name</p></li>
+<li><p><strong>backgroundGenesDict</strong> (<em>set</em>) – Dict of background genes</p></li>
+<li><p><strong>featureName</strong> (<em>str</em>) – feature name (g.e. MeSH ID or chemical name etc.)</p></li>
 <li><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results</p></li>
+<li><p><strong>analysisName</strong> (<em>str</em>) – Analysis name for the output name file</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – Data frame of overlap.rst metrics for each rare diseases WP</p></li>
-</ul>
-</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.overlapAnalysis">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemTargetsDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlapAnalysis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">overlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targetGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestNamesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysisName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.overlapAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each chemical given in input, calculate overlap.rst with RD WP.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>chemTargetsDict</strong> (<em>dict</em>) – Dict composed of interaction genes list for each chemical</p></li>
-<li><p><strong>WPGeneRDDict</strong> (<em>dict</em>) – Dictionary of Rare Diseases WP</p></li>
-<li><p><strong>backgroundGenesDict</strong> (<em>list</em>) – </p></li>
-<li><p><strong>pathwaysOfInterestList</strong> (<em>list</em>) – </p></li>
-<li><p><strong>WPDict</strong> (<em>dict</em>) – Dict of titles for each RD WikiPathway</p></li>
+<li><p><strong>targetGenesDict</strong> (<em>dict</em>) – Dict composed of interaction genes list for each chemical</p></li>
+<li><p><strong>pathOfInterestGenesDict</strong> (<em>dict</em>) – Dict of pathways of interest genes</p></li>
+<li><p><strong>pathOfInterestNamesDict</strong> (<em>dict</em>) – Dict of pathways of interest names</p></li>
+<li><p><strong>pathwaysOfInterestList</strong> (<em>list</em>) – Pathways of interest list and their associated background name</p></li>
+<li><p><strong>backgroundGenesDict</strong> (<em>list</em>) – Dict of background genes</p></li>
 <li><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results</p></li>
+<li><p><strong>analysisName</strong> (<em>str</em>) – Analysis name for the output name file</p></li>
 </ul>
 </dd>
 </dl>
@@ -272,32 +268,118 @@ You have to specify seeds and networks.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINO">
 <span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genesFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINO" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Run active modules identification analysis on the DOMINO server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>genesFileName</strong> – active genes file name (g.e. list of genes of interest)</p></li>
+<li><p><strong>networkFile</strong> – content of the network file</p></li>
+<li><p><strong>outputPath</strong> – output path name to save the results</p></li>
+<li><p><strong>featureName</strong> – feature name (g.e. chemical name)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>activeModulesDict</strong> (<em>dict</em>) – Dict of active modules identified</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINOandOverlapAnalysis">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPGeneRDDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">WPDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestNamesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysisName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each genes list, run an active module identification.
+For each AM identified, run an overlap analysis against the pathways of interest.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>featuresDict</strong> – Dict of list of genes</p></li>
+<li><p><strong>networkFile</strong> – content of network file</p></li>
+<li><p><strong>pathOfInterestGenesDict</strong> – Genes dict of pathways of interest</p></li>
+<li><p><strong>pathOfInterestNamesDict</strong> – Names dict of pathways of interest</p></li>
+<li><p><strong>pathwaysOfInterestList</strong> – List of pathways of interest and their bg name associated</p></li>
+<li><p><strong>backgroundGenesDict</strong> – Dict of background genes</p></li>
+<li><p><strong>outputPath</strong> – output path name to save results</p></li>
+<li><p><strong>analysisName</strong> (<em>str</em>) – Analysis name for the output name file</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINOOutput">
 <span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">networkFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AMIFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOOutput" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="methods_functions.createNetworkandBipartiteFiles">
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">createNetworkandBipartiteFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bipartiteName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.createNetworkandBipartiteFiles" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a bipartite between genes symbols and pathways of interest
+Create a disconnected network between pathways of interest</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bipartiteName</strong> (<em>filename</em>) – bipartite file name</p></li>
+<li><p><strong>networkName</strong> (<em>FILENAME</em>) – network file name</p></li>
+<li><p><strong>pathOfInterestGenesDict</strong> (<em>dict</em>) – dict of pathways of interest</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-CTD_functions">
 <span id="ctd-functions"></span><h1>CTD functions<a class="headerlink" href="#module-CTD_functions" title="Permalink to this headline">¶</a></h1>
 <p>&#64;author: Morgane T.</p>
 <p>CTD functions</p>
+<p>Script to manage the input genes list reading.
+Genes list could come from</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a chemical list and requested from CTD</p></li>
+<li><p>a CTD file (file created by request CTD)</p></li>
+<li><p>a list of interested genes</p></li>
+</ul>
+</div></blockquote>
 <dl class="py function">
-<dt class="sig sig-object py" id="CTD_functions.readListFile">
-<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">readListFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">listFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.readListFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="CTD_functions.readFeaturesFile">
+<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">readFeaturesFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.readFeaturesFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a list file (composed of gene names or chemical names).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>featuresFile</strong> (<em>FILE</em>) – content of the features file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>featureNamesList</strong> (<em>list</em>) – List of feature names</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CTD_functions.readCTDFile">
 <span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">readCTDFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CTDFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbPub</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.readCTDFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Read CTD file, created from a request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CTDFile</strong> (<em>FILE</em>) – Content of the CTD file</p></li>
+<li><p><strong>nbPub</strong> (<em>int</em>) – number of paper to keep an interaction</p></li>
+<li><p><strong>outputPath</strong> (<em>PATH</em>) – output path directory name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>targetGenesDict</strong> (<em>dict</em>) – Dictionary of genes for each chemical as query</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="CTD_functions.CTDrequest">
@@ -327,8 +409,8 @@ Focus on genes present in Homo sapiens.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="CTD_functions.CTDrequestFromList">
-<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">CTDrequestFromList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">association</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbPub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.CTDrequestFromList" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CTD_functions.CTDrequestFromFeaturesList">
+<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">CTDrequestFromFeaturesList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">association</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbPub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.CTDrequestFromFeaturesList" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make CTD request for each chemical present in the list given in input.
 Each element can be composed of one or more element.
 If several element, the analysis will be done like if there is only one chemical.</p>
@@ -351,8 +433,8 @@ If several element, the analysis will be done like if there is only one chemical
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="CTD_functions.targetExtraction">
-<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">targetExtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CTDFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directAssociations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbPub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.targetExtraction" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="CTD_functions.targetGenesExtraction">
+<span class="sig-prename descclassname"><span class="pre">CTD_functions.</span></span><span class="sig-name descname"><span class="pre">targetGenesExtraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chemicalsFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directAssociations</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbPub</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#CTD_functions.targetGenesExtraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read environmental factor file
 Request CTD and extract target genes
 Save results into output file
@@ -360,14 +442,17 @@ Return the gene targets list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>CTDFile</strong> – </p></li>
-<li><p><strong>directAssociations</strong> – </p></li>
-<li><p><strong>outputPath</strong> – </p></li>
-<li><p><strong>nbPub</strong> – </p></li>
+<li><p><strong>chemicalsFile</strong> (<em>FILE</em>) – content of the chemicals file list</p></li>
+<li><p><strong>directAssociations</strong> (<em>bool</em>) – Chemical only or descendants too</p></li>
+<li><p><strong>outputPath</strong> (<em>PATH</em>) – folder path name to save results</p></li>
+<li><p><strong>nbPub</strong> (<em>int</em>) – number of paper to keep an interaction</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>chemTargetsDict</strong> (<em>dict</em>) – Dict composed of interaction genes list for each chemical</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -379,17 +464,18 @@ Return the gene targets list</p>
 <p>WikiPathways functions</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="WP_functions.readRequestResultsWP">
-<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readRequestResultsWP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readRequestResultsWP" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read request from WP.
-Parse and extract information from request.</p>
+<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readRequestResultsWP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">WPrequestResult</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readRequestResultsWP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read request from WP.</p>
+<p>Parse and extract information from request.
+Extract genes, names and IDs of pathways.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>request</strong> (<em>bytes</em>) – request from WikiPathway</p>
+<dd class="field-odd"><p><strong>WPrequestResult</strong> (<em>bytes</em>) – request result from WikiPathway</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>dictionary</strong> (<em>dictionary</em>) – Dict of genes for each WikiPathway</p></li>
-<li><p><strong>WPdictionary</strong> (<em>dictionary</em>) – Dict of titles for each WikiPathway</p></li>
+<li><p><strong>genesWPdict</strong> (<em>dictionary</em>) – Dict of genes for each WikiPathway</p></li>
+<li><p><strong>nameWPdict</strong> (<em>dictionary</em>) – Dict of titles for each WikiPathway</p></li>
 </ul>
 </p>
 </dd>
@@ -409,8 +495,9 @@ Write results into result file.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>genesDict</strong> (<em>dictionary</em>) – Dict of genes for each RD WikiPathway</p></li>
-<li><p><strong>WPDict</strong> (<em>dictionary</em>) – Dict of titles for each RD WikiPathway</p></li>
+<li><p><strong>genesWPDict</strong> (<em>dictionary</em>) – Dict of genes for each RD WikiPathway</p></li>
+<li><p><strong>namesWPDict</strong> (<em>dictionary</em>) – Dict of names for each RD WikiPathway</p></li>
+<li><p><strong>pathwayOfInterestList</strong> (<em>list</em>) – Pathway names list</p></li>
 </ul>
 </p>
 </dd>
@@ -418,8 +505,8 @@ Write results into result file.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="WP_functions.allGenesFromWP">
-<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">allGenesFromWP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.allGenesFromWP" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="WP_functions.allHumanGenesFromWP">
+<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">allHumanGenesFromWP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.allHumanGenesFromWP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract all gene HGNC ID from Homo sapiens WP.
 Write request result into output file.</p>
 <dl class="field-list simple">
@@ -428,7 +515,7 @@ Write request result into output file.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
-<li><p><strong>geneSetWP</strong> (<em>list</em>) – List of uniq genes found in Homo sapiens WP</p></li>
+<li><p><strong>backgroundsDict</strong> (<em>dict</em>) – dict of all human genes from WP</p></li>
 </ul>
 </p>
 </dd>
@@ -438,21 +525,20 @@ Write request result into output file.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="WP_functions.readGMTFile">
 <span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readGMTFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">GMTFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readGMTFile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="WP_functions.readUniversFile">
-<span class="sig-prename descclassname"><span class="pre">WP_functions.</span></span><span class="sig-name descname"><span class="pre">readUniversFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UniversFile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#WP_functions.readUniversFile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read a file to extract list of genes
-The file is composed of one column of genes
-These gene are all human genes in WP</p>
+<dd><p>Parse and extract information from GMT file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>UniversFile</strong> (<em>str</em>) – Univers file content</p>
+<dd class="field-odd"><p><strong>GMTFile</strong> (<em>FILE</em>) – content of GMT file</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>geneSetWP</strong> (<em>list</em>) – List of genes that composed the Univers (WP for human)</p></li>
+<dd class="field-even"><p><blockquote>
+<div><ul class="simple">
+<li><p><strong>genesWPDict</strong> (<em>dict</em>) – Dict of genes for each WikiPathway</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>namesWPDict</strong> (<em>dict</em>) – Dict of titles for each WikiPathway</p></li>
+<li><p><strong>pathwaysOfInterestList</strong> (<em>list</em>) – Pathway names list</p></li>
 </ul>
 </p>
 </dd>

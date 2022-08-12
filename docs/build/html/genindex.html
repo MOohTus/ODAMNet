@@ -103,7 +103,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="pages/analysis/requestAnalysis.html">Request analysis: up to date data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pages/analysis/requestAnalysis.html">Example 1 : request analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/analysis/filesAnalysis.html">Specific version of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/analysis/genericAnalysis.html">Generic analysis : with the data you want</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pages/analysis/parameters.html">Resume of the main required parameters</a></li>
@@ -277,6 +277,17 @@
 </li>
       </ul></li>
       <li>
+    --GMT &lt;pathOfInterestGMT&gt;
+
+      <ul>
+        <li><a href="pages/usage/AMI.html#cmdoption-main-domino-GMT">main-domino command line option</a>
+</li>
+        <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-GMT">main-networkCreation command line option</a>
+</li>
+        <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-GMT">main-overlap command line option</a>
+</li>
+      </ul></li>
+      <li>
     --nbPub &lt;nbPub&gt;
 
       <ul>
@@ -301,6 +312,8 @@
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-networksName">main-networkCreation command line option</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     --networksPath &lt;networksPath&gt;
 
@@ -310,8 +323,6 @@
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-networksPath">main-networkCreation command line option</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     --outputPath &lt;outputPath&gt;
 
@@ -351,17 +362,6 @@
 
       <ul>
         <li><a href="pages/usage/AMI.html#cmdoption-main-version">main command line option</a>, <a href="pages/usage/Quickstart.html#cmdoption-main-version">[1]</a>, <a href="pages/usage/RWR.html#cmdoption-main-version">[2]</a>, <a href="pages/usage/newNetwork.html#cmdoption-main-version">[3]</a>, <a href="pages/usage/overlap.html#cmdoption-main-version">[4]</a>
-</li>
-      </ul></li>
-      <li>
-    --WP_GMT &lt;WP_GMT&gt;
-
-      <ul>
-        <li><a href="pages/usage/AMI.html#cmdoption-main-domino-WP_GMT">main-domino command line option</a>
-</li>
-        <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-WP_GMT">main-networkCreation command line option</a>
-</li>
-        <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-WP_GMT">main-overlap command line option</a>
 </li>
       </ul></li>
       <li>
@@ -423,7 +423,7 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pages/functions.html#WP_functions.allGenesFromWP">allGenesFromWP() (in module WP_functions)</a>
+      <li><a href="pages/functions.html#WP_functions.allHumanGenesFromWP">allHumanGenesFromWP() (in module WP_functions)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -431,6 +431,8 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="pages/functions.html#methods_functions.createNetworkandBipartiteFiles">createNetworkandBipartiteFiles() (in module methods_functions)</a>
+</li>
       <li>
     CTD_functions
 
@@ -442,7 +444,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="pages/functions.html#CTD_functions.CTDrequest">CTDrequest() (in module CTD_functions)</a>
 </li>
-      <li><a href="pages/functions.html#CTD_functions.CTDrequestFromList">CTDrequestFromList() (in module CTD_functions)</a>
+      <li><a href="pages/functions.html#CTD_functions.CTDrequestFromFeaturesList">CTDrequestFromFeaturesList() (in module CTD_functions)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -492,13 +494,13 @@
 </li>
         <li><a href="pages/usage/AMI.html#cmdoption-main-domino-g">--geneList &lt;geneListFile&gt;</a>
 </li>
+        <li><a href="pages/usage/AMI.html#cmdoption-main-domino-GMT">--GMT &lt;pathOfInterestGMT&gt;</a>
+</li>
         <li><a href="pages/usage/AMI.html#cmdoption-main-domino-nbPub">--nbPub &lt;nbPub&gt;</a>
 </li>
         <li><a href="pages/usage/AMI.html#cmdoption-main-domino-n">--networkFile &lt;networkFile&gt;</a>
 </li>
         <li><a href="pages/usage/AMI.html#cmdoption-main-domino-o">--outputPath &lt;outputPath&gt;</a>
-</li>
-        <li><a href="pages/usage/AMI.html#cmdoption-main-domino-WP_GMT">--WP_GMT &lt;WP_GMT&gt;</a>
 </li>
         <li><a href="pages/usage/AMI.html#cmdoption-main-domino-c">-c</a>
 </li>
@@ -556,13 +558,13 @@
 </li>
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-bipartitePath">--bipartitePath &lt;bipartitePath&gt;</a>
 </li>
+        <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-GMT">--GMT &lt;pathOfInterestGMT&gt;</a>
+</li>
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-networksName">--networksName &lt;FILENAME&gt;</a>
 </li>
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-networksPath">--networksPath &lt;networksPath&gt;</a>
 </li>
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-o">--outputPath &lt;outputPath&gt;</a>
-</li>
-        <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-WP_GMT">--WP_GMT &lt;WP_GMT&gt;</a>
 </li>
         <li><a href="pages/usage/newNetwork.html#cmdoption-main-networkCreation-o">-o</a>
 </li>
@@ -581,11 +583,11 @@
 </li>
         <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-g">--geneList &lt;geneListFile&gt;</a>
 </li>
+        <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-GMT">--GMT &lt;pathOfInterestGMT&gt;</a>
+</li>
         <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-nbPub">--nbPub &lt;nbPub&gt;</a>
 </li>
         <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-o">--outputPath &lt;outputPath&gt;</a>
-</li>
-        <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-WP_GMT">--WP_GMT &lt;WP_GMT&gt;</a>
 </li>
         <li><a href="pages/usage/overlap.html#cmdoption-main-overlap-c">-c</a>
 </li>
@@ -640,15 +642,13 @@
 </li>
       <li><a href="pages/functions.html#CTD_functions.readCTDFile">readCTDFile() (in module CTD_functions)</a>
 </li>
-      <li><a href="pages/functions.html#WP_functions.readGMTFile">readGMTFile() (in module WP_functions)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pages/functions.html#CTD_functions.readListFile">readListFile() (in module CTD_functions)</a>
+      <li><a href="pages/functions.html#CTD_functions.readFeaturesFile">readFeaturesFile() (in module CTD_functions)</a>
+</li>
+      <li><a href="pages/functions.html#WP_functions.readGMTFile">readGMTFile() (in module WP_functions)</a>
 </li>
       <li><a href="pages/functions.html#WP_functions.readRequestResultsWP">readRequestResultsWP() (in module WP_functions)</a>
-</li>
-      <li><a href="pages/functions.html#WP_functions.readUniversFile">readUniversFile() (in module WP_functions)</a>
 </li>
       <li><a href="pages/functions.html#methods_functions.RWR">RWR() (in module methods_functions)</a>
 </li>
@@ -658,7 +658,7 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pages/functions.html#CTD_functions.targetExtraction">targetExtraction() (in module CTD_functions)</a>
+      <li><a href="pages/functions.html#CTD_functions.targetGenesExtraction">targetGenesExtraction() (in module CTD_functions)</a>
 </li>
   </ul></td>
 </tr></table>
