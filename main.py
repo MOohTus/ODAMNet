@@ -84,7 +84,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
             backgroundGenesDict = WP.allHumanGenesFromWP(outputPath=outputPath)
             for pathway in pathwayOfInterestList:
                 pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
-            analysisName = 'RDpathwaysFromWP'
+            analysisName = 'RDWP'
             bar()
 
     if factorListFile:
@@ -151,7 +151,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
             backgroundGenesDict = WP.allHumanGenesFromWP(outputPath=outputPath)
             for pathway in pathwayOfInterestList:
                 pathwaysOfInterestList.append([pathway, list(backgroundGenesDict.keys())[0]])
-            analysisName = 'RDpathwaysFromWP'
+            analysisName = 'RDWP'
             bar()
 
     if factorListFile:
@@ -277,13 +277,19 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
     # Remove seed that are missing in network
     # Run RWR
     for factor in featuresDict:
-        # Output names creation
+        print('\tRandom walk analysis for : ' + factor)
+        # Create output folder
         analysisOutputPath = outputPath + '/RWR_' + factor
-        sifPathName = os.path.join(analysisOutputPath, sifFileName)
-
+        # If folder exist, change the name of it to not erase it
+        n = 1
+        while os.path.exists(analysisOutputPath):
+            analysisOutputPath = outputPath + '/RWR_' + factor + '_' + str(n)
+            n = n + 1
         # Check if outputPath exist and create it if it does not exist
         if not os.path.exists(analysisOutputPath):
             os.makedirs(analysisOutputPath, exist_ok=True)
+        # Output names creation
+        sifPathName = os.path.join(analysisOutputPath, sifFileName)
 
         # Write gene list into seed file
         seedList = []
@@ -293,6 +299,7 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
         with open(seedsFileName, 'w') as seedFileHandler:
             seedFileHandler.write('\n'.join(seedList))
             seedFileHandler.write('\n')
+        print('Number of seeds : ' + str(len(seedList)))
         # Run multiXrank
         shutil.copyfile(seedsFileName, analysisOutputPath + '/' + os.path.basename(seedsFileName))
         shutil.copyfile(configPath, analysisOutputPath + '/' + os.path.basename(configPath))

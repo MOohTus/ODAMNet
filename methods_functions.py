@@ -52,6 +52,9 @@ def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pat
     pValuesList = []
     intersectionsList = []
 
+    # Displaying
+    print('\tOverlap analysis for : ' + featureName)
+
     # Calculate pvalue overlap.rst for each RD WP found
     for pathway in pathwaysOfInterestList:
         pathwayName = pathway[0]
@@ -103,7 +106,7 @@ def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pat
     dfSorted = df.sort_values(by=['pAdjusted'])
     dfSorted.to_csv(outputPath + '/Overlap_' + featureName + '_with' + analysisName + '.csv', ';', index=False)
 
-    print('\tOverlap analysis done!')
+    # print('\tOverlap analysis done!')
     # return df
 
 
@@ -231,7 +234,6 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict,
     # For each feature, search active modules using DOMINO
     for featureName in featuresDict:
         print(featureName + ' analysis :')
-        print('number of active genes : ' + str(len(featuresDict[featureName])))
         # Write genes list into result file
         resultFileName = outputPath + '/DOMINO_inputGeneList_' + featureName + '.txt'
         with open(resultFileName, 'w') as outputFileHandler:
@@ -243,6 +245,8 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict,
                                           networkFile=networkFile,
                                           outputPath=outputPath,
                                           featureName=featureName)
+        print('\tNumber of active genes  : ' + str(len(featuresDict[featureName])))
+        print('\tNumber of AM identified : ' + str(len(resultsDict[featureName])))
         # Run Overlap
         overlapAnalysis(targetGenesDict=resultsDict[featureName],
                         pathOfInterestGenesDict=pathOfInterestGenesDict,
