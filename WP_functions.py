@@ -201,8 +201,8 @@ def readGMTFile(GMTFile):
 
     :return:
         - **genesWPDict** (*dict*) – Dict of genes for each WikiPathway
-       - **namesWPDict** (*dict*) – Dict of titles for each WikiPathway
-       - **pathwaysOfInterestList** (*list*) – Pathway names list
+        - **namesWPDict** (*dict*) – Dict of titles for each WikiPathway
+        - **pathwaysOfInterestList** (*list*) – Pathway names list
     """
     # Parameters
     namesWPDict = {}
