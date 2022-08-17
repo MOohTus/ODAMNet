@@ -1,0 +1,7 @@
+node		0.000000
+GO:0072001	renal system development	0.001901
+GO:0001822	kidney development	0.001714
+REAC:R-HSA-195721	Signaling by WNT	0.001610
+REAC:R-HSA-157118	Signaling by NOTCH	0.001404
+GO:0060993	kidney morphogenesis	0.000436
+REAC:R-HSA-5358351	Signaling by Hedgehog	0.000407

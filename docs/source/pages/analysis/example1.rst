@@ -84,6 +84,10 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 Active Module Identification : DOMINO
 ----------------------------------------
 
+.. warning::
+
+   Results of DOMINO can't be reproduced when using their server.
+
 As before, we want to extract target genes of vitamin A and its related molecules with at least two references about this link
 (`--directAssociation False`` and ``--nbPub 2``).
 With this method, we will search active modules (extend our target list to other link genes) using a protein-protein
@@ -176,8 +180,8 @@ There are the significant results :
 
 Visualisation :
 
-.. image:: ../../../../../../../examples/OutputResults_example1/OutputDOMINOResults/DOMINO_D014801_activeModulesNetwork.png
-   :alt: Active module identification and overlap analysis visualisation
+.. image:: ../../pictures/example1_DOMINO_AMnetwork.png
+   :alt: example1 AMI
 
 Non active genes can overlap pathways with the active genes.
 
@@ -345,8 +349,8 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
 | WP4545    | Oxysterols derived from cholesterol                           | 0.000217    |
 +-----------+---------------------------------------------------------------+-------------+
 
-.. image:: ../../../../../../../examples/OutputResults_example1/OutputMultiXRankResults/RWR_D014801/multixrank_network_example1.png
-   :alt: RWR analysis
+.. image:: ../../pictures/example1_multixrank_network.png
+   :alt: example1 RWR
 
 Pathway rare diseases identified
 ----------------------------------------
@@ -360,28 +364,30 @@ Using orsum to compare
                 --fileAliases Overlap DOMINO multiXrank
                 --outputFolder orsum/
 
-.. image:: ../../../../../../../examples/OutputResults_example1/Comparison/orsum/Heatmap.png
-   :alt: Comparison
+.. image:: ../../pictures/example1_orsum.png
+   :alt: example1 orsum
 
-Command
----------------------------------------
+Commands
+-------------
 
+.. code-block:: bash
 
-cut -f3 CTD_request_D014801_2022_08_11.tsv | sort | uniq
-cut -f5 CTD_request_D014801_2022_08_11.tsv | sed '1d' | sort | uniq | wc -l
-cut -f3 CTD_requestFiltered_D014801_2022_08_11.tsv | sort | uniq
-cut -f5 CTD_requestFiltered_D014801_2022_08_11.tsv | sed '1d' | sort | uniq | wc -l
+    1. Overlap analysis
+    cut -f3 CTD_request_D014801_2022_08_11.tsv | sort | uniq
+    cut -f5 CTD_request_D014801_2022_08_11.tsv | sed '1d' | sort | uniq | wc -l
+    cut -f3 CTD_requestFiltered_D014801_2022_08_11.tsv | sort | uniq
+    cut -f5 CTD_requestFiltered_D014801_2022_08_11.tsv | sed '1d' | sort | uniq | wc -l
 
-sed '1d' WP_allPathways_request_2022_08_11.gmt | wc -l
-awk -F"\t" '{if($1!="WPID"){print $1"\t"NF-2}}' WP_RareDiseases_request_2022_08_11.gmt | sort -k2 -n
-awk -F"\t" '{if($1!="WPID"){print $1"\t"NF-2}}' WP_allPathways_request_2022_08_11.gmt | sort -k2 -n
-sed 's/;/\t/g' Overlap_D014801_withRDWP.csv  | cut -f1,2,3,4,5,6,7,8,9 | awk -F'\t' '{if($9<=0.05){print $0}}'
+    sed '1d' WP_allPathways_request_2022_08_11.gmt | wc -l
+    awk -F"\t" '{if($1!="WPID"){print $1"\t"NF-2}}' WP_RareDiseases_request_2022_08_11.gmt | sort -k2 -n
+    awk -F"\t" '{if($1!="WPID"){print $1"\t"NF-2}}' WP_allPathways_request_2022_08_11.gmt | sort -k2 -n
+    sed 's/;/\t/g' Overlap_D014801_withRDWP.csv  | cut -f1,2,3,4,5,6,7,8,9 | awk -F'\t' '{if($9<=0.05){print $0}}'
 
-cut -f2 DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq
-cut -f3,4DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq | sed 's/\t/;/g' > forHTML.csv
+    cut -f2 DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq
+    cut -f3,4DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq | sed 's/\t/;/g' > forHTML.csv
 
-awk -F";" 'BEGIN{OFS="\t"} {if($9<0.05){if($1 in a == 0){a[$1]=$9}}} END{for(i in a){print i"\t"a[i]}}' ../OutputDOMINOResults/Overlap_AM_* | sort -k2 -nr
+    awk -F";" 'BEGIN{OFS="\t"} {if($9<0.05){if($1 in a == 0){a[$1]=$9}}} END{for(i in a){print i"\t"a[i]}}' ../OutputDOMINOResults/Overlap_AM_* | sort -k2 -nr
 
-awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=0.00020841510533737325){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' ../../OutputOverlapResults/WP_RareDiseases_request_2022_08_11.gmt multiplex_2.tsv > diseasesResults.txt
+    awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=0.00020841510533737325){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' ../../OutputOverlapResults/WP_RareDiseases_request_2022_08_11.gmt multiplex_2.tsv > diseasesResults.txt
 
-grep "WP5053\|WP4823\|WP5052\|WP4830" diseasesResults.txt
+    grep "WP5053\|WP4823\|WP5052\|WP4830" diseasesResults.txt

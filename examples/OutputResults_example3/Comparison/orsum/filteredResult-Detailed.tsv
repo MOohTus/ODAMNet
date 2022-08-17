@@ -1,0 +1,23 @@
+Representing term id	Representing term name	Representing term rank	Overlap term id	Overlap term name	Overlap term rank	DOMINO term id	DOMINO term name	DOMINO term rank	multiXrank term id	multiXrank term name	multiXrank term rank
+GO:0072001	renal system development	1
+			GO:0072001	renal system development	1	GO:0072001	renal system development	3	GO:0072001	renal system development	1
+			GO:0001822	kidney development	2	GO:0001822	kidney development	4	GO:0001822	kidney development	2
+			GO:0060993	kidney morphogenesis	3	GO:0060993	kidney morphogenesis	2	GO:0060993	kidney morphogenesis	5
+REAC:R-HSA-8853659	RET signaling	1
+						REAC:R-HSA-8853659	RET signaling	1			
+REAC:R-HSA-195721	Signaling by WNT	3
+									REAC:R-HSA-195721	Signaling by WNT	3
+WP:WP5053	Development of ureteric collection system	4
+			WP:WP5053	Development of ureteric collection system	4	WP:WP5053	Development of ureteric collection system	5			
+REAC:R-HSA-157118	Signaling by NOTCH	4
+			REAC:R-HSA-157118	Signaling by NOTCH	8				REAC:R-HSA-157118	Signaling by NOTCH	4
+WP:WP4823	Genes controlling nephrogenesis	5
+			WP:WP4823	Genes controlling nephrogenesis	5						
+PMC5748921-PMC6115658	CAKUT causal genes	6
+			PMC5748921-PMC6115658	CAKUT causal genes	6						
+REAC:R-HSA-5358351	Signaling by Hedgehog	6
+									REAC:R-HSA-5358351	Signaling by Hedgehog	6
+WP:WP5052	Nephrogenesis	7
+			WP:WP5052	Nephrogenesis	7						
+WP:WP4830	GDNF/RET signalling axis	9
+			WP:WP4830	GDNF/RET signalling axis	9						

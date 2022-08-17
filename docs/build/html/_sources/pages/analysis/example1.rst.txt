@@ -84,6 +84,10 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 Active Module Identification : DOMINO
 ----------------------------------------
 
+.. warning::
+
+   Results of DOMINO can't be reproduced when using their server.
+
 As before, we want to extract target genes of vitamin A and its related molecules with at least two references about this link
 (`--directAssociation False`` and ``--nbPub 2``).
 With this method, we will search active modules (extend our target list to other link genes) using a protein-protein
@@ -176,8 +180,8 @@ There are the significant results :
 
 Visualisation :
 
-.. image:: ../../../../../../../examples/OutputResults_example1/OutputDOMINOResults/DOMINO_D014801_activeModulesNetwork.png
-   :alt: Active module identification and overlap analysis visualisation
+.. image:: ../../pictures/example1_DOMINO_AMnetwork.png
+   :alt: example1 AMI
 
 Non active genes can overlap pathways with the active genes.
 
@@ -345,8 +349,8 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
 | WP4545    | Oxysterols derived from cholesterol                           | 0.000217    |
 +-----------+---------------------------------------------------------------+-------------+
 
-.. image:: ../../../../../../../examples/OutputResults_example1/OutputMultiXRankResults/RWR_D014801/multixrank_network_example1.png
-   :alt: RWR analysis
+.. image:: ../../pictures/example1_multixrank_network.png
+   :alt: example1 RWR
 
 Pathway rare diseases identified
 ----------------------------------------
@@ -360,8 +364,8 @@ Using orsum to compare
                 --fileAliases Overlap DOMINO multiXrank
                 --outputFolder orsum/
 
-.. image:: ../../../../../../../examples/OutputResults_example1/Comparison/orsum/Heatmap.png
-   :alt: Comparison
+.. image:: ../../pictures/example1_orsum.png
+   :alt: example1 orsum
 
 Command
 ---------------------------------------

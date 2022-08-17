@@ -1,0 +1,25 @@
+orsum 1.4
+
+gmt:	PathwaysOfInterest.gmt
+files:	['Overlap_genesList_withpathOfInterest.4Orsum', 'DOMINO_genesList_signOverlap.4Orsum', 'diseasesResults.4Orsum']
+fileAliases:	['Overlap', 'DOMINO', 'multiXrank']
+outputFolder:	orsum
+maxRepSize:	1000000
+minTermSize:	10
+numberOfTermsToPlot:	50
+
+
+Processing Overlap_genesList_withpathOfInterest.4Orsum
+
+Processing DOMINO_genesList_signOverlap.4Orsum
+
+Processing diseasesResults.4Orsum
+
+Initial term number (recurring terms in different lists are not merged yet, each one is counted): 20
+
+Same terms in multiple lists are unified
+Representing term number: 12
+
+Superterms represent their less significant (worse ranked) subterms. This includes equal terms, i.e. the terms that annotate exactly the same set of genes.
+Representing term number:10
+

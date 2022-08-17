@@ -200,10 +200,6 @@
 <p class="admonition-title">Tip</p>
 <p>This example is a good way to reproduce analysis. The user can choose version of data.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Results of DOMINO can’t be reproduced from server analysis.</p>
-</div>
 <p>Study the link between vitamin A and rare diseases
 CTD and WikiPathways request results from files
 User gives three main files : CTD file (for the target genes) and two WikiPathways files (for the background and
@@ -326,6 +322,10 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 </div>
 <div class="section" id="active-module-identification-domino">
 <h2>Active Module Identification : DOMINO<a class="headerlink" href="#active-module-identification-domino" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Results of DOMINO can’t be reproduced when using their server.</p>
+</div>
 <p>Data sources are given to <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code>, <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameters. We still want to extract interactions
 with at least 2 papers (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).
 With this method, we will search active modules (extend our target list to other link genes) using a protein-protein
@@ -428,7 +428,7 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </tbody>
 </table>
 <p>Visualisation :</p>
-<img alt="Active module identification and overlap analysis visualisation" src="../../../../../examples/OutputResults_example2/OutputDOMINOResults/DOMINO_D014801_activeModulesNetwork.png" />
+<img alt="example2 AMI" src="../../_images/example2_DOMINO_AMnetwork.png" />
 <p>Non active genes can overlap pathways with the active genes.</p>
 <p>To know how the network was made, go to : BLABLA</p>
 <p>Some statistics of each active modules founded : cf. le fichier</p>
@@ -551,7 +551,7 @@ Results files are saved into <code class="docutils literal notranslate"><span cl
 <li><p><code class="docutils literal notranslate"><span class="pre">RWR_D014801/</span></code> folder with the walk results :</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_example1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code> : a copy of the input files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_example2.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code> : a copy of the input files</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code> : score for each feature. 1 corresponds to the multiplex and 2 to
 the disease network (depends of the folder name where networks are saved).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">example2_resultsNetwork.sif</span></code> : SIF file with the network result</p></li>
@@ -694,7 +694,7 @@ the disease network (depends of the folder name where networks are saved).</p></
 </tbody>
 </table>
 <p>awk -F”t” ‘NR==FNR{a[$1]; next} {if($2 in a){print $2”tTrue”}else{print $2”tFalse”}}’ seeds.txt multiplex_1.tsv &gt; seeds.4Cytoscape</p>
-<img alt="RWR analysis" src="../../../../../examples/OutputResults_example2/OutputMultiXRankResults/RWR_D014801/multixrank_network_example2.png" />
+<img alt="example2 RWR" src="../../_images/example2_multixrank_network.png" />
 </div>
 <div class="section" id="pathway-rare-diseases-identified">
 <h2>Pathway rare diseases identified<a class="headerlink" href="#pathway-rare-diseases-identified" title="Permalink to this headline">¶</a></h2>
@@ -705,7 +705,7 @@ the disease network (depends of the folder name where networks are saved).</p></
             --outputFolder orsum/
 </pre></div>
 </div>
-<img alt="Comparison" src="../../../../../examples/OutputResults_example2/Comparison/orsum/Heatmap.png" />
+<img alt="example2 orsum" src="../../_images/example2_orsum.png" />
 </div>
 </div>
 

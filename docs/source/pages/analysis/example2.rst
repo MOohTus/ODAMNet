@@ -6,10 +6,6 @@ Example 2 : analysis from files
 
    This example is a good way to reproduce analysis. The user can choose version of data.
 
-.. warning::
-
-   Results of DOMINO can't be reproduced from server analysis.
-
 Study the link between vitamin A and rare diseases
 CTD and WikiPathways request results from files
 User gives three main files : CTD file (for the target genes) and two WikiPathways files (for the background and
@@ -61,8 +57,6 @@ Filtered results :
 
 Top 5 :
 
-awk -F';' '{if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Overlap_D014801_withpathOfInterest.csv > example2_overlap_top5.csv
-
 +------------+----------------------------------------------------+---------------+------------------+
 | PathwayIDs | PathwayNames                                       | pAdjusted     | IntersectionSize |
 +============+====================================================+===============+==================+
@@ -80,8 +74,6 @@ awk -F';' '{if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Ove
 On a previous analysis (Ozisik *et al.*, 2022), an overlap analysis was made between genes targeted by vitamin A and
 CAKUT pathways. Three of the four pathways related to CAKUT overlaping target genes are found in this analysis :
 
-awk -F';' 'NR==1{print $1";"$2";"$9";"$6} {if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Overlap_D014801_withpathOfInterest.csv | grep "WP5053\|WP4823\|WP5052\|WP4830"
-
 +------------+----------------------------------------------------+-----------+------------------+
 | PathwayIDs | PathwayNames                                       | pAdjusted | IntersectionSize |
 +============+====================================================+===========+==================+
@@ -94,6 +86,10 @@ awk -F';' 'NR==1{print $1";"$2";"$9";"$6} {if($9<=0.05){$9=sprintf("%0.3e", $9);
 
 Active Module Identification : DOMINO
 ----------------------------------------
+
+.. warning::
+
+   Results of DOMINO can't be reproduced when using their server.
 
 Data sources are given to ``--CTD_file``, ``--GMT`` and ``--backgroundFile`` parameters. We still want to extract interactions
 with at least 2 papers (``--nbPub 2``).
@@ -139,8 +135,6 @@ Filtered request :
 
 - 5 Active modules overlap significantly genes list
 
-awk -F"\t" 'BEGIN{print "termID;termTitle;padj"} NR==FNR{a[$1]=$2; next} {$2=sprintf("%.3e", $2);print $1";"a[$1]";"$2}' ../../InputData/WP_RareDiseases_request_2022_08_11.gmt DOMINO_D014801_signOverlap.txt > example2_DOMINOOverlap.csv
-
 +------------+------------------------------------------------------+----------------+
 | termID     | termTitle                                            | padj           |
 +============+======================================================+================+
@@ -171,8 +165,8 @@ awk -F"\t" 'BEGIN{print "termID;termTitle;padj"} NR==FNR{a[$1]=$2; next} {$2=spr
 
 Visualisation :
 
-.. image:: ../../../../../../../examples/OutputResults_example2/OutputDOMINOResults/DOMINO_D014801_activeModulesNetwork.png
-   :alt: Active module identification and overlap analysis visualisation
+.. image:: ../../pictures/example2_DOMINO_AMnetwork.png
+   :alt: example2 AMI
 
 Non active genes can overlap pathways with the active genes.
 
@@ -252,7 +246,7 @@ Several files are generated :
 
 - ``RWR_D014801/`` folder with the walk results :
 
-    - ``config_minimal_example1.yml`` and ``seeds.txt`` : a copy of the input files
+    - ``config_minimal_example2.yml`` and ``seeds.txt`` : a copy of the input files
 
     - ``multiplex_1.tsv`` and ``multiplex_2.tsv`` : score for each feature. 1 corresponds to the multiplex and 2 to
       the disease network (depends of the folder name where networks are saved).
@@ -333,10 +327,8 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
 | WP4545      | Oxysterols derived from cholesterol                           | 0.000217    |
 +-------------+---------------------------------------------------------------+-------------+
 
-awk -F"\t" 'NR==FNR{a[$1]; next} {if($2 in a){print $2"\tTrue"}else{print $2"\tFalse"}}' seeds.txt multiplex_1.tsv > seeds.4Cytoscape
-
-.. image:: ../../../../../../../examples/OutputResults_example2/OutputMultiXRankResults/RWR_D014801/multixrank_network_example2.png
-   :alt: RWR analysis
+.. image:: ../../pictures/example2_multixrank_network.png
+   :alt: example2 RWR
 
 Pathway rare diseases identified
 ----------------------------------------
@@ -350,5 +342,26 @@ Using orsum to compare
                 --fileAliases Overlap DOMINO multiXrank
                 --outputFolder orsum/
 
-.. image:: ../../../../../../../examples/OutputResults_example2/Comparison/orsum/Heatmap.png
-   :alt: Comparison
+.. image:: ../../pictures/example2_orsum.png
+   :alt: example2 orsum
+
+Commands
+-------------
+
+.. code-block:: bash
+
+    1. Create table for overlap analysis
+    awk -F';' '{if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Overlap_D014801_withpathOfInterest.csv > example2_overlap_top5.csv
+    awk -F';' '{if(NR==1){print "PathwayIDs;PathwayNames;pAdjusted;IntersectionSize"}; if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Overlap_D014801_withpathOfInterest.csv > example2_overlap_top5.csv
+    awk -F';' 'NR==1{print $1";"$2";"$9";"$6} {if($9<=0.05){$9=sprintf("%0.3e", $9); print $1";"$2";"$9";"$6}}' Overlap_D014801_withpathOfInterest.csv | grep "WP5053\|WP4823\|WP5052\|WP4830"
+
+    2. Create table for DOMINO overlap
+    awk -F"\t" 'BEGIN{print "termID;termTitle;padj"} NR==FNR{a[$1]=$2; next} {$2=sprintf("%.3e", $2);print $1";"a[$1]";"$2}' ../../InputData/WP_RareDiseases_request_2022_08_11.gmt DOMINO_D014801_signOverlap.txt > example2_DOMINOOverlap.csv
+
+    3. Create table for multiXrank analysis
+    awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=0.00033619597393799407){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' ./../InputData/WP_RareDiseases_request_2022_08_11.gmt multiplex_2.tsv > diseasesResults.txt
+
+    4. Create file for cytoscape
+    awk -F"\t" 'NR==FNR{a[$1]; next} {if($2 in a){print $2"\tTrue"}else{print $2"\tFalse"}}' seeds.txt multiplex_1.tsv > seeds.4Cytoscape
+
+    5. Orsum
