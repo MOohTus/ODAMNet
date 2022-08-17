@@ -263,7 +263,7 @@ Using orsum to compare
 .. image:: ../../pictures/example3_orsum.png
    :alt: example3 orsum
 
-Commandes
+Commands
 -------------
 
 .. code-block:: bash

@@ -109,7 +109,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#active-module-identification-domino">Active Module Identification : DOMINO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-multixrank">Random Walk with Restart : multiXrank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pathway-rare-diseases-identified">Pathway rare diseases identified</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#command">Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="example2.html">Example 2 : analysis from files</a></li>
@@ -361,10 +361,7 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 <li><p>102 rare diseases pathways (between 2 and 436 genes)</p></li>
 <li><p>1 261 human pathways (between 1 and 484 genes)</p></li>
 <li><p>2 143 genes inside the DOMINO input genes list</p></li>
-<li><p>13 Active modules (between 93 and 28 nodes)</p></li>
-</ul>
-<p>(see <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> file)</p>
-<ul class="simple">
+<li><p>13 Active modules (between 93 and 28 nodes) (see <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> file)</p></li>
 <li><p>6 Active modules overlap significantly genes list</p></li>
 </ul>
 <p>There are the significant results :</p>
@@ -708,21 +705,29 @@ the disease network (depends of the folder name where networks are saved).</p></
 </div>
 <img alt="example1 orsum" src="../../_images/example1_orsum.png" />
 </div>
-<div class="section" id="command">
-<h2>Command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h2>
-<p>cut -f3 CTD_request_D014801_2022_08_11.tsv | sort | uniq
-cut -f5 CTD_request_D014801_2022_08_11.tsv | sed ‘1d’ | sort | uniq | wc -l
-cut -f3 CTD_requestFiltered_D014801_2022_08_11.tsv | sort | uniq
-cut -f5 CTD_requestFiltered_D014801_2022_08_11.tsv | sed ‘1d’ | sort | uniq | wc -l</p>
-<p>sed ‘1d’ WP_allPathways_request_2022_08_11.gmt | wc -l
-awk -F”t” ‘{if($1!=”WPID”){print $1”t”NF-2}}’ WP_RareDiseases_request_2022_08_11.gmt | sort -k2 -n
-awk -F”t” ‘{if($1!=”WPID”){print $1”t”NF-2}}’ WP_allPathways_request_2022_08_11.gmt | sort -k2 -n
-sed ‘s/;/t/g’ Overlap_D014801_withRDWP.csv  | cut -f1,2,3,4,5,6,7,8,9 | awk -F’t’ ‘{if($9&lt;=0.05){print $0}}’</p>
-<p>cut -f2 DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq
-cut -f3,4DOMINO_D014801_overlapAMresults4Cytoscape.txt | sort | uniq | sed ‘s/t/;/g’ &gt; forHTML.csv</p>
-<p>awk -F”;” ‘BEGIN{OFS=”t”} {if($9&lt;0.05){if($1 in a == 0){a[$1]=$9}}} END{for(i in a){print i”t”a[i]}}’ ../OutputDOMINOResults/Overlap_AM_* | sort -k2 -nr</p>
-<p>awk -F”t” ‘NR==FNR{a[$1]=$2;next} {if($3&gt;=0.00020841510533737325){$3=sprintf(“%.6f”, $3); print $2”t”a[$2]”t”$3}}’ ../../OutputOverlapResults/WP_RareDiseases_request_2022_08_11.gmt multiplex_2.tsv &gt; diseasesResults.txt</p>
-<p>grep “WP5053|WP4823|WP5052|WP4830” diseasesResults.txt</p>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span>. Overlap analysis
+cut -f3 CTD_request_D014801_2022_08_11.tsv <span class="p">|</span> sort <span class="p">|</span> uniq
+cut -f5 CTD_request_D014801_2022_08_11.tsv <span class="p">|</span> sed <span class="s1">&#39;1d&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc -l
+cut -f3 CTD_requestFiltered_D014801_2022_08_11.tsv <span class="p">|</span> sort <span class="p">|</span> uniq
+cut -f5 CTD_requestFiltered_D014801_2022_08_11.tsv <span class="p">|</span> sed <span class="s1">&#39;1d&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> wc -l
+
+sed <span class="s1">&#39;1d&#39;</span> WP_allPathways_request_2022_08_11.gmt <span class="p">|</span> wc -l
+awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{if($1!=&quot;WPID&quot;){print $1&quot;\t&quot;NF-2}}&#39;</span> WP_RareDiseases_request_2022_08_11.gmt <span class="p">|</span> sort -k2 -n
+awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;{if($1!=&quot;WPID&quot;){print $1&quot;\t&quot;NF-2}}&#39;</span> WP_allPathways_request_2022_08_11.gmt <span class="p">|</span> sort -k2 -n
+sed <span class="s1">&#39;s/;/\t/g&#39;</span> Overlap_D014801_withRDWP.csv  <span class="p">|</span> cut -f1,2,3,4,5,6,7,8,9 <span class="p">|</span> awk -F<span class="s1">&#39;\t&#39;</span> <span class="s1">&#39;{if($9&lt;=0.05){print $0}}&#39;</span>
+
+cut -f2 DOMINO_D014801_overlapAMresults4Cytoscape.txt <span class="p">|</span> sort <span class="p">|</span> uniq
+cut -f3,4DOMINO_D014801_overlapAMresults4Cytoscape.txt <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> sed <span class="s1">&#39;s/\t/;/g&#39;</span> &gt; forHTML.csv
+
+awk -F<span class="s2">&quot;;&quot;</span> <span class="s1">&#39;BEGIN{OFS=&quot;\t&quot;} {if($9&lt;0.05){if($1 in a == 0){a[$1]=$9}}} END{for(i in a){print i&quot;\t&quot;a[i]}}&#39;</span> ../OutputDOMINOResults/Overlap_AM_* <span class="p">|</span> sort -k2 -nr
+
+awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2;next} {if($3&gt;=0.00020841510533737325){$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;\t&quot;a[$2]&quot;\t&quot;$3}}&#39;</span> ../../OutputOverlapResults/WP_RareDiseases_request_2022_08_11.gmt multiplex_2.tsv &gt; diseasesResults.txt
+
+grep <span class="s2">&quot;WP5053\|WP4823\|WP5052\|WP4830&quot;</span> diseasesResults.txt
+</pre></div>
+</div>
 </div>
 </div>
 

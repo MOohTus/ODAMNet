@@ -130,8 +130,7 @@ Filtered request :
 - 2 143 genes linked
 
 - 2 143 genes inside the DOMINO input genes list
-- 13 Active modules (between 93 and 17 nodes)
-(see ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file)
+- 13 Active modules (between 93 and 17 nodes) (see ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file)
 
 - 5 Active modules overlap significantly genes list
 

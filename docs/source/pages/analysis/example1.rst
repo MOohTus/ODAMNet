@@ -139,8 +139,7 @@ Filtered request :
 - 1 261 human pathways (between 1 and 484 genes)
 
 - 2 143 genes inside the DOMINO input genes list
-- 13 Active modules (between 93 and 28 nodes)
-(see ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file)
+- 13 Active modules (between 93 and 28 nodes) (see ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file)
 
 - 6 Active modules overlap significantly genes list
 

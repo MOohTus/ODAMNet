@@ -111,7 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#active-module-identification-domino">Active Module Identification : DOMINO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-multixrank">Random Walk with Restart : multiXrank</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pathway-rare-diseases-identified">Pathway rare diseases identified</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#commandes">Commandes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="parameters.html">Resume of the main required parameters</a></li>
@@ -582,8 +582,8 @@ the disease network (depends of the folder name where networks are saved).</p></
 </div>
 <img alt="example3 orsum" src="../../_images/example3_orsum.png" />
 </div>
-<div class="section" id="commandes">
-<h2>Commandes<a class="headerlink" href="#commandes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">1</span>. Create table <span class="k">for</span> overlap analysis
 awk -F<span class="s1">&#39;;&#39;</span> <span class="s1">&#39;{if(NR==1){print &quot;PathwayIDs;PathwayNames;pAdjusted;IntersectionSize&quot;}; if($9&lt;=0.05){$9=sprintf(&quot;%0.3e&quot;, $9); print $1&quot;;&quot;$2&quot;;&quot;$9&quot;;&quot;$6}}&#39;</span> Overlap_genesList_withpathOfInterest.csv &gt; example3_overlap.csv
 
