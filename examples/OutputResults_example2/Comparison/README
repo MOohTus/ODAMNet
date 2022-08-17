@@ -1,0 +1,6 @@
+#
+awk -F";" '{if(NR>1){if($9<=0.05){print $1}}}' Overlap_D014801_withpathOfInterest.csv > Overlap_D014801_withpathOfInterest.4Orsum
+cut -f1 DOMINO_D014801_signOverlap.txt > DOMINO_D014801_signOverlap.4Orsum
+cut -f1 diseasesResults.txt |sed '1d' > diseasesResults.4Orsum
+orsum.py --gmt WP_RareDiseases_request_2022_08_11.gmt --files Overlap_D014801_withpathOfInterest.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum --fileAliases Overlap DOMINO multiXrank --outputFolder orsum
+

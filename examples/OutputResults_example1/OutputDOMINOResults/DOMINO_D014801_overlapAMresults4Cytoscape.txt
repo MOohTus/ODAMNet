@@ -1,138 +1,4 @@
 geneSymbol	AM_number	termID	termTitle	overlap_padj
-CEBPA	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.010978293424676187
-CEBPB	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.010978293424676187
-JUNB	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.010978293424676187
-RUNX2	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.010978293424676187
-CEBPA	2	WP4844	Influence of laminopathies on Wnt signaling	0.027997181221540435
-CEBPB	2	WP4844	Influence of laminopathies on Wnt signaling	0.027997181221540435
-RUNX2	2	WP4844	Influence of laminopathies on Wnt signaling	0.027997181221540435
-COL4A1	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-IGF1	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-IGF2	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-INS	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-ITGAV	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-ITGB3	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-LAMA2	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-LAMA5	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-PDGFC	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-PDGFRA	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-PLAU	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
-ITGAM	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
-ITGAV	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
-ITGB3	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
-PDGFRA	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
-CXCL5	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-FN1	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGA1	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGA2	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGA3	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGAV	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGB1	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGB3	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-LAMA1	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-LAMA2	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-LAMA5	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-MMP9	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-PDGFC	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-PDGFRA	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-PLAU	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-SPARC	6	WP5087	Malignant pleural mesothelioma	4.823470963219471e-11
-ITGA1	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGA2	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGA3	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGAL	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGAM	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGAV	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGB1	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGB3	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-ITGB6	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-PDGFRA	6	WP4541	Hippo-Merlin signaling dysregulation	3.7421333000899087e-10
-CAV1	6	WP4298	Acute viral myocarditis	0.0003613385292448718
-DAG1	6	WP4298	Acute viral myocarditis	0.0003613385292448718
-ITGAL	6	WP4298	Acute viral myocarditis	0.0003613385292448718
-LAMA2	6	WP4298	Acute viral myocarditis	0.0003613385292448718
-MMP9	6	WP4298	Acute viral myocarditis	0.0003613385292448718
-CCL2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-CXCL12	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-ITGA1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-ITGA2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-ITGA3	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-ITGB1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-LAMA1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-MMP2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-MMP3	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-PDGFA	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-PDGFB	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-SPARC	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
-CXCL12	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
-ITGA3	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
-ITGB1	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
-PDGFB	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
-ITGA1	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
-ITGA2	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
-ITGA3	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
-ITGAL	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
-ITGB1	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
-BAX	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.299332755850267e-05
-BCL2	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.299332755850267e-05
-BCL2L1	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.299332755850267e-05
-BID	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.299332755850267e-05
-BAX	9	WP4298	Acute viral myocarditis	0.0011964953543905264
-BCL2	9	WP4298	Acute viral myocarditis	0.0011964953543905264
-BCL2L1	9	WP4298	Acute viral myocarditis	0.0011964953543905264
-BID	9	WP4298	Acute viral myocarditis	0.0011964953543905264
-BAK1	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-BAX	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-BBC3	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-BCL2	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-EFNA2	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-MCL1	9	WP5087	Malignant pleural mesothelioma	0.006278221985240161
-BID	9	WP2059	Alzheimer's disease and miRNA effects	0.0425540114948211
-CAPN2	9	WP2059	Alzheimer's disease and miRNA effects	0.0425540114948211
-ITPR1	9	WP2059	Alzheimer's disease and miRNA effects	0.0425540114948211
-VDAC1	9	WP2059	Alzheimer's disease and miRNA effects	0.0425540114948211
-BID	9	WP5124	Alzheimer's disease	0.0425540114948211
-CAPN2	9	WP5124	Alzheimer's disease	0.0425540114948211
-ITPR1	9	WP5124	Alzheimer's disease	0.0425540114948211
-VDAC1	9	WP5124	Alzheimer's disease	0.0425540114948211
-CEBPA	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
-CEBPB	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
-JUNB	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
-RUNX2	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
-CEBPA	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
-CEBPB	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
-RUNX2	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
-PPARG	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
-PPARGC1A	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
-RXRA	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
-THRA	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
-THRB	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
-IL4	3	WP4950	16p11.2 distal deletion syndrome	0.002275891455117207
-INSR	3	WP4950	16p11.2 distal deletion syndrome	0.002275891455117207
-JAK2	3	WP4950	16p11.2 distal deletion syndrome	0.002275891455117207
-SH2B1	3	WP4950	16p11.2 distal deletion syndrome	0.002275891455117207
-GDNF	3	WP4830	GDNF/RET signaling axis	0.010551485867673228
-GFRA1	3	WP4830	GDNF/RET signaling axis	0.010551485867673228
-RET	3	WP4830	GDNF/RET signaling axis	0.010551485867673228
-BDNF	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-IGF1R	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-IL10	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-INSR	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-JAK1	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-NTF3	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-NTRK2	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-SHC1	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-STAT1	3	WP5087	Malignant pleural mesothelioma	0.011415140543398363
-IFNG	3	WP4298	Acute viral myocarditis	0.0231043287613511
-IL10	3	WP4298	Acute viral myocarditis	0.0231043287613511
-JAK1	3	WP4298	Acute viral myocarditis	0.0231043287613511
-STAT1	3	WP4298	Acute viral myocarditis	0.0231043287613511
-BDNF	3	WP4549	Fragile X syndrome	0.04360065309221312
-NTRK2	3	WP4549	Fragile X syndrome	0.04360065309221312
-PTPN11	3	WP4549	Fragile X syndrome	0.04360065309221312
-SHC1	3	WP4549	Fragile X syndrome	0.04360065309221312
-BDNF	3	WP3853	ERK pathway in Huntington's disease	0.04360065309221312
-NTRK2	3	WP3853	ERK pathway in Huntington's disease	0.04360065309221312
 IL4	4	WP4950	16p11.2 distal deletion syndrome	0.0022766067228162565
 INSR	4	WP4950	16p11.2 distal deletion syndrome	0.0022766067228162565
 JAK2	4	WP4950	16p11.2 distal deletion syndrome	0.0022766067228162565
@@ -159,6 +25,32 @@ PTPN11	4	WP4549	Fragile X syndrome	0.043607548165889055
 SHC1	4	WP4549	Fragile X syndrome	0.043607548165889055
 BDNF	4	WP3853	ERK pathway in Huntington's disease	0.043607548165889055
 NTRK2	4	WP3853	ERK pathway in Huntington's disease	0.043607548165889055
+PPARG	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
+PPARGC1A	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
+RXRA	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
+THRA	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
+THRB	5	WP4746	Thyroid hormones production and peripheral downstream signaling effects	0.004090459328441016
+CCL2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+CXCL12	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+ITGA1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+ITGA2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+ITGA3	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+ITGB1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+LAMA1	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+MMP2	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+MMP3	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+PDGFA	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+PDGFB	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+SPARC	2	WP5087	Malignant pleural mesothelioma	0.0006210966274777238
+CXCL12	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
+ITGA3	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
+ITGB1	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
+PDGFB	2	WP4823	Genes controlling nephrogenesis	0.005786237637165531
+ITGA1	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
+ITGA2	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
+ITGA3	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
+ITGAL	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
+ITGB1	2	WP4541	Hippo-Merlin signaling dysregulation	0.02092917189448946
 BAX	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.302303842590136e-05
 BCL2	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.302303842590136e-05
 BCL2L1	9	WP2447	Amyotrophic lateral sclerosis (ALS)	9.302303842590136e-05
@@ -181,3 +73,25 @@ BID	9	WP5124	Alzheimer's disease	0.04256649667225704
 CAPN2	9	WP5124	Alzheimer's disease	0.04256649667225704
 ITPR1	9	WP5124	Alzheimer's disease	0.04256649667225704
 VDAC1	9	WP5124	Alzheimer's disease	0.04256649667225704
+CEBPA	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
+CEBPB	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
+JUNB	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
+RUNX2	3	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.01098169000123183
+CEBPA	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
+CEBPB	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
+RUNX2	3	WP4844	Influence of laminopathies on Wnt signaling	0.028003730486653663
+COL4A1	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+IGF1	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+IGF2	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+INS	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+ITGAV	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+ITGB3	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+LAMA2	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+LAMA5	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+PDGFC	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+PDGFRA	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+PLAU	7	WP5087	Malignant pleural mesothelioma	1.1325985840114884e-05
+ITGAM	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
+ITGAV	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
+ITGB3	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241
+PDGFRA	7	WP4541	Hippo-Merlin signaling dysregulation	0.03288881106703241

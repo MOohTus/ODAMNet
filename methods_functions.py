@@ -268,6 +268,7 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
     metricsOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetworkMetrics.txt'
     networkOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetwork.txt'
     overlapOutput = outputPath + '/DOMINO_' + featureName + '_overlapAMresults4Cytoscape.txt'
+    pathwaysOverlapOutput = outputPath + '/DOMINO_' + featureName + '_signOverlap.txt'
     # Parameters
     AM_dict = {}
     edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
@@ -277,6 +278,7 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
     nodeNumberList = []
     overlapOutputLinesList = []
     AMIOutputLinesList = []
+    AMPathwaysDict = {}
 
     # Create network graph
     network_df = pd.read_csv(networkFileName, delimiter='\t')
@@ -329,6 +331,11 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
                     termID = lineList[0]
                     termTitle = lineList[1]
                     genesList = lineList[9].split(' ')
+                    if termID in AMPathwaysDict:
+                        if float(padj) < AMPathwaysDict[termID]:
+                            AMPathwaysDict[termID] = float(padj)
+                    else:
+                        AMPathwaysDict[termID] = float(padj)
                     for gene in genesList:
                         overlapOutputLinesList.append([gene, AMnb, termID, termTitle, padj])
     # Write into output file
@@ -337,6 +344,12 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
         for line in overlapOutputLinesList:
             overlapOutputHandler.write('\t'.join(line))
             overlapOutputHandler.write('\n')
+    # Write list of sign overlap
+    with open(pathwaysOverlapOutput, 'w') as pathwaySignOutput:
+        AMPathwaysDict = dict(sorted(AMPathwaysDict.items(), key=lambda item: item[1]))
+        for pathway in AMPathwaysDict:
+            pathwaySignOutput.write('\t'.join([pathway, str(AMPathwaysDict[pathway])]))
+            pathwaySignOutput.write('\n')
 
     # Add overlap significant in activeModuleFile
     activeGenesDict = dict.fromkeys(list(AM_dict.keys()), 0)

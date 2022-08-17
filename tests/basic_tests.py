@@ -385,6 +385,97 @@ class TestDOMINOAnalysis(unittest.TestCase):
         metrics_df_expected = metrics_df_expected.sort_values(by='AMINumber')
         pd.testing.assert_frame_equal(metrics_df.reset_index(drop=True), metrics_df_expected.reset_index(drop=True))
 
+    # def test_debugDOMINOOutput(self):
+    #     # Input
+    #     networkFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/PPI_network_2016.sif'
+    #     AMIFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example1/OutputDOMINOResults/DOMINO_D014801_activeModules.txt'
+    #     featureName = 'D014801'
+    #     outputPath = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/OutputResults_example1/OutputDOMINOResults/'
+    #
+    #     # DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath)
+    #
+    #     # Parameters
+    #     AM_dict = {}
+    #     edges_df = pd.DataFrame(columns=['source', 'target', 'link', 'AMI_number'])
+    #     AMNumbersList = []
+    #     edgeNumberList = []
+    #     nodeNumberList = []
+    #     AMOverlapList = []
+    #     overlapOutputLinesList = []
+    #     AMIOutputLinesList = []
+    #     AMPathwaysDict = {}
+    #
+    #     # Create network graph
+    #     network_df = pd.read_csv(networkFileName, delimiter='\t')
+    #     network_graph = nx.from_pandas_edgelist(network_df, 'node_1', 'node_2', 'link')
+    #
+    #     # Read Active Module composition
+    #     with open(AMIFileName, 'r') as AMIFile:
+    #         for line in AMIFile:
+    #             line_list = line.strip().split('\t')
+    #             AM = line_list[1]
+    #             gene = line_list[0]
+    #             if AM not in AM_dict:
+    #                 AM_dict[AM] = [gene]
+    #             else:
+    #                 AM_dict[AM].append(gene)
+    #
+    #     # Extract active module networks
+    #     for AMnb in AM_dict:
+    #         if AMnb != 'ActiveModule':
+    #             AMlist = AM_dict[AMnb]
+    #             # Extract active module network
+    #             network_subgraph = network_graph.subgraph(AMlist)
+    #             subgraph_df = nx.to_pandas_edgelist(network_subgraph)
+    #             subgraph_df['AMI_number'] = AMnb
+    #             # Metrics about active modules
+    #             AMNumbersList.append(AMnb)
+    #             edgeNumberList.append(network_subgraph.number_of_edges())
+    #             nodeNumberList.append(network_subgraph.number_of_nodes())
+    #             # Add the subnetwork edges into a dataframe
+    #             edges_df = pd.concat([edges_df, subgraph_df], ignore_index=True)
+    #     metrics_df = pd.DataFrame({'AMINumber': AMNumbersList,
+    #                                'EdgesNumber': edgeNumberList,
+    #                                'NodesNumber': nodeNumberList})
+    #
+    #     # Parse overlap results
+    #     overlapFilesList = fnmatch.filter(os.listdir(outputPath), 'Overlap_AM_*')
+    #     for file in overlapFilesList:
+    #         AMnb = file.split('_')[2]
+    #         with open(outputPath + '/' + file, 'r') as overlapResults:
+    #             overlapResults.readline()
+    #             for line in overlapResults:
+    #                 lineList = line.strip().split(';')
+    #                 padj = lineList[8]
+    #                 if float(padj) <= 0.05:
+    #                     if AMnb not in AMOverlapList:
+    #                         AMOverlapList.append(AMnb)
+    #                     termID = lineList[0]
+    #                     termTitle = lineList[1]
+    #                     genesList = lineList[9].split(' ')
+    #                     if termID in AMPathwaysDict:
+    #                         if float(padj) < AMPathwaysDict[termID]:
+    #                             AMPathwaysDict[termID] = float(padj)
+    #                     else:
+    #                         AMPathwaysDict[termID] = float(padj)
+    #                     for gene in genesList:
+    #                         overlapOutputLinesList.append([gene, AMnb, termID, termTitle, padj])
+    #     AMPathwaysDict = dict(sorted(AMPathwaysDict.items(), key=lambda item: item[1]))
+    #
+    #     # Add overlap significant in activeModuleFile
+    #     activeGenesDict = dict.fromkeys(list(AM_dict.keys()), 0)
+    #     with open(AMIFileName, 'r') as AMIinputHandler:
+    #         header = AMIinputHandler.readline().strip().split('\t')
+    #         for line in AMIinputHandler:
+    #             lineList = line.strip().split('\t')
+    #             if lineList[2] == 'True':
+    #                 activeGenesDict[lineList[1]] = activeGenesDict[lineList[1]] + 1
+    #             if lineList[1] in AMOverlapList:
+    #                 lineList.append('True')
+    #             else:
+    #                 lineList.append('False')
+    #             AMIOutputLinesList.append(lineList)
+
 
 if __name__ == '__main__':
     unittest.main()

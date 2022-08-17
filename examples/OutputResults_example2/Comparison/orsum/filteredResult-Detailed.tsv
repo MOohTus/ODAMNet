@@ -1,0 +1,78 @@
+Representing term id	Representing term name	Representing term rank	Overlap term id	Overlap term name	Overlap term rank	DOMINO term id	DOMINO term name	DOMINO term rank	multiXrank term id	multiXrank term name	multiXrank term rank
+WP5087	Malignant pleural mesothelioma	1
+			WP5087	Malignant pleural mesothelioma	1	WP5087	Malignant pleural mesothelioma	2	WP5087	Malignant pleural mesothelioma	1
+WP4541	Hippo-Merlin signaling dysregulation	1
+			WP4541	Hippo-Merlin signaling dysregulation	13	WP4541	Hippo-Merlin signaling dysregulation	1	WP4541	Hippo-Merlin signaling dysregulation	11
+WP4298	Acute viral myocarditis	2
+			WP4298	Acute viral myocarditis	2	WP4298	Acute viral myocarditis	4	WP4298	Acute viral myocarditis	5
+WP4673	Male infertility	2
+			WP4673	Male infertility	16				WP4673	Male infertility	2
+WP2447	Amyotrophic lateral sclerosis (ALS)	3
+			WP2447	Amyotrophic lateral sclerosis (ALS)	3	WP2447	Amyotrophic lateral sclerosis (ALS)	3	WP2447	Amyotrophic lateral sclerosis (ALS)	17
+WP2059	Alzheimer's disease and miRNA effects	3
+			WP2059	Alzheimer's disease and miRNA effects	8	WP2059	Alzheimer's disease and miRNA effects	9	WP2059	Alzheimer's disease and miRNA effects	3
+			WP5124	Alzheimer's disease	6	WP5124	Alzheimer's disease	10	WP5124	Alzheimer's disease	4
+WP5053	Development of ureteric collection system	4
+			WP5053	Development of ureteric collection system	4				WP5053	Development of ureteric collection system	13
+WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	5
+			WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	5	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	7	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	18
+WP4950	16p11.2 distal deletion syndrome	5
+						WP4950	16p11.2 distal deletion syndrome	5			
+WP4830	GDNF/RET signaling axis	6
+			WP4830	GDNF/RET signaling axis	11	WP4830	GDNF/RET signaling axis	6			
+WP4746	Thyroid hormones production and peripheral downstream signaling effects	6
+			WP4746	Thyroid hormones production and peripheral downstream signaling effects	10				WP4746	Thyroid hormones production and peripheral downstream signaling effects	6
+WP3584	MECP2 and associated Rett syndrome	7
+			WP3584	MECP2 and associated Rett syndrome	7				WP3584	MECP2 and associated Rett syndrome	7
+WP4844	Influence of laminopathies on Wnt signaling	8
+			WP4844	Influence of laminopathies on Wnt signaling	22	WP4844	Influence of laminopathies on Wnt signaling	8			
+WP5224	2q37 copy number variation syndrome	8
+									WP5224	2q37 copy number variation syndrome	8
+WP3995	Prion disease pathway	9
+			WP3995	Prion disease pathway	9				WP3995	Prion disease pathway	23
+WP4549	Fragile X syndrome	9
+			WP4549	Fragile X syndrome	14	WP4549	Fragile X syndrome	11	WP4549	Fragile X syndrome	9
+WP4657	22q11.2 copy number variation syndrome	10
+									WP4657	22q11.2 copy number variation syndrome	10
+WP4823	Genes controlling nephrogenesis	12
+			WP4823	Genes controlling nephrogenesis	12				WP4823	Genes controlling nephrogenesis	26
+WP3853	ERK pathway in Huntington's disease	12
+			WP3853	ERK pathway in Huntington's disease	17	WP3853	ERK pathway in Huntington's disease	12			
+WP4932	7q11.23 copy number variation syndrome	12
+									WP4932	7q11.23 copy number variation syndrome	12
+WP4949	16p11.2 proximal deletion syndrome	14
+									WP4949	16p11.2 proximal deletion syndrome	14
+WP4871	Kisspeptin/kisspeptin receptor system in the ovary	15
+			WP4871	Kisspeptin/kisspeptin receptor system in the ovary	15						
+WP4312	Rett syndrome causing genes	15
+									WP4312	Rett syndrome causing genes	15
+WP5114	Nucleotide excision repair in xeroderma pigmentosum 	16
+									WP5114	Nucleotide excision repair in xeroderma pigmentosum 	16
+WP5102	Familial partial lipodystrophy (FPLD)	18
+			WP5102	Familial partial lipodystrophy (FPLD)	18						
+WP4288	MTHFR deficiency	19
+			WP4288	MTHFR deficiency	19						
+WP4803	Ciliopathies	19
+									WP4803	Ciliopathies	19
+WP5103	Progeria-associated lipodystrophy	20
+			WP5103	Progeria-associated lipodystrophy	20						
+WP4540	Hippo signaling regulation pathways	20
+			WP4540	Hippo signaling regulation pathways	23				WP4540	Hippo signaling regulation pathways	20
+WP5074	Kallmann syndrome	21
+			WP5074	Kallmann syndrome	21						
+WP4906	3q29 copy number variation syndrome	21
+									WP4906	3q29 copy number variation syndrome	21
+WP5222	2q13 copy number variation syndrome	22
+									WP5222	2q13 copy number variation syndrome	22
+WP5110	Familial hyperlipidemia type 3	24
+			WP5110	Familial hyperlipidemia type 3	24						
+WP3998	Prader-Willi and Angelman syndrome	24
+									WP3998	Prader-Willi and Angelman syndrome	24
+WP4224	Purine metabolism and related disorders	25
+			WP4224	Purine metabolism and related disorders	25						
+WP2371	Parkinson's disease pathway	25
+			WP2371	Parkinson's disease pathway	26				WP2371	Parkinson's disease pathway	25
+WP5120	Inclusion body myositis	27
+			WP5120	Inclusion body myositis	27						
+WP4545	Oxysterols derived from cholesterol	27
+									WP4545	Oxysterols derived from cholesterol	27
