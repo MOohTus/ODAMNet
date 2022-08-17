@@ -24,13 +24,12 @@ EnvironmentProject's documentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Usage
+   :caption: Analysis
 
    pages/analysis/example1
    pages/analysis/example2
    pages/analysis/example3
-   pages/analysis/parameters
-   pages/Cytoscape
+   pages/analysis/Cytoscape
 
 .. toctree::
    :caption: Functions description

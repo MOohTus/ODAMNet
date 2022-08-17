@@ -43,7 +43,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Resume of the main required parameters" href="parameters.html" />
+    <link rel="next" title="Visualisation using Cytoscape" href="Cytoscape.html" />
     <link rel="prev" title="Example 2 : analysis from files" href="example2.html" /> 
 </head>
 
@@ -102,7 +102,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Methods.html#active-module-identification-ami">Active Module Identification (AMI)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Methods.html#random-walk-with-restart-rwr">Random Walk with Restart (RWR)</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="example1.html">Example 1 : request analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example2.html">Example 2 : analysis from files</a></li>
@@ -110,12 +110,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#active-module-identification-domino">Active Module Identification : DOMINO</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-multixrank">Random Walk with Restart : multiXrank</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pathway-rare-diseases-identified">Pathway rare diseases identified</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cakut-disease-pathways-identified">CAKUT disease pathways identified</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parameters.html">Resume of the main required parameters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Cytoscape.html">Visualization using Cytoscape</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
 <ul>
@@ -569,8 +568,8 @@ the disease network (depends of the folder name where networks are saved).</p></
 </table>
 <img alt="example3 RWR" src="../../_images/example3_multixrank_network.png" />
 </div>
-<div class="section" id="pathway-rare-diseases-identified">
-<h2>Pathway rare diseases identified<a class="headerlink" href="#pathway-rare-diseases-identified" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cakut-disease-pathways-identified">
+<h2>CAKUT disease pathways identified<a class="headerlink" href="#cakut-disease-pathways-identified" title="Permalink to this headline">¶</a></h2>
 <p>Using orsum to compare</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py  --gmt PathwaysOfInterest.gmt <span class="se">\</span>
           --files   Overlap_genesList_withpathOfInterest.4Orsum <span class="se">\</span>
@@ -621,7 +620,7 @@ awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="parameters.html" class="btn btn-neutral float-right" title="Resume of the main required parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Cytoscape.html" class="btn btn-neutral float-right" title="Visualisation using Cytoscape" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="example2.html" class="btn btn-neutral float-left" title="Example 2 : analysis from files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

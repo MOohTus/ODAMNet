@@ -246,7 +246,7 @@ Gene with the highest score : ``EGFR`` with ``score = 0.00033619597393799407`` (
 .. image:: ../../pictures/example3_multixrank_network.png
    :alt: example3 RWR
 
-Pathway rare diseases identified
+CAKUT disease pathways identified
 ----------------------------------------
 
 Using orsum to compare

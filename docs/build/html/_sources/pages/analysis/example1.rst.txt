@@ -351,7 +351,7 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
 .. image:: ../../pictures/example1_multixrank_network.png
    :alt: example1 RWR
 
-Pathway rare diseases identified
+Rare disease pathways identified
 ----------------------------------------
 
 Using orsum to compare

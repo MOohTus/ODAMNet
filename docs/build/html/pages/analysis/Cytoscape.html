@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Visualisation using Cytoscape &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Main script" href="../functions.html" />
+    <link rel="prev" title="Example 3 : analysis from custom files" href="example3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#dependencies">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/Quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#overlap-analysis">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#active-module-identification-ami">Active Module Identification (AMI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#random-walk-with-restart-rwr">Random Walk with Restart (RWR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="example1.html">Example 1 : request analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example2.html">Example 2 : analysis from files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example3.html">Example 3 : analysis from custom files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Visualisation using Cytoscape</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#active-modules-network-visualisation-domino">Active modules network visualisation (DOMINO)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-visualisation-multixrank">Network visualisation (multiXrank)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Main script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-methods_functions">Method functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-CTD_functions">CTD functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-WP_functions">WP functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output files</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Visualisation using Cytoscape</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/analysis/Cytoscape.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualisation-using-cytoscape">
+<h1>Visualisation using Cytoscape<a class="headerlink" href="#visualisation-using-cytoscape" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="active-modules-network-visualisation-domino">
+<h2>Active modules network visualisation (DOMINO)<a class="headerlink" href="#active-modules-network-visualisation-domino" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Import Network from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetwork.txt</span></code></p></li>
+<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModules.txt</span></code></p></li>
+<li><p>Omics Visualizer table from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_overlapAMresults4Cytoscape.txt</span></code></p></li>
+<li><p>Manage table connections : link network and the previous table</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Network : sharedname</p></li>
+<li><p>Table : geneSymbol</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Donut Chart Visualization : Add overlap results using donuts (Use TermID)</p></li>
+<li><p>Style :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Border Width = 5.0</p></li>
+<li><p>Fill Color = ActiveGenes True #CCCCCC False #FFFFFF</p></li>
+<li><p>Label Font = 20</p></li>
+<li><p>Shape = Circle</p></li>
+<li><p>Lock node width and height</p></li>
+<li><p>Size = 50</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Filter : Select nodes with overlapSignificant = True</p></li>
+<li><p>New Network : From Selected Nodes, All Edges</p></li>
+<li><p>Add legends using Omics Visualizer and Legend Creator</p></li>
+</ol>
+</div>
+<div class="section" id="network-visualisation-multixrank">
+<h2>Network visualisation (multiXrank)<a class="headerlink" href="#network-visualisation-multixrank" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Import Network from File : <code class="docutils literal notranslate"><span class="pre">example1_resultsNetwork.sif</span></code></p></li>
+<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
+<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code> and <code class="docutils literal notranslate"><span class="pre">seed</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How create the <strong>seeds.4Cytoscape</strong> file ?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]; next} {if($2 in a){print $2&quot;\tTrue&quot;}else{print $2&quot;\tFalse&quot;}}&#39;</span> seeds.txt multiplex_1.tsv &gt; seeds.4Cytoscape
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="4">
+<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">diseasesResults.txt</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code>, <code class="docutils literal notranslate"><span class="pre">pathways</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How create the <strong>diseasesResults.txt</strong> file ?</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">higherScore</span></code> is the highest score in <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> file and the <code class="docutils literal notranslate"><span class="pre">gmtFile</span></code> is the gmt file of
+pathways of interest.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2;next} {if($3&gt;=higherScore){$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;\t&quot;a[$2]&quot;\t&quot;$3}}&#39;</span> gmtFile multiplex_2.tsv &gt; diseasesResults.txt
+</pre></div>
+</div>
+</div>
+<ol class="arabic" start="5">
+<li><p>Create two new columns named <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">keep</span></code></p></li>
+<li><p>Filter : Select genes nodes</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>To <code class="docutils literal notranslate"><span class="pre">label</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=$name</span></code> and apply to selected nodes</p></li>
+<li><p>To <code class="docutils literal notranslate"><span class="pre">keep</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=$seed</span></code> and apply to selected nodes</p></li>
+<li><p>Sort by <code class="docutils literal notranslate"><span class="pre">score</span></code> (decrease) and select the 30th first genes that are not a seed (selected nodes from selected rows)</p></li>
+<li><p>To <code class="docutils literal notranslate"><span class="pre">keep</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=True</span></code> and apply to selected nodes</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Filter : Select pathways nodes</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Add pathway names into <code class="docutils literal notranslate"><span class="pre">label</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$pathway</span></code>)</p></li>
+<li><p>Add a condition score into <code class="docutils literal notranslate"><span class="pre">keep</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$score&gt;=0.00020841510533737325</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Filter : Select nodes with <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p>New Network : From Selected Nodes, All Edges</p></li>
+<li><p>Edit and Remove Duplicate Edges</p></li>
+<li><p>Style for all nodes :</p>
+<ul class="simple">
+<li><p>Border Width = 5.0</p></li>
+<li><p>Fill Color = seed True #CCCCCC False #FFFFFF</p></li>
+<li><p>Label Font Size = 20</p></li>
+<li><p>Shape = Circle</p></li>
+<li><p>Lock node width and height</p></li>
+<li><p>Size = 50</p></li>
+<li><p>Label = label</p></li>
+</ul>
+</li>
+<li><p>Style for pathway nodes:</p>
+<ul class="simple">
+<li><p>Shape = Triangle</p></li>
+<li><p>Size = 100</p></li>
+<li><p>Label Font Size = 50</p></li>
+<li><p>Color = #DD3497</p></li>
+</ul>
+</li>
+<li><p>Layout = yFiles Organic Layout</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../functions.html" class="btn btn-neutral float-right" title="Main script" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example3.html" class="btn btn-neutral float-left" title="Example 3 : analysis from custom files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
