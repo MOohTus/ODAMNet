@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Input files &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Output files" href="Output.html" />
+    <link rel="prev" title="Visualisation using Cytoscape" href="../analysis/Cytoscape.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_overview.html">Methods overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_newNetwork.html">Network creation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data source from requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data source from database files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : custom data source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/Cytoscape.html">Visualisation using Cytoscape</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#query-input-files">Query input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pathways-input-files">Pathways input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-input-files">Network input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-walk-input-files">Random walk input files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_main.html">MAIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_AMI.html">Active Module Identification (AMI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_RWR.html">Random Walk with Restart (RWR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_newNetwork.html">Creation of bipartite and network</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Input files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/formats/Input.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="input-files">
+<h1>Input files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="query-input-files">
+<h2>Query input files<a class="headerlink" href="#query-input-files" title="Permalink to this headline">¶</a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
+The user can gives several chemicals in the same line : they will be grouped for the analysis.</p>
+</dd>
+</dl>
+<p>Factor file format : InputFile_factorsList.csv
+CSV file where each line contains one or several molecules names.
+Molecule name format : name of the molecule or MeSH ID.</p>
+<p>The user can give several molecules. One analysis by molecule : each molecule is considering seperately.
+The users an give several molecule for the same analysis. On the same line, separated by a “;”.</p>
+<p><strong>Example with MeSH IDs</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D014801
+D014212
+C009166
+</pre></div>
+</div>
+<p><strong>Example with molecule names</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vitamin a
+tretinoin
+retinol acetate
+</pre></div>
+</div>
+<p><strong>Example with several molecules name for one analysis</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vitamin a;tretinoin
+retinol acetate
+tretinoin
+</pre></div>
+</div>
+<dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
+<dd><p>It’s a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.</p>
+</dd>
+</dl>
+<p>This file contains the results from the request sent to CTD.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code> : query input (from the factor input file)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code> : name of the query input or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code> : MeSH ID of the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code> : CasRN ID of the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : gene symbol that is connected to the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code> : gene ID of this gene (HGCN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code> : organism name that comes from the gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code> : organism ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code> : PubMed IDs of the paper that talk about this connection</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Input       ChemicalName    ChemicalId      CasRN   GeneSymbol      GeneId  Organism        OrganismId      PubMedIds
+d014801     Tretinoin       D014212 302-79-4        ZXDC    79364   Homo sapiens    9606    33167477
+d014801     Tretinoin       D014212 302-79-4        ZYG11A  440590  Homo sapiens    9606    23724009|33167477
+d014801     Tretinoin       D014212 302-79-4        ZYX     7791    Homo sapiens    9606    23724009
+d014801     Tretinoin       D014212 302-79-4        ZZZ3    26009   Homo sapiens    9606    33167477
+d014801     Vitamin A       D014801 11103-57-4      ACE2    59272   Homo sapiens    9606    32808185
+d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens    9606    19014918
+d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
+</pre></div>
+</div>
+<dl class="option-list">
+<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of gens of interest. One gene per line.</p>
+</dd>
+</dl>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AANAT
+ABCB1
+ABCC2
+ABL1
+ACADM
+ACAN
+ACSL1
+ACTA1
+ACTA2
+</pre></div>
+</div>
+</div>
+<div class="section" id="pathways-input-files">
+<h2>Pathways input files<a class="headerlink" href="#pathways-input-files" title="Permalink to this headline">¶</a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">--WP_GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>GMT file-like of pathways of interest. Pathways can come from several sources.
+Refers to XXX to have more information about the format.</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WPID</span></code> : first column is the WikiPathways ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is the name of the WikiPathways</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
+pathways and varies according the nuber of genes inside.</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WPID        pathways        HGNC
+WP5195      Disorders in ketolysis  ACAT1   HMGCS1  OXCT1   BDH1    ACAT2
+WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
+WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
+</pre></div>
+</div>
+<dl class="option-list">
+<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Name list of the different background source (each background contain the list of all genes). Each file is a GMT
+file (see the previous parameter)
+Same order than the pathways of interest file.</p>
+</dd>
+</dl>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>hsapiens.GO-BP.name.gmt
+hsapiens.REAC.name.gmt
+hsapiens.REAC.name.gmt
+hsapiens.REAC.name.gmt
+hsapiens.GO-BP.name.gmt
+hsapiens.WP.name.gmt
+</pre></div>
+</div>
+</div>
+<div class="section" id="network-input-files">
+<h2>Network input files<a class="headerlink" href="#network-input-files" title="Permalink to this headline">¶</a></h2>
+<p>For AMI analysis
+Give the recommendations from DOMINO and the link to them</p>
+<dl class="option-list">
+<dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Network file name (e.g. PPI network).
+The file contains 3 columns such as SIF format with the source node, the interaction type and the target node.</p>
+</dd>
+</dl>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node_1      link    node_2
+AAMP        ppi     VPS52
+AAMP        ppi     BHLHE40
+AAMP        ppi     AEN
+AAMP        ppi     C8orf33
+AAMP        ppi     TK1
+</pre></div>
+</div>
+</div>
+<div class="section" id="random-walk-input-files">
+<h2>Random walk input files<a class="headerlink" href="#random-walk-input-files" title="Permalink to this headline">¶</a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
+<dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+The short one contains the network and bipartite trees and the path of the seed file.
+If the user want more details go the the multiXrank’s documentation :
+<a class="reference external" href="https://github.com/anthbapt/multixrank">github</a> /
+<a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">doc</a></p>
+</dd>
+</dl>
+<p><strong>configPath format</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>multiplex:
+    1:
+        layers:
+            - examples/InputData/multiplex/1/Complexes_Nov2020.gr
+            - examples/InputData/multiplex/1/PPI_Jan2021.gr
+            - examples/InputData/multiplex/1/Reactome_Nov2020.gr
+    2:
+        layers:
+            - examples/InputData/multiplex/2/WP_RareDiseasesNetwork_fromVitaminPaper.sif
+bipartite:
+    examples/InputData/bipartite/Bipartite_WP_RareDiseases_geneSymbols_fromVitaminPaper.tsv:
+        source: 2
+        target: 1
+seed:
+    examples/InputData/seeds.txt
+</pre></div>
+</div>
+<p><strong>layers and bipartites format</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>NFYA        NFYB
+NFYA        NFYC
+NFYB        NFYC
+BTRC        CUL1
+BTRC        SKP1
+</pre></div>
+</div>
+<p><strong>seed format</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AANAT
+ABCB1
+ABCC2
+ABL1
+ACADM
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Output.html" class="btn btn-neutral float-right" title="Output files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../analysis/Cytoscape.html" class="btn btn-neutral float-left" title="Visualisation using Cytoscape" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

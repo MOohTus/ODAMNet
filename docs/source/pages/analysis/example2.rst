@@ -1,6 +1,8 @@
-***************************************************
-Example 2 : analysis from files
-***************************************************
+.. _example2:
+
+==================================================
+Example 2 : data source from database files
+==================================================
 
 .. tip::
 
@@ -12,7 +14,7 @@ User gives three main files : CTD file (for the target genes) and two WikiPathwa
 rare disease pathways)
 
 Overlap analysis
-------------------
+======================
 
 CTD was already request to extract target genes of vitamin A and its descendant molecules. The file is given to the
 ``--CTD_file`` parameter. Only the interaction with at least two publications are kept (``--nbPub 2``).
@@ -85,7 +87,7 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 +------------+----------------------------------------------------+-----------+------------------+
 
 Active Module Identification : DOMINO
-----------------------------------------
+==================================================
 
 .. warning::
 
@@ -204,7 +206,7 @@ Some statistics of each active modules founded : cf. le fichier
 +-------------+---------------+---------------+---------------------+
 
 Random Walk with Restart : multiXrank
----------------------------------------
+==================================================
 
 First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :
 
@@ -330,7 +332,7 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
    :alt: example2 RWR
 
 Rare disease pathways identified
-----------------------------------------
+==================================================
 
 Using orsum to compare
 
@@ -345,7 +347,7 @@ Using orsum to compare
    :alt: example2 orsum
 
 Commands
--------------
+==================================================
 
 .. code-block:: bash
 

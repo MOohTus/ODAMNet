@@ -1,9 +1,9 @@
-***************************************************
+================================
 Visualisation using Cytoscape
-***************************************************
+================================
 
 Active modules network visualisation (DOMINO)
------------------------------------------------
+==================================================
 
 1. Import Network from File : ``DOMINO_D014801_activeModulesNetwork.txt``
 2. Import Table from File : ``DOMINO_D014801_activeModules.txt``
@@ -29,7 +29,7 @@ Active modules network visualisation (DOMINO)
 
 
 Network visualisation (multiXrank)
------------------------------------------
+==================================================
 
 1. Import Network from File : ``example1_resultsNetwork.sif``
 2. Import Table from File : ``multiplex_1.tsv`` and ``multiplex_2.tsv``

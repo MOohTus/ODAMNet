@@ -1,6 +1,8 @@
-***************************************************
-Example 3 : analysis from custom files
-***************************************************
+.. _example3:
+
+==================================================
+Example 3 : custom data source
+==================================================
 
 On the Ozisik's paper, link between genes targeted by vitamin A and CAKUT disease is analysis.
 He created a custom target genes list from Balmer and all (mettre la date) et selected pathways related to CAKUT disease from several
@@ -10,7 +12,7 @@ Here, data source come from custom files : a list a genes targeted by vitamin A 
 several sources.
 
 Overlap analysis
-------------------
+==================================================
 
 The target genes list is given to ``--geneList`` parameter, pathways of interest to ``--GMT`` and the list of background
 sources is given to ``--backgroundFile``.
@@ -59,7 +61,7 @@ Results :
 +-----------------------+-------------------------------------------+-----------+------------------+
 
 Active Module Identification : DOMINO
-----------------------------------------
+==================================================
 
 .. warning::
 
@@ -173,7 +175,7 @@ Some statistics of each active modules founded : cf. le fichier
 +-----------+-------------+-------------+-------------------+
 
 Random Walk with Restart : multiXrank
----------------------------------------
+==================================================
 
 First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :
 
@@ -247,7 +249,7 @@ Gene with the highest score : ``EGFR`` with ``score = 0.00033619597393799407`` (
    :alt: example3 RWR
 
 CAKUT disease pathways identified
-----------------------------------------
+==================================================
 
 Using orsum to compare
 
@@ -264,7 +266,7 @@ Using orsum to compare
    :alt: example3 orsum
 
 Commands
--------------
+==================================================
 
 .. code-block:: bash
 

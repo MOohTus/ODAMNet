@@ -14,13 +14,17 @@ EnvironmentProject's documentation
    :titlesonly:
 
    pages/Installation
-   pages/usage/Quickstart
 
 .. toctree::
+   :maxdepth: 3
    :caption: Methods
    :titlesonly:
 
-   pages/Methods
+   pages/methods/methods_overview
+   pages/methods/methods_overlap
+   pages/methods/methods_AMI
+   pages/methods/methods_RWR
+   pages/methods/methods_newNetwork
 
 .. toctree::
    :maxdepth: 2
@@ -32,15 +36,19 @@ EnvironmentProject's documentation
    pages/analysis/Cytoscape
 
 .. toctree::
-   :caption: Functions description
-
-   pages/functions
-
-.. toctree::
    :caption: File formats
 
-   pages/analysis/Input
-   pages/analysis/Output
+   pages/formats/Input
+   pages/formats/Output
+
+.. toctree::
+   :caption: Functions description
+
+   pages/functions/fcts_main
+   pages/functions/fcts_overlap
+   pages/functions/fcts_AMI
+   pages/functions/fcts_RWR
+   pages/functions/fcts_newNetwork
 
 
 Indices and tables

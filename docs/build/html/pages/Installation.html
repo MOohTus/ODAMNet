@@ -43,7 +43,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Quickstart" href="usage/Quickstart.html" />
+    <link rel="next" title="Methods overview" href="methods/methods_overview.html" />
     <link rel="prev" title="EnvironmentProject’s documentation" href="../index.html" /> 
 </head>
 
@@ -92,34 +92,36 @@
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage/Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Methods</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html#overlap-analysis">Overlap analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html#active-module-identification-ami">Active Module Identification (AMI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Methods.html#random-walk-with-restart-rwr">Random Walk with Restart (RWR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/methods_overview.html">Methods overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods/methods_newNetwork.html">Network creation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis/example1.html">Example 1 : request analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis/example2.html">Example 2 : analysis from files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis/example3.html">Example 3 : analysis from custom files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/example1.html">Example 1 : data source from requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/example2.html">Example 2 : data source from database files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/example3.html">Example 3 : custom data source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysis/Cytoscape.html">Visualisation using Cytoscape</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">Main script</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html#module-methods_functions">Method functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html#module-CTD_functions">CTD functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html#module-WP_functions">WP functions</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis/Input.html">Input files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analysis/Output.html">Output files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="functions/fcts_main.html">MAIN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/fcts_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/fcts_AMI.html">Active Module Identification (AMI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/fcts_RWR.html">Random Walk with Restart (RWR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions/fcts_newNetwork.html">Creation of bipartite and network</a></li>
 </ul>
 
             
@@ -189,9 +191,51 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Clone the repository from Github</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/MOohTus/EnvironmentProject.git
+</pre></div>
 </div>
-<div class="section" id="dependencies">
-<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple" start="2">
+<li><p>Then, go inside</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> EnvironmentProject/
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Just run the setup.py file from that directory</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py install
+</pre></div>
+</div>
+</div>
+<div class="section" id="requierements">
+<h1>Requierements<a class="headerlink" href="#requierements" title="Permalink to this headline">¶</a></h1>
+<p>Python modules required are listed in the requierements.txt file. To install them :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 install requierements.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>Three different methods are available to analysis your data :</p>
+<ul class="simple">
+<li><p>Overlap analysis</p></li>
+<li><p>Active Module Identification (using DOMINO)</p></li>
+<li><p>Random Walk with Restart (using multiXrank)</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py <span class="o">[</span>overlap<span class="p">|</span>domino<span class="p">|</span>multixrank<span class="o">]</span> <span class="o">[</span>ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Before running the last method, you could need to create a network from data used :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py networkCreation <span class="o">[</span>ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>You can display help :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
+</pre></div>
+</div>
 </div>
 
 
@@ -200,7 +244,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="usage/Quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="methods/methods_overview.html" class="btn btn-neutral float-right" title="Methods overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../index.html" class="btn btn-neutral float-left" title="EnvironmentProject’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

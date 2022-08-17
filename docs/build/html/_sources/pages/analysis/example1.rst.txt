@@ -1,13 +1,15 @@
-***************************************************
-Example 1 : request analysis
-***************************************************
+.. _example1:
+
+==================================================
+Example 1 : data source from requests
+==================================================
 
 Study the link between vitamin A and rare diseases
 Request directly CTD database and WikiPathways.
 User gives only the MeSH ID of Vitamin A to the script and can perform three different methods.
 
 Overlap analysis
-------------------
+===================
 
 The InputFile_factorsList.csv file contains the MeSH ID of vitamin A. We want to find target of vitamin A and of its descendant molecules.
 So, the ``--directAssociation`` parameter is set to ``False``.
@@ -82,7 +84,7 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 +------------+----------------------------------------------------+-----------+------------------+
 
 Active Module Identification : DOMINO
-----------------------------------------
+==================================================
 
 .. warning::
 
@@ -219,7 +221,7 @@ Some statistics of each active modules founded : cf. le fichier
 +-----------+-------------+-------------+-------------------+
 
 Random Walk with Restart : multiXrank
----------------------------------------
+==================================================
 
 First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :
 
@@ -352,7 +354,7 @@ Gene with the highest score : ``VCAM1`` with ``score = 0.00020841510533737325`` 
    :alt: example1 RWR
 
 Rare disease pathways identified
-----------------------------------------
+====================================
 
 Using orsum to compare
 
@@ -367,7 +369,7 @@ Using orsum to compare
    :alt: example1 orsum
 
 Commands
--------------
+============
 
 .. code-block:: bash
 
