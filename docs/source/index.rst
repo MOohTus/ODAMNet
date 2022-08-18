@@ -25,6 +25,7 @@ EnvironmentProject's documentation
    pages/methods/methods_AMI
    pages/methods/methods_RWR
    pages/methods/methods_newNetwork
+   pages/methods/Cytoscape
 
 .. toctree::
    :maxdepth: 2
@@ -33,7 +34,6 @@ EnvironmentProject's documentation
    pages/analysis/example1
    pages/analysis/example2
    pages/analysis/example3
-   pages/analysis/Cytoscape
 
 .. toctree::
    :caption: File formats

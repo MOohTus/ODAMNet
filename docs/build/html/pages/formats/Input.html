@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Output files" href="Output.html" />
-    <link rel="prev" title="Visualisation using Cytoscape" href="../analysis/Cytoscape.html" /> 
+    <link rel="prev" title="Example 3 : custom data source" href="../analysis/example3.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,18 +102,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../methods/methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/methods_RWR.html">Random Walk with Restart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../methods/methods_newNetwork.html">Network creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data source from requests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data source from database files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : custom data source</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#query-input-files">Query input files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#query-input-files">Query input files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chemical-factors-file">1. Chemical factors file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ctd-file">2. CTD file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#genes-list-file">3. Genes list file</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#pathways-input-files">Pathways input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#network-input-files">Network input files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-input-files">Random walk input files</a></li>
@@ -199,9 +204,20 @@
 <h1>Input files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="query-input-files">
 <h2>Query input files<a class="headerlink" href="#query-input-files" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">You have to choose from where data source come from :</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="#factorlist"><span class="std std-ref">1. Chemical factors file</span></a> : give chemical ID as input and request CTD</div>
+<div class="line"><a class="reference internal" href="#ctdfile"><span class="std std-ref">2. CTD file</span></a> : specific version of data</div>
+<div class="line"><a class="reference internal" href="#geneslist"><span class="std std-ref">3. Genes list file</span></a></div>
+</div>
+</div>
+<div class="section" id="chemical-factors-file">
+<span id="factorlist"></span><h3>1. Chemical factors file<a class="headerlink" href="#chemical-factors-file" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
-<dd><p>Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
+<dd><p>Contains a list of chemicals : MeSH identifier (e.g. D014801).
 The user can gives several chemicals in the same line : they will be grouped for the analysis.</p>
 </dd>
 </dl>
@@ -210,24 +226,14 @@ CSV file where each line contains one or several molecules names.
 Molecule name format : name of the molecule or MeSH ID.</p>
 <p>The user can give several molecules. One analysis by molecule : each molecule is considering seperately.
 The users an give several molecule for the same analysis. On the same line, separated by a “;”.</p>
-<p><strong>Example with MeSH IDs</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D014801
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D014801;D014807
 D014212
 C009166
 </pre></div>
 </div>
-<p><strong>Example with molecule names</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vitamin a
-tretinoin
-retinol acetate
-</pre></div>
 </div>
-<p><strong>Example with several molecules name for one analysis</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>vitamin a;tretinoin
-retinol acetate
-tretinoin
-</pre></div>
-</div>
+<div class="section" id="ctd-file">
+<span id="ctdfile"></span><h3>2. CTD file<a class="headerlink" href="#ctd-file" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
 <dd><p>It’s a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.</p>
@@ -255,6 +261,9 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens
 d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
 </pre></div>
 </div>
+</div>
+<div class="section" id="genes-list-file">
+<span id="geneslist"></span><h3>3. Genes list file<a class="headerlink" href="#genes-list-file" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
 <dd><p>List of gens of interest. One gene per line.</p>
@@ -272,10 +281,11 @@ ACTA2
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="pathways-input-files">
 <h2>Pathways input files<a class="headerlink" href="#pathways-input-files" title="Permalink to this headline">¶</a></h2>
 <dl class="option-list">
-<dt><kbd><span class="option">--WP_GMT <var>FILENAME</var></span></kbd></dt>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>GMT file-like of pathways of interest. Pathways can come from several sources.
 Refers to XXX to have more information about the format.</p>
 </dd>
@@ -382,7 +392,7 @@ ACADM
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="Output.html" class="btn btn-neutral float-right" title="Output files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../analysis/Cytoscape.html" class="btn btn-neutral float-left" title="Visualisation using Cytoscape" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../analysis/example3.html" class="btn btn-neutral float-left" title="Example 3 : custom data source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

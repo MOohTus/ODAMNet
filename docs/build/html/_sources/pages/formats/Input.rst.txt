@@ -5,8 +5,21 @@ Input files
 Query input files
 ==================================================
 
+.. line-block::
+
+    You have to choose from where data source come from :
+
+        :ref:`factorList` : give chemical ID as input and request CTD
+        :ref:`CTDFile` : specific version of data
+        :ref:`genesList`
+
+.. _factorList:
+
+1. Chemical factors file
+-------------------------
+
 -f, --factorList FILENAME
-    Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
+    Contains a list of chemicals : MeSH identifier (e.g. D014801).
     The user can gives several chemicals in the same line : they will be grouped for the analysis.
 
 Factor file format : InputFile_factorsList.csv
@@ -16,29 +29,16 @@ Molecule name format : name of the molecule or MeSH ID.
 The user can give several molecules. One analysis by molecule : each molecule is considering seperately.
 The users an give several molecule for the same analysis. On the same line, separated by a ";".
 
-**Example with MeSH IDs**
-
 .. code-block:: none
 
-            D014801
+            D014801;D014807
             D014212
             C009166
 
-**Example with molecule names**
+.. _CTDFile:
 
-.. code-block:: none
-
-            vitamin a
-            tretinoin
-            retinol acetate
-
-**Example with several molecules name for one analysis**
-
-.. code-block:: none
-
-    vitamin a;tretinoin
-    retinol acetate
-    tretinoin
+2. CTD file
+--------------
 
 -c, --CTD_file FILENAME
     It's a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.
@@ -66,6 +66,11 @@ This file contains the results from the request sent to CTD.
     d014801	Vitamin A	D014801	11103-57-4	AKR1B1	231	Homo sapiens	9606	19014918
     d014801	Vitamin A	D014801	11103-57-4	AKR1B10	57016	Homo sapiens	9606	19014918
 
+.. _genesList:
+
+3. Genes list file
+---------------------
+
 -g, --geneList FILENAME
     List of gens of interest. One gene per line.
 
@@ -85,7 +90,7 @@ This file contains the results from the request sent to CTD.
 Pathways input files
 ==================================================
 
---WP_GMT FILENAME
+--GMT FILENAME
     GMT file-like of pathways of interest. Pathways can come from several sources.
     Refers to XXX to have more information about the format.
 
@@ -115,7 +120,6 @@ Pathways input files
     hsapiens.REAC.name.gmt
     hsapiens.GO-BP.name.gmt
     hsapiens.WP.name.gmt
-
 
 
 Network input files

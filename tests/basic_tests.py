@@ -51,12 +51,12 @@ class TestReadingFileFunction(unittest.TestCase):
     def test_readGMTFile(self):
         # Parameters
         GMTFileName = 'TestReadingFileFunction/pathwaysOfIntesrest.gmt'
-        pathOfInterestGenesDict_expected = {'WPID': ['HGNC'],
+        pathOfInterestGenesDict_expected = {'pathwayIDs': ['HGNC'],
                                             'WP4153': ['GLB1', 'HEXA', 'ARSA', 'GLA', 'GM2A', 'HEXB', 'NEU1', 'NEU3', 'NEU2', 'NEU4'],
                                             'WP4156': ['PTS', 'GCH1'],
                                             'WP4157': ['DPEP1', 'ALDH5A1', 'ABAT', 'PON3', 'AKR7A2', 'ADHFE1'],
                                             'WP4220': ['MAOA', 'TH', 'DDC', 'DBH']}
-        pathOfInterestNamesDict_expected = {'WPID': 'pathways',
+        pathOfInterestNamesDict_expected = {'pathwayIDs': 'pathways',
                                             'WP4153': 'Degradation pathway of sphingolipids, including diseases',
                                             'WP4156': 'Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine',
                                             'WP4157': 'GABA metabolism (aka GHB)',
@@ -475,6 +475,71 @@ class TestDOMINOAnalysis(unittest.TestCase):
     #             else:
     #                 lineList.append('False')
     #             AMIOutputLinesList.append(lineList)
+
+
+class TestHeaderFiles(unittest.TestCase):
+
+    def test_impactOfHeader(self):
+        """test_impactOfHeader"""
+        # With HEADER
+        # Parameters
+        CTDFileName_H = 'TestHeaderFiles/CTD_HEADER.tsv'
+        pathOfInterestGMTFileName_H = 'TestHeaderFiles/WP_RareDiseases_HEADER.gmt'
+        backgroundFileName_H = 'TestHeaderFiles/backgroundsFiles_H.tsv'
+        outputPath = 'TestHeaderFiles/'
+        analysisName = 'pathOfInterest_HEADER'
+        # Function calling
+        with open(CTDFileName_H, 'r') as CTDFile_HEADER:
+            featuresDict = CTD.readCTDFile(CTDFile=CTDFile_HEADER, nbPub=2, outputPath=outputPath)
+        with open(pathOfInterestGMTFileName_H, 'r') as pathOfInterestGMT_H:
+            pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT_H)
+        with open(backgroundFileName_H, 'r') as backgroundFile_H:
+            backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile_H)
+        pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
+        methods.overlapAnalysis(targetGenesDict=featuresDict,
+                                pathOfInterestGenesDict=pathOfInterestGenesDict,
+                                pathOfInterestNamesDict=pathOfInterestNamesDict,
+                                pathwaysOfInterestList=pathwaysOfInterestList,
+                                backgroundGenesDict=backgroundGenesDict,
+                                outputPath=outputPath,
+                                analysisName=analysisName)
+
+        # Without HEADER
+        # Parameters
+        pathOfInterestGMTFileName = 'TestHeaderFiles/WP_RareDiseases.gmt'
+        backgroundFileName = 'TestHeaderFiles/backgroundsFiles.tsv'
+        analysisName = 'pathOfInterest'
+        # Function calling
+        with open(CTDFileName_H, 'r') as CTDFile_HEADER:
+            featuresDict = CTD.readCTDFile(CTDFile=CTDFile_HEADER, nbPub=2, outputPath=outputPath)
+        with open(pathOfInterestGMTFileName, 'r') as pathOfInterestGMT:
+            pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(
+                GMTFile=pathOfInterestGMT)
+        with open(backgroundFileName, 'r') as backgroundFile:
+            backgroundGenesDict, backgroundsList = WP.readBackgroundsFile(backgroundsFile=backgroundFile)
+        pathwaysOfInterestList = list(zip(pathwaysOfInterestList, backgroundsList))
+        methods.overlapAnalysis(targetGenesDict=featuresDict,
+                                pathOfInterestGenesDict=pathOfInterestGenesDict,
+                                pathOfInterestNamesDict=pathOfInterestNamesDict,
+                                pathwaysOfInterestList=pathwaysOfInterestList,
+                                backgroundGenesDict=backgroundGenesDict,
+                                outputPath=outputPath,
+                                analysisName=analysisName)
+
+        # Comparison
+        lines_H = []
+        lines = []
+        with open('TestHeaderFiles/Overlap_D014801_withpathOfInterest_HEADER.csv', 'r') as file_H:
+            for line in file_H:
+                lineList = line.strip().split(';')
+                lineList.pop(2)
+                lines_H.append(lineList)
+        with open('TestHeaderFiles/Overlap_D014801_withpathOfInterest.csv', 'r') as file_H:
+            for line in file_H:
+                lineList = line.strip().split(';')
+                lineList.pop(2)
+                lines.append(lineList)
+        self.assertEqual(lines_H, lines)
 
 
 if __name__ == '__main__':

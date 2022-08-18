@@ -394,7 +394,7 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
     # For each pathway of interest
     # Take ID and genes into lists
     for ID in pathOfInterestGenesDict:
-        if ID != 'WPID':
+        if ID != 'pathwayIDs':
             if ID not in pathwayIDs:
                 pathwayIDs.append(ID)
             for gene in pathOfInterestGenesDict[ID]:

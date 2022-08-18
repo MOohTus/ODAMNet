@@ -38,7 +38,7 @@ def main():
 
     overlap | domino | multixrank
 
-    If you need to create a network diseases from WP select : networkCreation
+    If you need to create a network with the pathways of interest, select : networkCreation
     """
     pass
 
@@ -54,7 +54,7 @@ def main():
               help='Number of references needed at least to keep an interaction')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
-@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
               help='Background genes file name. ')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
@@ -70,7 +70,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
 
-    # Rare Diseases pathways and extract all genes from WP
+    # Extract genes from background and pathways of interest
     if pathOfInterestGMT:
         # Files reading
         pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
@@ -121,7 +121,7 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
 @click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True, help='Network file name')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest in GMT like format. ')
-@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='WP_GMT',
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
               help='Background genes file name. ')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
@@ -137,7 +137,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
 
-    # Rare Diseases pathways and extract all genes from WP
+    # Extract genes from background and pathways of interest
     if pathOfInterestGMT:
         # Files reading
         pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
@@ -189,10 +189,10 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
               help='Pathways of interest in GMT like format (e.g. from WP request).')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output path name (for complementary output files)')
-def createNetworkFileFromWP(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
-    """Create network SIF file from WP request or WP GMT file"""
+def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
+    """Create network SIF file from WP request or pathways of interest GMT file"""
     # Parameters
-    outputPath = os.path.join(outputPath, 'OutputCreateNetworkFromWP')
+    outputPath = os.path.join(outputPath, 'OutputCreateNetwork')
     networkFileName = networksPath + '/' + networksName
     bipartiteFileName = bipartitePath + '/' + bipartiteName
 
@@ -206,7 +206,7 @@ def createNetworkFileFromWP(pathOfInterestGMT, networksPath, networksName, bipar
     if not os.path.exists(bipartitePath):
         os.makedirs(bipartitePath, exist_ok=True)
 
-    # Extract all rare disease genes from WP
+    # Extract pathways of interest
     if pathOfInterestGMT:
         # From file
         pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
