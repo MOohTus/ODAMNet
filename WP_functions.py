@@ -25,12 +25,12 @@ def readRequestResultsWP(WPrequestResult):
     :param bytes WPrequestResult: request result from WikiPathway
 
     :return:
-        - **genesWPdict** (*dictionary*) – Dict of genes for each WikiPathway
-        - **nameWPdict** (*dictionary*) – Dict of titles for each WikiPathway
+        - **WPgenesDict** (*dictionary*) – Dict of genes for each WikiPathway
+        - **WPnamesDict** (*dictionary*) – Dict of titles for each WikiPathway
     """
     # Parameters
-    genesWPdict = {}
-    nameWPdict = {}
+    WPgenesDict = {}
+    WPnamesDict = {}
 
     # Read and extract elements from WP
     requestString = WPrequestResult.decode()
@@ -40,14 +40,14 @@ def readRequestResultsWP(WPrequestResult):
         listLine = line.split('\t')
         if listLine[2] != 'HGNC':
             listLine[2] = listLine[2].split('/')[4]
-        if listLine[0] in genesWPdict.keys():
-            genesWPdict[listLine[0]].append(listLine[2])
+        if listLine[0] in WPgenesDict.keys():
+            WPgenesDict[listLine[0]].append(listLine[2])
         else:
-            genesWPdict[listLine[0]] = [listLine[2]]
-            nameWPdict[listLine[0]] = listLine[1]
+            WPgenesDict[listLine[0]] = [listLine[2]]
+            WPnamesDict[listLine[0]] = listLine[1]
 
     # Return
-    return genesWPdict, nameWPdict
+    return WPgenesDict, WPnamesDict
 
 
 def rareDiseasesWPrequest(outputPath):
@@ -61,15 +61,15 @@ def rareDiseasesWPrequest(outputPath):
     :param str outputPath: Folder path to save the results
 
     :return:
-        - **genesWPDict** (*dictionary*) – Dict of genes for each RD WikiPathway
-        - **namesWPDict** (*dictionary*) – Dict of names for each RD WikiPathway
+        - **WPgenesDict** (*dictionary*) – Dict of genes for each RD WikiPathway
+        - **WPnamesDict** (*dictionary*) – Dict of names for each RD WikiPathway
         - **pathwayOfInterestList** (*list*) – Pathway names list
     """
     # Parameters
-    genesWPDict = {}
-    namesWPDict = {}
+    WPgenesDict = {}
+    WPnamesDict = {}
     outputList = []
-    pathwayOfInterestList = []
+    WPList = []
     date = datetime.today().strftime('%Y_%m_%d')
     resultFileName = outputPath + '/WP_RareDiseases_request_' + date + '.gmt'
     sparql = SPARQLWrapper('https://sparql.wikipathways.org/sparql')
@@ -77,7 +77,7 @@ def rareDiseasesWPrequest(outputPath):
 
     # Query - Extract gene HGNC ID from RD pathways
     sparql.setQuery("""
-    SELECT DISTINCT ?WPID (?title as ?pathways) (?hgncId as ?HGNC)
+    SELECT DISTINCT (?WPID as ?pathwayIDs) (?title as ?pathways) (?hgncId as ?HGNC)
         WHERE {
           {
             ?pathway wp:ontologyTag cur:RareDiseases ;
@@ -104,16 +104,16 @@ def rareDiseasesWPrequest(outputPath):
     """)
     try:
         genesReq = sparql.queryAndConvert()
-        genesWPDict, namesWPDict = readRequestResultsWP(genesReq)
+        WPgenesDict, WPnamesDict = readRequestResultsWP(genesReq)
     except Exception as e:
         print(e)
 
     # Parsing for output
-    for key in genesWPDict:
-        composition = '\t'.join(genesWPDict[key])
-        outputList.append(''.join([key, '\t', namesWPDict[key], '\t', composition, '\n']))
-        if key != 'WPID':
-            pathwayOfInterestList.append(key)
+    for key in WPgenesDict:
+        composition = '\t'.join(WPgenesDict[key])
+        outputList.append(''.join([key, '\t', WPnamesDict[key], '\t', composition, '\n']))
+        if key != 'pathwayIDs':
+            WPList.append(key)
 
     # Write results into file - Write composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
@@ -121,7 +121,7 @@ def rareDiseasesWPrequest(outputPath):
             outputFileHandler.write(line)
 
     # Return
-    return genesWPDict, namesWPDict, pathwayOfInterestList
+    return WPgenesDict, WPnamesDict, WPList
 
 
 def allHumanGenesFromWP(outputPath):
@@ -135,8 +135,8 @@ def allHumanGenesFromWP(outputPath):
         - **backgroundsDict** (*dict*) – dict of all human genes from WP
     """
     # Parameters
-    genesWPDict = {}
-    namesWPDict = {}
+    WPgenesDict = {}
+    WPnamesDict = {}
     outputList = []
     date = datetime.today().strftime('%Y_%m_%d')
     resultFileName = outputPath + '/WP_allPathways_request_' + date + '.gmt'
@@ -147,7 +147,7 @@ def allHumanGenesFromWP(outputPath):
 
     # Query - Extract all genes from Human WP (HGNC ID)
     sparql.setQuery("""
-        SELECT DISTINCT ?WPID (?title as ?pathways) (?hgncId as ?HGNC)
+        SELECT DISTINCT (?WPID as ?pathwayIDs) (?title as ?pathways) (?hgncId as ?HGNC)
             WHERE {
               {
                 ?pathway a wp:Pathway ;
@@ -170,22 +170,22 @@ def allHumanGenesFromWP(outputPath):
         """)
     try:
         genesReq = sparql.queryAndConvert()
-        genesWPDict, namesWPDict = readRequestResultsWP(genesReq)
+        WPgenesDict, WPnamesDict = readRequestResultsWP(genesReq)
     except Exception as e:
         print(e)
 
     # Parsing for output
-    for key in genesWPDict:
-        composition = '\t'.join(genesWPDict[key])
-        outputList.append(''.join([key, '\t', namesWPDict[key], '\t', composition, '\n']))
+    for key in WPgenesDict:
+        composition = '\t'.join(WPgenesDict[key])
+        outputList.append(''.join([key, '\t', WPnamesDict[key], '\t', composition, '\n']))
     # Write results into file - Write composition of each WP
     with open(resultFileName, 'w') as outputFileHandler:
         for line in outputList:
             outputFileHandler.write(line)
 
     # Remove redundancy
-    for pathway in genesWPDict:
-        for gene in genesWPDict[pathway]:
+    for pathway in WPgenesDict:
+        for gene in WPgenesDict[pathway]:
             if gene not in backgroundsDict[bgName] and gene != 'HGNC':
                 backgroundsDict[bgName].append(gene)
 
@@ -200,31 +200,31 @@ def readGMTFile(GMTFile):
     :param FILE GMTFile: content of GMT file
 
     :return:
-        - **genesWPDict** (*dict*) – Dict of genes for each WikiPathway
-        - **namesWPDict** (*dict*) – Dict of titles for each WikiPathway
+        - **pathOfInterestGenesDict** (*dict*) – Dict of genes for each pathway of interest
+        - **pathOfInterestNamesDict** (*dict*) – Dict of names for each pathway of interest
         - **pathwaysOfInterestList** (*list*) – Pathway names list
     """
     # Parameters
-    namesWPDict = {}
-    genesWPDict = {}
-    pathwaysOfInterestList = []
+    pathOfInterestGenesDict = {}
+    pathOfInterestNamesDict = {}
+    pathOfInterestList = []
 
     # Read GMT file
     for line in GMTFile:
         lineList = line.rstrip('\n').split('\t')
-        WPID = lineList[0]
+        pathwayID = lineList[0]
         genesList = lineList[2:]
         description = lineList[1]
         # Pathway names dict
-        namesWPDict[WPID] = description
+        pathOfInterestNamesDict[pathwayID] = description
         # Pathway genes dict
-        genesWPDict[WPID] = genesList
+        pathOfInterestGenesDict[pathwayID] = genesList
         # List of pathways of interest
-        if WPID != 'WPID':
-            pathwaysOfInterestList.append(WPID)
+        if pathwayID != 'pathwayIDs':
+            pathOfInterestList.append(pathwayID)
 
     # Return
-    return genesWPDict, namesWPDict, pathwaysOfInterestList
+    return pathOfInterestGenesDict, pathOfInterestNamesDict, pathOfInterestList
 
 
 def readBackgroundsFile(backgroundsFile):
