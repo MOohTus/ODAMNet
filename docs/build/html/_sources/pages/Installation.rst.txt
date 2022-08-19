@@ -36,9 +36,9 @@ Usage
 
 Three different methods are available to analysis your data :
 
-- Overlap analysis
-- Active Module Identification (using DOMINO)
-- Random Walk with Restart (using multiXrank)
+    #. Overlap analysis
+    #. Active Module Identification (using DOMINO)
+    #. Random Walk with Restart (using multiXrank)
 
 
 .. code-block:: bash
