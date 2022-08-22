@@ -39,7 +39,6 @@ def readFeaturesFile(featuresFile):
     # Return
     return featureNamesList
 
-
 def readCTDFile(CTDFile, nbPub, outputPath):
     """
     Read CTD file, created from a request.
@@ -85,7 +84,6 @@ def readCTDFile(CTDFile, nbPub, outputPath):
 
     # Return
     return targetGenesDict
-
 
 def CTDrequest(chemName, association, outputPath, nbPub):
     """
@@ -169,6 +167,33 @@ def CTDrequest(chemName, association, outputPath, nbPub):
 
     return chemMeSH, homoGenesList
 
+def CTDrequestFromFeaturesList(chemList, association, outputPath, nbPub):
+    """
+    Make CTD request for each chemical present in the list given in input.
+    Each element can be composed of one or more element.
+    If several element, the analysis will be done like if there is only one chemical.
+
+    :param list chemList: List of chemical to request to CTD (MeSH IDs or chemical names)
+    :param str association: association name (hierarchicalAssociations or directAssociations)
+    :param str outputPath: Folder path to save the results
+    :param int nbPub: Number of references needed to keep an interaction
+
+    :return:
+        - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
+    """
+    # Parameters
+    chemTargetsDict = {}
+
+    # For each chemical, request CTD
+    for chem in chemList:
+        chemNamesList = chem.rstrip().split(';')
+        chemNamesString = '|'.join(chemNamesList)
+        chemNames, chemTargetsList = CTDrequest(chemName=chemNamesString, association=association,
+                                                outputPath=outputPath, nbPub=nbPub)
+        chemTargetsDict[chemNames] = chemTargetsList
+
+    # Return
+    return chemTargetsDict
 
 def CTDrequestFromFeaturesList(chemList, association, outputPath, nbPub):
     """
