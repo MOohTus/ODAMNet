@@ -9,6 +9,8 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 """
 
 # Libraries
+import json
+import ndex2
 import requests
 import os
 import multixrank
@@ -409,3 +411,25 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
         for ID in pathwayIDs:
             networkOutputFile.write('\t'.join([ID, ID]))
             networkOutputFile.write('\n')
+
+
+def downloadNDExNetwork(networkUUID, outputFileName):
+    """
+    Download network from NDEx website
+
+    :param str networkUUID: network ID
+    :param FILENAME outputFileName: SIF file name to write network
+    """
+    # Create NDEx2 python client
+    client = ndex2.client.Ndex2()
+
+    # Download
+    client_resp = client.get_network_as_cx_stream(networkUUID)
+
+    # Convert downloaded network to NiceCXNetwork object
+    net_cx = ndex2.create_nice_cx_from_raw_cx(json.loads(client_resp.content))
+    net_cx.print_summary()
+
+    # Convert to pandas dataframe
+    df = net_cx.to_pandas_dataframe()
+    df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')
