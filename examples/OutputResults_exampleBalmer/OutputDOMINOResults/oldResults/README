@@ -1,7 +1,0 @@
-for file in `ls Overlap_AM_*_genesList_withRDWP.csv`
-do
-	awk -v f=$file -F";" 'BEGIN{OFS="\t"} {if($9<=0.05){$1=$1; print f"\t"$0}}' $file
-done
-
-
-for file in `ls Overlap_AM_*_genesList_withRDWP.csv`; do awk -v f=$file -F";" 'BEGIN{OFS="\t"} {if($9<=0.05){split(f,a,"_"); split($10,b," "); for(gene in b){print b[gene],a[3],$1,$2,$9}}}' $file; done > table4Cytoscape.txt

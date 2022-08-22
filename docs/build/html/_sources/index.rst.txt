@@ -7,65 +7,40 @@ EnvironmentProject's documentation
 ==================================
 
 .. important::
-   This project was created within the EJRP RD project.
+   From EJP RD project
 
 .. toctree::
    :caption: Quickstart
    :titlesonly:
 
    pages/Installation
+   pages/usage/Quickstart
 
 .. toctree::
-   :maxdepth: 3
    :caption: Methods
    :titlesonly:
 
-   pages/methods/methods_overview
-   pages/methods/methods_overlap
-   pages/methods/methods_AMI
-   pages/methods/methods_RWR
-   pages/methods/methods_newNetwork
-   pages/methods/Cytoscape
+   pages/Methods
 
 .. toctree::
    :maxdepth: 2
-   :caption: Analysis
+   :caption: Usage
 
-   pages/analysis/example1
-   pages/analysis/example2
-   pages/analysis/example3
-
-.. toctree::
-   :maxdepth: 1
-   :caption: File formats
-
-   pages/formats/Input
-   pages/formats/Output
+   pages/analysis/requestAnalysis
+   pages/analysis/filesAnalysis
+   pages/analysis/genericAnalysis
+   pages/analysis/parameters
 
 .. toctree::
-   :maxdepth: 1
    :caption: Functions description
 
-   pages/functions/fcts_main
-   pages/functions/fcts_overlap
-   pages/functions/fcts_AMI
-   pages/functions/fcts_RWR
-   pages/functions/fcts_newNetwork
+   pages/functions
 
+.. toctree::
+   :caption: File formats
 
-.. seealso::
-
-    Module :py:mod:`overlap`
-      Documentation of the :py:mod:`zipfile` standard module.
-
-.. code-block:: bash
-   :emphasize-lines: 3,5
-
-   def some_function():
-       interesting = False
-       print 'This line is highlighted.'
-       print 'This one is not...'
-       print '...but this one is.'
+   pages/analysis/Input
+   pages/analysis/Output
 
 
 Indices and tables

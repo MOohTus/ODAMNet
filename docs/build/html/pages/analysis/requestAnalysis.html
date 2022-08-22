@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Request analysis: up to date data &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Specific version of data" href="filesAnalysis.html" />
+    <link rel="prev" title="Overview" href="../Methods.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#dependencies">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/Quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#overlap-analysis">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#active-module-identification-ami">Active Module Identification (AMI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Methods.html#random-walk-with-restart-rwr">Random Walk with Restart (RWR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Request analysis: up to date data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-format">Input format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-parameters">required parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-parameters">optional parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#analyses">Analyses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#active-module-identification-domino">Active Module Identification : DOMINO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#random-walk-with-restart-multixrank">Random Walk with Restart : multiXrank</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-up-to-date-vitamin-a-analysis">Example - Up to date Vitamin A analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#biological-context">Biological context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#input-data">Input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Overlap analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Active Module Identification : DOMINO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Random Walk with Restart : multiXrank</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bipartite">Bipartite</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disease-disease-network">Disease disease network</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesAnalysis.html">Specific version of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="genericAnalysis.html">Generic analysis : with the data you want</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameters.html">Resume of the main required parameters</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html">Main script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-methods_functions">Method functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-CTD_functions">CTD functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions.html#module-WP_functions">WP functions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Output.html">Output files</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Request analysis: up to date data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/analysis/requestAnalysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="request-analysis-up-to-date-data">
+<h1>Request analysis: up to date data<a class="headerlink" href="#request-analysis-up-to-date-data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="input-format">
+<h2>Input format<a class="headerlink" href="#input-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-parameters">
+<h3>required parameters<a class="headerlink" href="#required-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="optional-parameters">
+<h3>optional parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="analyses">
+<h2>Analyses<a class="headerlink" href="#analyses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overlap-analysis">
+<h3>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="active-module-identification-domino">
+<h3>Active Module Identification : DOMINO<a class="headerlink" href="#active-module-identification-domino" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="random-walk-with-restart-multixrank">
+<h3>Random Walk with Restart : multiXrank<a class="headerlink" href="#random-walk-with-restart-multixrank" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="example-up-to-date-vitamin-a-analysis">
+<h2>Example - Up to date Vitamin A analysis<a class="headerlink" href="#example-up-to-date-vitamin-a-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Link between environmental factor and rare disease pathways: Vitamin A use-case</p>
+<div class="section" id="biological-context">
+<h3>Biological context<a class="headerlink" href="#biological-context" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="input-data">
+<h3>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3>Overlap analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Active Module Identification : DOMINO<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3>Random Walk with Restart : multiXrank<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="bipartite">
+<h4>Bipartite<a class="headerlink" href="#bipartite" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="disease-disease-network">
+<h4>Disease disease network<a class="headerlink" href="#disease-disease-network" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="filesAnalysis.html" class="btn btn-neutral float-right" title="Specific version of data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Methods.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,103 +1,103 @@
-PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
-WP3998;Prader-Willi and Angelman syndrome;WikiPathway_2022_08_11;66;77;4;12378;0.0007449364303954555;0.07598351590033646;CCND1 CDC6 CDK4 CDKN2A
-WP5087;Malignant pleural mesothelioma;WikiPathway_2022_08_11;436;77;7;12378;0.018543336309775157;0.8294990780544853;CCND1 CCNE1 CDK2 CDK4 CDKN2A FOXM1 LAMB2
-WP3569;Fanconi Anemia Pathway;WikiPathway_2022_08_11;39;77;2;12378;0.024397031707484862;0.8294990780544853;RPA1 RPA2
-WP2371;Parkinson's disease pathway;WikiPathway_2022_08_11;47;77;2;12378;0.034477868622183265;0.8791856498656733;CCNE1 CCNE2
-WP4292;Methionine metabolism leading to sulfur amino acids and related disorders;WikiPathway_2022_08_11;11;77;1;12378;0.06636471808004878;0.8834909070965351;MTR
-WP4673;Male infertility;WikiPathway_2022_08_11;145;77;3;12378;0.061547657529068545;0.8834909070965351;CCNA1 MTR USP26
-WP4271;Vitamin B12 disorders;WikiPathway_2022_08_11;13;77;1;12378;0.07795508003792957;0.8834909070965351;MTR
-WP4259;Disorders of folate metabolism and transport;WikiPathway_2022_08_11;13;77;1;12378;0.07795508003792957;0.8834909070965351;MTR
-WP5114;Nucleotide excision repair in xeroderma pigmentosum ;WikiPathway_2022_08_11;74;77;2;12378;0.07745415766415122;0.8834909070965351;RPA1 RPA2
-WP4504;Cysteine and methionine catabolism;WikiPathway_2022_08_11;15;77;1;12378;0.08940340231567058;0.91191470361984;MTR
-WP5074;Kallmann syndrome;WikiPathway_2022_08_11;23;77;0;12378;1.0;1.0;
-WP5053;Development of ureteric collection system;WikiPathway_2022_08_11;60;77;1;12378;0.3129214096572829;1.0;CCND1
-WP5052;Nephrogenesis;WikiPathway_2022_08_11;18;77;0;12378;1.0;1.0;
-WP5101;Congenital generalized lipodystrophy (CGL);WikiPathway_2022_08_11;18;77;0;12378;1.0;1.0;
-WP5102;Familial partial lipodystrophy (FPLD);WikiPathway_2022_08_11;30;77;0;12378;1.0;1.0;
-WP5037;Riboflavin and CoQ disorders;WikiPathway_2022_08_11;14;77;0;12378;1.0;1.0;
-WP2059;Alzheimer's disease and miRNA effects;WikiPathway_2022_08_11;275;77;1;12378;0.8236667048614352;1.0;TUBA1C
-WP5030;Ethylmalonic encephalopathy;WikiPathway_2022_08_11;3;77;0;12378;1.0;1.0;
-WP5103;Progeria-associated lipodystrophy;WikiPathway_2022_08_11;22;77;0;12378;1.0;1.0;
-WP4971;Phosphoinositides metabolism;WikiPathway_2022_08_11;49;77;0;12378;1.0;1.0;
-WP4950;16p11.2 distal deletion syndrome;WikiPathway_2022_08_11;33;77;0;12378;1.0;1.0;
-WP4949;16p11.2 proximal deletion syndrome;WikiPathway_2022_08_11;81;77;0;12378;1.0;1.0;
-WP4947;Nitric oxide metabolism in cystic fibrosis;WikiPathway_2022_08_11;13;77;0;12378;1.0;1.0;
-WP4942;15q13.3 copy number variation syndrome;WikiPathway_2022_08_11;32;77;0;12378;1.0;1.0;
-WP4940;15q11.2 copy number variation syndrome;WikiPathway_2022_08_11;10;77;0;12378;1.0;1.0;
-WP4932;7q11.23 copy number variation syndrome;WikiPathway_2022_08_11;113;77;1;12378;0.5075468316553676;1.0;CDKN1C
-WP4906;3q29 copy number variation syndrome;WikiPathway_2022_08_11;75;77;0;12378;1.0;1.0;
-WP4905;1q21.1 copy number variation syndrome;WikiPathway_2022_08_11;36;77;0;12378;1.0;1.0;
-WP5031;Biotin metabolism, including IMDs;WikiPathway_2022_08_11;9;77;0;12378;1.0;1.0;
-WP5104;Acquired partial lipodystrophy / Barraquer-Simons syndrome;WikiPathway_2022_08_11;10;77;0;12378;1.0;1.0;
-WP5112;Familial hyperlipidemia type 5;WikiPathway_2022_08_11;15;77;0;12378;1.0;1.0;
-WP5109;Familial hyperlipidemia type 2;WikiPathway_2022_08_11;16;77;0;12378;1.0;1.0;
-WP5222;2q13 copy number variation syndrome;WikiPathway_2022_08_11;68;77;0;12378;1.0;1.0;
-WP5221;2q11.2 copy number variation syndrome;WikiPathway_2022_08_11;65;77;0;12378;1.0;1.0;
-WP5202;Alstrom syndrome;WikiPathway_2022_08_11;33;77;0;12378;1.0;1.0;
-WP5200;Dravet syndrome;WikiPathway_2022_08_11;18;77;0;12378;1.0;1.0;
-WP5195;Disorders in ketolysis;WikiPathway_2022_08_11;5;77;0;12378;1.0;1.0;
-WP5193;Cholesterol synthesis disorders;WikiPathway_2022_08_11;18;77;0;12378;1.0;1.0;
-WP5190;Creatine pathway;WikiPathway_2022_08_11;5;77;0;12378;1.0;1.0;
-WP5189;Copper metabolism;WikiPathway_2022_08_11;4;77;0;12378;1.0;1.0;
-WP5178;Disorders of fructose metabolism;WikiPathway_2022_08_11;14;77;0;12378;1.0;1.0;
-WP5108;Familial  hyperlipidemia type 1;WikiPathway_2022_08_11;18;77;0;12378;1.0;1.0;
-WP5176;Disorders of bile acid synthesis and biliary transport;WikiPathway_2022_08_11;20;77;0;12378;1.0;1.0;
-WP5173;Disorders of galactose metabolism ;WikiPathway_2022_08_11;13;77;0;12378;1.0;1.0;
-WP5171;Leukotriene metabolic pathway;WikiPathway_2022_08_11;13;77;0;12378;1.0;1.0;
-WP5169;Hemesynthesis defects and porphyrias;WikiPathway_2022_08_11;9;77;0;12378;1.0;1.0;
-WP5166;Glyoxylate metabolism;WikiPathway_2022_08_11;11;77;0;12378;1.0;1.0;
-WP5124;Alzheimer's disease;WikiPathway_2022_08_11;262;77;1;12378;0.8084212786151107;1.0;TUBA1C
-WP5120;Inclusion body myositis;WikiPathway_2022_08_11;11;77;0;12378;1.0;1.0;
-WP4879;Overlap between signal transduction pathways contributing to LMNA laminopathies;WikiPathway_2022_08_11;57;77;1;12378;0.29987595868561;1.0;CDK4
-WP5111;Familial hyperlipidemia type 4;WikiPathway_2022_08_11;22;77;0;12378;1.0;1.0;
-WP5110;Familial hyperlipidemia type 3;WikiPathway_2022_08_11;13;77;0;12378;1.0;1.0;
-WP5175;Disorders in ketone body synthesis;WikiPathway_2022_08_11;5;77;0;12378;1.0;1.0;
-WP4871;Kisspeptin/kisspeptin receptor system in the ovary;WikiPathway_2022_08_11;39;77;0;12378;1.0;1.0;
-WP4814;Somatic sex determination;WikiPathway_2022_08_11;14;77;0;12378;1.0;1.0;
-WP4842;Mammalian disorder of sexual development;WikiPathway_2022_08_11;25;77;0;12378;1.0;1.0;
-WP4507;Molybdenum cofactor (Moco) biosynthesis;WikiPathway_2022_08_11;7;77;0;12378;1.0;1.0;
-WP4506;Tyrosine metabolism;WikiPathway_2022_08_11;4;77;0;12378;1.0;1.0;
-WP4320;Effect of progerin on genes involved in Hutchinson-Gilford progeria syndrome;WikiPathway_2022_08_11;37;77;0;12378;1.0;1.0;
-WP4312;Rett syndrome causing genes;WikiPathway_2022_08_11;48;77;0;12378;1.0;1.0;
-WP4299;Lamin A-processing pathway;WikiPathway_2022_08_11;3;77;0;12378;1.0;1.0;
-WP4298;Acute viral myocarditis;WikiPathway_2022_08_11;85;77;1;12378;0.4127037219612578;1.0;CCND1
-WP4297;Thiamine metabolic pathways;WikiPathway_2022_08_11;9;77;0;12378;1.0;1.0;
-WP4288;MTHFR deficiency;WikiPathway_2022_08_11;24;77;0;12378;1.0;1.0;
-WP4236;Krebs cycle disorders;WikiPathway_2022_08_11;7;77;0;12378;1.0;1.0;
-WP4518;Gamma-glutamyl cycle for the biosynthesis and degradation of glutathione, including diseases;WikiPathway_2022_08_11;6;77;0;12378;1.0;1.0;
-WP4228;Vitamin B6-dependent and responsive disorders;WikiPathway_2022_08_11;4;77;0;12378;1.0;1.0;
-WP4224;Purine metabolism and related disorders;WikiPathway_2022_08_11;22;77;0;12378;1.0;1.0;
-WP4220;Neurotransmitter disorders;WikiPathway_2022_08_11;4;77;0;12378;1.0;1.0;
-WP4157;GABA metabolism (aka GHB);WikiPathway_2022_08_11;6;77;0;12378;1.0;1.0;
-WP4156;Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine;WikiPathway_2022_08_11;2;77;0;12378;1.0;1.0;
-WP4153;Degradation pathway of sphingolipids, including diseases;WikiPathway_2022_08_11;10;77;0;12378;1.0;1.0;
-WP3995;Prion disease pathway;WikiPathway_2022_08_11;33;77;0;12378;1.0;1.0;
-WP3853;ERK pathway in Huntington's disease;WikiPathway_2022_08_11;15;77;0;12378;1.0;1.0;
-WP3584;MECP2 and associated Rett syndrome;WikiPathway_2022_08_11;73;77;0;12378;1.0;1.0;
-WP2447;Amyotrophic lateral sclerosis (ALS);WikiPathway_2022_08_11;38;77;0;12378;1.0;1.0;
-WP4225;Pyrimidine metabolism and related diseases;WikiPathway_2022_08_11;17;77;0;12378;1.0;1.0;
-WP4844;Influence of laminopathies on Wnt signaling;WikiPathway_2022_08_11;37;77;1;12378;0.2064373388807564;1.0;CCND1
-WP4519;Cerebral organic acidurias, including diseases;WikiPathway_2022_08_11;8;77;0;12378;1.0;1.0;
-WP4522;Metabolic pathway of LDL, HDL and TG, including diseases;WikiPathway_2022_08_11;17;77;0;12378;1.0;1.0;
-WP4830;GDNF/RET signaling axis;WikiPathway_2022_08_11;23;77;0;12378;1.0;1.0;
-WP4823;Genes controlling nephrogenesis;WikiPathway_2022_08_11;44;77;1;12378;0.24046269326591724;1.0;LAMB2
-WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_11;42;77;0;12378;1.0;1.0;
-WP4804;Cholesterol biosynthesis with skeletal dysplasias;WikiPathway_2022_08_11;7;77;0;12378;1.0;1.0;
-WP4803;Ciliopathies;WikiPathway_2022_08_11;184;77;0;12378;1.0;1.0;
-WP4792;Purine metabolism;WikiPathway_2022_08_11;13;77;0;12378;1.0;1.0;
-WP4746;Thyroid hormones production and peripheral downstream signaling effects;WikiPathway_2022_08_11;92;77;0;12378;1.0;1.0;
-WP4688;Serine metabolism;WikiPathway_2022_08_11;8;77;0;12378;1.0;1.0;
-WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_11;24;77;0;12378;1.0;1.0;
-WP4521;Glycosylation and related congenital defects;WikiPathway_2022_08_11;25;77;0;12378;1.0;1.0;
-WP4657;22q11.2 copy number variation syndrome;WikiPathway_2022_08_11;149;77;1;12378;0.6075720994858864;1.0;CDC45
-WP4595;Urea cycle and associated pathways;WikiPathway_2022_08_11;24;77;0;12378;1.0;1.0;
-WP4577;Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway;WikiPathway_2022_08_11;44;77;0;12378;1.0;1.0;
-WP4549;Fragile X syndrome;WikiPathway_2022_08_11;112;77;2;12378;0.15384161220557166;1.0;CAMK1 CDKN2A
-WP4545;Oxysterols derived from cholesterol;WikiPathway_2022_08_11;46;77;0;12378;1.0;1.0;
-WP4541;Hippo-Merlin signaling dysregulation;WikiPathway_2022_08_11;120;77;2;12378;0.1713790537988595;1.0;CCND1 FOXM1
-WP4540;Hippo signaling regulation pathways;WikiPathway_2022_08_11;98;77;0;12378;1.0;1.0;
-WP4535;Envelope proteins and their potential roles in EDMD physiopathology;WikiPathway_2022_08_11;46;77;0;12378;1.0;1.0;
-WP4524;Alternative pathway of fetal androgen synthesis;WikiPathway_2022_08_11;11;77;0;12378;1.0;1.0;
-WP4523;Classical pathway of steroidogenesis with glucocorticoid and mineralocorticoid metabolism;WikiPathway_2022_08_11;16;77;0;12378;1.0;1.0;
-WP4656;Joubert syndrome;WikiPathway_2022_08_11;76;77;1;12378;0.37854891427060394;1.0;CCP110
-WP5224;2q37 copy number variation syndrome;WikiPathway_2022_08_11;168;77;0;12378;1.0;1.0;
+WPID;WPTitle;Source;WPSize;TargetSize;IntersectionSize;UniversSize;pValue;pAdjusted;Intersection
+WP3998;Prader-Willi and Angelman syndrome;WikiPathway_2022_08_05;66;77;4;12379;0.0007447132629569442;0.07596075282160832;CCND1 CDC6 CDK4 CDKN2A
+WP5087;Malignant pleural mesothelioma;WikiPathway_2022_08_05;436;77;7;12379;0.018536007046815333;0.8293749523842098;CCND1 CCNE1 CDK2 CDK4 CDKN2A FOXM1 LAMB2
+WP3569;Fanconi Anemia Pathway;WikiPathway_2022_08_05;39;77;2;12379;0.024393380952476756;0.8293749523842098;RPA1 RPA2
+WP2371;Parkinson's disease pathway;WikiPathway_2022_08_05;47;77;2;12379;0.03447279636091844;0.8790563072034202;CCNE1 CCNE2
+WP4292;Methionine metabolism leading to sulfur amino acids and related disorders;WikiPathway_2022_08_05;11;77;1;12379;0.06635952066011228;0.8834221461675821;MTR
+WP4673;Male infertility;WikiPathway_2022_08_05;145;77;3;12379;0.06153580364752987;0.8834221461675821;CCNA1 MTR USP26
+WP4271;Vitamin B12 disorders;WikiPathway_2022_08_05;13;77;1;12379;0.0779490128971396;0.8834221461675821;MTR
+WP4259;Disorders of folate metabolism and transport;WikiPathway_2022_08_05;13;77;1;12379;0.0779490128971396;0.8834221461675821;MTR
+WP5114;Nucleotide excision repair in xeroderma pigmentosum ;WikiPathway_2022_08_05;74;77;2;12379;0.07744341067022951;0.8834221461675821;RPA1 RPA2
+WP4504;Cysteine and methionine catabolism;WikiPathway_2022_08_05;15;77;1;12379;0.0893964875642781;0.9118441731556366;MTR
+WP5074;Kallmann syndrome;WikiPathway_2022_08_05;23;77;0;12379;1.0;1.0;
+WP5053;Development of ureteric collection system;WikiPathway_2022_08_05;60;77;1;12379;0.3129004632000815;1.0;CCND1
+WP5052;Nephrogenesis;WikiPathway_2022_08_05;18;77;0;12379;1.0;1.0;
+WP5101;Congenital generalized lipodystrophy (CGL);WikiPathway_2022_08_05;18;77;0;12379;1.0;1.0;
+WP5102;Familial partial lipodystrophy (FPLD);WikiPathway_2022_08_05;30;77;0;12379;1.0;1.0;
+WP5037;Riboflavin and CoQ disorders;WikiPathway_2022_08_05;14;77;0;12379;1.0;1.0;
+WP2059;Alzheimer's disease and miRNA effects;WikiPathway_2022_08_05;275;77;1;12379;0.823641625587538;1.0;TUBA1C
+WP5030;Ethylmalonic encephalopathy;WikiPathway_2022_08_05;3;77;0;12379;1.0;1.0;
+WP5103;Progeria-associated lipodystrophy;WikiPathway_2022_08_05;22;77;0;12379;1.0;1.0;
+WP4971;Phosphoinositides metabolism;WikiPathway_2022_08_05;49;77;0;12379;1.0;1.0;
+WP4950;16p11.2 distal deletion syndrome;WikiPathway_2022_08_05;33;77;0;12379;1.0;1.0;
+WP4949;16p11.2 proximal deletion syndrome;WikiPathway_2022_08_05;81;77;0;12379;1.0;1.0;
+WP4947;Nitric oxide metabolism in cystic fibrosis;WikiPathway_2022_08_05;13;77;0;12379;1.0;1.0;
+WP4942;15q13.3 copy number variation syndrome;WikiPathway_2022_08_05;32;77;0;12379;1.0;1.0;
+WP4940;15q11.2 copy number variation syndrome;WikiPathway_2022_08_05;10;77;0;12379;1.0;1.0;
+WP4932;7q11.23 copy number variation syndrome;WikiPathway_2022_08_05;113;77;1;12379;0.5075184341264848;1.0;CDKN1C
+WP4906;3q29 copy number variation syndrome;WikiPathway_2022_08_05;75;77;0;12379;1.0;1.0;
+WP4905;1q21.1 copy number variation syndrome;WikiPathway_2022_08_05;36;77;0;12379;1.0;1.0;
+WP5031;Biotin metabolism, including IMDs;WikiPathway_2022_08_05;9;77;0;12379;1.0;1.0;
+WP5104;Acquired partial lipodystrophy / Barraquer-Simons syndrome;WikiPathway_2022_08_05;10;77;0;12379;1.0;1.0;
+WP5112;Familial hyperlipidemia type 5;WikiPathway_2022_08_05;15;77;0;12379;1.0;1.0;
+WP5109;Familial hyperlipidemia type 2;WikiPathway_2022_08_05;16;77;0;12379;1.0;1.0;
+WP5222;2q13 copy number variation syndrome;WikiPathway_2022_08_05;68;77;0;12379;1.0;1.0;
+WP5221;2q11.2 copy number variation syndrome;WikiPathway_2022_08_05;65;77;0;12379;1.0;1.0;
+WP5202;Alstrom syndrome;WikiPathway_2022_08_05;33;77;0;12379;1.0;1.0;
+WP5200;Dravet syndrome;WikiPathway_2022_08_05;18;77;0;12379;1.0;1.0;
+WP5195;Disorders in ketolysis;WikiPathway_2022_08_05;5;77;0;12379;1.0;1.0;
+WP5193;Cholesterol synthesis disorders;WikiPathway_2022_08_05;18;77;0;12379;1.0;1.0;
+WP5190;Creatine pathway;WikiPathway_2022_08_05;5;77;0;12379;1.0;1.0;
+WP5189;Copper metabolism;WikiPathway_2022_08_05;4;77;0;12379;1.0;1.0;
+WP5178;Disorders of fructose metabolism;WikiPathway_2022_08_05;14;77;0;12379;1.0;1.0;
+WP5108;Familial  hyperlipidemia type 1;WikiPathway_2022_08_05;18;77;0;12379;1.0;1.0;
+WP5176;Disorders of bile acid synthesis and biliary transport;WikiPathway_2022_08_05;20;77;0;12379;1.0;1.0;
+WP5173;Disorders of galactose metabolism ;WikiPathway_2022_08_05;13;77;0;12379;1.0;1.0;
+WP5171;Leukotriene metabolic pathway;WikiPathway_2022_08_05;13;77;0;12379;1.0;1.0;
+WP5169;Hemesynthesis defects and porphyrias;WikiPathway_2022_08_05;9;77;0;12379;1.0;1.0;
+WP5166;Glyoxylate metabolism;WikiPathway_2022_08_05;11;77;0;12379;1.0;1.0;
+WP5124;Alzheimer's disease;WikiPathway_2022_08_05;262;77;1;12379;0.8083953471218672;1.0;TUBA1C
+WP5120;Inclusion body myositis;WikiPathway_2022_08_05;11;77;0;12379;1.0;1.0;
+WP4879;Overlap between signal transduction pathways contributing to LMNA laminopathies;WikiPathway_2022_08_05;57;77;1;12379;0.2998556866975281;1.0;CDK4
+WP5111;Familial hyperlipidemia type 4;WikiPathway_2022_08_05;22;77;0;12379;1.0;1.0;
+WP5110;Familial hyperlipidemia type 3;WikiPathway_2022_08_05;13;77;0;12379;1.0;1.0;
+WP5175;Disorders in ketone body synthesis;WikiPathway_2022_08_05;5;77;0;12379;1.0;1.0;
+WP4871;Kisspeptin/kisspeptin receptor system in the ovary;WikiPathway_2022_08_05;39;77;0;12379;1.0;1.0;
+WP4814;Somatic sex determination;WikiPathway_2022_08_05;14;77;0;12379;1.0;1.0;
+WP4842;Mammalian disorder of sexual development;WikiPathway_2022_08_05;25;77;0;12379;1.0;1.0;
+WP4507;Molybdenum cofactor (Moco) biosynthesis;WikiPathway_2022_08_05;7;77;0;12379;1.0;1.0;
+WP4506;Tyrosine metabolism;WikiPathway_2022_08_05;4;77;0;12379;1.0;1.0;
+WP4320;Effect of progerin on genes involved in Hutchinson-Gilford progeria syndrome;WikiPathway_2022_08_05;37;77;0;12379;1.0;1.0;
+WP4312;Rett syndrome causing genes;WikiPathway_2022_08_05;48;77;0;12379;1.0;1.0;
+WP4299;Lamin A-processing pathway;WikiPathway_2022_08_05;3;77;0;12379;1.0;1.0;
+WP4298;Acute viral myocarditis;WikiPathway_2022_08_05;85;77;1;12379;0.4126783054005967;1.0;CCND1
+WP4297;Thiamine metabolic pathways;WikiPathway_2022_08_05;9;77;0;12379;1.0;1.0;
+WP4288;MTHFR deficiency;WikiPathway_2022_08_05;24;77;0;12379;1.0;1.0;
+WP4236;Krebs cycle disorders;WikiPathway_2022_08_05;7;77;0;12379;1.0;1.0;
+WP4518;Gamma-glutamyl cycle for the biosynthesis and degradation of glutathione, including diseases;WikiPathway_2022_08_05;6;77;0;12379;1.0;1.0;
+WP4228;Vitamin B6-dependent and responsive disorders;WikiPathway_2022_08_05;4;77;0;12379;1.0;1.0;
+WP4224;Purine metabolism and related disorders;WikiPathway_2022_08_05;22;77;0;12379;1.0;1.0;
+WP4220;Neurotransmitter disorders;WikiPathway_2022_08_05;4;77;0;12379;1.0;1.0;
+WP4157;GABA metabolism (aka GHB);WikiPathway_2022_08_05;6;77;0;12379;1.0;1.0;
+WP4156;Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine;WikiPathway_2022_08_05;2;77;0;12379;1.0;1.0;
+WP4153;Degradation pathway of sphingolipids, including diseases;WikiPathway_2022_08_05;10;77;0;12379;1.0;1.0;
+WP3995;Prion disease pathway;WikiPathway_2022_08_05;33;77;0;12379;1.0;1.0;
+WP3853;ERK pathway in Huntington's disease;WikiPathway_2022_08_05;15;77;0;12379;1.0;1.0;
+WP3584;MECP2 and associated Rett syndrome;WikiPathway_2022_08_05;73;77;0;12379;1.0;1.0;
+WP2447;Amyotrophic lateral sclerosis (ALS);WikiPathway_2022_08_05;38;77;0;12379;1.0;1.0;
+WP4225;Pyrimidine metabolism and related diseases;WikiPathway_2022_08_05;17;77;0;12379;1.0;1.0;
+WP4844;Influence of laminopathies on Wnt signaling;WikiPathway_2022_08_05;37;77;1;12379;0.20642244798689335;1.0;CCND1
+WP4519;Cerebral organic acidurias, including diseases;WikiPathway_2022_08_05;8;77;0;12379;1.0;1.0;
+WP4522;Metabolic pathway of LDL, HDL and TG, including diseases;WikiPathway_2022_08_05;17;77;0;12379;1.0;1.0;
+WP4830;GDNF/RET signaling axis;WikiPathway_2022_08_05;23;77;0;12379;1.0;1.0;
+WP4823;Genes controlling nephrogenesis;WikiPathway_2022_08_05;44;77;1;12379;0.24044573476713202;1.0;LAMB2
+WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_05;42;77;0;12379;1.0;1.0;
+WP4804;Cholesterol biosynthesis with skeletal dysplasias;WikiPathway_2022_08_05;7;77;0;12379;1.0;1.0;
+WP4803;Ciliopathies;WikiPathway_2022_08_05;184;77;0;12379;1.0;1.0;
+WP4792;Purine metabolism;WikiPathway_2022_08_05;13;77;0;12379;1.0;1.0;
+WP4746;Thyroid hormones production and peripheral downstream signaling effects;WikiPathway_2022_08_05;92;77;0;12379;1.0;1.0;
+WP4688;Serine metabolism;WikiPathway_2022_08_05;8;77;0;12379;1.0;1.0;
+WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_05;24;77;0;12379;1.0;1.0;
+WP4521;Glycosylation and related congenital defects;WikiPathway_2022_08_05;25;77;0;12379;1.0;1.0;
+WP4657;22q11.2 copy number variation syndrome;WikiPathway_2022_08_05;149;77;1;12379;0.607542172161842;1.0;CDC45
+WP4595;Urea cycle and associated pathways;WikiPathway_2022_08_05;24;77;0;12379;1.0;1.0;
+WP4577;Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway;WikiPathway_2022_08_05;44;77;0;12379;1.0;1.0;
+WP4549;Fragile X syndrome;WikiPathway_2022_08_05;112;77;2;12379;0.1538220139876395;1.0;CAMK1 CDKN2A
+WP4545;Oxysterols derived from cholesterol;WikiPathway_2022_08_05;46;77;0;12379;1.0;1.0;
+WP4541;Hippo-Merlin signaling dysregulation;WikiPathway_2022_08_05;120;77;2;12379;0.17135762051789477;1.0;CCND1 FOXM1
+WP4540;Hippo signaling regulation pathways;WikiPathway_2022_08_05;98;77;0;12379;1.0;1.0;
+WP4535;Envelope proteins and their potential roles in EDMD physiopathology;WikiPathway_2022_08_05;46;77;0;12379;1.0;1.0;
+WP4524;Alternative pathway of fetal androgen synthesis;WikiPathway_2022_08_05;11;77;0;12379;1.0;1.0;
+WP4523;Classical pathway of steroidogenesis with glucocorticoid and mineralocorticoid metabolism;WikiPathway_2022_08_05;16;77;0;12379;1.0;1.0;
+WP4656;Joubert syndrome;WikiPathway_2022_08_05;76;77;1;12379;0.3785248849499055;1.0;CCP110
+WP5224;2q37 copy number variation syndrome;WikiPathway_2022_08_05;168;77;0;12379;1.0;1.0;
