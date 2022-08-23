@@ -10,7 +10,7 @@ Principle
 .. note::
 
     The Ranwom Walk is performed using multiXrank [1]_
-    (`website <https://multixrank-doc.readthedocs.io/en/latest/>`_ and `github <https://github.com/anthbapt/multixrank>`_).
+    (`website <https://multixrank-doc.readthedocs.io/en/latest/>`_ and :fab:`github` `github <https://github.com/anthbapt/multixrank>`_).
 
 This method measures the proximity of every gene within a multilayer to the target genes. Every gene from the list is
 define as a seed. The walk start with a seed selected randomly. A score is given to each node and proportional of the time

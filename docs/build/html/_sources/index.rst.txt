@@ -49,11 +49,6 @@ EnvironmentProject's documentation
    pages/functions/fcts_arguments
    pages/functions/fcts_description
 
-.. seealso::
-
-    Module :py:mod:`methods_functions`
-      Documentation of the :py:mod:`overlap` standard module.
-
 Indices and tables
 ==================
 

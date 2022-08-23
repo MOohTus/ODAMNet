@@ -1,3 +1,6 @@
+.. image:: https://img.shields.io/github/license/MOohTus/EnvironmentProject
+   :alt: GitHub
+
 README
 ========
 
