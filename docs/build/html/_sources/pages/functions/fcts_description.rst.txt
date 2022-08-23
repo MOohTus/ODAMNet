@@ -1,27 +1,6 @@
 ==================================================
-MAIN
+Functions
 ==================================================
-
-.. click:: main:main
-   :prog: main
-   :nested: short
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-   :hidden:
-
-   overlap
-   AMI
-   newNetwork
-   RWR
-
-Main script
-====================
-.. automodule:: main
-  :member-order: bysource
-  :members:
-  :undoc-members:
 
 Method functions
 ====================
@@ -43,3 +22,4 @@ WP functions
   :member-order: bysource
   :members:
   :undoc-members:
+

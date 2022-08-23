@@ -7,9 +7,11 @@ Network creation
 Principle
 ------------
 
-Create automatically a disconnected diseases network using rare disease pathways from WikiPathways.
-A SIF (Simple interaction file) with three columns is created : source node, interaction type and target node.
-It's a tab-separated file.
+| Create automatically a disconnected diseases network using rare disease pathways from WikiPathways.
+| A SIF (Simple interaction file) with three columns is created : source node, interaction type and target node.
+| It's a tab-separated file.
+
+Display a picture to explain how it's work (bipartite for the link and the disconnected network).
 
 Required options
 --------------------

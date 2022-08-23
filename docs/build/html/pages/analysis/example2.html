@@ -110,8 +110,8 @@
 <li class="toctree-l1"><a class="reference internal" href="example1.html">Example 1 : data source from requests</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Example 2 : data source from database files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#active-module-identification-domino">Active Module Identification : DOMINO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-multixrank">Random Walk with Restart : multiXrank</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#active-module-identification">Active Module Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart">Random Walk with Restart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rare-disease-pathways-identified">Rare disease pathways identified</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
 </ul>
@@ -125,11 +125,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_main.html">MAIN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_overlap.html">Overlap analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_AMI.html">Active Module Identification (AMI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_RWR.html">Random Walk with Restart (RWR)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_newNetwork.html">Creation of bipartite and network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
 </ul>
 
             
@@ -321,8 +318,8 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 </tbody>
 </table>
 </div>
-<div class="section" id="active-module-identification-domino">
-<h2>Active Module Identification : DOMINO<a class="headerlink" href="#active-module-identification-domino" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="active-module-identification">
+<h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Results of DOMINO can’t be reproduced when using their server.</p>
@@ -512,8 +509,8 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </tbody>
 </table>
 </div>
-<div class="section" id="random-walk-with-restart-multixrank">
-<h2>Random Walk with Restart : multiXrank<a class="headerlink" href="#random-walk-with-restart-multixrank" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="random-walk-with-restart">
+<h2>Random Walk with Restart<a class="headerlink" href="#random-walk-with-restart" title="Permalink to this headline">¶</a></h2>
 <p>First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py networkCreation  --networksPath examples/InputData/multiplex/2/ <span class="se">\</span>
                                  --networksName WP_RareDiseasesNetwork_fromFile.sif <span class="se">\</span>

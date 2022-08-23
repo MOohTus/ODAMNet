@@ -60,7 +60,7 @@ Results :
 | WP:WP4830             | GDNF/RET signalling axis                  | 1.617e-03 | 8                |
 +-----------------------+-------------------------------------------+-----------+------------------+
 
-Active Module Identification : DOMINO
+Active Module Identification
 ==================================================
 
 .. warning::
@@ -174,7 +174,7 @@ Some statistics of each active modules founded : cf. le fichier
 | 20        | 18          | 19          | 6                 |
 +-----------+-------------+-------------+-------------------+
 
-Random Walk with Restart : multiXrank
+Random Walk with Restart
 ==================================================
 
 First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :

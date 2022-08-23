@@ -118,11 +118,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_main.html">MAIN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_overlap.html">Overlap analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_AMI.html">Active Module Identification (AMI)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_RWR.html">Random Walk with Restart (RWR)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_newNetwork.html">Creation of bipartite and network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
 </ul>
 
             
@@ -194,42 +191,51 @@
 <h1>Visualisation using Cytoscape<a class="headerlink" href="#visualisation-using-cytoscape" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="active-modules-network-visualisation-domino">
 <h2>Active modules network visualisation (DOMINO)<a class="headerlink" href="#active-modules-network-visualisation-domino" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id10">
+<span id="cytoscapeami"></span><img alt="example1 AMI" src="../../_images/example1_DOMINO_AMnetwork.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id7" id="id1">1</a> and Omics Visualizer <a class="footnote-reference brackets" href="#id8" id="id2">2</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>To create the same display of AM, use the following steps :</p>
 <ol class="arabic">
-<li><p>Import Network from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetwork.txt</span></code></p></li>
-<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModules.txt</span></code></p></li>
-<li><p>Omics Visualizer table from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_overlapAMresults4Cytoscape.txt</span></code></p></li>
-<li><p>Manage table connections : link network and the previous table</p>
+<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModulesNetwork.txt</span></code></p></li>
+<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModules.txt</span></code></p></li>
+<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id8" id="id3">2</a> <strong>table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
+<li><p>Manage table <strong>connections</strong> : link network and the previous table</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Network : sharedname</p></li>
-<li><p>Table : geneSymbol</p></li>
+<li><p>Network : <em>sharedname</em></p></li>
+<li><p>Table : <em>geneSymbol</em></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Donut Chart Visualization : Add overlap results using donuts (Use TermID)</p></li>
-<li><p>Style :</p>
+<li><p><strong>Donut Chart Visualization</strong> : Add overlap results using donuts (Use <em>TermID</em>)</p></li>
+<li><p><strong>Style</strong> :</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Border Width = 5.0</p></li>
-<li><p>Fill Color = ActiveGenes True #CCCCCC False #FFFFFF</p></li>
-<li><p>Label Font = 20</p></li>
-<li><p>Shape = Circle</p></li>
-<li><p>Lock node width and height</p></li>
-<li><p>Size = 50</p></li>
+<li><p>Border Width = <code class="docutils literal notranslate"><span class="pre">5.0</span></code></p></li>
+<li><p>Fill Color = <code class="docutils literal notranslate"><span class="pre">ActiveGenes</span></code> True #CCCCCC False #FFFFFF</p></li>
+<li><p>Label Font = <code class="docutils literal notranslate"><span class="pre">20</span></code></p></li>
+<li><p>Shape = <code class="docutils literal notranslate"><span class="pre">Circle</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Lock</span> <span class="pre">node</span> <span class="pre">width</span> <span class="pre">and</span> <span class="pre">height</span></code></p></li>
+<li><p>Size = <code class="docutils literal notranslate"><span class="pre">50</span></code></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Filter : Select nodes with overlapSignificant = True</p></li>
-<li><p>New Network : From Selected Nodes, All Edges</p></li>
-<li><p>Add legends using Omics Visualizer and Legend Creator</p></li>
+<li><p><strong>Filter</strong> : Select nodes with <code class="docutils literal notranslate"><span class="pre">overlapSignificant</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p><strong>New Network</strong> : From Selected Nodes, All Edges</p></li>
+<li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id8" id="id4">2</a> and Legend Creator <a class="footnote-reference brackets" href="#id9" id="id5">3</a></p></li>
 </ol>
 </div>
 <div class="section" id="network-visualisation-multixrank">
 <h2>Network visualisation (multiXrank)<a class="headerlink" href="#network-visualisation-multixrank" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id11">
+<span id="cytoscaperwr"></span><img alt="example1 RWR" src="../../_images/example1_multixrank_network.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id7" id="id6">1</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
 <ol class="arabic">
-<li><p>Import Network from File : <code class="docutils literal notranslate"><span class="pre">example1_resultsNetwork.sif</span></code></p></li>
-<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
-<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
+<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">example1_resultsNetwork.sif</span></code></p></li>
+<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
+<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code> and <code class="docutils literal notranslate"><span class="pre">seed</span></code></p></li>
@@ -245,7 +251,7 @@
 </div>
 </div>
 <ol class="arabic" start="4">
-<li><p>Import Table from File : <code class="docutils literal notranslate"><span class="pre">diseasesResults.txt</span></code></p>
+<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">diseasesResults.txt</span></code></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code>, <code class="docutils literal notranslate"><span class="pre">pathways</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code></p></li>
@@ -263,8 +269,8 @@ pathways of interest.</p>
 </div>
 </div>
 <ol class="arabic" start="5">
-<li><p>Create two new columns named <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">keep</span></code></p></li>
-<li><p>Filter : Select genes nodes</p>
+<li><p>Create <strong>two new columns</strong> named <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">keep</span></code></p></li>
+<li><p><strong>Filter</strong> : Select genes nodes</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>To <code class="docutils literal notranslate"><span class="pre">label</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=$name</span></code> and apply to selected nodes</p></li>
@@ -274,7 +280,7 @@ pathways of interest.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Filter : Select pathways nodes</p>
+<li><p><strong>Filter</strong> : Select pathways nodes</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Add pathway names into <code class="docutils literal notranslate"><span class="pre">label</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$pathway</span></code>)</p></li>
@@ -282,30 +288,77 @@ pathways of interest.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Filter : Select nodes with <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
-<li><p>New Network : From Selected Nodes, All Edges</p></li>
+<li><p><strong>Filter</strong> : Select nodes with <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p><strong>New Network</strong> : From Selected Nodes, All Edges</p></li>
 <li><p>Edit and Remove Duplicate Edges</p></li>
-<li><p>Style for all nodes :</p>
-<ul class="simple">
-<li><p>Border Width = 5.0</p></li>
-<li><p>Fill Color = seed True #CCCCCC False #FFFFFF</p></li>
-<li><p>Label Font Size = 20</p></li>
-<li><p>Shape = Circle</p></li>
-<li><p>Lock node width and height</p></li>
-<li><p>Size = 50</p></li>
-<li><p>Label = label</p></li>
-</ul>
-</li>
-<li><p>Style for pathway nodes:</p>
-<ul class="simple">
-<li><p>Shape = Triangle</p></li>
-<li><p>Size = 100</p></li>
-<li><p>Label Font Size = 50</p></li>
-<li><p>Color = #DD3497</p></li>
-</ul>
-</li>
+<li><p><strong>Style</strong> :</p></li>
+</ol>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>All Nodes</p></th>
+<th class="head"><p>Disease Nodes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>Border Width</p></th>
+<td><p>5.0</p></td>
+<td><p>5.0</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Fill Color</p></th>
+<td><div class="line-block">
+<div class="line">Column seed</div>
+<div class="line">True : CCCCCC</div>
+<div class="line">False : FFFFFF</div>
+</div>
+</td>
+<td><p>DD3497</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Label Front Size</p></th>
+<td><p>20</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Shape</p></th>
+<td><p>Circle</p></td>
+<td><p>Triangle</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Lock node width and height</p></th>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Size</p></th>
+<td><p>50</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Label</p></th>
+<td><p>label</p></td>
+<td><p>label</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple" start="12">
 <li><p>Layout = yFiles Organic Layout</p></li>
 </ol>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id7"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., … &amp; Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>)</span></dt>
+<dd><p>Legeay, M., Doncheva, N. T., Morris, J. H., &amp; Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dd><p><a class="reference external" href="https://github.com/cytoscape/legend-creator">https://github.com/cytoscape/legend-creator</a></p>
+</dd>
+</dl>
 </div>
 </div>
 

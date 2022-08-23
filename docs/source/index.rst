@@ -46,27 +46,8 @@ EnvironmentProject's documentation
    :maxdepth: 1
    :caption: Functions description
 
-   pages/functions/fcts_main
-   pages/functions/fcts_overlap
-   pages/functions/fcts_AMI
-   pages/functions/fcts_RWR
-   pages/functions/fcts_newNetwork
-
-
-.. seealso::
-
-    Module :py:mod:`overlap`
-      Documentation of the :py:mod:`zipfile` standard module.
-
-.. code-block:: bash
-   :emphasize-lines: 3,5
-
-   def some_function():
-       interesting = False
-       print 'This line is highlighted.'
-       print 'This one is not...'
-       print '...but this one is.'
-
+   pages/functions/fcts_arguments
+   pages/functions/fcts_description
 
 Indices and tables
 ==================

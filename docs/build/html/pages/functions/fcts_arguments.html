@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Input arguments for each method &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Functions" href="fcts_description.html" />
+    <link rel="prev" title="Output files" href="../formats/Output.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_overview.html">Methods overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/methods_newNetwork.html">Network creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods/Cytoscape.html">Visualisation using Cytoscape</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data source from requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data source from database files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : custom data source</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Input arguments for each method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#main-script">Main script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main">main</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#overlap">Overlap</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-overlap">main overlap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#domino">DOMINO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-domino">main domino</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#rwr">RWR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-multixrank">main multixrank</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#network-creation">Network creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-networkcreation">main networkCreation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fcts_description.html">Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Input arguments for each method</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/functions/fcts_arguments.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="input-arguments-for-each-method">
+<h1>Input arguments for each method<a class="headerlink" href="#input-arguments-for-each-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="main-script">
+<h2>Main script<a class="headerlink" href="#main-script" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main">
+<h3>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h3>
+<p>[OPTIONS] = overlap | domino | multixrank | networkCreation</p>
+<p>Analyse the link between environmental factors and rare disease pathways.
+Select the approach you want to perform :</p>
+<p>overlap | domino | multixrank</p>
+<p>If you need to create a network with the pathways of interest, select : networkCreation</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-version">
+<span class="sig-name descname"><span class="pre">--version</span></span><span class="sig-prename descclassname"></span><a class="headerlink" href="#cmdoption-main-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the version and exit.</p>
+</dd></dl>
+
+<p class="rubric">Commands</p>
+<dl class="object">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">domino</span></span></dt>
+<dd><p>Active Module Identification analysis</p>
+</dd></dl>
+
+<dl class="object">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">multixrank</span></span></dt>
+<dd><p>Random Walk with Restart Analysis</p>
+</dd></dl>
+
+<dl class="object">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">networkCreation</span></span></dt>
+<dd><p>Create network and bipartite</p>
+</dd></dl>
+
+<dl class="object">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">overlap</span></span></dt>
+<dd><p>Perform overlap analysis</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="overlap">
+<h2>Overlap<a class="headerlink" href="#overlap" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-overlap">
+<h3>main overlap<a class="headerlink" href="#main-overlap" title="Permalink to this headline">¶</a></h3>
+<p>Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main overlap <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-f">
+<span id="cmdoption-main-overlap-factorList"></span><span id="cmdoption-main-overlap-factorlist"></span><span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--factorList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;factorListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factors list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-c">
+<span id="cmdoption-main-overlap-CTD_file"></span><span id="cmdoption-main-overlap-ctd-file"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>CTD request result file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-g">
+<span id="cmdoption-main-overlap-geneList"></span><span id="cmdoption-main-overlap-genelist"></span><span class="sig-name descname"><span class="pre">-g</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--geneList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;geneListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genes list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-directAssociation">
+<span id="cmdoption-main-overlap-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-directAssociation" title="Permalink to this definition">¶</a></dt>
+<dd><p>True: Only chem targets False:Chem + descendants targets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-nbPub">
+<span id="cmdoption-main-overlap-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-nbPub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of references needed at least to keep an interaction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-GMT">
+<span id="cmdoption-main-overlap-gmt"></span><span class="sig-name descname"><span class="pre">--GMT</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pathOfInterestGMT&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-GMT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pathways of interest in GMT like format. NOTE: This argument is required if backgroundFile chosen.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-backgroundFile">
+<span id="cmdoption-main-overlap-backgroundfile"></span><span class="sig-name descname"><span class="pre">--backgroundFile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;backgroundFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-backgroundFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Background genes file name. NOTE: This argument is required if pathOfInterestGMT chosen.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-overlap-o">
+<span id="cmdoption-main-overlap-outputPath"></span><span id="cmdoption-main-overlap-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output folder name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>OutputResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="domino">
+<h2>DOMINO<a class="headerlink" href="#domino" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-domino">
+<h3>main domino<a class="headerlink" href="#main-domino" title="Permalink to this headline">¶</a></h3>
+<p>DOMINO defines the target genes as active genes and search active modules through a given network.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main domino <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-f">
+<span id="cmdoption-main-domino-factorList"></span><span id="cmdoption-main-domino-factorlist"></span><span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--factorList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;factorListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factors list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-c">
+<span id="cmdoption-main-domino-CTD_file"></span><span id="cmdoption-main-domino-ctd-file"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>CTD request result file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-g">
+<span id="cmdoption-main-domino-geneList"></span><span id="cmdoption-main-domino-genelist"></span><span class="sig-name descname"><span class="pre">-g</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--geneList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;geneListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genes list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-directAssociation">
+<span id="cmdoption-main-domino-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-directAssociation" title="Permalink to this definition">¶</a></dt>
+<dd><p>True: Only chem targets False:Chem + descendants targets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-nbPub">
+<span id="cmdoption-main-domino-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-nbPub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of references needed at least to keep an interaction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-n">
+<span id="cmdoption-main-domino-networkFile"></span><span id="cmdoption-main-domino-networkfile"></span><span class="sig-name descname"><span class="pre">-n</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--networkFile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;networkFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-n" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Network file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-GMT">
+<span id="cmdoption-main-domino-gmt"></span><span class="sig-name descname"><span class="pre">--GMT</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pathOfInterestGMT&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-GMT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pathways of interest in GMT like format. NOTE: This argument is required if backgroundFile chosen.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-backgroundFile">
+<span id="cmdoption-main-domino-backgroundfile"></span><span class="sig-name descname"><span class="pre">--backgroundFile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;backgroundFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-backgroundFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Background genes file name. NOTE: This argument is required if pathOfInterestGMT chosen.</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-domino-o">
+<span id="cmdoption-main-domino-outputPath"></span><span id="cmdoption-main-domino-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output folder name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>OutputResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="rwr">
+<h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-multixrank">
+<h3>main multixrank<a class="headerlink" href="#main-multixrank" title="Permalink to this headline">¶</a></h3>
+<p>Performs a Random Walk with Restart through heterogeneous multilayer using the target genes as seeds</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main multixrank <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-f">
+<span id="cmdoption-main-multixrank-factorList"></span><span id="cmdoption-main-multixrank-factorlist"></span><span class="sig-name descname"><span class="pre">-f</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--factorList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;factorListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Factors list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-c">
+<span id="cmdoption-main-multixrank-CTD_file"></span><span id="cmdoption-main-multixrank-ctd-file"></span><span class="sig-name descname"><span class="pre">-c</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-c" title="Permalink to this definition">¶</a></dt>
+<dd><p>CTD request result file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-g">
+<span id="cmdoption-main-multixrank-geneList"></span><span id="cmdoption-main-multixrank-genelist"></span><span class="sig-name descname"><span class="pre">-g</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--geneList</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;geneListFile&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-g" title="Permalink to this definition">¶</a></dt>
+<dd><p>Genes list data file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-directAssociation">
+<span id="cmdoption-main-multixrank-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-directAssociation" title="Permalink to this definition">¶</a></dt>
+<dd><p>True: Only chem targets False:Chem + descendants targets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-nbPub">
+<span id="cmdoption-main-multixrank-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-nbPub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of references needed at least to keep an interaction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-configPath">
+<span id="cmdoption-main-multixrank-configpath"></span><span class="sig-name descname"><span class="pre">--configPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;configPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-configPath" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Configurations path name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-networksPath">
+<span id="cmdoption-main-multixrank-networkspath"></span><span class="sig-name descname"><span class="pre">--networksPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;networksPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-networksPath" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Network directory path</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-seedsFile">
+<span id="cmdoption-main-multixrank-seedsfile"></span><span class="sig-name descname"><span class="pre">--seedsFile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;FILENAME&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-seedsFile" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Seeds file path name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-sifFileName">
+<span id="cmdoption-main-multixrank-siffilename"></span><span class="sig-name descname"><span class="pre">--sifFileName</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;FILENAME&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-sifFileName" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Name of the output file network SIF</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-top">
+<span class="sig-name descname"><span class="pre">--top</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;top&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-top" title="Permalink to this definition">¶</a></dt>
+<dd><p>Top number of results to write into output file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>10</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-multixrank-o">
+<span id="cmdoption-main-multixrank-outputPath"></span><span id="cmdoption-main-multixrank-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output folder name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>OutputResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="network-creation">
+<h2>Network creation<a class="headerlink" href="#network-creation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-networkcreation">
+<h3>main networkCreation<a class="headerlink" href="#main-networkcreation" title="Permalink to this headline">¶</a></h3>
+<p>Create network SIF file from WP request or pathways of interest GMT file</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main networkCreation <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-networksPath">
+<span id="cmdoption-main-networkcreation-networkspath"></span><span class="sig-name descname"><span class="pre">--networksPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;networksPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-networksPath" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Output path where save the network</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-networksName">
+<span id="cmdoption-main-networkcreation-networksname"></span><span class="sig-name descname"><span class="pre">--networksName</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;FILENAME&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-networksName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network output name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>WP_RareDiseasesNetwork.sif</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-bipartitePath">
+<span id="cmdoption-main-networkcreation-bipartitepath"></span><span class="sig-name descname"><span class="pre">--bipartitePath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;bipartitePath&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-bipartitePath" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Required</strong> Output path where save the bipartite</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-bipartiteName">
+<span id="cmdoption-main-networkcreation-bipartitename"></span><span class="sig-name descname"><span class="pre">--bipartiteName</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;FILENAME&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-bipartiteName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bipartite output name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>Bipartite_WP_RareDiseases_geneSymbols.tsv</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-GMT">
+<span id="cmdoption-main-networkcreation-gmt"></span><span class="sig-name descname"><span class="pre">--GMT</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;pathOfInterestGMT&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-GMT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pathways of interest in GMT like format (e.g. from WP request).</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-main-networkCreation-o">
+<span id="cmdoption-main-networkcreation-o"></span><span id="cmdoption-main-networkCreation-outputPath"></span><span id="cmdoption-main-networkcreation-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-o" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output path name (for complementary output files)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Default</dt>
+<dd class="field-odd"><p>OutputResults</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">--factorList</span></code>, <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> and <code class="docutils literal notranslate"><span class="pre">--geneList</span></code> options are exclusive, only one has to be use. This three input are <strong>required</strong></p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> options have always to be <strong>given together</strong>.</p>
+</div>
+<hr class="docutils" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="fcts_description.html" class="btn btn-neutral float-right" title="Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../formats/Output.html" class="btn btn-neutral float-left" title="Output files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

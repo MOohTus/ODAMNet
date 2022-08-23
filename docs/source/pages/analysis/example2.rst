@@ -86,7 +86,7 @@ CAKUT pathways. Three of the four pathways related to CAKUT overlaping target ge
 |   WP4823   | Genes controlling nephrogenesis                    | 8.55e-05  |        18        |
 +------------+----------------------------------------------------+-----------+------------------+
 
-Active Module Identification : DOMINO
+Active Module Identification
 ==================================================
 
 .. warning::
@@ -205,7 +205,7 @@ Some statistics of each active modules founded : cf. le fichier
 | 13          | 28            | 22            | 9                   |
 +-------------+---------------+---------------+---------------------+
 
-Random Walk with Restart : multiXrank
+Random Walk with Restart
 ==================================================
 
 First, we built a rare diseases network and the corresponding bipartite. If you want more detailed, go to :
