@@ -266,13 +266,13 @@ You have to specify seeds and networks.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINO">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genesFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINO" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genesFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">featureName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINO" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run active modules identification analysis on the DOMINO server</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>genesFileName</strong> – active genes file name (g.e. list of genes of interest)</p></li>
-<li><p><strong>networkFile</strong> – content of the network file</p></li>
+<li><p><strong>networkFileName</strong> – network file name</p></li>
 <li><p><strong>outputPath</strong> – output path name to save the results</p></li>
 <li><p><strong>featureName</strong> – feature name (g.e. chemical name)</p></li>
 </ul>
@@ -288,14 +288,14 @@ You have to specify seeds and networks.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="methods_functions.DOMINOandOverlapAnalysis">
-<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestNamesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysisName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">methods_functions.</span></span><span class="sig-name descname"><span class="pre">DOMINOandOverlapAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">featuresDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">networkFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathOfInterestNamesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathwaysOfInterestList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backgroundGenesDict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analysisName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#methods_functions.DOMINOandOverlapAnalysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>For each genes list, run an active module identification.
 For each AM identified, run an overlap analysis against the pathways of interest.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>featuresDict</strong> – Dict of list of genes</p></li>
-<li><p><strong>networkFile</strong> – content of network file</p></li>
+<li><p><strong>networkFileName</strong> – content of network file</p></li>
 <li><p><strong>pathOfInterestGenesDict</strong> – Genes dict of pathways of interest</p></li>
 <li><p><strong>pathOfInterestNamesDict</strong> – Names dict of pathways of interest</p></li>
 <li><p><strong>pathwaysOfInterestList</strong> – List of pathways of interest and their bg name associated</p></li>
