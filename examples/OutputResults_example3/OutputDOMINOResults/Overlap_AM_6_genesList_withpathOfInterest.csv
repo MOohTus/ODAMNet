@@ -1,0 +1,14 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+REAC:R-HSA-195721;Signaling by WNT;hsapiens.REAC.name.gmt;328;16;4;10531;0.0012495542194831644;0.01624420485328114;LEF1 SOX2 TLE1 TLE2
+REAC:R-HSA-157118;Signaling by NOTCH;hsapiens.REAC.name.gmt;233;16;2;10531;0.04770914817378738;0.31010946312961796;TLE1 TLE2
+PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;24;0;18089;1.0;1.0;
+GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;24;0;18089;1.0;1.0;
+GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;24;0;18089;1.0;1.0;
+GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;24;0;18089;1.0;1.0;
+REAC:R-HSA-2022377;Metabolism of Angiotensinogen to Angiotensins;hsapiens.REAC.name.gmt;18;16;0;10531;1.0;1.0;
+REAC:R-HSA-8853659;RET signaling;hsapiens.REAC.name.gmt;38;16;0;10531;1.0;1.0;
+REAC:R-HSA-5358351;Signaling by Hedgehog;hsapiens.REAC.name.gmt;149;16;0;10531;1.0;1.0;
+WP:WP5053;Development of ureteric collection system;hsapiens.WP.name.gmt;47;19;0;7411;1.0;1.0;
+WP:WP4823;Genes controlling nephrogenesis;hsapiens.WP.name.gmt;43;19;0;7411;1.0;1.0;
+WP:WP5052;Nephrogenesis;hsapiens.WP.name.gmt;17;19;0;7411;1.0;1.0;
+WP:WP4830;GDNF/RET signalling axis;hsapiens.WP.name.gmt;23;19;0;7411;1.0;1.0;

@@ -1,0 +1,14 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+REAC:R-HSA-8853659;RET signaling;hsapiens.REAC.name.gmt;38;37;4;10531;8.739847032859477e-06;0.0001136180114271732;FRS2 GRB10 RET SHC1
+GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;41;4;18089;0.005502445927584445;0.023843932352865926;BDNF LIF RET STAT1
+GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;41;4;18089;0.00496937576591304;0.023843932352865926;BDNF LIF RET STAT1
+GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;41;2;18089;0.019983105192108584;0.06494509187435289;LIF STAT1
+PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;41;1;18089;0.09100193917574913;0.22989044321830449;RET
+WP:WP4830;GDNF/RET signalling axis;hsapiens.WP.name.gmt;23;36;1;7411;0.1061032814853713;0.22989044321830449;RET
+WP:WP5053;Development of ureteric collection system;hsapiens.WP.name.gmt;47;36;1;7411;0.20513310820584205;0.3333413008344933;RET
+WP:WP4823;Genes controlling nephrogenesis;hsapiens.WP.name.gmt;43;36;1;7411;0.18940337998172005;0.3333413008344933;RET
+REAC:R-HSA-157118;Signaling by NOTCH;hsapiens.REAC.name.gmt;233;37;1;10531;0.5636265902351282;0.8141272970062963;STAT1
+REAC:R-HSA-2022377;Metabolism of Angiotensinogen to Angiotensins;hsapiens.REAC.name.gmt;18;37;0;10531;1.0;1.0;
+REAC:R-HSA-195721;Signaling by WNT;hsapiens.REAC.name.gmt;328;37;0;10531;1.0;1.0;
+REAC:R-HSA-5358351;Signaling by Hedgehog;hsapiens.REAC.name.gmt;149;37;0;10531;1.0;1.0;
+WP:WP5052;Nephrogenesis;hsapiens.WP.name.gmt;17;36;0;7411;1.0;1.0;
