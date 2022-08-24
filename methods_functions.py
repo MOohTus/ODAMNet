@@ -9,6 +9,8 @@ Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
 """
 
 # Libraries
+import json
+import ndex2
 import requests
 import os
 import multixrank
@@ -155,12 +157,12 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
         bar()
 
 
-def DOMINO(genesFileName, networkFile, outputPath, featureName):
+def DOMINO(genesFileName, networkFileName, outputPath, featureName):
     """
     Run active modules identification analysis on the DOMINO server
 
     :param genesFileName: active genes file name (g.e. list of genes of interest)
-    :param networkFile: content of the network file
+    :param networkFileName: network file name
     :param outputPath: output path name to save the results
     :param featureName: feature name (g.e. chemical name)
     :return:
@@ -168,12 +170,12 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
     """
     # Input file names
     data_dict = {
-        'Network file name': os.path.basename(networkFile.name),
+        'Network file name': os.path.basename(networkFileName),
         'Active gene file name': os.path.basename(genesFileName)
     }
     # Input file contents
     files_dict = {
-        'Network file contents': open(networkFile.name, 'rb'),
+        'Network file contents': open(networkFileName, 'rb'),
         'Active gene file contents': open(genesFileName, 'rb')
     }
 
@@ -214,14 +216,14 @@ def DOMINO(genesFileName, networkFile, outputPath, featureName):
     return activeModules_list
 
 
-def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict, pathOfInterestNamesDict,
+def DOMINOandOverlapAnalysis(featuresDict, networkFileName, pathOfInterestGenesDict, pathOfInterestNamesDict,
                              pathwaysOfInterestList, backgroundGenesDict, outputPath, analysisName):
     """
     For each genes list, run an active module identification.
     For each AM identified, run an overlap analysis against the pathways of interest.
 
     :param featuresDict: Dict of list of genes
-    :param networkFile: content of network file
+    :param networkFileName: content of network file
     :param pathOfInterestGenesDict: Genes dict of pathways of interest
     :param pathOfInterestNamesDict: Names dict of pathways of interest
     :param pathwaysOfInterestList: List of pathways of interest and their bg name associated
@@ -242,7 +244,7 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict,
                 outputFileHandler.write('\n')
         # Run DOMINO
         resultsDict[featureName] = DOMINO(genesFileName=resultFileName,
-                                          networkFile=networkFile,
+                                          networkFileName=networkFileName,
                                           outputPath=outputPath,
                                           featureName=featureName)
         print('\tNumber of active genes  : ' + str(len(featuresDict[featureName])))
@@ -258,7 +260,7 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFile, pathOfInterestGenesDict,
 
         # Output
         AMIFileName = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
-        DOMINOOutput(networkFile, AMIFileName, featureName, outputPath)
+        DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath)
         print(featureName + ' analysis done!\n')
 
 
@@ -409,3 +411,27 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
         for ID in pathwayIDs:
             networkOutputFile.write('\t'.join([ID, ID]))
             networkOutputFile.write('\n')
+
+
+def downloadNDExNetwork(networkUUID, outputFileName):
+    """
+    Download network from NDEx website
+
+    :param str networkUUID: network ID
+    :param FILENAME outputFileName: SIF file name to write network
+    """
+    # Create NDEx2 python client
+    client = ndex2.client.Ndex2()
+
+    # Download
+    client_resp = client.get_network_as_cx_stream(networkUUID)
+
+    # Convert downloaded network to NiceCXNetwork object
+    net_cx = ndex2.create_nice_cx_from_raw_cx(json.loads(client_resp.content))
+    print('Extract network with UUID : ' + networkUUID)
+    net_cx.print_summary()
+
+    # Convert to pandas dataframe
+    df = net_cx.to_pandas_dataframe()
+    df.columns = ['node_1', 'link', 'node_2']
+    df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')

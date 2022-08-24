@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Active Module Identification &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Random Walk with Restart" href="methods_RWR.html" />
+    <link rel="prev" title="Overlap analysis" href="methods_overlap.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Methods overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_newNetwork.html">Network creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data source from requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data source from database files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : custom data source</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Active Module Identification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/methods/methods_AMI.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="active-module-identification">
+<span id="ami"></span><h1>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To perform this method, we are using DOMINO <a class="footnote-reference brackets" href="#id5" id="id1">1</a> and running the analysis on their server
+(<a class="reference external" href="http://domino.cs.tau.ac.il/">website</a> and <a class="reference external" href="https://github.com/Shamir-Lab/domino_web">github</a>).</p>
+</div>
+<p>Genes from the list are defined as <cite>Active Genes</cite>. DOMINO search <strong>active modules</strong> through a network
+(e.g. Protein-Protein Interaction (PPI)). Active modules (AM) are composed of active genes and other linked genes. Then,
+an <strong>overlap analysis</strong> is performed for each AM with pathways of interest. It’s a kind of <strong>network extension</strong> analysis, we find
+<strong>indirect associations</strong> with diseases.</p>
+</div>
+<div class="section" id="required-options">
+<h2>Required options<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can mix input type. For instance, request CTD and give a custom GMT file of pathways of interest.
+Every combination is possible !</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-0-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
+The user can gives several chemicals in the same line : they will be grouped for the analysis.</p>
+</dd>
+</dl>
+</div><div aria-labelledby="tab-0-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
+<dd><p>It’s a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.</p>
+</dd>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>Gene composition of each rare disease pathways of interest from WikiPathways. It’s a GMT file-like (e.g. created with an up to date analysis).
+Refers to XXX to have more information about the format.</p>
+</dd>
+<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of all genes present in the WikiPathways database (i.e. human genes).</p>
+</dd>
+</dl>
+</div><div aria-labelledby="tab-0-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of gens of interest. One gene per line.</p>
+</dd>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>GMT file-like of pathways of interest. Pathways can come from several sources.
+Refers to XXX to have more information about the format.</p>
+</dd>
+<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Name list of the different background source (each background contain the list of all genes).</p>
+</dd>
+</dl>
+</div></div>
+<dl class="option-list">
+<dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Network file name (e.g. PPI network).
+The file contains 3 columns such as SIF format with the source node, the interaction type and the target node.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="optionals-options">
+<h2>Optionals options<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
+<dd><p>If TRUE, only the genes targeted by the chemical are extracted.
+If FALSE, the genes targeted by the chemical and all the descendant molecules are extracted.
+[default: True]</p>
+</dd>
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>In CTD, an interaction between a gene and a molecule can have references. The user can set a threshold on the number of publications needed to extract the interaction.
+[default: 2]</p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where save the results
+[default: OutputResults]</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="command-line-examples">
+<h2>Command line examples<a class="headerlink" href="#command-line-examples" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-1-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-1-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-1-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
+                        --directAssociation FALSE <span class="se">\</span>
+                        --nbPub <span class="m">2</span> <span class="se">\</span>
+                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
+                        --outputPath examples/OutputResults_example1/
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  <span class="se">\</span>
+                        --nbPub <span class="m">2</span> <span class="se">\</span>
+                        --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt <span class="se">\</span>
+                        --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv <span class="se">\</span>
+                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
+                        --outputPath examples/OutputResults_example2/
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                        --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
+                        --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt <span class="se">\</span>
+                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
+                        --outputPath examples/OutputResults_example3/
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="networks-available">
+<h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
+<p>Made a description of our PPI network (source, number of edges and nodes etc).</p>
+<p>Request <a class="reference external" href="https://www.ndexbio.org/">NDEx</a> using REST API <a class="footnote-reference brackets" href="#id6" id="id2">2</a><sup>,</sup> <a class="footnote-reference brackets" href="#id7" id="id3">3</a><sup>,</sup> <a class="footnote-reference brackets" href="#id8" id="id4">4</a>.</p>
+<ul class="simple">
+<li><p>Add new parameter</p></li>
+<li><p>Create a new SIF network file where you want</p></li>
+<li><p>Add the request to the method</p></li>
+</ul>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Levi, H., Elkon, R., &amp; Shamir, R. (2021). DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology, 17(1), e9593.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Pratt et al. NDEx, the Network Data Exchange. Cell Systems, Vol. 1, Issue 4: 302-305 (2015).</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Pillich et al. NDEx: A Community Resource for Sharing and Publishing of Biological Networks. Methods Mol Biol, 1558: 271-301 (2017).</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id4">4</a></span></dt>
+<dd><p>Pratt et al. NDEx 2.0: A Clearinghouse for Research on Cancer Pathways. Cancer Res. Nov 1;77(21):e58-e61 (2017).</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="methods_RWR.html" class="btn btn-neutral float-right" title="Random Walk with Restart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="methods_overlap.html" class="btn btn-neutral float-left" title="Overlap analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
