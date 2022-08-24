@@ -118,14 +118,15 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
               help='True: Only chem targets \\ False:Chem + descendants targets')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
-@click.option('-n', '--networkFile', 'networkFile', type=click.File(mode='rb'), required=True, help='Network file name')
+@click.option('-n', '--networkFile', 'networkFileName', type=str, metavar='FILENAME', required=True, help='Network file name')
+@click.option('--netUUID', 'networkUUID', type=str, help='NDEx network ID')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
-              help='Pathways of interest in GMT like format. ')
+              help='Pathways of interest in GMT like format.')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
               help='Background genes file name. ')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name')
-def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
+def DOMINO(factorListFile, CTD_file, geneListFile, networkFileName, networkUUID, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
            outputPath):
     """DOMINO defines the target genes as active genes and search active modules through a given network."""
     # Parameters
@@ -136,6 +137,18 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
     # Check if outputPath exist and create it if it does not exist
     if not os.path.exists(outputPath):
         os.makedirs(outputPath, exist_ok=True)
+
+    # Extract network from NDEx website
+    if os.path.exists(networkFileName):
+        if networkUUID:
+            print('Network File already exists. Give only file name (without network UUID) or rename/remove file.')
+            exit()
+    else:
+        if networkUUID:
+            methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName)
+        else:
+            print('Network file doesn\'t exist. Add the network UUID to request NEDx or give another network file.')
+            exit()
 
     # Extract genes from background and pathways of interest
     if pathOfInterestGMT:
@@ -167,7 +180,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFile, directAssociatio
 
     # DOMINO analysis for each environmental factor
     methods.DOMINOandOverlapAnalysis(featuresDict=featuresDict,
-                                     networkFile=networkFile,
+                                     networkFileName=networkFileName,
                                      pathOfInterestGenesDict=pathOfInterestGenesDict,
                                      pathOfInterestNamesDict=pathOfInterestNamesDict,
                                      pathwaysOfInterestList=pathwaysOfInterestList,

@@ -58,14 +58,6 @@ def downloadNDExNetwork(networkUUID, outputFileName, symbolBool):
 outputFileName = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/EnvironmentProject/examples/InputData/NEDxNetworks.sif'
 
 
-
-
-
-
-
-
-
-
 # Symbol IDs
 networkUUID = '110ce6f7-86da-11e7-a10d-0ac135e8bacf' # HumanInteractome
 networkUUID = '079f4c66-3b77-11ec-b3be-0ac135e8bacf' # Human Protein Reference Database (HPRD) PPI network
@@ -86,3 +78,32 @@ networkUUID = '7fc70ab6-9fb1-11ea-aaef-0ac135e8bacf' # MuSIC
 net_cx = downloadNDExNetwork(networkUUID, outputFileName, False)
 net_cx.print_summary()
 net_cx.nodeAttributes
+
+
+
+
+import os
+import xml.etree.ElementTree as ET
+
+os.chdir('/home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseaseAnnotations/')
+
+# HPO file from Orphanet (https://www.orphadata.com/phenotypes/)
+xmlFile = 'en_product4.xml'
+tree = ET.parse(xmlFile)
+root = tree.getroot()
+
+# tag and dictionay of attributes of root
+root.tag
+root.attrib
+
+# It also has children nodes
+# Count : total number of clinical entities (disorders, group of disorders or subtypes)
+for child in root:
+    print(child.tag, child.attrib)
+
+# Children are nested
+root[1][0][0]
+
+for id in root.findall('HPOID'):
+    print(id.text)
+    print(id.attrib)
