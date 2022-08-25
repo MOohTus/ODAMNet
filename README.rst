@@ -90,6 +90,4 @@ It's a diffusion analysis from the factors through different molecular interacti
    python3 main.py multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 
 
-.. footnotes::
-
-    The documentation is in the ``doc`` folder for now. Will is it hosted by ReadTheDocs after ?
+The documentation is in the ``doc`` folder for now. Will is it hosted by ReadTheDocs after ?
