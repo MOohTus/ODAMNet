@@ -63,7 +63,7 @@ target genes that take part of pathways.
 
 Active Module Identification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Target genes are defined as ``active genes`` to search Active Modules (AM), based on a molecular network (e.g.
+Target genes are defined as "active genes" to search Active Modules (AM), based on a molecular network (e.g.
 Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (target genes + linked genes)
 and Rare Disease pathways. The target gene list is extended to others related genes.
 
@@ -90,4 +90,4 @@ It's a diffusion analysis from the factors through different molecular interacti
    python3 main.py multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 
 
-The documentation is in the ``doc`` folder for now. Will is it hosted by ReadTheDocs after ?
+The documentation is in the ``doc/html/index.html`` for now. Will is it hosted by ReadTheDocs after ?
