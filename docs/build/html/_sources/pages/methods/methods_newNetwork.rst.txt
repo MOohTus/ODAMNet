@@ -7,56 +7,57 @@ Network creation
 Principle
 ------------
 
-| Create automatically a disconnected diseases network using rare disease pathways from WikiPathways.
-| A SIF (Simple interaction file) with three columns is created : source node, interaction type and target node.
-| It's a tab-separated file.
+| Create automatically a disconnected diseases network using your pathways of interest.
+| A SIF (Simple interaction file) with three columns is created [:ref:`FORMAT <net>`]
 
 Display a picture to explain how it's work (bipartite for the link and the disconnected network).
 
-Required options
+Required arguments
 --------------------
 
 .. tabs::
 
     .. group-tab:: Request
 
+        .. note::
+
+            Network and its bipartite are creating using Rare Disease pathways request from WikiPathways.
+
         --networksPath PATH
-            The output repository name where the network disease (disconnected) is saved. The network disease is created using
-            the data from WikiPathway.
+            Output repository name where the network disease will be saved.
 
         --bipartitePath PATH
-            The output repository name where the bipartite gene-disease is saved. The bipartite is created using the data from
-            WikiPathway.
+            Output repository name where the bipartite gene-disease will be saved.
 
     .. group-tab:: GMT file
 
+        .. note::
+
+            Network and its bipartite are creating using pathways from your GMT file given as an input.
+
         --networksPath PATH
-            The output repository name where the network disease (disconnected) is saved. The network disease is created using
-            the data from WikiPathway.
+            Output repository name where the network disease will be saved.
 
         --bipartitePath PATH
-            The output repository name where the bipartite gene-disease is saved. The bipartite is created using the data from
-            WikiPathway.
+            Output repository name where the bipartite gene-disease will be saved.
 
-        --WP_GMT FILENAME
-            Pathways file name that the user want to extract the genes to build the network
+        --GMT FILENAME
+            GMT file name that contains composition of pathways of interest.
 
-Optionals options
+Optionals arguments
 --------------------
 
 --networksName FILENAME
-    The user can give a name to the network disease. It's a SIF file. It's a disconnected network, so to allow the
-    analysis using RWR, each disease is link to itself.
-    [default: WP_RareDiseasesNetwork.sif]
+    You can give a name to the network disease. It's a SIF file but each disease/pathway is link to itself.
+    ``[default: WP_RareDiseasesNetwork.sif]``
 
 --bipartiteName FILENAME
-    The user can give a name to the bipartite. It's a tab-separated file.
-    [default: Bipartite_WP_RareDiseases_geneSymbols.tsv]
+    You can give a name to the bipartite. It's a tab-separated file.
+    ``[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]``
 
 -o, --outputPath PATH
-    Name of the folder where save complementary results (i.e. request results)
-    [default: OutputResults]
-
+    Name of the folder where to save complementary results (i.e. request results)
+    ``[default: OutputResults]``
 
 Command line examples
 ------------------------
@@ -68,9 +69,9 @@ Command line examples
         .. code-block:: bash
 
             python3 main.py networkCreation --networksPath examples/InputData/multiplex/2/ \
-                                            --networksName WP_RareDiseasesNetwork_2022_08.sif \
+                                            --networksName WP_RareDiseasesNetwork_fromRequest.sif \
                                             --bipartitePath examples/InputData/bipartite/ \
-                                            --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_2022_08.tsv \
+                                            --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
                                             --outputPath examples/OutputResults_example1/
 
     .. group-tab:: GMT file
@@ -78,8 +79,8 @@ Command line examples
         .. code-block:: bash
 
             python3 main.py networkCreation --networksPath examples/InputData/multiplex/2/ \
-                                            --networksName WP_RareDiseasesNetwork_2022_08_01.sif \
+                                            --networksName WP_RareDiseasesNetwork_fromFile.sif \
                                             --bipartitePath examples/InputData/bipartite/ \
-                                            --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_2022_08_01.tsv \
-                                            --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
+                                            --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromFile.tsv \
+                                            --GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt \
                                             --outputPath examples/OutputResults_example2/

@@ -9,78 +9,79 @@ Principle
 
 .. note::
 
-    The Ranwom Walk is performed using multiXrank [1]_
-    (`website <https://multixrank-doc.readthedocs.io/en/latest/>`_ and `github <https://github.com/anthbapt/multixrank>`_).
+    The Random Walk is performed using multiXrank [1]_ --
+    :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
-This method measures the proximity of every gene within a multilayer to the target genes. Every gene from the list is
-define as a seed. The walk start with a seed selected randomly. A score is given to each node and proportional of the time
-how a node is visited during walks. More the score is high, more the node is visited, more the node is linked to the seed.
+This method measures the **proximity** of every gene within a multilayer to the target genes. Every gene from the list is
+define as a **seed**. The walk starts with a seed, selected **randomly**. The proximity is represented by a score that could be use
+for multiple analyse. More the score is high, more the node is closed to the seed.
 
-It's a kind of diffusion analysis from the genes through different molecular interactions.
+It's a kind of **diffusion analysis** from the genes through different molecular interactions (:numref:`overviewFig` - right part).
 
-Required options
+*For more details, go to the paper* [1]_
+
+Required arguments
 --------------------
 
 .. tip::
 
-    You can mix input type. For instance, request CTD and give a custom GMT file of pathways of interest.
-    Every combination is possible !
+    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible !**
 
 .. tabs::
 
     .. group-tab:: Request
 
         -f, --factorList FILENAME
-            Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
-            The user can gives several chemicals in the same line : they will be grouped for the analysis.
+            Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
+            You can give several chemicals in the same line : they will be grouped for the analysis.
+            [:ref:`FORMAT <factorList>`]
 
     .. group-tab:: Request Files
 
         -c, --CTD_file FILENAME
-            It's a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.
+            Tab-separated file from CTD request. [:ref:`FORMAT <CTDFile>`]
 
     .. group-tab:: Custom Files
 
         -g, --geneList FILENAME
-            List of gens of interest. One gene per line.
+            List of genes of interest. One gene per line. [:ref:`FORMAT <genesList>`]
 
 --configPath PATH
-    Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
-    The short one contains the network and bipartite trees and the path of the seed file.
-    If the user want more details go the the multiXrank's documentation :
-    `github <https://github.com/anthbapt/multixrank>`__ /
-    `doc <https://multixrank-doc.readthedocs.io/en/latest/>`__
+    MultiXrank needs a configuration file as input. It could be short (file names) or very details (i.e with input
+    parameters). The file contains at least paths of networks, bipartite and seed files.
+
+    | For more details : [:ref:`FORMAT <configFile>`] - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ - :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 --networksPath PATH
-    The path of the repository that contains the multiplex folder.
+    Repository path where networks are saved.
 
 --seedsFile FILENAME
-    The path name of the seed file. This file contains the list of genes (g.e. target genes, interested genes)
-    that are used as seed to start the walk.
+    Path name of the seed file. This file contains the list of genes (i.e. target genes). They will be used as seed
+    on the Random Walk analysis. [:ref:`FORMAT <simpleFile>`]
 
 --sifFileName FILENAME
     Output file name to save the result into a SIF file.
 
-
-Optionals options
+Optionals arguments
 --------------------
 
 --directAssociation BOOLEAN
-    If TRUE, only the genes targeted by the chemical are extracted.
-    If FALSE, the genes targeted by the chemical and all the descendant molecules are extracted.
-    [default: True]
+    | If ``TRUE``, only the genes targeted by the factors are extracted.
+    | If ``FALSE``, the genes targeted by the factors and all the descendant molecules are extracted.
+    | ``[default: True]``
 
 --nbPub INTEGER
     In CTD, an interaction between a gene and a molecule can have references.
-    The user can set a threshold on the number of publications needed to extract the interaction.
-    [default: 2]
+    You can set a threshold on the number of publications needed to extract the interaction.
+    ``[default: 2]``
 
 --top INTEGER
-    Threshold used to create the SIF network results.
+    Top nodes that will be saved into the output network (into SIF file).
 
 -o, --outputPath PATH
-    Name of the folder where save the results
-    [default: OutputResults]
+    Name of the folder where to save the results.
+    ``[default: OutputResults]``
 
 
 Command line examples
@@ -95,7 +96,7 @@ Command line examples
             python3 main.py multixrank  --factorList examples/InputData/InputFile_factorsList.csv \
                                         --directAssociation False \
                                         --nbPub 2 \
-                                        --configPath examples/InputData/config_minimal.yml \
+                                        --configPath examples/InputData/config_minimal_example1.yml \
                                         --networksPath examples/InputData/ \
                                         --seedsFile examples/InputData/seeds.txt \
                                         --sifFileName example1_resultsNetwork.sif \
@@ -106,9 +107,9 @@ Command line examples
 
         .. code-block:: bash
 
-            python3 main.py multixrank  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv \
+            python3 main.py multixrank  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv \
                                         --nbPub 2 \
-                                        --configPath examples/InputData/config_minimal.yml \
+                                        --configPath examples/InputData/config_minimal_example2.yml \
                                         --networksPath examples/InputData/ \
                                         --seedsFile examples/InputData/seeds.txt \
                                         --sifFileName example2_resultsNetwork.sif \
@@ -119,8 +120,8 @@ Command line examples
 
         .. code-block:: bash
 
-            python3 main.py multixrank  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
-                                        --configPath examples/InputData/config_minimal.yml \
+            python3 main.py multixrank  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt \
+                                        --configPath examples/InputData/config_minimal_example3.yml \
                                         --networksPath examples/InputData/ \
                                         --seedsFile examples/InputData/seeds.txt \
                                         --sifFileName example3_resultsNetwork.sif \
@@ -130,18 +131,42 @@ Command line examples
 Networks available
 --------------------
 
-Users can use any multilayer and networks that they want. We propose on this project a set of networks build in the lab.
+.. note::
 
-- multiplex
-    - PPI
-    - Reactome
-    - Complex
+    We use the biological multilayer network from multiXrank's paper [1]_.
 
-- disease network
-    - disconected diseases network, created from WP rare diseases pathways :ref:`newNet`
-    - disease-disease network build with blablabla
+We propose to run two walks through two different network compositions :
 
-Explanation and description of our multilayer (source, number of edges and nodes etc).
+- molecular multilayer with three layers + disconnected disease network (:numref:`RWRFig` - left part)
+- molecular multilayer with three layers + disease-disease network associated by their shared phenotype (:numref:`RWRFig` - right part)
+
+.. _RWRFig:
+.. figure:: ../../pictures/RWR_method.png
+    :alt: RWR networks
+    :align: center
+
+    : Random Walk into two different networks conformations
+
+Molecular multilayer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Details of layers (number of nodes, edges, nature of association and source).
+
+Disconnected disease network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can build this network with your pathways of interest - see :ref:`newNet`
+
+Disease-disease network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Explanation of how I did when I would have done it.
+
+.. tip::
+
+    | You can use any multilayer and networks that you want.
+    | :octicon:`alert;1em` Be careful with the configuration file and the gene IDs used
+
 
 References
 ------------

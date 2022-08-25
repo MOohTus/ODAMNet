@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
 
   
   
@@ -38,6 +40,7 @@
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -93,7 +96,7 @@
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Methods</span></p>
@@ -114,8 +117,8 @@
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#query-input-files">Query input files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#chemical-factors-file">1. Chemical factors file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#target-genes-input-files">Target genes input files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environmental-factors-file">1. Environmental factors file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ctd-file">2. CTD file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#genes-list-file">3. Genes list file</a></li>
 </ul>
@@ -199,20 +202,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="input-files">
-<h1>Input files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="query-input-files">
-<h2>Query input files<a class="headerlink" href="#query-input-files" title="Permalink to this headline">¶</a></h2>
+<span id="input"></span><h1>Input files<a class="headerlink" href="#input-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="target-genes-input-files">
+<span id="query"></span><h2>Target genes input files<a class="headerlink" href="#target-genes-input-files" title="Permalink to this headline">¶</a></h2>
+<p>mettre un truc sur les formats des genes que ctd ça donne les genes symbole etc et que pour tous les examples on utilise des genes symboles</p>
 <div class="line-block">
 <div class="line">You have to choose from where data source come from :</div>
 <div class="line"><br /></div>
 <div class="line-block">
-<div class="line"><a class="reference internal" href="#factorlist"><span class="std std-ref">1. Chemical factors file</span></a> : give chemical ID as input and request CTD</div>
+<div class="line"><a class="reference internal" href="#factorlist"><span class="std std-ref">1. Environmental factors file</span></a> : give chemical ID as input and request CTD</div>
 <div class="line"><a class="reference internal" href="#ctdfile"><span class="std std-ref">2. CTD file</span></a> : specific version of data</div>
 <div class="line"><a class="reference internal" href="#geneslist"><span class="std std-ref">3. Genes list file</span></a></div>
 </div>
 </div>
-<div class="section" id="chemical-factors-file">
-<span id="factorlist"></span><h3>1. Chemical factors file<a class="headerlink" href="#chemical-factors-file" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="environmental-factors-file">
+<span id="factorlist"></span><h3>1. Environmental factors file<a class="headerlink" href="#environmental-factors-file" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals : MeSH identifier (e.g. D014801).
@@ -281,25 +285,29 @@ ACTA2
 </div>
 </div>
 <div class="section" id="pathways-input-files">
-<h2>Pathways input files<a class="headerlink" href="#pathways-input-files" title="Permalink to this headline">¶</a></h2>
+<span id="pathways"></span><h2>Pathways input files<a class="headerlink" href="#pathways-input-files" title="Permalink to this headline">¶</a></h2>
 <dl class="option-list">
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>GMT file-like of pathways of interest. Pathways can come from several sources.
-Refers to XXX to have more information about the format.</p>
+<dd><p>It’s a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
+Each row represents a gene set and there is at least three columns :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code> : first column is pathway IDs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is pathway names - Optional, you can fill in a dummy field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside pathway. The number of columns is different for each
+pathway and varies according the number of genes inside.</p></li>
+</ul>
+</div></blockquote>
 </dd>
 </dl>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">WPID</span></code> : first column is the WikiPathways ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is the name of the WikiPathways</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
-pathways and varies according the nuber of genes inside.</p></li>
-</ul>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WPID        pathways        HGNC
+<p>The GMT file is organized as follow:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pathwayIDs  pathways        HGNC
 WP5195      Disorders in ketolysis  ACAT1   HMGCS1  OXCT1   BDH1    ACAT2
 WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
 WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 </pre></div>
 </div>
+<p>More details for <a class="reference external" href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29">GMT file format</a></p>
 <dl class="option-list">
 <dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Name list of the different background source (each background contain the list of all genes). Each file is a GMT
@@ -317,7 +325,12 @@ hsapiens.WP.name.gmt
 </div>
 </div>
 <div class="section" id="network-input-files">
-<h2>Network input files<a class="headerlink" href="#network-input-files" title="Permalink to this headline">¶</a></h2>
+<span id="net"></span><h2>Network input files<a class="headerlink" href="#network-input-files" title="Permalink to this headline">¶</a></h2>
+<p>SIF format : Simple Interaction Format
+One interaction by row
+Three columns : source node, relationship type and target node
+Tab-delimited file</p>
+<p><a class="reference external" href="http://wiki.biouml.org/index.php/SIF_(file_format">http://wiki.biouml.org/index.php/SIF_(file_format</a>)</p>
 <p>For AMI analysis
 Give the recommendations from DOMINO and the link to them</p>
 <dl class="option-list">
@@ -337,7 +350,7 @@ AAMP        ppi     TK1
 </div>
 <div class="section" id="random-walk-input-files">
 <h2>Random walk input files<a class="headerlink" href="#random-walk-input-files" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
+<dl class="option-list" id="configfile">
 <dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
 <dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
 The short one contains the network and bipartite trees and the path of the seed file.
@@ -380,6 +393,7 @@ ABL1
 ACADM
 </pre></div>
 </div>
+<p id="simplefile">list of genes file format</p>
 </div>
 </div>
 

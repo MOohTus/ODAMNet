@@ -35,7 +35,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx_click',
               'sphinx_argparse_cli',
               'sphinx_tabs.tabs',
-              'sphinx_rtd_theme']
+              'sphinx_rtd_theme',
+              'sphinx_design']
 
 # Configuration option to allow additional builders to be considered compatible
 sphinx_tabs_valid_builders = ['linkcheck']
@@ -60,6 +61,13 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-html_css_files = ['custom.css']
+html_css_files = ['custom.css', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"]
 numfig = True
 
+# html_context = {
+#     "display_github": True, # Integrate GitHub
+#     "github_user": "MOohTus", # Username
+#     "github_repo": "EnvironmentProject", # Repo name
+#     "github_version": "main", # Version
+#     "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+# }

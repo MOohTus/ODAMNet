@@ -16,9 +16,8 @@ EnvironmentProject's documentation
    pages/Installation
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Methods
    :titlesonly:
+   :caption: Methods
 
    pages/methods/methods_overview
    pages/methods/methods_overlap

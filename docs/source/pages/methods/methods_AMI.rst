@@ -9,73 +9,107 @@ Principle
 
 .. note::
 
-    To perform this method, we are using DOMINO [1]_ and running the analysis on their server
-    (`website <http://domino.cs.tau.ac.il/>`_ and `github <https://github.com/Shamir-Lab/domino_web>`_).
+    | To perform this method, we are using DOMINO [1]_ and running the analysis on their server [2]_
+    | :octicon:`mark-github;1em` `GitHub <https://github.com/Shamir-Lab/domino_web>`_ :octicon:`globe;1em` `website <http://domino.cs.tau.ac.il/>`_
 
-Genes from the list are defined as `Active Genes`. DOMINO search **active modules** through a network
-(e.g. Protein-Protein Interaction (PPI)). Active modules (AM) are composed of active genes and other linked genes. Then,
-an **overlap analysis** is performed for each AM with pathways of interest. It's a kind of **network extension** analysis, we find
-**indirect associations** with diseases.
 
-Required options
+Target genes are defined as ``Active Genes``. DOMINO are looking for **active modules** through a network
+(e.g. Protein-Protein Interaction (PPI)) (:numref:`overviewFig` - middle part).
+
+Active modules (AM) are composed of active genes and other linked genes and would ideally represent distinct functional modules.
+
+Then, an **overlap analysis** is performed for each AM with pathways of interest.
+It's a kind of **network extension** analysis, **indirect associations** with diseases are search.
+
+The :numref:`dominoFig` (Fig3 on the DOMINO's paper [1]_) is an overview of the DOMINO algorithm :
+
+| **A -** The network is split into disjoint and highly connected subnetworks (slices) with the Louvain modularity method.
+| **B -** Detection of the relevant slices (where active genes are over-represented) using the Hypergeometric test. Pvalue are corrected with the FDR method.
+| **C -** Identification of the most active sub-slice on eah relevant slices.
+| **D -** Sub-slices are split into putatite Active Modules (AM) using the Newmann-Girvan modularity method.
+| **E -** Identification of the final set of AM (under a threshold)
+
+.. _dominoFig:
+.. figure:: ../../pictures/DOMINO_method.jpg
+    :alt: DOMINO method
+    :align: center
+
+    : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
+
+*For more details, go to the paper* [1]_
+
+Required arguments
 --------------------
 
 .. tip::
 
-    You can mix input type. For instance, request CTD and give a custom GMT file of pathways of interest.
-    Every combination is possible !
+    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible !**
 
 .. tabs::
 
     .. group-tab:: Request
 
         -f, --factorList FILENAME
-            Contains a list of chemicals. Could be chemical names (e.g. vitamin A) or the MeSH identifier (e.g. D014801).
-            The user can gives several chemicals in the same line : they will be grouped for the analysis.
+            Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
+            You can give several chemicals in the same line : they will be grouped for the analysis.
+            [:ref:`FORMAT <factorList>`]
 
     .. group-tab:: Request Files
 
         -c, --CTD_file FILENAME
-            It's a tab-separated file from CTD request (e.g. created with an up to date analysis). Refers to XXX to have more information about the format.
+            Tab-separated file from CTD request. [:ref:`FORMAT <CTDFile>`]
 
         --GMT FILENAME
-            Gene composition of each rare disease pathways of interest from WikiPathways. It's a GMT file-like (e.g. created with an up to date analysis).
-            Refers to XXX to have more information about the format.
+            Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
+            [:ref:`FORMAT <pathways>`]
 
         --backgroundFile FILENAME
-            List of all genes present in the WikiPathways database (i.e. human genes).
+            List of the different background source file name. Each background genes source is a GMT file.
+            It should be in the same order than the GMT file. Here, the background GMT file contains
+            all Rare Disease pathways.
+            [:ref:`FORMAT <pathways>`]
 
     .. group-tab:: Custom Files
 
         -g, --geneList FILENAME
-            List of gens of interest. One gene per line.
+            List of genes of interest. One gene per line. [:ref:`FORMAT <genesList>`]
 
         --GMT FILENAME
-            GMT file-like of pathways of interest. Pathways can come from several sources.
-            Refers to XXX to have more information about the format.
+            Tab-delimited file that describes gene sets of pathways of interest.
+            Pathways can come from several sources (e.g. WP and GO\:BP).
+            [:ref:`FORMAT <pathways>`]
 
         --backgroundFile FILENAME
-            Name list of the different background source (each background contain the list of all genes).
+            List of the different background source file name. Each background genes source is a GMT file.
+            It should be in the same order than the GMT file.
+            [:ref:`FORMAT <pathways>`]
 
 -n, --networkFile FILENAME
-    Network file name (e.g. PPI network).
-    The file contains 3 columns such as SIF format with the source node, the interaction type and the target node.
+    Network file name (e.g. PPI network) in SIF format (tab-delimited).
+    The file contains 3 columns with the source node, the interaction type and the target node.
+    [:ref:`FORMAT <net>`]
 
-Optionals options
+Optionals arguments
 --------------------
 
 --directAssociation BOOLEAN
-    If TRUE, only the genes targeted by the chemical are extracted.
-    If FALSE, the genes targeted by the chemical and all the descendant molecules are extracted.
-    [default: True]
+    | If ``TRUE``, only the genes targeted by the factors are extracted.
+    | If ``FALSE``, the genes targeted by the factors and all the descendant molecules are extracted.
+    | ``[default: True]``
 
 --nbPub INTEGER
-    In CTD, an interaction between a gene and a molecule can have references. The user can set a threshold on the number of publications needed to extract the interaction.
-    [default: 2]
+    In CTD, an interaction between a gene and a molecule can have references.
+    You can set a threshold on the number of publications needed to extract the interaction.
+    ``[default: 2]``
+
+--netUUID TEXT
+    You can use a network extracted automatically from `NDEx <https://www.ndexbio.org/#/>`_ [3]_. You have to provide
+    the UUID of the network (e.g. ``079f4c66-3b77-11ec-b3be-0ac135e8bacf``).
 
 -o, --outputPath PATH
-    Name of the folder where save the results
-    [default: OutputResults]
+    Name of the folder where to save the results.
+    ``[default: OutputResults]``
 
 Command line examples
 ------------------------
@@ -96,10 +130,10 @@ Command line examples
 
         .. code-block:: bash
 
-            python3 main.py domino  --CTD_file examples/InputData/InputFile_CTD_request_D014801_2022_07_01.tsv  \
+            python3 main.py domino  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv \
                                     --nbPub 2 \
-                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt \
-                                    --backgroundFile examples/InputData/InputFile_backgroundsFiles.tsv \
+                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt \
+                                    --backgroundFile examples/InputData/backgroundsFiles.tsv \
                                     --networkFile examples/InputData/PPI_network_2016.sif \
                                     --outputPath examples/OutputResults_example2/
 
@@ -107,7 +141,7 @@ Command line examples
 
         .. code-block:: bash
 
-            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-Balmer2002-Genes.txt \
+            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt \
                                     --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
                                     --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
                                     --networkFile examples/InputData/PPI_network_2016.sif \
@@ -116,18 +150,59 @@ Command line examples
 Networks available
 --------------------
 
-Made a description of our PPI network (source, number of edges and nodes etc).
+.. warning::
 
-Request `NDEx <https://www.ndexbio.org/>`_ using REST API [2]_:sup:`,` [3]_:sup:`,` [4]_.
+    Be careful when you use network from NDEx. Indeed, gene IDs format are not consistent between network.
+    For instance, CTD returns symbol genes (i.e. HGNC) so the network need to contains symbol genes and not ensembl IDs.
+    The rule applies on GMT files too.
 
-- Add new parameter
-- Create a new SIF network file where you want
-- Add the request to the method
+Protein-Protein Interaction network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). It contains **symbol genes** and you
+give it to the script using the required argument ``-n, --networkFile``.
+
+It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :
+
+.. code-block::
+
+    node_1	link	node_2
+    AAMP	ppi	VPS52
+    AAMP	ppi	BHLHE40
+    AAMP	ppi	AEN
+    AAMP	ppi	C8orf33
+    AAMP	ppi	TK1
+
+
+Personal network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. caution::
+
+    :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
+
+You can use any network that you want or have. It has to be in :ref:`SIF format <net>` and you can give it to
+the script using the required argument ``-n, --networkFile``.
+
+
+Request NDEx database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. caution::
+
+    :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
+
+You can directly request NDEx [3]_ `website <https://www.ndexbio.org/>`_ and extract the network that you want to use
+(REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional argument
+``--netUUID``. The network will be save into a :ref:`SIF file <net>`.
+
 
 References
 ------------
 
 .. [1] Levi, H., Elkon, R., & Shamir, R. (2021). DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology, 17(1), e9593.
-.. [2] Pratt et al. NDEx, the Network Data Exchange. Cell Systems, Vol. 1, Issue 4: 302-305 (2015).
-.. [3] Pillich et al. NDEx: A Community Resource for Sharing and Publishing of Biological Networks. Methods Mol Biol, 1558: 271-301 (2017).
-.. [4] Pratt et al. NDEx 2.0: A Clearinghouse for Research on Cancer Pathways. Cancer Res. Nov 1;77(21):e58-e61 (2017).
+.. [2] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
+.. [3] Pratt et al. NDEx, the Network Data Exchange. Cell Systems, Vol. 1, Issue 4: 302-305 (2015).
+.. [4] Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., ... & Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.
+.. [5] Pillich et al. NDEx: A Community Resource for Sharing and Publishing of Biological Networks. Methods Mol Biol, 1558: 271-301 (2017).
+.. [6] Pratt et al. NDEx 2.0: A Clearinghouse for Research on Cancer Pathways. Cancer Res. Nov 1;77(21):e58-e61 (2017).

@@ -1,9 +1,17 @@
+.. _input:
+
 ==================================================
 Input files
 ==================================================
 
-Query input files
+.. _query:
+
+Target genes input files
 ==================================================
+
+mettre un truc sur les formats des genes que ctd ça donne les genes symbole etc et que pour tous les examples on utilise des genes symboles
+
+
 
 .. line-block::
 
@@ -15,8 +23,8 @@ Query input files
 
 .. _factorList:
 
-1. Chemical factors file
--------------------------
+1. Environmental factors file
+----------------------------------
 
 -f, --factorList FILENAME
     Contains a list of chemicals : MeSH identifier (e.g. D014801).
@@ -86,26 +94,30 @@ This file contains the results from the request sent to CTD.
     ACTA1
     ACTA2
 
+.. _pathways:
 
 Pathways input files
 ==================================================
 
 --GMT FILENAME
-    GMT file-like of pathways of interest. Pathways can come from several sources.
-    Refers to XXX to have more information about the format.
+    It's a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
+    Each row represents a gene set and there is at least three columns :
 
-- ``WPID`` : first column is the WikiPathways ID
-- ``pathways`` : second column is the name of the WikiPathways
-- ``HGNC`` : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
-  pathways and varies according the nuber of genes inside.
+        - ``pathwayIDs`` : first column is pathway IDs
+        - ``pathways`` : second column is pathway names - Optional, you can fill in a dummy field
+        - ``HGNC`` : all the other columns contain genes inside pathway. The number of columns is different for each
+          pathway and varies according the number of genes inside.
+
+The GMT file is organized as follow:
 
 .. code-block:: none
 
-    WPID	pathways	HGNC
+    pathwayIDs 	pathways	HGNC
     WP5195	Disorders in ketolysis	ACAT1	HMGCS1	OXCT1	BDH1	ACAT2
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
 
+More details for `GMT file format <https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29>`_
 
 --backgroundFile FILENAME
     Name list of the different background source (each background contain the list of all genes). Each file is a GMT
@@ -122,8 +134,18 @@ Pathways input files
     hsapiens.WP.name.gmt
 
 
+.. _net:
+
 Network input files
 ==================================================
+
+SIF format : Simple Interaction Format
+One interaction by row
+Three columns : source node, relationship type and target node
+Tab-delimited file
+
+http://wiki.biouml.org/index.php/SIF_(file_format)
+
 
 For AMI analysis
 Give the recommendations from DOMINO and the link to them
@@ -143,6 +165,8 @@ Give the recommendations from DOMINO and the link to them
 
 Random walk input files
 ==================================================
+
+.. _configFile:
 
 --configPath PATH
     Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
@@ -192,3 +216,8 @@ Random walk input files
     ABCC2
     ABL1
     ACADM
+
+
+.. _simpleFile:
+
+list of genes file format

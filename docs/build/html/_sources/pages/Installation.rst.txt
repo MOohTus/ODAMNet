@@ -21,14 +21,14 @@ Installation
    python3 setup.py install
 
 ==================================================
-Requierements
+Requirements
 ==================================================
 
-Python modules required are listed in the requierements.txt file. To install them :
+Python modules required are listed in the requirements.txt file. To install them :
 
 .. code-block:: bash
 
-   python3 install requierements.txt
+   python3 install requirements.txt
 
 ==================================================
 Usage

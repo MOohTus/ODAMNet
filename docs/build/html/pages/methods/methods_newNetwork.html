@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
 
   
   
@@ -39,6 +41,7 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -94,7 +97,7 @@
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Methods</span></p>
@@ -193,55 +196,57 @@
 <div class="section" id="principle">
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line">Create automatically a disconnected diseases network using rare disease pathways from WikiPathways.</div>
-<div class="line">A SIF (Simple interaction file) with three columns is created : source node, interaction type and target node.</div>
-<div class="line">It’s a tab-separated file.</div>
+<div class="line">Create automatically a disconnected diseases network using your pathways of interest.</div>
+<div class="line">A SIF (Simple interaction file) with three columns is created [<a class="reference internal" href="../formats/Input.html#net"><span class="std std-ref">FORMAT</span></a>]</div>
 </div>
 <p>Display a picture to explain how it’s work (bipartite for the link and the disconnected network).</p>
 </div>
-<div class="section" id="required-options">
-<h2>Required options<a class="headerlink" href="#required-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="required-arguments">
+<h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-R01UIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tab" tabindex="-1">GMT file</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-R01UIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tab" tabindex="-1">GMT file</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Network and its bipartite are creating using Rare Disease pathways request from WikiPathways.</p>
+</div>
+<dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>The output repository name where the network disease (disconnected) is saved. The network disease is created using
-the data from WikiPathway.</p>
+<dd><p>Output repository name where the network disease will be saved.</p>
 </dd>
 <dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
-<dd><p>The output repository name where the bipartite gene-disease is saved. The bipartite is created using the data from
-WikiPathway.</p>
+<dd><p>Output repository name where the bipartite gene-disease will be saved.</p>
 </dd>
 </dl>
-</div><div aria-labelledby="tab-0-R01UIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tabpanel" tabindex="0"><dl class="option-list">
+</div><div aria-labelledby="tab-0-R01UIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tabpanel" tabindex="0"><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Network and its bipartite are creating using pathways from your GMT file given as an input.</p>
+</div>
+<dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>The output repository name where the network disease (disconnected) is saved. The network disease is created using
-the data from WikiPathway.</p>
+<dd><p>Output repository name where the network disease will be saved.</p>
 </dd>
 <dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
-<dd><p>The output repository name where the bipartite gene-disease is saved. The bipartite is created using the data from
-WikiPathway.</p>
+<dd><p>Output repository name where the bipartite gene-disease will be saved.</p>
 </dd>
-<dt><kbd><span class="option">--WP_GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Pathways file name that the user want to extract the genes to build the network</p>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>GMT file name that contains composition of pathways of interest.</p>
 </dd>
 </dl>
 </div></div>
 </div>
-<div class="section" id="optionals-options">
-<h2>Optionals options<a class="headerlink" href="#optionals-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optionals-arguments">
+<h2>Optionals arguments<a class="headerlink" href="#optionals-arguments" title="Permalink to this headline">¶</a></h2>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
-<dd><p>The user can give a name to the network disease. It’s a SIF file. It’s a disconnected network, so to allow the
-analysis using RWR, each disease is link to itself.
-[default: WP_RareDiseasesNetwork.sif]</p>
+<dd><p>You can give a name to the network disease. It’s a SIF file but each disease/pathway is link to itself.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.sif]</span></code></p>
 </dd>
 <dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>
-<dd><p>The user can give a name to the bipartite. It’s a tab-separated file.
-[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]</p>
+<dd><p>You can give a name to the bipartite. It’s a tab-separated file.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv]</span></code></p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
-<dd><p>Name of the folder where save complementary results (i.e. request results)
-[default: OutputResults]</p>
+<dd><p>Name of the folder where to save complementary results (i.e. request results)
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
 </div>
@@ -249,17 +254,17 @@ analysis using RWR, each disease is link to itself.
 <h2>Command line examples<a class="headerlink" href="#command-line-examples" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-1-R01UIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tab" tabindex="-1">GMT file</button></div><div aria-labelledby="tab-1-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py networkCreation --networksPath examples/InputData/multiplex/2/ <span class="se">\</span>
-                                --networksName WP_RareDiseasesNetwork_2022_08.sif <span class="se">\</span>
+                                --networksName WP_RareDiseasesNetwork_fromRequest.sif <span class="se">\</span>
                                 --bipartitePath examples/InputData/bipartite/ <span class="se">\</span>
-                                --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_2022_08.tsv <span class="se">\</span>
+                                --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv <span class="se">\</span>
                                 --outputPath examples/OutputResults_example1/
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-1-R01UIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py networkCreation --networksPath examples/InputData/multiplex/2/ <span class="se">\</span>
-                                --networksName WP_RareDiseasesNetwork_2022_08_01.sif <span class="se">\</span>
+                                --networksName WP_RareDiseasesNetwork_fromFile.sif <span class="se">\</span>
                                 --bipartitePath examples/InputData/bipartite/ <span class="se">\</span>
-                                --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_2022_08_01.tsv <span class="se">\</span>
-                                --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_01.gmt <span class="se">\</span>
+                                --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromFile.tsv <span class="se">\</span>
+                                --GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt <span class="se">\</span>
                                 --outputPath examples/OutputResults_example2/
 </pre></div>
 </div>

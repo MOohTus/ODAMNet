@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
 
   
   
@@ -39,6 +41,7 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -94,7 +97,7 @@
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requierements">Requierements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Methods</span></p>
@@ -194,10 +197,10 @@
 related to CAKUT disease. The main goal of this analysis was to show if vitamin A could effect on CAKUT disease (Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id12" id="id1">1</a>).</p>
 <p>Data information came from several sources : the <a class="reference external" href="https://ctdbase.org/">Comparative Toxicogenomics Databse (CTD)</a> <a class="footnote-reference brackets" href="#id13" id="id2">2</a>
 and the study of Balmer and Blomhoff <a class="footnote-reference brackets" href="#id14" id="id3">3</a> for the target genes and WikiPathways (WP) <a class="footnote-reference brackets" href="#id15" id="id4">4</a>, Reactome <a class="footnote-reference brackets" href="#id16" id="id5">5</a> and Gene Ontology (GO) <a class="footnote-reference brackets" href="#id17" id="id6">6</a><sup>,</sup> <a class="footnote-reference brackets" href="#id18" id="id7">7</a>.</p>
-<p>With this project, we want to automatise the analysis and extract data information directly from databases. Users can
-study the link between environmental factors and rare diseases easily juts by giving a factors list. Other methods can
-be perform as random walk analyse or active subnetwork identification in addition to overlap. Moreover, the tool is open
-to external sources provided by users.</p>
+<p>With this project, we want to <strong>automate the analysis</strong> and extract data information <strong>directly from databases</strong>.
+The link between environmental factors and Rare Diseases can be <strong>easily analysed</strong>, only with a factors list.
+Other methods can be performed as Random Walk analyse or Active Subnetwork Identification in addition to overlap.
+Moreover, the tool is open to <strong>external sources</strong> provided by yourself.</p>
 <div class="section" id="methods">
 <h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <p>Three methods are available to study the link between environmental factors and rare diseases (<a class="reference internal" href="#overviewfig"><span class="std std-numref">Fig. 1</span></a>) :</p>
@@ -216,41 +219,48 @@ to external sources provided by users.</p>
 <div class="section" id="data-source">
 <h2>Data source<a class="headerlink" href="#data-source" title="Permalink to this headline">¶</a></h2>
 <p>Throughout this documentation, examples will be presented to illustrate these different sources of information. By default,
-genes data are automatically extracted from CTD <a class="footnote-reference brackets" href="#id13" id="id8">2</a> and pathways from WikiPathways <a class="footnote-reference brackets" href="#id15" id="id9">4</a>.</p>
+gene data are automatically extracted from CTD <a class="footnote-reference brackets" href="#id13" id="id8">2</a> and pathways from WikiPathways <a class="footnote-reference brackets" href="#id15" id="id9">4</a>.</p>
 <div class="section" id="target-genes">
 <h3>Target genes<a class="headerlink" href="#target-genes" title="Permalink to this headline">¶</a></h3>
 <p>Gene data information may come from three different source :</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Q1REIHJlcXVlc3Q=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Q1REIHJlcXVlc3Q=" name="Q1REIHJlcXVlc3Q=" role="tab" tabindex="0">CTD request</button><button aria-controls="panel-0-Q1REIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q1REIGZpbGU=" name="Q1REIGZpbGU=" role="tab" tabindex="-1">CTD file</button><button aria-controls="panel-0-R2VuZXMgZmlsZQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R2VuZXMgZmlsZQ==" name="R2VuZXMgZmlsZQ==" role="tab" tabindex="-1">Genes file</button></div><div aria-labelledby="tab-0-Q1REIHJlcXVlc3Q=" class="sphinx-tabs-panel group-tab" id="panel-0-Q1REIHJlcXVlc3Q=" name="Q1REIHJlcXVlc3Q=" role="tabpanel" tabindex="0"><div class="admonition warning">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-Q1REIHJlcXVlc3Q=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-Q1REIHJlcXVlc3Q=" name="Q1REIHJlcXVlc3Q=" role="tab" tabindex="0">CTD request</button><button aria-controls="panel-0-Q1REIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q1REIGZpbGU=" name="Q1REIGZpbGU=" role="tab" tabindex="-1">CTD file</button><button aria-controls="panel-0-R2VuZXMgZmlsZQ==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-R2VuZXMgZmlsZQ==" name="R2VuZXMgZmlsZQ==" role="tab" tabindex="-1">Genes file</button></div><div aria-labelledby="tab-0-Q1REIHJlcXVlc3Q=" class="sphinx-tabs-panel group-tab" id="panel-0-Q1REIHJlcXVlc3Q=" name="Q1REIHJlcXVlc3Q=" role="tabpanel" tabindex="0"><p>Give a list of <strong>environmental factors</strong>. CTD is requested and gives a list of target genes.</p>
+</div><div aria-labelledby="tab-0-Q1REIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q1REIGZpbGU=" name="Q1REIGZpbGU=" role="tabpanel" tabindex="0"><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The CTD database is updated every month (<a class="reference external" href="https://ctdbase.org/about/changes/">Updates page</a>). May provide is own
-version of data is interesting for reproducibility.</p>
+<p>The CTD database is updated every month (<a class="reference external" href="https://ctdbase.org/about/changes/">updates page</a>).
+It could be interesting to provide its own version of data for reproducibility.</p>
 </div>
-<p>Users give a list of <strong>environmental factors</strong>. CTD is requested an gives a list of target genes.</p>
-</div><div aria-labelledby="tab-0-Q1REIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q1REIGZpbGU=" name="Q1REIGZpbGU=" role="tabpanel" tabindex="0"><p>Users give a <strong>tsv file</strong> with the data from <strong>CTD</strong> database. Genes list is extracted from this file.</p>
-</div><div aria-labelledby="tab-0-R2VuZXMgZmlsZQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R2VuZXMgZmlsZQ==" name="R2VuZXMgZmlsZQ==" role="tabpanel" tabindex="0"><p>Users give a <strong>list of genes</strong> directly</p>
+<p>Give a <strong>tsv file</strong> with the data from <strong>CTD</strong> database. Genes list is extracted from this file.</p>
+</div><div aria-labelledby="tab-0-R2VuZXMgZmlsZQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-R2VuZXMgZmlsZQ==" name="R2VuZXMgZmlsZQ==" role="tabpanel" tabindex="0"><p>Give a <strong>list of genes</strong> directly.</p>
 </div></div>
+<p>For more details about the <a class="reference internal" href="../formats/Input.html#query"><span class="std std-ref">Target genes input files</span></a> format.</p>
 </div>
 <div class="section" id="pathways">
 <h3>Pathways<a class="headerlink" href="#pathways" title="Permalink to this headline">¶</a></h3>
 <p>Pathways can be extracted from two different sources :</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-V1AgcmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-V1AgcmVxdWVzdA==" name="V1AgcmVxdWVzdA==" role="tab" tabindex="0">WP request</button><button aria-controls="panel-1-R01UIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tab" tabindex="-1">GMT file</button></div><div aria-labelledby="tab-1-V1AgcmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-V1AgcmVxdWVzdA==" name="V1AgcmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>WP is updated regularly (<a class="reference external" href="https://www.wikipathways.org/index.php/WikiPathways:Updates">Updates page</a>).
-May provide is own version of data is interesting for reproducibility.</p>
-</div>
-<p>By default, <strong>Rare Disease Pathways</strong> are extracted from <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id15" id="id11">4</a>. The corresponding background genes are
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-V1AgcmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-V1AgcmVxdWVzdA==" name="V1AgcmVxdWVzdA==" role="tab" tabindex="0">WP request</button><button aria-controls="panel-1-R01UIGZpbGU=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tab" tabindex="-1">GMT file</button></div><div aria-labelledby="tab-1-V1AgcmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-V1AgcmVxdWVzdA==" name="V1AgcmVxdWVzdA==" role="tabpanel" tabindex="0"><p>By default, <strong>Rare Disease pathways</strong> are extracted from <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id15" id="id10">4</a>. The corresponding background genes are
 extracted in the same time (all human genes in WP).</p>
-</div><div aria-labelledby="tab-1-R01UIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tabpanel" tabindex="0"><p>Users give a <strong>GMT file</strong> with pathways. It could be rare diseases pathways from WP for a specific version,
-or a custom GMT file with <strong>pathways of interest</strong>. Pathways can come from different sources. Corresponding backgrounds
-genes are needed.</p>
+</div><div aria-labelledby="tab-1-R01UIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-R01UIGZpbGU=" name="R01UIGZpbGU=" role="tabpanel" tabindex="0"><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>WP is updated regularly (<a class="reference external" href="https://www.wikipathways.org/index.php/WikiPathways:Updates">updates page</a>).
+It could be interesting to provide its own version of data for reproducibility.</p>
+</div>
+<p>Give a <strong>GMT file</strong> with pathways. It could be</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>rare diseases pathways from WP for a specific version</p></li>
+<li><p>a custom GMT file with <strong>pathways of interest</strong>. Pathways can come from different sources.
+Corresponding backgrounds genes are needed.</p></li>
+</ul>
+</div></blockquote>
 </div></div>
+<p>For more details about the <a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">Pathways input files</span></a> format.</p>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>We performed an analysis to study the link between vitamin A and rare diseases. We illustrated the different source extraction
-through three examples.</p>
+through three examples :</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="../analysis/example1.html#example1"><span class="std std-ref">Example 1 : data source from requests</span></a></p></li>
@@ -260,8 +270,8 @@ through three examples.</p>
 </div></blockquote>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can mix input type. For instance, request CTD and give a custom GMT file of pathways of interest.
-Every combination is possible !</p>
+<p>You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+<strong>Every combination is possible !</strong></p>
 </div>
 </div>
 </div>
@@ -277,7 +287,7 @@ Every combination is possible !</p>
 <dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p>Balmer, J. E., &amp; Blomhoff, R. (2002). Gene expression regulation by retinoic acid. Journal of lipid research, 43(11), 1773-1808.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id9">2</a>,<a href="#id11">3</a>)</span></dt>
+<dt class="label" id="id15"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id9">2</a>,<a href="#id10">3</a>)</span></dt>
 <dd><p>Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., … &amp; Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.</p>
 </dd>
 <dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
