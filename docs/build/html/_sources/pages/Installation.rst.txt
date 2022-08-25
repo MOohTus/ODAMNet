@@ -14,7 +14,7 @@ Installation
 
    cd EnvironmentProject/
 
-3. Just run the setup.py file from that directory
+3. Run the setup.py file from that directory
 
 .. code-block:: bash
 

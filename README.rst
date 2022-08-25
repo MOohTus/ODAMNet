@@ -1,8 +1,6 @@
-
-
-
+==================================================
 README
-========
+==================================================
 
 Analyse the link between environmental factors and Rare Diseases. 
 
@@ -21,19 +19,19 @@ Installation
 
    cd EnvironmentProject/
 
-3. Just run the setup.py file from that directory
+3. Run the setup.py file from that directory
 
 .. code-block:: bash
 
    python3 setup.py install
 
-Requierements
+Requirements
 ----------------
-Python modules required are listed in the requierements.txt file. To install them : 
+Python modules required are listed in the requirements.txt file. To install them :
 
 .. code-block:: bash
 
-   python3 install requierements.txt
+   python3 install requirements.txt
 
 Usage
 ----------------
@@ -49,14 +47,16 @@ Three different methods are available to analysis your data :
    python3 main.py [overlap|domino|multixrank|networkCreation] [ARGS]
 
 
-Example
+Examples
 ----------------
 
-To study the overlap between Rare Diseases (from WikiPathway, WP) and genes targeted by environemental factors (extracted from CTD database), three approaches are implemented. 
+To study the overlap between Rare Diseases (from WikiPathways (WP)) and genes targeted by environmental factors (extracted
+from CTD database), three approaches are implemented :
 
 Overlap analysis
 ^^^^^^^^^^^^^^^^^
-Calcul the overlap between target genes and Rare Disease pathways. Search the direct association : target genes that take part of pathways. 
+This method Calculates the overlap between target genes and Rare Disease pathways. It's looking for direct association :
+target genes that take part of pathways. For more details : :ref:`overlap` section.
 
 .. code-block:: bash
 
