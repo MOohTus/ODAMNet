@@ -2,7 +2,7 @@
 README
 ==================================================
 
-The goal of this project is to develop computational approaches to analyse the links and overlaps between environmental factors, their molecular targets, and rare diseases and their associated genes.
+The goal of this project is to develop computational approaches to analyse the links and overlaps between environmental factors, their molecular targets, and rare diseases pathways.
 
 Installation 
 ----------------
@@ -49,13 +49,12 @@ Three different approaches are available to analyse your data:
 Examples
 ----------------
 
-To study the overlap between Rare Diseases (from WikiPathways (WP)) and genes targeted by environmental factors (extracted
-from CTD database), three approaches are implemented :
+Three approaches are implemented to study the relationships between Rare Diseases (from WikiPathways (WP)) and genes targeted by environmental factors (extracted
+from CTD database):
 
 Overlap analysis
 ^^^^^^^^^^^^^^^^^
-This method calculates the overlap between target genes and Rare Disease pathways. It's looking for direct association :
-target genes that take part of pathways.
+This method computes the overlap between CTD-associated target genes and WP Rare Disease pathways. It is looking for direct associations, i.e., target genes that are part of pathways.
 
 .. code-block:: bash
 
@@ -63,17 +62,18 @@ target genes that take part of pathways.
 
 Active Module Identification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Target genes are defined as "active genes" to search Active Modules (AM), based on a molecular network (e.g.
-Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (target genes + linked genes)
-and Rare Disease pathways. The target gene list is extended to others related genes.
+CTD-associated target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
+Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + associated genes)
+and Rare Disease pathways.
+The target gene list is extended to others related genes.%A% I'm not sure to get this sentence?
 
 .. code-block:: bash
 
    python3 main.py domino --factorList FILENAME --networkFile FILENAME
 
-Network and bipartite creation
+Network and bipartite creation %A% peut etre que ceci devrait etre une sous-section de RWR car c'est utilisé seulement la, non ? Et du coup on parle de 3 méthodes mais il y a 4 sous titres
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You might need to create a disconnected network of Rare Disease pathways and it's corresponding gene-disease bipartite.
+You might need to create a disconnected network of Rare Disease pathways and it's corresponding gene-disease bipartite. %A% je pense que disconnected network aurait besoin d'une definition, un peu plus d'explication sur pourquoi on fait ca
 You will use this network to perform a random walk method.
 
 .. code-block:: bash
@@ -82,8 +82,8 @@ You will use this network to perform a random walk method.
 
 Random Walk with Restart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-The third approach mesures the proximity of every gene within a multilayer to the target genes.
-It's a diffusion analysis from the factors through different molecular interactions to the disease.
+The third approach mesures the proximity of every gene to the target genes within a multilayer network.
+It's a diffusion analysis from the factors through different molecular interactions to the disease. %A% c'est un peu compliqué et les deux phrases ne sont pas écrite dans le meme ordre, on ne sait pas trop a quoi correspond "factor" car ce n'a pas été utilisé avant
 
 .. code-block:: bash
 
