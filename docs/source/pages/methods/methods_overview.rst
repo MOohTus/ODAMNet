@@ -23,15 +23,14 @@ Three methods are available to study the relationships between environmental fac
     :alt: methods overview
     :align: center
 
-    : Methods implemented overview
+    : Overview of the three implemented approaches
 
-Data source
+Data sources
 ==============
 
-Throughout this documentation, examples will be presented to illustrate these different sources of information. By default,
-gene data are automatically extracted from CTD [2]_ and pathways from WikiPathways [4]_.
+Throughout this documentation, examples will be presented to illustrate the different sources of information. By default, data are automatically extracted from CTD [2]_ and WikiPathways [4]_.
 
-Target genes
+Target genes %A% il faudra qu'on fasse un point sémantique: target genes, gene data, factor, environmental factor ... Pour être le plus génériques possibles
 ---------------
 
 Gene data information may come from three different source :
@@ -40,16 +39,16 @@ Gene data information may come from three different source :
 
     .. group-tab:: CTD request
 
-        Give a list of **environmental factors**. CTD is requested and gives a list of target genes.
+        Give a list of **environmental factors**. CTD is requested and returns a list of target genes associated with the input list of environmental factors. %A% je suis pas sure du mot "environmental" en fait, je sais pas si on peut dire par exemple qu'un médicament c'est un facteur environmental, ou alors en tous cas je suis pas sure que tout le monde considère ca du même point de vue.
 
     .. group-tab:: CTD file
 
-        .. warning::
+        .. warning::%A% est-ce que le warning devrait pas plutot etre sur le bullet point précédent du coup ?
 
             The CTD database is updated every month (`updates page <https://ctdbase.org/about/changes/>`_).
-            It could be interesting to provide its own version of data for reproducibility.
+            For reproducibility, one might want to produce its own data version.
 
-        Give a **tsv file** with the data from **CTD** database. Genes list is extracted from this file.
+        Give a **tsv file** with the data from **CTD** database. The gene list will be extracted from this file.
 
     .. group-tab:: Genes file
 
@@ -67,7 +66,7 @@ Pathways can be extracted from two different sources :
     .. group-tab:: WP request
 
         By default, **Rare Disease pathways** are extracted from **WikiPathways** [4]_. The corresponding background genes are
-        extracted in the same time (all human genes in WP).
+        extracted in the same time (all human genes in WP).%A% why do we need background ?
 
     .. group-tab:: GMT file
 
@@ -84,10 +83,10 @@ Pathways can be extracted from two different sources :
 
 For more details about the :ref:`pathways` format.
 
-Examples
+Examples %A% Use-cases?
 -----------
 
-We performed an analysis to study the link between vitamin A and rare diseases. We illustrated the different source extraction
+We performed an analysis to study the relationships between vitamin A and rare diseases. We illustrate the different source extraction
 through three examples :
 
     - :ref:`example1`
@@ -96,8 +95,8 @@ through three examples :
 
 .. tip::
 
-    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible !**
+    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible!**
 
 References
 ==============
