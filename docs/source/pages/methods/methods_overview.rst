@@ -1,22 +1,18 @@
 ==================================================
-Methods overview
+Overview of the approaches
 ==================================================
 
-As part of the EJP RD project, an overlap analysis was perform between a list of genes targeted by vitamin A and pathways
-related to CAKUT disease. The main goal of this analysis was to show if vitamin A could effect on CAKUT disease (Ozisik *et al.*, 2021 [1]_).
+In the context of the EJP-RD project, an overlap analysis between a list of genes targeted by vitamins A&D and pathways
+related to CAKUT disease was performed (Ozisik *et al.*, 2021 [1]_). For the vitamin A analysis, data was retrieved from several sources: the `Comparative Toxicogenomics Databse (CTD) <https://ctdbase.org/>`_ [2]_
+and the study of Balmer and Blomhoff [3]_ for the target genes, and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_ for the disease-associated genes.
 
-Data information came from several sources : the `Comparative Toxicogenomics Databse (CTD) <https://ctdbase.org/>`_ [2]_
-and the study of Balmer and Blomhoff [3]_ for the target genes and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_.
-
-With this project, we want to **automate the analysis** and extract data information **directly from databases**.
-The link between environmental factors and Rare Diseases can be **easily analysed**, only with a factors list.
-Other methods can be performed as Random Walk analyse or Active Subnetwork Identification in addition to overlap.
-Moreover, the tool is open to **external sources** provided by yourself.
+Here, our goal is to extract data **directly from databases**, **automatize such analysis**, and implement alternative approaches to uncover the relationships between environmental factors and Rare Diseases. We propose different approaches, from simple overlaps using a list of factors, to advances methods based on Active Subnetwork/Module identification or Randow Walk with Restart diffusion. %A% here too need to define or replace factor.
+Moreover, the tool is open to **external sources** provided by yourself.%A% here to say that other sources than CTD and WP can be used, right ?
 
 Methods
 =========
 
-Three methods are available to study the link between environmental factors and rare diseases (:numref:`overviewFig`) :
+Three methods are available to study the relationships between environmental factors and rare diseases (:numref:`overviewFig`) :
 
     - :ref:`overlap`
     - :ref:`AMI`
