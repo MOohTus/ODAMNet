@@ -2,7 +2,7 @@
 README
 ==================================================
 
-Analyse the link between environmental factors and Rare Diseases. 
+The goal of this project is to develop computational approaches to analyse the links and overlaps between environmental factors, their molecular targets, and rare diseases and their associated genes.
 
 Installation 
 ----------------
@@ -27,7 +27,7 @@ Installation
 
 Requirements
 ----------------
-Python modules required are listed in the requirements.txt file. To install them :
+The required Python modules are listed in the requirements.txt file. To install them:
 
 .. code-block:: bash
 
@@ -36,7 +36,7 @@ Python modules required are listed in the requirements.txt file. To install them
 Usage
 ----------------
 
-Three different methods are available to analysis your data : 
+Three different approaches are available to analyse your data: 
 
 - Overlap analysis
 - Active Module Identification (using DOMINO)
