@@ -24,7 +24,7 @@ Installation
 Requirements
 ==================================================
 
-Python modules required are listed in the requirements.txt file. To install them :
+The required Python modules are listed in the requirements.txt file. To install them:
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ Python modules required are listed in the requirements.txt file. To install them
 Usage
 ==================================================
 
-Three different methods are available to analysis your data :
+Three different approaches are available to analyse your data:
 
     #. Overlap analysis
     #. Active Module Identification (using DOMINO)
