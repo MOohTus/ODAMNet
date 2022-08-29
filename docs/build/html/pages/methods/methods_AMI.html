@@ -198,28 +198,28 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="line-block">
-<div class="line">To perform this method, we are using DOMINO <a class="footnote-reference brackets" href="#id13" id="id1">1</a> and running the analysis on their server <a class="footnote-reference brackets" href="#id14" id="id2">2</a></div>
+<div class="line">We are using DOMINO <a class="footnote-reference brackets" href="#id13" id="id1">1</a> for Active Module identification, and running the analysis on their server <a class="footnote-reference brackets" href="#id14" id="id2">2</a></div>
 <div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/Shamir-Lab/domino_web">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-globe" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg> <a class="reference external" href="http://domino.cs.tau.ac.il/">website</a></div>
 </div>
 </div>
-<p>Target genes are defined as <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Genes</span></code>. DOMINO are looking for <strong>active modules</strong> through a network
-(e.g. Protein-Protein Interaction (PPI)) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
-<p>Active modules (AM) are composed of active genes and other linked genes and would ideally represent distinct functional modules.</p>
-<p>Then, an <strong>overlap analysis</strong> is performed for each AM with pathways of interest.
-It’s a kind of <strong>network extension</strong> analysis, <strong>indirect associations</strong> with diseases are search.</p>
-<p>The <a class="reference internal" href="#dominofig"><span class="std std-numref">Fig. 2</span></a> (Fig3 on the DOMINO’s paper <a class="footnote-reference brackets" href="#id13" id="id3">1</a>) is an overview of the DOMINO algorithm :</p>
+<p>Target genes are defined as <code class="docutils literal notranslate"><span class="pre">Active</span> <span class="pre">Genes</span></code>. DOMINO is looking for <strong>active modules</strong> in a network
+(e.g. a Protein-Protein Interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
+<p>Active modules (AM) are composed of active genes and other associated genes and would ideally represent distinct functional modules.</p>
+<p>We finally perform an <strong>overlap analysis</strong> between each AM and the pathways of interest.
+This approach is a kind of <strong>network extension</strong> analysis, <strong>indirect associations</strong> with diseases are search.</p>
+<p>The <a class="reference internal" href="#dominofig"><span class="std std-numref">Fig. 2</span></a> is an overview of the DOMINO algorithm :</p>
 <div class="line-block">
-<div class="line"><strong>A -</strong> The network is split into disjoint and highly connected subnetworks (slices) with the Louvain modularity method.</div>
-<div class="line"><strong>B -</strong> Detection of the relevant slices (where active genes are over-represented) using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
-<div class="line"><strong>C -</strong> Identification of the most active sub-slice on eah relevant slices.</div>
-<div class="line"><strong>D -</strong> Sub-slices are split into putatite Active Modules (AM) using the Newmann-Girvan modularity method.</div>
-<div class="line"><strong>E -</strong> Identification of the final set of AM (under a threshold)</div>
+<div class="line"><strong>A -</strong> The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.</div>
+<div class="line"><strong>B -</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
+<div class="line"><strong>C -</strong> The most active sub-slice is identified on each relevant slices.</div>
+<div class="line"><strong>D -</strong> The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.</div>
+<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold)</div>
 </div>
 <div class="figure align-center" id="id19">
 <span id="dominofig"></span><img alt="DOMINO method" src="../../_images/DOMINO_method.jpg" />
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id13" id="id4">1</a>)</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
-<p><em>For more details, go to the paper</em> <a class="footnote-reference brackets" href="#id13" id="id5">1</a></p>
+<p><em>For more details, see the DOMINO publication</em> <a class="footnote-reference brackets" href="#id13" id="id5">1</a></p>
 </div>
 <div class="section" id="required-arguments">
 <h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
@@ -328,17 +328,17 @@ the UUID of the network (e.g. <code class="docutils literal notranslate"><span c
 </div></div>
 </div>
 <div class="section" id="networks-available">
-<h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
+<h2>Available Interaction Networks<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Be careful when you use network from NDEx. Indeed, gene IDs format are not consistent between network.
-For instance, CTD returns symbol genes (i.e. HGNC) so the network need to contains symbol genes and not ensembl IDs.
+<p>Be careful when using network from NDEx: gene IDs format are not always consistent between networks and betwenn networks and data from CTD or other input gene lists and pathways.
+For instance, CTD returns gene symbols (i.e. HGNC). If CTD data are used, the network needs to contain gene symbols and not ensembl IDs or any other gene name format.
 The rule applies on GMT files too.</p>
 </div>
 <div class="section" id="protein-protein-interaction-network">
 <h3>Protein-Protein Interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this headline">¶</a></h3>
-<p>We provide with the script a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id16" id="id7">4</a>, November 2016). It contains <strong>symbol genes</strong> and you
-give it to the script using the required argument <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+<p>We provide with the script a PPI network (from Valdeolivas <em>et al.,</em> <a class="footnote-reference brackets" href="#id16" id="id7">4</a>, November 2016). The gene name format is <strong> gene symbols</strong>; you
+can give it to the script using the required argument <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 <p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">VPS52</span>
