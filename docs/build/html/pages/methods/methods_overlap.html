@@ -197,19 +197,17 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This method is exactly the same that Ozisik <em>et al.,</em> implemented on his paper <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
+<p>This approach is the one implemented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
 </div>
-<p>This method calculates the overlap between genes and pathways of interest. We are looking for genes that are part of pathways.
-It’s a <strong>direct association</strong> (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
-<p>First, the method calculates the <strong>overlap</strong> between genes and each pathways. Then, a <strong>statistical significance</strong> is calculated
-using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) method is apply to correct values and
-decrease the false discovery rate.</p>
+<p>This method calculates the overlap between a list of genes, for instance genes that are targeted by environmental factors, and pathways of interest. In other words, it looks for genes that are part of pathways, i.e., <strong>direct association</strong> (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
+<p>First, the method compute the <strong>overlap</strong> between target genes and all the pathways. Then, a <strong>statistical significance</strong> is calculated
+using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied to correct the pvalues.</p>
 </div>
 <div class="section" id="required-arguments">
 <h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+<p>You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.%A% I think this sentence is too complex and confusing
 <strong>Every combination is possible !</strong></p>
 </div>
 <div class="sphinx-tabs docutils container">
