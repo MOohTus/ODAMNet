@@ -27,6 +27,7 @@ Installation
 
 Requirements
 ----------------
+
 The required Python modules are listed in the requirements.txt file. To install them:
 
 .. code-block:: bash
@@ -53,7 +54,8 @@ Three approaches are implemented to study the relationships between Rare Disease
 from CTD database):
 
 Overlap analysis
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
+
 This method computes the overlap between CTD-associated target genes and WP Rare Disease pathways. It is looking for direct associations, i.e., target genes that are part of pathways.
 
 .. code-block:: bash
@@ -61,7 +63,8 @@ This method computes the overlap between CTD-associated target genes and WP Rare
    python3 main.py overlap --factorList FILENAME
 
 Active Module Identification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
+
 CTD-associated target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
 Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + associated genes)
 and Rare Disease pathways.
@@ -71,19 +74,25 @@ The target gene list is extended to others related genes.%A% I'm not sure to get
 
    python3 main.py domino --factorList FILENAME --networkFile FILENAME
 
-Network and bipartite creation %A% peut etre que ceci devrait etre une sous-section de RWR car c'est utilisé seulement la, non ? Et du coup on parle de 3 méthodes mais il y a 4 sous titres
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-You might need to create a disconnected network of Rare Disease pathways and it's corresponding gene-disease bipartite. %A% je pense que disconnected network aurait besoin d'une definition, un peu plus d'explication sur pourquoi on fait ca
-You will use this network to perform a random walk method.
+Random Walk with Restart
+""""""""""""""""""""""""""""
+
+Network and bipartite creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To perform a Random Walk with Restart through molecular multilayer and diseases network, you need to create a disease network
+and link it to the multilayer (i.e. with the bipartite). This network will not have connection between diseases (i.e. disconnected network).
+Diseases will be only connected with genes (in the multilayer) that are involved in disease pathways.
 
 .. code-block:: bash
 
    python3 main.py networkCreation --networksPath PATH --bipartitePath PATH
 
-Random Walk with Restart
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-The third approach mesures the proximity of every gene to the target genes within a multilayer network.
-It's a diffusion analysis from the factors through different molecular interactions to the disease. %A% c'est un peu compliqué et les deux phrases ne sont pas écrite dans le meme ordre, on ne sait pas trop a quoi correspond "factor" car ce n'a pas été utilisé avant
+multiXrank
+^^^^^^^^^^^^^^^^^^
+
+The third approach mesures the proximity of every nodes (g.e. genes, diseases) to the target genes within a multilayer network.
+The walk starts from target genes and diffuses through the multilayer composed of different molecular interactions to the disease.
 
 .. code-block:: bash
 

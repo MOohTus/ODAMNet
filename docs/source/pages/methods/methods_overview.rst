@@ -3,11 +3,19 @@ Overview of the approaches
 ==================================================
 
 In the context of the EJP-RD project, an overlap analysis between a list of genes targeted by vitamins A&D and pathways
-related to CAKUT disease was performed (Ozisik *et al.*, 2021 [1]_). For the vitamin A analysis, data was retrieved from several sources: the `Comparative Toxicogenomics Databse (CTD) <https://ctdbase.org/>`_ [2]_
-and the study of Balmer and Blomhoff [3]_ for the target genes, and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_ for the disease-associated genes.
+related to CAKUT disease was performed (Ozisik *et al.*, 2021 [1]_). For the vitamin A analysis, data was retrieved from
+several sources: the `Comparative Toxicogenomics Databse (CTD) <https://ctdbase.org/>`_ [2]_ and the study of Balmer and
+Blomhoff [3]_ for the target genes, and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_
+for the disease-associated genes.
 
-Here, our goal is to extract data **directly from databases**, **automatize such analysis**, and implement alternative approaches to uncover the relationships between environmental factors and Rare Diseases. We propose different approaches, from simple overlaps using a list of factors, to advances methods based on Active Subnetwork/Module identification or Randow Walk with Restart diffusion. %A% here too need to define or replace factor.
-Moreover, the tool is open to **external sources** provided by yourself.%A% here to say that other sources than CTD and WP can be used, right ?
+Here, our goal is to extract data **directly from databases**, **automatize such analysis**, and implement alternative
+approaches to uncover the relationships between environmental factors and Rare Diseases.
+Data are extracted automatically from CTD [2]_ for target genes and WP [4]_ for Rare Disease pathways.
+We propose different approaches, from simple overlaps using a list of factors, to advances methods based on Active
+Subnetwork/Module identification or Random Walk with Restart diffusion. %A% here too need to define or replace factor.
+
+Moreover, the tool is open to **external sources** provided by yourself (g.e. target genes list instead of environmental
+factor, Reactome pathways etc ...)
 
 Methods
 =========
@@ -39,14 +47,14 @@ Gene data information may come from three different source :
 
     .. group-tab:: CTD request
 
-        Give a list of **environmental factors**. CTD is requested and returns a list of target genes associated with the input list of environmental factors. %A% je suis pas sure du mot "environmental" en fait, je sais pas si on peut dire par exemple qu'un médicament c'est un facteur environmental, ou alors en tous cas je suis pas sure que tout le monde considère ca du même point de vue.
-
-    .. group-tab:: CTD file
-
-        .. warning::%A% est-ce que le warning devrait pas plutot etre sur le bullet point précédent du coup ?
+        .. warning::
 
             The CTD database is updated every month (`updates page <https://ctdbase.org/about/changes/>`_).
             For reproducibility, one might want to produce its own data version.
+
+        Give a list of **environmental factors**. CTD is requested and returns a list of target genes associated with the input list of environmental factors. %A% je suis pas sure du mot "environmental" en fait, je sais pas si on peut dire par exemple qu'un médicament c'est un facteur environmental, ou alors en tous cas je suis pas sure que tout le monde considère ca du même point de vue.
+
+    .. group-tab:: CTD file
 
         Give a **tsv file** with the data from **CTD** database. The gene list will be extracted from this file.
 
@@ -65,15 +73,15 @@ Pathways can be extracted from two different sources :
 
     .. group-tab:: WP request
 
-        By default, **Rare Disease pathways** are extracted from **WikiPathways** [4]_. The corresponding background genes are
-        extracted in the same time (all human genes in WP).%A% why do we need background ?
-
-    .. group-tab:: GMT file
-
         .. warning::
 
             WP is updated regularly (`updates page <https://www.wikipathways.org/index.php/WikiPathways:Updates>`_).
             It could be interesting to provide its own version of data for reproducibility.
+
+        By default, **Rare Disease pathways** are extracted from **WikiPathways** [4]_. The corresponding background genes are
+        extracted in the same time (all human genes in WP). The background genes is necessary to calculate statistics.
+
+    .. group-tab:: GMT file
 
         Give a **GMT file** with pathways. It could be
 
@@ -86,8 +94,8 @@ For more details about the :ref:`pathways` format.
 Examples %A% Use-cases?
 -----------
 
-We performed an analysis to study the relationships between vitamin A and rare diseases. We illustrate the different source extraction
-through three examples :
+We performed an analysis to study the relationships between vitamin A and Rare Diseases. We illustrate the different
+possibilities of data extraction from different sources through three examples :
 
     - :ref:`example1`
     - :ref:`example2`

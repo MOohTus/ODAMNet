@@ -9,25 +9,25 @@ Principle
 
 .. note::
 
-    | To perform this method, we are using DOMINO [1]_ and running the analysis on their server [2]_
+    | We are using DOMINO [1]_ for Active Module identification and running the analysis on their server [2]_
     | :octicon:`mark-github;1em` `GitHub <https://github.com/Shamir-Lab/domino_web>`_ :octicon:`globe;1em` `website <http://domino.cs.tau.ac.il/>`_
 
 
-Target genes are defined as ``Active Genes``. DOMINO are looking for **active modules** through a network
-(e.g. Protein-Protein Interaction (PPI)) (:numref:`overviewFig` - middle part).
+Target genes are defined as ``Active Genes``. DOMINO is looking for **active modules** in a network
+(e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-Active modules (AM) are composed of active genes and other linked genes and would ideally represent distinct functional modules.
+Active modules (AM) are composed of active genes and other associated genes and would ideally represent distinct functional modules.
 
-Then, an **overlap analysis** is performed for each AM with pathways of interest.
-It's a kind of **network extension** analysis, **indirect associations** with diseases are search.
+We finally perform an **overlap analysis** between each AM and the pathways of interest. This approach is a kind of
+**network extension** analysis, **indirect associations** with diseases are search.
 
-The :numref:`dominoFig` (Fig3 on the DOMINO's paper [1]_) is an overview of the DOMINO algorithm :
+The :numref:`dominoFig` is an overview of the DOMINO algorithm :
 
-| **A -** The network is split into disjoint and highly connected subnetworks (slices) with the Louvain modularity method.
-| **B -** Detection of the relevant slices (where active genes are over-represented) using the Hypergeometric test. Pvalue are corrected with the FDR method.
-| **C -** Identification of the most active sub-slice on eah relevant slices.
-| **D -** Sub-slices are split into putatite Active Modules (AM) using the Newmann-Girvan modularity method.
-| **E -** Identification of the final set of AM (under a threshold)
+| **A -** The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.
+| **B -** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
+| **C -** The most active sub-slice is identified on each relevant slices.
+| **D -** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
+| **E -** The final set of AM is identified (under a threshold)
 
 .. _dominoFig:
 .. figure:: ../../pictures/DOMINO_method.jpg
@@ -36,15 +36,15 @@ The :numref:`dominoFig` (Fig3 on the DOMINO's paper [1]_) is an overview of the 
 
     : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
 
-*For more details, go to the paper* [1]_
+*For more details, see to the paper DOMINO publication* [1]_
 
 Required arguments
 --------------------
 
 .. tip::
 
-    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible !**
+    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible!**
 
 .. tabs::
 
@@ -147,20 +147,21 @@ Command line examples
                                     --networkFile examples/InputData/PPI_network_2016.sif \
                                     --outputPath examples/OutputResults_example3/
 
-Networks available
---------------------
+Available Interaction Networks
+-----------------------------------
 
 .. warning::
 
-    Be careful when you use network from NDEx. Indeed, gene IDs format are not consistent between network.
-    For instance, CTD returns symbol genes (i.e. HGNC) so the network need to contains symbol genes and not ensembl IDs.
-    The rule applies on GMT files too.
+    Be careful when using networks from NDEx: gene IDs format are not always consistent between networks and data from
+    CTD or other input gene lists and pathways.
+    For instance, CTD returns gene symbols (i.e. HGNC). If CTD data are used, the network need to contains gene symbols
+    and not ensembl IDs or any other gene name format. The rule applies on GMT files too.
 
 Protein-Protein Interaction network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). It contains **symbol genes** and you
-give it to the script using the required argument ``-n, --networkFile``.
+We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
+**gene symbols**, you can give it to the script using the required argument ``-n, --networkFile``.
 
 It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :
 

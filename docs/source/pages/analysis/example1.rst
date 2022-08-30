@@ -1,7 +1,7 @@
 .. _example1:
 
 ==================================================
-Example 1 : data source from requests
+Example 1 : data are extracted with requests
 ==================================================
 
 Study the link between vitamin A and rare diseases

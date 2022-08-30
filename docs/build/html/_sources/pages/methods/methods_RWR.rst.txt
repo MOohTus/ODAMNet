@@ -25,8 +25,8 @@ Required arguments
 
 .. tip::
 
-    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible !**
+    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible!**
 
 .. tabs::
 

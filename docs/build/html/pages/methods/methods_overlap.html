@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Active Module Identification" href="methods_AMI.html" />
-    <link rel="prev" title="Methods overview" href="methods_overview.html" /> 
+    <link rel="prev" title="Overview of the approaches" href="methods_overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,7 +102,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Methods</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Methods overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Overview of the approaches</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
@@ -111,9 +111,9 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data source from requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data source from database files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : custom data source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data are extracted with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data are loaded from database files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -197,18 +197,21 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This approach is the one implemented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
+<p>This approach is the one implemented in Ozisik <em>et al.,</em> implemented on his paper <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
 </div>
-<p>This method calculates the overlap between a list of genes, for instance genes that are targeted by environmental factors, and pathways of interest. In other words, it looks for genes that are part of pathways, i.e., <strong>direct association</strong> (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
-<p>First, the method compute the <strong>overlap</strong> between target genes and all the pathways. Then, a <strong>statistical significance</strong> is calculated
-using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied to correct the pvalues.</p>
+<p>This method calculates the overlap between a list of genes, for instance genes that are targeted by environmental factors,
+and pathways of interest. In other words, it looks for genes that are part of pathways, i.e. <strong>direct association</strong>
+(<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
+<p>First, the method computes the <strong>overlap</strong> between target genes and all the pathways. Then, a <strong>statistical significance</strong>
+is calculated using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied
+to correct the pvalues.</p>
 </div>
 <div class="section" id="required-arguments">
 <h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.%A% I think this sentence is too complex and confusing
-<strong>Every combination is possible !</strong></p>
+<p>You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+<strong>Every combination is possible!</strong> %A% I think this sentence is too complex and confusing</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-0-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
@@ -312,7 +315,7 @@ You can set a threshold on the number of publications needed to extract the inte
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="methods_AMI.html" class="btn btn-neutral float-right" title="Active Module Identification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="methods_overview.html" class="btn btn-neutral float-left" title="Methods overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="methods_overview.html" class="btn btn-neutral float-left" title="Overview of the approaches" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

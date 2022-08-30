@@ -1,8 +1,8 @@
 .. _example3:
 
-==================================================
-Example 3 : custom data source
-==================================================
+=======================================================
+Example 3 : data are provided directly by the users
+=======================================================
 
 On the Ozisik's paper, link between genes targeted by vitamin A and CAKUT disease is analysis.
 He created a custom target genes list from Balmer and all (mettre la date) et selected pathways related to CAKUT disease from several

@@ -9,22 +9,23 @@ Principle
 
 .. note::
 
-    This method is exactly the same that Ozisik *et al.,* implemented on his paper [1]_ .
+    This approach is the one implemented in Ozisik *et al.,* implemented on his paper [1]_ .
 
-This method calculates the overlap between genes and pathways of interest. We are looking for genes that are part of pathways.
-It's a **direct association** (:numref:`overviewFig` - left part).
+This method calculates the overlap between a list of genes, for instance genes that are targeted by environmental factors,
+and pathways of interest. In other words, it looks for genes that are part of pathways, i.e. **direct association**
+(:numref:`overviewFig` - left part).
 
-First, the method calculates the **overlap** between genes and each pathways. Then, a **statistical significance** is calculated
-using an **hypergeometric test**. Finally, a **Benjamini-Hochberg** (BH adjusted) method is apply to correct values and
-decrease the false discovery rate.
+First, the method computes the **overlap** between target genes and all the pathways. Then, a **statistical significance**
+is calculated using an **hypergeometric test**. Finally, a **Benjamini-Hochberg** (BH adjusted) correction is applied
+to correct the pvalues.
 
 Required arguments
 --------------------
 
 .. tip::
 
-    You can mix input type. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible !**
+    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
+    **Every combination is possible!** %A% I think this sentence is too complex and confusing
 
 .. tabs::
 

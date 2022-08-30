@@ -1,7 +1,7 @@
 .. _example2:
 
 ==================================================
-Example 2 : data source from database files
+Example 2 : data are loaded from database files
 ==================================================
 
 .. tip::
