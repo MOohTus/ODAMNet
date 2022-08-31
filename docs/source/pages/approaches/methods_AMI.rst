@@ -27,7 +27,7 @@ The :numref:`dominoFig` is an overview of the DOMINO algorithm :
 | **B -** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
 | **C -** The most active sub-slice is identified on each relevant slices.
 | **D -** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
-| **E -** The final set of AM is identified (under a threshold)
+| **E -** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05)
 
 .. _dominoFig:
 .. figure:: ../../pictures/DOMINO_method.jpg

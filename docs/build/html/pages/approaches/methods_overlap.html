@@ -100,20 +100,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Overview of the approaches</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methods_newNetwork.html">Network creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data are loaded from database files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -178,7 +176,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/pages/methods/methods_overlap.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/approaches/methods_overlap.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,65 +195,42 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This approach is the one implemented in Ozisik <em>et al.,</em> implemented on his paper <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
+<p>This approach is the one implemented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1">1</a> .</p>
 </div>
-<p>This method calculates the overlap between a list of genes, for instance genes that are targeted by environmental factors,
-and pathways of interest. In other words, it looks for genes that are part of pathways, i.e. <strong>direct association</strong>
+<p>This method calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways of interest</strong>.
+In other words, it looks for genes that are part of pathways, i.e. <strong>direct overlap</strong>
 (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
-<p>First, the method computes the <strong>overlap</strong> between target genes and all the pathways. Then, a <strong>statistical significance</strong>
+<p>First, an <strong>overlap</strong> between target genes and all the pathways is computed. Then, a <strong>statistical significance</strong>
 is calculated using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied
 to correct the pvalues.</p>
 </div>
-<div class="section" id="required-arguments">
-<h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-<strong>Every combination is possible!</strong> %A% I think this sentence is too complex and confusing</p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>automatic request</em>).
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
+extracted from <strong>WP</strong> automatically too. You can give some optional arguments to custom the selection of target genes.</p>
+<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data from users</em>)
+with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
+<div class="figure align-center" id="id3">
+<span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/OverlapAnalysis_graph.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
+<p><em>Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).</em>
+<em>Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the</em>
+<em>input data come from request.</em></p>
+</div>
+<div class="section" id="arguments-of-overlap-analysis">
+<h2>Arguments of overlap analysis<a class="headerlink" href="#arguments-of-overlap-analysis" title="Permalink to this headline">¶</a></h2>
+<p>If you want to extract target genes from <strong>CTD</strong> and <strong>RD pathways</strong> from WP, use the parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">from</span> <span class="pre">request</span></code> tab.
+If you want to provide <strong>your own</strong> target genes and pathways/processes, use the parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is use for both data extraction.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-0-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-0-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-0-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
-[<a class="reference internal" href="../formats/Input.html#factorlist"><span class="std std-ref">FORMAT</span></a>]</p>
+[<span class="xref std std-ref">FORMAT</span>] <strong>[required]</strong></p>
 </dd>
-</dl>
-</div><div aria-labelledby="tab-0-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-separated file from CTD request. [<a class="reference internal" href="../formats/Input.html#ctdfile"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of the different background source file name. Each background genes source is a GMT file.
-It should be in the same order than the GMT file. Here, the background GMT file contains
-all Rare Disease pathways.
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-</dl>
-</div><div aria-labelledby="tab-0-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of genes of interest. One gene per line. [<a class="reference internal" href="../formats/Input.html#geneslist"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-delimited file that describes gene sets of pathways of interest.
-Pathways can come from several sources (e.g. WP and GO:BP).
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of the different background source file name. Each background genes source is a GMT file.
-It should be in the same order than the GMT file.
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-</dl>
-</div></div>
-</div>
-<div class="section" id="optionals-arguments">
-<h2>Optionals arguments<a class="headerlink" href="#optionals-arguments" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
 <dd><div class="line-block">
 <div class="line">If <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, only the genes targeted by the factors are extracted.</div>
@@ -268,32 +243,46 @@ It should be in the same order than the GMT file.
 You can set a threshold on the number of publications needed to extract the interaction.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
+</dl>
+</div><div aria-labelledby="tab-0-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-g</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of genes of interest. One gene per line. [<a class="reference internal" href="../formats/Input.html#geneslist"><span class="std std-ref">FORMAT</span></a>]
+<strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>Tab-delimited file that describes gene sets of pathways of interest.
+Pathways can come from several sources (e.g. WP and GO:BP).
+[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]
+<strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>List of the different background source file name. Each background genes source is a GMT file.
+It should be in the same order than the GMT file.
+[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]
+<strong>[required]</strong></p>
+</dd>
+</dl>
+</div></div>
+<dl class="option-list">
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
 <dd><p>Name of the folder where to save the results.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
 </div>
-<div class="section" id="command-line-examples">
-<h2>Command line examples<a class="headerlink" href="#command-line-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="use-cases-command-line">
+<h2>Use cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-1-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-1-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-1-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-1-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
                         --nbPub <span class="m">2</span> <span class="se">\</span>
-                        --outputPath examples/OutputResults_example1/
+                        --outputPath examples/OutputResults_useCase1/
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv <span class="se">\</span>
-                        --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt <span class="se">\</span>
-                        --backgroundFile examples/InputData/backgroundsFiles.tsv <span class="se">\</span>
-                        --nbPub <span class="m">2</span> <span class="se">\</span>
-                        --outputPath examples/OutputResults_example2/
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt <span class="se">\</span>
-                        --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
+</div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --targetGenesFile examples/InputData/InputFromPaper/VitA-CTD-Genes.txt <span class="se">\</span>
+                        --GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
                         --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt <span class="se">\</span>
-                        --outputPath examples/OutputResults_example3/
+                        --outputPath examples/OutputResults_useCase2/
 </pre></div>
 </div>
 </div></div>

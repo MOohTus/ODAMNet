@@ -100,20 +100,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Overview of the approaches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="methods_newNetwork.html">Network creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example1.html">Example 1 : data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example2.html">Example 2 : data are loaded from database files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/example3.html">Example 3 : data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -178,7 +176,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/pages/methods/methods_AMI.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/approaches/methods_AMI.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -207,17 +205,17 @@
 <p>Active modules (AM) are composed of active genes and other associated genes and would ideally represent distinct functional modules.</p>
 <p>We finally perform an <strong>overlap analysis</strong> between each AM and the pathways of interest. This approach is a kind of
 <strong>network extension</strong> analysis, <strong>indirect associations</strong> with diseases are search.</p>
-<p>The <a class="reference internal" href="#dominofig"><span class="std std-numref">Fig. 2</span></a> is an overview of the DOMINO algorithm :</p>
+<p>The <a class="reference internal" href="#dominofig"><span class="std std-numref">Fig. 3</span></a> is an overview of the DOMINO algorithm :</p>
 <div class="line-block">
 <div class="line"><strong>A -</strong> The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.</div>
 <div class="line"><strong>B -</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
 <div class="line"><strong>C -</strong> The most active sub-slice is identified on each relevant slices.</div>
 <div class="line"><strong>D -</strong> The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.</div>
-<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold)</div>
+<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold of Bonferroni qval&lt;=0.05)</div>
 </div>
 <div class="figure align-center" id="id18">
 <span id="dominofig"></span><img alt="DOMINO method" src="../../_images/DOMINO_method.jpg" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id12" id="id3">1</a>)</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id12" id="id3">1</a>)</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </div>
 <p><em>For more details, see to the paper DOMINO publication</em> <a class="footnote-reference brackets" href="#id12" id="id4">1</a></p>
 </div>

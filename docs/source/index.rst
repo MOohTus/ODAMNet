@@ -17,22 +17,20 @@ EnvironmentProject's documentation
 
 .. toctree::
    :titlesonly:
-   :caption: Methods
+   :caption: Approaches
 
-   pages/methods/methods_overview
-   pages/methods/methods_overlap
-   pages/methods/methods_AMI
-   pages/methods/methods_RWR
-   pages/methods/methods_newNetwork
-   pages/methods/Cytoscape
+   pages/approaches/methods_overview
+   pages/approaches/methods_overlap
+   pages/approaches/methods_AMI
+   pages/approaches/methods_RWR
+   pages/approaches/Cytoscape
 
 .. toctree::
    :maxdepth: 2
    :caption: Analysis
 
-   pages/analysis/example1
-   pages/analysis/example2
-   pages/analysis/example3
+   pages/analysis/usecase1
+   pages/analysis/usecase2
 
 .. toctree::
    :maxdepth: 1
