@@ -103,7 +103,7 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading"></a></h2>
 <div class="line-block">
 <div class="line">Create automatically a disconnected diseases network using your pathways of interest.</div>
-<div class="line">A SIF (Simple interaction file) with three columns is created [<a class="reference internal" href="../formats/Input.html#net"><span class="std std-ref">FORMAT</span></a>]</div>
+<div class="line">A SIF (Simple interaction file) with three columns is created [<span class="xref std std-ref">FORMAT</span>]</div>
 </div>
 <p>Display a picture to explain how it’s work (bipartite for the link and the disconnected network).</p>
 </section>
@@ -189,7 +189,7 @@ For reproducibility, one might want to produce its own data version.</p>
 </div><div aria-labelledby="tab-2-Q1REIGZpbGU=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-Q1REIGZpbGU=" name="Q1REIGZpbGU=" role="tabpanel" tabindex="0"><p>Give a <strong>tsv file</strong> with the data from <strong>CTD</strong> database. The gene list will be extracted from this file.</p>
 </div><div aria-labelledby="tab-2-R2VuZXMgZmlsZQ==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-R2VuZXMgZmlsZQ==" name="R2VuZXMgZmlsZQ==" role="tabpanel" tabindex="0"><p>Give a <strong>list of genes</strong> directly.</p>
 </div></div>
-<p>For more details about the <a class="reference internal" href="../formats/Input.html#query"><span class="std std-ref">Target genes input files</span></a> format.</p>
+<p>For more details about the <a class="reference internal" href="../formats/Input.html#query"><span class="std std-ref">Target genes</span></a> format.</p>
 </section>
 <section id="pathways">
 <h2>Pathways<a class="headerlink" href="#pathways" title="Permalink to this heading"></a></h2>
@@ -211,7 +211,7 @@ Corresponding backgrounds genes are needed.</p></li>
 </ul>
 </div></blockquote>
 </div></div>
-<p>For more details about the <a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">Pathways input files</span></a> format.</p>
+<p>For more details about the <a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">Pathways of interest input files</span></a> format.</p>
 </section>
 <section id="examples-a-use-cases">
 <h2>Examples %A% Use-cases?<a class="headerlink" href="#examples-a-use-cases" title="Permalink to this heading"></a></h2>
@@ -241,7 +241,7 @@ target genes and the Rare Diseases pathways.</p>
 <dt><kbd><span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
-[<span class="xref std std-ref">FORMAT</span>]</p>
+[<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>]</p>
 </dd>
 </dl>
 </section>
@@ -271,7 +271,7 @@ You can set a threshold on the number of publications needed to extract the inte
 using the <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> parameter and WikiPathways files using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameters.</p>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-separated file from CTD request. [<a class="reference internal" href="../formats/Input.html#ctdfile"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>Tab-separated file from CTD request. [<span class="xref std std-ref">FORMAT</span>]</p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
@@ -295,7 +295,7 @@ of interest.</p>
 <h3>Required input files<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-g</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of genes of interest. One gene per line. [<a class="reference internal" href="../formats/Input.html#geneslist"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>List of genes of interest. One gene per line. [<span class="xref std std-ref">FORMAT</span>]</p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>Tab-delimited file that describes gene sets of pathways of interest.
@@ -347,7 +347,7 @@ and the Rare Diseases pathways.</p>
 using the <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> parameter and WikiPathways files using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameters.</p>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-separated file from CTD request. [<a class="reference internal" href="../formats/Input.html#ctdfile"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>Tab-separated file from CTD request. [<span class="xref std std-ref">FORMAT</span>]</p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
@@ -368,12 +368,12 @@ of interest.</p>
 <dt><kbd><span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
-[<span class="xref std std-ref">FORMAT</span>]</p>
+[<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>]</p>
 </dd>
 </dl>
 </div><div aria-labelledby="tab-5-VXNlciBmaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-5-VXNlciBmaWxlcw==" name="VXNlciBmaWxlcw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-g</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of genes of interest. One gene per line. [<a class="reference internal" href="../formats/Input.html#geneslist"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>List of genes of interest. One gene per line. [<span class="xref std std-ref">FORMAT</span>]</p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>Tab-delimited file that describes gene sets of pathways of interest.
