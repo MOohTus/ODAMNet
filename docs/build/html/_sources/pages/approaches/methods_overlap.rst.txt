@@ -22,7 +22,7 @@ to correct the pvalues.
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`overlapFig`: *automatic request*).
+By default, data are extracted directly by request databases (:numref:`overlapFig`: *data from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
 extracted from **WP** automatically too. You can give some optional arguments to custom the selection of target genes.
 
@@ -45,8 +45,9 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 Arguments of overlap analysis
 --------------------------------
 
-If you want to extract target genes from **CTD** and **RD pathways** from WP, use the parameters on the ``Data from request`` tab.
-If you want to provide **your own** target genes and pathways/processes, use the parameters on the ``Data from user`` tab.
+To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data from requests`` tab. 
+To provide **your own** target genes and pathways/processes files, see parameters on the ``Data from user`` tab. 
+
 
 The ``--outputPath`` parameter is use for both data extraction.
 
@@ -60,24 +61,24 @@ The ``--outputPath`` parameter is use for both data extraction.
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
-            | If ``TRUE``, only the genes targeted by the factors are extracted.
-            | If ``FALSE``, the genes targeted by the factors and all the descendant molecules are extracted.
+            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``FALSE``: extract chemicals and their child molecules (any descendant chemicals) data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
-            In CTD, an interaction between a gene and a molecule can have references.
-            You can set a threshold on the number of publications needed to extract the interaction.
+            References can be associated with chemical interactions.
+            You can define a threshold to filter target genes extraction based on the number of publications.
             ``[default: 2]``
 
     .. group-tab:: Data from user
 
         -g, --targetGenesFile FILENAME
-            List of genes of interest. One gene per line. [:ref:`FORMAT <genesList>`]
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
             **[required]**
 
         --GMT FILENAME
-            Tab-delimited file that describes gene sets of pathways of interest.
-            Pathways can come from several sources (e.g. WP and GO\:BP).
+            Tab-delimited file that describes gene sets of pathways/processes of interest.
+            Pathways/processes can come from several sources (e.g. WP and GO\:BP).
             [:ref:`FORMAT <pathways>`]
             **[required]**
 
@@ -119,5 +120,3 @@ References
 ------------
 
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
-
-

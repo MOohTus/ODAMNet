@@ -22,7 +22,7 @@ to correct the pvalues.
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`overlapFig`: *automatic request*).
+By default, data are extracted directly by request databases (:numref:`overlapFig`: *data from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
 extracted from **WP** automatically too. You can give some optional arguments to custom the selection of target genes.
 
@@ -45,8 +45,9 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 Arguments of overlap analysis
 --------------------------------
 
-If you want to extract target genes from **CTD** and **RD pathways** from WP, use the parameters on the ``Data from request`` tab.
-If you want to provide **your own** target genes and pathways/processes, use the parameters on the ``Data from user`` tab.
+To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data from requests`` tab. 
+To provide **your own** target genes and pathways/processes files, see parameters on the ``Data from user`` tab. 
+
 
 The ``--outputPath`` parameter is use for both data extraction.
 
@@ -60,8 +61,8 @@ The ``--outputPath`` parameter is use for both data extraction.
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
-            | If ``TRUE``, extract chemicals data, which are in the chemicalsFile, from CTD
-            | If ``FALSE``, extract chemicals and their child molecules (any descendant chemicals) data from CTD
+            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``FALSE``: extract chemicals and their child molecules (any descendant chemicals) data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER

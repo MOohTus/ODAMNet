@@ -17,7 +17,7 @@ Goal
 ======
 
 Here, our goal is to extract data **directly from databases**, **automatize such analysis**, and implement alternative
-approaches to uncover the **relationships between chemicals** (g.e. vitamins, hormones etc ...) and **Rare Diseases**.
+approaches to uncover the **relationships between chemicals** (e.g. vitamins, hormones etc ...) and **Rare Diseases**.
 
 Data are extracted **automatically** from the **Comparative Toxicogenomics Database** (CTD) [2]_ for target genes and
 **WikiPathways** (WP) [4]_ for Rare Disease pathways (see :ref:`usecase1`).
