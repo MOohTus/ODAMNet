@@ -45,7 +45,7 @@ Required arguments
             GMT file name that contains composition of pathways of interest.
 
 Optionals arguments
---------------------
+-----------------------
 
 --networksName FILENAME
     You can give a name to the network disease. It's a SIF file but each disease/pathway is link to itself.
@@ -91,7 +91,7 @@ Command line examples
 
 
 Target genes %A% il faudra qu'on fasse un point sémantique: target genes, gene data, factor, environmental factor ... Pour être le plus génériques possibles
----------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Gene data information may come from three different source :
 
@@ -144,7 +144,7 @@ Pathways can be extracted from two different sources :
 For more details about the :ref:`pathways` format.
 
 Examples %A% Use-cases?
------------
+------------------------------
 
 We performed an analysis to study the relationships between vitamin A and Rare Diseases. We illustrate the different
 possibilities of data extraction from different sources through three examples :
@@ -360,3 +360,7 @@ Use cases command line
                                     --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
                                     --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
                                     --outputPath examples/OutputResults_useCase2/
+
+
+
+.. [4] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.

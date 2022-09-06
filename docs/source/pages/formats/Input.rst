@@ -134,7 +134,7 @@ More details for `GMT file format <https://software.broadinstitute.org/cancer/so
 
    Theses parameters, ``--GMT`` and ``--backgroundFile`` can use for reproducibility. You can give a GMT file from WP request results.
 
-.. _AMI:
+.. _AMIinput:
 
 Active Module Identification
 =================================
@@ -163,16 +163,16 @@ More details for `SIF file format <http://wiki.biouml.org/index.php/SIF_(file_fo
 
 .. warning::
 
-   :oction:`alert;2em` By default, analysis is run using **gene symbols HGCN**. Pay attention of the gene IDs given in the network.  
+   :octicon:`alert;2em` By default, analysis is run using **gene symbols HGCN**. Pay attention of the gene IDs given in the network.
 
-.. _RWR
+.. _RWRinput:
 
 Random walk input files
 ============================
 
 .. tip::
 
-   See :oction:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ / and  :oction:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_ to have more details  
+   See :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ / and  :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_ to have more details
 
 
 
@@ -182,8 +182,8 @@ Random walk input files
     Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
     The short one contains the network and bipartite trees and the path of the seed file.
     If the user want more details go the the multiXrank's documentation :
-    :oction:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
-    :oction:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
+    :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
+    :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 **configPath format**
 

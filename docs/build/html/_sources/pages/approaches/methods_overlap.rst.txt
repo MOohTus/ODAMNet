@@ -62,7 +62,7 @@ The ``--outputPath`` parameter is use for both data extraction.
 
         --directAssociation BOOLEAN
             | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
-            | ``FALSE``: extract chemicals and their child molecules (any descendant chemicals) data from CTD
+            | ``FALSE``: extract chemicals and their child molecules data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER

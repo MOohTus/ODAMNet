@@ -48,7 +48,6 @@ Network creation
 
     ``--backgroundFile`` and ``--GMT`` options have always to be **given together**.
 
------------------------------------------------------------------
 
 
 
