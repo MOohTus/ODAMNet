@@ -13,6 +13,7 @@ Analysis calling
 import CTD_functions as CTD
 import WP_functions as WP
 import methods_functions as methods
+
 # Libraries
 from click_option_group import optgroup, RequiredMutuallyExclusiveOptionGroup
 import click
@@ -33,7 +34,7 @@ def main():
     """
     [OPTIONS] = overlap | domino | multixrank | networkCreation
 
-    Analyse the link between environmental factors and rare disease pathways.
+    Analyse the relationship between chemicals and Rare Disease.
     Select the approach you want to perform :
 
     overlap | domino | multixrank
@@ -44,23 +45,24 @@ def main():
 
 
 @main.command(short_help='Perform overlap analysis', context_settings=CONTEXT_SETTINGS)
-@optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
-@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
-@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@optgroup.group('Extract target genes list from', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the way to extract target genes')
+@optgroup.option('-c', '--chemicalsFile', 'chemicalsFile', type=click.File(), help='Chemicals file name')
+@optgroup.option('-r', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-t', '--targetGenesFile', 'targetGenesFile', type=click.File(), help='Target genes file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
-              help='True: Only chem targets \\ False:Chem + descendants targets')
+              help='True: Extract target genes from chemicals \\ False: Extract targe genes from chemicals + its child chemicals')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
-              help='Pathways of interest in GMT like format. ')
+              help='Pathways of interest file name (GMT file)')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
-              help='Background genes file name. ')
+              help='Background genes file name')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
-              help='Output folder name')
-def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile, outputPath):
-    """Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways from WikiPathway"""
-
+              help='Output folder name where to save results')
+def overlap(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile, outputPath):
+    """
+    Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways
+    """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
     featuresDict = {}
@@ -87,13 +89,13 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
             analysisName = 'RDWP'
             bar()
 
-    if factorListFile:
+    if chemicalsFile:
         # Analysis from factor list
-        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=chemicalsFile, directAssociations=directAssociation,
                                                  outputPath=outputPath, nbPub=nbPub)
-    if geneListFile:
+    if targetGenesFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=targetGenesFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
@@ -110,25 +112,28 @@ def overlap(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, pa
 
 
 @main.command(short_help='Active Module Identification analysis', context_settings=CONTEXT_SETTINGS)
-@optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
-@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
-@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@optgroup.group('Extract target genes list from', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the way to extract target genes')
+@optgroup.option('-c', '--chemicalsFile', 'chemicalsFile', type=click.File(), help='Chemicals file name')
+@optgroup.option('-r', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-t', '--targetGenesFile', 'targetGenesFile', type=click.File(), help='Target genes file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
-              help='True: Only chem targets \\ False:Chem + descendants targets')
+              help='True: Extract target genes from chemicals \\ False: Extract targe genes from chemicals + its child chemicals')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
 @click.option('-n', '--networkFile', 'networkFileName', type=str, metavar='FILENAME', required=True, help='Network file name')
 @click.option('--netUUID', 'networkUUID', type=str, help='NDEx network ID')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
-              help='Pathways of interest in GMT like format.')
+              help='Pathways of interest file name (GMT file)')
 @click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
-              help='Background genes file name. ')
+              help='Background genes file name')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
-              help='Output folder name')
-def DOMINO(factorListFile, CTD_file, geneListFile, networkFileName, networkUUID, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
+              help='Output folder name where to save results')
+def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUID, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
            outputPath):
-    """DOMINO defines the target genes as active genes and search active modules through a given network."""
+    """
+    DOMINO defines the target genes as active genes and search active modules (AM) through a given network.
+    For each AM, an overlap analysis is performed against RD pathways (or pathways of interest).
+    """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputDOMINOResults')
     featuresDict = {}
@@ -167,13 +172,13 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFileName, networkUUID,
             analysisName = 'RDWP'
             bar()
 
-    if factorListFile:
+    if chemicalsFile:
         # Analysis from factor list
-        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=chemicalsFile, directAssociations=directAssociation,
                                                  outputPath=outputPath, nbPub=nbPub)
-    if geneListFile:
+    if targetGenesFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=targetGenesFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
@@ -189,7 +194,7 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFileName, networkUUID,
                                      analysisName=analysisName)
 
 
-@main.command('networkCreation', short_help='Create network and bipartite', context_settings=CONTEXT_SETTINGS)
+@main.command('networkCreation', short_help='Create network and its corresponding bipartite', context_settings=CONTEXT_SETTINGS)
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True,
               help='Output path where save the network')
 @click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
@@ -203,7 +208,9 @@ def DOMINO(factorListFile, CTD_file, geneListFile, networkFileName, networkUUID,
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output path name (for complementary output files)')
 def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
-    """Create network SIF file from WP request or pathways of interest GMT file"""
+    """
+    Create network SIF file from WP request or pathways of interest GMT file
+    """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputCreateNetwork')
     networkFileName = networksPath + '/' + networksName
@@ -234,26 +241,27 @@ def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartiteP
 
 
 @main.command(short_help='Random Walk with Restart Analysis', context_settings=CONTEXT_SETTINGS)
-@optgroup.group('Input data sources', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the input data source')
-@optgroup.option('-f', '--factorList', 'factorListFile', type=click.File(), help='Factors list data file name')
-@optgroup.option('-c', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
-@optgroup.option('-g', '--geneList', 'geneListFile', type=click.File(), help='Genes list data file name')
+@optgroup.group('Extract target genes list from', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the way to extract target genes')
+@optgroup.option('-c', '--chemicalsFile', 'chemicalsFile', type=click.File(), help='Chemicals file name')
+@optgroup.option('-r', '--CTD_file', 'CTD_file', type=click.File(), help='CTD request result file name')
+@optgroup.option('-t', '--targetGenesFile', 'targetGenesFile', type=click.File(), help='Target genes file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
-              help='True: Only chem targets \\ False:Chem + descendants targets')
+              help='True: Extract target genes from chemicals \\ False: Extract targe genes from chemicals + its child chemicals')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Number of references needed at least to keep an interaction')
-@click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Configurations path name')
+@click.option('--configPath', 'configPath', type=click.Path(), required=True, help='Configurations file path name')
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True, help='Network directory path')
 @click.option('--seedsFile', 'seedsFileName', type=str, required=True, help='Seeds file path name', metavar='FILENAME')
-@click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF',
-              metavar='FILENAME')
+@click.option('--sifFileName', 'sifFileName', type=str, required=True, help='Name of the output file network SIF', metavar='FILENAME')
 @click.option('--top', 'top', type=int, default=10, show_default=True,
               help='Top number of results to write into output file')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
-              help='Output folder name')
-def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub, configPath,
+              help='Output folder name where to save results')
+def multiXrank(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, configPath,
                networksPath, seedsFileName, outputPath, sifFileName, top):
-    """Performs a Random Walk with Restart through heterogeneous multilayer using the target genes as seeds"""
+    """
+    Performs a Random Walk with Restart analysis through heterogeneous multilayer using the target genes as seeds
+    """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
     featuresDict = {}
@@ -264,13 +272,13 @@ def multiXrank(factorListFile, CTD_file, geneListFile, directAssociation, nbPub,
         os.makedirs(outputPath, exist_ok=True)
 
     # Seeds initiation
-    if factorListFile:
+    if chemicalsFile:
         # Analysis from factor list
-        featuresDict = CTD.targetGenesExtraction(chemicalsFile=factorListFile, directAssociations=directAssociation,
+        featuresDict = CTD.targetGenesExtraction(chemicalsFile=chemicalsFile, directAssociations=directAssociation,
                                                  outputPath=outputPath, nbPub=nbPub)
-    if geneListFile:
+    if targetGenesFile:
         # Analysis from gene list
-        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=geneListFile)
+        featuresDict['genesList'] = CTD.readFeaturesFile(featuresFile=targetGenesFile)
     if CTD_file:
         # Analysis from CTD file
         featuresDict = CTD.readCTDFile(CTDFile=CTD_file, nbPub=nbPub, outputPath=outputPath)
