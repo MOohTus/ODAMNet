@@ -101,20 +101,19 @@ Use cases command line
 
         .. code-block:: bash
 
-            python3 main.py overlap --chemicalsFile examples/InputData/InputFile_factorsList.csv \
+            python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                     --directAssociation FALSE \
                                     --nbPub 2 \
-                                    --outputPath examples/OutputResults_useCase1/
+                                    --outputPath useCases/OutputResults_useCase1/
 
     .. group-tab:: Data from user
 
         .. code-block:: bash
 
-            python3 main.py overlap --targetGenesFile examples/InputData/InputFromPaper/VitA-CTD-Genes.txt \
-                                    --GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
-                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
-                                    --outputPath examples/OutputResults_useCase2/
-
+            python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+                                    --GMT useCases/InputData/PathwaysOfInterest.gmt \
+                                    --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
+                                    --outputPath useCases/OutputResults_useCase2/
 
 References
 ------------

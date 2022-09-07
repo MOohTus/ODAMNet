@@ -273,16 +273,16 @@ It should be in the same order than the GMT file.
 <div class="section" id="use-cases-command-line">
 <h2>Use cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-1-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-1-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
                         --nbPub <span class="m">2</span> <span class="se">\</span>
-                        --outputPath examples/OutputResults_useCase1/
+                        --outputPath useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --targetGenesFile examples/InputData/InputFromPaper/VitA-CTD-Genes.txt <span class="se">\</span>
-                        --GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
-                        --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt <span class="se">\</span>
-                        --outputPath examples/OutputResults_useCase2/
+</div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                        --GMT useCases/InputData/PathwaysOfInterest.gmt <span class="se">\</span>
+                        --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt <span class="se">\</span>
+                        --outputPath useCases/OutputResults_useCase2/
 </pre></div>
 </div>
 </div></div>

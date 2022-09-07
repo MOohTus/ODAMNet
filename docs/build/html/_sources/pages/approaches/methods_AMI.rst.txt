@@ -9,19 +9,30 @@ Principle
 
 .. note::
 
-    | We are using DOMINO [1]_ for Active Module identification and running the analysis on their server [2]_
-    | :octicon:`mark-github;1em` `GitHub <https://github.com/Shamir-Lab/domino_web>`_ :octicon:`globe;1em` `website <http://domino.cs.tau.ac.il/>`_
+    | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
+    | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_
+    | :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
+DOMINO is looking for **Active Modules** (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-Target genes are defined as ``Active Genes``. DOMINO is looking for **active modules** in a network
-(e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
+First, target genes are defined as **Active Genes**. Then DOMINO tries to **identify active modules**.
 
-Active modules (AM) are composed of active genes and other associated genes and would ideally represent distinct functional modules.
+Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
+Ideally, they will represent **distinct functional modules** and can reveal biological processes involved in a specific condition.
 
-We finally perform an **overlap analysis** between each AM and the pathways of interest. This approach is a kind of
-**network extension** analysis, **indirect associations** with diseases are search.
+Finally, we performed an **overlap analysis** between each AM and pathways of interest.
 
-The :numref:`dominoFig` is an overview of the DOMINO algorithm :
+DOMINO algorithm overview
+----------------------------
+
+The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm :
+
+.. _dominoMethodFig:
+.. figure:: ../../pictures/DOMINO_method.jpg
+    :alt: DOMINO method
+    :align: center
+
+    : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
 
 | **A -** The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.
 | **B -** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
@@ -29,14 +40,29 @@ The :numref:`dominoFig` is an overview of the DOMINO algorithm :
 | **D -** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
 | **E -** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05)
 
-.. _dominoFig:
-.. figure:: ../../pictures/DOMINO_method.jpg
-    :alt: DOMINO method
+*For more details, refer to the paper DOMINO publication* [1]_
+
+Usage
+-------
+
+By default, data are extracted directly by request databases (:numref:`dominoUsageFig`: *data from requests*).
+You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
+extracted from **WP** automatically too. You can give some optional arguments to custom the selection of target genes.
+
+You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`dominoUsageFig`: *data from users*)
+with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+
+.. _dominoUsageFig:
+.. figure:: ../../pictures/DOMINO_graph.png
+    :alt: domino analysis
     :align: center
 
-    : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
+    : Input and output files of Active Modules Identification
 
-*For more details, see to the paper DOMINO publication* [1]_
+*Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).*
+*Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the*
+*input data come from request.*
+
 
 Required arguments
 --------------------
