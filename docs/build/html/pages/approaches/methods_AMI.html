@@ -108,10 +108,10 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -225,87 +225,68 @@ Ideally, they will represent <strong>distinct functional modules</strong> and ca
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data from requests</em>).
+<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from requests</em>).
 You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
-extracted from <strong>WP</strong> automatically too. You can give some optional arguments to custom the selection of target genes.</p>
-<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data from users</em>)
-with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
+extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
+<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong>
+(<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <div class="figure align-center" id="id18">
 <span id="dominousagefig"></span><img alt="domino analysis" src="../../_images/DOMINO_graph.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output files of Active Modules Identification</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+Required files/parameters have solid border line and optional files/parameters have dash border line.
+Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
-<p><em>Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).</em>
-<em>Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the</em>
-<em>input data come from request.</em></p>
 </div>
-<div class="section" id="required-arguments">
-<h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-<strong>Every combination is possible!</strong></p>
 </div>
+<div class="section" id="input-parameters-for-active-modules-identification">
+<h2>Input parameters for Active Modules Identification<a class="headerlink" href="#input-parameters-for-active-modules-identification" title="Permalink to this headline">¶</a></h2>
+<p>To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
+To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+<p>The network file is required <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> whereas <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> are optional.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-0-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
-[<span class="xref std std-ref">FORMAT</span>]</p>
+[<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
+<dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
+</div>
+</dd>
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>References can be associated with chemical interactions.
+You can define a threshold to filter target genes extraction based on the number of publications.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
-</div><div aria-labelledby="tab-0-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-separated file from CTD request. [<span class="xref std std-ref">FORMAT</span>]</p>
+</div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of target genes. One gene per line. [<span class="xref std std-ref">FORMAT</span>]
+<strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-<dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of the different background source file name. Each background genes source is a GMT file.
-It should be in the same order than the GMT file. Here, the background GMT file contains
-all Rare Disease pathways.
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
-</dd>
-</dl>
-</div><div aria-labelledby="tab-0-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of genes of interest. One gene per line. [<span class="xref std std-ref">FORMAT</span>]</p>
-</dd>
-<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-delimited file that describes gene sets of pathways of interest.
-Pathways can come from several sources (e.g. WP and GO:BP).
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>Tab-delimited file that describes gene sets of pathways/processes of interest.
+Pathways/processes can come from several sources (e.g. WP and GO:BP).
+[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]
+<strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>List of the different background source file name. Each background genes source is a GMT file.
 It should be in the same order than the GMT file.
-[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]</p>
+[<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]
+<strong>[required]</strong></p>
 </dd>
 </dl>
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Network file name (e.g. PPI network) in SIF format (tab-delimited).
-The file contains 3 columns with the source node, the interaction type and the target node.
-[<span class="xref std std-ref">FORMAT</span>]</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="optionals-arguments">
-<h2>Optionals arguments<a class="headerlink" href="#optionals-arguments" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
-<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
-<dd><div class="line-block">
-<div class="line">If <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, only the genes targeted by the factors are extracted.</div>
-<div class="line">If <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, the genes targeted by the factors and all the descendant molecules are extracted.</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
-</div>
-</dd>
-<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>In CTD, an interaction between a gene and a molecule can have references.
-You can set a threshold on the number of publications needed to extract the interaction.
-<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
+<dd><p>Network file name. It’s SIF file [<span class="xref std std-ref">FORMAT</span>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--netUUID <var>TEXT</var></span></kbd></dt>
 <dd><p>You can use a network extracted automatically from <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a class="footnote-reference brackets" href="#id13" id="id5">3</a>. You have to provide
@@ -316,33 +297,6 @@ the UUID of the network (e.g. <code class="docutils literal notranslate"><span c
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
-</div>
-<div class="section" id="command-line-examples">
-<h2>Command line examples<a class="headerlink" href="#command-line-examples" title="Permalink to this headline">¶</a></h2>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-1-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-1-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-1-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
-                        --directAssociation FALSE <span class="se">\</span>
-                        --nbPub <span class="m">2</span> <span class="se">\</span>
-                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
-                        --outputPath examples/OutputResults_example1/
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv <span class="se">\</span>
-                        --nbPub <span class="m">2</span> <span class="se">\</span>
-                        --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt <span class="se">\</span>
-                        --backgroundFile examples/InputData/backgroundsFiles.tsv <span class="se">\</span>
-                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
-                        --outputPath examples/OutputResults_example2/
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt <span class="se">\</span>
-                        --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt <span class="se">\</span>
-                        --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt <span class="se">\</span>
-                        --networkFile examples/InputData/PPI_network_2016.sif <span class="se">\</span>
-                        --outputPath examples/OutputResults_example3/
-</pre></div>
-</div>
-</div></div>
 </div>
 <div class="section" id="available-interaction-networks">
 <h2>Available Interaction Networks<a class="headerlink" href="#available-interaction-networks" title="Permalink to this headline">¶</a></h2>
@@ -356,7 +310,7 @@ and not ensembl IDs or any other gene name format. The rule applies on GMT files
 <div class="section" id="protein-protein-interaction-network">
 <h3>Protein-Protein Interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this headline">¶</a></h3>
 <p>We provide with the script a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id14" id="id6">4</a>, November 2016). The gene name format is
-<strong>gene symbols</strong>, you can give it to the script using the required argument <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+<strong>gene symbols</strong>, you can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 <p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">VPS52</span>
@@ -374,7 +328,7 @@ and not ensembl IDs or any other gene name format. The rule applies on GMT files
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
 <p>You can use any network that you want or have. It has to be in <span class="xref std std-ref">SIF format</span> and you can give it to
-the script using the required argument <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 </div>
 <div class="section" id="request-ndex-database">
 <h3>Request NDEx database<a class="headerlink" href="#request-ndex-database" title="Permalink to this headline">¶</a></h3>
@@ -383,9 +337,28 @@ the script using the required argument <code class="docutils literal notranslate
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
 <p>You can directly request NDEx <a class="footnote-reference brackets" href="#id13" id="id7">3</a> <a class="reference external" href="https://www.ndexbio.org/">website</a> and extract the network that you want to use
-(REST API <a class="footnote-reference brackets" href="#id13" id="id8">3</a><sup>,</sup> <a class="footnote-reference brackets" href="#id15" id="id9">5</a> <sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id10">6</a>). You need to specify the network UUID using the optional argument
+(REST API <a class="footnote-reference brackets" href="#id13" id="id8">3</a><sup>,</sup> <a class="footnote-reference brackets" href="#id15" id="id9">5</a> <sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id10">6</a>). You need to specify the network UUID using the optional parameter
 <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <span class="xref std std-ref">SIF file</span>.</p>
 </div>
+</div>
+<div class="section" id="use-cases-command-line">
+<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+                        --directAssociation FALSE <span class="se">\</span>
+                        --nbPub <span class="m">2</span> <span class="se">\</span>
+                        --networkFile useCases/InputData/PPI_network_2016.sif <span class="se">\</span>
+                        --outputPath useCases/OutputResults_useCase1/
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                        --GMT useCases/InputData/PathwaysOfInterest.gmt <span class="se">\</span>
+                        --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt <span class="se">\</span>
+                        --networkFile useCases/InputData/PPI_network_2016.sif <span class="se">\</span>
+                        --outputPath useCases/OutputResults_useCase2/
+</pre></div>
+</div>
+</div></div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

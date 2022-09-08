@@ -1,8 +1,15 @@
+/* Justify all text*/
 body {
     text-align:justify;
 }
 
+
 table.align-center {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Change font style of legend */
+.legend{
+    font-style: italic;
 }

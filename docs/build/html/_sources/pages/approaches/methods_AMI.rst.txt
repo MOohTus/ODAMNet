@@ -45,12 +45,12 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm :
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`dominoUsageFig`: *data from requests*).
+By default, data are extracted directly by request databases (:numref:`dominoUsageFig`: *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
-extracted from **WP** automatically too. You can give some optional arguments to custom the selection of target genes.
+extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
-You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`dominoUsageFig`: *data from users*)
-with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+You can provide your own **target genes file** and **pathways/processes of interest**
+(:numref:`dominoUsageFig`: *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _dominoUsageFig:
 .. figure:: ../../pictures/DOMINO_graph.png
@@ -59,75 +59,57 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
     : Input and output files of Active Modules Identification
 
-*Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).*
-*Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the*
-*input data come from request.*
+    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    Required files/parameters have solid border line and optional files/parameters have dash border line.
+    Output files in pink are created only if the input data are extracted from requests.
 
+Input parameters for Active Modules Identification
+----------------------------------------------------
 
-Required arguments
---------------------
+To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
-.. tip::
-
-    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible!**
+The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.
 
 .. tabs::
 
-    .. group-tab:: Request
+    .. group-tab:: Data extracted from requests
 
-        -f, --factorList FILENAME
+        -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
             You can give several chemicals in the same line : they will be grouped for the analysis.
-            [:ref:`FORMAT <factorList>`]
+            [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
-    .. group-tab:: Request Files
+        --directAssociation BOOLEAN
+            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``FALSE``: extract chemicals and their child molecules data from CTD
+            | ``[default: True]``
 
-        -c, --CTD_file FILENAME
-            Tab-separated file from CTD request. [:ref:`FORMAT <CTDFile>`]
+        --nbPub INTEGER
+            References can be associated with chemical interactions.
+            You can define a threshold to filter target genes extraction based on the number of publications.
+            ``[default: 2]``
 
-        --GMT FILENAME
-            Tab-delimited file that describes gene sets of Rare Disease pathways (from WP).
-            [:ref:`FORMAT <pathways>`]
+    .. group-tab:: Data extracted from user
 
-        --backgroundFile FILENAME
-            List of the different background source file name. Each background genes source is a GMT file.
-            It should be in the same order than the GMT file. Here, the background GMT file contains
-            all Rare Disease pathways.
-            [:ref:`FORMAT <pathways>`]
-
-    .. group-tab:: Custom Files
-
-        -g, --geneList FILENAME
-            List of genes of interest. One gene per line. [:ref:`FORMAT <genesList>`]
+        -t, --targetGenesFile FILENAME
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
+            **[required]**
 
         --GMT FILENAME
-            Tab-delimited file that describes gene sets of pathways of interest.
-            Pathways can come from several sources (e.g. WP and GO\:BP).
+            Tab-delimited file that describes gene sets of pathways/processes of interest.
+            Pathways/processes can come from several sources (e.g. WP and GO\:BP).
             [:ref:`FORMAT <pathways>`]
+            **[required]**
 
         --backgroundFile FILENAME
             List of the different background source file name. Each background genes source is a GMT file.
             It should be in the same order than the GMT file.
             [:ref:`FORMAT <pathways>`]
+            **[required]**
 
 -n, --networkFile FILENAME
-    Network file name (e.g. PPI network) in SIF format (tab-delimited).
-    The file contains 3 columns with the source node, the interaction type and the target node.
-    [:ref:`FORMAT <net>`]
-
-Optionals arguments
---------------------
-
---directAssociation BOOLEAN
-    | If ``TRUE``, only the genes targeted by the factors are extracted.
-    | If ``FALSE``, the genes targeted by the factors and all the descendant molecules are extracted.
-    | ``[default: True]``
-
---nbPub INTEGER
-    In CTD, an interaction between a gene and a molecule can have references.
-    You can set a threshold on the number of publications needed to extract the interaction.
-    ``[default: 2]``
+    Network file name. It's SIF file [:ref:`FORMAT <SIF>`] **[required]**
 
 --netUUID TEXT
     You can use a network extracted automatically from `NDEx <https://www.ndexbio.org/#/>`_ [3]_. You have to provide
@@ -137,41 +119,6 @@ Optionals arguments
     Name of the folder where to save the results.
     ``[default: OutputResults]``
 
-Command line examples
-------------------------
-
-.. tabs::
-
-    .. group-tab:: Request
-
-        .. code-block:: bash
-
-            python3 main.py domino  --factorList examples/InputData/InputFile_factorsList.csv \
-                                    --directAssociation FALSE \
-                                    --nbPub 2 \
-                                    --networkFile examples/InputData/PPI_network_2016.sif \
-                                    --outputPath examples/OutputResults_example1/
-
-    .. group-tab:: Request Files
-
-        .. code-block:: bash
-
-            python3 main.py domino  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv \
-                                    --nbPub 2 \
-                                    --WP_GMT examples/InputData/WP_RareDiseases_request_2022_08_24.gmt \
-                                    --backgroundFile examples/InputData/backgroundsFiles.tsv \
-                                    --networkFile examples/InputData/PPI_network_2016.sif \
-                                    --outputPath examples/OutputResults_example2/
-
-    .. group-tab:: Custom Files
-
-        .. code-block:: bash
-
-            python3 main.py domino  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt \
-                                    --WP_GMT examples/InputData/InputFromPaper/PathwaysOfInterest.gmt \
-                                    --backgroundFile examples/InputData/InputFromPaper/PathwaysOfInterestBackground.txt \
-                                    --networkFile examples/InputData/PPI_network_2016.sif \
-                                    --outputPath examples/OutputResults_example3/
 
 Available Interaction Networks
 -----------------------------------
@@ -187,7 +134,7 @@ Protein-Protein Interaction network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
-**gene symbols**, you can give it to the script using the required argument ``-n, --networkFile``.
+**gene symbols**, you can give it to the script using the required parameter ``-n, --networkFile``.
 
 It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :
 
@@ -209,7 +156,7 @@ Personal network
     :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
 
 You can use any network that you want or have. It has to be in :ref:`SIF format <net>` and you can give it to
-the script using the required argument ``-n, --networkFile``.
+the script using the required parameter ``-n, --networkFile``.
 
 
 Request NDEx database
@@ -220,9 +167,34 @@ Request NDEx database
     :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
 
 You can directly request NDEx [3]_ `website <https://www.ndexbio.org/>`_ and extract the network that you want to use
-(REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional argument
+(REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
 ``--netUUID``. The network will be save into a :ref:`SIF file <net>`.
 
+
+Use-cases command line
+------------------------
+
+.. tabs::
+
+    .. group-tab:: Data extracted from requests
+
+        .. code-block:: bash
+
+            python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+                                    --directAssociation FALSE \
+                                    --nbPub 2 \
+                                    --networkFile useCases/InputData/PPI_network_2016.sif \
+                                    --outputPath useCases/OutputResults_useCase1/
+
+    .. group-tab:: Data extracted from user
+
+        .. code-block:: bash
+
+            python3 main.py domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+                                    --GMT useCases/InputData/PathwaysOfInterest.gmt \
+                                    --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
+                                    --networkFile useCases/InputData/PPI_network_2016.sif \
+                                    --outputPath useCases/OutputResults_useCase2/
 
 References
 ------------

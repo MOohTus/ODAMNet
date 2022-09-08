@@ -108,10 +108,10 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -208,25 +208,27 @@ to correct the pvalues.</p>
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>By default, data are extracted directly by request databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data from requests</em>).
 You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
-extracted from <strong>WP</strong> automatically too. You can give some optional arguments to custom the selection of target genes.</p>
+extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
 <p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data from users</em>)
 with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <div class="figure align-center" id="id3">
 <span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/OverlapAnalysis_graph.png" />
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+Required files/parameters have solid border line and optional files/parameters have dash border line.
+Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
-<p><em>Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).</em>
-<em>Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the</em>
-<em>input data come from request.</em></p>
 </div>
-<div class="section" id="arguments-of-overlap-analysis">
-<h2>Arguments of overlap analysis<a class="headerlink" href="#arguments-of-overlap-analysis" title="Permalink to this headline">¶</a></h2>
-<p>To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
-To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+</div>
+<div class="section" id="input-parameters-for-overlap-analysis">
+<h2>Input parameters for overlap analysis<a class="headerlink" href="#input-parameters-for-overlap-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
+To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is use for both data extraction.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-0-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-0-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
@@ -244,8 +246,8 @@ You can define a threshold to filter target genes extraction based on the number
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
-</div><div aria-labelledby="tab-0-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-g</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
+</div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of target genes. One gene per line. [<span class="xref std std-ref">FORMAT</span>]
 <strong>[required]</strong></p>
 </dd>
@@ -271,15 +273,15 @@ It should be in the same order than the GMT file.
 </dl>
 </div>
 <div class="section" id="use-cases-command-line">
-<h2>Use cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
+<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tab" tabindex="0">Data from requests</button><button aria-controls="panel-1-RGF0YSBmcm9tIHVzZXI=" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tab" tabindex="-1">Data from user</button></div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHJlcXVlc3Rz" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBmcm9tIHJlcXVlc3Rz" name="RGF0YSBmcm9tIHJlcXVlc3Rz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
                         --nbPub <span class="m">2</span> <span class="se">\</span>
                         --outputPath useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-RGF0YSBmcm9tIHVzZXI=" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBmcm9tIHVzZXI=" name="RGF0YSBmcm9tIHVzZXI=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+</div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
                         --GMT useCases/InputData/PathwaysOfInterest.gmt <span class="se">\</span>
                         --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt <span class="se">\</span>
                         --outputPath useCases/OutputResults_useCase2/

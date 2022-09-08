@@ -18,63 +18,73 @@ for multiple analyse. More the score is high, more the node is closed to the see
 
 It's a kind of **diffusion analysis** from the genes through different molecular interactions (:numref:`overviewFig` - right part).
 
-*For more details, go to the paper* [1]_
+*For more details, see the paper* [1]_
 
-Required arguments
---------------------
+Usage
+-------
 
-.. tip::
+By default, data are extracted directly by request databases (:numref:`RWRUsageFig`: *data extracted from requests*).
+You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**.
 
-    You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-    **Every combination is possible!**
+You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data extracted from users*) with ``--targetGenesFile``.
+
+.. _RWRUsageFig:
+.. figure:: ../../pictures/multixrank_graph.png
+    :alt: RWR analysis
+    :align: center
+
+    : Input and output files of Random Walk with Restart analysis
+
+    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    Required files/parameters have solid border line and optional files/parameters have dash border line.
+    Output files in pink are created only if the input data are extracted from requests.
+
+Input parameters for RWR analysis
+----------------------------------------
+
+To extract target genes from **CTD**, see parameters on the ``Data extracted from requests`` tab.
+To provide **your own** target genes, see parameters on the ``Data extracted from user`` tab.
 
 .. tabs::
 
-    .. group-tab:: Request
+    .. group-tab:: Data extracted from requests
 
-        -f, --factorList FILENAME
+        -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
             You can give several chemicals in the same line : they will be grouped for the analysis.
-            [:ref:`FORMAT <factorList>`]
+            [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
-    .. group-tab:: Request Files
+        --directAssociation BOOLEAN
+            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``FALSE``: extract chemicals and their child molecules data from CTD
+            | ``[default: True]``
 
-        -c, --CTD_file FILENAME
-            Tab-separated file from CTD request. [:ref:`FORMAT <CTDFile>`]
+        --nbPub INTEGER
+            References can be associated with chemical interactions.
+            You can define a threshold to filter target genes extraction based on the number of publications.
+            ``[default: 2]``
 
-    .. group-tab:: Custom Files
+    .. group-tab:: Data extracted from user
 
-        -g, --geneList FILENAME
-            List of genes of interest. One gene per line. [:ref:`FORMAT <genesList>`]
+        -t, --targetGenesFile FILENAME
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
+            **[required]**
 
 --configPath PATH
-    MultiXrank needs a configuration file as input. It could be short (file names) or very details (i.e with input
-    parameters). The file contains at least paths of networks, bipartite and seed files.
+    MultiXrank needs a configuration file. It could be short (only file names) or very details (file names + parameters).
+    The file contains at least paths of networks, bipartite and seed files. **[required]**
 
-    | For more details : [:ref:`FORMAT <configFile>`] - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ - :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
+    | For more details : [:ref:`FORMAT <configFile>`] - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 --networksPath PATH
-    Repository path where networks are saved.
+    Repository path where networks are saved. **[required]**
 
 --seedsFile FILENAME
-    Path name of the seed file. This file contains the list of genes (i.e. target genes). They will be used as seed
-    on the Random Walk analysis. [:ref:`FORMAT <simpleFile>`]
+    Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
+    on the Random Walk analysis. [:ref:`FORMAT <simpleFile>`] **[required]**
 
 --sifFileName FILENAME
-    Output file name to save the result into a SIF file.
-
-Optionals arguments
---------------------
-
---directAssociation BOOLEAN
-    | If ``TRUE``, only the genes targeted by the factors are extracted.
-    | If ``FALSE``, the genes targeted by the factors and all the descendant molecules are extracted.
-    | ``[default: True]``
-
---nbPub INTEGER
-    In CTD, an interaction between a gene and a molecule can have references.
-    You can set a threshold on the number of publications needed to extract the interaction.
-    ``[default: 2]``
+    Output file name to save the result into a SIF file. **[required]**
 
 --top INTEGER
     Top nodes that will be saved into the output network (into SIF file).
@@ -82,51 +92,6 @@ Optionals arguments
 -o, --outputPath PATH
     Name of the folder where to save the results.
     ``[default: OutputResults]``
-
-
-Command line examples
-------------------------
-
-.. tabs::
-
-    .. group-tab:: Request
-
-        .. code-block:: bash
-
-            python3 main.py multixrank  --factorList examples/InputData/InputFile_factorsList.csv \
-                                        --directAssociation False \
-                                        --nbPub 2 \
-                                        --configPath examples/InputData/config_minimal_example1.yml \
-                                        --networksPath examples/InputData/ \
-                                        --seedsFile examples/InputData/seeds.txt \
-                                        --sifFileName example1_resultsNetwork.sif \
-                                        --top 10 \
-                                        --outputPath examples/OutputResults_example1/
-
-    .. group-tab:: Request Files
-
-        .. code-block:: bash
-
-            python3 main.py multixrank  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv \
-                                        --nbPub 2 \
-                                        --configPath examples/InputData/config_minimal_example2.yml \
-                                        --networksPath examples/InputData/ \
-                                        --seedsFile examples/InputData/seeds.txt \
-                                        --sifFileName example2_resultsNetwork.sif \
-                                        --top 10 \
-                                        --outputPath examples/OutputResults_example2/
-
-    .. group-tab:: Custom Files
-
-        .. code-block:: bash
-
-            python3 main.py multixrank  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt \
-                                        --configPath examples/InputData/config_minimal_example3.yml \
-                                        --networksPath examples/InputData/ \
-                                        --seedsFile examples/InputData/seeds.txt \
-                                        --sifFileName example3_resultsNetwork.sif \
-                                        --top 10 \
-                                        --outputPath examples/OutputResults_example3/
 
 Networks available
 --------------------
@@ -155,7 +120,46 @@ Details of layers (number of nodes, edges, nature of association and source).
 Disconnected disease network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You can build this network with your pathways of interest - see :ref:`newNet`
+This kind of network can be build using the ``networkCreation`` method.
+
+By default, the network is build using Rare Diseases pathways extracted automatically from WP.
+
+--networksPath PATH
+    Output repository name where the network disease will be saved.
+
+--bipartitePath PATH
+    Output repository name where the bipartite gene-disease will be saved.
+
+--networksName FILENAME
+    You can give a name to the network disease. It's a SIF file but each disease/pathway is link to itself.
+    ``[default: WP_RareDiseasesNetwork.sif]``
+
+--bipartiteName FILENAME
+    You can give a name to the bipartite. It's a tab-separated file.
+    ``[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]``
+
+-o, --outputPath PATH
+    Name of the folder where to save complementary results (i.e. request results)
+    ``[default: OutputResults]``
+
+Moreover, you can provide your own pathways/processes of interest file using ``--GMT`` parameter.
+
+This kind of network can be build from Rare Diseases pathways (WP) or from your own pathways/processes of interest
+with ``networkCreation`` method.
+
+.. tabs::
+
+    .. group-tab:: Data extracted from requests
+
+        .. code-block:: bash
+
+            python3 main.py
+
+    .. group-tab:: Data extracted from user
+
+        .. code-block:: bash
+
+            python3 main.py
 
 Disease-disease network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -167,6 +171,37 @@ Explanation of how I did when I would have done it.
     | You can use any multilayer and networks that you want.
     | :octicon:`alert;1em` Be careful with the configuration file and the gene IDs used
 
+
+Use-cases command line
+------------------------
+
+.. tabs::
+
+    .. group-tab:: Data extracted from requests
+
+        .. code-block:: bash
+
+            python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+                                        --directAssociation FALSE \
+                                        --nbPub 2 \
+                                        --configPath useCases/InputData/config_minimal_useCase1.yml \
+                                        --networksPath useCases/InputData/ \
+                                        --seedsFile useCases/InputData/seeds.txt \
+                                        --sifFileName resultsNetwork_useCase1.sif \
+                                        --top 10 \
+                                        --outputPath useCases/OutputResults_useCase1/
+
+    .. group-tab:: Data extracted from user
+
+        .. code-block:: bash
+
+            python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+                                        --configPath useCases/InputData/config_minimal_useCase2.yml \
+                                        --networksPath useCases/InputData/ \
+                                        --seedsFile useCases/InputData/seeds.txt \
+                                        --sifFileName resultsNetwork_useCase2.sif \
+                                        --top 10 --outputPath \
+                                        --outputPath useCases/OutputResults_useCase2/
 
 References
 ------------

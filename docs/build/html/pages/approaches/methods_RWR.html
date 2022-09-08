@@ -108,10 +108,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Random Walk with Restart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -202,68 +202,71 @@
 define as a <strong>seed</strong>. The walk starts with a seed, selected <strong>randomly</strong>. The proximity is represented by a score that could be use
 for multiple analyse. More the score is high, more the node is closed to the seed.</p>
 <p>It’s a kind of <strong>diffusion analysis</strong> from the genes through different molecular interactions (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - right part).</p>
-<p><em>For more details, go to the paper</em> <a class="footnote-reference brackets" href="#id6" id="id2">1</a></p>
+<p><em>For more details, see the paper</em> <a class="footnote-reference brackets" href="#id6" id="id2">1</a></p>
 </div>
-<div class="section" id="required-arguments">
-<h2>Required arguments<a class="headerlink" href="#required-arguments" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can mix input types. For instance, you can request CTD and give a custom GMT file of pathways of interest.
-<strong>Every combination is possible!</strong></p>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from requests</em>).
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>.</p>
+<p>You can provide your own <strong>target genes file</strong> (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>.</p>
+<div class="figure align-center" id="id7">
+<span id="rwrusagefig"></span><img alt="RWR analysis" src="../../_images/multixrank_graph.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output files of Random Walk with Restart analysis</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+Required files/parameters have solid border line and optional files/parameters have dash border line.
+Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
+</div>
+</div>
+<div class="section" id="input-parameters-for-rwr-analysis">
+<h2>Input parameters for RWR analysis<a class="headerlink" href="#input-parameters-for-rwr-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To extract target genes from <strong>CTD</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
+To provide <strong>your own</strong> target genes, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-0-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-0-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-0-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-0-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-f</span>, <span class="option">--factorList <var>FILENAME</var></span></kbd></dt>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
-[<span class="xref std std-ref">FORMAT</span>]</p>
+[<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
+<dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
+</div>
+</dd>
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>References can be associated with chemical interactions.
+You can define a threshold to filter target genes extraction based on the number of publications.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
-</div><div aria-labelledby="tab-0-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-c</span>, <span class="option">--CTD_file <var>FILENAME</var></span></kbd></dt>
-<dd><p>Tab-separated file from CTD request. [<span class="xref std std-ref">FORMAT</span>]</p>
-</dd>
-</dl>
-</div><div aria-labelledby="tab-0-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><dl class="option-list">
-<dt><kbd><span class="option">-g</span>, <span class="option">--geneList <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of genes of interest. One gene per line. [<span class="xref std std-ref">FORMAT</span>]</p>
+</div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of target genes. One gene per line. [<span class="xref std std-ref">FORMAT</span>]
+<strong>[required]</strong></p>
 </dd>
 </dl>
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
-<dd><p>MultiXrank needs a configuration file as input. It could be short (file names) or very details (i.e with input
-parameters). The file contains at least paths of networks, bipartite and seed files.</p>
+<dd><p>MultiXrank needs a configuration file. It could be short (only file names) or very details (file names + parameters).
+The file contains at least paths of networks, bipartite and seed files. <strong>[required]</strong></p>
 <div class="line-block">
-<div class="line">For more details : [<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></div>
+<div class="line">For more details : [<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></div>
 </div>
 </dd>
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>Repository path where networks are saved.</p>
+<dd><p>Repository path where networks are saved. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Path name of the seed file. This file contains the list of genes (i.e. target genes). They will be used as seed
-on the Random Walk analysis. [<a class="reference internal" href="../formats/Input.html#simplefile"><span class="std std-ref">FORMAT</span></a>]</p>
+<dd><p>Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
+on the Random Walk analysis. [<a class="reference internal" href="../formats/Input.html#simplefile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
-<dd><p>Output file name to save the result into a SIF file.</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="optionals-arguments">
-<h2>Optionals arguments<a class="headerlink" href="#optionals-arguments" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
-<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
-<dd><div class="line-block">
-<div class="line">If <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, only the genes targeted by the factors are extracted.</div>
-<div class="line">If <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, the genes targeted by the factors and all the descendant molecules are extracted.</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
-</div>
-</dd>
-<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>In CTD, an interaction between a gene and a molecule can have references.
-You can set a threshold on the number of publications needed to extract the interaction.
-<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
+<dd><p>Output file name to save the result into a SIF file. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
 <dd><p>Top nodes that will be saved into the output network (into SIF file).</p>
@@ -274,41 +277,6 @@ You can set a threshold on the number of publications needed to extract the inte
 </dd>
 </dl>
 </div>
-<div class="section" id="command-line-examples">
-<h2>Command line examples<a class="headerlink" href="#command-line-examples" title="Permalink to this headline">¶</a></h2>
-<div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UmVxdWVzdA==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tab" tabindex="0">Request</button><button aria-controls="panel-1-UmVxdWVzdCBGaWxlcw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tab" tabindex="-1">Request Files</button><button aria-controls="panel-1-Q3VzdG9tIEZpbGVz" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tab" tabindex="-1">Custom Files</button></div><div aria-labelledby="tab-1-UmVxdWVzdA==" class="sphinx-tabs-panel group-tab" id="panel-1-UmVxdWVzdA==" name="UmVxdWVzdA==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --factorList examples/InputData/InputFile_factorsList.csv <span class="se">\</span>
-                            --directAssociation False <span class="se">\</span>
-                            --nbPub <span class="m">2</span> <span class="se">\</span>
-                            --configPath examples/InputData/config_minimal_example1.yml <span class="se">\</span>
-                            --networksPath examples/InputData/ <span class="se">\</span>
-                            --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
-                            --sifFileName example1_resultsNetwork.sif <span class="se">\</span>
-                            --top <span class="m">10</span> <span class="se">\</span>
-                            --outputPath examples/OutputResults_example1/
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-UmVxdWVzdCBGaWxlcw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UmVxdWVzdCBGaWxlcw==" name="UmVxdWVzdCBGaWxlcw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --CTD_file examples/InputData/CTD_request_D014801_2022_08_24.tsv <span class="se">\</span>
-                            --nbPub <span class="m">2</span> <span class="se">\</span>
-                            --configPath examples/InputData/config_minimal_example2.yml <span class="se">\</span>
-                            --networksPath examples/InputData/ <span class="se">\</span>
-                            --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
-                            --sifFileName example2_resultsNetwork.sif <span class="se">\</span>
-                            --top <span class="m">10</span> <span class="se">\</span>
-                            --outputPath examples/OutputResults_example2/
-</pre></div>
-</div>
-</div><div aria-labelledby="tab-1-Q3VzdG9tIEZpbGVz" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-Q3VzdG9tIEZpbGVz" name="Q3VzdG9tIEZpbGVz" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --geneList examples/InputData/InputFromPaper/VitA-CTD-Genes.txt <span class="se">\</span>
-                            --configPath examples/InputData/config_minimal_example3.yml <span class="se">\</span>
-                            --networksPath examples/InputData/ <span class="se">\</span>
-                            --seedsFile examples/InputData/seeds.txt <span class="se">\</span>
-                            --sifFileName example3_resultsNetwork.sif <span class="se">\</span>
-                            --top <span class="m">10</span> <span class="se">\</span>
-                            --outputPath examples/OutputResults_example3/
-</pre></div>
-</div>
-</div></div>
-</div>
 <div class="section" id="networks-available">
 <h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
@@ -317,12 +285,12 @@ You can set a threshold on the number of publications needed to extract the inte
 </div>
 <p>We propose to run two walks through two different network compositions :</p>
 <ul class="simple">
-<li><p>molecular multilayer with three layers + disconnected disease network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 5</span></a> - left part)</p></li>
-<li><p>molecular multilayer with three layers + disease-disease network associated by their shared phenotype (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 5</span></a> - right part)</p></li>
+<li><p>molecular multilayer with three layers + disconnected disease network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
+<li><p>molecular multilayer with three layers + disease-disease network associated by their shared phenotype (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
 </ul>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id8">
 <span id="rwrfig"></span><img alt="RWR networks" src="../../_images/RWR_method.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">: Random Walk into two different networks conformations</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk into two different networks conformations</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="molecular-multilayer">
 <h3>Molecular multilayer<a class="headerlink" href="#molecular-multilayer" title="Permalink to this headline">¶</a></h3>
@@ -330,7 +298,39 @@ You can set a threshold on the number of publications needed to extract the inte
 </div>
 <div class="section" id="disconnected-disease-network">
 <h3>Disconnected disease network<a class="headerlink" href="#disconnected-disease-network" title="Permalink to this headline">¶</a></h3>
-<p>You can build this network with your pathways of interest - see <a class="reference internal" href="methods_newNetwork.html#newnet"><span class="std std-ref">Network creation</span></a></p>
+<p>This kind of network can be build using the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
+<p>By default, the network is build using Rare Diseases pathways extracted automatically from WP.</p>
+<dl class="option-list">
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the network disease will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the bipartite gene-disease will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the network disease. It’s a SIF file but each disease/pathway is link to itself.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.sif]</span></code></p>
+</dd>
+<dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the bipartite. It’s a tab-separated file.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv]</span></code></p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where to save complementary results (i.e. request results)
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
+</dd>
+</dl>
+<p>Moreover, you can provide your own pathways/processes of interest file using <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter.</p>
+<p>This kind of network can be build from Rare Diseases pathways (WP) or from your own pathways/processes of interest
+with <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py
+</pre></div>
+</div>
+</div></div>
 </div>
 <div class="section" id="disease-disease-network">
 <h3>Disease-disease network<a class="headerlink" href="#disease-disease-network" title="Permalink to this headline">¶</a></h3>
@@ -343,6 +343,31 @@ You can set a threshold on the number of publications needed to extract the inte
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="use-cases-command-line">
+<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+                            --directAssociation FALSE <span class="se">\</span>
+                            --nbPub <span class="m">2</span> <span class="se">\</span>
+                            --configPath useCases/InputData/config_minimal_useCase1.yml <span class="se">\</span>
+                            --networksPath useCases/InputData/ <span class="se">\</span>
+                            --seedsFile useCases/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName resultsNetwork_useCase1.sif <span class="se">\</span>
+                            --top <span class="m">10</span> <span class="se">\</span>
+                            --outputPath useCases/OutputResults_useCase1/
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                            --configPath useCases/InputData/config_minimal_useCase2.yml <span class="se">\</span>
+                            --networksPath useCases/InputData/ <span class="se">\</span>
+                            --seedsFile useCases/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName resultsNetwork_useCase2.sif <span class="se">\</span>
+                            --top <span class="m">10</span> --outputPath <span class="se">\</span>
+                            --outputPath useCases/OutputResults_useCase2/
+</pre></div>
+</div>
+</div></div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

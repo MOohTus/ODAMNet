@@ -24,7 +24,7 @@ Usage
 
 By default, data are extracted directly by request databases (:numref:`overlapFig`: *data from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
-extracted from **WP** automatically too. You can give some optional arguments to custom the selection of target genes.
+extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 
 You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`overlapFig`: *data from users*)
@@ -37,25 +37,23 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
     : Input and output files of overlap analysis
 
-*Two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).*
-*Shared arguments are in grey and optional arguments are in dashed boxes. The output files in pink are created only if the*
-*input data come from request.*
+    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    Required files/parameters have solid border line and optional files/parameters have dash border line.
+    Output files in pink are created only if the input data are extracted from requests.
 
+Input parameters for overlap analysis
+----------------------------------------
 
-Arguments of overlap analysis
---------------------------------
-
-To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data from requests`` tab. 
-To provide **your own** target genes and pathways/processes files, see parameters on the ``Data from user`` tab. 
-
+To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
 The ``--outputPath`` parameter is use for both data extraction.
 
 .. tabs::
 
-    .. group-tab:: Data from requests
+    .. group-tab:: Data extracted from requests
 
-        --chemicalsFile FILENAME
+        -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
             You can give several chemicals in the same line : they will be grouped for the analysis.
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
@@ -70,9 +68,9 @@ The ``--outputPath`` parameter is use for both data extraction.
             You can define a threshold to filter target genes extraction based on the number of publications.
             ``[default: 2]``
 
-    .. group-tab:: Data from user
+    .. group-tab:: Data extracted from user
 
-        -g, --targetGenesFile FILENAME
+        -t, --targetGenesFile FILENAME
             Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
             **[required]**
 
@@ -92,12 +90,12 @@ The ``--outputPath`` parameter is use for both data extraction.
     Name of the folder where to save the results.
     ``[default: OutputResults]``
 
-Use cases command line
+Use-cases command line
 ------------------------
 
 .. tabs::
 
-    .. group-tab:: Data from requests
+    .. group-tab:: Data extracted from requests
 
         .. code-block:: bash
 
@@ -106,7 +104,7 @@ Use cases command line
                                     --nbPub 2 \
                                     --outputPath useCases/OutputResults_useCase1/
 
-    .. group-tab:: Data from user
+    .. group-tab:: Data extracted from user
 
         .. code-block:: bash
 

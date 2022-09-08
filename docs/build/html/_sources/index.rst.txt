@@ -27,7 +27,7 @@ EnvironmentProject's documentation
 
 .. toctree::
    :maxdepth: 2
-   :caption: Analysis
+   :caption: Use-cases
 
    pages/analysis/usecase1
    pages/analysis/usecase2

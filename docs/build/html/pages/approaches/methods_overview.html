@@ -107,10 +107,10 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Visualisation using Cytoscape</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Analysis</span></p>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use case 1: data are extracted with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -190,21 +190,12 @@
             
   <div class="section" id="overview-of-the-approaches">
 <h1>Overview of the approaches<a class="headerlink" href="#overview-of-the-approaches" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="context">
-<h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
-<p>In the context of the EJP-RD project, an overlap analysis between a list of genes targeted by vitamins A&amp;D and pathways
-related to CAKUT disease was performed (Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id10" id="id1">1</a>).</p>
-<p>For the vitamin A analysis, data was retrieved from
-several sources: the <a class="reference external" href="https://ctdbase.org/">Comparative Toxicogenomics Database (CTD)</a> <a class="footnote-reference brackets" href="#id11" id="id2">2</a> and the study of Balmer and
-Blomhoff <a class="footnote-reference brackets" href="#id12" id="id3">3</a> for the target genes, and WikiPathways (WP) <a class="footnote-reference brackets" href="#id13" id="id4">4</a>, Reactome <a class="footnote-reference brackets" href="#id14" id="id5">5</a> and Gene Ontology (GO) <a class="footnote-reference brackets" href="#id15" id="id6">6</a><sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id7">7</a>
-for the disease-associated genes.</p>
-</div>
 <div class="section" id="goal">
 <h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
-<p>Here, our goal is to extract data <strong>directly from databases</strong>, <strong>automatize such analysis</strong>, and implement alternative
-approaches to uncover the <strong>relationships between chemicals</strong> (e.g. vitamins, hormones etc …) and <strong>Rare Diseases</strong>.</p>
-<p>Data are extracted <strong>automatically</strong> from the <strong>Comparative Toxicogenomics Database</strong> (CTD) <a class="footnote-reference brackets" href="#id11" id="id8">2</a> for target genes and
-<strong>WikiPathways</strong> (WP) <a class="footnote-reference brackets" href="#id13" id="id9">4</a> for Rare Disease pathways (see <a class="reference internal" href="../analysis/usecase1.html#usecase1"><span class="std std-ref">Use case 1: data are extracted with requests</span></a>).</p>
+<p>Our goal is to uncover the <strong>relationships between chemicals</strong> (e.g. vitamins, hormones etc …) and <strong>Rare Diseases</strong>.
+To this end, we extract data <strong>directly from databases</strong> and implement <strong>different approaches</strong>.</p>
+<p>Data are extracted <strong>automatically</strong> from the <strong>Comparative Toxicogenomics Database</strong> (CTD) <a class="footnote-reference brackets" href="#id3" id="id1">1</a> for target genes and
+<strong>WikiPathways</strong> (WP) <a class="footnote-reference brackets" href="#id4" id="id2">2</a> for Rare Disease pathways (see <a class="reference internal" href="../analysis/usecase1.html#usecase1"><span class="std std-ref">Use-case 1: data are extracted automatically with requests</span></a>).</p>
 <p>We propose three different approaches to study the relationships between genes which are targeted by chemicals and Rare
 Diseases (<a class="reference internal" href="#overviewfig"><span class="std std-numref">Fig. 1</span></a>):</p>
 <blockquote>
@@ -215,38 +206,23 @@ Diseases (<a class="reference internal" href="#overviewfig"><span class="std std
 </ul>
 </div></blockquote>
 <p>Theses three approaches are <strong>complementary</strong> and perform <strong>network exploration</strong> at different level of interactions.</p>
-<div class="figure align-center" id="id18">
+<div class="figure align-center" id="id6">
 <span id="overviewfig"></span><img alt="methods overview" src="../../_images/MethodsOverview.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">: Overview of the three implemented approaches</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">: Overview of the three implemented approaches</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>Moreover, the approaches are open to <strong>external input files</strong> provided by yourself (g.e. target genes file instead of
-chemicals file, pathways and/or processes etc …). Look <a class="reference internal" href="../analysis/usecase2.html#usecase2"><span class="std std-ref">Use case 2: data are provided directly by the users</span></a>, if you want to use your own input files.</p>
+chemicals file, pathways and/or processes etc …). Take a look at <a class="reference internal" href="../analysis/usecase2.html#usecase2"><span class="std std-ref">Use-case 2: data are provided directly by the users</span></a>, if you want to use your own input files.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <dl class="footnote brackets">
-<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., &amp; Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.</p>
-</dd>
-<dt class="label" id="id11"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id8">2</a>)</span></dt>
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
-<dd><p>Balmer, J. E., &amp; Blomhoff, R. (2002). Gene expression regulation by retinoic acid. Journal of lipid research, 43(11), 1773-1808.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets">4</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id9">2</a>)</span></dt>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
 <dd><p>Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., … &amp; Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.</p>
 </dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id5">5</a></span></dt>
-<dd><p>Jassal, B., Matthews, L., Viteri, G., Gong, C., Lorente, P., Fabregat, A., … &amp; D’Eustachio, P. (2020). The reactome pathway knowledgebase. Nucleic acids research, 48(D1), D498-D503.</p>
-</dd>
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id6">6</a></span></dt>
-<dd><p>Ashburner et al. Gene ontology: tool for the unification of biology. Nat Genet. May 2000;25(1):25-9</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id7">7</a></span></dt>
-<dd><p>The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334</p>
-</dd>
-<dt class="label" id="id17"><span class="brackets">8</span></dt>
+<dt class="label" id="id5"><span class="brackets">8</span></dt>
 <dd><p>Curated chemical–gene interactions data were retrieved from the Comparative Toxicogenomics Database (CTD), MDI Biological Laboratory, Salisbury Cove, Maine, and NC State University, Raleigh, North Carolina. World Wide Web (URL: <a class="reference external" href="http://ctdbase.org/">http://ctdbase.org/</a>). [Month, year of data retrieval].</p>
 </dd>
 </dl>
