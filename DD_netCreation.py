@@ -10,9 +10,8 @@ import numpy as np
 import obonet
 import networkx as nx
 import scipy as sp
-import matplotlib.pyplot as plt
+import scipy.sparse
 from collections import defaultdict
-from alive_progress import alive_bar
 
 
 # FUNCTIONS
@@ -84,10 +83,11 @@ def drawNetwork(graph, nodeLabelsDict, edgesList, weightName):
 
 # WORK ENVIRONMENT
 workDirectory = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net'
-phenotypeFile = 'phenotype_2022_06.hpoa'
-# phenotypeFile = 'test.hpoa'
+# phenotypeFile = 'phenotype_2022_06.hpoa'
+phenotypeFile = 'test.hpoa'
 similarityFileName = 'Similarity_matrix.tsv'
 edgesListFileName = 'weightedEdgesList.tsv'
+allEdgesListFileName = 'allWeightedEdgesList.tsv'
 diseasesNetworkFileName = 'diseases_network.sif'
 
 os.chdir(workDirectory)
@@ -107,50 +107,81 @@ phenoFrequencyDict = dict(phenoAnnotationDF['HPO_ID'].value_counts())
 diseasesNbPhenoDict = dict(phenoAnnotationDF['DatabaseID'].value_counts())
 # CREATE DISEASE DICT WITH ASSOCIATED PHENOTYPES
 diseasesDict = {}
-with alive_bar(title='1. Create diseases dict', theme='musical') as bar:
-    for d in diseasesArray:
-        diseasesDict[d] = list(np.unique(np.array(list(phenoAnnotationDF[phenoAnnotationDF['DatabaseID'] == d]['HPO_ID']))))
-    bar()
+for d in diseasesArray:
+    diseasesDict[d] = list(np.unique(np.array(list(phenoAnnotationDF[phenoAnnotationDF['DatabaseID'] == d]['HPO_ID']))))
 
 # HPO ONTOLOGY STRUCTURE LOADING
 hpoNet = obonet.read_obo('hp.obo')
 hpoIDsDict = {id_: data.get('name') for id_, data in hpoNet.nodes(data=True)}
 
 # INFORMATION CONTENT CALCULATION
-with alive_bar(title='2. Calculate IC', theme='musical') as bar:
-    ICdict = dict((hpoID, 0) for hpoID in list(hpoNet.nodes()))
-    N = len(phenoAnnotationDF['HPO_ID'])
-    for hpoID in phenoAnnotationDF['HPO_ID']:
-        if hpoID in hpoNet.nodes():
-            temp = list(nx.descendants(hpoNet, hpoID))
-            temp.append(hpoID)
-            for i in temp:
-                ICdict[i] += 1
-    for hpoID in ICdict.keys():
-        ICdict[hpoID] = -np.log(ICdict[hpoID]/N)
-    bar()
+ICdict = dict((hpoID, 0) for hpoID in list(hpoNet.nodes()))
+N = len(phenoAnnotationDF['HPO_ID'])
+for hpoID in phenoAnnotationDF['HPO_ID']:
+    if hpoID in hpoNet.nodes():
+        temp = list(nx.descendants(hpoNet, hpoID))
+        temp.append(hpoID)
+        for i in temp:
+            ICdict[i] += 1
+for hpoID in ICdict.keys():
+    ICdict[hpoID] = -np.log(ICdict[hpoID]/N)
 
 # CALCULATE SIMILARITY MATRIX BETWEEN DISEASES
 size = len(diseasesArray)
 Similarity = sp.sparse.lil_matrix((size, size))
-with alive_bar(title='3. Calculate similarity matrix', theme='musical') as bar:
-    for k in range(size):
-        for l in range(size):
-            Similarity[k, l] = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
-    bar()
+for k in range(size):
+    for l in range(k, size):
+        score = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
+        Similarity[k, l] = score
+        Similarity[l, k] = score
+
+# CALCULATE SIMILARITY MATRIX BETWEEN DISEASES // PARALLEL
+import multiprocessing
+import itertools
+
+size = len(diseasesArray)
+SimilarityPar = sp.sparse.lil_matrix((size, size))
+combination = itertools.combinations_with_replacement(range(0,size), 2)
+
+def worker(input_iter):
+    # INPUT PARAMATERS
+    pair = input_iter[0]
+    diseasesArray= input_iter[1]
+    diseasesNbPhenoDict = input_iter[2]
+    diseasesDict = input_iter[3]
+    hpoNet = input_iter[4]
+    ICdict = input_iter[5]
+    # CALULATE SCORE FOR PAIR OF DISEASE
+    k, l = pair
+    score = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
+    return (k, l, score)
+
+combination = itertools.combinations_with_replacement(range(0,size), 2)
+input_iter = ((pair, diseasesArray, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict) for pair in combination)
+
+p = multiprocessing.Pool(processes=4)
+
+for k, l, score in p.imap_unordered(worker, input_iter, 1):
+    SimilarityPar[k, l] = score
+    SimilarityPar[l, k] = score
+
+
+
+
+
 
 # SAVE SIMILARITY MATRIX
 # Similarity.data
 similarityArray = Similarity.toarray()
 similarityDf = pd.DataFrame(similarityArray, columns=diseasesArray, index=diseasesArray)
-similarityDf.to_csv(similarityFileName, index=True, sep='\t')
+# similarityDf.to_csv(similarityFileName, index=True, sep='\t')
 
 # CREATE NETWORK
 graph = nx.from_scipy_sparse_matrix(Similarity, edge_attribute='weight')
-# graph.nodes()
-# nx.edges(graph)
-# len(nx.edges(graph))
-# nx.get_edge_attributes(graph, 'weight')
+graph.nodes()
+nx.edges(graph)
+len(nx.edges(graph))
+nx.get_edge_attributes(graph, 'weight')
 
 # SET ATTRIBUTES
 diseasesDict = dict(enumerate(diseasesArray.flatten(), 0))
@@ -158,18 +189,19 @@ nx.set_node_attributes(graph, diseasesDict, 'nodeNames')
 
 # REMOVE SELF LOOP
 graph.remove_edges_from(nx.selfloop_edges(graph))
-# nx.edges(graph)
-# len(nx.edges(graph))
-# nx.get_edge_attributes(graph, 'weight')
+nx.edges(graph)
+len(nx.edges(graph))
+nx.get_edge_attributes(graph, 'weight')
 
 # SAVE EDGES LIST WITH WEIGHT INTO FILE
-nx.write_weighted_edgelist(graph, edgesListFileName, delimiter='\t')
+renamedGraph = nx.relabel_nodes(graph, diseasesDict, copy=True)
+nx.write_weighted_edgelist(renamedGraph, allEdgesListFileName, delimiter='\t')
 
 # SELECT TOP N EDGES FOR EACH DISEASE
 topEdgesDict = defaultdict(list)
 topEdgesList = list()
 # SORT EDGES FOR EACH NODE
-for u,v in sorted(graph.edges(), key=lambda x: graph.get_edge_data(x[0], x[1])['weight'], reverse=True):
+for u, v in sorted(graph.edges(), key=lambda x: graph.get_edge_data(x[0], x[1])['weight'], reverse=True):
     topEdgesDict[u].append((u, v))
     topEdgesDict[v].append((u, v))
 # SELECT TOP N EDGES
@@ -183,7 +215,7 @@ for key in topEdgesDict:
 filteredGraph = nx.Graph(topEdgesList)
 # SET ATTRIBUTES
 nx.set_node_attributes(filteredGraph, diseasesDict, 'nodeNames')
-# nx.set_edge_attributes(filteredGraph, nx.get_edge_attributes(graph, 'weight'), 'weight')
+nx.set_edge_attributes(filteredGraph, nx.get_edge_attributes(graph, 'weight'), 'weight')
 # METRICS
 # nx.edges(filteredGraph)
 # len(nx.edges(filteredGraph))
@@ -196,3 +228,4 @@ nx.set_node_attributes(filteredGraph, diseasesDict, 'nodeNames')
 # SAVE FILTERED NETWORK
 nx.relabel_nodes(filteredGraph, diseasesDict, copy=False)
 nx.write_edgelist(filteredGraph, diseasesNetworkFileName, delimiter='\t', data=False)
+nx.write_weighted_edgelist(filteredGraph, edgesListFileName, delimiter='\t')
