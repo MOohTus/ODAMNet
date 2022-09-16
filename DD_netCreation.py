@@ -11,6 +11,9 @@ import obonet
 import networkx as nx
 import scipy as sp
 import scipy.sparse
+import time
+import multiprocessing
+import itertools
 from collections import defaultdict
 
 
@@ -39,6 +42,8 @@ def sim_phenotypes(fi, fj, hpoNet, ICdict):
 
 # DISEASES SIMILARITY
 def sim_diseases(Da, Db, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict):
+    # get the start time
+    st = time.process_time()
     # Extract number of phenotypes
     DA = diseasesNbPhenoDict[Da]
     DB = diseasesNbPhenoDict[Db]
@@ -61,7 +66,20 @@ def sim_diseases(Da, Db, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict):
         valB += max(temp)
     # Calculate similarity between Da and Db
     sim = (1/(2*DA))*valA + (1/(2*DB))*valB
-    return sim
+    # get the end time
+    et = time.process_time()
+    # get execution time
+    res = et - st
+    return sim, res
+
+
+# WORKER - PERFORM SIMILARITY BETWEEN TWO DISEASES - PARALLEL
+def worker(pair, diseasesArray, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict):
+    # CALULATE SCORE FOR PAIR OF DISEASE
+    k, l = pair
+    # print('Comparison diseases ', k, ' - ', l)
+    score, res = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
+    return (k, l, score, res)
 
 
 # DRAW NETWORK
@@ -84,7 +102,8 @@ def drawNetwork(graph, nodeLabelsDict, edgesList, weightName):
 # WORK ENVIRONMENT
 workDirectory = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net'
 # phenotypeFile = 'phenotype_2022_06.hpoa'
-phenotypeFile = 'test.hpoa'
+# phenotypeFile = 'test.hpoa'
+phenotypeFile = 'test_v1.hpoa'
 similarityFileName = 'Similarity_matrix.tsv'
 edgesListFileName = 'weightedEdgesList.tsv'
 allEdgesListFileName = 'allWeightedEdgesList.tsv'
@@ -127,46 +146,35 @@ for hpoID in ICdict.keys():
     ICdict[hpoID] = -np.log(ICdict[hpoID]/N)
 
 # CALCULATE SIMILARITY MATRIX BETWEEN DISEASES
+st = time.time()
 size = len(diseasesArray)
 Similarity = sp.sparse.lil_matrix((size, size))
+processTime = 0
 for k in range(size):
     for l in range(k, size):
-        score = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
+        score, res = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
         Similarity[k, l] = score
         Similarity[l, k] = score
+        processTime += res
+print(processTime)
+et = time.time()
+print(et - st)
 
 # CALCULATE SIMILARITY MATRIX BETWEEN DISEASES // PARALLEL
-import multiprocessing
-import itertools
-
+st = time.time()
 size = len(diseasesArray)
 SimilarityPar = sp.sparse.lil_matrix((size, size))
+processTimePar = 0
 combination = itertools.combinations_with_replacement(range(0,size), 2)
-
-def worker(input_iter):
-    # INPUT PARAMATERS
-    pair = input_iter[0]
-    diseasesArray= input_iter[1]
-    diseasesNbPhenoDict = input_iter[2]
-    diseasesDict = input_iter[3]
-    hpoNet = input_iter[4]
-    ICdict = input_iter[5]
-    # CALULATE SCORE FOR PAIR OF DISEASE
-    k, l = pair
-    score = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
-    return (k, l, score)
-
-combination = itertools.combinations_with_replacement(range(0,size), 2)
-input_iter = ((pair, diseasesArray, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict) for pair in combination)
-
-p = multiprocessing.Pool(processes=4)
-
-for k, l, score in p.imap_unordered(worker, input_iter, 1):
+p = multiprocessing.Pool(processes=8)
+for k, l, score, res in p.starmap_async(worker, [(pair, diseasesArray, diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict) for pair in combination]).get():
     SimilarityPar[k, l] = score
     SimilarityPar[l, k] = score
-
-
-
+    processTimePar += res
+p.close()
+print(processTimePar)
+et = time.time()
+print(et - st)
 
 
 
@@ -229,3 +237,140 @@ nx.set_edge_attributes(filteredGraph, nx.get_edge_attributes(graph, 'weight'), '
 nx.relabel_nodes(filteredGraph, diseasesDict, copy=False)
 nx.write_edgelist(filteredGraph, diseasesNetworkFileName, delimiter='\t', data=False)
 nx.write_weighted_edgelist(filteredGraph, edgesListFileName, delimiter='\t')
+
+
+
+
+
+
+
+
+
+
+
+
+
+# TEST PARALELLISATION
+
+# Solution Without Paralleization
+
+import numpy as np
+from time import time
+
+# Prepare data
+np.random.RandomState(100)
+arr = np.random.randint(0, 10, size=[200000, 5])
+data = arr.tolist()
+data[:5]
+
+def howmany_within_range(row, minimum, maximum):
+    """Returns how many numbers lie within `maximum` and `minimum` in a given `row`"""
+    count = 0
+    for n in row:
+        if minimum <= n <= maximum:
+            count = count + 1
+    return count
+
+results = []
+for row in data:
+    results.append(howmany_within_range(row, minimum=4, maximum=8))
+
+print(results[:5])
+
+# Parallelizing using Pool.apply()
+
+import multiprocessing as mp
+
+# Step 1: Init multiprocessing.Pool()
+pool = mp.Pool(mp.cpu_count())
+
+# Step 2: `pool.apply` the `howmany_within_range()`
+results = [pool.apply(howmany_within_range, args=(row, 4, 8)) for row in data]
+
+# Step 3: Don't forget to close
+pool.close()
+
+print(results[:5])
+
+# Redefine, with only 1 mandatory argument.
+def howmany_within_range_rowonly(row, minimum=4, maximum=8):
+    count = 0
+    for n in row:
+        if minimum <= n <= maximum:
+            count = count + 1
+    return count
+
+pool = mp.Pool(mp.cpu_count())
+
+results = pool.map(howmany_within_range_rowonly, [row for row in data])
+
+pool.close()
+
+print(results[:5])
+
+# Parallelizing with Pool.starmap()
+pool = mp.Pool(mp.cpu_count())
+results = pool.starmap(howmany_within_range, [(row, 4, 8) for row in data])
+pool.close()
+print(results[:5])
+
+
+# Parallel processing with Pool.apply_async()
+pool = mp.Pool(mp.cpu_count())
+
+results = []
+
+# Step 1: Redefine, to accept `i`, the iteration number
+def howmany_within_range2(i, row, minimum, maximum):
+    """Returns how many numbers lie within `maximum` and `minimum` in a given `row`"""
+    count = 0
+    for n in row:
+        if minimum <= n <= maximum:
+            count = count + 1
+    return (i, count)
+
+
+# Step 2: Define callback function to collect the output in `results`
+def collect_result(result):
+    global results
+    results.append(result)
+
+
+# Step 3: Use loop to parallelize
+for i, row in enumerate(data):
+    pool.apply_async(howmany_within_range2, args=(i, row, 4, 8), callback=collect_result)
+
+# Step 4: Close Pool and let all the processes complete
+pool.close()
+pool.join()  # postpones the execution of next line of code until all processes in the queue are done.
+
+# Step 5: Sort results [OPTIONAL]
+results.sort(key=lambda x: x[0])
+results_final = [r for i, r in results]
+
+print(results_final[:5])
+
+# Parallelizing with Pool.starmap_async()
+
+def howmany_within_range2(i, row, minimum, maximum):
+    """Returns how many numbers lie within `maximum` and `minimum` in a given `row`"""
+    count = 0
+    for n in row:
+        if minimum <= n <= maximum:
+            count = count + 1
+    return (i, count)
+
+pool = mp.Pool(mp.cpu_count())
+results = []
+
+results = pool.starmap_async(howmany_within_range2, [(i, row, 4, 8) for i, row in enumerate(data)]).get()
+pool.close()
+print(results[:5])
+
+
+import numpy as np
+import pandas as pd
+import multiprocessing as mp
+
+df = pd.DataFrame(np.random.randint(3, 10, size=[5, 2]))
+print(df.head())
