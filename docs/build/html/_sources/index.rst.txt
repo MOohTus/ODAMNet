@@ -16,7 +16,7 @@ EnvironmentProject's documentation
    pages/Installation
 
 .. toctree::
-   :titlesonly:
+   :maxdepth: 2
    :caption: Approaches
 
    pages/approaches/methods_overview
@@ -26,7 +26,7 @@ EnvironmentProject's documentation
    pages/approaches/Cytoscape
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Use-cases
 
    pages/analysis/usecase1

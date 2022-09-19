@@ -1,9 +1,16 @@
 ================================
-Visualisation using Cytoscape
+Network visualisation
 ================================
 
-Active modules network visualisation (DOMINO)
+You can visualise network results using Cytoscape [1]_. Here, we describe steps that we used to create network visualisations.
+
+Active Modules Identification (AMI)
 --------------------------------------------------
+
+On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
+network representation with Cytoscape.
+
+The following :numref:`cytoscapeAMI` is an example of display :
 
 .. _cytoscapeAMI:
 .. figure:: ../../pictures/example1_DOMINO_AMnetwork.png
@@ -36,8 +43,15 @@ To create the same display of AM, use the following steps :
 8. **New Network** : From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-Network visualisation (multiXrank)
+*To run AM identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>` *or with your data see* :ref:`Use-case 2 <useCase2_AMI>`.
+
+Random Walk with Restart analysis (RWR)
 --------------------------------------------------
+
+To explore a network, we use a Random Walk with Restart [4]_ approach. As results, each node has a score. You can
+visualise these scores using a network representation with Cytoscape.
+
+The following :numref:`cytoscapeRWR` is an example of display :
 
 .. _cytoscapeRWR:
 .. figure:: ../../pictures/example1_multixrank_network.png
@@ -45,6 +59,8 @@ Network visualisation (multiXrank)
     :align: center
 
     : Visualisation of network using Cytoscape [1]_
+
+To visualise the RWR results using network representation, use the following steps :
 
 1. **Import Network** from File : ``example1_resultsNetwork.sif``
 2. **Import Table** from File : ``multiplex_1.tsv`` and ``multiplex_2.tsv``
@@ -126,9 +142,12 @@ Network visualisation (multiXrank)
 
 12. Layout = yFiles Organic Layout
 
+*To perform a RWR with data requested, see* :ref:`Use-case 1 <useCase1_RWR>` *or with your data see* :ref:`Use-case 2 <useCase2_RWR>`.
+
 References
 --------------------------------------------------
 
 .. [1] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
 .. [2] Legeay, M., Doncheva, N. T., Morris, J. H., & Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.
 .. [3] https://github.com/cytoscape/legend-creator
+.. [4] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.

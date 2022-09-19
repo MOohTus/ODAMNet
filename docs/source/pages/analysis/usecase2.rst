@@ -15,6 +15,18 @@ several sources: the `Comparative Toxicogenomics Database (CTD) <https://ctdbase
 Blomhoff [3]_ for the target genes, and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_
 for the disease-associated genes.
 
+Overlap analysis
+=====================
+
+.. _useCase2_AMI:
+AMI
+=====================
+
+.. _useCase2_RWR:
+RWR
+=====================
+
+
 References
 ============
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Visualisation using Cytoscape &mdash; EnvironmentProject 1 documentation</title>
+  <title>Network visualisation &mdash; EnvironmentProject 1 documentation</title>
   
 
   
@@ -105,7 +105,12 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Visualisation using Cytoscape</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network visualisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#active-modules-identification-ami">Active Modules Identification (AMI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-analysis-rwr">Random Walk with Restart analysis (RWR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
@@ -169,7 +174,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Visualisation using Cytoscape</li>
+      <li>Network visualisation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -188,19 +193,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="visualisation-using-cytoscape">
-<h1>Visualisation using Cytoscape<a class="headerlink" href="#visualisation-using-cytoscape" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="active-modules-network-visualisation-domino">
-<h2>Active modules network visualisation (DOMINO)<a class="headerlink" href="#active-modules-network-visualisation-domino" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id10">
+  <div class="section" id="network-visualisation">
+<h1>Network visualisation<a class="headerlink" href="#network-visualisation" title="Permalink to this headline">¶</a></h1>
+<p>You can visualise network results using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id1">1</a>. Here, we describe steps that we used to create network visualisations.</p>
+<div class="section" id="active-modules-identification-ami">
+<h2>Active Modules Identification (AMI)<a class="headerlink" href="#active-modules-identification-ami" title="Permalink to this headline">¶</a></h2>
+<p>On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
+network representation with Cytoscape.</p>
+<p>The following <a class="reference internal" href="#cytoscapeami"><span class="std std-numref">Fig. 7</span></a> is an example of display :</p>
+<div class="figure align-center" id="id13">
 <span id="cytoscapeami"></span><img alt="example1 AMI" src="../../_images/example1_DOMINO_AMnetwork.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id7" id="id1">1</a> and Omics Visualizer <a class="footnote-reference brackets" href="#id8" id="id2">2</a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id2">1</a> and Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id3">2</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <p>To create the same display of AM, use the following steps :</p>
 <ol class="arabic">
 <li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModulesNetwork.txt</span></code></p></li>
 <li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModules.txt</span></code></p></li>
-<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id8" id="id3">2</a> <strong>table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
+<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id10" id="id4">2</a> <strong>table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
 <li><p>Manage table <strong>connections</strong> : link network and the previous table</p>
 <blockquote>
 <div><ul class="simple">
@@ -224,15 +233,20 @@
 </li>
 <li><p><strong>Filter</strong> : Select nodes with <code class="docutils literal notranslate"><span class="pre">overlapSignificant</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
 <li><p><strong>New Network</strong> : From Selected Nodes, All Edges</p></li>
-<li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id8" id="id4">2</a> and Legend Creator <a class="footnote-reference brackets" href="#id9" id="id5">3</a></p></li>
+<li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id5">2</a> and Legend Creator <a class="footnote-reference brackets" href="#id11" id="id6">3</a></p></li>
 </ol>
+<p><em>To run AM identification with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-ami"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-ami"><span class="std std-ref">Use-case 2</span></a>.</p>
 </div>
-<div class="section" id="network-visualisation-multixrank">
-<h2>Network visualisation (multiXrank)<a class="headerlink" href="#network-visualisation-multixrank" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-center" id="id11">
+<div class="section" id="random-walk-with-restart-analysis-rwr">
+<h2>Random Walk with Restart analysis (RWR)<a class="headerlink" href="#random-walk-with-restart-analysis-rwr" title="Permalink to this headline">¶</a></h2>
+<p>To explore a network, we use a Random Walk with Restart <a class="footnote-reference brackets" href="#id12" id="id7">4</a> approach. As results, each node has a score. You can
+visualise these scores using a network representation with Cytoscape.</p>
+<p>The following <a class="reference internal" href="#cytoscaperwr"><span class="std std-numref">Fig. 8</span></a> is an example of display :</p>
+<div class="figure align-center" id="id14">
 <span id="cytoscaperwr"></span><img alt="example1 RWR" src="../../_images/example1_multixrank_network.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id7" id="id6">1</a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id8">1</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
+<p>To visualise the RWR results using network representation, use the following steps :</p>
 <ol class="arabic">
 <li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">example1_resultsNetwork.sif</span></code></p></li>
 <li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
@@ -294,8 +308,8 @@ pathways of interest.</p>
 <li><p>Edit and Remove Duplicate Edges</p></li>
 <li><p><strong>Style</strong> :</p></li>
 </ol>
-<table class="docutils align-default" id="id12">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -346,18 +360,22 @@ pathways of interest.</p>
 <ol class="arabic simple" start="12">
 <li><p>Layout = yFiles Organic Layout</p></li>
 </ol>
+<p><em>To perform a RWR with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-rwr"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-rwr"><span class="std std-ref">Use-case 2</span></a>.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <dl class="footnote brackets">
-<dt class="label" id="id7"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id6">2</a>)</span></dt>
+<dt class="label" id="id9"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id8">3</a>)</span></dt>
 <dd><p>Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., … &amp; Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.</p>
 </dd>
-<dt class="label" id="id8"><span class="brackets">2</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>,<a href="#id4">3</a>)</span></dt>
+<dt class="label" id="id10"><span class="brackets">2</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id4">2</a>,<a href="#id5">3</a>)</span></dt>
 <dd><p>Legeay, M., Doncheva, N. T., Morris, J. H., &amp; Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.</p>
 </dd>
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
 <dd><p><a class="reference external" href="https://github.com/cytoscape/legend-creator">https://github.com/cytoscape/legend-creator</a></p>
+</dd>
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id7">4</a></span></dt>
+<dd><p>Baptista, A., Gonzalez, A., &amp; Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.</p>
 </dd>
 </dl>
 </div>
