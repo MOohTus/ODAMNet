@@ -4,8 +4,10 @@ Network visualisation
 
 You can visualise network results using Cytoscape [1]_. Here, we describe steps that we used to create network visualisations.
 
-Active Modules Identification (AMI)
---------------------------------------------------
+.. _networkAMI:
+
+Active Modules Identification (AMI) network visualisation
+------------------------------------------------------------
 
 On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
 network representation with Cytoscape.
@@ -45,8 +47,10 @@ To create the same display of AM, use the following steps :
 
 *To run AM identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>` *or with your data see* :ref:`Use-case 2 <useCase2_AMI>`.
 
-Random Walk with Restart analysis (RWR)
---------------------------------------------------
+.. _networkRWR:
+
+Random Walk with Restart analysis (RWR) network visualisation
+----------------------------------------------------------------
 
 To explore a network, we use a Random Walk with Restart [4]_ approach. As results, each node has a score. You can
 visualise these scores using a network representation with Cytoscape.

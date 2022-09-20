@@ -1,8 +1,8 @@
-.. _output:
-
 ==================================================
 Output files
 ==================================================
+
+.. _requestOutput:
 
 Request file results
 ==================================================
@@ -57,6 +57,7 @@ GMT file is a tab-separated file :
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
 
+.. _overlapOutput:
 
 Overlap output files
 ==================================================
@@ -86,6 +87,8 @@ This is the result file of the overlap analysis. The number of this file depends
     WP4506;Tyrosine metabolism;WikiPathway_2022_08_01;4;1721;0;12379;1.0;1.0;
     WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12379;0.9981605117974595;1.0;APC
     WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
+
+.. _AMIOutput:
 
 Active Module Identification
 ==================================================
