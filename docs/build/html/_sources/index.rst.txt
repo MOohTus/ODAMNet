@@ -26,14 +26,14 @@ EnvironmentProject's documentation
    pages/approaches/Cytoscape
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Use-cases
 
    pages/analysis/usecase1
    pages/analysis/usecase2
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: File formats
 
    pages/formats/Input

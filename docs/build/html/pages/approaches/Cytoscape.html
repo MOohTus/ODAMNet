@@ -105,12 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Network visualisation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#active-modules-identification-ami-network-visualisation">Active Modules Identification (AMI) network visualisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-analysis-rwr-network-visualisation">Random Walk with Restart analysis (RWR) network visualisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Network visualisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
@@ -243,12 +238,12 @@ network representation with Cytoscape.</p>
 visualise these scores using a network representation with Cytoscape.</p>
 <p>The following <a class="reference internal" href="#cytoscaperwr"><span class="std std-numref">Fig. 8</span></a> is an example of display :</p>
 <div class="figure align-center" id="id14">
-<span id="cytoscaperwr"></span><img alt="example1 RWR" src="../../_images/example1_multixrank_network.png" />
+<span id="cytoscaperwr"></span><img alt="useCase 1 RWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id8">1</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
 <p>To visualise the RWR results using network representation, use the following steps :</p>
 <ol class="arabic">
-<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">example1_resultsNetwork.sif</span></code></p></li>
+<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code></p></li>
 <li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
 <li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
 <blockquote>
@@ -284,7 +279,7 @@ pathways of interest.</p>
 </div>
 </div>
 <ol class="arabic" start="5">
-<li><p>Create <strong>two new columns</strong> named <code class="docutils literal notranslate"><span class="pre">label</span></code> and <code class="docutils literal notranslate"><span class="pre">keep</span></code></p></li>
+<li><p>Create <strong>two new columns</strong> named <code class="docutils literal notranslate"><span class="pre">label</span></code> as string and <code class="docutils literal notranslate"><span class="pre">keep</span></code> as boolean</p></li>
 <li><p><strong>Filter</strong> : Select genes nodes</p>
 <blockquote>
 <div><ul class="simple">
@@ -299,7 +294,7 @@ pathways of interest.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Add pathway names into <code class="docutils literal notranslate"><span class="pre">label</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$pathway</span></code>)</p></li>
-<li><p>Add a condition score into <code class="docutils literal notranslate"><span class="pre">keep</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$score&gt;=0.00020841510533737325</span></code>)</p></li>
+<li><p>Add a condition score into <code class="docutils literal notranslate"><span class="pre">keep</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$score&gt;=0.0002083975629882177</span></code>)</p></li>
 </ul>
 </div></blockquote>
 </li>

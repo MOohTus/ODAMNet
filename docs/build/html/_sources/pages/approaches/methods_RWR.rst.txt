@@ -117,6 +117,8 @@ Molecular multilayer
 
 Details of layers (number of nodes, edges, nature of association and source).
 
+.. _disconnectedDiseases:
+
 Disconnected disease network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -160,6 +162,8 @@ with ``networkCreation`` method.
         .. code-block:: bash
 
             python3 main.py
+
+.. _DDnet:
 
 Disease-disease network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

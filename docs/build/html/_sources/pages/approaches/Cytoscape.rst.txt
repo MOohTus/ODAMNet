@@ -58,15 +58,15 @@ visualise these scores using a network representation with Cytoscape.
 The following :numref:`cytoscapeRWR` is an example of display :
 
 .. _cytoscapeRWR:
-.. figure:: ../../pictures/example1_multixrank_network.png
-    :alt: example1 RWR
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
+    :alt: useCase 1 RWR
     :align: center
 
     : Visualisation of network using Cytoscape [1]_
 
 To visualise the RWR results using network representation, use the following steps :
 
-1. **Import Network** from File : ``example1_resultsNetwork.sif``
+1. **Import Network** from File : ``resultsNetwork_useCase1.sif``
 2. **Import Table** from File : ``multiplex_1.tsv`` and ``multiplex_2.tsv``
 3. **Import Table** from File : ``seeds.4Cytoscape``
 
@@ -95,7 +95,7 @@ To visualise the RWR results using network representation, use the following ste
 
         awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=higherScore){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' gmtFile multiplex_2.tsv > diseasesResults.txt
 
-5. Create **two new columns** named ``label`` and ``keep``
+5. Create **two new columns** named ``label`` as string and ``keep`` as boolean
 6. **Filter** : Select genes nodes
 
     - To ``label`` column, fill with ``=$name`` and apply to selected nodes
@@ -106,7 +106,7 @@ To visualise the RWR results using network representation, use the following ste
 7. **Filter** : Select pathways nodes
 
     - Add pathway names into ``label`` column (``=$pathway``)
-    - Add a condition score into ``keep`` column (``=$score>=0.00020841510533737325``)
+    - Add a condition score into ``keep`` column (``=$score>=0.0002083975629882177``)
 
 8. **Filter** : Select nodes with ``keep = True``
 9. **New Network** : From Selected Nodes, All Edges

@@ -248,7 +248,7 @@ We found **13 Active Modules** :
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We found **16 pathways** that are significantly overlaped by **6 Active Modules** (padjusted <= 0.05).
+We found **16 pathways** that are significantly overlaped by **7 Active Modules** (padjusted <= 0.05).
 
 .. table:: Overlap analysis between AM and RD pathways
     :align: center
@@ -294,18 +294,128 @@ We found **16 pathways** that are significantly overlaped by **6 Active Modules*
 Visualisation of AM results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We visualised the result using a network representation (:numref:`dominoUsage1Fig`). To know how to create this figure, see the :ref:`networkAMI` section.
+We visualised the result using a network representation (:numref:`dominoUsage1Fig`). To know how to create this figure,
+see the :ref:`networkAMI` section.
 
 .. _dominoUsage1Fig:
-.. image:: ../../pictures/example1_DOMINO_AMnetwork.png
+.. figure:: ../../pictures/example1_DOMINO_AMnetwork.png
    :alt: usecase1 AMI
+   :align: center
+
+   : Network visualisation of Active modules which overlap significantly target genes
+
+Some network are enriched with the same pathways whereas other contain genes involved in different pathways. Target genes
+(i.e. active genes, grey spheres) could be part of pathways as non-target genes (white spheres).
 
 .. _useCase1_RWR:
 RWR
 =====================
 
+With this approach, a Random Walk with Restart (see :doc:`../approaches/methods_RWR` section for more details )
+is apply into two different multilayer compositions:
+
+1. Multiplex (PPI + Complex + Reactome) and Diseases network only connected to genes nodes
+2. Multiplex (PPI + Complex + Reactome) and Diseases-Diseases network
+
+*For more details about networks used, see* :ref:`disconnectedDiseases` *and* :ref:`DDnet`.
+
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
+
+For the first composition of network, we created the disconnected network : see :ref:`disconnectedDiseases`.
+
+Whatever the network used, we want to extract target genes of vitamin A and its child molecules (``--directAssociation False``).
+The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A.
+Then, we keep interaction with at least two papers which mention it in the literature (``--nbPub 2``).
+
+MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
+default parameters.
+
+The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
+You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
+(``--top 10``).
+
+Results files are saved into ``examples/OutputResults_example1/`` folder.
+
+If you need more details about the input format files, see :ref:`RWRinput` part.
+
+.. tip::
+
+    Whatever the networks used, the **command line is the same**. But you have to **change** the network name inside the
+    **configuration file**.
+
+    .. tabs::
+
+        .. group-tab:: Discontinuous disease network
+
+            .. code-block:: bash
+                :emphasize-lines: 9,11
+
+                 multiplex:
+                     1:
+                         layers:
+                             - multiplex/1/Complexes_Nov2020.gr
+                             - multiplex/1/PPI_Jan2021.gr
+                             - multiplex/1/Reactome_Nov2020.gr
+                     2:
+                         layers:
+                             - multiplex/2/WP_RareDiseasesNetwork_fromRequest.sif
+                 bipartite:
+                     bipartite/Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv:
+                         source: 2
+                         target: 1
+                 seed:
+                     seeds.txt
+
+        .. group-tab:: Diseases-Diseases network
+
+            .. code-block:: bash
+               :emphasize-lines: 9,11
+
+                multiplex:
+                    1:
+                        layers:
+                            - multiplex/1/Complexes_Nov2020.gr
+                            - multiplex/1/PPI_Jan2021.gr
+                            - multiplex/1/Reactome_Nov2020.gr
+                    2:
+                        layers:
+                            - multiplex/2/Diseases_network_2022.sif
+                bipartite:
+                    bipartite/Bipartite_diseasesNetwork_2022.tsv:
+                        source: 2
+                        target: 1
+                seed:
+                    seeds.txt
+
+
+.. code-block:: bash
+
+    python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+                                --directAssociation FALSE \
+                                --nbPub 2 \
+                                --configPath useCases/InputData/config_minimal_useCase1.yml \
+                                --networksPath useCases/InputData/ \
+                                --seedsFile useCases/InputData/seeds.txt \
+                                --sifFileName resultsNetwork_useCase1.sif \
+                                --top 10 \
+                                --outputPath useCases/OutputResults_useCase1/
+
+Several files are generated :
+
+- ``CTD_request_D014801_2022_09_07.tsv`` and ``CTD_requestFiltered_D014801_2022_09_07.tsv`` :
+  the first file contains results from CTD request and the second one contains the filtered (by paper number) results.
+
+- ``RWR_D014801/`` folder with the walk results :
+
+    - ``config_minimal_useCase1.yml`` and ``seeds.txt`` : a copy of the input files
+
+    - ``multiplex_1.tsv`` and ``multiplex_2.tsv`` : score for each feature. 1 corresponds to the multiplex and 2 to
+      the disease network (depends of the folder name where networks are saved).
+
+    - ``resultsNetwork_useCase1.sif`` : SIF file with the network result
+
+For more details about these file, see :doc:`../formats/Output` page.
 
 Results of Random Walk analysis with data extracted automatically from databases
 -----------------------------------------------------------------------------------
@@ -315,9 +425,132 @@ Results of Random Walk analysis with data extracted automatically from databases
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
+We extracted genes that are targeted by **vitamin A** and by its child molecules.
+
+.. table:: Request result metrics
+    :align: center
+
+    +----------------------------------+---------------------+-----------------+
+    |                                  | Number of molecules | Number of genes |
+    +==================================+=====================+=================+
+    |          Request result          |          8          |      7 765      |
+    +----------------------------------+---------------------+-----------------+
+    | After filtering by papers number |          7          |      2 143      |
+    +----------------------------------+---------------------+-----------------+
+
 Random Walk with Restart results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We use the default parameters, whatever the networks used.
+
+Discontinuous diseases network
+"""""""""""""""""""""""""""""""""
+
+Target genes are used as seed to start the walk : ``1 988/2 143`` genes are set.
+
+The gene with the highest score is ``VCAM1`` with ``score = 0.0002083975629882177`` (it's a seed). This score helps
+us to select a list of diseases. All disease with a score bigger than this score are extracted and considered as connected
+with target genes (i.e. seeds).
+
+There are **27 pathways** have a higher score (:ref:`Table <pathwaysRWRresults>`) :
+
+.. _pathwaysRWRresults:
+.. table:: Pathways linked to target genes
+    :align: center
+
+    +------------+-----------------------------------------------------+--------------+
+    | node       | pathways                                            | score        |
+    +============+=====================================================+==============+
+    | WP5087     | Malignant pleural mesothelioma                      | 0.002871     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4673     | Male infertility                                    | 0.000868     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP5124     | Alzheimer's disease                                 | 0.000775     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP2059     | Alzheimer's disease and miRNA effects               | 0.000775     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4298     | Acute viral myocarditis                             | 0.000731     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4746     | Thyroid hormones production and peripheral ...      | 0.000622     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP3584     | MECP2 and associated Rett syndrome                  | 0.000601     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP5224     | 2q37 copy number variation syndrome                 | 0.000567     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4549     | Fragile X syndrome                                  | 0.000555     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4657     | 22q11.2 copy number variation syndrome              | 0.000522     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4541     | Hippo-Merlin signaling dysregulation                | 0.000521     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4932     | 7q11.23 copy number variation syndrome              | 0.000492     |
+    +------------+-----------------------------------------------------+--------------+
+    | **WP5053** | **Development of ureteric collection system**       | **0.000454** |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4949     | 16p11.2 proximal deletion syndrome                  | 0.000442     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP5114     | Nucleotide excision repair in xeroderma pigmentosum | 0.000394     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4312     | Rett syndrome causing genes                         | 0.000393     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP2447     | Amyotrophic lateral sclerosis (ALS)                 | 0.000384     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4879     | Overlap between signal transduction pathways ...    | 0.000328     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4906     | 3q29 copy number variation syndrome                 | 0.000305     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4540     | Hippo signaling regulation pathways                 | 0.000303     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP5222     | 2q13 copy number variation syndrome                 | 0.000284     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP3995     | Prion disease pathway                               | 0.000280     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP3998     | Prader-Willi and Angelman syndrome                  | 0.000247     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4803     | Ciliopathies                                        | 0.000244     |
+    +------------+-----------------------------------------------------+--------------+
+    | WP2371     | Parkinson's disease pathway                         | 0.000231     |
+    +------------+-----------------------------------------------------+--------------+
+    | **WP4823** | **Genes controlling nephrogenesis**                 | **0.000221** |
+    +------------+-----------------------------------------------------+--------------+
+    | WP4545     | Oxysterols derived from cholesterol                 | 0.000214     |
+    +------------+-----------------------------------------------------+--------------+
+
+You can represent the results with a network as shown on the
+
+.. _useCase1_pathwaysRWR:
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
+   :alt: usecase 1 pathwaysRWR
+   :align: center
+
+   : Results from RWR through the pathways network
+
+
+Disease-Disease network
+"""""""""""""""""""""""""
+
+Rare disease pathways identified
+====================================
+
+To compare results from the different approaches, we use orsum [2]_.
+
+.. code-block:: bash
+
+    orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt
+                --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum
+                --fileAliases Overlap DOMINO multiXrank
+                --outputFolder useCase1Comparison/
+
+The results are display on the :numref:`useCase1_orsum`.
+
+.. _useCase1_orsum:
+.. figure:: ../../pictures/useCase1_orsum.png
+   :alt: usecase1 orsum
+   :align: center
+
+   : Comparison of use-case 1 results using orsum
 
 References
 ============
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
+.. [2] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
