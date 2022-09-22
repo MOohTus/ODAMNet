@@ -104,10 +104,10 @@ workDirectory = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetwo
 # phenotypeFile = 'phenotype_2022_06.hpoa'
 # phenotypeFile = 'test.hpoa'
 phenotypeFile = 'test_v1.hpoa'
-similarityFileName = 'Similarity_matrix.tsv'
-edgesListFileName = 'weightedEdgesList.tsv'
-allEdgesListFileName = 'allWeightedEdgesList.tsv'
-diseasesNetworkFileName = 'diseases_network.sif'
+similarityFileName = 'Similarity_matrix_test_v1.tsv'
+edgesListFileName = 'weightedEdgesList_test_v1.tsv'
+allEdgesListFileName = 'allWeightedEdgesList_test_v1.tsv'
+diseasesNetworkFileName = 'diseases_network_test_v1.sif'
 
 os.chdir(workDirectory)
 
@@ -146,19 +146,19 @@ for hpoID in ICdict.keys():
     ICdict[hpoID] = -np.log(ICdict[hpoID]/N)
 
 # CALCULATE SIMILARITY MATRIX BETWEEN DISEASES
-st = time.time()
-size = len(diseasesArray)
-Similarity = sp.sparse.lil_matrix((size, size))
-processTime = 0
-for k in range(size):
-    for l in range(k, size):
-        score, res = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
-        Similarity[k, l] = score
-        Similarity[l, k] = score
-        processTime += res
-print(processTime)
-et = time.time()
-print(et - st)
+# st = time.time()
+# size = len(diseasesArray)
+# Similarity = sp.sparse.lil_matrix((size, size))
+# processTime = 0
+# for k in range(size):
+#     for l in range(k, size):
+#         score, res = sim_diseases(diseasesArray[k], diseasesArray[l], diseasesNbPhenoDict, diseasesDict, hpoNet, ICdict)
+#         Similarity[k, l] = score
+#         Similarity[l, k] = score
+#         processTime += res
+# print(processTime)
+# et = time.time()
+# print(et - st)
 
 # CALCULATE SIMILARITY MATRIX BETWEEN DISEASES // PARALLEL
 st = time.time()
@@ -177,15 +177,14 @@ et = time.time()
 print(et - st)
 
 
-
 # SAVE SIMILARITY MATRIX
 # Similarity.data
-similarityArray = Similarity.toarray()
+similarityArray = SimilarityPar.toarray()
 similarityDf = pd.DataFrame(similarityArray, columns=diseasesArray, index=diseasesArray)
 # similarityDf.to_csv(similarityFileName, index=True, sep='\t')
 
 # CREATE NETWORK
-graph = nx.from_scipy_sparse_matrix(Similarity, edge_attribute='weight')
+graph = nx.from_scipy_sparse_matrix(SimilarityPar, edge_attribute='weight')
 graph.nodes()
 nx.edges(graph)
 len(nx.edges(graph))
@@ -214,7 +213,7 @@ for u, v in sorted(graph.edges(), key=lambda x: graph.get_edge_data(x[0], x[1])[
     topEdgesDict[v].append((u, v))
 # SELECT TOP N EDGES
 for key in topEdgesDict:
-    for edge in topEdgesDict[key][:3]:
+    for edge in topEdgesDict[key][:5]:
         if edge not in topEdgesList:
             topEdgesList.append(edge)
 # len(topEdgesList)
@@ -239,7 +238,142 @@ nx.write_edgelist(filteredGraph, diseasesNetworkFileName, delimiter='\t', data=F
 nx.write_weighted_edgelist(filteredGraph, edgesListFileName, delimiter='\t')
 
 
+# MT - 2022-09-22
+# TEST NEW FILTER METHOD
 
+# LIBRARIES
+import os
+import pandas as pd
+import numpy as np
+import networkx as nx
+import time
+import multiprocessing
+import itertools
+from collections import defaultdict
+
+# WORK ENVIRONMENT
+workDirectory = '/home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net'
+# phenotypeFile = 'phenotype_2022_06.hpoa'
+# phenotypeFile = 'test.hpoa'
+phenotypeFile = 'test_v1.hpoa'
+similarityFileName = 'Similarity_matrix_test_v1.tsv'
+edgesListFileName = 'weightedEdgesList_test_v1.tsv'
+allEdgesListFileName = 'allWeightedEdgesList_test_v1.tsv'
+diseasesNetworkFileName = 'diseases_network_test_v1.sif'
+
+os.chdir(workDirectory)
+
+# PHENOTYPE ANNOTATION LOADING
+phenoAnnotationDF = pd.read_csv(phenotypeFile, sep='\t', dtype=object, comment='#')
+phenoAnnotationDF = phenoAnnotationDF[['DatabaseID', 'HPO_ID']]
+phenoAnnotationDF = phenoAnnotationDF[phenoAnnotationDF['DatabaseID'].str.contains('OMIM')]
+diseasesArray = np.unique(list(phenoAnnotationDF['DatabaseID']))
+
+# CREATE DISEASE DICT WITH ASSOCIATED PHENOTYPES
+diseasesDict = {}
+for d in diseasesArray:
+    diseasesDict[d] = list(np.unique(np.array(list(phenoAnnotationDF[phenoAnnotationDF['DatabaseID'] == d]['HPO_ID']))))
+
+# CREATE NETWORK
+similarityDf = pd.read_csv(allEdgesListFileName, sep = '\t', header=None)
+similarityDf.columns = ['source', 'target', 'weight']
+similarityDf
+graph = nx.from_pandas_edgelist(similarityDf, source='source', target='target', edge_attr='weight')
+
+# SET ATTRIBUTES
+diseasesDict = dict(enumerate(diseasesArray.flatten(), 0))
+nx.set_node_attributes(graph, diseasesDict, 'nodeNames')
+
+# REMOVE SELF LOOP
+graph.remove_edges_from(nx.selfloop_edges(graph))
+
+# SELECT TOP N EDGES FOR EACH DISEASE
+
+
+# SORT EDGES FOR EACH NODE / ORDERED DICTIONARY
+st = time.time()
+topEdgesDict = defaultdict(list)
+topEdgesList = list()
+for u, v in sorted(graph.edges(), key=lambda x: graph.get_edge_data(x[0], x[1])['weight'], reverse=True):
+    topEdgesDict[u].append((u, v))
+    topEdgesDict[v].append((u, v))
+    # SELECT TOP N EDGES
+    for key in topEdgesDict:
+        for edge in topEdgesDict[key][:5]:
+            if edge not in topEdgesList:
+                topEdgesList.append(edge)
+graphFromOrderedDict = nx.Graph(topEdgesList)
+et = time.time()
+timeFromOrderedDict = et - st
+
+# SORT EDGES FOR EACH NODE / SELECT 5 TOP
+
+def filterWorker(node, graph):
+    weightList = list()
+    neighbors = list(nx.neighbors(graph, n))
+    for i in neighbors:
+        weightList.append(graph.get_edge_data(n, i)['weight'])
+    weightSeries = pd.Series(weightList)
+    top5List = weightSeries.nlargest(5)
+    top = [neighbors[x] for x in top5List.index.to_list()]
+    return(node, top)
+
+
+st = time.time()
+topEdgesFromNodesDict_par = dict()
+nodesList = list(nx.nodes(graph))
+p = multiprocessing.Pool(processes=8)
+for n, top in p.starmap_async(filterWorker, [(node, graph) for node in nodesList]).get():
+    topEdgesFromNodesDict_par[n] = top
+graphFromNeighbors = nx.from_dict_of_lists(topEdgesFromNodesDict_par)
+p.close()
+et = time.time()
+print(et - st)
+
+
+
+
+st = time.time()
+topEdgesFromNodesDict = dict()
+nodesList = list(nx.nodes(graph))
+for n in nodesList:
+    weightList = list()
+    neighbors = list(nx.neighbors(graph, n))
+    for i in neighbors:
+        weightList.append(graph.get_edge_data(n, i)['weight'])
+    weightSeries = pd.Series(weightList)
+    top5List = weightSeries.nlargest(5)
+    topEdgesFromNodesDict[n] = [neighbors[x] for x in top5List.index.to_list()]
+graphFromNeighbors = nx.from_dict_of_lists(topEdgesFromNodesDict)
+et = time.time()
+timeFromNeighbors = et - st
+timeFromNeighbors
+
+print('Time from ordered dict : ' + str(timeFromOrderedDict) + ' - ' + str(len(list(nx.edges(graphFromOrderedDict)))))
+print('Time from nodes : ' + str(timeFromNeighbors) + ' - ' + str(len(list(nx.edges(graphFromNeighbors)))))
+drawNetwork(graphFromOrderedDict, diseasesDict, list(nx.edges(graphFromOrderedDict)), 'weight')
+drawNetwork(graphFromNeighbors, diseasesDict, list(nx.edges(graphFromNeighbors)), 'weight')
+nx.difference(graphFromOrderedDict, graphFromNeighbors).nodes
+nx.difference(graphFromOrderedDict, graphFromNeighbors).edges
+listFromDict = list(graphFromOrderedDict.nodes())
+listFromNode = list(graphFromNeighbors.nodes())
+listFromDict.sort(); listFromNode.sort()
+listFromDict == listFromNode
+
+nx.write_edgelist(graphFromNeighbors, 'diseases_network_fromNodes_test_v1.sif', delimiter='\t', data=False)
+
+
+# drawNetwork(graph, diseasesDict, topEdgesList, 'weight')
+# drawNetwork(filteredGraph, diseasesDict, list(nx.edges(filteredGraph)), 'weight')
+
+
+
+
+
+similarityDf = pd.read_csv(allEdgesListFileName, sep='\t', header=None, index_col=0)
+similarityDf = similarityDf.transpose()
+similarityDf.
+similarityDf.to_dict('index')
 
 
 
