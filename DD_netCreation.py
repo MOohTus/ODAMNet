@@ -248,7 +248,6 @@ import numpy as np
 import networkx as nx
 import time
 import multiprocessing
-import itertools
 from collections import defaultdict
 
 # WORK ENVIRONMENT
@@ -288,8 +287,6 @@ nx.set_node_attributes(graph, diseasesDict, 'nodeNames')
 graph.remove_edges_from(nx.selfloop_edges(graph))
 
 # SELECT TOP N EDGES FOR EACH DISEASE
-
-
 # SORT EDGES FOR EACH NODE / ORDERED DICTIONARY
 st = time.time()
 topEdgesDict = defaultdict(list)
@@ -305,49 +302,93 @@ for u, v in sorted(graph.edges(), key=lambda x: graph.get_edge_data(x[0], x[1])[
 graphFromOrderedDict = nx.Graph(topEdgesList)
 et = time.time()
 timeFromOrderedDict = et - st
-
-# SORT EDGES FOR EACH NODE / SELECT 5 TOP
-
+# SORT EDGES FOR EACH NODE / SELECT 5 TOP / PARALLEL
 def filterWorker(node, graph):
+    dictionary = {}
     weightList = list()
     neighbors = list(nx.neighbors(graph, n))
     for i in neighbors:
         weightList.append(graph.get_edge_data(n, i)['weight'])
+        if n not in dictionary:
+            dictionary[n] = [i, graph.get_edge_data(n, i)['weight']]
+        else:
+            dictionary[n].append([i, graph.get_edge_data(n, i)['weight']])
     weightSeries = pd.Series(weightList)
     top5List = weightSeries.nlargest(5)
     top = [neighbors[x] for x in top5List.index.to_list()]
-    return(node, top)
-
+    if n == 'OMIM:107480':
+        #print(weightSeries)
+        print(top5List)
+    return(node, top, dictionary)
 
 st = time.time()
 topEdgesFromNodesDict_par = dict()
-nodesList = list(nx.nodes(graph))
+edgesFromNodesDict_par = dict()
+nodesList_par = list(nx.nodes(graph))
 p = multiprocessing.Pool(processes=8)
-for n, top in p.starmap_async(filterWorker, [(node, graph) for node in nodesList]).get():
+for n, top, dictionary in p.starmap_async(filterWorker, [(node, graph) for node in nodesList_par]).get():
     topEdgesFromNodesDict_par[n] = top
-graphFromNeighbors = nx.from_dict_of_lists(topEdgesFromNodesDict_par)
+    edgesFromNodesDict_par[n] = dictionary
+graphFromNeighbors_par = nx.from_dict_of_lists(topEdgesFromNodesDict_par)
 p.close()
 et = time.time()
-print(et - st)
-
-
-
-
+timeFromNeighbors_par = et - st
+# SORT EDGES FOR EACH NODE / SELECT 5 TOP
 st = time.time()
 topEdgesFromNodesDict = dict()
+edgesFromNodesDict = {}
 nodesList = list(nx.nodes(graph))
 for n in nodesList:
     weightList = list()
     neighbors = list(nx.neighbors(graph, n))
     for i in neighbors:
         weightList.append(graph.get_edge_data(n, i)['weight'])
+        if n not in edgesFromNodesDict:
+            edgesFromNodesDict[n] = [i, graph.get_edge_data(n, i)['weight']]
+        else:
+            edgesFromNodesDict[n].append([i, graph.get_edge_data(n, i)['weight']])
     weightSeries = pd.Series(weightList)
     top5List = weightSeries.nlargest(5)
+    if(n == 'OMIM:107480'):
+        #print(weightSeries)
+        print(top5List)
     topEdgesFromNodesDict[n] = [neighbors[x] for x in top5List.index.to_list()]
 graphFromNeighbors = nx.from_dict_of_lists(topEdgesFromNodesDict)
 et = time.time()
 timeFromNeighbors = et - st
+
+n = 'OMIM:107480'
+edgesFromNodesDict[n] == edgesFromNodesDict_par[n]
+topEdgesFromNodesDict[n] == topEdgesFromNodesDict_par[n]
+list(nx.neighbors(graphFromOrderedDict, n))
+list(nx.neighbors(graphFromNeighbors, n))
+list(nx.neighbors(graphFromNeighbors_par, n))
+
+edgesFromNodesDict_par[n]
+topEdgesFromNodesDict_par[n]
+
+timeFromOrderedDict
 timeFromNeighbors
+timeFromNeighbors_par
+
+len(graphFromOrderedDict.nodes())
+len(graphFromNeighbors.nodes())
+len(graphFromNeighbors_par.nodes())
+
+nodesFromDict = list(graphFromOrderedDict.nodes()); nodesFromDict.sort()
+nodesFromNodes = list(graphFromNeighbors.nodes()); nodesFromNodes.sort()
+nodesFromNodes_par = list(graphFromNeighbors_par.nodes()); nodesFromNodes_par.sort()
+nodesFromDict == nodesFromNodes == nodesFromNodes_par
+
+nx.difference(graphFromOrderedDict, graphFromNeighbors).edges
+nx.difference(graphFromOrderedDict, graphFromNeighbors_par).edges
+nx.difference(graphFromNeighbors, graphFromNeighbors_par).edges
+
+
+list(nx.neighbors(graphFromOrderedDict, 'OMIM:107480'))
+list(nx.neighbors(graphFromNeighbors, 'OMIM:107480'))
+list(nx.neighbors(graphFromNeighbors_par, 'OMIM:107480'))
+
 
 print('Time from ordered dict : ' + str(timeFromOrderedDict) + ' - ' + str(len(list(nx.edges(graphFromOrderedDict)))))
 print('Time from nodes : ' + str(timeFromNeighbors) + ' - ' + str(len(list(nx.edges(graphFromNeighbors)))))
