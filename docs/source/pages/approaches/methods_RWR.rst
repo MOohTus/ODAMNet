@@ -146,7 +146,32 @@ We propose to run two walks through two different network compositions :
 Molecular multilayer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Details of layers (number of nodes, edges, nature of association and source).
+Protein-protein interaction network
+"""""""""""""""""""""""""""""""""""""
+
+Protein-Protein interaction (PPI) network is fusion of three datasets : APID, Hi-Union and Lit-BM. It's composed of :
+
+- 14 703 nodes (proteins)
+
+- 143 653 links
+
+Complexes network
+""""""""""""""""""""
+
+Complexes network is constructed from the fusion of Hu.map and Corum using OmniPathR. It's composed of :
+
+- 8 537 nodes
+
+- 63 561 links
+
+Reactome network
+""""""""""""""""""""
+
+This network is extracted from NDEs and corresponding to the Human Reactome data. It's composed of :
+
+- 7 926 nodes
+
+- 194 500 links
 
 .. _disconnectedDiseases:
 
@@ -186,13 +211,21 @@ with ``networkCreation`` method.
 
         .. code-block:: bash
 
-            python3 main.py
-
+            python3 main.py networkCreation --networksPath useCases/InputData/multiplex/2/ \
+                                            --networksName WP_RareDiseasesNetwork_fromRequest.sif \
+                                            --bipartitePath useCases/InputData/bipartite/ \
+                                            --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
+                                            --outputPath useCases/OutputResults_useCase1
     .. group-tab:: Data extracted from user
 
         .. code-block:: bash
 
-            python3 main.py
+            python3 main.py networkCreation --networksPath useCases/InputData/multiplex/2/ \
+                                            --networksName pathwaysOfInterestNetwork_fromPaper.sif \
+                                            --bipartitePath useCases/InputData/bipartite/ \
+                                            --bipartiteName Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv \
+                                            --GMT useCases/InputData/PathwaysOfInterest.gmt \
+                                            --outputPath useCases/OutputResults_useCase2
 
 .. _DDnet:
 
@@ -201,6 +234,8 @@ Disease-disease similarity network
 
 Disease-disease similarity network creation
 """"""""""""""""""""""""""""""""""""""""""""""
+
+*Data was download on the 2022/06/11.*
 
 We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is
 a set of phenotype and each phenotype is associated to the Human Ontology Project IDs (HPO).
@@ -213,20 +248,20 @@ Every pairs of diseases will have a score, so for each disease we selected the t
     | You can use any multilayer and networks that you want.
     | :octicon:`alert;1em` Be careful with the configuration file and the gene IDs used
 
-Annotation come from HPO (`website <https://hpo.jax.org/app/download/annotation>`) and ontology come from HPO too (
-`website <https://hpo.jax.org/app/download/ontology>`.
+Annotation come from HPO (`website <https://hpo.jax.org/app/download/annotation>`_) and ontology come from HPO too (
+`website <https://hpo.jax.org/app/download/ontology>`_).
 
 33 925 edges and 8 264 diseases
 
 Gene-disease bipartite associations
 """""""""""""""""""""""""""""""""""""
 
+*Data was download on the 2022/09/27.*
+
 The multiplex network is connected to the disease-disease similarity network with the gene-disease bipartite creating using
-association file from HPO (`website <https://hpo.jax.org/app/download/annotation>`).
+association file from HPO (`website <https://hpo.jax.org/app/download/annotation>`_).
 
 6 564 associations (4 483 genes and 5 878 diseases)
-
-
 
 References
 ------------

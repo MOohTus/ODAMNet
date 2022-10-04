@@ -31,13 +31,13 @@ To create the same display of AM, use the following steps :
     - Network : *sharedname*
     - Table : *geneSymbol*
 
-5. **Donut Chart Visualization** : Add overlap results using donuts (Use *TermID*)
+5. **Donut Chart Visualization** : Add overlap results using donuts (Use *termTitle*)
 6. **Style** :
 
     - Border Width = ``5.0``
     - Fill Color = ``ActiveGenes`` True #CCCCCC False #FFFFFF
     - Label Font = ``20``
-    - Shape = ``Circle``
+    - Shape = ``Ellipse``
     - ``Lock node width and height``
     - Size = ``50``
 
@@ -132,7 +132,7 @@ To visualise the RWR results using network representation, use the following ste
         - 20
         - 50
     *   - Shape
-        - Circle
+        - Ellipse
         - Triangle
     *   - Lock node width and height
         - True

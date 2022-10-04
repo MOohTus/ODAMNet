@@ -6,7 +6,7 @@ Use-case 1: data are extracted automatically with requests
 
 .. note::
 
-    This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_ .
+    This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_.
 
 We want to study the relationship between chemicals (hormones, vitamins etc.) and Rare Diseases.
 
@@ -47,7 +47,7 @@ Several files are generated :
   the first file contains all the **human rare diseases pathways** from WikiPathways request
   and the second file **background source file names**.
 
-- ``Overlap_D014801_withRDWP.csv`` : results of the overlap analysis between targeted genes and rare diseases pathways.
+- ``Overlap_D014801_withRDWP.csv`` : results of the overlap analysis between target genes and rare diseases pathways.
 
 For more details about these file, see :doc:`../formats/Output` page.
 
