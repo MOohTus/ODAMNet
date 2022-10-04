@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Random Walk with Restart &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Network visualisation" href="Cytoscape.html" />
+    <link rel="prev" title="Active Module Identification" href="methods_AMI.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="methods_overview.html">Overview of the approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Random Walk with Restart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-rwr-analysis">Input parameters for RWR analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-cases-command-line">Use-cases command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#networks-available">Networks available</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#molecular-multilayer">Molecular multilayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pathways-of-interest-network">Pathways of interest network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disease-disease-similarity-network">Disease-disease similarity network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#disease-disease-similarity-network-creation">Disease-disease similarity network creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gene-disease-bipartite-associations">Gene-disease bipartite associations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Network visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Random Walk with Restart</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/approaches/methods_RWR.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="random-walk-with-restart">
+<span id="rwr"></span><h1>Random Walk with Restart<a class="headerlink" href="#random-walk-with-restart" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Random Walk is performed using multiXrank <a class="footnote-reference brackets" href="#id9" id="id1">1</a> –
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></p>
+</div>
+<p>This method measures the <strong>proximity</strong> of every gene within a multilayer to the target genes. Every gene from the list is
+define as a <strong>seed</strong>. The walk starts with a seed, selected <strong>randomly</strong>. The proximity is represented by a score that could be use
+for multiple analyse. More the score is high, more the node is closed to the seed.</p>
+<p>It’s a kind of <strong>diffusion analysis</strong> from the genes through different molecular interactions (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - right part).</p>
+<p><em>For more details, see the paper</em> <a class="footnote-reference brackets" href="#id9" id="id2">1</a></p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from requests</em>).
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>.</p>
+<p>You can provide your own <strong>target genes file</strong> (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>.</p>
+<div class="figure align-center" id="id12">
+<span id="rwrusagefig"></span><img alt="RWR analysis" src="../../_images/multixrank_graph.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output files of Random Walk with Restart analysis</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+Required files/parameters have solid border line and optional files/parameters have dash border line.
+Output files in pink are created only if the input data are extracted from requests.</p>
+</div>
+</div>
+</div>
+<div class="section" id="input-parameters-for-rwr-analysis">
+<h2>Input parameters for RWR analysis<a class="headerlink" href="#input-parameters-for-rwr-analysis" title="Permalink to this headline">¶</a></h2>
+<p>To extract target genes from <strong>CTD</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
+To provide <strong>your own</strong> target genes, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
+You can give several chemicals in the same line : they will be grouped for the analysis.
+[<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
+<dd><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
+</div>
+</dd>
+<dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
+<dd><p>References can be associated with chemical interactions.
+You can define a threshold to filter target genes extraction based on the number of publications.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
+</dd>
+</dl>
+</div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
+<dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Contains a list of target genes. One gene per line. [<span class="xref std std-ref">FORMAT</span>]
+<strong>[required]</strong></p>
+</dd>
+</dl>
+</div></div>
+<dl class="option-list">
+<dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
+<dd><p>MultiXrank needs a configuration file. It could be short (only file names) or very details (file names + parameters).
+The file contains at least paths of networks, bipartite and seed files. <strong>[required]</strong></p>
+<div class="line-block">
+<div class="line">For more details : [<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></div>
+</div>
+</dd>
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>Repository path where networks are saved. <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
+on the Random Walk analysis. [<a class="reference internal" href="../formats/Input.html#simplefile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
+<dd><p>Output file name to save the result into a SIF file. <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
+<dd><p>Top nodes that will be saved into the output network (into SIF file).</p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where to save the results.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="use-cases-command-line">
+<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+                            --directAssociation FALSE <span class="se">\</span>
+                            --nbPub <span class="m">2</span> <span class="se">\</span>
+                            --configPath useCases/InputData/config_minimal_useCase1.yml <span class="se">\</span>
+                            --networksPath useCases/InputData/ <span class="se">\</span>
+                            --seedsFile useCases/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName resultsNetwork_useCase1.sif <span class="se">\</span>
+                            --top <span class="m">10</span> <span class="se">\</span>
+                            --outputPath useCases/OutputResults_useCase1/
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt <span class="se">\</span>
+                            --configPath useCases/InputData/config_minimal_useCase2.yml <span class="se">\</span>
+                            --networksPath useCases/InputData/ <span class="se">\</span>
+                            --seedsFile useCases/InputData/seeds.txt <span class="se">\</span>
+                            --sifFileName resultsNetwork_useCase2.sif <span class="se">\</span>
+                            --top <span class="m">10</span> --outputPath <span class="se">\</span>
+                            --outputPath useCases/OutputResults_useCase2/
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="networks-available">
+<h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We use the biological multilayer network from multiXrank’s paper <a class="footnote-reference brackets" href="#id9" id="id5">1</a>.</p>
+</div>
+<p>We propose to run two walks through two different network compositions :</p>
+<ul class="simple">
+<li><p>molecular multilayer with three layers + pathways of interest network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
+<li><p>molecular multilayer with three layers + disease-disease similarity network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
+</ul>
+<div class="figure align-center" id="id13">
+<span id="rwrfig"></span><img alt="RWR networks" src="../../_images/NetworkAvailable_RWR.png" />
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk into two different network compositions</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="molecular-multilayer">
+<h3>Molecular multilayer<a class="headerlink" href="#molecular-multilayer" title="Permalink to this headline">¶</a></h3>
+<p>Details of layers (number of nodes, edges, nature of association and source).</p>
+</div>
+<div class="section" id="pathways-of-interest-network">
+<span id="disconnecteddiseases"></span><h3>Pathways of interest network<a class="headerlink" href="#pathways-of-interest-network" title="Permalink to this headline">¶</a></h3>
+<p>This kind of network can be build using the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
+<p>By default, the network is build using Rare Diseases pathways extracted automatically from WP.</p>
+<dl class="option-list">
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the pathways network will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the bipartite gene-pathway will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the pathway network. It’s a SIF file but each pathway of interest is link to itself.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.sif]</span></code></p>
+</dd>
+<dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the bipartite. It’s a tab-separated file.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv]</span></code></p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder where to save complementary results (i.e. request results)
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
+</dd>
+</dl>
+<p>Moreover, you can provide your own pathways/processes of interest file using <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter.</p>
+<p>This kind of network can be build from Rare Diseases pathways (WP) or from your own pathways/processes of interest
+with <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-2-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="section" id="disease-disease-similarity-network">
+<span id="ddnet"></span><h3>Disease-disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="disease-disease-similarity-network-creation">
+<h4>Disease-disease similarity network creation<a class="headerlink" href="#disease-disease-similarity-network-creation" title="Permalink to this headline">¶</a></h4>
+<p>We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is
+a set of phenotype and each phenotype is associated to the Human Ontology Project IDs (HPO).</p>
+<p>The similarity score is calculated based on the number of shared phenotypes between two diseases (<a class="footnote-reference brackets" href="#id11" id="id6">3</a>, <a class="footnote-reference brackets" href="#id10" id="id7">2</a>, <a class="footnote-reference brackets" href="#id9" id="id8">1</a>).
+Every pairs of diseases will have a score, so for each disease we selected the top 5 of the most similar disease.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line">You can use any multilayer and networks that you want.</div>
+<div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg> Be careful with the configuration file and the gene IDs used</div>
+</div>
+</div>
+<p>Annotation come from HPO (<cite>website &lt;https://hpo.jax.org/app/download/annotation&gt;</cite>) and ontology come from HPO too (
+<cite>website &lt;https://hpo.jax.org/app/download/ontology&gt;</cite>.</p>
+<p>33 925 edges and 8 264 diseases</p>
+</div>
+<div class="section" id="gene-disease-bipartite-associations">
+<h4>Gene-disease bipartite associations<a class="headerlink" href="#gene-disease-bipartite-associations" title="Permalink to this headline">¶</a></h4>
+<p>The multiplex network is connected to the disease-disease similarity network with the gene-disease bipartite creating using
+association file from HPO (<cite>website &lt;https://hpo.jax.org/app/download/annotation&gt;</cite>).</p>
+<p>6 564 associations (4 483 genes and 5 878 diseases)</p>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id5">3</a>,<a href="#id8">4</a>)</span></dt>
+<dd><p>Baptista, A., Gonzalez, A., &amp; Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dd><p>Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., … &amp; Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dd><p>Westbury SK, Turro E, Greene D, Lentaigne C, Kelly AM, Bariana TK, Simeoni I, Pillois X, Attwood A, Austin S, Jansen SB, Bakchoul T, Crisp-Hihn A, Erber WN, Favier R, Foad N, Gattens M, Jolley JD, Liesner R, Meacham S, Millar CM, Nurden AT, Peerlinck K, Perry DJ, Poudel P, Schulman S, Schulze H, Stephens JC, Furie B, Robinson PN, van Geet C, Rendon A, Gomez K, Laffan MA, Lambert MP, Nurden P, Ouwehand WH, Richardson S, Mumford AD, Freson K; BRIDGE-BPD Consortium. Human phenotype ontology annotation and cluster analysis to unravel genetic defects in 707 cases with unexplained bleeding and platelet disorders. Genome Med. 2015 Apr 9;7(1):36. doi: 10.1186/s13073-015-0151-5. PMID: 25949529; PMCID: PMC4422517.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Cytoscape.html" class="btn btn-neutral float-right" title="Network visualisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="methods_AMI.html" class="btn btn-neutral float-left" title="Active Module Identification" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

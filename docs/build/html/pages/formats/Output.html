@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Output files &mdash; EnvironmentProject 1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Input arguments for each method" href="../functions/fcts_arguments.html" />
+    <link rel="prev" title="Input files" href="Input.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overview.html">Overview of the approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/Cytoscape.html">Network visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Output files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#request-file-results">Request file results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overlap-output-files">Overlap output files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#active-module-identification">Active Module Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-walk-analysis">Random Walk analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#network-creation">Network creation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">EnvironmentProject</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Output files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/pages/formats/Output.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="output-files">
+<h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="request-file-results">
+<span id="requestoutput"></span><h2>Request file results<a class="headerlink" href="#request-file-results" title="Permalink to this headline">¶</a></h2>
+<p><strong>CTD_request_MeSHID_DATE.tsv</strong>
+This file contains the results from the request sent to CTD.</p>
+<p><strong>CTD_requestFiltered_MeSHID_DATE.tsv</strong></p>
+<p>This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
+number of paper for an interaction between gene and molecule. This filtered data is used for the analysis.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code> : query input (from the factor input file)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code> : name of the query input or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code> : MeSH ID of the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code> : CasRN ID of the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : gene symbol that is connected to the query or its descendant</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code> : gene ID of this gene (HGCN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code> : organism name that comes from the gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code> : organism ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code> : PubMed IDs of the paper that talk about this connection</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Input       ChemicalName    ChemicalId      CasRN   GeneSymbol      GeneId  Organism        OrganismId      PubMedIds
+d014801     Tretinoin       D014212 302-79-4        ZXDC    79364   Homo sapiens    9606    33167477
+d014801     Tretinoin       D014212 302-79-4        ZYG11A  440590  Homo sapiens    9606    23724009|33167477
+d014801     Tretinoin       D014212 302-79-4        ZYX     7791    Homo sapiens    9606    23724009
+d014801     Tretinoin       D014212 302-79-4        ZZZ3    26009   Homo sapiens    9606    33167477
+d014801     Vitamin A       D014801 11103-57-4      ACE2    59272   Homo sapiens    9606    32808185
+d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens    9606    19014918
+d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
+</pre></div>
+</div>
+<p><strong>WP_RareDiseases_request_DATE.gmt</strong>
+This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
+extracted and save into this GMT file.</p>
+<p><strong>WP_allPathways_request_DATE.gmt</strong>
+This GMT file contains all the human disease pathways from WikiPathways. Format is similar at the previous one.</p>
+<p>GMT file is a tab-separated file :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WPID</span></code> : first column is the WikiPathways ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is the name of the WikiPathways</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
+pathways and varies according the nuber of genes inside.</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WPID        pathways        HGNC
+WP5195      Disorders in ketolysis  ACAT1   HMGCS1  OXCT1   BDH1    ACAT2
+WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
+WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
+</pre></div>
+</div>
+</div>
+<div class="section" id="overlap-output-files">
+<span id="overlapoutput"></span><h2>Overlap output files<a class="headerlink" href="#overlap-output-files" title="Permalink to this headline">¶</a></h2>
+<p><strong>Overlap_MeSHID_withRDWP.csv</strong></p>
+<p>This is the result file of the overlap analysis. The number of this file depends of the number of molecule given as input
+(i.e. the factor input file).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WPID</span></code> : Pathway ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WPTitle</span></code> : Pathway name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Source</span></code> : Source of the pathway (g.e. Wikipathways)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WPSize</span></code> : Number of genes inside the pathway</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetSize</span></code> : Number of genes that interact with the input molecule and are in the background gene set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IntersectionSize</span></code> : Number of targeted genes that are inside the pathway</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UniversSize</span></code> : Number of genes in the background gene sets (g.e. genes from all human pathways in WikiPathways)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pValue</span></code> : pvalue of the overlap between targeted genes and pathways of interest (i.e. hypergeometric test)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pAdjusted</span></code> : adjusted pvalue (i.e. multitest correction)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Intersection</span></code> : list of genes sharded between targeted genes and pathway of interest (space-separated)</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WPID;WPTitle;Source;WPSize;TargetSize;IntersectionSize;UniversSize;pValue;pAdjusted;Intersection
+WP4940;15q11.2 copy number variation syndrome;WikiPathway_2022_08_01;10;1721;0;12379;1.0;1.0;
+WP4271;Vitamin B12 disorders;WikiPathway_2022_08_01;13;1721;0;12379;1.0;1.0;
+WP4299;Lamin A-processing pathway;WikiPathway_2022_08_01;3;1721;0;12379;1.0;1.0;
+WP4506;Tyrosine metabolism;WikiPathway_2022_08_01;4;1721;0;12379;1.0;1.0;
+WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12379;0.9981605117974595;1.0;APC
+WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
+</pre></div>
+</div>
+</div>
+<div class="section" id="active-module-identification">
+<span id="amioutput"></span><h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this headline">¶</a></h2>
+<p><strong>DOMINO_inputGeneList_D014801.txt</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CCND1
+CDKN1A
+BAD
+ESR1
+KRT18
+</pre></div>
+</div>
+<p><strong>Overlap_AM_1_D014801_withRDWP.csv</strong>
+Cf. file overlap analysis</p>
+<p><strong>DOMINO_D014801_overlapAMresults4Cytoscape.txt</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geneSymbol</span></code> : gene HCGN ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AM_number</span></code> : Active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">termID</span></code> : term ID (g.e. GO, WP, Reactome etc …)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">termTitle</span></code> : term name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlap_padj</span></code> : overlap adjusted pvalue</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geneSymbol  AM_number       termID  termTitle       overlap_padj
+CEBPA       2       WP4879  Overlap between signal transduction pathways contributing to LMNA laminopathies 0.010978293424676187
+CEBPB       2       WP4879  Overlap between signal transduction pathways contributing to LMNA laminopathies 0.010978293424676187
+JUNB        2       WP4879  Overlap between signal transduction pathways contributing to LMNA laminopathies 0.010978293424676187
+RUNX2       2       WP4879  Overlap between signal transduction pathways contributing to LMNA laminopathies 0.010978293424676187
+CEBPA       2       WP4844  Influence of laminopathies on Wnt signaling     0.027997181221540435
+CEBPB       2       WP4844  Influence of laminopathies on Wnt signaling     0.027997181221540435
+RUNX2       2       WP4844  Influence of laminopathies on Wnt signaling     0.027997181221540435
+CXCL5       6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-11
+FN1 6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-11
+</pre></div>
+</div>
+<p><strong>DOMINO_D014801_activeModulesNetwork.txt</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> : node 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code> : node 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code> : kind of link</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AMI_number</span></code> : active module number</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source      target  link    AMI_number
+CDT1        MCM6    ppi     1
+CDT1        CDK1    ppi     1
+CDT1        ORC1    ppi     1
+CDT1        MCM2    ppi     1
+CDT1        GMNN    ppi     1
+</pre></div>
+</div>
+<p><strong>DOMINO_D014801_activeModulesNetworkMetrics.txt</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code> : active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code> : Number of edges in the AM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : Number of nodes in the AM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activeGenesNumber</span></code> : Number of active genes (target genes)</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AMINumber   EdgesNumber     NodesNumber     activeGenesNumber
+1   357     93      35
+2   246     69      27
+3   135     66      26
+</pre></div>
+</div>
+<p><strong>DOMINO_D014801_activeModules.txt</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geneSymbol</span></code> : Gene symbol</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActiveModule</span></code> : active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activeGene</span></code> : True if the gene was used as active gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlapSignificant</span></code> : True if the AM has significant overlap results</p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geneSymbol  ActiveModule    activeGene      overlapSignificant
+NPAT        1       False   False
+CCNA1       1       True    False
+CDC6        1       True    False
+B3GALNT1    1       False   False
+USP26       1       False   False
+</pre></div>
+</div>
+</div>
+<div class="section" id="random-walk-analysis">
+<h2>Random Walk analysis<a class="headerlink" href="#random-walk-analysis" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="network-creation">
+<h2>Network creation<a class="headerlink" href="#network-creation" title="Permalink to this headline">¶</a></h2>
+<p>mettre en note ??
+<em>MeSHID :</em>
+<em>DATE : aaaa_m_d</em></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../functions/fcts_arguments.html" class="btn btn-neutral float-right" title="Input arguments for each method" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Input.html" class="btn btn-neutral float-left" title="Input files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Térézol.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
