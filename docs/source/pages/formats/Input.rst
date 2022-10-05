@@ -141,6 +141,7 @@ Active Module Identification
 
 
 .. _SIF:
+
 -n, --networkFile FILENAME
     Network file name in SIF (Simple Interaction File) format. 
     It's a tab-delimited file.

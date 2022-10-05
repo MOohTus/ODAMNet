@@ -17,6 +17,7 @@ We choose to use as chemical of interest, the **vitamin A**.
 This section presents you how to perform the approaches that we proposed.
 
 .. _useCase1_overlap:
+
 Overlap analysis
 =====================
 
@@ -136,6 +137,7 @@ The WP5052 pathway is not significant anymore (compare to Ozisik *et al.,* [1]_ 
 target genes and pathways are smaller. It affects the pvalue calculation.
 
 .. _useCase1_AMI:
+
 AMI
 =====================
 
@@ -308,6 +310,7 @@ Some network are enriched with the same pathways whereas other contain genes inv
 (i.e. active genes, grey spheres) could be part of pathways as non-target genes (white spheres).
 
 .. _useCase1_RWR:
+
 RWR
 =====================
 
@@ -452,9 +455,9 @@ The gene with the highest score is ``VCAM1`` with ``score = 0.000208397562988217
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).
 
-There are **27 pathways** with a higher score (:ref:`Table <pathwaysRWRresults>`) :
+There are **27 pathways** with a higher score (:ref:`Table <useCase1_pathwaysRWR>`) :
 
-.. _pathwaysRWRresults:
+.. _useCase1_pathwaysRWR:
 .. table:: Pathways linked to target genes
     :align: center
 
@@ -531,9 +534,9 @@ Disease-Disease similarity network
 
 Target genes are used as seed to start the walk : ``1 988/2 143`` genes are set.
 
-We selected the top 10 of diseases (:ref:`Table <diseasesRWRresults>`).
+We selected the top 10 of diseases (:ref:`Table <useCase1_diseasesRWR>`).
 
-.. _diseasesRWRresults:
+.. _useCase1_diseasesRWR:
 .. table:: Diseases linked to target genes
     :align: center
 

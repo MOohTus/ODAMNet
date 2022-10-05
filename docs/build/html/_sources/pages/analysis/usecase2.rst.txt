@@ -22,6 +22,7 @@ For this use-case, we used data from this paper:
 - pathways of interest : list of pathways related to CAKUT disease.
 
 .. _useCase2_overlap:
+
 Overlap analysis
 =====================
 
@@ -105,6 +106,7 @@ Ozisik *et al.,* [1]_ identified seven pathways/processes related to CAKUT disea
 on this analysis and one more (REAC:R-HSA-2022377).
 
 .. _useCase2_AMI:
+
 AMI
 =====================
 
@@ -235,6 +237,7 @@ Some network are enriched with the same pathways whereas other contain genes inv
 (i.e. active genes, grey spheres) could be part of pathways as non-target genes (white spheres).
 
 .. _useCase2_RWR:
+
 RWR
 =====================
 
@@ -349,9 +352,9 @@ The gene with the highest score is ``ASMT`` with ``score = 0.0006682735081574565
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).
 
-There are **4 pathways** with a higher score (:ref:`Table <pathwaysRWRresults>`) :
+There are **4 pathways** with a higher score (:ref:`Table <useCase2_pathwaysRWR>`) :
 
-.. _pathwaysRWRresults:
+.. _useCase2_pathwaysRWR:
 .. table:: Pathways linked to target genes
     :align: center
 
@@ -383,9 +386,9 @@ Disease-Disease similarity network
 
 Target genes are used as seed to start the walk : ``483/521`` genes are set.
 
-We selected the top 10 of diseases (:ref:`Table <diseasesRWRresults>`).
+We selected the top 10 of diseases (:ref:`Table <useCase2_diseasesRWR>`).
 
-.. _diseasesRWRresults:
+.. _useCase2_diseasesRWR:
 .. table:: Diseases linked to target genes
     :align: center
 

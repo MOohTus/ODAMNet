@@ -236,7 +236,7 @@
 We choose to use as chemical of interest, the <strong>vitamin A</strong>.</p>
 <p>This section presents you how to perform the approaches that we proposed.</p>
 <div class="section" id="overlap-analysis">
-<h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
+<span id="usecase1-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
 <p>This approach calculates the overlap between list of genes, targeted by vitamin A, and Rare Diseases pathways
 (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section for more details).</p>
 <div class="section" id="running-overlap-analysis-with-data-extracted-automatically-from-databases">
@@ -419,7 +419,7 @@ target genes and pathways are smaller. It affects the pvalue calculation.</p>
 </div>
 </div>
 <div class="section" id="ami">
-<h2>AMI<a class="headerlink" href="#ami" title="Permalink to this headline">¶</a></h2>
+<span id="usecase1-ami"></span><h2>AMI<a class="headerlink" href="#ami" title="Permalink to this headline">¶</a></h2>
 <p>This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
 overlap analysis between each AM identified and Rare Diseases pathways frm WP.
 For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
@@ -635,7 +635,7 @@ see the <a class="reference internal" href="../approaches/Cytoscape.html#network
 </div>
 </div>
 <div class="section" id="rwr">
-<h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
+<span id="usecase1-rwr"></span><h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
 <p>With this approach, a Random Walk with Restart (see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> section for more details )
 is apply into two different multilayer compositions:</p>
 <ol class="arabic simple">
@@ -765,8 +765,8 @@ the RD pathways network (depends of the folder name where networks are saved).</
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
-<p>There are <strong>27 pathways</strong> with a higher score (<a class="reference internal" href="usecase2.html#pathwaysrwrresults"><span class="std std-ref">Table</span></a>) :</p>
-<span id="pathwaysrwrresults"></span><table class="docutils align-center" id="id21">
+<p>There are <strong>27 pathways</strong> with a higher score (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table</span></a>) :</p>
+<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id21">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 15%" />
@@ -899,8 +899,8 @@ with target genes (i.e. seeds).</p>
 <div class="section" id="disease-disease-similarity-network">
 <h5>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h5>
 <p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">988/2</span> <span class="pre">143</span></code> genes are set.</p>
-<p>We selected the top 10 of diseases (<a class="reference internal" href="usecase2.html#diseasesrwrresults"><span class="std std-ref">Table</span></a>).</p>
-<span id="diseasesrwrresults"></span><table class="docutils align-center" id="id23">
+<p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table</span></a>).</p>
+<span id="usecase1-diseasesrwr"></span><table class="docutils align-center" id="id23">
 <caption><span class="caption-number">Table 12 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />

@@ -240,7 +240,7 @@ for the disease-associated genes.</p>
 </ul>
 </div>
 <div class="section" id="overlap-analysis">
-<h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
+<span id="usecase2-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
 <p>This approach calculates the overlap between list of genes, targeted by vitamin A, and the pathways of interest
 (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section for more details).</p>
 <div class="section" id="running-overlap-analysis-with-data-provided-by-the-users">
@@ -357,7 +357,7 @@ on this analysis and one more (REAC:R-HSA-2022377).</p>
 </div>
 </div>
 <div class="section" id="ami">
-<h2>AMI<a class="headerlink" href="#ami" title="Permalink to this headline">¶</a></h2>
+<span id="usecase2-ami"></span><h2>AMI<a class="headerlink" href="#ami" title="Permalink to this headline">¶</a></h2>
 <p>This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
 overlap analysis between each AM identified and Rare Diseases pathways frm WP.
 For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
@@ -506,7 +506,7 @@ see the <a class="reference internal" href="../approaches/Cytoscape.html#network
 </div>
 </div>
 <div class="section" id="rwr">
-<h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
+<span id="usecase2-rwr"></span><h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
 <p>With this approach, a Random Walk with Restart (see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> section for more details )
 is apply into two different multilayer compositions:</p>
 <ol class="arabic simple">
@@ -596,8 +596,8 @@ provided by users.</p>
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">ASMT</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0006682735081574565</span></code> (it’s a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
-<p>There are <strong>4 pathways</strong> with a higher score (<a class="reference internal" href="#pathwaysrwrresults"><span class="std std-ref">Table</span></a>) :</p>
-<span id="pathwaysrwrresults"></span><table class="docutils align-center" id="id27">
+<p>There are <strong>4 pathways</strong> with a higher score (<a class="reference internal" href="#usecase2-pathwaysrwr"><span class="std std-ref">Table</span></a>) :</p>
+<span id="usecase2-pathwaysrwr"></span><table class="docutils align-center" id="id27">
 <caption><span class="caption-number">Table 18 </span><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id27" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 37%" />
@@ -639,8 +639,8 @@ with target genes (i.e. seeds).</p>
 <div class="section" id="disease-disease-similarity-network">
 <h4>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h4>
 <p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">483/521</span></code> genes are set.</p>
-<p>We selected the top 10 of diseases (<a class="reference internal" href="#diseasesrwrresults"><span class="std std-ref">Table</span></a>).</p>
-<span id="diseasesrwrresults"></span><table class="docutils align-center" id="id29">
+<p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase2-diseasesrwr"><span class="std std-ref">Table</span></a>).</p>
+<span id="usecase2-diseasesrwr"></span><table class="docutils align-center" id="id29">
 <caption><span class="caption-number">Table 19 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id29" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
