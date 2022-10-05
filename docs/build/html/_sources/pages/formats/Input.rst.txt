@@ -4,7 +4,7 @@
 Input files
 ==================================================
 
-.. _query:
+.. _targetGenes:
 
 Target genes 
 =================
@@ -134,19 +134,22 @@ More details for `GMT file format <https://software.broadinstitute.org/cancer/so
 
    Theses parameters, ``--GMT`` and ``--backgroundFile`` can use for reproducibility. You can give a GMT file from WP request results.
 
-.. _AMIinput:
 
-Active Module Identification
-=================================
+.. _network:
 
+Network input files
+===========================
 
 .. _SIF:
 
+Active Module Identification input network
+---------------------------------------------
+
 -n, --networkFile FILENAME
-    Network file name in SIF (Simple Interaction File) format. 
+    Network file name in SIF (Simple Interaction File) format.
     It's a tab-delimited file.
 
-There are three columns : source node, interaction type, target node. 
+There are three columns : source node, interaction type, target node.
 
 .. code-block:: none
 
@@ -159,27 +162,31 @@ There are three columns : source node, interaction type, target node.
 
 More details for `SIF file format <http://wiki.biouml.org/index.php/SIF_(file_format)>`_
 
-
---netUUID TEXT
-    You can use a network extracted automatically from `NDEx <https://www.ndexbio.org/#/>`_ [3]_. You have to provide
-    the UUID of the network (e.g. ``079f4c66-3b77-11ec-b3be-0ac135e8bacf``).
-
 .. warning::
 
    :octicon:`alert;2em` By default, analysis is run using **gene symbols HGCN**. Pay attention of the gene IDs given in the network.
 
-.. _RWRinput:
 
-Random walk input files
-============================
+.. _GR:
 
-.. tip::
+MultiXrank input network
+--------------------------
 
-   See :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ / and  :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_ to have more details
+multiXrank accepts network and bipartite network on **.gr format**. It's a tab-delimited graph format with two columns.
 
+.. code-block:: none
+
+    NFYA	NFYB
+    NFYA	NFYC
+    NFYB	NFYC
+    BTRC	CUL1
+    BTRC	SKP1
 
 
 .. _configFile:
+
+Configuration file
+=====================
 
 --configPath PATH
     Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
@@ -188,7 +195,7 @@ Random walk input files
     :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
     :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
-**configPath format**
+This is an example of minimal configuration file :
 
 .. code-block:: none
 
@@ -207,32 +214,3 @@ Random walk input files
             target: 1
     seed:
         examples/InputData/seeds.txt
-
-
-**layers and bipartites format**
-
-.. code-block:: none
-
-    NFYA	NFYB
-    NFYA	NFYC
-    NFYB	NFYC
-    BTRC	CUL1
-    BTRC	SKP1
-
-
-**seed format**
-
-.. code-block:: none
-
-    AANAT
-    ABCB1
-    ABCC2
-    ABL1
-    ACADM
-
-
-.. _simpleFile:
-
-list of genes file format
-
-.. [3]

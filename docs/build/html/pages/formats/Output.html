@@ -116,11 +116,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#request-file-results">Request file results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-file-results">Request file results</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ctd-request-file-results">CTD request file results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wp-request-file-results">WP request file results</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#overlap-output-files">Overlap output files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#active-module-identification">Active Module Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-analysis">Random Walk analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#network-creation">Network creation</a></li>
 </ul>
 </li>
 </ul>
@@ -199,10 +202,12 @@
 <h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="request-file-results">
 <span id="requestoutput"></span><h2>Request file results<a class="headerlink" href="#request-file-results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ctd-request-file-results">
+<span id="ctdrequestouput"></span><h3>CTD request file results<a class="headerlink" href="#ctd-request-file-results" title="Permalink to this headline">¶</a></h3>
 <p><strong>CTD_request_MeSHID_DATE.tsv</strong>
 This file contains the results from the request sent to CTD.</p>
-<p><strong>CTD_requestFiltered_MeSHID_DATE.tsv</strong></p>
-<p>This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
+<p><strong>CTD_requestFiltered_MeSHID_DATE.tsv</strong>
+This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
 number of paper for an interaction between gene and molecule. This filtered data is used for the analysis.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code> : query input (from the factor input file)</p></li>
@@ -225,6 +230,9 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens
 d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
 </pre></div>
 </div>
+</div>
+<div class="section" id="wp-request-file-results">
+<span id="wprequestouput"></span><h3>WP request file results<a class="headerlink" href="#wp-request-file-results" title="Permalink to this headline">¶</a></h3>
 <p><strong>WP_RareDiseases_request_DATE.gmt</strong>
 This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
 extracted and save into this GMT file.</p>
@@ -242,6 +250,7 @@ WP5195      Disorders in ketolysis  ACAT1   HMGCS1  OXCT1   BDH1    ACAT2
 WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
 WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="overlap-output-files">
@@ -349,9 +358,6 @@ USP26       1       False   False
 </div>
 <div class="section" id="random-walk-analysis">
 <h2>Random Walk analysis<a class="headerlink" href="#random-walk-analysis" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="network-creation">
-<h2>Network creation<a class="headerlink" href="#network-creation" title="Permalink to this headline">¶</a></h2>
 <p>mettre en note ??
 <em>MeSHID :</em>
 <em>DATE : aaaa_m_d</em></p>

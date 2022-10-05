@@ -340,7 +340,7 @@ You need to give the SIF name (``--sifFileName``) to save the network results an
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
-If you need more details about the input format files, see :ref:`RWRinput` part.
+If you need more details about the input format files, see :ref:`GR` and :ref:`configFile` parts.
 
 .. tip::
 

@@ -81,7 +81,7 @@ To provide **your own** target genes, see parameters on the ``Data extracted fro
 
 --seedsFile FILENAME
     Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
-    on the Random Walk analysis. [:ref:`FORMAT <simpleFile>`] **[required]**
+    on the Random Walk analysis. **[required]**
 
 --sifFileName FILENAME
     Output file name to save the result into a SIF file. **[required]**

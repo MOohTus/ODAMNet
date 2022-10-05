@@ -7,11 +7,15 @@ Output files
 Request file results
 ==================================================
 
+.. _CTDrequestOuput:
+
+CTD request file results
+--------------------------
+
 **CTD_request_MeSHID_DATE.tsv**
 This file contains the results from the request sent to CTD.
 
 **CTD_requestFiltered_MeSHID_DATE.tsv**
-
 This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
 number of paper for an interaction between gene and molecule. This filtered data is used for the analysis.
 
@@ -36,6 +40,11 @@ number of paper for an interaction between gene and molecule. This filtered data
     d014801	Vitamin A	D014801	11103-57-4	AKR1B1	231	Homo sapiens	9606	19014918
     d014801	Vitamin A	D014801	11103-57-4	AKR1B10	57016	Homo sapiens	9606	19014918
 
+.. _WPrequestOuput:
+
+WP request file results
+--------------------------
+
 **WP_RareDiseases_request_DATE.gmt**
 This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
 extracted and save into this GMT file.
@@ -56,6 +65,7 @@ GMT file is a tab-separated file :
     WP5195	Disorders in ketolysis	ACAT1	HMGCS1	OXCT1	BDH1	ACAT2
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
+
 
 .. _overlapOutput:
 
@@ -87,6 +97,7 @@ This is the result file of the overlap analysis. The number of this file depends
     WP4506;Tyrosine metabolism;WikiPathway_2022_08_01;4;1721;0;12379;1.0;1.0;
     WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12379;0.9981605117974595;1.0;APC
     WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
+
 
 .. _AMIOutput:
 
@@ -179,10 +190,6 @@ Cf. file overlap analysis
 
 Random Walk analysis
 ==================================================
-
-Network creation
-==================================================
-
 
 
 
