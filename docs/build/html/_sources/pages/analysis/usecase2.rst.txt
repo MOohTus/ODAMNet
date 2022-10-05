@@ -238,6 +238,209 @@ Some network are enriched with the same pathways whereas other contain genes inv
 RWR
 =====================
 
+With this approach, a Random Walk with Restart (see :doc:`../approaches/methods_RWR` section for more details )
+is apply into two different multilayer compositions:
+
+1. Multiplex (PPI + Complex + Reactome) and pathways of interest network only connected to genes nodes
+2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network
+
+*For more details about networks used, see* :ref:`pathwaysOfInterestNet` *and* :ref:`DDnet`.
+
+Running Random Walk analysis with data provided by users
+-----------------------------------------------------------
+
+For the first composition of network, we created the pathways of interest network : see :ref:`pathwaysOfInterestNet`.
+
+The list of target genes is provided by the users using ``--targetGenesFile``.
+
+MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
+default parameters.
+The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
+You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
+(``--top 10``).
+
+Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
+
+If you need more details about the input format files, see :ref:`RWRinput` part.
+
+.. tip::
+
+    Whatever the networks used, the **command line is the same**. But you have to **change** the network name inside the
+    **configuration file**.
+
+    .. tabs::
+
+        .. group-tab:: Pathways of interest network
+
+            .. code-block:: bash
+                :emphasize-lines: 9,11
+
+                 multiplex:
+                     1:
+                         layers:
+                             - multiplex/1/Complexes_Nov2020.gr
+                             - multiplex/1/PPI_Jan2021.gr
+                             - multiplex/1/Reactome_Nov2020.gr
+                     2:
+                         layers:
+                             - multiplex/2/pathwaysOfInterestNetwork_fromPaper.sif
+                 bipartite:
+                     bipartite/Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv:
+                         source: 2
+                         target: 1
+                 seed:
+                     seeds.txt
+
+        .. group-tab:: Disease-Disease similarity network
+
+            .. code-block:: bash
+               :emphasize-lines: 9,11
+
+                multiplex:
+                    1:
+                        layers:
+                            - multiplex/1/Complexes_Nov2020.gr
+                            - multiplex/1/PPI_Jan2021.gr
+                            - multiplex/1/Reactome_Nov2020.gr
+                    2:
+                        layers:
+                            - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
+                bipartite:
+                    bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
+                        source: 2
+                        target: 1
+                seed:
+                    seeds.txt
+
+
+.. code-block:: bash
+
+    python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+                                --configPath useCases/InputData/config_minimal_useCase2.yml \
+                                --networksPath useCases/InputData/ \
+                                --seedsFile useCases/InputData/seeds.txt \
+                                --sifFileName resultsNetwork_useCase2.sif \
+                                --top 10 \
+                                --outputPath useCases/OutputResults_useCase2/
+
+Several files are generated into ``RWR_genesList/`` folder:
+
+    - ``config_minimal_useCase2.yml`` and ``seeds.txt`` : a copy of the input files
+
+    - ``multiplex_1.tsv`` and ``multiplex_2.tsv`` : score for each feature. 1 corresponds to the multiplex and 2 to
+      the disease network (depends of the folder name where networks are saved).
+
+    - ``resultsNetwork_useCase2.sif`` : SIF file with the network result
+
+For more details about these file, see :doc:`../formats/Output` page.
+
+Results of Random Walk analysis with data provided by users
+-------------------------------------------------------------
+
+We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** in the target genes file
+provided by users.
+
+Pathways of interest network analysis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Target genes are used as seed to start the walk : ``483/521`` genes are set.
+
+The gene with the highest score is ``ASMT`` with ``score = 0.0006682735081574565`` (it's a seed). This score helps
+us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
+with target genes (i.e. seeds).
+
+There are **4 pathways** with a higher score (:ref:`Table <pathwaysRWRresults>`) :
+
+.. _pathwaysRWRresults:
+.. table:: Pathways linked to target genes
+    :align: center
+
+    +-----------------------+--------------------------+--------------+
+    | node                  | pathway                  | score        |
+    +=======================+==========================+==============+
+    | GO:0072001            | renal system development | 0.002101     |
+    +-----------------------+--------------------------+--------------+
+    | GO:0001822            | kidney development       | 0.001847     |
+    +-----------------------+--------------------------+--------------+
+    | **REAC:R-HSA-195721** | **Signaling by WNT**     | **0.001660** |
+    +-----------------------+--------------------------+--------------+
+    | **REAC:R-HSA-157118** | **Signaling by NOTCH**   | **0.001140** |
+    +-----------------------+--------------------------+--------------+
+
+Two pathways not found with the previous approaches, are link to target genes : ``REAC:R-HSA-195721`` and ``REAC:R-HSA-157118``.
+
+You can represent the results with a network as shown on the
+
+.. _useCase2_pathwaysNetworkRWR:
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase2.png
+   :alt: usecase 2 pathwaysNetworkRWR
+   :align: center
+
+   : Results from RWR through the molecular multilayer and pathways of interest network
+
+Disease-Disease similarity network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Target genes are used as seed to start the walk : ``483/521`` genes are set.
+
+We selected the top 10 of diseases (:ref:`Table <diseasesRWRresults>`).
+
+.. _diseasesRWRresults:
+.. table:: Diseases linked to target genes
+    :align: center
+
+    +-------------+-----------------------------------------+----------+
+    | node        | Diseases                                | score    |
+    +=============+=========================================+==========+
+    | OMIM:178500 | Pulmonary fibrosis, idiopathic          | 0.000334 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 0.000301 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:215600 | Cirrhosis, familial                     | 0.000255 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:613659 | Gastric cancer, somatic                 | 0.000235 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:211980 | Lung cancer, susceptibility to          | 0.000230 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:104300 | Alzheimer disease                       | 0.000224 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:168600 | Parkinson disease, late-onset           | 0.000192 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:601859 | Autoimmune lymphoproliferative syndrome | 0.000182 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:601665 | OBESITY                                 | 0.000181 |
+    +-------------+-----------------------------------------+----------+
+
+You can represent the results with a network as shown on the
+
+.. _useCase2_simNetworkRWR:
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase2_simNet.png
+   :alt: usecase 2 simNetworkRWR
+   :align: center
+
+   : Results from RWR through the molecular multilayer and disease-disease similarity network
+
+Rare disease pathways identified
+====================================
+
+To compare results from the different approaches, we use orsum [2]_.
+
+.. code-block:: bash
+
+    orsum.py    --gmt 00_Data/hsapiens_background.gmt \
+                --files Overlap_genesList_withpathOfInterest.4Orsum DOMINO_genesList_signOverlap.4Orsum pathwaysResults.4Orsum \
+                --fileAliases Overlap DOMINO multiXrank \
+                --outputFolder useCase2Comparison/
+
+The results are display on the :numref:`useCase2_orsum`.
+
+.. _useCase2_orsum:
+.. figure:: ../../pictures/useCase2_orsum.png
+   :alt: usecase2 orsum
+   :align: center
+
+   : Comparison of use-case 2 results using orsum
+
 
 References
 ============

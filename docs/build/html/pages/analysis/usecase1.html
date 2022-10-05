@@ -283,7 +283,7 @@ and the second file <strong>background source file names</strong>.</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
-<td><p>8</p></td>
+<td><p>10</p></td>
 <td><p>7 765</p></td>
 </tr>
 <tr class="row-odd"><td><p>After filtering by papers number</p></td>
@@ -432,7 +432,7 @@ For more detail, see <a class="reference internal" href="../approaches/methods_A
 <p>As before, we want to extract genes that are targeted by vitamin A and its child molecules. The <strong>chemicalsFile.csv</strong> file
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A and we set <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 We keep only the interaction which has at least to paper as references (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
-<p>We will identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<span class="xref std std-ref">FORMAT</span>].</p>
+<p>We will identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
@@ -478,7 +478,7 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
-<td><p>8</p></td>
+<td><p>10</p></td>
 <td><p>7 765</p></td>
 </tr>
 <tr class="row-odd"><td><p>After filtering by papers number</p></td>
@@ -639,13 +639,13 @@ see the <a class="reference internal" href="../approaches/Cytoscape.html#network
 <p>With this approach, a Random Walk with Restart (see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> section for more details )
 is apply into two different multilayer compositions:</p>
 <ol class="arabic simple">
-<li><p>Multiplex (PPI + Complex + Reactome) and Diseases network only connected to genes nodes</p></li>
-<li><p>Multiplex (PPI + Complex + Reactome) and Diseases-Diseases network</p></li>
+<li><p>Multiplex (PPI + Complex + Reactome) and pathways of interest network only connected to genes nodes</p></li>
+<li><p>Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network</p></li>
 </ol>
-<p><em>For more details about networks used, see</em> <a class="reference internal" href="../approaches/methods_RWR.html#disconnecteddiseases"><span class="std std-ref">Pathways of interest network</span></a> <em>and</em> <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</p>
+<p><em>For more details about networks used, see</em> <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a> <em>and</em> <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</p>
 <div class="section" id="running-random-walk-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running Random Walk analysis with data extracted automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
-<p>For the first composition of network, we created the disconnected network : see <a class="reference internal" href="../approaches/methods_RWR.html#disconnecteddiseases"><span class="std std-ref">Pathways of interest network</span></a>.</p>
+<p>For the first composition of network, we created the pathways of interest network : see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a>.</p>
 <p>Whatever the network used, we want to extract target genes of vitamin A and its child molecules (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
 The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
 Then, we keep interaction with at least two papers which mention it in the literature (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
@@ -654,14 +654,14 @@ default parameters.</p>
 <p>The target genes are set as seeds for the walk and saved into a file <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code>.
 You need to give the SIF name (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>) to save the network results and the top number of results too
 (<code class="docutils literal notranslate"><span class="pre">--top</span> <span class="pre">10</span></code>).</p>
-<p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">examples/OutputResults_example1/</span></code> folder.</p>
+<p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <p>If you need more details about the input format files, see <a class="reference internal" href="../formats/Input.html#rwrinput"><span class="std std-ref">Random walk input files</span></a> part.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Whatever the networks used, the <strong>command line is the same</strong>. But you have to <strong>change</strong> the network name inside the
 <strong>configuration file</strong>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" name="RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" role="tab" tabindex="0">Discontinuous disease network</button><button aria-controls="panel-0-RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" name="RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" role="tab" tabindex="-1">Diseases-Diseases network</button></div><div aria-labelledby="tab-0-RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" class="sphinx-tabs-panel group-tab" id="panel-0-RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" name="RGlzY29udGludW91cyBkaXNlYXNlIG5ldHdvcms=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" name="UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" role="tab" tabindex="0">Pathways of interest network</button><button aria-controls="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tab" tabindex="-1">Disease-Disease similarity network</button></div><div aria-labelledby="tab-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" id="panel-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" name="UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
      <span class="m">1</span>:
          layers:
              - multiplex/1/Complexes_Nov2020.gr
@@ -678,7 +678,7 @@ You need to give the SIF name (<code class="docutils literal notranslate"><span 
      seeds.txt
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-0-RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" name="RGlzZWFzZXMtRGlzZWFzZXMgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
+</div><div aria-labelledby="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
      <span class="m">1</span>:
          layers:
              - multiplex/1/Complexes_Nov2020.gr
@@ -686,9 +686,9 @@ You need to give the SIF name (<code class="docutils literal notranslate"><span 
              - multiplex/1/Reactome_Nov2020.gr
      <span class="m">2</span>:
          layers:
-<span class="hll">             - multiplex/2/Diseases_network_2022.sif
+<span class="hll">             - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
 </span> bipartite:
-<span class="hll">     bipartite/Bipartite_diseasesNetwork_2022.tsv:
+<span class="hll">     bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
 </span>         source: <span class="m">2</span>
          target: <span class="m">1</span>
  seed:
@@ -717,7 +717,7 @@ the first file contains results from CTD request and the second one contains the
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code> : a copy of the input files</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code> : score for each feature. 1 corresponds to the multiplex and 2 to
-the disease network (depends of the folder name where networks are saved).</p></li>
+the RD pathways network (depends of the folder name where networks are saved).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code> : SIF file with the network result</p></li>
 </ul>
 </div></blockquote>
@@ -746,7 +746,7 @@ the disease network (depends of the folder name where networks are saved).</p></
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
-<td><p>8</p></td>
+<td><p>10</p></td>
 <td><p>7 765</p></td>
 </tr>
 <tr class="row-odd"><td><p>After filtering by papers number</p></td>
@@ -759,13 +759,13 @@ the disease network (depends of the folder name where networks are saved).</p></
 <div class="section" id="random-walk-with-restart-results">
 <h4>Random Walk with Restart results<a class="headerlink" href="#random-walk-with-restart-results" title="Permalink to this headline">¶</a></h4>
 <p>We use the default parameters, whatever the networks used.</p>
-<div class="section" id="discontinuous-diseases-network">
-<h5>Discontinuous diseases network<a class="headerlink" href="#discontinuous-diseases-network" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="pathways-of-interest-network-analysis">
+<h5>Pathways of interest network analysis<a class="headerlink" href="#pathways-of-interest-network-analysis" title="Permalink to this headline">¶</a></h5>
 <p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">988/2</span> <span class="pre">143</span></code> genes are set.</p>
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
-us to select a list of diseases. All disease with a score bigger than this score are extracted and considered as connected
+us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
-<p>There are <strong>27 pathways</strong> have a higher score (<a class="reference internal" href="#pathwaysrwrresults"><span class="std std-ref">Table</span></a>) :</p>
+<p>There are <strong>27 pathways</strong> with a higher score (<a class="reference internal" href="usecase2.html#pathwaysrwrresults"><span class="std std-ref">Table</span></a>) :</p>
 <span id="pathwaysrwrresults"></span><table class="docutils align-center" id="id21">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -892,12 +892,75 @@ with target genes (i.e. seeds).</p>
 </table>
 <p>You can represent the results with a network as shown on the</p>
 <div class="figure align-center" id="id22">
-<span id="usecase1-pathwaysrwr"></span><img alt="usecase 1 pathwaysRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the pathways network</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+<span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways of interest network</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<div class="section" id="disease-disease-network">
-<h5>Disease-Disease network<a class="headerlink" href="#disease-disease-network" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="disease-disease-similarity-network">
+<h5>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h5>
+<p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">988/2</span> <span class="pre">143</span></code> genes are set.</p>
+<p>We selected the top 10 of diseases (<a class="reference internal" href="usecase2.html#diseasesrwrresults"><span class="std std-ref">Table</span></a>).</p>
+<span id="diseasesrwrresults"></span><table class="docutils align-center" id="id23">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 64%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>node</p></th>
+<th class="head"><p>Disease name</p></th>
+<th class="head"><p>score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>OMIM:601626</p></td>
+<td><p>Leukemia, acute myeloid</p></td>
+<td><p>0.000161</p></td>
+</tr>
+<tr class="row-odd"><td><p>OMIM:125853</p></td>
+<td><p>Diabetes mellitus, noninsulin-dependent</p></td>
+<td><p>0.000155</p></td>
+</tr>
+<tr class="row-even"><td><p>OMIM:114500</p></td>
+<td><p>Colorectal cancer</p></td>
+<td><p>0.000153</p></td>
+</tr>
+<tr class="row-odd"><td><p>OMIM:211980</p></td>
+<td><p>Lung cancer, susceptibility to</p></td>
+<td><p>0.000117</p></td>
+</tr>
+<tr class="row-even"><td><p>OMIM:600807</p></td>
+<td><p>Asthma, susceptibility to</p></td>
+<td><p>0.000103</p></td>
+</tr>
+<tr class="row-odd"><td><p>OMIM:114480</p></td>
+<td><p>Breast cancer</p></td>
+<td><p>0.000087</p></td>
+</tr>
+<tr class="row-even"><td><p>OMIM:601665</p></td>
+<td><p>OBESITY</p></td>
+<td><p>0.000067</p></td>
+</tr>
+<tr class="row-odd"><td><p>OMIM:114550</p></td>
+<td><p>Hepatocellular carcinoma</p></td>
+<td><p>0.000066</p></td>
+</tr>
+<tr class="row-even"><td><p>OMIM:613659</p></td>
+<td><p>Gastric cancer, somatic</p></td>
+<td><p>0.000064</p></td>
+</tr>
+<tr class="row-odd"><td><p>OMIM:180300</p></td>
+<td><p>Rheumatoid arthritis</p></td>
+<td><p>0.000064</p></td>
+</tr>
+</tbody>
+</table>
+<p>You can represent the results with a network as shown on the</p>
+<div class="figure align-center" id="id24">
+<span id="usecase1-simnetworkrwr"></span><img alt="usecase 1 simNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1_simNet.png" />
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -905,16 +968,16 @@ with target genes (i.e. seeds).</p>
 <div class="section" id="rare-disease-pathways-identified">
 <h2>Rare disease pathways identified<a class="headerlink" href="#rare-disease-pathways-identified" title="Permalink to this headline">¶</a></h2>
 <p>To compare results from the different approaches, we use orsum <a class="footnote-reference brackets" href="#id10" id="id8">2</a>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt
-            --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum
-            --fileAliases Overlap DOMINO multiXrank
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt <span class="se">\</span>
+            --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum <span class="se">\</span>
+            --fileAliases Overlap DOMINO multiXrank <span class="se">\</span>
             --outputFolder useCase1Comparison/
 </pre></div>
 </div>
-<p>The results are display on the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 11</span></a>.</p>
-<div class="figure align-center" id="id23">
+<p>The results are display on the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
+<div class="figure align-center" id="id25">
 <span id="usecase1-orsum"></span><img alt="usecase1 orsum" src="../../_images/useCase1_orsum.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">: Comparison of use-case 1 results using orsum</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">: Comparison of use-case 1 results using orsum</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="references">

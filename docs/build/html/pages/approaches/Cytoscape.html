@@ -280,6 +280,7 @@ visualise these scores using a network representation with Cytoscape.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">higherScore</span></code> is the highest score in <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> file and the <code class="docutils literal notranslate"><span class="pre">gmtFile</span></code> is the gmt file of
 pathways of interest.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2;next} {if($3&gt;=higherScore){$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;\t&quot;a[$2]&quot;\t&quot;$3}}&#39;</span> gmtFile multiplex_2.tsv &gt; diseasesResults.txt
+awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2; next} {$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;;&quot;a[$2]&quot;;&quot;$3}&#39;</span> /home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa multiplex_2.tsv <span class="p">|</span> head -11 &gt; diseasesResults.txt
 </pre></div>
 </div>
 </div>

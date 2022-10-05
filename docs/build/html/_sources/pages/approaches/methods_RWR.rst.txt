@@ -67,7 +67,7 @@ To provide **your own** target genes, see parameters on the ``Data extracted fro
     .. group-tab:: Data extracted from user
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
 --configPath PATH
@@ -173,7 +173,7 @@ This network is extracted from NDEs and corresponding to the Human Reactome data
 
 - 194 500 links
 
-.. _disconnectedDiseases:
+.. _pathwaysOfInterestNet:
 
 Pathways of interest network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

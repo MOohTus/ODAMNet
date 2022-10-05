@@ -67,7 +67,7 @@ We extracted genes that are targeted by **vitamin A** and by its child molecules
     +----------------------------------+---------------------+-----------------+
     |                                  | Number of molecules | Number of genes |
     +==================================+=====================+=================+
-    |          Request result          |          8          |      7 765      |
+    |          Request result          |          10         |      7 765      |
     +----------------------------------+---------------------+-----------------+
     | After filtering by papers number |          7          |      2 143      |
     +----------------------------------+---------------------+-----------------+
@@ -202,7 +202,7 @@ We extracted genes that are targeted by **vitamin A** and by its child molecules
     +----------------------------------+---------------------+-----------------+
     |                                  | Number of molecules | Number of genes |
     +==================================+=====================+=================+
-    |          Request result          |          8          |      7 765      |
+    |          Request result          |          10         |      7 765      |
     +----------------------------------+---------------------+-----------------+
     | After filtering by papers number |          7          |      2 143      |
     +----------------------------------+---------------------+-----------------+
@@ -314,15 +314,15 @@ RWR
 With this approach, a Random Walk with Restart (see :doc:`../approaches/methods_RWR` section for more details )
 is apply into two different multilayer compositions:
 
-1. Multiplex (PPI + Complex + Reactome) and Diseases network only connected to genes nodes
-2. Multiplex (PPI + Complex + Reactome) and Diseases-Diseases network
+1. Multiplex (PPI + Complex + Reactome) and pathways of interest network only connected to genes nodes
+2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network
 
-*For more details about networks used, see* :ref:`disconnectedDiseases` *and* :ref:`DDnet`.
+*For more details about networks used, see* :ref:`pathwaysOfInterestNet` *and* :ref:`DDnet`.
 
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
 
-For the first composition of network, we created the disconnected network : see :ref:`disconnectedDiseases`.
+For the first composition of network, we created the pathways of interest network : see :ref:`pathwaysOfInterestNet`.
 
 Whatever the network used, we want to extract target genes of vitamin A and its child molecules (``--directAssociation False``).
 The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A.
@@ -335,7 +335,7 @@ The target genes are set as seeds for the walk and saved into a file ``--seedsFi
 You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
 (``--top 10``).
 
-Results files are saved into ``examples/OutputResults_example1/`` folder.
+Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 If you need more details about the input format files, see :ref:`RWRinput` part.
 
@@ -346,7 +346,7 @@ If you need more details about the input format files, see :ref:`RWRinput` part.
 
     .. tabs::
 
-        .. group-tab:: Discontinuous disease network
+        .. group-tab:: Pathways of interest network
 
             .. code-block:: bash
                 :emphasize-lines: 9,11
@@ -367,7 +367,7 @@ If you need more details about the input format files, see :ref:`RWRinput` part.
                  seed:
                      seeds.txt
 
-        .. group-tab:: Diseases-Diseases network
+        .. group-tab:: Disease-Disease similarity network
 
             .. code-block:: bash
                :emphasize-lines: 9,11
@@ -380,9 +380,9 @@ If you need more details about the input format files, see :ref:`RWRinput` part.
                             - multiplex/1/Reactome_Nov2020.gr
                     2:
                         layers:
-                            - multiplex/2/Diseases_network_2022.sif
+                            - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
                 bipartite:
-                    bipartite/Bipartite_diseasesNetwork_2022.tsv:
+                    bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
                         source: 2
                         target: 1
                 seed:
@@ -411,7 +411,7 @@ Several files are generated :
     - ``config_minimal_useCase1.yml`` and ``seeds.txt`` : a copy of the input files
 
     - ``multiplex_1.tsv`` and ``multiplex_2.tsv`` : score for each feature. 1 corresponds to the multiplex and 2 to
-      the disease network (depends of the folder name where networks are saved).
+      the RD pathways network (depends of the folder name where networks are saved).
 
     - ``resultsNetwork_useCase1.sif`` : SIF file with the network result
 
@@ -423,7 +423,7 @@ Results of Random Walk analysis with data extracted automatically from databases
 *request on the 07th of September 2022*
 
 CTD request results
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 We extracted genes that are targeted by **vitamin A** and by its child molecules.
 
@@ -433,7 +433,7 @@ We extracted genes that are targeted by **vitamin A** and by its child molecules
     +----------------------------------+---------------------+-----------------+
     |                                  | Number of molecules | Number of genes |
     +==================================+=====================+=================+
-    |          Request result          |          8          |      7 765      |
+    |          Request result          |          10         |      7 765      |
     +----------------------------------+---------------------+-----------------+
     | After filtering by papers number |          7          |      2 143      |
     +----------------------------------+---------------------+-----------------+
@@ -443,16 +443,16 @@ Random Walk with Restart results
 
 We use the default parameters, whatever the networks used.
 
-Discontinuous diseases network
-"""""""""""""""""""""""""""""""""
+Pathways of interest network analysis
+""""""""""""""""""""""""""""""""""""""""""
 
 Target genes are used as seed to start the walk : ``1 988/2 143`` genes are set.
 
 The gene with the highest score is ``VCAM1`` with ``score = 0.0002083975629882177`` (it's a seed). This score helps
-us to select a list of diseases. All disease with a score bigger than this score are extracted and considered as connected
+us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).
 
-There are **27 pathways** have a higher score (:ref:`Table <pathwaysRWRresults>`) :
+There are **27 pathways** with a higher score (:ref:`Table <pathwaysRWRresults>`) :
 
 .. _pathwaysRWRresults:
 .. table:: Pathways linked to target genes
@@ -518,16 +518,58 @@ There are **27 pathways** have a higher score (:ref:`Table <pathwaysRWRresults>`
 
 You can represent the results with a network as shown on the
 
-.. _useCase1_pathwaysRWR:
+.. _useCase1_pathwaysNetworkRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
-   :alt: usecase 1 pathwaysRWR
+   :alt: usecase 1 pathwaysNetworkRWR
    :align: center
 
-   : Results from RWR through the pathways network
+   : Results from RWR through the molecular multilayer and pathways of interest network
 
 
-Disease-Disease network
-"""""""""""""""""""""""""
+Disease-Disease similarity network
+"""""""""""""""""""""""""""""""""""""
+
+Target genes are used as seed to start the walk : ``1 988/2 143`` genes are set.
+
+We selected the top 10 of diseases (:ref:`Table <diseasesRWRresults>`).
+
+.. _diseasesRWRresults:
+.. table:: Diseases linked to target genes
+    :align: center
+
+    +-------------+-----------------------------------------+----------+
+    | node        | Disease name                            | score    |
+    +=============+=========================================+==========+
+    | OMIM:601626 | Leukemia, acute myeloid                 | 0.000161 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 0.000155 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:114500 | Colorectal cancer                       | 0.000153 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:211980 | Lung cancer, susceptibility to          | 0.000117 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:600807 | Asthma, susceptibility to               | 0.000103 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:114480 | Breast cancer                           | 0.000087 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:601665 | OBESITY                                 | 0.000067 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:114550 | Hepatocellular carcinoma                | 0.000066 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:613659 | Gastric cancer, somatic                 | 0.000064 |
+    +-------------+-----------------------------------------+----------+
+    | OMIM:180300 | Rheumatoid arthritis                    | 0.000064 |
+    +-------------+-----------------------------------------+----------+
+
+You can represent the results with a network as shown on the
+
+.. _useCase1_simNetworkRWR:
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase1_simNet.png
+   :alt: usecase 1 simNetworkRWR
+   :align: center
+
+   : Results from RWR through the molecular multilayer and disease-disease similarity network
+
 
 Rare disease pathways identified
 ====================================
@@ -536,9 +578,9 @@ To compare results from the different approaches, we use orsum [2]_.
 
 .. code-block:: bash
 
-    orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt
-                --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum
-                --fileAliases Overlap DOMINO multiXrank
+    orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt \
+                --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum \
+                --fileAliases Overlap DOMINO multiXrank \
                 --outputFolder useCase1Comparison/
 
 The results are display on the :numref:`useCase1_orsum`.

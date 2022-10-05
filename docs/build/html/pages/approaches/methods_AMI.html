@@ -281,7 +281,7 @@ You can define a threshold to filter target genes extraction based on the number
 </dl>
 </div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Contains a list of target genes. One gene per line. [<span class="xref std std-ref">FORMAT</span>]
+<dd><p>Contains a list of target genes. One gene per line. [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>]
 <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
@@ -300,7 +300,7 @@ It should be in the same order than the GMT file.
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Network file name. It’s SIF file [<span class="xref std std-ref">FORMAT</span>] <strong>[required]</strong></p>
+<dd><p>Network file name. It’s SIF file [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--netUUID <var>TEXT</var></span></kbd></dt>
 <dd><p>You can use a network extracted automatically from <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a class="footnote-reference brackets" href="#id13" id="id5">3</a>. You have to provide
@@ -341,7 +341,7 @@ and not ensembl IDs or any other gene name format. The rule applies on GMT files
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
-<p>You can use any network that you want or have. It has to be in <span class="xref std std-ref">SIF format</span> and you can give it to
+<p>You can use any network that you want or have. It has to be in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> and you can give it to
 the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 </div>
 <div class="section" id="request-ndex-database">
@@ -352,7 +352,7 @@ the script using the required parameter <code class="docutils literal notranslat
 </div>
 <p>You can directly request NDEx <a class="footnote-reference brackets" href="#id13" id="id7">3</a> <a class="reference external" href="https://www.ndexbio.org/">website</a> and extract the network that you want to use
 (REST API <a class="footnote-reference brackets" href="#id13" id="id8">3</a><sup>,</sup> <a class="footnote-reference brackets" href="#id15" id="id9">5</a> <sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id10">6</a>). You need to specify the network UUID using the optional parameter
-<code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <span class="xref std std-ref">SIF file</span>.</p>
+<code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>.</p>
 </div>
 </div>
 <div class="section" id="use-cases-command-line">

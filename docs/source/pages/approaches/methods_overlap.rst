@@ -71,7 +71,7 @@ The ``--outputPath`` parameter is use for both data extraction.
     .. group-tab:: Data extracted from user
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
         --GMT FILENAME

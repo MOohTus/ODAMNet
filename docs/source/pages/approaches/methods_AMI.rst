@@ -93,7 +93,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
     .. group-tab:: Data extracted from user
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <genesList>`]
+            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
         --GMT FILENAME
@@ -155,7 +155,7 @@ Personal network
 
     :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
 
-You can use any network that you want or have. It has to be in :ref:`SIF format <net>` and you can give it to
+You can use any network that you want or have. It has to be in :ref:`SIF format <SIF>` and you can give it to
 the script using the required parameter ``-n, --networkFile``.
 
 
@@ -168,7 +168,7 @@ Request NDEx database
 
 You can directly request NDEx [3]_ `website <https://www.ndexbio.org/>`_ and extract the network that you want to use
 (REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
-``--netUUID``. The network will be save into a :ref:`SIF file <net>`.
+``--netUUID``. The network will be save into a :ref:`SIF file <SIF>`.
 
 
 Use-cases command line

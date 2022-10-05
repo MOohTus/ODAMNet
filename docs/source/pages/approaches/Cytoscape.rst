@@ -94,6 +94,7 @@ To visualise the RWR results using network representation, use the following ste
    .. code-block:: bash
 
         awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=higherScore){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' gmtFile multiplex_2.tsv > diseasesResults.txt
+        awk -F"\t" 'NR==FNR{a[$1]=$2; next} {$3=sprintf("%.6f", $3); print $2";"a[$2]";"$3}' /home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa multiplex_2.tsv | head -11 > diseasesResults.txt
 
 5. Create **two new columns** named ``label`` as string and ``keep`` as boolean
 6. **Filter** : Select genes nodes
