@@ -41,7 +41,7 @@ EnvironmentProject's documentation
 
 .. toctree::
    :maxdepth: 1
-   :caption: Functions description
+   :caption: Code description
 
    pages/functions/fcts_arguments
    pages/functions/fcts_description

@@ -1,5 +1,5 @@
 ==================================================
-Input arguments for each method
+Input parameters for each method
 ==================================================
 
 Main script
