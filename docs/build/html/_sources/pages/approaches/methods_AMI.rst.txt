@@ -25,7 +25,7 @@ Finally, we performed an **overlap analysis** between each AM and pathways of in
 DOMINO algorithm overview
 ----------------------------
 
-The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm :
+The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 
 .. _dominoMethodFig:
 .. figure:: ../../pictures/DOMINO_method.jpg
@@ -38,14 +38,14 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm :
 | **B -** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
 | **C -** The most active sub-slice is identified on each relevant slices.
 | **D -** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
-| **E -** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05)
+| **E -** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05).
 
-*For more details, refer to the paper DOMINO publication* [1]_
+*For more details, refer to the DOMINO's publication* [1]_.
 
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`dominoUsageFig`: *data extracted from requests*).
+By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
 extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
@@ -57,17 +57,17 @@ You can provide your own **target genes file** and **pathways/processes of inter
     :alt: domino analysis
     :align: center
 
-    : Input and output files of Active Modules Identification
+    : Input and output files/parameters of Active Modules Identification
 
-    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    There are two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
 Input parameters for Active Modules Identification
 ----------------------------------------------------
 
-To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
-To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
+| To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
 The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.
 
@@ -81,13 +81,13 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
-            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
             | ``FALSE``: extract chemicals and their child molecules data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
-            References can be associated with chemical interactions.
-            You can define a threshold to filter target genes extraction based on the number of publications.
+            Publications can be associated with chemical interactions.
+            You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
     .. group-tab:: Data extracted from user
@@ -116,27 +116,27 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
     the UUID of the network (e.g. ``079f4c66-3b77-11ec-b3be-0ac135e8bacf``).
 
 -o, --outputPath PATH
-    Name of the folder where to save the results.
+    Name of the folder to save results.
     ``[default: OutputResults]``
 
 
-Available Interaction Networks
+Networks available
 -----------------------------------
 
 .. warning::
 
     Be careful when using networks from NDEx: gene IDs format are not always consistent between networks and data from
     CTD or other input gene lists and pathways.
-    For instance, CTD returns gene symbols (i.e. HGNC). If CTD data are used, the network need to contains gene symbols
-    and not ensembl IDs or any other gene name format. The rule applies on GMT files too.
+    CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
+    gene name format. It's similar with GMT files.
 
 Protein-Protein Interaction network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
-**gene symbols**, you can give it to the script using the required parameter ``-n, --networkFile``.
+**gene symbols**. You can give it to the script using the required parameter ``-n, --networkFile``.
 
-It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :
+It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:
 
 .. code-block::
 
@@ -159,7 +159,7 @@ You can use any network that you want or have. It has to be in :ref:`SIF format 
 the script using the required parameter ``-n, --networkFile``.
 
 
-Request NDEx database
+Networks from NDEx database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. caution::

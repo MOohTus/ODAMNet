@@ -27,7 +27,7 @@ Theses three approaches are **complementary** and perform **network exploration*
 
     : Overview of the three implemented approaches
 
-Moreover, the approaches are open to **external input files** provided by yourself (g.e. target genes file instead of
+Moreover, the approaches are open to **external input files** provided by yourself (e.g. target genes file instead of
 chemicals file, pathways and/or processes etc ...). Take a look at :ref:`usecase2`, if you want to use your own input files.
 
 References
@@ -35,4 +35,3 @@ References
 
 .. [1] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
 .. [2] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
-.. [8] Curated chemical–gene interactions data were retrieved from the Comparative Toxicogenomics Database (CTD), MDI Biological Laboratory, Salisbury Cove, Maine, and NC State University, Raleigh, North Carolina. World Wide Web (URL: http://ctdbase.org/). [Month, year of data retrieval].

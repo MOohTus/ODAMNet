@@ -46,13 +46,13 @@ Three different approaches are available to analyse your data:
    python3 main.py [overlap|domino|multixrank] [ARGS]
 
 
-Before running the last method, you could need to create a network from data used :
+Before running the last method, you could need to create a network from data used:
 
 .. code-block:: bash
 
    python3 main.py networkCreation [ARGS]
 
-You can display help :
+You can display help:
 
 .. code-block:: bash
 

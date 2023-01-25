@@ -12,7 +12,7 @@ Active Modules Identification (AMI) network visualisation
 On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
 network representation with Cytoscape.
 
-The following :numref:`cytoscapeAMI` is an example of display :
+The following :numref:`cytoscapeAMI` is an example of visualisation:
 
 .. _cytoscapeAMI:
 .. figure:: ../../pictures/example1_DOMINO_AMnetwork.png
@@ -21,18 +21,18 @@ The following :numref:`cytoscapeAMI` is an example of display :
 
     : Visualisation of AM using Cytoscape [1]_ and Omics Visualizer [2]_
 
-To create the same display of AM, use the following steps :
+To create the same visualisation of AM, use the following steps:
 
-1. **Import Network** from File : ``DOMINO_*_activeModulesNetwork.txt``
-2. **Import Table** from File : ``DOMINO_*_activeModules.txt``
-3. **Omics Visualizer** [2]_ **table** from File : ``DOMINO_*_overlapAMresults4Cytoscape.txt``
-4. Manage table **connections** : link network and the previous table
+1. **Import Network** from File: ``DOMINO_*_activeModulesNetwork.txt``
+2. **Import Table** from File: ``DOMINO_*_activeModules.txt``
+3. **Omics Visualizer** [2]_ **table** from File: ``DOMINO_*_overlapAMresults4Cytoscape.txt``
+4. Manage table **connections**: link network and the previous table with right identifiers
 
-    - Network : *sharedname*
-    - Table : *geneSymbol*
+    - Network: *sharedname*
+    - Table: *geneSymbol*
 
-5. **Donut Chart Visualization** : Add overlap results using donuts (Use *termTitle*)
-6. **Style** :
+5. **Donut Chart Visualisation**: Add overlap results using donuts (Use *termTitle*)
+6. **Style**:
 
     - Border Width = ``5.0``
     - Fill Color = ``ActiveGenes`` True #CCCCCC False #FFFFFF
@@ -41,8 +41,8 @@ To create the same display of AM, use the following steps :
     - ``Lock node width and height``
     - Size = ``50``
 
-7. **Filter** : Select nodes with ``overlapSignificant = True``
-8. **New Network** : From Selected Nodes, All Edges
+7. **Filter**: Select nodes with ``overlapSignificant = True``
+8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
 *To run AM identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>` *or with your data see* :ref:`Use-case 2 <useCase2_AMI>`.
@@ -55,7 +55,7 @@ Random Walk with Restart analysis (RWR) network visualisation
 To explore a network, we use a Random Walk with Restart [4]_ approach. As results, each node has a score. You can
 visualise these scores using a network representation with Cytoscape.
 
-The following :numref:`cytoscapeRWR` is an example of display :
+The following :numref:`cytoscapeRWR` is an example of visualisation:
 
 .. _cytoscapeRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
@@ -64,13 +64,13 @@ The following :numref:`cytoscapeRWR` is an example of display :
 
     : Visualisation of network using Cytoscape [1]_
 
-To visualise the RWR results using network representation, use the following steps :
+To visualise the RWR results using network representation, use the following steps:
 
-1. **Import Network** from File : ``resultsNetwork_useCase1.sif``
-2. **Import Table** from File : ``multiplex_1.tsv`` and ``multiplex_2.tsv``
-3. **Import Table** from File : ``seeds.4Cytoscape``
+1. **Import Network** from File: ``resultsNetwork_useCase1.sif``
+2. **Import Table** from File: ``multiplex_1.tsv`` and ``multiplex_2.tsv``
+3. **Import Table** from File: ``seeds.4Cytoscape``
 
-    - Change column names to ``node`` and ``seed``
+    - Change column names: ``node`` for column 1 and ``seed`` for column 2
 
 .. tip::
 
@@ -80,39 +80,39 @@ To visualise the RWR results using network representation, use the following ste
 
         awk -F"\t" 'NR==FNR{a[$1]; next} {if($2 in a){print $2"\tTrue"}else{print $2"\tFalse"}}' seeds.txt multiplex_1.tsv > seeds.4Cytoscape
 
-4. **Import Table** from File : ``diseasesResults.txt``
+4. **Import Table** from File: ``diseasesResults.txt``
 
-    - Change column names to ``node``, ``pathways`` and ``score``
+    - Change column names: ``node`` for column 1, ``pathways`` for column 2 and ``score`` for column 3
 
 .. tip::
 
    How create the **diseasesResults.txt** file ?
 
-   The ``higherScore`` is the highest score in ``multiplex_1.tsv`` file and the ``gmtFile`` is the gmt file of
+   The ``highestScore`` is the highest score in ``multiplex_1.tsv`` file and the ``gmtFile`` is the gmt file of
    pathways of interest.
 
    .. code-block:: bash
 
-        awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=higherScore){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' gmtFile multiplex_2.tsv > diseasesResults.txt
+        awk -F"\t" 'NR==FNR{a[$1]=$2;next} {if($3>=highestScore){$3=sprintf("%.6f", $3); print $2"\t"a[$2]"\t"$3}}' gmtFile multiplex_2.tsv > diseasesResults.txt
         awk -F"\t" 'NR==FNR{a[$1]=$2; next} {$3=sprintf("%.6f", $3); print $2";"a[$2]";"$3}' /home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa multiplex_2.tsv | head -11 > diseasesResults.txt
 
-5. Create **two new columns** named ``label`` as string and ``keep`` as boolean
-6. **Filter** : Select genes nodes
+5. Create **two new columns** named ``label`` as *string* and ``keep`` as *boolean* in the node table
+6. **Filter**: Select genes nodes
 
-    - To ``label`` column, fill with ``=$name`` and apply to selected nodes
-    - To ``keep`` column, fill with ``=$seed`` and apply to selected nodes
+    - Fill ``label`` column with ``=$name`` and apply to selected nodes
+    - Fill ``keep`` column with ``=$seed`` and apply to selected nodes
     - Sort by ``score`` (decrease) and select the 30th first genes that are not a seed (selected nodes from selected rows)
-    - To ``keep`` column, fill with ``=True`` and apply to selected nodes
+    - Fill ``keep`` column with ``=True`` and apply to selected nodes
 
-7. **Filter** : Select pathways nodes
+7. **Filter**: Select pathways nodes
 
-    - Add pathway names into ``label`` column (``=$pathway``)
-    - Add a condition score into ``keep`` column (``=$score>=0.0002083975629882177``)
+    - Fill ``label`` column with pathway names (``=$pathway``)
+    - Fill ``keep`` column with condition score (``=$score>=0.0002083975629882177``)
 
-8. **Filter** : Select nodes with ``keep = True``
-9. **New Network** : From Selected Nodes, All Edges
+8. **Filter**: Select nodes with ``keep = True``
+9. **New Network**: From Selected Nodes, All Edges
 10. Edit and Remove Duplicate Edges
-11. **Style** :
+11. **Style**:
 
 .. list-table:: Network Style
     :header-rows: 1
@@ -126,8 +126,8 @@ To visualise the RWR results using network representation, use the following ste
         - 5.0
     *   - Fill Color
         - | Column seed
-          | True : CCCCCC
-          | False : FFFFFF
+          | True: CCCCCC
+          | False: FFFFFF
         - DD3497
     *   - Label Front Size
         - 20
@@ -145,7 +145,7 @@ To visualise the RWR results using network representation, use the following ste
         - label
         - label
 
-12. Layout = yFiles Organic Layout
+12. Change network layout (here is yFiles Organic Layout)
 
 *To perform a RWR with data requested, see* :ref:`Use-case 1 <useCase1_RWR>` *or with your data see* :ref:`Use-case 2 <useCase2_RWR>`.
 

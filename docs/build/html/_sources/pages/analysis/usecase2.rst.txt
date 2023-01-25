@@ -1,24 +1,22 @@
 .. _usecase2:
 
 =====================================================
-Use-case 2: data are provided directly by the users
+Use-case 2: data are provided directly by the user
 =====================================================
 
 Context
 ==========
 
-In the context of the EJP-RD project, an overlap analysis between a list of genes targeted by vitamins A&D and pathways
+In the context of the EJP-RD project, an overlap analysis between genes targeted by vitamins A and D and pathways
 related to CAKUT disease was performed (Ozisik *et al.*, 2021 [1]_).
 
-For the vitamin A analysis, data was retrieved from several sources:
+For the vitamin A analysis, data was retrieved from several sources: target genes come from
 the `Comparative Toxicogenomics Database (CTD) <https://ctdbase.org/>`_ [2]_ and the study of Balmer and
-Blomhoff [3]_ for the target genes, and WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_
-for the disease-associated genes.
+Blomhoff [3]_, and pathways/processes of interest come from WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_.
 
 For this use-case, we used data from this paper:
 
-- target genes : list of genes from the study of Balmer and Blomhoff [3]_ (targeted by vitamin A),
-
+- target genes : genes targeted by vitamin A from the study of Balmer and Blomhoff [3]_,
 - pathways of interest : list of pathways related to CAKUT disease.
 
 .. _useCase2_overlap:
@@ -26,15 +24,15 @@ For this use-case, we used data from this paper:
 Overlap analysis
 =====================
 
-This approach calculates the overlap between list of genes, targeted by vitamin A, and the pathways of interest
+This approach calculates the overlap between genes targeted by vitamin A, and the pathways of interest
 (see :doc:`../approaches/methods_overlap` section for more details).
 
-Running overlap analysis with data provided by the users
+Running overlap analysis with data provided by the user
 ----------------------------------------------------------
 
 The target genes file is provided by the ``--targetGenesFile`` parameter and contains a list of genes targeted
-by the vitamin A. Pathways of interest (here, pathways or processes related to CAKUT disease) are given by the ``--GMT``
-parameter [:ref:`FORMAT <pathways>`]. You need to provide the background of each source : give a file with the list of
+by the vitamin A [:ref:`FORMAT <targetGenesFile>`]. Pathways of interest (here, pathways or processes related to CAKUT disease) are given by the ``--GMT``
+parameter [:ref:`FORMAT <pathways>`]. You need to provide the background genes of each source: give a file with the list of
 those files using ``--backgroundFile`` parameter.
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
@@ -46,19 +44,22 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
                                 --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
                                 --outputPath useCases/OutputResults_useCase2/
 
-`Overlap_genesList_withpathOfInterest.csv`` file is created. It contains the results of the overlap analysis between
+``Overlap_genesList_withpathOfInterest.csv`` file is created. It contains results of the overlap analysis between
 target genes and CAKUT related pathways/processes.
 
-For more details about these file, see :doc:`../formats/Output` page.
+For more details about these files, see :doc:`../formats/Output` page.
 
-Results of overlap analysis with data provided by users
+Results of overlap analysis with data provided by user
 ---------------------------------------------------------
 
 *request on the 07th of September 2022*
 
-Data provided by users description
+Data provided by user description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 13 <useCase2DataOverview>`.
+
+.. _useCase2DataOverview:
 .. table:: Input data overview
     :align: center
 
@@ -72,35 +73,37 @@ Data provided by users description
     |        Sources       |    3   |
     +----------------------+--------+
 
+Pathways of interests come from Reactome and WP and processes of interest come from Biological Process (Gene Ontology).
+
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Target genes overlap significantly ``8 pathways/processes`` related to CAKUT disease (pAdjusted <= 0.05). Results are
-presented in :ref:`Table <useCase2Overlap>`.
+presented in :ref:`Table 14 <useCase2Overlap>`.
 
 .. _useCase2Overlap:
 .. table:: Results of overlap between target genes and CAKUT disease
     :align: center
 
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       PathwayIDs      |                  PathwayNames                 |         pValue         | IntersectionSize |
-    +=======================+===============================================+========================+==================+
-    |       GO:0072001      |            renal system development           | 6.6466522973708825e-18 |        43        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       GO:0001822      |               kidney development              |  7.902033475139651e-17 |        41        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       GO:0060993      |              kidney morphogenesis             |  1.923496159451833e-12 |        20        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       WP:WP5053       |   Development of ureteric collection system   |  2.267498907322398e-08 |        15        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       WP:WP4823       |        Genes controlling nephrogenesis        | 0.00011080436286782238 |        10        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    | PMC5748921-PMC6115658 |               CAKUT causal genes              |  0.001058584531139687  |         6        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |       WP:WP4830       |            GDNF/RET signalling axis           |  0.008297232288681322  |         5        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
-    |   REAC:R-HSA-2022377  | Metabolism of Angiotensinogen to Angiotensins |   0.03748808186792299  |         3        |
-    +-----------------------+-----------------------------------------------+------------------------+------------------+
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       PathwayIDs      |                  PathwayNames          |  pValue   | IntersectionSize |
+    +=======================+========================================+===========+==================+
+    |       GO:0072001      |            renal system development    |  6.65e-18 |        43        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       GO:0001822      |               kidney development       |  7.90e-17 |        41        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       GO:0060993      |              kidney morphogenesis      |  1.92e-12 |        20        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       WP:WP5053       | Development of ureteric collection ... | 2.278e-08 |        15        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       WP:WP4823       |     Genes controlling nephrogenesis    |  1.11e-04 |        10        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    | PMC5748921-PMC6115658 |               CAKUT causal genes       | 1.06e-03  |         6        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |       WP:WP4830       |            GDNF/RET signalling axis    | 8.30e-03  |         5        |
+    +-----------------------+----------------------------------------+-----------+------------------+
+    |   REAC:R-HSA-2022377  | Metabolism of Angiotensinogen to ...   |     0.04  |         3        |
+    +-----------------------+----------------------------------------+-----------+------------------+
 
 Ozisik *et al.,* [1]_ identified seven pathways/processes related to CAKUT disease. All of them have been retrieved
 on this analysis and one more (REAC:R-HSA-2022377).
@@ -111,18 +114,17 @@ AMI
 =====================
 
 This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
-overlap analysis between each AM identified and Rare Diseases pathways frm WP.
+overlap analysis between each AM identified and Rare Diseases pathways from WP.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
-Running active modules identification with data provided by users
+Running active modules identification with data provided by user
 -------------------------------------------------------------------
 
 .. warning::
 
-   :octicon:`alert;2em` Results of DOMINO can't be reproduced when using their server.
+   :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
 
-As before, target genes list is provided by the users (``--targetGenesFile``). Pathways of interest are provided by
-the users too (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
+As before, user provide target genes (``--targetGenesFile``) and pathways of interest (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
 
 We will identify AM using a Protein-Protein Interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
 
@@ -138,25 +140,28 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 Several files are generated :
 
-- ``DOMINO_inputGeneList_D014801.txt`` : list of genes (targeted by vitamin A) used for the AM identification.
+- ``DOMINO_inputGeneList_D014801.txt``: genes targeted by vitamin A, used for the AM identification.
 
-- ``Overlap_AM_*_genesList_withpathOfInterest.csv`` : results of the overlap analysis between target genes and pathways of
-  interest provided by the users. One file for each AM.
+- ``Overlap_AM_*_genesList_withpathOfInterest.csv``: results of the overlap analysis between target genes and pathways of
+  interest provided by the user. One file per AM.
 
 - ``DOMINO_genesList_activeModulesNetwork.txt``, ``DOMINO_genesList_overlapAMresults4Cytoscape.txt``, ``DOMINO_genesList_activeModules.txt``
-  , ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and ``DOMINO_genesList_signOverlap.txt`` : some metrics are
+  , ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and ``DOMINO_genesList_signOverlap.txt``: some statistics are
   calculated and saved into files. Theses files are useful for visualisation.
 
-For more details about these file, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`)
+For more details about these file, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`).
 
-Results of active module identification with data provided by users
+Results of active module identification with data provided by user
 --------------------------------------------------------------------
 
 *request on the 07th of September 2022*
 
-Data provided by users description
+Data provided by user description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 15 <useCase2DataOverviewAMI>`.
+
+.. _useCase2DataOverviewAMI:
 .. table:: Input data overview
     :align: center
 
@@ -170,14 +175,16 @@ Data provided by users description
     |        Sources       |    3   |
     +----------------------+--------+
 
+Pathways of interests come from Reactome and WP and processes of interest come from Biological Process (Gene Ontology).
+
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are defined as Active genes by DOMINO (Active Modules identification tool). We give **521 active genes** as input.
+Target genes are defined as **active genes** by DOMINO. We give **521 active genes** as input. DOMINO found
+**18 Active Modules** (:ref:`Table 16 <useCase2AMIResults>`).
 
-We found **18 Active Modules** :
-
-.. table:: DOMINO result metrics
+.. _useCase2AMIResults:
+.. table:: Composition of AMs found by DOMINO
     :align: center
 
     +--------------+------------+------------+
@@ -195,9 +202,11 @@ We found **18 Active Modules** :
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We found **7 pathways/processes** that are significantly overlaped by **6 Active Modules** (padjusted <= 0.05).
+Then, we perform an overlap analysis between AM and pathways of interest. We found **7 pathways** that are significantly overlapped
+by **6 Active Modules** (padjusted <= 0.05).
 
-.. table:: Overlap analysis between AM and pathways of interest provided by users
+.. _useCase2AMIOverlap:
+.. table:: Overlap analysis between AM and pathways of interest provided by user
     :align: center
 
     +------------------------+-------------------------------------------+
@@ -231,7 +240,7 @@ see the :ref:`networkAMI` section.
    :alt: usecase2 AMI
    :align: center
 
-   : Network visualisation of Active modules which overlap significantly target genes
+   : Network visualisation of Active modules which are enriched in CAKUT disease pathways
 
 Some network are enriched with the same pathways whereas other contain genes involved in different pathways. Target genes
 (i.e. active genes, grey spheres) could be part of pathways as non-target genes (white spheres).
@@ -241,23 +250,24 @@ Some network are enriched with the same pathways whereas other contain genes inv
 RWR
 =====================
 
-With this approach, a Random Walk with Restart (see :doc:`../approaches/methods_RWR` section for more details )
-is apply into two different multilayer compositions:
+The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
 
-1. Multiplex (PPI + Complex + Reactome) and pathways of interest network only connected to genes nodes
-2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network
+1. Multiplex (PPI + Complex + Reactome) and pathways of interest network connected to genes nodes
+2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite
 
-*For more details about networks used, see* :ref:`pathwaysOfInterestNet` *and* :ref:`DDnet`.
+*For more details about RWR, see* :doc:`../approaches/methods_RWR`.
 
-Running Random Walk analysis with data provided by users
+Running Random Walk analysis with data provided by user
 -----------------------------------------------------------
 
-For the first composition of network, we created the pathways of interest network : see :ref:`pathwaysOfInterestNet`.
+| To know how to create the pathways of interest network: see :ref:`pathwaysOfInterestNet`.
+| To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
-The list of target genes is provided by the users using ``--targetGenesFile``.
+Whatever the network used, target genes file is provided by the user using ``--targetGenesFile`` [:ref:`FORMAT <targetGenesFile>`].
 
 MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
 default parameters.
+
 The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
 You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
 (``--top 10``).
@@ -328,31 +338,32 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 
 Several files are generated into ``RWR_genesList/`` folder:
 
-    - ``config_minimal_useCase2.yml`` and ``seeds.txt`` : a copy of the input files
+    - ``config_minimal_useCase2.yml`` and ``seeds.txt``: copies of the input files
 
-    - ``multiplex_1.tsv`` and ``multiplex_2.tsv`` : score for each feature. 1 corresponds to the multiplex and 2 to
-      the disease network (depends of the folder name where networks are saved).
+    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
+      the disease network (depends of the network folder name).
 
-    - ``resultsNetwork_useCase2.sif`` : SIF file with the network result
+    - ``resultsNetwork_useCase2.sif``: SIF file that contains the network result
 
 For more details about these file, see :doc:`../formats/Output` page.
 
-Results of Random Walk analysis with data provided by users
+Results of Random Walk analysis with data provided by user
 -------------------------------------------------------------
 
-We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** in the target genes file
-provided by users.
+We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** provided by user.
 
 Pathways of interest network analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are used as seed to start the walk : ``483/521`` genes are set.
+*In this part, we present results found for the first multiplex composition: multiplex + pathways of interest.*
+
+First, target genes are used as seed to start the walk: ``483/521`` genes are used.
 
 The gene with the highest score is ``ASMT`` with ``score = 0.0006682735081574565`` (it's a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).
 
-There are **4 pathways** with a higher score (:ref:`Table <useCase2_pathwaysRWR>`) :
+According this highest score, **4 pathways** are selected (:ref:`Table 18 <useCase2_pathwaysRWR>`).
 
 .. _useCase2_pathwaysRWR:
 .. table:: Pathways linked to target genes
@@ -370,9 +381,8 @@ There are **4 pathways** with a higher score (:ref:`Table <useCase2_pathwaysRWR>
     | **REAC:R-HSA-157118** | **Signaling by NOTCH**   | **0.001140** |
     +-----------------------+--------------------------+--------------+
 
-Two pathways not found with the previous approaches, are link to target genes : ``REAC:R-HSA-195721`` and ``REAC:R-HSA-157118``.
-
-You can represent the results with a network as shown on the
+Two pathways not found with the previous approaches, are link to target genes: ``REAC:R-HSA-195721`` and ``REAC:R-HSA-157118``.
+You can visualise the results with a network as shown on the :numref:`useCase2_pathwaysNetworkRWR`.
 
 .. _useCase2_pathwaysNetworkRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase2.png
@@ -381,12 +391,16 @@ You can represent the results with a network as shown on the
 
    : Results from RWR through the molecular multilayer and pathways of interest network
 
+    Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
+
 Disease-Disease similarity network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are used as seed to start the walk : ``483/521`` genes are set.
+*In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.*
 
-We selected the top 10 of diseases (:ref:`Table <useCase2_diseasesRWR>`).
+First, target genes are used as seed to start the walk: ``483/521`` genes are used.
+
+We selected the top 10 of diseases (:ref:`Table 19 <useCase2_diseasesRWR>`).
 
 .. _useCase2_diseasesRWR:
 .. table:: Diseases linked to target genes
@@ -414,7 +428,7 @@ We selected the top 10 of diseases (:ref:`Table <useCase2_diseasesRWR>`).
     | OMIM:601665 | OBESITY                                 | 0.000181 |
     +-------------+-----------------------------------------+----------+
 
-You can represent the results with a network as shown on the
+You can represent the results with a network as shown in the :numref:`useCase2_simNetworkRWR`.
 
 .. _useCase2_simNetworkRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase2_simNet.png
@@ -423,10 +437,13 @@ You can represent the results with a network as shown on the
 
    : Results from RWR through the molecular multilayer and disease-disease similarity network
 
+    Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
+
 Rare disease pathways identified
 ====================================
 
-To compare results from the different approaches, we use orsum [2]_.
+Approaches give us a list of CAKUT pathways significantly connected to vitamin A target genes. To easily compare results,
+we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase2_orsum`.
 
 .. code-block:: bash
 
@@ -435,15 +452,12 @@ To compare results from the different approaches, we use orsum [2]_.
                 --fileAliases Overlap DOMINO multiXrank \
                 --outputFolder useCase2Comparison/
 
-The results are display on the :numref:`useCase2_orsum`.
-
 .. _useCase2_orsum:
 .. figure:: ../../pictures/useCase2_orsum.png
    :alt: usecase2 orsum
    :align: center
 
    : Comparison of use-case 2 results using orsum
-
 
 References
 ============
@@ -455,5 +469,3 @@ References
 .. [5] Jassal, B., Matthews, L., Viteri, G., Gong, C., Lorente, P., Fabregat, A., ... & D’Eustachio, P. (2020). The reactome pathway knowledgebase. Nucleic acids research, 48(D1), D498-D503.
 .. [6] Ashburner et al. Gene ontology: tool for the unification of biology. Nat Genet. May 2000;25(1):25-9
 .. [7] The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334
-.. [8] Curated chemical–gene interactions data were retrieved from the Comparative Toxicogenomics Database (CTD), MDI Biological Laboratory, Salisbury Cove, Maine, and NC State University, Raleigh, North Carolina. World Wide Web (URL: http://ctdbase.org/). [Month, year of data retrieval].
-

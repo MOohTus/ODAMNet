@@ -12,13 +12,13 @@ Principle
     The Random Walk is performed using multiXrank [1]_ --
     :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
-This method measures the **proximity** of every gene within a multilayer to the target genes. Every gene from the list is
-define as a **seed**. The walk starts with a seed, selected **randomly**. The proximity is represented by a score that could be use
-for multiple analyse. More the score is high, more the node is closed to the seed.
+This method measures the **proximity** of every gene within a multilayer to target genes. Every target gene is
+defined as a **seed**. The walk starts with a seed selected **randomly**. The proximity is represented by a score that could be use
+for multiple analysis. More the score is high, more the node is closed to the seed.
 
 It's a kind of **diffusion analysis** from the genes through different molecular interactions (:numref:`overviewFig` - right part).
 
-*For more details, see the paper* [1]_
+*For more details, see the multiXrank's paper* [1]_.
 
 Usage
 -------
@@ -33,7 +33,7 @@ You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data ext
     :alt: RWR analysis
     :align: center
 
-    : Input and output files of Random Walk with Restart analysis
+    : Input and output files/parameters of Random Walk with Restart analysis
 
     There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
@@ -42,8 +42,8 @@ You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data ext
 Input parameters for RWR analysis
 ----------------------------------------
 
-To extract target genes from **CTD**, see parameters on the ``Data extracted from requests`` tab.
-To provide **your own** target genes, see parameters on the ``Data extracted from user`` tab.
+| To extract target genes from **CTD**, see parameters on the ``Data extracted from requests`` tab.
+| To provide **your own** target genes, see parameters on the ``Data extracted from user`` tab.
 
 .. tabs::
 
@@ -55,13 +55,13 @@ To provide **your own** target genes, see parameters on the ``Data extracted fro
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
-            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
             | ``FALSE``: extract chemicals and their child molecules data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
-            References can be associated with chemical interactions.
-            You can define a threshold to filter target genes extraction based on the number of publications.
+            Publications can be associated with chemical interactions.
+            You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
     .. group-tab:: Data extracted from user
@@ -80,7 +80,7 @@ To provide **your own** target genes, see parameters on the ``Data extracted fro
     Repository path where networks are saved. **[required]**
 
 --seedsFile FILENAME
-    Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
+    Path name file to store seed list. This file contains the target genes list. They will be used as seed
     on the Random Walk analysis. **[required]**
 
 --sifFileName FILENAME
@@ -90,7 +90,7 @@ To provide **your own** target genes, see parameters on the ``Data extracted fro
     Top nodes that will be saved into the output network (into SIF file).
 
 -o, --outputPath PATH
-    Name of the folder where to save the results.
+    Name of the folder to save the results.
     ``[default: OutputResults]``
 
 Use-cases command line
@@ -129,9 +129,9 @@ Networks available
 
 .. note::
 
-    We use the biological multilayer network from multiXrank's paper [1]_.
+    We use the molecular multilayer network from multiXrank's paper [1]_.
 
-We propose to run two walks through two different network compositions :
+We propose to run two walks through two different network compositions:
 
 - molecular multilayer with three layers + pathways of interest network (:numref:`RWRFig` - left part)
 - molecular multilayer with three layers + disease-disease similarity network (:numref:`RWRFig` - right part)
@@ -141,37 +141,37 @@ We propose to run two walks through two different network compositions :
     :alt: RWR networks
     :align: center
 
-    : Random Walk into two different network compositions
+    : Random Walk with restart into two different network compositions
 
 Molecular multilayer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Protein-protein interaction network
+Protein-Protein Interaction network
 """""""""""""""""""""""""""""""""""""
 
-Protein-Protein interaction (PPI) network is fusion of three datasets : APID, Hi-Union and Lit-BM. It's composed of :
+Protein-Protein interaction (PPI) network is fusion of three datasets : APID, Hi-Union and Lit-BM. It's composed of:
 
-- 14 703 nodes (proteins)
+- 14,703 nodes (proteins)
 
-- 143 653 links
+- 143,653 edges
 
 Complexes network
 """"""""""""""""""""
 
-Complexes network is constructed from the fusion of Hu.map and Corum using OmniPathR. It's composed of :
+Complexes network is constructed from the fusion of Hu.map and Corum using OmniPathR. It's composed of:
 
-- 8 537 nodes
+- 8,537 nodes
 
-- 63 561 links
+- 63,561 edges
 
 Reactome network
 """"""""""""""""""""
 
-This network is extracted from NDEs and corresponding to the Human Reactome data. It's composed of :
+This network is extracted from NDEs and corresponding to the Human Reactome data. It's composed of:
 
-- 7 926 nodes
+- 7,926 nodes
 
-- 194 500 links
+- 194,500 edges
 
 .. _pathwaysOfInterestNet:
 
@@ -197,7 +197,7 @@ By default, the network is build using Rare Diseases pathways extracted automati
     ``[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]``
 
 -o, --outputPath PATH
-    Name of the folder where to save complementary results (i.e. request results)
+    Name of the folder to save complementary results (i.e. request results)
     ``[default: OutputResults]``
 
 Moreover, you can provide your own pathways/processes of interest file using ``--GMT`` parameter.
@@ -236,32 +236,29 @@ Disease-disease similarity network creation
 """"""""""""""""""""""""""""""""""""""""""""""
 
 *Data was download on the 2022/06/11.*
+*Annotation (`website <https://hpo.jax.org/app/data/annotation>`_) and ontologies (`website <https://hpo.jax.org/app/data/ontology>`_) are coming from HPO.*
 
-We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is
-a set of phenotype and each phenotype is associated to the Human Ontology Project IDs (HPO).
+We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is defined as
+a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO).
 
 The similarity score is calculated based on the number of shared phenotypes between two diseases ([3]_, [2]_, [1]_).
 Every pairs of diseases will have a score, so for each disease we selected the top 5 of the most similar disease.
 
+The **disease-disease** network contains 33,925 edges and 8,264 diseases.
+
 .. tip::
 
     | You can use any multilayer and networks that you want.
-    | :octicon:`alert;1em` Be careful with the configuration file and the gene IDs used
+    | :octicon:`alert;1em` Be careful with the configuration file and the gene IDs used.
 
-Annotation come from HPO (`website <https://hpo.jax.org/app/download/annotation>`_) and ontology come from HPO too (
-`website <https://hpo.jax.org/app/download/ontology>`_).
-
-33 925 edges and 8 264 diseases
-
-Gene-disease bipartite associations
-"""""""""""""""""""""""""""""""""""""
+Gene-disease bipartite
+""""""""""""""""""""""""
 
 *Data was download on the 2022/09/27.*
+*Association file is coming from HPO (`website <https://hpo.jax.org/app/data/annotation>`_).*
 
-The multiplex network is connected to the disease-disease similarity network with the gene-disease bipartite creating using
-association file from HPO (`website <https://hpo.jax.org/app/download/annotation>`_).
-
-6 564 associations (4 483 genes and 5 878 diseases)
+The **molecular multiplex network** is connected to the **disease-disease similarity network** with the **gene-disease bipartite**.
+The bipartite contains 6,564 associations (4,483 genes and 5,878 diseases).
 
 References
 ------------

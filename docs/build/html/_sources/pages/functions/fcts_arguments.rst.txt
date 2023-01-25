@@ -1,5 +1,5 @@
 ==================================================
-Input parameters for each method
+Input parameters for each approach
 ==================================================
 
 Main script
@@ -42,11 +42,11 @@ Network creation
 
 .. important::
 
-    ``--factorList``, ``--CTD_file`` and ``--geneList`` options are exclusive, only one has to be use. This three input are **required**
+    ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**
 
 .. important::
 
-    ``--backgroundFile`` and ``--GMT`` options have always to be **given together**.
+    ``--backgroundFile`` and ``--GMT`` parameters have always to be **given together**.
 
 
 

@@ -48,7 +48,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Use-case 2: data are provided directly by the users" href="usecase2.html" />
+    <link rel="next" title="Use-case 2: data are provided directly by the user" href="usecase2.html" />
     <link rel="prev" title="Network visualisation" href="../approaches/Cytoscape.html" /> 
 </head>
 
@@ -146,17 +146,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecase2.html">Use-case 2: data are provided directly by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
             
@@ -234,16 +234,16 @@
 <p><strong>Genes</strong>, that are targeted by the interested chemicals, are extracted <strong>directly</strong> from <strong>CTD database</strong>.
 <strong>Rare Diseases pathways</strong> are extracted from <strong>WikiPathways</strong> website.
 We choose to use as chemical of interest, the <strong>vitamin A</strong>.</p>
-<p>This section presents you how to perform the approaches that we proposed.</p>
+<p>This section presents you how to perform the three different approaches proposed.</p>
 <div class="section" id="overlap-analysis">
 <span id="usecase1-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
-<p>This approach calculates the overlap between list of genes, targeted by vitamin A, and Rare Diseases pathways
+<p>This approach calculates the overlap between genes targeted by vitamin A, and Rare Diseases pathways
 (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section for more details).</p>
 <div class="section" id="running-overlap-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running overlap analysis with data extracted automatically from databases<a class="headerlink" href="#running-overlap-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A. We want to extract genes that are targeted by vitamin A
-and by its descendant molecules. So, the <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-We keep only the interaction which has at least to paper as references (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).
+and by its child molecules. So, the <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+We keep only interactions which have at least two associated publications(<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).
 Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
@@ -251,14 +251,14 @@ Results files are saved into <code class="docutils literal notranslate"><span cl
                         --outputPath useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-<p>Several files are generated :</p>
+<p>Several files are generated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code> :
-the first file contains results from CTD request and the second one contains the filtered (by paper number) results.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code> :
+<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
+the first file contains <strong>results from CTD</strong> request and the second one contains the filtered (by publications number) results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code>:
 the first file contains all the <strong>human rare diseases pathways</strong> from WikiPathways request
-and the second file <strong>background source file names</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Overlap_D014801_withRDWP.csv</span></code> : results of the overlap analysis between target genes and rare diseases pathways.</p></li>
+and the second file contains <strong>background source file names</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Overlap_D014801_withRDWP.csv</span></code>: results of the overlap analysis between target genes and rare diseases pathways.</p></li>
 </ul>
 <p>For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </div>
@@ -267,13 +267,14 @@ and the second file <strong>background source file names</strong>.</p></li>
 <p><em>request on the 07th of September 2022</em></p>
 <div class="section" id="ctd-request-results">
 <h4>CTD request results<a class="headerlink" href="#ctd-request-results" title="Permalink to this headline">¶</a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules.</p>
-<table class="docutils align-center" id="id11">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Request result metrics</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules. Request results are presented in the
+following <a class="reference internal" href="#usecase1overlapctd"><span class="std std-ref">Table 2</span></a>. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others child molecules).</p>
+<span id="usecase1overlapctd"></span><table class="docutils align-center" id="id11">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 29%" />
-<col style="width: 24%" />
+<col style="width: 51%" />
+<col style="width: 27%" />
+<col style="width: 22%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
@@ -284,20 +285,21 @@ and the second file <strong>background source file names</strong>.</p></li>
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
 <td><p>10</p></td>
-<td><p>7 765</p></td>
+<td><p>7,765</p></td>
 </tr>
-<tr class="row-odd"><td><p>After filtering by papers number</p></td>
+<tr class="row-odd"><td><p>After filtering by publication number</p></td>
 <td><p>7</p></td>
-<td><p>2 143</p></td>
+<td><p>2,143</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="wikipathways-request-results">
 <h4>WikiPathways request results<a class="headerlink" href="#wikipathways-request-results" title="Permalink to this headline">¶</a></h4>
-<p>All pathways labeled as Rare Diseases are extracted from WikiPathways.</p>
-<table class="docutils align-center" id="id12">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">WikiPathways metrics</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<p>All pathways labeled as Rare Diseases are extracted from WikiPathways. Request results are presented in the following
+<a class="reference internal" href="#usecase1overlapwp"><span class="std std-ref">Table 3</span></a>. The request extracts 104 Rare Disease pathways.</p>
+<span id="usecase1overlapwp"></span><table class="docutils align-center" id="id12">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">WikiPathways request results</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 22%" />
@@ -318,7 +320,7 @@ and the second file <strong>background source file names</strong>.</p></li>
 <td><p>436</p></td>
 </tr>
 <tr class="row-odd"><td><p>All Human WikiPathways</p></td>
-<td><p>1 281</p></td>
+<td><p>1,281</p></td>
 <td><p>1</p></td>
 <td><p>484</p></td>
 </tr>
@@ -327,10 +329,10 @@ and the second file <strong>background source file names</strong>.</p></li>
 </div>
 <div class="section" id="overlap-analysis-results">
 <h4>Overlap analysis results<a class="headerlink" href="#overlap-analysis-results" title="Permalink to this headline">¶</a></h4>
-<p>Target genes overlap significantly <code class="docutils literal notranslate"><span class="pre">28</span> <span class="pre">Rare</span> <span class="pre">Diseases</span> <span class="pre">pathways</span></code> (pAdjusted &lt;= 0.05). Top 5 of results are presented in
+<p>Target genes overlap significantly <strong>28 Rare Diseases pathways</strong> (pAdjusted &lt;= 0.05). The top 5 of results are presented in
 <a class="reference internal" href="#usecase1overlaptop5"><span class="std std-ref">Table 4</span></a>.</p>
 <span id="usecase1overlaptop5"></span><table class="docutils align-center" id="id13">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">The top 5 of RD pathways significantly overlaped by target genes</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Top 5 of RD pathways significantly overlapped by target genes</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 53%" />
@@ -372,11 +374,11 @@ and the second file <strong>background source file names</strong>.</p></li>
 </tr>
 </tbody>
 </table>
-<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id9" id="id2">1</a> identified four pathways, related to CAKUT disease. All of them are significantly overlaped by vitamin A
-target genes. We retrieve one of them in the top 5 (<strong>WP5053</strong>). Two others are significantly overlaped in our analysis
-(<a class="reference internal" href="#usecase1overlapcakut"><span class="std std-ref">Table 5</span></a>) :</p>
+<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id9" id="id2">1</a> identified four pathways, related to CAKUT disease. All of them are significantly overlapped by vitamin A
+target genes. We retrieve one of them in the top 5 (<strong>WP5053</strong>). Two others are significantly overlapped in our analysis
+(<a class="reference internal" href="#usecase1overlapcakut"><span class="std std-ref">Table 5</span></a>):</p>
 <span id="usecase1overlapcakut"></span><table class="docutils align-center" id="id14">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">The CAKUT pathways results</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">CAKUT pathways overlap results</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 52%" />
@@ -414,25 +416,25 @@ target genes. We retrieve one of them in the top 5 (<strong>WP5053</strong>). Tw
 </tbody>
 </table>
 <p>The WP5052 pathway is not significant anymore (compare to Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id9" id="id3">1</a> results) because the number of genes between
-target genes and pathways are smaller. It affects the pvalue calculation.</p>
+target genes and pathways is smaller. It affects the pvalue calculation and decreases bellow our 0.05 threshold.</p>
 </div>
 </div>
 </div>
 <div class="section" id="ami">
 <span id="usecase1-ami"></span><h2>AMI<a class="headerlink" href="#ami" title="Permalink to this headline">¶</a></h2>
 <p>This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
-overlap analysis between each AM identified and Rare Diseases pathways frm WP.
+overlap analysis between each AM identified and Rare Diseases pathways from WP.
 For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
 <div class="section" id="running-active-modules-identification-with-data-extracted-automatically-from-databases">
 <h3>Running active modules identification with data extracted automatically from databases<a class="headerlink" href="#running-active-modules-identification-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Results of DOMINO can’t be reproduced when using their server.</p>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Results of DOMINO cannot be reproduced when using the DOMINO’s server.</p>
 </div>
 <p>As before, we want to extract genes that are targeted by vitamin A and its child molecules. The <strong>chemicalsFile.csv</strong> file
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A and we set <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
-We keep only the interaction which has at least to paper as references (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
-<p>We will identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
+We keep only vitamin-gene interactions with at least to associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
+<p>We identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
@@ -441,34 +443,35 @@ We keep only the interaction which has at least to paper as references (<code cl
                         --outputPath useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-<p>Several files are generated :</p>
+<p>Several files are generated:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code> :
-the first file contains results from CTD request and the second one contains the filtered (by paper number) results.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code> :
+<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
+the first file contains <strong>results from CTD</strong> request and the second one contains the filtered (by publications number) results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code>:
 the first file contains all the <strong>human rare diseases pathways</strong> from WikiPathways request
-and the second file <strong>background source file names</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_inputGeneList_D014801.txt</span></code> : list of genes (targeted by vitamin A) used for the AM identification.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Overlap_AM_*_D014801_withRDWP.csv</span></code> : results of the overlap analysis between target genes and Rare Diseases pathways.
-One file for each AM.</p></li>
+and the second file contains <strong>background source file names</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_inputGeneList_D014801.txt</span></code>: list target genes used for the AM identification.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Overlap_AM_*_D014801_withRDWP.csv</span></code>: results of the overlap analysis between target genes and Rare Diseases pathways.
+One file per AM.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetwork.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_overlapAMresults4Cytoscape.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModules.txt</span></code>
-, <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_signOverlap.txt</span></code> : some metrics are
+, <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_signOverlap.txt</span></code>: some statistics are
 calculated and saved into files. Theses files are useful for visualisation.</p></li>
 </ul>
-<p>For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#requestoutput"><span class="std std-ref">Request file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis output files</span></a>, <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">Active Module Identification</span></a>)</p>
+<p>For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#requestoutput"><span class="std std-ref">Request file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis output files</span></a>, <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">Active Module Identification</span></a>)</p>
 </div>
 <div class="section" id="results-of-active-module-identification-with-data-extracted-automatically-from-databases">
 <h3>Results of active module identification with data extracted automatically from databases<a class="headerlink" href="#results-of-active-module-identification-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
 <p><em>request on the 07th of September 2022</em></p>
 <div class="section" id="id4">
 <h4>CTD request results<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules.</p>
-<table class="docutils align-center" id="id15">
-<caption><span class="caption-number">Table 6 </span><span class="caption-text">Request result metrics</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules. Request results are presented in the
+following <a class="reference internal" href="#usecase1amictd"><span class="std std-ref">Table 6</span></a>. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others child molecules).</p>
+<span id="usecase1amictd"></span><table class="docutils align-center" id="id15">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 29%" />
-<col style="width: 24%" />
+<col style="width: 51%" />
+<col style="width: 27%" />
+<col style="width: 22%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
@@ -479,20 +482,21 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
 <td><p>10</p></td>
-<td><p>7 765</p></td>
+<td><p>7,765</p></td>
 </tr>
-<tr class="row-odd"><td><p>After filtering by papers number</p></td>
+<tr class="row-odd"><td><p>After filtering by publication number</p></td>
 <td><p>7</p></td>
-<td><p>2 143</p></td>
+<td><p>2,143</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id5">
 <h4>WikiPathways request results<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<p>All pathways labeled as Rare Diseases are extracted from WikiPathways.</p>
-<table class="docutils align-center" id="id16">
-<caption><span class="caption-number">Table 7 </span><span class="caption-text">WikiPathways metrics</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<p>All pathways labeled as Rare Diseases are extracted from WikiPathways. Request results are presented in the following
+<a class="reference internal" href="#usecase1amiwp"><span class="std std-ref">Table 7</span></a>. The request extracts 104 Rare Disease pathways.</p>
+<span id="usecase1amiwp"></span><table class="docutils align-center" id="id16">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">WikiPathways request results</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 22%" />
@@ -513,7 +517,7 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 <td><p>436</p></td>
 </tr>
 <tr class="row-odd"><td><p>All Human WikiPathways</p></td>
-<td><p>1 281</p></td>
+<td><p>1,281</p></td>
 <td><p>1</p></td>
 <td><p>484</p></td>
 </tr>
@@ -522,10 +526,10 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </div>
 <div class="section" id="active-modules-identification-results">
 <h4>Active Modules Identification results<a class="headerlink" href="#active-modules-identification-results" title="Permalink to this headline">¶</a></h4>
-<p>Target genes are defined as Active genes by DOMINO (Active Modules identification tool). We give <strong>2 143 active genes</strong> as input.</p>
-<p>We found <strong>13 Active Modules</strong> :</p>
-<table class="docutils align-center" id="id17">
-<caption><span class="caption-number">Table 8 </span><span class="caption-text">DOMINO result metrics</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<p>Target genes are defined as <strong>active genes</strong> by DOMINO. We give <strong>2,143 active genes</strong> as input. DOMINO found
+<strong>13 Active Modules</strong> (<a class="reference internal" href="#usecase1amiresults"><span class="std std-ref">Table 8</span></a>).</p>
+<span id="usecase1amiresults"></span><table class="docutils align-center" id="id17">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Composition of AMs found by DOMINO</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 37%" />
 <col style="width: 32%" />
@@ -552,13 +556,14 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </tr>
 </tbody>
 </table>
-<p><em>See DOMINO_D014801_activeModulesNetworkMetrics.txt file for more details.</em></p>
+<p><em>See `DOMINO_D014801_activeModulesNetworkMetrics.txt file for more details.</em></p>
 </div>
 <div class="section" id="id6">
 <h4>Overlap analysis results<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>We found <strong>16 pathways</strong> that are significantly overlaped by <strong>7 Active Modules</strong> (padjusted &lt;= 0.05).</p>
-<table class="docutils align-center" id="id18">
-<caption><span class="caption-number">Table 9 </span><span class="caption-text">Overlap analysis between AM and RD pathways</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<p>Then, we perform an overlap analysis between AM and RD pathways. We found <strong>16 pathways</strong> that are significantly overlapped
+by <strong>7 Active Modules</strong> (padjusted &lt;= 0.05).</p>
+<span id="usecase1amioverlap"></span><table class="docutils align-center" id="id18">
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">Overlap results between AM and RD pathways</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 13%" />
 <col style="width: 87%" />
@@ -619,36 +624,38 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </tr>
 </tbody>
 </table>
-<p><strong>Two pathways</strong> related to CAKUT disease are found with this approach.</p>
+<p><strong>Two pathways</strong> related to CAKUT disease are found with this approach (in bold in the <a class="reference internal" href="#usecase1amiresults"><span class="std std-ref">Table 9</span></a>).</p>
 </div>
 <div class="section" id="visualisation-of-am-results">
 <h4>Visualisation of AM results<a class="headerlink" href="#visualisation-of-am-results" title="Permalink to this headline">¶</a></h4>
-<p>We visualised the result using a network representation (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>). To know how to create this figure,
-see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Modules Identification (AMI) network visualisation</span></a> section.</p>
+<p>It could be interesting to visualise the active modules found and add on them the overlap results. To do that, we used
+a network representation (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>). To know how to create this figure, see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Modules Identification (AMI) network visualisation</span></a> section.</p>
 <div class="figure align-center" id="id19">
 <span id="dominousage1fig"></span><img alt="usecase1 AMI" src="../../_images/example1_DOMINO_AMnetwork.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">: Network visualisation of Active modules which overlap significantly target genes</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">: Network visualisation of Active modules which are enriched by RD pathways</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </div>
 <p>Some network are enriched with the same pathways whereas other contain genes involved in different pathways. Target genes
-(i.e. active genes, grey spheres) could be part of pathways as non-target genes (white spheres).</p>
+(i.e. active genes, grey nodes) could be part of pathways as non-target genes (white nodes).</p>
 </div>
 </div>
 </div>
 <div class="section" id="rwr">
 <span id="usecase1-rwr"></span><h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
-<p>With this approach, a Random Walk with Restart (see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> section for more details )
-is apply into two different multilayer compositions:</p>
+<p>The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:</p>
 <ol class="arabic simple">
-<li><p>Multiplex (PPI + Complex + Reactome) and pathways of interest network only connected to genes nodes</p></li>
-<li><p>Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network</p></li>
+<li><p>Multiplex (PPI + Complex + Reactome) and pathways of interest network connected to genes nodes</p></li>
+<li><p>Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite</p></li>
 </ol>
-<p><em>For more details about networks used, see</em> <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a> <em>and</em> <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</p>
+<p><em>For more details about RWR, see</em> <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
 <div class="section" id="running-random-walk-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running Random Walk analysis with data extracted automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
-<p>For the first composition of network, we created the pathways of interest network : see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a>.</p>
+<div class="line-block">
+<div class="line">To know how to create the pathways of interest network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a>.</div>
+<div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
+</div>
 <p>Whatever the network used, we want to extract target genes of vitamin A and its child molecules (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
 The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
-Then, we keep interaction with at least two papers which mention it in the literature (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
+Then, we keep vitamin-gene interaction with at least 2 associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
 <p>MultiXrank needs a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) and the networks path (<code class="docutils literal notranslate"><span class="pre">--networksPath</span></code>). We run the analysis with
 default parameters.</p>
 <p>The target genes are set as seeds for the walk and saved into a file <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code>.
@@ -708,17 +715,17 @@ You need to give the SIF name (<code class="docutils literal notranslate"><span 
                             --outputPath useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-<p>Several files are generated :</p>
+<p>Several files are generated:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code> :
-the first file contains results from CTD request and the second one contains the filtered (by paper number) results.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RWR_D014801/</span></code> folder with the walk results :</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
+the first file contains <strong>results from CTD</strong> request and the second one contains the filtered (by publications number) results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RWR_D014801/</span></code> folder with the walk results:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code> : a copy of the input files</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code> : score for each feature. 1 corresponds to the multiplex and 2 to
-the RD pathways network (depends of the folder name where networks are saved).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code> : SIF file with the network result</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code>: copies of the input files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: score for each feature. 1 corresponds to the multiplex and 2 to
+the RD pathways network (depends of the network folder name).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code>: SIF file that contains the network result</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -730,9 +737,10 @@ the RD pathways network (depends of the folder name where networks are saved).</
 <p><em>request on the 07th of September 2022</em></p>
 <div class="section" id="id7">
 <h4>CTD request results<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules.</p>
-<table class="docutils align-center" id="id20">
-<caption><span class="caption-number">Table 10 </span><span class="caption-text">Request result metrics</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its child molecules. Request results are presented in the
+following <a class="reference internal" href="#usecase1rwrctd"><span class="std std-ref">Table 10</span></a>. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others child molecules).</p>
+<span id="usecase1rwrctd"></span><table class="docutils align-center" id="id20">
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 47%" />
 <col style="width: 29%" />
@@ -747,11 +755,11 @@ the RD pathways network (depends of the folder name where networks are saved).</
 <tbody>
 <tr class="row-even"><td><p>Request result</p></td>
 <td><p>10</p></td>
-<td><p>7 765</p></td>
+<td><p>7,765</p></td>
 </tr>
 <tr class="row-odd"><td><p>After filtering by papers number</p></td>
 <td><p>7</p></td>
-<td><p>2 143</p></td>
+<td><p>2,143</p></td>
 </tr>
 </tbody>
 </table>
@@ -761,11 +769,12 @@ the RD pathways network (depends of the folder name where networks are saved).</
 <p>We use the default parameters, whatever the networks used.</p>
 <div class="section" id="pathways-of-interest-network-analysis">
 <h5>Pathways of interest network analysis<a class="headerlink" href="#pathways-of-interest-network-analysis" title="Permalink to this headline">¶</a></h5>
-<p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">988/2</span> <span class="pre">143</span></code> genes are set.</p>
+<p><em>In this part, we present results found for the first multiplex composition: multiplex + RD pathways.</em></p>
+<p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
-<p>There are <strong>27 pathways</strong> with a higher score (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table</span></a>) :</p>
+<p>According this highest score, <strong>27 pathways</strong> are selected (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
 <span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id21">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -890,16 +899,23 @@ with target genes (i.e. seeds).</p>
 </tr>
 </tbody>
 </table>
-<p>You can represent the results with a network as shown on the</p>
+<p>Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
+shown on the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
 <div class="figure align-center" id="id22">
 <span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways of interest network</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<blockquote>
+<div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 <div class="section" id="disease-disease-similarity-network">
 <h5>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h5>
-<p>Target genes are used as seed to start the walk : <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">988/2</span> <span class="pre">143</span></code> genes are set.</p>
-<p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table</span></a>).</p>
+<p><em>In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.</em></p>
+<p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
+<p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table 12</span></a>).</p>
 <span id="usecase1-diseasesrwr"></span><table class="docutils align-center" id="id23">
 <caption><span class="caption-number">Table 12 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -956,10 +972,15 @@ with target genes (i.e. seeds).</p>
 </tr>
 </tbody>
 </table>
-<p>You can represent the results with a network as shown on the</p>
+<p>You can represent the results with a network as shown in the <a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 11</span></a>.</p>
 <div class="figure align-center" id="id24">
 <span id="usecase1-simnetworkrwr"></span><img alt="usecase 1 simNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1_simNet.png" />
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<blockquote>
+<div><p>Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.</p>
+</div></blockquote>
+</div>
 </div>
 </div>
 </div>
@@ -967,14 +988,14 @@ with target genes (i.e. seeds).</p>
 </div>
 <div class="section" id="rare-disease-pathways-identified">
 <h2>Rare disease pathways identified<a class="headerlink" href="#rare-disease-pathways-identified" title="Permalink to this headline">¶</a></h2>
-<p>To compare results from the different approaches, we use orsum <a class="footnote-reference brackets" href="#id10" id="id8">2</a>.</p>
+<p>Approaches give us a list of RD pathways significantly connected to vitamin A target genes. To easily compare results,
+we use orsum <a class="footnote-reference brackets" href="#id10" id="id8">2</a>. Results are displayed into a heatmap in the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt <span class="se">\</span>
             --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum <span class="se">\</span>
             --fileAliases Overlap DOMINO multiXrank <span class="se">\</span>
             --outputFolder useCase1Comparison/
 </pre></div>
 </div>
-<p>The results are display on the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
 <div class="figure align-center" id="id25">
 <span id="usecase1-orsum"></span><img alt="usecase1 orsum" src="../../_images/useCase1_orsum.png" />
 <p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">: Comparison of use-case 1 results using orsum</span><a class="headerlink" href="#id25" title="Permalink to this image">¶</a></p>
@@ -999,7 +1020,7 @@ with target genes (i.e. seeds).</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="usecase2.html" class="btn btn-neutral float-right" title="Use-case 2: data are provided directly by the users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usecase2.html" class="btn btn-neutral float-right" title="Use-case 2: data are provided directly by the user" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../approaches/Cytoscape.html" class="btn btn-neutral float-left" title="Network visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

@@ -109,10 +109,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#domino-algorithm-overview">DOMINO algorithm overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-active-modules-identification">Input parameters for Active Modules Identification</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#available-interaction-networks">Available Interaction Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#networks-available">Networks available</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#protein-protein-interaction-network">Protein-Protein Interaction network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#personal-network">Personal network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#request-ndex-database">Request NDEx database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#networks-from-ndex-database">Networks from NDEx database</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#use-cases-command-line">Use-cases command line</a></li>
@@ -125,17 +125,17 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
             
@@ -223,7 +223,7 @@ Ideally, they will represent <strong>distinct functional modules</strong> and ca
 </div>
 <div class="section" id="domino-algorithm-overview">
 <h2>DOMINO algorithm overview<a class="headerlink" href="#domino-algorithm-overview" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="#dominomethodfig"><span class="std std-numref">Fig. 3</span></a> is an overview of the DOMINO algorithm :</p>
+<p>The <a class="reference internal" href="#dominomethodfig"><span class="std std-numref">Fig. 3</span></a> is an overview of the DOMINO algorithm.</p>
 <div class="figure align-center" id="id17">
 <span id="dominomethodfig"></span><img alt="DOMINO method" src="../../_images/DOMINO_method.jpg" />
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id11" id="id3">1</a>)</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
@@ -233,22 +233,22 @@ Ideally, they will represent <strong>distinct functional modules</strong> and ca
 <div class="line"><strong>B -</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
 <div class="line"><strong>C -</strong> The most active sub-slice is identified on each relevant slices.</div>
 <div class="line"><strong>D -</strong> The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.</div>
-<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold of Bonferroni qval&lt;=0.05)</div>
+<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
 </div>
-<p><em>For more details, refer to the paper DOMINO publication</em> <a class="footnote-reference brackets" href="#id11" id="id4">1</a></p>
+<p><em>For more details, refer to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id11" id="id4">1</a>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from requests</em>).
+<p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from requests</em>).
 You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
 extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
 <p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong>
 (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <div class="figure align-center" id="id18">
 <span id="dominousagefig"></span><img alt="domino analysis" src="../../_images/DOMINO_graph.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output files of Active Modules Identification</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output files/parameters of Active Modules Identification</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 <div class="legend">
-<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+<p>There are two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
 Required files/parameters have solid border line and optional files/parameters have dash border line.
 Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
@@ -256,8 +256,10 @@ Output files in pink are created only if the input data are extracted from reque
 </div>
 <div class="section" id="input-parameters-for-active-modules-identification">
 <h2>Input parameters for Active Modules Identification<a class="headerlink" href="#input-parameters-for-active-modules-identification" title="Permalink to this headline">¶</a></h2>
-<p>To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
-To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+<div class="line-block">
+<div class="line">To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</div>
+</div>
 <p>The network file is required <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> whereas <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> are optional.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
@@ -268,14 +270,14 @@ You can give several chemicals in the same line : they will be grouped for the a
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
 <dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: extract chemicals data, which are in the chemicalsFile, from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>References can be associated with chemical interactions.
-You can define a threshold to filter target genes extraction based on the number of publications.
+<dd><p>Publications can be associated with chemical interactions.
+You can define a minimum number of publications to keep target genes.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
@@ -307,25 +309,25 @@ It should be in the same order than the GMT file.
 the UUID of the network (e.g. <code class="docutils literal notranslate"><span class="pre">079f4c66-3b77-11ec-b3be-0ac135e8bacf</span></code>).</p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
-<dd><p>Name of the folder where to save the results.
+<dd><p>Name of the folder to save results.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
 </div>
-<div class="section" id="available-interaction-networks">
-<h2>Available Interaction Networks<a class="headerlink" href="#available-interaction-networks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="networks-available">
+<h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Be careful when using networks from NDEx: gene IDs format are not always consistent between networks and data from
 CTD or other input gene lists and pathways.
-For instance, CTD returns gene symbols (i.e. HGNC). If CTD data are used, the network need to contains gene symbols
-and not ensembl IDs or any other gene name format. The rule applies on GMT files too.</p>
+CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
+gene name format. It’s similar with GMT files.</p>
 </div>
 <div class="section" id="protein-protein-interaction-network">
 <h3>Protein-Protein Interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this headline">¶</a></h3>
 <p>We provide with the script a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id14" id="id6">4</a>, November 2016). The gene name format is
-<strong>gene symbols</strong>, you can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
-<p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file :</p>
+<strong>gene symbols</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+<p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">VPS52</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">BHLHE40</span>
@@ -344,8 +346,8 @@ and not ensembl IDs or any other gene name format. The rule applies on GMT files
 <p>You can use any network that you want or have. It has to be in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> and you can give it to
 the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 </div>
-<div class="section" id="request-ndex-database">
-<h3>Request NDEx database<a class="headerlink" href="#request-ndex-database" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="networks-from-ndex-database">
+<h3>Networks from NDEx database<a class="headerlink" href="#networks-from-ndex-database" title="Permalink to this headline">¶</a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>

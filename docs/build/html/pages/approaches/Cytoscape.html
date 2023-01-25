@@ -115,17 +115,17 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
             
@@ -200,26 +200,26 @@
 <span id="networkami"></span><h2>Active Modules Identification (AMI) network visualisation<a class="headerlink" href="#active-modules-identification-ami-network-visualisation" title="Permalink to this headline">¶</a></h2>
 <p>On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
 network representation with Cytoscape.</p>
-<p>The following <a class="reference internal" href="#cytoscapeami"><span class="std std-numref">Fig. 7</span></a> is an example of display :</p>
+<p>The following <a class="reference internal" href="#cytoscapeami"><span class="std std-numref">Fig. 7</span></a> is an example of visualisation:</p>
 <div class="figure align-center" id="id13">
 <span id="cytoscapeami"></span><img alt="example1 AMI" src="../../_images/example1_DOMINO_AMnetwork.png" />
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id2">1</a> and Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id3">2</a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
-<p>To create the same display of AM, use the following steps :</p>
+<p>To create the same visualisation of AM, use the following steps:</p>
 <ol class="arabic">
-<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModulesNetwork.txt</span></code></p></li>
-<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModules.txt</span></code></p></li>
-<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id10" id="id4">2</a> <strong>table</strong> from File : <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
-<li><p>Manage table <strong>connections</strong> : link network and the previous table</p>
+<li><p><strong>Import Network</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModulesNetwork.txt</span></code></p></li>
+<li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModules.txt</span></code></p></li>
+<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id10" id="id4">2</a> <strong>table</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
+<li><p>Manage table <strong>connections</strong>: link network and the previous table with right identifiers</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Network : <em>sharedname</em></p></li>
-<li><p>Table : <em>geneSymbol</em></p></li>
+<li><p>Network: <em>sharedname</em></p></li>
+<li><p>Table: <em>geneSymbol</em></p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><strong>Donut Chart Visualization</strong> : Add overlap results using donuts (Use <em>termTitle</em>)</p></li>
-<li><p><strong>Style</strong> :</p>
+<li><p><strong>Donut Chart Visualisation</strong>: Add overlap results using donuts (Use <em>termTitle</em>)</p></li>
+<li><p><strong>Style</strong>:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Border Width = <code class="docutils literal notranslate"><span class="pre">5.0</span></code></p></li>
@@ -231,8 +231,8 @@ network representation with Cytoscape.</p>
 </ul>
 </div></blockquote>
 </li>
-<li><p><strong>Filter</strong> : Select nodes with <code class="docutils literal notranslate"><span class="pre">overlapSignificant</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
-<li><p><strong>New Network</strong> : From Selected Nodes, All Edges</p></li>
+<li><p><strong>Filter</strong>: Select nodes with <code class="docutils literal notranslate"><span class="pre">overlapSignificant</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p><strong>New Network</strong>: From Selected Nodes, All Edges</p></li>
 <li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id5">2</a> and Legend Creator <a class="footnote-reference brackets" href="#id11" id="id6">3</a></p></li>
 </ol>
 <p><em>To run AM identification with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-ami"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-ami"><span class="std std-ref">Use-case 2</span></a>.</p>
@@ -241,19 +241,19 @@ network representation with Cytoscape.</p>
 <span id="networkrwr"></span><h2>Random Walk with Restart analysis (RWR) network visualisation<a class="headerlink" href="#random-walk-with-restart-analysis-rwr-network-visualisation" title="Permalink to this headline">¶</a></h2>
 <p>To explore a network, we use a Random Walk with Restart <a class="footnote-reference brackets" href="#id12" id="id7">4</a> approach. As results, each node has a score. You can
 visualise these scores using a network representation with Cytoscape.</p>
-<p>The following <a class="reference internal" href="#cytoscaperwr"><span class="std std-numref">Fig. 8</span></a> is an example of display :</p>
+<p>The following <a class="reference internal" href="#cytoscaperwr"><span class="std std-numref">Fig. 8</span></a> is an example of visualisation:</p>
 <div class="figure align-center" id="id14">
 <span id="cytoscaperwr"></span><img alt="useCase 1 RWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id8">1</a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
-<p>To visualise the RWR results using network representation, use the following steps :</p>
+<p>To visualise the RWR results using network representation, use the following steps:</p>
 <ol class="arabic">
-<li><p><strong>Import Network</strong> from File : <code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code></p></li>
-<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
-<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
+<li><p><strong>Import Network</strong> from File: <code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code></p></li>
+<li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
+<li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code> and <code class="docutils literal notranslate"><span class="pre">seed</span></code></p></li>
+<li><p>Change column names: <code class="docutils literal notranslate"><span class="pre">node</span></code> for column 1 and <code class="docutils literal notranslate"><span class="pre">seed</span></code> for column 2</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -266,10 +266,10 @@ visualise these scores using a network representation with Cytoscape.</p>
 </div>
 </div>
 <ol class="arabic" start="4">
-<li><p><strong>Import Table</strong> from File : <code class="docutils literal notranslate"><span class="pre">diseasesResults.txt</span></code></p>
+<li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">diseasesResults.txt</span></code></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Change column names to <code class="docutils literal notranslate"><span class="pre">node</span></code>, <code class="docutils literal notranslate"><span class="pre">pathways</span></code> and <code class="docutils literal notranslate"><span class="pre">score</span></code></p></li>
+<li><p>Change column names: <code class="docutils literal notranslate"><span class="pre">node</span></code> for column 1, <code class="docutils literal notranslate"><span class="pre">pathways</span></code> for column 2 and <code class="docutils literal notranslate"><span class="pre">score</span></code> for column 3</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -277,37 +277,37 @@ visualise these scores using a network representation with Cytoscape.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>How create the <strong>diseasesResults.txt</strong> file ?</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">higherScore</span></code> is the highest score in <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> file and the <code class="docutils literal notranslate"><span class="pre">gmtFile</span></code> is the gmt file of
+<p>The <code class="docutils literal notranslate"><span class="pre">highestScore</span></code> is the highest score in <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> file and the <code class="docutils literal notranslate"><span class="pre">gmtFile</span></code> is the gmt file of
 pathways of interest.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2;next} {if($3&gt;=higherScore){$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;\t&quot;a[$2]&quot;\t&quot;$3}}&#39;</span> gmtFile multiplex_2.tsv &gt; diseasesResults.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2;next} {if($3&gt;=highestScore){$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;\t&quot;a[$2]&quot;\t&quot;$3}}&#39;</span> gmtFile multiplex_2.tsv &gt; diseasesResults.txt
 awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]=$2; next} {$3=sprintf(&quot;%.6f&quot;, $3); print $2&quot;;&quot;a[$2]&quot;;&quot;$3}&#39;</span> /home/morgane/Documents/05_EJPR_RD/WF_Environment/DiseasesNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa multiplex_2.tsv <span class="p">|</span> head -11 &gt; diseasesResults.txt
 </pre></div>
 </div>
 </div>
 <ol class="arabic" start="5">
-<li><p>Create <strong>two new columns</strong> named <code class="docutils literal notranslate"><span class="pre">label</span></code> as string and <code class="docutils literal notranslate"><span class="pre">keep</span></code> as boolean</p></li>
-<li><p><strong>Filter</strong> : Select genes nodes</p>
+<li><p>Create <strong>two new columns</strong> named <code class="docutils literal notranslate"><span class="pre">label</span></code> as <em>string</em> and <code class="docutils literal notranslate"><span class="pre">keep</span></code> as <em>boolean</em> in the node table</p></li>
+<li><p><strong>Filter</strong>: Select genes nodes</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>To <code class="docutils literal notranslate"><span class="pre">label</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=$name</span></code> and apply to selected nodes</p></li>
-<li><p>To <code class="docutils literal notranslate"><span class="pre">keep</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=$seed</span></code> and apply to selected nodes</p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">label</span></code> column with <code class="docutils literal notranslate"><span class="pre">=$name</span></code> and apply to selected nodes</p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">keep</span></code> column with <code class="docutils literal notranslate"><span class="pre">=$seed</span></code> and apply to selected nodes</p></li>
 <li><p>Sort by <code class="docutils literal notranslate"><span class="pre">score</span></code> (decrease) and select the 30th first genes that are not a seed (selected nodes from selected rows)</p></li>
-<li><p>To <code class="docutils literal notranslate"><span class="pre">keep</span></code> column, fill with <code class="docutils literal notranslate"><span class="pre">=True</span></code> and apply to selected nodes</p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">keep</span></code> column with <code class="docutils literal notranslate"><span class="pre">=True</span></code> and apply to selected nodes</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><strong>Filter</strong> : Select pathways nodes</p>
+<li><p><strong>Filter</strong>: Select pathways nodes</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Add pathway names into <code class="docutils literal notranslate"><span class="pre">label</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$pathway</span></code>)</p></li>
-<li><p>Add a condition score into <code class="docutils literal notranslate"><span class="pre">keep</span></code> column (<code class="docutils literal notranslate"><span class="pre">=$score&gt;=0.0002083975629882177</span></code>)</p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">label</span></code> column with pathway names (<code class="docutils literal notranslate"><span class="pre">=$pathway</span></code>)</p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">keep</span></code> column with condition score (<code class="docutils literal notranslate"><span class="pre">=$score&gt;=0.0002083975629882177</span></code>)</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p><strong>Filter</strong> : Select nodes with <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
-<li><p><strong>New Network</strong> : From Selected Nodes, All Edges</p></li>
+<li><p><strong>Filter</strong>: Select nodes with <code class="docutils literal notranslate"><span class="pre">keep</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
+<li><p><strong>New Network</strong>: From Selected Nodes, All Edges</p></li>
 <li><p>Edit and Remove Duplicate Edges</p></li>
-<li><p><strong>Style</strong> :</p></li>
+<li><p><strong>Style</strong>:</p></li>
 </ol>
 <table class="docutils align-default" id="id15">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
@@ -330,8 +330,8 @@ awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]
 <tr class="row-odd"><th class="stub"><p>Fill Color</p></th>
 <td><div class="line-block">
 <div class="line">Column seed</div>
-<div class="line">True : CCCCCC</div>
-<div class="line">False : FFFFFF</div>
+<div class="line">True: CCCCCC</div>
+<div class="line">False: FFFFFF</div>
 </div>
 </td>
 <td><p>DD3497</p></td>
@@ -359,7 +359,7 @@ awk -F<span class="s2">&quot;\t&quot;</span> <span class="s1">&#39;NR==FNR{a[$1]
 </tbody>
 </table>
 <ol class="arabic simple" start="12">
-<li><p>Layout = yFiles Organic Layout</p></li>
+<li><p>Change network layout (here is yFiles Organic Layout)</p></li>
 </ol>
 <p><em>To perform a RWR with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-rwr"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-rwr"><span class="std std-ref">Use-case 2</span></a>.</p>
 </div>

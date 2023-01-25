@@ -42,7 +42,7 @@ Target genes
 
 .. _targetGenesFile:
 
-2. Genes list file
+2. Target genes file
 ---------------------
 
 -t, --targetGenesFile FILENAME

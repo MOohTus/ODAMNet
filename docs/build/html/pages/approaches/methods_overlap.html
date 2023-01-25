@@ -118,17 +118,17 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
             
@@ -213,16 +213,16 @@ to correct the pvalues.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>By default, data are extracted directly by request databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data from requests</em>).
+<p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data extracted from requests</em>).
 You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
 extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
-<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data from users</em>)
+<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data extracted from users</em>)
 with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <div class="figure align-center" id="id3">
 <span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/OverlapAnalysis_graph.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files/parameters of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 <div class="legend">
-<p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+<p>There are two ways to extract target genes: from request (pink boxes) or provided by the user (green boxes).
 Required files/parameters have solid border line and optional files/parameters have dash border line.
 Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
@@ -230,9 +230,11 @@ Output files in pink are created only if the input data are extracted from reque
 </div>
 <div class="section" id="input-parameters-for-overlap-analysis">
 <h2>Input parameters for overlap analysis<a class="headerlink" href="#input-parameters-for-overlap-analysis" title="Permalink to this headline">¶</a></h2>
-<p>To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
-To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is use for both data extraction.</p>
+<div class="line-block">
+<div class="line">To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is used for both data extraction.</p>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
@@ -242,14 +244,14 @@ You can give several chemicals in the same line : they will be grouped for the a
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
 <dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: extract chemicals data, which are in the chemicalsFile, from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>References can be associated with chemical interactions.
-You can define a threshold to filter target genes extraction based on the number of publications.
+<dd><p>Publications can be associated with chemical interactions.
+You can define a minimum number of publications to keep target genes.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
@@ -274,7 +276,7 @@ It should be in the same order than the GMT file.
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
-<dd><p>Name of the folder where to save the results.
+<dd><p>Name of the folder to save results.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>

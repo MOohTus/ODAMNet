@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#use-cases-command-line">Use-cases command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#networks-available">Networks available</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#molecular-multilayer">Molecular multilayer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#protein-protein-interaction-network">Protein-protein interaction network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#protein-protein-interaction-network">Protein-Protein Interaction network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#complexes-network">Complexes network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#reactome-network">Reactome network</a></li>
 </ul>
@@ -120,7 +120,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#pathways-of-interest-network">Pathways of interest network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#disease-disease-similarity-network">Disease-disease similarity network</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#disease-disease-similarity-network-creation">Disease-disease similarity network creation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gene-disease-bipartite-associations">Gene-disease bipartite associations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gene-disease-bipartite">Gene-disease bipartite</a></li>
 </ul>
 </li>
 </ul>
@@ -133,17 +133,17 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Functions description</span></p>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input arguments for each method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
             
@@ -217,23 +217,23 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Random Walk is performed using multiXrank <a class="footnote-reference brackets" href="#id11" id="id1">1</a> –
+<p>The Random Walk is performed using multiXrank <a class="footnote-reference brackets" href="#id9" id="id1">1</a> –
 <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></p>
 </div>
-<p>This method measures the <strong>proximity</strong> of every gene within a multilayer to the target genes. Every gene from the list is
-define as a <strong>seed</strong>. The walk starts with a seed, selected <strong>randomly</strong>. The proximity is represented by a score that could be use
-for multiple analyse. More the score is high, more the node is closed to the seed.</p>
+<p>This method measures the <strong>proximity</strong> of every gene within a multilayer to target genes. Every target gene is
+defined as a <strong>seed</strong>. The walk starts with a seed selected <strong>randomly</strong>. The proximity is represented by a score that could be use
+for multiple analysis. More the score is high, more the node is closed to the seed.</p>
 <p>It’s a kind of <strong>diffusion analysis</strong> from the genes through different molecular interactions (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - right part).</p>
-<p><em>For more details, see the paper</em> <a class="footnote-reference brackets" href="#id11" id="id2">1</a></p>
+<p><em>For more details, see the multiXrank’s paper</em> <a class="footnote-reference brackets" href="#id9" id="id2">1</a>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>By default, data are extracted directly by request databases (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from requests</em>).
 You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>.</p>
 <p>You can provide your own <strong>target genes file</strong> (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>.</p>
-<div class="figure align-center" id="id14">
+<div class="figure align-center" id="id12">
 <span id="rwrusagefig"></span><img alt="RWR analysis" src="../../_images/multixrank_graph.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output files of Random Walk with Restart analysis</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output files/parameters of Random Walk with Restart analysis</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
 Required files/parameters have solid border line and optional files/parameters have dash border line.
@@ -243,8 +243,10 @@ Output files in pink are created only if the input data are extracted from reque
 </div>
 <div class="section" id="input-parameters-for-rwr-analysis">
 <h2>Input parameters for RWR analysis<a class="headerlink" href="#input-parameters-for-rwr-analysis" title="Permalink to this headline">¶</a></h2>
-<p>To extract target genes from <strong>CTD</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.
-To provide <strong>your own</strong> target genes, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</p>
+<div class="line-block">
+<div class="line">To extract target genes from <strong>CTD</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To provide <strong>your own</strong> target genes, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</div>
+</div>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
@@ -254,14 +256,14 @@ You can give several chemicals in the same line : they will be grouped for the a
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
 <dd><div class="line-block">
-<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> : extract chemicals data, which are in the chemicalsFile, from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: extract chemicals data, which are in the chemicalsFile, from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>References can be associated with chemical interactions.
-You can define a threshold to filter target genes extraction based on the number of publications.
+<dd><p>Publications can be associated with chemical interactions.
+You can define a minimum number of publications to keep target genes.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
@@ -284,7 +286,7 @@ The file contains at least paths of networks, bipartite and seed files. <strong>
 <dd><p>Repository path where networks are saved. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Path name file to store seed list. This file contains the list of genes (i.e. target genes). They will be used as seed
+<dd><p>Path name file to store seed list. This file contains the target genes list. They will be used as seed
 on the Random Walk analysis. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
@@ -294,7 +296,7 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <dd><p>Top nodes that will be saved into the output network (into SIF file).</p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
-<dd><p>Name of the folder where to save the results.
+<dd><p>Name of the folder to save the results.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
@@ -328,41 +330,41 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We use the biological multilayer network from multiXrank’s paper <a class="footnote-reference brackets" href="#id11" id="id5">1</a>.</p>
+<p>We use the molecular multilayer network from multiXrank’s paper <a class="footnote-reference brackets" href="#id9" id="id5">1</a>.</p>
 </div>
-<p>We propose to run two walks through two different network compositions :</p>
+<p>We propose to run two walks through two different network compositions:</p>
 <ul class="simple">
 <li><p>molecular multilayer with three layers + pathways of interest network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
 <li><p>molecular multilayer with three layers + disease-disease similarity network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
 </ul>
-<div class="figure align-center" id="id15">
+<div class="figure align-center" id="id13">
 <span id="rwrfig"></span><img alt="RWR networks" src="../../_images/NetworkAvailable_RWR.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk into two different network compositions</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk with restart into two different network compositions</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="molecular-multilayer">
 <h3>Molecular multilayer<a class="headerlink" href="#molecular-multilayer" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="protein-protein-interaction-network">
-<h4>Protein-protein interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this headline">¶</a></h4>
-<p>Protein-Protein interaction (PPI) network is fusion of three datasets : APID, Hi-Union and Lit-BM. It’s composed of :</p>
+<h4>Protein-Protein Interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this headline">¶</a></h4>
+<p>Protein-Protein interaction (PPI) network is fusion of three datasets : APID, Hi-Union and Lit-BM. It’s composed of:</p>
 <ul class="simple">
-<li><p>14 703 nodes (proteins)</p></li>
-<li><p>143 653 links</p></li>
+<li><p>14,703 nodes (proteins)</p></li>
+<li><p>143,653 edges</p></li>
 </ul>
 </div>
 <div class="section" id="complexes-network">
 <h4>Complexes network<a class="headerlink" href="#complexes-network" title="Permalink to this headline">¶</a></h4>
-<p>Complexes network is constructed from the fusion of Hu.map and Corum using OmniPathR. It’s composed of :</p>
+<p>Complexes network is constructed from the fusion of Hu.map and Corum using OmniPathR. It’s composed of:</p>
 <ul class="simple">
-<li><p>8 537 nodes</p></li>
-<li><p>63 561 links</p></li>
+<li><p>8,537 nodes</p></li>
+<li><p>63,561 edges</p></li>
 </ul>
 </div>
 <div class="section" id="reactome-network">
 <h4>Reactome network<a class="headerlink" href="#reactome-network" title="Permalink to this headline">¶</a></h4>
-<p>This network is extracted from NDEs and corresponding to the Human Reactome data. It’s composed of :</p>
+<p>This network is extracted from NDEs and corresponding to the Human Reactome data. It’s composed of:</p>
 <ul class="simple">
-<li><p>7 926 nodes</p></li>
-<li><p>194 500 links</p></li>
+<li><p>7,926 nodes</p></li>
+<li><p>194,500 edges</p></li>
 </ul>
 </div>
 </div>
@@ -386,7 +388,7 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv]</span></code></p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
-<dd><p>Name of the folder where to save complementary results (i.e. request results)
+<dd><p>Name of the folder to save complementary results (i.e. request results)
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
@@ -415,41 +417,40 @@ with <code class="docutils literal notranslate"><span class="pre">networkCreatio
 <span id="ddnet"></span><h3>Disease-disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="disease-disease-similarity-network-creation">
 <h4>Disease-disease similarity network creation<a class="headerlink" href="#disease-disease-similarity-network-creation" title="Permalink to this headline">¶</a></h4>
-<p><em>Data was download on the 2022/06/11.</em></p>
-<p>We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is
-a set of phenotype and each phenotype is associated to the Human Ontology Project IDs (HPO).</p>
-<p>The similarity score is calculated based on the number of shared phenotypes between two diseases (<a class="footnote-reference brackets" href="#id13" id="id6">3</a>, <a class="footnote-reference brackets" href="#id12" id="id7">2</a>, <a class="footnote-reference brackets" href="#id11" id="id8">1</a>).
+<p><em>Data was download on the 2022/06/11.</em>
+<em>Annotation (`website &lt;https://hpo.jax.org/app/data/annotation&gt;`_) and ontologies (`website &lt;https://hpo.jax.org/app/data/ontology&gt;`_) are coming from HPO.</em></p>
+<p>We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is defined as
+a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO).</p>
+<p>The similarity score is calculated based on the number of shared phenotypes between two diseases (<a class="footnote-reference brackets" href="#id11" id="id6">3</a>, <a class="footnote-reference brackets" href="#id10" id="id7">2</a>, <a class="footnote-reference brackets" href="#id9" id="id8">1</a>).
 Every pairs of diseases will have a score, so for each disease we selected the top 5 of the most similar disease.</p>
+<p>The <strong>disease-disease</strong> network contains 33,925 edges and 8,264 diseases.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <div class="line-block">
 <div class="line">You can use any multilayer and networks that you want.</div>
-<div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg> Be careful with the configuration file and the gene IDs used</div>
+<div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg> Be careful with the configuration file and the gene IDs used.</div>
 </div>
 </div>
-<p>Annotation come from HPO (<a class="reference external" href="https://hpo.jax.org/app/download/annotation">website</a>) and ontology come from HPO too (
-<a class="reference external" href="https://hpo.jax.org/app/download/ontology">website</a>).</p>
-<p>33 925 edges and 8 264 diseases</p>
 </div>
-<div class="section" id="gene-disease-bipartite-associations">
-<h4>Gene-disease bipartite associations<a class="headerlink" href="#gene-disease-bipartite-associations" title="Permalink to this headline">¶</a></h4>
-<p><em>Data was download on the 2022/09/27.</em></p>
-<p>The multiplex network is connected to the disease-disease similarity network with the gene-disease bipartite creating using
-association file from HPO (<a class="reference external" href="https://hpo.jax.org/app/download/annotation">website</a>).</p>
-<p>6 564 associations (4 483 genes and 5 878 diseases)</p>
+<div class="section" id="gene-disease-bipartite">
+<h4>Gene-disease bipartite<a class="headerlink" href="#gene-disease-bipartite" title="Permalink to this headline">¶</a></h4>
+<p><em>Data was download on the 2022/09/27.</em>
+<em>Association file is coming from HPO (`website &lt;https://hpo.jax.org/app/data/annotation&gt;`_).</em></p>
+<p>The <strong>molecular multiplex network</strong> is connected to the <strong>disease-disease similarity network</strong> with the <strong>gene-disease bipartite</strong>.
+The bipartite contains 6,564 associations (4,483 genes and 5,878 diseases).</p>
 </div>
 </div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <dl class="footnote brackets">
-<dt class="label" id="id11"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id5">3</a>,<a href="#id8">4</a>)</span></dt>
+<dt class="label" id="id9"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id5">3</a>,<a href="#id8">4</a>)</span></dt>
 <dd><p>Baptista, A., Gonzalez, A., &amp; Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.</p>
 </dd>
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id7">2</a></span></dt>
 <dd><p>Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., … &amp; Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id6">3</a></span></dt>
 <dd><p>Westbury SK, Turro E, Greene D, Lentaigne C, Kelly AM, Bariana TK, Simeoni I, Pillois X, Attwood A, Austin S, Jansen SB, Bakchoul T, Crisp-Hihn A, Erber WN, Favier R, Foad N, Gattens M, Jolley JD, Liesner R, Meacham S, Millar CM, Nurden AT, Peerlinck K, Perry DJ, Poudel P, Schulman S, Schulze H, Stephens JC, Furie B, Robinson PN, van Geet C, Rendon A, Gomez K, Laffan MA, Lambert MP, Nurden P, Ouwehand WH, Richardson S, Mumford AD, Freson K; BRIDGE-BPD Consortium. Human phenotype ontology annotation and cluster analysis to unravel genetic defects in 707 cases with unexplained bleeding and platelet disorders. Genome Med. 2015 Apr 9;7(1):36. doi: 10.1186/s13073-015-0151-5. PMID: 25949529; PMCID: PMC4422517.</p>
 </dd>
 </dl>

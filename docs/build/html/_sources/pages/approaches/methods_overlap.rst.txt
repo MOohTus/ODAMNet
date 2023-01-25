@@ -22,12 +22,12 @@ to correct the pvalues.
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`overlapFig`: *data from requests*).
+By default, data are extracted directly by requesting databases (:numref:`overlapFig`: *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
 extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 
-You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`overlapFig`: *data from users*)
+You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`overlapFig`: *data extracted from users*)
 with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _overlapFig:
@@ -35,19 +35,19 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
     :alt: overlap analysis
     :align: center
 
-    : Input and output files of overlap analysis
+    : Input and output files/parameters of overlap analysis
 
-    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    There are two ways to extract target genes: from request (pink boxes) or provided by the user (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
 Input parameters for overlap analysis
 ----------------------------------------
 
-To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
-To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
+| To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
-The ``--outputPath`` parameter is use for both data extraction.
+The ``--outputPath`` parameter is used for both data extraction.
 
 .. tabs::
 
@@ -59,13 +59,13 @@ The ``--outputPath`` parameter is use for both data extraction.
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
-            | ``TRUE`` : extract chemicals data, which are in the chemicalsFile, from CTD
+            | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
             | ``FALSE``: extract chemicals and their child molecules data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
-            References can be associated with chemical interactions.
-            You can define a threshold to filter target genes extraction based on the number of publications.
+            Publications can be associated with chemical interactions.
+            You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
     .. group-tab:: Data extracted from user
@@ -87,7 +87,7 @@ The ``--outputPath`` parameter is use for both data extraction.
             **[required]**
 
 -o, --outputPath PATH
-    Name of the folder where to save the results.
+    Name of the folder to save results.
     ``[default: OutputResults]``
 
 Use-cases command line
