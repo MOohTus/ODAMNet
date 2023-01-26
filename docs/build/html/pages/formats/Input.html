@@ -121,13 +121,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#ctd-file">3. CTD file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#pathways-of-interest-input-files">Pathways of interest input files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#network-input-files">Network input files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pathways-of-interest">Pathways of interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#networks">Networks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#active-module-identification-input-network">Active Module Identification input network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#multixrank-input-network">MultiXrank input network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#random-walk-with-restart-input-network">Random Walk with Restart input network</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-file">Configuration file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Output.html">Output files</a></li>
@@ -190,7 +193,9 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/pages/formats/Input.rst.txt" rel="nofollow"> View page source</a>
+            
+              <a href="https://github.com/MOohTus/EnvironmentProject/blob/main/docs/source/pages/formats/Input.rst" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -208,10 +213,10 @@
 <div class="section" id="target-genes">
 <span id="targetgenes"></span><h2>Target genes<a class="headerlink" href="#target-genes" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line">Two ways exist to extract the list of target genes :</div>
+<div class="line">Two ways exist to extract the list of target genes:</div>
 <div class="line"><br /></div>
-<div class="line"><a class="reference internal" href="#chemicalsfile"><span class="std std-ref">1. Chemicals file</span></a> : give chemical ID as input and request CTD</div>
-<div class="line"><a class="reference internal" href="#targetgenesfile"><span class="std std-ref">2. Target genes file</span></a> : gie your own target genes list</div>
+<div class="line"><a class="reference internal" href="#chemicalsfile"><span class="std std-ref">1. Chemicals file</span></a>: give chemical IDs file as input and request CTD database</div>
+<div class="line"><a class="reference internal" href="#targetgenesfile"><span class="std std-ref">2. Target genes file</span></a>: give your own target genes file</div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -221,12 +226,12 @@
 <span id="chemicalsfile"></span><h3>1. Chemicals file<a class="headerlink" href="#chemicals-file" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Target genes are extracted from CTD and WP in HGCN format</p>
+<p>Target genes are extracted from CTD in HGCN format.</p>
 </div>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in MeSH identifiers (e.g. D014801).
-Each line contains one or several chemical IDs, seperated by “;”.</p>
+Each line contains one or several chemical IDs, separated by “;”.</p>
 </dd>
 </dl>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>D014801;D014807
@@ -239,7 +244,7 @@ C009166
 <span id="targetgenesfile"></span><h3>2. Target genes file<a class="headerlink" href="#target-genes-file" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>List of target genes of interest. One gene per line.</p>
+<dd><p>Contains a list of target genes of interest. One gene per line.</p>
 </dd>
 </dl>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AANAT
@@ -258,17 +263,17 @@ ACADM
 This file is created automatically when you give a chemicals file.</p>
 </dd>
 </dl>
-<p>There are 9 columns :</p>
+<p>It’s composed of 9 columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code> : query input (e.g chemical IDs from chemicals file)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code> : name of the query input or its child molecule</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code> : MeSH ID of the query or its child molecule</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code> : CasRN ID of the query or its child molecule</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : symbol of genes connected to the query or its child molecule</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code> : gene ID (HGCN)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code> : organism name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code> : organism ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code> : PubMed IDs of the paper that talk about this connection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code>: query input (e.g chemical IDs from chemicals file)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its child molecule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its child molecule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its child molecule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: symbol of genes connected to the query or its child molecule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: gene ID (HGCN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code>: organism ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code>: PubMed IDs of publications that talk about this connection</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Input       ChemicalName    ChemicalId      CasRN   GeneSymbol      GeneId  Organism        OrganismId      PubMedIds
 d014801     Tretinoin       D014212 302-79-4        ZYG11A  440590  Homo sapiens    9606    23724009|33167477
@@ -280,21 +285,21 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 </div>
 </div>
 </div>
-<div class="section" id="pathways-of-interest-input-files">
-<span id="pathways"></span><h2>Pathways of interest input files<a class="headerlink" href="#pathways-of-interest-input-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pathways-of-interest">
+<span id="pathways"></span><h2>Pathways of interest<a class="headerlink" href="#pathways-of-interest" title="Permalink to this headline">¶</a></h2>
 <p>By default, WP is automatically requested to extract Rare Diseases pathways. Moreover, you can give your own
-pathways/processes of interest (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code>). You need to provided the source of them too (<code class="docutils literal notranslate"><span class="pre">backgroundFile</span></code>).</p>
+pathways/processes of interest (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code>). You need to provided the ontology source of them too (<code class="docutils literal notranslate"><span class="pre">backgroundFile</span></code>).</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>It’s a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
 Each row represents a gene set.</p>
 </dd>
 </dl>
-<p>There is at least, three columns :</p>
+<p>There are at least, three columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code> : first column is pathway IDs</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is pathway names - Optional, you can fill in a dummy field</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside pathway. The number of columns is different for each pathway and varies according the number of genes inside.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code>: first column is pathway IDs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code>: second column is pathway names - Optional, you can fill it in a dummy field</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code>: all the other columns contain genes inside pathway. The number of columns is different for each pathway and varies according the number of genes inside.</p></li>
 </ul>
 <p>The GMT file is organized as follow:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pathwayIDs  pathways        HGNC
@@ -303,7 +308,7 @@ WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
 WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 </pre></div>
 </div>
-<p>More details for <a class="reference external" href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29">GMT file format</a></p>
+<p>More details for <a class="reference external" href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29">GMT file format</a>.</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>This file contains the list of the different background file source. They have to be in the same order that they
@@ -319,11 +324,11 @@ hsapiens.WP.name.gmt
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Theses parameters, <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> can use for reproducibility. You can give a GMT file from WP request results.</p>
+<p>Theses parameters, <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> can be used for reproducibility.</p>
 </div>
 </div>
-<div class="section" id="network-input-files">
-<span id="network"></span><h2>Network input files<a class="headerlink" href="#network-input-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="networks">
+<span id="network"></span><h2>Networks<a class="headerlink" href="#networks" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="active-module-identification-input-network">
 <span id="sif"></span><h3>Active Module Identification input network<a class="headerlink" href="#active-module-identification-input-network" title="Permalink to this headline">¶</a></h3>
 <dl class="option-list">
@@ -332,7 +337,7 @@ hsapiens.WP.name.gmt
 It’s a tab-delimited file.</p>
 </dd>
 </dl>
-<p>There are three columns : source node, interaction type, target node.</p>
+<p>There are three columns: source node, interaction type, target node.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node_1      link    node_2
 AAMP        ppi     VPS52
 AAMP        ppi     BHLHE40
@@ -341,15 +346,15 @@ AAMP        ppi     C8orf33
 AAMP        ppi     TK1
 </pre></div>
 </div>
-<p>More details for <a class="reference external" href="http://wiki.biouml.org/index.php/SIF_(file_format)">SIF file format</a></p>
+<p>More details for <a class="reference external" href="http://wiki.biouml.org/index.php/SIF_(file_format)">SIF file format</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> By default, analysis is run using <strong>gene symbols HGCN</strong>. Pay attention of the gene IDs given in the network.</p>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> By default, the analysis is running using <strong>gene symbols HGCN</strong>. Pay attention of the gene IDs inside the network file.</p>
 </div>
 </div>
-<div class="section" id="multixrank-input-network">
-<span id="gr"></span><h3>MultiXrank input network<a class="headerlink" href="#multixrank-input-network" title="Permalink to this headline">¶</a></h3>
-<p>multiXrank accepts network and bipartite network on <strong>.gr format</strong>. It’s a tab-delimited graph format with two columns.</p>
+<div class="section" id="random-walk-with-restart-input-network">
+<span id="gr"></span><h3>Random Walk with Restart input network<a class="headerlink" href="#random-walk-with-restart-input-network" title="Permalink to this headline">¶</a></h3>
+<p>MultiXrank <a class="footnote-reference brackets" href="#id4" id="id2">1</a> accepts networks and bipartites in <strong>.gr format</strong>. It’s a tab-delimited graph format with two columns.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>NFYA        NFYB
 NFYA        NFYC
 NFYB        NFYC
@@ -363,14 +368,14 @@ BTRC        SKP1
 <span id="configfile"></span><h2>Configuration file<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h2>
 <dl class="option-list">
 <dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
-<dd><p>Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+<dd><p>Configuration file required by multiXrank tool <a class="footnote-reference brackets" href="#id4" id="id3">1</a>. It could be short or very detailed (g.e. with tuned parameters).
 The short one contains the network and bipartite trees and the path of the seed file.
-If the user want more details go the the multiXrank’s documentation :
+If the user want more details, see the multiXrank’s documentation:
 <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">Github</a> /
 <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">Documentation</a></p>
 </dd>
 </dl>
-<p>This is an example of minimal configuration file :</p>
+<p>This is an example of minimal configuration file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>multiplex:
     1:
         layers:
@@ -387,6 +392,14 @@ bipartite:
 seed:
     examples/InputData/seeds.txt
 </pre></div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id3">2</a>)</span></dt>
+<dd><p>Baptista, A., Gonzalez, A., &amp; Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>

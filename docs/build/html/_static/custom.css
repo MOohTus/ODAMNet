@@ -13,3 +13,8 @@ table.align-center {
 .legend{
     font-style: italic;
 }
+
+/* Change style of Edit on Github */
+.fa-github{
+    font-size: smaller;
+}

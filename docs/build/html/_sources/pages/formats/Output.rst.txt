@@ -22,20 +22,21 @@ This file contains the results from the request sent to CTD.
 CTD_requestFiltered_MeSHID_DATE.tsv
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
-number of paper for an interaction between gene and chemical (``--nbPub`` parameter). These filtered data are used for the analysis.
+This file has the same format as the file before but it contains the filtered data. This file can be filtered using the
+publication number associated to an interaction between chemical and gene (``--nbPub`` parameter).
+These filtered data are used for the analysis.
 
-- ``Input`` : chemical query name (from the chemical file)
-- ``ChemicalName`` : name of the query input or its child chemicals
-- ``ChemicalId`` : MeSH ID of the query or its child chemicals
-- ``CasRN`` : CasRN ID of the query or its child chemicals
-- ``GeneSymbol`` : gene symbol that is connected to the query or its child chemicals
-- ``GeneId`` : gene ID of this gene (HGCN)
-- ``Organism`` : organism name where comes from the gene
-- ``OrganismId`` : organism ID
-- ``PubMedIds`` : PubMed IDs of the paper that talk about this connection
+- ``Input``: chemical query name (from the chemical file)
+- ``ChemicalName``: name of the query input or its child chemicals
+- ``ChemicalId``: MeSH ID of the query or its child chemicals
+- ``CasRN``: CasRN ID of the query or its child chemicals
+- ``GeneSymbol``: gene symbol that is connected to the query or its child chemicals
+- ``GeneId``: gene ID of this gene (HGCN)
+- ``Organism``: organism name where comes from the gene
+- ``OrganismId``: organism ID
+- ``PubMedIds``: PubMed IDs of the publication associated to this connection
 
-This is an example of this file :
+This is an example of this file:
 
 .. code-block:: none
 
@@ -48,8 +49,7 @@ This is an example of this file :
     d014801	Vitamin A	D014801	11103-57-4	AKR1B1	231	Homo sapiens	9606	19014918
     d014801	Vitamin A	D014801	11103-57-4	AKR1B10	57016	Homo sapiens	9606	19014918
 
-| *MeSHID : chemicals ID*
-| *DATE : aaaa_mm_dd*
+*The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the request (aaaa_mm_dd).*
 
 .. _WPrequestOuput:
 
@@ -64,19 +64,14 @@ WP_RareDiseases_request_DATE.gmt
 This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
 extracted and save into this GMT file.
 
-WP_allPathways_request_DATE.gmt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GMT file is a tab-separated file:
 
-This GMT file contains all the human disease pathways from WikiPathways. Format is similar at the previous one.
-
-GMT file is a tab-separated file :
-
-- ``pathwayIDs`` : first column is the WikiPathways ID
-- ``pathways`` : second column is the name of the WikiPathways
-- ``HGNC`` : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
+- ``pathwayIDs``: first column is the WikiPathways ID
+- ``pathways``: second column is the name of the WikiPathways
+- ``HGNC``: all the other columns contain genes inside the WikiPathways. The number of columns is different for each
   pathways and varies according the number of genes inside.
 
-An example of GMT is displayed below :
+An example of GMT is displayed below:
 
 .. code-block:: none
 
@@ -85,11 +80,16 @@ An example of GMT is displayed below :
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
 
-| *DATE : aaaa_mm_dd*
+WP_allPathways_request_DATE.gmt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This GMT file contains all the human disease pathways from WikiPathways. The  format is similar at the previous one.
+
+*The file name is composed of the *DATE* of the request (aaaa_mm_dd).*
 
 .. _overlapOutput:
 
-Overlap analysis output files
+Overlap analysis
 ==================================================
 
 Only one file is created with this approach.
@@ -97,19 +97,19 @@ Only one file is created with this approach.
 Overlap_MeSHID_withRDWP.csv
 ------------------------------
 
-This is the result file of the overlap analysis. The number of this file depends of the number of chemicals given as input
-(i.e. chemicals file). The *MeSHID* name corresponds on the chemical used.
+This file contains the results of the overlap analysis. The number of this file depends of the number of chemicals given as input
+(i.e. chemicals file). IN the file name, the *MeSHID* name corresponds on the chemical used.
 
-- ``PathwayIDs`` : Pathway ID
-- ``PathwayNames`` : Pathway name
-- ``PathwayBackgroundNames`` : Source of the pathway (e.g. Wikipathways)
-- ``PathwaySizes`` : Number of genes inside the pathway
-- ``TargetSize`` : Number of genes that interact with chemical and are in the background gene set
-- ``IntersectionSize`` : Number of target genes that are inside the pathway
-- ``BackgroundSizes`` : Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)
-- ``pValue`` : pvalue of the overlap between target genes and pathways of interest (i.e. hypergeometric test)
-- ``pAdjusted`` : adjusted pvalue (i.e. multitest correction)
-- ``Intersection`` : list of genes sharded between targeted genes and pathway of interest (space-separated)
+- ``PathwayIDs``: Pathway ID
+- ``PathwayNames``: Pathway name
+- ``PathwayBackgroundNames``: Source of the pathway (e.g. Wikipathways)
+- ``PathwaySizes``: Number of genes inside the pathway
+- ``TargetSize``: Number of genes that interact with chemical and are in the background gene set
+- ``IntersectionSize``: Number of target genes that are inside the pathway
+- ``BackgroundSizes``: Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)
+- ``pValue``: pvalue of the overlap between target genes and pathways of interest (i.e. hypergeometric test)
+- ``pAdjusted``: adjusted pvalue (i.e. multitest correction)
+- ``Intersection``: list of genes shared between targeted genes and pathway of interest (space-separated)
 
 .. code-block:: none
 
@@ -121,14 +121,12 @@ This is the result file of the overlap analysis. The number of this file depends
     WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12379;0.9981605117974595;1.0;APC
     WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
 
-| *MeSHID : chemicals ID*
-
 .. _AMIOutput:
 
 Active Module Identification
 ==================================================
 
-At least six results files are created. The number depends of the number of Active Modules found.
+When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of Active Modules found.
 
 DOMINO_inputGeneList_MeSHID.txt
 ----------------------------------
@@ -147,18 +145,18 @@ Overlap_AM_X_MeSHID_withRDWP.csv
 -----------------------------------
 
 This is the result file of the overlap analysis. The number of this file depends of the number of Active Modules found.
-The *X* represents the AM number. See the :ref:`Overlap output <overlapOutput>` part for more details.
+In the file name, the *X* represents the AM number. See the :ref:`Overlap output <overlapOutput>` part for more details.
 
 DOMINO_MeSHID_overlapAMresults4Cytoscape.txt
 ----------------------------------------------
 
-This file is created to be given to Cytoscape for the visualisation. It contains five columns :
+This file is created to be given to Cytoscape for the visualisation. It contains five columns:
 
-- ``geneSymbol`` : gene HCGN ID
-- ``AM_number`` : Active module number
-- ``termID`` : pathway/process ID (e.g. GO, WP, Reactome etc ...)
-- ``termTitle`` : pathway/process name
-- ``overlap_padj`` : overlap adjusted pvalue
+- ``geneSymbol``: gene HCGN ID
+- ``AM_number``: Active module number
+- ``termID``: pathway/process ID (e.g. GO, WP, Reactome etc ...)
+- ``termTitle``: pathway/process name
+- ``overlap_padj``: overlap adjusted pvalue
 
 .. code-block:: none
 
@@ -176,14 +174,14 @@ This file is created to be given to Cytoscape for the visualisation. It contains
 DOMINO_MeSHID_activeModulesNetwork.txt
 ----------------------------------------
 
-This file contains the detail of each AM found. It contains four columns :
+This file contains details of each AM found. It contains four columns:
 
-- ``source`` : node 1
-- ``target`` : node 2
-- ``link`` : kind of link
-- ``AMI_number`` : active module number
+- ``source``: node 1
+- ``target``: node 2
+- ``link``: kind of link
+- ``AMI_number``: active module number
 
-This is an example of the file :
+This is an example of the file:
 
 .. code-block:: none
 
@@ -199,10 +197,10 @@ DOMINO_MeSHID_activeModulesNetworkMetrics.txt
 
 Some metrics are calculated such as number of edges and nodes for each AM identified.
 
-- ``AMINumber`` : active module number
-- ``EdgesNumber`` : Number of edges in the AM
-- ``NodesNumber`` : Number of nodes in the AM
-- ``ActiveGenesNumber`` : Number of active genes (target genes)
+- ``AMINumber``: active module number
+- ``EdgesNumber``: number of edges in the AM
+- ``NodesNumber`` : number of nodes in the AM
+- ``ActiveGenesNumber``: number of active genes (target genes)
 
 .. code-block:: none
 
@@ -230,7 +228,7 @@ This file is created to be given to Cytoscape for the visualisation. It contains
     B3GALNT1	1	False	False
     USP26	1	False	False
 
-| *MeSHID : chemicals ID*
+*The file name is composed of the MeSHID that corresponds to the query chemical*
 
 Random Walk with Restart analysis
 =======================================
@@ -238,18 +236,18 @@ Random Walk with Restart analysis
 config_minimal.yml and seeds.txt
 ------------------------------------
 
-These two files are a copy of configuration and seed files used in input. For more details of the config file format see
-the [:ref:`FORMAT <configFile>`] part. Seeds file contains the list of genes used as seeds for the walk.
+These two files are copies of configuration and seed files used in input. For more details of the config file format see
+the [:ref:`FORMAT <configFile>`] part. Seeds file contains target genes used as seeds for the walk.
 
 multiplex_X.tsv
 ------------------
 
-The number of this file depends on the number of multiplex you give in input. The *X* corresponds to the folder name of the
-multiplex. It contains three columns :
+The number of this file depends on the number of multiplex you give in input. IN the name, the *X* corresponds to the folder name of the
+multiplex. It contains three columns:
 
-- ``multiplex`` : multiplex folder name
-- ``node`` : name of features inside the multiplex
-- ``score`` : score calculated by the walk
+- ``multiplex``: multiplex folder name
+- ``node``: name of node inside the multiplex (e.g. target genes, pathways ...)
+- ``score``: score calculated by the walk
 
 .. code-block:: none
 
@@ -268,11 +266,11 @@ resultsNetwork_useCase1.sif
 ---------------------------------
 
 The name of this network file depends on what you give in input (``--sifFileName``). See :ref:`RWR` for more details.
-It's a SIF file format [:ref:`FORMAT <SIF>`] and contains three columns :
+It's a SIF file format [:ref:`FORMAT <SIF>`] and contains three columns:
 
-- ``source node`` : feature names
-- ``link source`` : source of the link (which multiplex or bipartite)
-- ``target node`` : feature names
+- ``source node``: node names
+- ``link source``: source of the link (which multiplex or bipartite)
+- ``target node``: node names
 
 .. code-block:: none
 

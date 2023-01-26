@@ -129,7 +129,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#overlap-analysis-output-files">Overlap analysis output files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#overlap-meshid-withrdwp-csv">Overlap_MeSHID_withRDWP.csv</a></li>
 </ul>
 </li>
@@ -209,7 +209,9 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/pages/formats/Output.rst.txt" rel="nofollow"> View page source</a>
+            
+              <a href="https://github.com/MOohTus/EnvironmentProject/blob/main/docs/source/pages/formats/Output.rst" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -235,20 +237,21 @@
 </div>
 <div class="section" id="ctd-requestfiltered-meshid-date-tsv">
 <h4>CTD_requestFiltered_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-requestfiltered-meshid-date-tsv" title="Permalink to this headline">¶</a></h4>
-<p>This file has the same format as the file before but it contains the filtered data. The data could be filtered by the
-number of paper for an interaction between gene and chemical (<code class="docutils literal notranslate"><span class="pre">--nbPub</span></code> parameter). These filtered data are used for the analysis.</p>
+<p>This file has the same format as the file before but it contains the filtered data. This file can be filtered using the
+publication number associated to an interaction between chemical and gene (<code class="docutils literal notranslate"><span class="pre">--nbPub</span></code> parameter).
+These filtered data are used for the analysis.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code> : chemical query name (from the chemical file)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code> : name of the query input or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code> : MeSH ID of the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code> : CasRN ID of the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : gene symbol that is connected to the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code> : gene ID of this gene (HGCN)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code> : organism name where comes from the gene</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code> : organism ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code> : PubMed IDs of the paper that talk about this connection</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code>: chemical query name (from the chemical file)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its child chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its child chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its child chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: gene symbol that is connected to the query or its child chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: gene ID of this gene (HGCN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name where comes from the gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code>: organism ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code>: PubMed IDs of the publication associated to this connection</p></li>
 </ul>
-<p>This is an example of this file :</p>
+<p>This is an example of this file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Input       ChemicalName    ChemicalId      CasRN   GeneSymbol      GeneId  Organism        OrganismId      PubMedIds
 d014801     Tretinoin       D014212 302-79-4        ZXDC    79364   Homo sapiens    9606    33167477
 d014801     Tretinoin       D014212 302-79-4        ZYG11A  440590  Homo sapiens    9606    23724009|33167477
@@ -259,10 +262,7 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens
 d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><em>MeSHID : chemicals ID</em></div>
-<div class="line"><em>DATE : aaaa_mm_dd</em></div>
-</div>
+<p><em>The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the request (aaaa_mm_dd).</em></p>
 </div>
 </div>
 <div class="section" id="wp-request-file-results">
@@ -272,48 +272,46 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 <h4>WP_RareDiseases_request_DATE.gmt<a class="headerlink" href="#wp-rarediseases-request-date-gmt" title="Permalink to this headline">¶</a></h4>
 <p>This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
 extracted and save into this GMT file.</p>
-</div>
-<div class="section" id="wp-allpathways-request-date-gmt">
-<h4>WP_allPathways_request_DATE.gmt<a class="headerlink" href="#wp-allpathways-request-date-gmt" title="Permalink to this headline">¶</a></h4>
-<p>This GMT file contains all the human disease pathways from WikiPathways. Format is similar at the previous one.</p>
-<p>GMT file is a tab-separated file :</p>
+<p>GMT file is a tab-separated file:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code> : first column is the WikiPathways ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code> : second column is the name of the WikiPathways</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code> : all the other columns contain genes inside the WikiPathways. The number of columns is different for each
+<li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code>: first column is the WikiPathways ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pathways</span></code>: second column is the name of the WikiPathways</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HGNC</span></code>: all the other columns contain genes inside the WikiPathways. The number of columns is different for each
 pathways and varies according the number of genes inside.</p></li>
 </ul>
-<p>An example of GMT is displayed below :</p>
+<p>An example of GMT is displayed below:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pathwayIDs  pathways        HGNC
 WP5195      Disorders in ketolysis  ACAT1   HMGCS1  OXCT1   BDH1    ACAT2
 WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
 WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><em>DATE : aaaa_mm_dd</em></div>
+</div>
+<div class="section" id="wp-allpathways-request-date-gmt">
+<h4>WP_allPathways_request_DATE.gmt<a class="headerlink" href="#wp-allpathways-request-date-gmt" title="Permalink to this headline">¶</a></h4>
+<p>This GMT file contains all the human disease pathways from WikiPathways. The  format is similar at the previous one.</p>
+<p><em>The file name is composed of the *DATE</em> of the request (aaaa_mm_dd).*</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="overlap-analysis-output-files">
-<span id="overlapoutput"></span><h2>Overlap analysis output files<a class="headerlink" href="#overlap-analysis-output-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overlap-analysis">
+<span id="overlapoutput"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
 <p>Only one file is created with this approach.</p>
 <div class="section" id="overlap-meshid-withrdwp-csv">
 <h3>Overlap_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-meshid-withrdwp-csv" title="Permalink to this headline">¶</a></h3>
-<p>This is the result file of the overlap analysis. The number of this file depends of the number of chemicals given as input
-(i.e. chemicals file). The <em>MeSHID</em> name corresponds on the chemical used.</p>
+<p>This file contains the results of the overlap analysis. The number of this file depends of the number of chemicals given as input
+(i.e. chemicals file). IN the file name, the <em>MeSHID</em> name corresponds on the chemical used.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">PathwayIDs</span></code> : Pathway ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PathwayNames</span></code> : Pathway name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PathwayBackgroundNames</span></code> : Source of the pathway (e.g. Wikipathways)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">PathwaySizes</span></code> : Number of genes inside the pathway</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TargetSize</span></code> : Number of genes that interact with chemical and are in the background gene set</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">IntersectionSize</span></code> : Number of target genes that are inside the pathway</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">BackgroundSizes</span></code> : Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pValue</span></code> : pvalue of the overlap between target genes and pathways of interest (i.e. hypergeometric test)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pAdjusted</span></code> : adjusted pvalue (i.e. multitest correction)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Intersection</span></code> : list of genes sharded between targeted genes and pathway of interest (space-separated)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PathwayIDs</span></code>: Pathway ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PathwayNames</span></code>: Pathway name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PathwayBackgroundNames</span></code>: Source of the pathway (e.g. Wikipathways)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PathwaySizes</span></code>: Number of genes inside the pathway</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetSize</span></code>: Number of genes that interact with chemical and are in the background gene set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">IntersectionSize</span></code>: Number of target genes that are inside the pathway</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BackgroundSizes</span></code>: Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pValue</span></code>: pvalue of the overlap between target genes and pathways of interest (i.e. hypergeometric test)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pAdjusted</span></code>: adjusted pvalue (i.e. multitest correction)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Intersection</span></code>: list of genes shared between targeted genes and pathway of interest (space-separated)</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSize;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
 WP4940;15q11.2 copy number variation syndrome;WikiPathway_2022_08_01;10;1721;0;12379;1.0;1.0;
@@ -324,14 +322,11 @@ WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12
 WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><em>MeSHID : chemicals ID</em></div>
-</div>
 </div>
 </div>
 <div class="section" id="active-module-identification">
 <span id="amioutput"></span><h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this headline">¶</a></h2>
-<p>At least six results files are created. The number depends of the number of Active Modules found.</p>
+<p>When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of Active Modules found.</p>
 <div class="section" id="domino-inputgenelist-meshid-txt">
 <h3>DOMINO_inputGeneList_MeSHID.txt<a class="headerlink" href="#domino-inputgenelist-meshid-txt" title="Permalink to this headline">¶</a></h3>
 <p>This file contains the list of target genes. There are used as Active Genes for the analysis.</p>
@@ -346,17 +341,17 @@ KRT18
 <div class="section" id="overlap-am-x-meshid-withrdwp-csv">
 <h3>Overlap_AM_X_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-am-x-meshid-withrdwp-csv" title="Permalink to this headline">¶</a></h3>
 <p>This is the result file of the overlap analysis. The number of this file depends of the number of Active Modules found.
-The <em>X</em> represents the AM number. See the <a class="reference internal" href="#overlapoutput"><span class="std std-ref">Overlap output</span></a> part for more details.</p>
+In the file name, the <em>X</em> represents the AM number. See the <a class="reference internal" href="#overlapoutput"><span class="std std-ref">Overlap output</span></a> part for more details.</p>
 </div>
 <div class="section" id="domino-meshid-overlapamresults4cytoscape-txt">
 <h3>DOMINO_MeSHID_overlapAMresults4Cytoscape.txt<a class="headerlink" href="#domino-meshid-overlapamresults4cytoscape-txt" title="Permalink to this headline">¶</a></h3>
-<p>This file is created to be given to Cytoscape for the visualisation. It contains five columns :</p>
+<p>This file is created to be given to Cytoscape for the visualisation. It contains five columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">geneSymbol</span></code> : gene HCGN ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AM_number</span></code> : Active module number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">termID</span></code> : pathway/process ID (e.g. GO, WP, Reactome etc …)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">termTitle</span></code> : pathway/process name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">overlap_padj</span></code> : overlap adjusted pvalue</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geneSymbol</span></code>: gene HCGN ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AM_number</span></code>: Active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">termID</span></code>: pathway/process ID (e.g. GO, WP, Reactome etc …)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">termTitle</span></code>: pathway/process name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlap_padj</span></code>: overlap adjusted pvalue</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geneSymbol  AM_number       termID  termTitle       overlap_padj
 CEBPA       2       WP4879  Overlap between signal transduction pathways contributing to LMNA laminopathies 0.010978293424676187
@@ -373,14 +368,14 @@ FN1 6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-11
 </div>
 <div class="section" id="domino-meshid-activemodulesnetwork-txt">
 <h3>DOMINO_MeSHID_activeModulesNetwork.txt<a class="headerlink" href="#domino-meshid-activemodulesnetwork-txt" title="Permalink to this headline">¶</a></h3>
-<p>This file contains the detail of each AM found. It contains four columns :</p>
+<p>This file contains details of each AM found. It contains four columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> : node 1</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code> : node 2</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code> : kind of link</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AMI_number</span></code> : active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: node 1</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>: node 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span></code>: kind of link</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AMI_number</span></code>: active module number</p></li>
 </ul>
-<p>This is an example of the file :</p>
+<p>This is an example of the file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source      target  link    AMI_number
 CDT1        MCM6    ppi     1
 CDT1        CDK1    ppi     1
@@ -394,10 +389,10 @@ CDT1        GMNN    ppi     1
 <h3>DOMINO_MeSHID_activeModulesNetworkMetrics.txt<a class="headerlink" href="#domino-meshid-activemodulesnetworkmetrics-txt" title="Permalink to this headline">¶</a></h3>
 <p>Some metrics are calculated such as number of edges and nodes for each AM identified.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code> : active module number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code> : Number of edges in the AM</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : Number of nodes in the AM</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGenesNumber</span></code> : Number of active genes (target genes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code>: active module number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code>: number of edges in the AM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : number of nodes in the AM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGenesNumber</span></code>: number of active genes (target genes)</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AMINumber   EdgesNumber     NodesNumber     ActiveGenesNumber
 1   357     93      35
@@ -423,26 +418,24 @@ B3GALNT1    1       False   False
 USP26       1       False   False
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><em>MeSHID : chemicals ID</em></div>
-</div>
+<p><em>The file name is composed of the MeSHID that corresponds to the query chemical</em></p>
 </div>
 </div>
 <div class="section" id="random-walk-with-restart-analysis">
 <h2>Random Walk with Restart analysis<a class="headerlink" href="#random-walk-with-restart-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="config-minimal-yml-and-seeds-txt">
 <h3>config_minimal.yml and seeds.txt<a class="headerlink" href="#config-minimal-yml-and-seeds-txt" title="Permalink to this headline">¶</a></h3>
-<p>These two files are a copy of configuration and seed files used in input. For more details of the config file format see
-the [<a class="reference internal" href="Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] part. Seeds file contains the list of genes used as seeds for the walk.</p>
+<p>These two files are copies of configuration and seed files used in input. For more details of the config file format see
+the [<a class="reference internal" href="Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] part. Seeds file contains target genes used as seeds for the walk.</p>
 </div>
 <div class="section" id="multiplex-x-tsv">
 <h3>multiplex_X.tsv<a class="headerlink" href="#multiplex-x-tsv" title="Permalink to this headline">¶</a></h3>
-<p>The number of this file depends on the number of multiplex you give in input. The <em>X</em> corresponds to the folder name of the
-multiplex. It contains three columns :</p>
+<p>The number of this file depends on the number of multiplex you give in input. IN the name, the <em>X</em> corresponds to the folder name of the
+multiplex. It contains three columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">multiplex</span></code> : multiplex folder name</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code> : name of features inside the multiplex</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code> : score calculated by the walk</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplex</span></code>: multiplex folder name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">node</span></code>: name of node inside the multiplex (e.g. target genes, pathways …)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score</span></code>: score calculated by the walk</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>multiplex   node    score
 1   VCAM1   0.0002083975629882177
@@ -460,11 +453,11 @@ multiplex. It contains three columns :</p>
 <div class="section" id="resultsnetwork-usecase1-sif">
 <h3>resultsNetwork_useCase1.sif<a class="headerlink" href="#resultsnetwork-usecase1-sif" title="Permalink to this headline">¶</a></h3>
 <p>The name of this network file depends on what you give in input (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>). See <a class="reference internal" href="../approaches/methods_RWR.html#rwr"><span class="std std-ref">Random Walk with Restart</span></a> for more details.
-It’s a SIF file format [<a class="reference internal" href="Input.html#sif"><span class="std std-ref">FORMAT</span></a>] and contains three columns :</p>
+It’s a SIF file format [<a class="reference internal" href="Input.html#sif"><span class="std std-ref">FORMAT</span></a>] and contains three columns:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">node</span></code> : feature names</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">source</span></code> : source of the link (which multiplex or bipartite)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">node</span></code> : feature names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">node</span></code>: node names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">source</span></code>: source of the link (which multiplex or bipartite)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">node</span></code>: node names</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A8K1F4_HUMAN        multiplex/1/PPI_Jan2021.gr      TP53
 A8K251_HUMAN        multiplex/1/PPI_Jan2021.gr      HSP90AB1

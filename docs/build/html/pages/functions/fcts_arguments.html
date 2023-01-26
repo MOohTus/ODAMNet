@@ -197,7 +197,9 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/pages/functions/fcts_arguments.rst.txt" rel="nofollow"> View page source</a>
+            
+              <a href="https://github.com/MOohTus/EnvironmentProject/blob/main/docs/source/pages/functions/fcts_arguments.rst" class="fa fa-github"> Edit on GitHub</a>
+            
           
         
       </li>
@@ -217,8 +219,8 @@
 <div class="section" id="main">
 <h3>main<a class="headerlink" href="#main" title="Permalink to this headline">¶</a></h3>
 <p>[OPTIONS] = overlap | domino | multixrank | networkCreation</p>
-<p>Analyse the relationship between chemicals and Rare Disease.
-Select the approach you want to perform :</p>
+<p>Analyse the relationship between chemicals and Rare Diseases.
+Select the approach you want to perform:</p>
 <p>overlap | domino | multixrank</p>
 <p>If you need to create a network with the pathways of interest, select : networkCreation</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
@@ -241,19 +243,19 @@ Select the approach you want to perform :</p>
 <dl class="object">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">multixrank</span></span></dt>
-<dd><p>Random Walk with Restart Analysis</p>
+<dd><p>Random Walk with Restart analysis</p>
 </dd></dl>
 
 <dl class="object">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">networkCreation</span></span></dt>
-<dd><p>Create network and its corresponding bipartite</p>
+<dd><p>Network and its bipartite creation</p>
 </dd></dl>
 
 <dl class="object">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">overlap</span></span></dt>
-<dd><p>Perform overlap analysis</p>
+<dd><p>Overlap analysis</p>
 </dd></dl>
 
 </div>
@@ -262,7 +264,7 @@ Select the approach you want to perform :</p>
 <h2>Overlap<a class="headerlink" href="#overlap" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-overlap">
 <h3>main overlap<a class="headerlink" href="#main-overlap" title="Permalink to this headline">¶</a></h3>
-<p>Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways</p>
+<p>Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main overlap <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -276,7 +278,7 @@ Select the approach you want to perform :</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-overlap-r">
 <span id="cmdoption-main-overlap-CTD_file"></span><span id="cmdoption-main-overlap-ctd-file"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-r" title="Permalink to this definition">¶</a></dt>
-<dd><p>CTD request result file name</p>
+<dd><p>CTD file name</p>
 </dd></dl>
 
 <dl class="std option">
@@ -288,7 +290,8 @@ Select the approach you want to perform :</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-overlap-directAssociation">
 <span id="cmdoption-main-overlap-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-directAssociation" title="Permalink to this definition">¶</a></dt>
-<dd><p>True: Extract target genes from chemicals False: Extract targe genes from chemicals + its child chemicals</p>
+<dd><p>True: Extract target genes from chemicals
+False: Extract target genes from chemicals + its child chemicals</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>True</p>
@@ -299,7 +302,7 @@ Select the approach you want to perform :</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-overlap-nbPub">
 <span id="cmdoption-main-overlap-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-nbPub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of references needed at least to keep an interaction</p>
+<dd><p>Minimum number of publications to keep an interaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>2</p>
@@ -322,7 +325,7 @@ Select the approach you want to perform :</p>
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-overlap-o">
 <span id="cmdoption-main-overlap-outputPath"></span><span id="cmdoption-main-overlap-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-overlap-o" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output folder name where to save results</p>
+<dd><p>Output folder name to save results</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>OutputResults</p>
@@ -336,7 +339,7 @@ Select the approach you want to perform :</p>
 <h2>DOMINO<a class="headerlink" href="#domino" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-domino">
 <h3>main domino<a class="headerlink" href="#main-domino" title="Permalink to this headline">¶</a></h3>
-<p>DOMINO defines the target genes as active genes and search active modules (AM) through a given network.
+<p>DOMINO defines target genes as active genes and search active modules (AM) through a given network.
 For each AM, an overlap analysis is performed against RD pathways (or pathways of interest).</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main domino <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
@@ -351,7 +354,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-domino-r">
 <span id="cmdoption-main-domino-CTD_file"></span><span id="cmdoption-main-domino-ctd-file"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-r" title="Permalink to this definition">¶</a></dt>
-<dd><p>CTD request result file name</p>
+<dd><p>CTD file name</p>
 </dd></dl>
 
 <dl class="std option">
@@ -363,7 +366,8 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-domino-directAssociation">
 <span id="cmdoption-main-domino-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-directAssociation" title="Permalink to this definition">¶</a></dt>
-<dd><p>True: Extract target genes from chemicals False: Extract targe genes from chemicals + its child chemicals</p>
+<dd><p>True: Extract target genes from chemicals
+False: Extract target genes from chemicals + its child chemicals</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>True</p>
@@ -374,7 +378,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-domino-nbPub">
 <span id="cmdoption-main-domino-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-nbPub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of references needed at least to keep an interaction</p>
+<dd><p>Minimum number of publications to keep an interaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>2</p>
@@ -409,7 +413,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-domino-o">
 <span id="cmdoption-main-domino-outputPath"></span><span id="cmdoption-main-domino-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-domino-o" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output folder name where to save results</p>
+<dd><p>Output folder name to save results</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>OutputResults</p>
@@ -423,7 +427,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-multixrank">
 <h3>main multixrank<a class="headerlink" href="#main-multixrank" title="Permalink to this headline">¶</a></h3>
-<p>Performs a Random Walk with Restart analysis through heterogeneous multilayer using the target genes as seeds</p>
+<p>Performs a Random Walk with Restart analysis through heterogeneous multilayer using the target genes as seeds.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main multixrank <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -437,7 +441,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-multixrank-r">
 <span id="cmdoption-main-multixrank-CTD_file"></span><span id="cmdoption-main-multixrank-ctd-file"></span><span class="sig-name descname"><span class="pre">-r</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--CTD_file</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;CTD_file&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-r" title="Permalink to this definition">¶</a></dt>
-<dd><p>CTD request result file name</p>
+<dd><p>CTD file name</p>
 </dd></dl>
 
 <dl class="std option">
@@ -449,7 +453,8 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-multixrank-directAssociation">
 <span id="cmdoption-main-multixrank-directassociation"></span><span class="sig-name descname"><span class="pre">--directAssociation</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;directAssociation&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-directAssociation" title="Permalink to this definition">¶</a></dt>
-<dd><p>True: Extract target genes from chemicals False: Extract targe genes from chemicals + its child chemicals</p>
+<dd><p>True: Extract target genes from chemicals
+False: Extract target genes from chemicals + its child chemicals</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>True</p>
@@ -460,7 +465,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-multixrank-nbPub">
 <span id="cmdoption-main-multixrank-nbpub"></span><span class="sig-name descname"><span class="pre">--nbPub</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;nbPub&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-nbPub" title="Permalink to this definition">¶</a></dt>
-<dd><p>Number of references needed at least to keep an interaction</p>
+<dd><p>Minimum number of publications to keep an interaction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>2</p>
@@ -506,7 +511,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-multixrank-o">
 <span id="cmdoption-main-multixrank-outputPath"></span><span id="cmdoption-main-multixrank-outputpath"></span><span class="sig-name descname"><span class="pre">-o</span></span><span class="sig-prename descclassname"></span><span class="sig-prename descclassname"><span class="pre">,</span> </span><span class="sig-name descname"><span class="pre">--outputPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;outputPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-multixrank-o" title="Permalink to this definition">¶</a></dt>
-<dd><p>Output folder name where to save results</p>
+<dd><p>Output folder name to save results</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default</dt>
 <dd class="field-odd"><p>OutputResults</p>
@@ -520,7 +525,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <h2>Network creation<a class="headerlink" href="#network-creation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-networkcreation">
 <h3>main networkCreation<a class="headerlink" href="#main-networkcreation" title="Permalink to this headline">¶</a></h3>
-<p>Create network SIF file from WP request or pathways of interest GMT file</p>
+<p>Creates network SIF file from WP request or pathways of interest given in GMT file.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>main networkCreation <span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -528,7 +533,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-networkCreation-networksPath">
 <span id="cmdoption-main-networkcreation-networkspath"></span><span class="sig-name descname"><span class="pre">--networksPath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;networksPath&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-networksPath" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Required</strong> Output path where save the network</p>
+<dd><p><strong>Required</strong> Output path to save the network</p>
 </dd></dl>
 
 <dl class="std option">
@@ -545,7 +550,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 <dl class="std option">
 <dt class="sig sig-object std" id="cmdoption-main-networkCreation-bipartitePath">
 <span id="cmdoption-main-networkcreation-bipartitepath"></span><span class="sig-name descname"><span class="pre">--bipartitePath</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;bipartitePath&gt;</span></span><a class="headerlink" href="#cmdoption-main-networkCreation-bipartitePath" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Required</strong> Output path where save the bipartite</p>
+<dd><p><strong>Required</strong> Output path to save the bipartite</p>
 </dd></dl>
 
 <dl class="std option">
@@ -579,7 +584,7 @@ For each AM, an overlap analysis is performed against RD pathways (or pathways o
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p><code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code>, <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> and <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameters are exclusive, only one has to be use. This input is <strong>required</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code>, <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> and <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameters are exclusive, only one has to be use. This input is <strong>required</strong>.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
