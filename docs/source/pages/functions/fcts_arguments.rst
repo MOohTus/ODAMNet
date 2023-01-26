@@ -42,7 +42,7 @@ Network creation
 
 .. important::
 
-    ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**
+    ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**.
 
 .. important::
 

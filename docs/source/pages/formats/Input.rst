@@ -11,10 +11,10 @@ Target genes
 
 .. line-block::
 
-        Two ways exist to extract the list of target genes :
+        Two ways exist to extract the list of target genes:
 
-        :ref:`chemicalsFile` : give chemical ID as input and request CTD
-        :ref:`targetGenesFile` : gie your own target genes list
+        :ref:`chemicalsFile`: give chemical IDs file as input and request CTD database
+        :ref:`targetGenesFile`: give your own target genes file
 
 .. tip::
 
@@ -27,12 +27,12 @@ Target genes
 
 .. tip::
 
-   Target genes are extracted from CTD and WP in HGCN format
+   Target genes are extracted from CTD in HGCN format.
 
 
 -c, --chemicalsFile FILENAME
     Contains a list of chemicals. They have to be in MeSH identifiers (e.g. D014801).
-    Each line contains one or several chemical IDs, seperated by ";".  
+    Each line contains one or several chemical IDs, separated by ";".
 
 .. code-block:: none
 
@@ -46,7 +46,7 @@ Target genes
 ---------------------
 
 -t, --targetGenesFile FILENAME
-    List of target genes of interest. One gene per line.
+    Contains a list of target genes of interest. One gene per line.
 
 .. code-block:: none
 
@@ -66,17 +66,17 @@ Target genes
     It's a tab-separated file and contains results of request sent to CTD.
     This file is created automatically when you give a chemicals file. 
 
-There are 9 columns : 
+It's composed of 9 columns:
 
-- ``Input`` : query input (e.g chemical IDs from chemicals file)
-- ``ChemicalName`` : name of the query input or its child molecule
-- ``ChemicalId`` : MeSH ID of the query or its child molecule
-- ``CasRN`` : CasRN ID of the query or its child molecule
-- ``GeneSymbol`` : symbol of genes connected to the query or its child molecule
-- ``GeneId`` : gene ID (HGCN)
-- ``Organism`` : organism name 
-- ``OrganismId`` : organism ID
-- ``PubMedIds`` : PubMed IDs of the paper that talk about this connection
+- ``Input``: query input (e.g chemical IDs from chemicals file)
+- ``ChemicalName``: name of the query input or its child molecule
+- ``ChemicalId``: MeSH ID of the query or its child molecule
+- ``CasRN``: CasRN ID of the query or its child molecule
+- ``GeneSymbol``: symbol of genes connected to the query or its child molecule
+- ``GeneId``: gene ID (HGCN)
+- ``Organism``: organism name
+- ``OrganismId``: organism ID
+- ``PubMedIds``: PubMed IDs of publications that talk about this connection
 
 .. code-block:: none
 
@@ -90,21 +90,21 @@ There are 9 columns :
 
 .. _pathways:
 
-Pathways of interest input files
-==================================================
+Pathways of interest
+=======================
 
 By default, WP is automatically requested to extract Rare Diseases pathways. Moreover, you can give your own 
-pathways/processes of interest (``--GMT``). You need to provided the source of them too (``backgroundFile``). 
+pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
 --GMT FILENAME
     It's a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
     Each row represents a gene set.
 
-There is at least, three columns : 
+There are at least, three columns:
 
-- ``pathwayIDs`` : first column is pathway IDs
-- ``pathways`` : second column is pathway names - Optional, you can fill in a dummy field
-- ``HGNC`` : all the other columns contain genes inside pathway. The number of columns is different for each pathway and varies according the number of genes inside.
+- ``pathwayIDs``: first column is pathway IDs
+- ``pathways``: second column is pathway names - Optional, you can fill it in a dummy field
+- ``HGNC``: all the other columns contain genes inside pathway. The number of columns is different for each pathway and varies according the number of genes inside.
 
 The GMT file is organized as follow:
 
@@ -115,7 +115,7 @@ The GMT file is organized as follow:
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
 
-More details for `GMT file format <https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29>`_
+More details for `GMT file format <https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29>`_.
 
 --backgroundFile FILENAME
     This file contains the list of the different background file source. They have to be in the same order that they 
@@ -132,12 +132,11 @@ More details for `GMT file format <https://software.broadinstitute.org/cancer/so
 
 .. tip::
 
-   Theses parameters, ``--GMT`` and ``--backgroundFile`` can use for reproducibility. You can give a GMT file from WP request results.
-
+   Theses parameters, ``--GMT`` and ``--backgroundFile`` can be used for reproducibility.
 
 .. _network:
 
-Network input files
+Networks
 ===========================
 
 .. _SIF:
@@ -149,7 +148,7 @@ Active Module Identification input network
     Network file name in SIF (Simple Interaction File) format.
     It's a tab-delimited file.
 
-There are three columns : source node, interaction type, target node.
+There are three columns: source node, interaction type, target node.
 
 .. code-block:: none
 
@@ -160,19 +159,18 @@ There are three columns : source node, interaction type, target node.
     AAMP        ppi     C8orf33
     AAMP        ppi     TK1
 
-More details for `SIF file format <http://wiki.biouml.org/index.php/SIF_(file_format)>`_
+More details for `SIF file format <http://wiki.biouml.org/index.php/SIF_(file_format)>`_.
 
 .. warning::
 
-   :octicon:`alert;2em` By default, analysis is run using **gene symbols HGCN**. Pay attention of the gene IDs given in the network.
-
+   :octicon:`alert;2em` By default, the analysis is running using **gene symbols HGCN**. Pay attention of the gene IDs inside the network file.
 
 .. _GR:
 
-MultiXrank input network
---------------------------
+Random Walk with Restart input network
+------------------------------------------
 
-multiXrank accepts network and bipartite network on **.gr format**. It's a tab-delimited graph format with two columns.
+MultiXrank [1]_ accepts networks and bipartites in **.gr format**. It's a tab-delimited graph format with two columns.
 
 .. code-block:: none
 
@@ -189,13 +187,13 @@ Configuration file
 =====================
 
 --configPath PATH
-    Configuration file required by multiXrank tool. It could be short or very details (g.e. with tuned parameters).
+    Configuration file required by multiXrank tool [1]_. It could be short or very detailed (g.e. with tuned parameters).
     The short one contains the network and bipartite trees and the path of the seed file.
-    If the user want more details go the the multiXrank's documentation :
+    If the user want more details, see the multiXrank's documentation:
     :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
     :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
-This is an example of minimal configuration file :
+This is an example of minimal configuration file:
 
 .. code-block:: none
 
@@ -214,3 +212,8 @@ This is an example of minimal configuration file :
             target: 1
     seed:
         examples/InputData/seeds.txt
+
+References
+------------
+
+.. [1] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
