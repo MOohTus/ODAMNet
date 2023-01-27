@@ -117,7 +117,9 @@ def CTDrequest(chemName, association, outputPath, nbPub):
 
     # Request CTD
     requestResult = requests.get(url=URL, params=PARAMS)
-    requestResultList = requestResult.text.split("\n")
+    requestResultString = requestResult.text.replace("'", "_")
+    requestResultList = requestResultString.split("\n")
+    # requestResultList = requestResult.text.split("\n")
 
     # Extract results only for Homo sapiens
     for element in requestResultList:

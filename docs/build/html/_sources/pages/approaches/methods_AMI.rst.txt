@@ -10,8 +10,7 @@ Principle
 .. note::
 
     | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
-    | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_
-    | :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
+    | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
 DOMINO is looking for **Active Modules** (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
