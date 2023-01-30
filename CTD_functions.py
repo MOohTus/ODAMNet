@@ -26,7 +26,7 @@ def readFeaturesFile(featuresFile):
     """
     Read a list file (composed of gene names or chemical names).
 
-    :param FILE featuresFile: content of the features file
+    :param FILE featuresFile: Content of the features file
     :return:
         - **featureNamesList** (*list*) – List of feature names
     """
@@ -45,8 +45,8 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     Read CTD file, created from a request.
 
     :param FILE CTDFile: Content of the CTD file
-    :param int nbPub: number of paper to keep an interaction
-    :param PATH outputPath: output path directory name
+    :param int nbPub: Minimum number of publications to keep an interaction
+    :param PATH outputPath: Output path directory name
     :return:
         - **targetGenesDict** (*dict*) – Dictionary of genes for each chemical as query
     """
@@ -89,17 +89,17 @@ def readCTDFile(CTDFile, nbPub, outputPath):
 
 def CTDrequest(chemName, association, outputPath, nbPub):
     """
-    Function requests CTD database.
+    Function to request CTD database.
 
     Search all genes which interact with the chemical given in input.
-    Could be several chemicals names. Analysis will be done like if it's only one chemical.
+    Could be several chemicals names in the same line. Analysis will be done like if it's only one chemical.
     If hierarchicalAssociations is used, chemical related to the chemical given in input are used as query.
     Focus on genes present in Homo sapiens.
 
-    :param str chemName: chemical name of MeSH ids string
-    :param str association: association name (hierarchicalAssociations or directAssociations)
+    :param str chemName: Chemical name of MeSH ids string
+    :param str association: Association name (hierarchicalAssociations or directAssociations)
     :param str outputPath: Folder path to save the results
-    :param int nbPub: Number of references needed to keep an interaction
+    :param int nbPub: Minimum number of publications to keep an interaction
 
     :return:
         - **homoGenesList** (*list*) – List of genes which interact with chemicals given in input (only Homo sapiens)
@@ -164,11 +164,6 @@ def CTDrequest(chemName, association, outputPath, nbPub):
             outputFileHandler.write('\t'.join(resultLine))
             outputFileHandler.write('\n')
 
-    # print(chemMeSH + " - Total number of interactions in the request : " + str(len(homoResultsList)))
-    # print(chemMeSH + " - Number of uniq chemicals in the request : " + str(len(meshNamesDict)))
-    # print(chemMeSH + " - Number of uniq target genes : " + str(len(homoGenesList)))
-    # print('\n')
-
     return chemMeSH, homoGenesList
 
 
@@ -179,9 +174,9 @@ def CTDrequestFromFeaturesList(chemList, association, outputPath, nbPub):
     If several element, the analysis will be done like if there is only one chemical.
 
     :param list chemList: List of chemical to request to CTD (MeSH IDs or chemical names)
-    :param str association: association name (hierarchicalAssociations or directAssociations)
+    :param str association: Association name (hierarchicalAssociations or directAssociations)
     :param str outputPath: Folder path to save the results
-    :param int nbPub: Number of references needed to keep an interaction
+    :param int nbPub: Minimum number of publications to keep an interaction
 
     :return:
         - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
@@ -208,10 +203,10 @@ def targetGenesExtraction(chemicalsFile, directAssociations, outputPath, nbPub):
     Save results into output file
     Return the gene targets list
 
-    :param FILE chemicalsFile: content of the chemicals file list
+    :param FILE chemicalsFile: Content of the chemicals file list
     :param bool directAssociations: Chemical only or descendants too
-    :param PATH outputPath: folder path name to save results
-    :param int nbPub: number of paper to keep an interaction
+    :param PATH outputPath: Folder path name to save results
+    :param int nbPub: Minimum number of publications to keep an interaction
 
     :return:
         - **chemTargetsDict** (*dict*) – Dict composed of interaction genes list for each chemical
@@ -223,7 +218,6 @@ def targetGenesExtraction(chemicalsFile, directAssociations, outputPath, nbPub):
         association = 'hierarchicalAssociations'
 
     # Read CTD file and request CTD database
-    # print('\nCTD request: ')
     with alive_bar(title='Request CTD', theme='musical') as bar:
         chemNameList = readFeaturesFile(featuresFile=chemicalsFile)
         chemTargetsDict = CTDrequestFromFeaturesList(chemList=chemNameList, association=association,

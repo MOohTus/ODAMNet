@@ -39,7 +39,7 @@ def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pat
     :param dict pathOfInterestNamesDict: Dictionary of WP composed of title of them
     :param set pathwaysOfInterestList: Pathways of interest list and their associated background name
     :param set backgroundGenesDict: Dict of background genes
-    :param str featureName: feature name (g.e. MeSH ID or chemical name etc.)
+    :param str featureName: Feature name (g.e. MeSH ID or chemical name etc.)
     :param str outputPath: Folder path to save the results
     :param str analysisName: Analysis name for the output name file
     """
@@ -161,10 +161,10 @@ def DOMINO(genesFileName, networkFileName, outputPath, featureName):
     """
     Run active modules identification analysis on the DOMINO server
 
-    :param genesFileName: active genes file name (g.e. list of genes of interest)
-    :param networkFileName: network file name
-    :param outputPath: output path name to save the results
-    :param featureName: feature name (g.e. chemical name)
+    :param genesFileName: Active genes file name (g.e. list of genes of interest)
+    :param networkFileName: Network file name
+    :param outputPath: Output path name to save the results
+    :param featureName: Feature name (g.e. chemical name)
     :return:
         - **activeModulesDict** (*dict*) – Dict of active modules identified
     """
@@ -223,12 +223,12 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFileName, pathOfInterestGenesD
     For each AM identified, run an overlap analysis against the pathways of interest.
 
     :param featuresDict: Dict of list of genes
-    :param networkFileName: content of network file
+    :param networkFileName: Content of network file
     :param pathOfInterestGenesDict: Genes dict of pathways of interest
     :param pathOfInterestNamesDict: Names dict of pathways of interest
     :param pathwaysOfInterestList: List of pathways of interest and their bg name associated
     :param backgroundGenesDict: Dict of background genes
-    :param outputPath: output path name to save results
+    :param outputPath: Output path name to save results
     :param str analysisName: Analysis name for the output name file
     """
     # Parameters
@@ -386,9 +386,9 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
     Create a bipartite between genes symbols and pathways of interest
     Create a disconnected network between pathways of interest
 
-    :param filename bipartiteName: bipartite file name
-    :param FILENAME networkName: network file name
-    :param dict pathOfInterestGenesDict: dict of pathways of interest
+    :param filename bipartiteName: Bipartite file name
+    :param FILENAME networkName: Network file name
+    :param dict pathOfInterestGenesDict: Dict of pathways of interest
     """
     # Parameters
     pathwayIDs = []
@@ -417,7 +417,7 @@ def downloadNDExNetwork(networkUUID, outputFileName):
     """
     Download network from NDEx website
 
-    :param str networkUUID: network ID
+    :param str networkUUID: Network ID
     :param FILENAME outputFileName: SIF file name to write network
     """
     # Create NDEx2 python client

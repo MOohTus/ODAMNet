@@ -22,7 +22,7 @@ def readRequestResultsWP(WPrequestResult):
     Parse and extract information from request.
     Extract genes, names and IDs of pathways.
 
-    :param bytes WPrequestResult: request result from WikiPathway
+    :param bytes WPrequestResult: Request result from WikiPathway
 
     :return:
         - **WPgenesDict** (*dictionary*) – Dict of genes for each WikiPathway
@@ -132,7 +132,7 @@ def allHumanGenesFromWP(outputPath):
     :param str outputPath: Folder path to save the results
 
     :return:
-        - **backgroundsDict** (*dict*) – dict of all human genes from WP
+        - **backgroundsDict** (*dict*) – Dict of all human genes from WP
     """
     # Parameters
     WPgenesDict = {}
@@ -197,7 +197,7 @@ def readGMTFile(GMTFile):
     """
     Parse and extract information from GMT file.
 
-    :param FILE GMTFile: content of GMT file
+    :param FILE GMTFile: Content of GMT file
 
     :return:
         - **pathOfInterestGenesDict** (*dict*) – Dict of genes for each pathway of interest
