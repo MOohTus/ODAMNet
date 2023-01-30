@@ -427,6 +427,8 @@ We selected the top 10 of diseases (:ref:`Table 19 <useCase2_diseasesRWR>`).
     +-------------+-----------------------------------------+----------+
     | OMIM:601665 | OBESITY                                 | 0.000181 |
     +-------------+-----------------------------------------+----------+
+    | OMIM:171300 | PHEOCHROMOCYTOMA                        | 0.000145 |
+    +-------------+-----------------------------------------+----------+
 
 You can represent the results with a network as shown in the :numref:`useCase2_simNetworkRWR`.
 
@@ -440,6 +442,7 @@ You can represent the results with a network as shown in the :numref:`useCase2_s
     Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
 
 Rare disease pathways identified
+
 ====================================
 
 Approaches give us a list of CAKUT pathways significantly connected to vitamin A target genes. To easily compare results,

@@ -326,7 +326,7 @@ RWR
 
 The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
 
-1. Multiplex (PPI + Complex + Reactome) and pathways of interest network connected to genes nodes
+1. Multiplex (PPI + Complex + Reactome) and Rare Disease pathways network connected to genes nodes
 2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite
 
 *For more details about RWR, see* :doc:`../approaches/methods_RWR`.
@@ -334,7 +334,7 @@ The third approach, Random Walk with Restart (RWR), is applied into two differen
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
 
-| To know how to create the pathways of interest network: see :ref:`pathwaysOfInterestNet`.
+| To know how to create the Rare Disease pathways network network: see :ref:`pathwaysOfInterestNet`.
 | To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
 Whatever the network used, we want to extract target genes of vitamin A and its child molecules (``--directAssociation False``).
@@ -359,7 +359,7 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 
     .. tabs::
 
-        .. group-tab:: Pathways of interest network
+        .. group-tab:: Rare Disease pathways network
 
             .. code-block:: bash
                 :emphasize-lines: 9,11
@@ -458,7 +458,7 @@ Random Walk with Restart results
 
 We use the default parameters, whatever the networks used.
 
-Pathways of interest network analysis
+Rare Disease pathways network analysis
 """"""""""""""""""""""""""""""""""""""""""
 
 *In this part, we present results found for the first multiplex composition: multiplex + RD pathways.*
@@ -541,7 +541,7 @@ shown on the :numref:`useCase1_orsum`.
    :alt: usecase 1 pathwaysNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multilayer and pathways of interest network
+   : Results from RWR through the molecular multilayer and Rare Disease pathways network
 
     Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
 

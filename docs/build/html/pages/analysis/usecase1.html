@@ -645,14 +645,14 @@ a network representation (<a class="reference internal" href="#dominousage1fig">
 <span id="usecase1-rwr"></span><h2>RWR<a class="headerlink" href="#rwr" title="Permalink to this headline">¶</a></h2>
 <p>The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:</p>
 <ol class="arabic simple">
-<li><p>Multiplex (PPI + Complex + Reactome) and pathways of interest network connected to genes nodes</p></li>
+<li><p>Multiplex (PPI + Complex + Reactome) and Rare Disease pathways network connected to genes nodes</p></li>
 <li><p>Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite</p></li>
 </ol>
 <p><em>For more details about RWR, see</em> <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
 <div class="section" id="running-random-walk-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running Random Walk analysis with data extracted automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
-<div class="line">To know how to create the pathways of interest network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a>.</div>
+<div class="line">To know how to create the Rare Disease pathways network network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways of interest network</span></a>.</div>
 <div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
 </div>
 <p>Whatever the network used, we want to extract target genes of vitamin A and its child molecules (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
@@ -670,7 +670,7 @@ You need to give the SIF name (<code class="docutils literal notranslate"><span 
 <p>Whatever the networks used, the <strong>command line is the same</strong>. But you have to <strong>change</strong> the network name inside the
 <strong>configuration file</strong>.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" name="UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" role="tab" tabindex="0">Pathways of interest network</button><button aria-controls="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tab" tabindex="-1">Disease-Disease similarity network</button></div><div aria-labelledby="tab-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" id="panel-0-UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" name="UGF0aHdheXMgb2YgaW50ZXJlc3QgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" name="UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" role="tab" tabindex="0">Rare Disease pathways network</button><button aria-controls="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tab" tabindex="-1">Disease-Disease similarity network</button></div><div aria-labelledby="tab-0-UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" class="sphinx-tabs-panel group-tab" id="panel-0-UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" name="UmFyZSBEaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span> multiplex:
      <span class="m">1</span>:
          layers:
              - multiplex/1/Complexes_Nov2020.gr
@@ -769,8 +769,8 @@ following <a class="reference internal" href="#usecase1rwrctd"><span class="std 
 <div class="section" id="random-walk-with-restart-results">
 <h4>Random Walk with Restart results<a class="headerlink" href="#random-walk-with-restart-results" title="Permalink to this headline">¶</a></h4>
 <p>We use the default parameters, whatever the networks used.</p>
-<div class="section" id="pathways-of-interest-network-analysis">
-<h5>Pathways of interest network analysis<a class="headerlink" href="#pathways-of-interest-network-analysis" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="rare-disease-pathways-network-analysis">
+<h5>Rare Disease pathways network analysis<a class="headerlink" href="#rare-disease-pathways-network-analysis" title="Permalink to this headline">¶</a></h5>
 <p><em>In this part, we present results found for the first multiplex composition: multiplex + RD pathways.</em></p>
 <p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
@@ -905,7 +905,7 @@ with target genes (i.e. seeds).</p>
 shown on the <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
 <div class="figure align-center" id="id22">
 <span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways of interest network</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the molecular multilayer and Rare Disease pathways network</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <blockquote>
 <div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
