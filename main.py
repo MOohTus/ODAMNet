@@ -23,13 +23,13 @@ from alive_progress import alive_bar
 import shutil as shutil
 
 # Script version
-VERSION = '1.0'
+__version__ = '1.0'
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
 
 @click.group(context_settings=CONTEXT_SETTINGS, cls=customClick.NaturalOrderGroup)
-@click.version_option(VERSION)
+@click.version_option(__version__)
 def main():
     """
     [OPTIONS] = overlap | domino | multixrank | networkCreation
@@ -50,13 +50,14 @@ def main():
 @optgroup.option('-r', '--CTD_file', 'CTD_file', type=click.File(), help='CTD file name')
 @optgroup.option('-t', '--targetGenesFile', 'targetGenesFile', type=click.File(), help='Target genes file name')
 @click.option('--directAssociation', 'directAssociation', default=True, type=bool, show_default=True,
-              help='True: Extract target genes from chemicals \n False: Extract target genes from chemicals + its child chemicals')
+              help='True: Extract target genes from chemicals \n '
+                   'False: Extract target genes from chemicals + its child chemicals')
 @click.option('--nbPub', 'nbPub', default=2, type=int, show_default=True,
               help='Minimum number of publications to keep an interaction')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest file name (GMT file)\n')
-@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
-              help='Background genes file name\n')
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf,
+              required_if='pathOfInterestGMT', help='Background genes file name\n')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name to save results')
 def overlap(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile, outputPath):
@@ -124,8 +125,8 @@ def overlap(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, 
 @click.option('--netUUID', 'networkUUID', type=str, help='NDEx network ID')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(), cls=customClick.RequiredIf, required_if='backgroundFile',
               help='Pathways of interest file name (GMT file)\n')
-@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf, required_if='pathOfInterestGMT',
-              help='Background genes file name\n')
+@click.option('--backgroundFile', 'backgroundFile', type=click.File(), cls=customClick.RequiredIf,
+              required_if='pathOfInterestGMT', help='Background genes file name\n')
 @click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
               help='Output folder name to save results')
 def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUID, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,

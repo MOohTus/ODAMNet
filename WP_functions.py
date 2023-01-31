@@ -83,7 +83,7 @@ def rareDiseasesWPrequest(outputPath):
             ?pathway wp:ontologyTag cur:RareDiseases ;
                     a wp:Pathway ;
                     wp:organismName "Homo sapiens" ;
-                    dc:title ?title ; 
+                    dc:title ?title ;
                     dcterms:identifier ?WPID.
             ?gene a wp:GeneProduct ;
                     dcterms:isPartOf ?pathway ;

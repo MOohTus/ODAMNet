@@ -55,6 +55,7 @@ def readCTDFile(CTDFile, nbPub, outputPath):
     targetGenesDict = {}
     chemNameList = []
     outputLines = []
+    header = ''
 
     for line in CTDFile:
         lineList = line.rstrip().split('\t')

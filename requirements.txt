@@ -9,3 +9,4 @@ click>=8.0.1
 sphinx-tabs>=3.4.1
 multixrank==0.1
 ndex2==3.5.0
+networkx==2.5
