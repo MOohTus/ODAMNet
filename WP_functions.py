@@ -9,6 +9,7 @@ WikiPathways functions
 
 # Libraries
 import os.path
+import shutil as shutil
 from SPARQLWrapper import SPARQLWrapper, TSV
 from datetime import datetime
 from alive_progress import alive_bar
@@ -50,7 +51,11 @@ def readRequestResultsWP(WPrequestResult):
     return WPgenesDict, WPnamesDict
 
 
-def rareDiseasesWPrequest(outputPath):
+## MT - 01/02/2023
+## THI FUNCTION IS REPLACE BY THE FOLLOWING FUNCTION
+## WIKIPATHWAYS REMOVED THE RARE DISEASE LABEL ...
+## WHEN IT WILL FIXE, THE FUNCTION WILL BECOME AS BEFORE
+def rareDiseasesWPrequest_tmp(outputPath):
     """
     Function requests WikiPathway database.
 
@@ -122,6 +127,25 @@ def rareDiseasesWPrequest(outputPath):
 
     # Return
     return WPgenesDict, WPnamesDict, WPList
+
+def rareDiseasesWPrequest(outputPath):
+    """
+    Replace rareDiseasesWPrequest_tmp until we understand
+    why is happening with WP ...
+
+    :param str outputPath: Folder path to save the results (no use)
+
+    :return:
+        - **WPgenesDict** (*dictionary*) – Dict of genes for each RD WikiPathway
+        - **WPnamesDict** (*dictionary*) – Dict of names for each RD WikiPathway
+        - **pathwayOfInterestList** (*list*) – Pathway names list
+    """
+    RDGMTFileName = 'useCases/InputData/WP_RareDiseases_request_2022_09_07.gmt'
+    shutil.copyfile(RDGMTFileName, outputPath + '/' + os.path.basename(RDGMTFileName))
+    with open(RDGMTFileName, 'r') as GMTFile:
+        WPgenesDict, WPnamesDict, pathwayOfInterestList = readGMTFile(GMTFile=GMTFile)
+
+    return WPgenesDict, WPnamesDict, pathwayOfInterestList
 
 
 def allHumanGenesFromWP(outputPath):

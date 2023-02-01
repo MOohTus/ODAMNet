@@ -221,6 +221,7 @@ class TestRequestFunctions(unittest.TestCase):
         self.assertEqual(chemList, chemList_expected)
         self.assertEqual(chemTargetsDict, chemTargetsDict_expected)
 
+    @unittest.skip('WP request to extract Rare Diseases pathways do not work anymore. 01/02/2023')
     def test_rareDiseasesWPrequest(self):
         # Parameters
         outputPath = 'TestRequestFunctions/'
