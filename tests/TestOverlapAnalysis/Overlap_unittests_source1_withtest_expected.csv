@@ -1,0 +1,4 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+Pathway1;Pathway1 from source 1;Source1;5;4;3;10;0.2619047619047619;0.738095238095238;gene1 gene2 gene4
+Pathway2;Pathway2 from source 1;Source1;5;4;2;10;0.738095238095238;0.738095238095238;gene1 gene3
+Pathway3;Pathway3 from source 1;Source1;2;4;1;10;0.6666666666666671;0.738095238095238;gene1

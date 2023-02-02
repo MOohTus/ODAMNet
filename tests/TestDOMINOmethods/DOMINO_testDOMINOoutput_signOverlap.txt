@@ -1,0 +1,4 @@
+Pathway2	0.02
+Pathway3	0.02
+Pathway1	0.04
+Pathway4	0.04

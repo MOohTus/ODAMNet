@@ -1,0 +1,17 @@
+geneSymbol	AM_number	termID	termTitle	overlap_padj
+CCND1	2	WP3998	Prader-Willi and Angelman syndrome	2.0010295274385754e-07
+CCND2	2	WP3998	Prader-Willi and Angelman syndrome	2.0010295274385754e-07
+CDK4	2	WP3998	Prader-Willi and Angelman syndrome	2.0010295274385754e-07
+CDK6	2	WP3998	Prader-Willi and Angelman syndrome	2.0010295274385754e-07
+CDKN2B	2	WP3998	Prader-Willi and Angelman syndrome	2.0010295274385754e-07
+CCND1	2	WP5087	Malignant pleural mesothelioma	0.0010593141454603504
+CCND2	2	WP5087	Malignant pleural mesothelioma	0.0010593141454603504
+CCND3	2	WP5087	Malignant pleural mesothelioma	0.0010593141454603504
+CDK4	2	WP5087	Malignant pleural mesothelioma	0.0010593141454603504
+CDKN1A	2	WP5087	Malignant pleural mesothelioma	0.0010593141454603504
+CCND1	2	WP4844	Influence of laminopathies on Wnt signaling	0.01624359622343856
+CDK6	2	WP4844	Influence of laminopathies on Wnt signaling	0.01624359622343856
+CDK4	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.02891327550568592
+CDKN1A	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.02891327550568592
+RARA	6	WP5053	Development of ureteric collection system	0.03547851891305809
+RARB	6	WP5053	Development of ureteric collection system	0.03547851891305809

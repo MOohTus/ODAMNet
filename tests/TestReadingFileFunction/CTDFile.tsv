@@ -1,0 +1,10 @@
+Input	ChemicalName	ChemicalId	CasRN	GeneSymbol	GeneId	Organism	OrganismId	PubMedIds
+feature1	ChemicalName 1	ID1	CasRN-1	Gene1	X1	Homo sapiens	9606	CODE1
+feature1	ChemicalName 1	ID1	CasRN-1	Gene2	X2	Homo sapiens	9606	CODE2
+feature1	ChemicalName 1	ID1	CasRN-1	Gene1	X1	Homo sapiens	9606	CODE2|CODE2
+feature1	ChemicalName 1	ID1	CasRN-1	Gene2	X2	Homo sapiens	9606	CODE2|CODE2|CODE2
+feature1	ChemicalName 2	ID2	CasRN-2	Gene3	X3	Homo sapiens	9606	CODE3|CODE4
+feature1	ChemicalName 2	ID2	CasRN-2	Gene3	X3	Homo sapiens	9606	CODE3|CODE4
+feature2	ChemicalName 1	ID1	CasRN-1	Gene1	X1	Homo sapiens	9606	CODE3|CODE4
+feature2	ChemicalName 2	ID2	CasRN-2	Gene4	X4	Homo sapiens	9606	CODE5
+feature2	ChemicalName 2	ID2	CasRN-2	Gene5	X5	Homo sapiens	9606	CODE6|CODE7|CODE8|CODE9

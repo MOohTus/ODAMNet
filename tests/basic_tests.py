@@ -15,10 +15,10 @@ import pandas as pd
 import networkx as nx
 import os
 import filecmp
-import WP_functions as WP
-import CTD_functions as CTD
+import EnvironmentProject.WP_functions as WP
+import EnvironmentProject.CTD_functions as CTD
+import EnvironmentProject.methods_functions as methods
 from datetime import datetime
-import methods_functions as methods
 
 
 class TestReadingFileFunction(unittest.TestCase):

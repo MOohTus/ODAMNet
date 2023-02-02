@@ -1,0 +1,5 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+Pathway1;P1;S1;10;5;5;20;00;0.6;g1 g2 g4 g5 g20
+Pathway2;P2;S1;20;5;3;20;00;0.02;g1 g2 g4
+Pathway3;P3;S2;4;5;4;30;00;0.02;g1 g2 g4 g5
+Pathway4;P4;S2;5;5;5;30;00;1;g1 g2 g4 g5 g20
