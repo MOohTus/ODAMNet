@@ -3,12 +3,12 @@ requires = ['setuptools>=59.8.0', 'wheel']
 build-backend = 'setuptools.build_meta'
 
 [project]
-name = 'EnvironmentProject'
-authors = {name = "Morgane Térézol"}
+name = 'ODAMNet'
+authors = [{name = "Morgane Térézol"}]
 version = '1.0'
 description = 'Study the link between environmental factors and rare disease'
 readme = {file = 'README.md', content-type = 'text/markdown'}
-requires-python => 3.9
+requires-python = '>=3.9'
 license = {file = 'LICENSE'}
 keywords = [
 	'rare diseases',
@@ -20,7 +20,7 @@ keywords = [
         'active module identification',
         'random walk with restart',
         'RWR',
-         'AMI',
+        'AMI',
         'EJP-RD'
 ]
 classifiers = [
@@ -32,8 +32,8 @@ classifiers = [
 ]
 
 [project.urls]
-Source = 'https://github.com/MOohTus/EnvironmentProject'
-Documentation = 'https://github.com/MOohTus/EnvironmentProject/blob/main/docs/build/html/index.html'
+Source = 'https://github.com/MOohTus/ODAMNet'
+Documentation = 'https://github.com/MOohTus/ODAMNet/blob/main/docs/build/html/index.html'
 
 [project.scripts]
-main = ''
+odamnet = 'odamnet.odamnet:main'

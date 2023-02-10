@@ -11,13 +11,13 @@ Installation
 
 .. code-block:: bash
 
-   git clone https://github.com/MOohTus/EnvironmentProject.git
+   git clone https://github.com/MOohTus/ODAMNet.git
 
 2. Then, go inside
 
 .. code-block:: bash
 
-   cd EnvironmentProject/
+   cd ODAMNet/
 
 3. Run the setup.py file from that directory
 
@@ -45,7 +45,7 @@ Three different approaches are available to analyse your data:
 
 .. code-block:: bash
 
-   python3 main.py [overlap|domino|multixrank|networkCreation] [ARGS]
+   odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
 
 Examples
 ----------------
@@ -60,7 +60,7 @@ This method computes the overlap between CTD-associated target genes and WP Rare
 
 .. code-block:: bash
 
-   python3 main.py overlap --factorList FILENAME
+   odamnet overlap --factorList FILENAME
 
 Active Module Identification
 """""""""""""""""""""""""""""""""
@@ -72,7 +72,7 @@ The target gene list is extended to others related genes.%A% I'm not sure to get
 
 .. code-block:: bash
 
-   python3 main.py domino --factorList FILENAME --networkFile FILENAME
+   odamnet domino --factorList FILENAME --networkFile FILENAME
 
 Random Walk with Restart
 """"""""""""""""""""""""""""
@@ -86,7 +86,7 @@ Diseases will be only connected with genes (in the multilayer) that are involved
 
 .. code-block:: bash
 
-   python3 main.py networkCreation --networksPath PATH --bipartitePath PATH
+   odamnet networkCreation --networksPath PATH --bipartitePath PATH
 
 multiXrank
 ^^^^^^^^^^^^^^^^^^
@@ -96,7 +96,7 @@ The walk starts from target genes and diffuses through the multilayer composed o
 
 .. code-block:: bash
 
-   python3 main.py multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
+   odamnet multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 
 
 The documentation is in the ``doc/html/index.html`` for now. Will is it hosted by ReadTheDocs after ?
