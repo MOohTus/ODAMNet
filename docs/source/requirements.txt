@@ -1,6 +1,6 @@
 sphinx_autodoc_typehints>=1.12.0
-sphinx_click=>3.0.1
-sphinx_argparse_cli=>1.8.0
-sphinx_tabs=>3.3.1
-sphinx_rtd_theme=>0.5.2
-sphinx_design=>0.3.0
+sphinx_click>=3.0.1
+sphinx_argparse_cli>=1.8.0
+sphinx_tabs>=3.3.1
+sphinx_rtd_theme>=0.5.2
+sphinx_design>=0.3.0
