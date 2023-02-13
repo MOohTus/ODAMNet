@@ -4,21 +4,21 @@ Code functions in details
 
 Method functions
 ====================
-.. automodule:: methods_functions
+.. automodule:: odamnet.methods_functions
   :member-order: bysource
   :members:
   :undoc-members:
 
 CTD functions
 ====================
-.. automodule:: CTD_functions
+.. automodule:: odamnet.CTD_functions
   :member-order: bysource
   :members:
   :undoc-members:
 
 WP functions
 ====================
-.. automodule:: WP_functions
+.. automodule:: odamnet.WP_functions
   :member-order: bysource
   :members:
   :undoc-members:

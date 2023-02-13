@@ -10,15 +10,15 @@ Analysis calling
 """
 
 # Methods
-import EnvironmentProject.CTD_functions as CTD
-import EnvironmentProject.WP_functions as WP
-import EnvironmentProject.methods_functions as methods
+import odamnet.CTD_functions as CTD
+import odamnet.WP_functions as WP
+import odamnet.methods_functions as methods
 
 # Libraries
 import os
 import click
 from click_option_group import optgroup, RequiredMutuallyExclusiveOptionGroup
-import EnvironmentProject.customClick as customClick
+import odamnet.customClick as customClick
 from alive_progress import alive_bar
 import shutil as shutil
 

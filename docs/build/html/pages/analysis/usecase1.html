@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Use-case 1: data are extracted automatically with requests &mdash; EnvironmentProject 1 documentation</title>
+  <title>Use-case 1: data are extracted automatically with requests &mdash; ODAMNet 1 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> EnvironmentProject
+            <a href="../../index.html" class="icon icon-home"> ODAMNet
           
 
           
@@ -97,7 +97,6 @@
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Installation.html#requirements">Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
@@ -172,7 +171,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">EnvironmentProject</a>
+          <a href="../../index.html">ODAMNet</a>
         
       </nav>
 
@@ -211,9 +210,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            
-              <a href="https://github.com/MOohTus/EnvironmentProject/blob/main/docs/source/pages/analysis/usecase1.rst" class="fa fa-github"> Edit on GitHub</a>
-            
+            <a href="../../_sources/pages/analysis/usecase1.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -247,7 +244,7 @@ We choose to use as chemical of interest, the <strong>vitamin A</strong>.</p>
 and by its child molecules. So, the <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 We keep only interactions which have at least two associated publications(<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).
 Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet overlap --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
                         --nbPub <span class="m">2</span> <span class="se">\</span>
                         --outputPath useCases/OutputResults_useCase1/
@@ -438,7 +435,7 @@ For more detail, see <a class="reference internal" href="../approaches/methods_A
 We keep only vitamin-gene interactions with at least to associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
 <p>We identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet domino  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                         --directAssociation FALSE <span class="se">\</span>
                         --nbPub <span class="m">2</span> <span class="se">\</span>
                         --networkFile useCases/InputData/PPI_network_2016.sif <span class="se">\</span>
@@ -706,7 +703,7 @@ You need to give the SIF name (<code class="docutils literal notranslate"><span 
 </div>
 </div></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv <span class="se">\</span>
                             --directAssociation FALSE <span class="se">\</span>
                             --nbPub <span class="m">2</span> <span class="se">\</span>
                             --configPath useCases/InputData/config_minimal_useCase1.yml <span class="se">\</span>

@@ -1,9 +1,9 @@
-.. EnvironmentProject documentation master file, created by
+.. ODAMNet documentation master file, created by
    sphinx-quickstart on Fri Jul 22 11:43:41 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-EnvironmentProject's documentation
+ODAMNet's documentation
 ==================================
 
 .. important::

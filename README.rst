@@ -7,32 +7,38 @@ The goal of this project is to develop computational approaches to analyse the l
 Installation 
 ----------------
 
+From PyPi - *It's on going*
+""""""""""""""""""""""""""""""""
+
+ODAMNet is available as python package. You can easily install it using `pip`.
+
+.. code-block:: bash
+
+   pip install odamnet
+
+From Conda - *It's on going*
+""""""""""""""""""""""""""""""
+
+You can also install it from `bioconda <https://bioconda.github.io/index.html>`_.
+
+.. code-block:: bash
+
+   conda install odamnet
+
+From Github
+"""""""""""""""""""""
+
 1. Clone the repository from Github
 
 .. code-block:: bash
 
    git clone https://github.com/MOohTus/ODAMNet.git
 
-2. Then, go inside
+2. Then, install it
 
 .. code-block:: bash
 
-   cd ODAMNet/
-
-3. Run the setup.py file from that directory
-
-.. code-block:: bash
-
-   python3 setup.py install
-
-Requirements
-----------------
-
-The required Python modules are listed in the requirements.txt file. To install them:
-
-.. code-block:: bash
-
-   python3 install requirements.txt
+   pip install -e ODAMNet/
 
 Usage
 ----------------
@@ -50,29 +56,28 @@ Three different approaches are available to analyse your data:
 Examples
 ----------------
 
-Three approaches are implemented to study the relationships between Rare Diseases (from WikiPathways (WP)) and genes targeted by environmental factors (extracted
+Three approaches are implemented to study the relationships between Rare Diseases (from WikiPathways (WP)) and genes targeted by chemicals factors (extracted
 from CTD database):
 
 Overlap analysis
 """""""""""""""""""""
 
-This method computes the overlap between CTD-associated target genes and WP Rare Disease pathways. It is looking for direct associations, i.e., target genes that are part of pathways.
+This method computes the overlap between target genes and Rare Disease pathways. It is looking for direct associations, i.e., target genes that are part of pathways.
 
 .. code-block:: bash
 
-   odamnet overlap --factorList FILENAME
+   odamnet overlap ----chemicalsFile FILENAME
 
 Active Module Identification
 """""""""""""""""""""""""""""""""
 
-CTD-associated target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
-Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + associated genes)
+Target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
+Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + linked genes)
 and Rare Disease pathways.
-The target gene list is extended to others related genes.%A% I'm not sure to get this sentence?
 
 .. code-block:: bash
 
-   odamnet domino --factorList FILENAME --networkFile FILENAME
+   odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
 
 Random Walk with Restart
 """"""""""""""""""""""""""""
@@ -96,7 +101,7 @@ The walk starts from target genes and diffuses through the multilayer composed o
 
 .. code-block:: bash
 
-   odamnet multixrank --factorList FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
+   odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 
 
-The documentation is in the ``doc/html/index.html`` for now. Will is it hosted by ReadTheDocs after ?
+The documentation is in the ``doc/html/index.html`` for now. *It will be hosted in ReadTheDocs soon.*

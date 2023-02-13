@@ -34,7 +34,7 @@ Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 .. code-block:: bash
 
-        python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
+        odamnet overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                 --directAssociation FALSE \
                                 --nbPub 2 \
                                 --outputPath useCases/OutputResults_useCase1/
@@ -166,7 +166,7 @@ Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 .. code-block:: bash
 
-        python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+        odamnet domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                 --directAssociation FALSE \
                                 --nbPub 2 \
                                 --networkFile useCases/InputData/PPI_network_2016.sif \
@@ -404,7 +404,7 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 
 .. code-block:: bash
 
-    python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+    odamnet multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                 --directAssociation FALSE \
                                 --nbPub 2 \
                                 --configPath useCases/InputData/config_minimal_useCase1.yml \

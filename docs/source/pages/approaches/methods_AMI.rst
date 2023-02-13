@@ -179,7 +179,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+            odamnet domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                     --directAssociation FALSE \
                                     --nbPub 2 \
                                     --networkFile useCases/InputData/PPI_network_2016.sif \
@@ -189,7 +189,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+            odamnet domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                     --GMT useCases/InputData/PathwaysOfInterest.gmt \
                                     --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
                                     --networkFile useCases/InputData/PPI_network_2016.sif \

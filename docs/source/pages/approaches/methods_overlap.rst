@@ -99,7 +99,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
+            odamnet overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                     --directAssociation FALSE \
                                     --nbPub 2 \
                                     --outputPath useCases/OutputResults_useCase1/
@@ -108,7 +108,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+            odamnet overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                     --GMT useCases/InputData/PathwaysOfInterest.gmt \
                                     --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
                                     --outputPath useCases/OutputResults_useCase2/

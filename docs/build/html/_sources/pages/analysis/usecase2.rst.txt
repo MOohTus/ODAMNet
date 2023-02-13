@@ -39,7 +39,7 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 .. code-block:: bash
 
-        python3 main.py overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+        odamnet overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                 --GMT useCases/InputData/PathwaysOfInterest.gmt \
                                 --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
                                 --outputPath useCases/OutputResults_useCase2/
@@ -132,7 +132,7 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 .. code-block:: bash
 
-        python3 main.py domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+        odamnet domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                 --GMT useCases/InputData/PathwaysOfInterest.gmt \
                                 --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
                                 --networkFile useCases/InputData/PPI_network_2016.sif \
@@ -328,7 +328,7 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 
 .. code-block:: bash
 
-    python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+    odamnet multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                 --configPath useCases/InputData/config_minimal_useCase2.yml \
                                 --networksPath useCases/InputData/ \
                                 --seedsFile useCases/InputData/seeds.txt \

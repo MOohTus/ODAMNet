@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'EnvironmentProject'
+project = 'ODAMNet'
 copyright = '2022, Térézol'
 author = 'Térézol'
 
@@ -57,13 +57,13 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
-html_context = {
-    "display_github": True, # Integrate GitHub
-    "github_user": "MOohTus", # Username
-    "github_repo": "EnvironmentProject", # Repo name
-    "github_version": "main", # Version
-    "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
-}
+# html_context = {
+#     "display_github": True, # Integrate GitHub
+#     "github_user": "MOohTus", # Username
+#     "github_repo": "ODAMNet", # Repo name
+#     "github_version": "main", # Version
+#     "conf_py_path": "/docs/source/", # Path in the checkout to the docs root
+# }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

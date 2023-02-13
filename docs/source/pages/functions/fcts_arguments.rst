@@ -2,41 +2,41 @@
 Input parameters for each approach
 ==================================================
 
-Main script
-=============
+ODAMNet script
+=================
 
-.. click:: main:main
-   :prog: main
+.. click:: odamnet.odamnet:main
+   :prog: odamnet
 
 Overlap
 =============
 
-.. click:: main:overlap
-   :prog: main overlap
+.. click:: odamnet.odamnet:overlap
+   :prog: odamnet overlap
    :nested: full
    :commands: overlap
 
 DOMINO
 =============
 
-.. click:: main:DOMINO
-   :prog: main domino
+.. click:: odamnet.odamnet:DOMINO
+   :prog: odamnet domino
    :nested: full
    :commands: domino
 
 RWR
 =============
 
-.. click:: main:multiXrank
-   :prog: main multixrank
+.. click:: odamnet.odamnet:multiXrank
+   :prog: odamnet multixrank
    :nested: full
    :commands: multixrank
 
 Network creation
 =====================
 
-.. click:: main:createNetworkFiles
-   :prog: main networkCreation
+.. click:: odamnet.odamnet:createNetworkFiles
+   :prog: odamnet networkCreation
    :nested: full
    :commands: networkCreation
 

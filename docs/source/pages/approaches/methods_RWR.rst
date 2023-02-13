@@ -102,7 +102,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
+            odamnet multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
                                         --directAssociation FALSE \
                                         --nbPub 2 \
                                         --configPath useCases/InputData/config_minimal_useCase1.yml \
@@ -116,7 +116,7 @@ Use-cases command line
 
         .. code-block:: bash
 
-            python3 main.py multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+            odamnet multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                                         --configPath useCases/InputData/config_minimal_useCase2.yml \
                                         --networksPath useCases/InputData/ \
                                         --seedsFile useCases/InputData/seeds.txt \
@@ -211,7 +211,7 @@ with ``networkCreation`` method.
 
         .. code-block:: bash
 
-            python3 main.py networkCreation --networksPath useCases/InputData/multiplex/2/ \
+            odamnet networkCreation --networksPath useCases/InputData/multiplex/2/ \
                                             --networksName WP_RareDiseasesNetwork_fromRequest.sif \
                                             --bipartitePath useCases/InputData/bipartite/ \
                                             --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
@@ -220,7 +220,7 @@ with ``networkCreation`` method.
 
         .. code-block:: bash
 
-            python3 main.py networkCreation --networksPath useCases/InputData/multiplex/2/ \
+            odamnet networkCreation --networksPath useCases/InputData/multiplex/2/ \
                                             --networksName pathwaysOfInterestNetwork_fromPaper.sif \
                                             --bipartitePath useCases/InputData/bipartite/ \
                                             --bipartiteName Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv \
@@ -255,7 +255,7 @@ Gene-disease bipartite
 """"""""""""""""""""""""
 
 *Data was download on the 2022/09/27.*
-*Association file is coming from HPO (`website <https://hpo.jax.org/app/data/annotation>`_).*
+*Association file is coming from HPO* (`website <https://hpo.jax.org/app/data/annotation>`_).
 
 The **molecular multiplex network** is connected to the **disease-disease similarity network** with the **gene-disease bipartite**.
 The bipartite contains 6,564 associations (4,483 genes and 5,878 diseases).
@@ -265,4 +265,4 @@ References
 
 .. [1] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
 .. [2] Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., ... & Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.
-.. [3] Westbury SK, Turro E, Greene D, Lentaigne C, Kelly AM, Bariana TK, Simeoni I, Pillois X, Attwood A, Austin S, Jansen SB, Bakchoul T, Crisp-Hihn A, Erber WN, Favier R, Foad N, Gattens M, Jolley JD, Liesner R, Meacham S, Millar CM, Nurden AT, Peerlinck K, Perry DJ, Poudel P, Schulman S, Schulze H, Stephens JC, Furie B, Robinson PN, van Geet C, Rendon A, Gomez K, Laffan MA, Lambert MP, Nurden P, Ouwehand WH, Richardson S, Mumford AD, Freson K; BRIDGE-BPD Consortium. Human phenotype ontology annotation and cluster analysis to unravel genetic defects in 707 cases with unexplained bleeding and platelet disorders. Genome Med. 2015 Apr 9;7(1):36. doi: 10.1186/s13073-015-0151-5. PMID: 25949529; PMCID: PMC4422517.
+.. [3] Westbury SK, Turro E, Greene D, et al. Human phenotype ontology annotation and cluster analysis to unravel genetic defects in 707 cases with unexplained bleeding and platelet disorders. Genome Med. 2015;7(1):36. Published 2015 Apr 9. doi:10.1186/s13073-015-0151-5
