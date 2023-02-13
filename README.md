@@ -89,9 +89,7 @@ The third approach mesures the proximity of every nodes (g.e. genes, diseases) t
 The walk starts from target genes and diffuses through the multilayer composed of different molecular interactions to the disease.
 
 ```console
-$ odamnet multixrank --chemicalsFile FILENAME --configPath PATH \
-                     --networksPath PATH --seedsFile FILENAME \
-                     --sifFileName FILENAME
+$ odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 ```
 
 [ODAMNet documentation]: https://odamnet.readthedocs.io/
