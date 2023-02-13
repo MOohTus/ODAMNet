@@ -47,7 +47,7 @@ dependencies = [
 
 [project.urls]
 Source = 'https://github.com/MOohTus/ODAMNet'
-Documentation = 'https://github.com/MOohTus/ODAMNet/blob/main/docs/build/html/index.html'
+Documentation = 'https://odamnet.readthedocs.io/en/latest/'
 
 [project.scripts]
 odamnet = 'odamnet.odamnet:main'
