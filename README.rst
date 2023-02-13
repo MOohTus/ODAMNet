@@ -4,7 +4,7 @@ README
 
 The goal of this project is to develop computational approaches to analyse the links and overlaps between environmental factors, their molecular targets, and rare diseases pathways.
 
-The `ODAMNet documentation<odamnet.readthedocs.io>`_ is available in ReadTheDocs. 
+The `ODAMNet documentation <https://odamnet.readthedocs.io/>`_ is available in ReadTheDocs. 
 
 Installation 
 ----------------
