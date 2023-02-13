@@ -5,7 +5,7 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'ODAMNet'
 authors = [{name = "Morgane Térézol"}]
-version = '1.0.0'
+version = '1.0.1'
 description = 'Study the link between environmental factors and rare diseases'
 readme = {file = 'README.rst', content-type = 'text/markdown'}
 requires-python = '>=3.9'

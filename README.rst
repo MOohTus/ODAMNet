@@ -16,7 +16,7 @@ ODAMNet is available as python package. You can easily install it using `pip`.
 
 .. code-block:: bash
 
-   pip install odamnet
+   python3 -m pip install odamnet
 
 From Conda - *It's on going*
 """"""""""""""""""""""""""""""
@@ -40,7 +40,7 @@ From Github
 
 .. code-block:: bash
 
-   pip install -e ODAMNet/
+   python3 -m pip install -e ODAMNet/
 
 Usage
 ----------------
