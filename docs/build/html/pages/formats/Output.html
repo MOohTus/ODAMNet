@@ -1,98 +1,54 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Output files &mdash; ODAMNet 1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
         <script src="../../_static/design-tabs.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Input parameters for each approach" href="../functions/fcts_arguments.html" />
     <link rel="prev" title="Input files" href="Input.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../index.html" class="icon icon-home"> ODAMNet
           
-
-          
+          <a href="../../index.html" class="icon icon-home">
+            ODAMNet
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
@@ -115,7 +71,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#request-file-results">Request file results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ctd-and-wikipathways-request-file-results">CTD and WikiPathways request file results</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ctd-request-file-results">CTD request file results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ctd-request-meshid-date-tsv">CTD_request_MeSHID_DATE.tsv</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ctd-requestfiltered-meshid-date-tsv">CTD_requestFiltered_MeSHID_DATE.tsv</a></li>
@@ -156,84 +112,43 @@
 <li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">ODAMNet</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Output files</li>
-    
-    
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Output files</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/pages/formats/Output.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="output-files">
-<h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="request-file-results">
-<span id="requestoutput"></span><h2>Request file results<a class="headerlink" href="#request-file-results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="ctd-request-file-results">
-<span id="ctdrequestouput"></span><h3>CTD request file results<a class="headerlink" href="#ctd-request-file-results" title="Permalink to this headline">¶</a></h3>
+             
+  <section id="output-files">
+<h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h1>
+<section id="ctd-and-wikipathways-request-file-results">
+<span id="requestoutput"></span><h2>CTD and WikiPathways request file results<a class="headerlink" href="#ctd-and-wikipathways-request-file-results" title="Permalink to this heading"></a></h2>
+<section id="ctd-request-file-results">
+<span id="ctdrequestouput"></span><h3>CTD request file results<a class="headerlink" href="#ctd-request-file-results" title="Permalink to this heading"></a></h3>
 <p>When you request CTD to extract the target genes, two files are created, whatever the approach you choose.</p>
-<div class="section" id="ctd-request-meshid-date-tsv">
-<h4>CTD_request_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-request-meshid-date-tsv" title="Permalink to this headline">¶</a></h4>
+<section id="ctd-request-meshid-date-tsv">
+<h4>CTD_request_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-request-meshid-date-tsv" title="Permalink to this heading"></a></h4>
 <p>This file contains the results from the request sent to CTD.</p>
-</div>
-<div class="section" id="ctd-requestfiltered-meshid-date-tsv">
-<h4>CTD_requestFiltered_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-requestfiltered-meshid-date-tsv" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="ctd-requestfiltered-meshid-date-tsv">
+<h4>CTD_requestFiltered_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-requestfiltered-meshid-date-tsv" title="Permalink to this heading"></a></h4>
 <p>This file has the same format as the file before but it contains the filtered data. This file can be filtered using the
 publication number associated to an interaction between chemical and gene (<code class="docutils literal notranslate"><span class="pre">--nbPub</span></code> parameter).
 These filtered data are used for the analysis.</p>
@@ -260,13 +175,13 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 </pre></div>
 </div>
 <p><em>The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the request (aaaa_mm_dd).</em></p>
-</div>
-</div>
-<div class="section" id="wp-request-file-results">
-<span id="wprequestouput"></span><h3>WP request file results<a class="headerlink" href="#wp-request-file-results" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="wp-request-file-results">
+<span id="wprequestouput"></span><h3>WP request file results<a class="headerlink" href="#wp-request-file-results" title="Permalink to this heading"></a></h3>
 <p>When you request WikiPathways to extract the Rare Diseases pathways, two files are created whatever the approach chosen.</p>
-<div class="section" id="wp-rarediseases-request-date-gmt">
-<h4>WP_RareDiseases_request_DATE.gmt<a class="headerlink" href="#wp-rarediseases-request-date-gmt" title="Permalink to this headline">¶</a></h4>
+<section id="wp-rarediseases-request-date-gmt">
+<h4>WP_RareDiseases_request_DATE.gmt<a class="headerlink" href="#wp-rarediseases-request-date-gmt" title="Permalink to this heading"></a></h4>
 <p>This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
 extracted and save into this GMT file.</p>
 <p>GMT file is a tab-separated file:</p>
@@ -283,19 +198,19 @@ WP5189      Copper metabolism       ATP7B   ATP7A   SLC11A2 SLC31A1
 WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 </pre></div>
 </div>
-</div>
-<div class="section" id="wp-allpathways-request-date-gmt">
-<h4>WP_allPathways_request_DATE.gmt<a class="headerlink" href="#wp-allpathways-request-date-gmt" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="wp-allpathways-request-date-gmt">
+<h4>WP_allPathways_request_DATE.gmt<a class="headerlink" href="#wp-allpathways-request-date-gmt" title="Permalink to this heading"></a></h4>
 <p>This GMT file contains all the human disease pathways from WikiPathways. The  format is similar at the previous one.</p>
 <p><em>The file name is composed of the *DATE</em> of the request (aaaa_mm_dd).*</p>
-</div>
-</div>
-</div>
-<div class="section" id="overlap-analysis">
-<span id="overlapoutput"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="overlap-analysis">
+<span id="overlapoutput"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h2>
 <p>Only one file is created with this approach.</p>
-<div class="section" id="overlap-meshid-withrdwp-csv">
-<h3>Overlap_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-meshid-withrdwp-csv" title="Permalink to this headline">¶</a></h3>
+<section id="overlap-meshid-withrdwp-csv">
+<h3>Overlap_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-meshid-withrdwp-csv" title="Permalink to this heading"></a></h3>
 <p>This file contains the results of the overlap analysis. The number of this file depends of the number of chemicals given as input
 (i.e. chemicals file). IN the file name, the <em>MeSHID</em> name corresponds on the chemical used.</p>
 <ul class="simple">
@@ -319,13 +234,13 @@ WP5223;2q21.1 copy number variation syndrome;WikiPathway_2022_08_01;42;1721;1;12
 WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;2;12379;0.8660465002997586;1.0;BCAT1 BCAT2
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="active-module-identification">
-<span id="amioutput"></span><h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="active-module-identification">
+<span id="amioutput"></span><h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this heading"></a></h2>
 <p>When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of Active Modules found.</p>
-<div class="section" id="domino-inputgenelist-meshid-txt">
-<h3>DOMINO_inputGeneList_MeSHID.txt<a class="headerlink" href="#domino-inputgenelist-meshid-txt" title="Permalink to this headline">¶</a></h3>
+<section id="domino-inputgenelist-meshid-txt">
+<h3>DOMINO_inputGeneList_MeSHID.txt<a class="headerlink" href="#domino-inputgenelist-meshid-txt" title="Permalink to this heading"></a></h3>
 <p>This file contains the list of target genes. There are used as Active Genes for the analysis.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CCND1
 CDKN1A
@@ -334,14 +249,14 @@ ESR1
 KRT18
 </pre></div>
 </div>
-</div>
-<div class="section" id="overlap-am-x-meshid-withrdwp-csv">
-<h3>Overlap_AM_X_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-am-x-meshid-withrdwp-csv" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="overlap-am-x-meshid-withrdwp-csv">
+<h3>Overlap_AM_X_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-am-x-meshid-withrdwp-csv" title="Permalink to this heading"></a></h3>
 <p>This is the result file of the overlap analysis. The number of this file depends of the number of Active Modules found.
 In the file name, the <em>X</em> represents the AM number. See the <a class="reference internal" href="#overlapoutput"><span class="std std-ref">Overlap output</span></a> part for more details.</p>
-</div>
-<div class="section" id="domino-meshid-overlapamresults4cytoscape-txt">
-<h3>DOMINO_MeSHID_overlapAMresults4Cytoscape.txt<a class="headerlink" href="#domino-meshid-overlapamresults4cytoscape-txt" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="domino-meshid-overlapamresults4cytoscape-txt">
+<h3>DOMINO_MeSHID_overlapAMresults4Cytoscape.txt<a class="headerlink" href="#domino-meshid-overlapamresults4cytoscape-txt" title="Permalink to this heading"></a></h3>
 <p>This file is created to be given to Cytoscape for the visualisation. It contains five columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">geneSymbol</span></code>: gene HCGN ID</p></li>
@@ -362,9 +277,9 @@ CXCL5       6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-1
 FN1 6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-11
 </pre></div>
 </div>
-</div>
-<div class="section" id="domino-meshid-activemodulesnetwork-txt">
-<h3>DOMINO_MeSHID_activeModulesNetwork.txt<a class="headerlink" href="#domino-meshid-activemodulesnetwork-txt" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="domino-meshid-activemodulesnetwork-txt">
+<h3>DOMINO_MeSHID_activeModulesNetwork.txt<a class="headerlink" href="#domino-meshid-activemodulesnetwork-txt" title="Permalink to this heading"></a></h3>
 <p>This file contains details of each AM found. It contains four columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: node 1</p></li>
@@ -381,9 +296,9 @@ CDT1        MCM2    ppi     1
 CDT1        GMNN    ppi     1
 </pre></div>
 </div>
-</div>
-<div class="section" id="domino-meshid-activemodulesnetworkmetrics-txt">
-<h3>DOMINO_MeSHID_activeModulesNetworkMetrics.txt<a class="headerlink" href="#domino-meshid-activemodulesnetworkmetrics-txt" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="domino-meshid-activemodulesnetworkmetrics-txt">
+<h3>DOMINO_MeSHID_activeModulesNetworkMetrics.txt<a class="headerlink" href="#domino-meshid-activemodulesnetworkmetrics-txt" title="Permalink to this heading"></a></h3>
 <p>Some metrics are calculated such as number of edges and nodes for each AM identified.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code>: active module number</p></li>
@@ -397,9 +312,9 @@ CDT1        GMNN    ppi     1
 3   135     66      26
 </pre></div>
 </div>
-</div>
-<div class="section" id="domino-meshid-activemodules-txt">
-<h3>DOMINO_MeSHID_activeModules.txt<a class="headerlink" href="#domino-meshid-activemodules-txt" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="domino-meshid-activemodules-txt">
+<h3>DOMINO_MeSHID_activeModules.txt<a class="headerlink" href="#domino-meshid-activemodules-txt" title="Permalink to this heading"></a></h3>
 <p>This file is created to be given to Cytoscape for the visualisation. It contains four columns :</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : Gene symbol</p></li>
@@ -416,17 +331,17 @@ USP26       1       False   False
 </pre></div>
 </div>
 <p><em>The file name is composed of the MeSHID that corresponds to the query chemical</em></p>
-</div>
-</div>
-<div class="section" id="random-walk-with-restart-analysis">
-<h2>Random Walk with Restart analysis<a class="headerlink" href="#random-walk-with-restart-analysis" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="config-minimal-yml-and-seeds-txt">
-<h3>config_minimal.yml and seeds.txt<a class="headerlink" href="#config-minimal-yml-and-seeds-txt" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="random-walk-with-restart-analysis">
+<h2>Random Walk with Restart analysis<a class="headerlink" href="#random-walk-with-restart-analysis" title="Permalink to this heading"></a></h2>
+<section id="config-minimal-yml-and-seeds-txt">
+<h3>config_minimal.yml and seeds.txt<a class="headerlink" href="#config-minimal-yml-and-seeds-txt" title="Permalink to this heading"></a></h3>
 <p>These two files are copies of configuration and seed files used in input. For more details of the config file format see
 the [<a class="reference internal" href="Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] part. Seeds file contains target genes used as seeds for the walk.</p>
-</div>
-<div class="section" id="multiplex-x-tsv">
-<h3>multiplex_X.tsv<a class="headerlink" href="#multiplex-x-tsv" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="multiplex-x-tsv">
+<h3>multiplex_X.tsv<a class="headerlink" href="#multiplex-x-tsv" title="Permalink to this heading"></a></h3>
 <p>The number of this file depends on the number of multiplex you give in input. IN the name, the <em>X</em> corresponds to the folder name of the
 multiplex. It contains three columns:</p>
 <ul class="simple">
@@ -446,9 +361,9 @@ multiplex. It contains three columns:</p>
 1   SMAD3   0.0001852022345355004
 </pre></div>
 </div>
-</div>
-<div class="section" id="resultsnetwork-usecase1-sif">
-<h3>resultsNetwork_useCase1.sif<a class="headerlink" href="#resultsnetwork-usecase1-sif" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="resultsnetwork-usecase1-sif">
+<h3>resultsNetwork_useCase1.sif<a class="headerlink" href="#resultsnetwork-usecase1-sif" title="Permalink to this heading"></a></h3>
 <p>The name of this network file depends on what you give in input (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>). See <a class="reference internal" href="../approaches/methods_RWR.html#rwr"><span class="std std-ref">Random Walk with Restart</span></a> for more details.
 It’s a SIF file format [<a class="reference internal" href="Input.html#sif"><span class="std std-ref">FORMAT</span></a>] and contains three columns:</p>
 <ul class="simple">
@@ -468,56 +383,39 @@ ABI1        multiplex/1/Reactome_Nov2020.gr MAPK1
 ABL1        multiplex/1/PPI_Jan2021.gr      EGFR
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../functions/fcts_arguments.html" class="btn btn-neutral float-right" title="Input parameters for each approach" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Input.html" class="btn btn-neutral float-left" title="Input files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../functions/fcts_arguments.html" class="btn btn-neutral float-right" title="Input parameters for each approach" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2022, Térézol.
-
-    </p>
+    <p>&#169; Copyright 2022, Térézol.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

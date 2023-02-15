@@ -5,18 +5,18 @@ Overview of the approaches
 Goal
 ======
 
-Our goal is to uncover the **relationships between chemicals** (e.g. vitamins, hormones etc ...) and **Rare Diseases**.
-To this end, we extract data **directly from databases** and implement **different approaches**.
+Our goal is to uncover **relationships between chemicals** (e.g. vitamins, hormones etc ...) and **Rare Diseases**.
+To this end, we implement **different approaches**.
 
-Data are extracted **automatically** from the **Comparative Toxicogenomics Database** (CTD) [1]_ for target genes and
-**WikiPathways** (WP) [2]_ for Rare Disease pathways (see :ref:`usecase1`).
+Data are extracted **automatically** from the **Comparative Toxicogenomics Database** (CTD) [1]_ for target genes of
+chemicals and **WikiPathways** (WP) [2]_ for Rare Disease pathways (see :ref:`usecase1`).
 
-We propose three different approaches to study the relationships between genes which are targeted by chemicals and Rare
+We propose three different approaches to uncover relationships between genes which are targeted by chemicals and Rare
 Diseases (:numref:`overviewFig`):
 
-    - :ref:`overlap`
-    - :ref:`AMI`
-    - :ref:`RWR`
+    - :ref:`overlap`: chemical target genes are part of a rare disease pathway
+    - :ref:`AMI`: chemical target genes and/or linked genes are part of a rare disease pathway
+    - :ref:`RWR`: diffusion from a chemical target gene
 
 Theses three approaches are **complementary** and perform **network exploration** at different level of interactions.
 
@@ -25,10 +25,10 @@ Theses three approaches are **complementary** and perform **network exploration*
     :alt: methods overview
     :align: center
 
-    : Overview of the three implemented approaches
+    : Overview of the three approaches implemented
 
-Moreover, the approaches are open to **external input files** provided by yourself (e.g. target genes file instead of
-chemicals file, pathways and/or processes etc ...). Take a look at :ref:`usecase2`, if you want to use your own input files.
+Moreover, the approaches can be used with user-provided input files instead of files fetched with automatic requests.
+Take a look at :ref:`usecase2`, if you want to use your own input files.
 
 References
 ==============

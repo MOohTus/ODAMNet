@@ -4,19 +4,19 @@ Installation
 
 To use ODAMNet you need ``python>=3.9``.
 
-From PyPi - *It's on going*
+From PyPi
 -------------------------------
 
 ODAMNet is available as python package. You can easily install it using ``pip``.
 
 .. code-block:: bash
 
-   pip install odamnet
+   python3 -m pip install odamnet
 
-From Conda - *It's on going*
+From Conda - *It's ongoing*
 --------------------------------
 
-You can also install it from `bioconda <https://bioconda.github.io/index.html>`_ using ``conda``.
+It available in `bioconda <https://bioconda.github.io/index.html>`_ using ``conda``.
 
 .. code-block:: bash
 
@@ -25,7 +25,7 @@ You can also install it from `bioconda <https://bioconda.github.io/index.html>`_
 From Github
 -------------
 
-1. Clone the repository from Github
+1. Clone the repository from GitHub
 
 .. code-block:: bash
 
@@ -35,25 +35,24 @@ From Github
 
 .. code-block:: bash
 
-   pip install -e ODAMNet/
+   python3 -m pip install -e ODAMNet/
 
 ==================================================
 Usage
 ==================================================
 
-Three different approaches are available to analyse your data:
+Three different approaches are available:
 
     #. Overlap analysis
-    #. Active Module Identification (using DOMINO)
-    #. Random Walk with Restart (using multiXrank)
+    #. Active Modules Identification (AMI, using DOMINO)
+    #. Random Walk with Restart (RWR, using multiXrank)
 
 
 .. code-block:: bash
 
    odamnet [overlap|domino|multixrank] [ARGS]
 
-
-Before running the last method, you could need to create a network from data used:
+Before running the RWR approach, you could need to create a network using your pathways of interest:
 
 .. code-block:: bash
 

@@ -62,8 +62,8 @@ You can provide your own **target genes file** and **pathways/processes of inter
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
-Input parameters for Active Modules Identification
-----------------------------------------------------
+Input parameters for the Active Modules Identification
+--------------------------------------------------------
 
 | To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.

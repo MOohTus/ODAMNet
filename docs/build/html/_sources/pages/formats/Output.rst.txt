@@ -4,7 +4,7 @@ Output files
 
 .. _requestOutput:
 
-Request file results
+CTD and WikiPathways request file results
 ==================================================
 
 .. _CTDrequestOuput:

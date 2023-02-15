@@ -11,8 +11,8 @@ Principle
 
     This approach is the one implemented in Ozisik *et al.,* [1]_ .
 
-This method calculates the **overlap** between **target genes** and **pathways of interest**.
-In other words, it looks for genes that are part of pathways, i.e. **direct overlap**
+The overlap analysis calculates the **overlap** between **target genes** and **pathways of interest**.
+In other words, it looks for target genes that are part of pathways, i.e. **direct overlap**
 (:numref:`overviewFig` - left part).
 
 First, an **overlap** between target genes and all the pathways is computed. Then, a **statistical significance**
@@ -22,13 +22,14 @@ to correct the pvalues.
 Usage
 -------
 
-By default, data are extracted directly by requesting databases (:numref:`overlapFig`: *data extracted from requests*).
-You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
-extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
+By default, the data are directly extracted by requests on databases (:numref:`overlapFig`: section *data extracted from requests*).
+The user gives the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. The user can also provide
+optional parameters to customize the selection of target genes.
 
+All **Rare Disease pathways** are extracted from **WikiPathways** (WP) automatically.
 
-You can provide your own **target genes file** and **pathways/processes of interest** (:numref:`overlapFig`: *data extracted from users*)
-with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+In addition, the user can provide their own **target genes** and **pathways/processes of interest** files
+(:numref:`overlapFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _overlapFig:
 .. figure:: ../../pictures/OverlapAnalysis_graph.png
@@ -37,12 +38,12 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
     : Input and output files/parameters of overlap analysis
 
-    There are two ways to extract target genes: from request (pink boxes) or provided by the user (green boxes).
+    There are two ways to extract target genes: from automatic request (pink boxes) or provided by the user (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
-Input parameters for overlap analysis
-----------------------------------------
+Input parameters for the overlap analysis
+-------------------------------------------
 
 | To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
@@ -90,8 +91,8 @@ The ``--outputPath`` parameter is used for both data extraction.
     Name of the folder to save results.
     ``[default: OutputResults]``
 
-Use-cases command line
-------------------------
+Use-cases command lines
+-------------------------
 
 .. tabs::
 

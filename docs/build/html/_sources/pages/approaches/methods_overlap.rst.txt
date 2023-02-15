@@ -41,8 +41,8 @@ with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
-Input parameters for overlap analysis
-----------------------------------------
+Input parameters for the overlap analysis
+-------------------------------------------
 
 | To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.

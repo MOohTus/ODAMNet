@@ -39,7 +39,7 @@ You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data ext
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
-Input parameters for RWR analysis
+Input parameters for the RWR analysis
 ----------------------------------------
 
 | To extract target genes from **CTD**, see parameters on the ``Data extracted from requests`` tab.
@@ -93,8 +93,8 @@ Input parameters for RWR analysis
     Name of the folder to save the results.
     ``[default: OutputResults]``
 
-Use-cases command line
-------------------------
+Use-cases command lines
+-------------------------
 
 .. tabs::
 

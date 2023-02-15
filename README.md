@@ -1,8 +1,11 @@
 # README
 
-The goal of this project is to develop computational approaches to analyse the links and overlaps between environmental factors, their molecular targets, and rare diseases pathways.
+The goal of this project is to develop computational approaches to analyse the links and overlaps between chemicals
+and Rare Diseases.
 
 The [ODAMNet documentation][ODAMNet documentation] is available in ReadTheDocs.
+
+This project was created within the framework of the [EJRP-RD project][EJPRD].
 
 ## Installation 
 
@@ -14,9 +17,9 @@ ODAMNet is available as python package. You can easily install it using `pip`.
 $ python3 -m pip install odamnet
 ```
 
-### From Conda - *It's on going*
+### From Conda - *It's ongoing*
 
-You can also install it from [bioconda][bioconda].
+It available in [bioconda][bioconda] too.
 
 ```console
 $ conda install odamnet
@@ -24,7 +27,7 @@ $ conda install odamnet
 
 ### From Github
 
-1. Clone the repository from Github
+1. Clone the repository from GitHub
 
 ```console
 $ git clone https://github.com/MOohTus/ODAMNet.git
@@ -38,11 +41,11 @@ $ python3 -m pip install -e ODAMNet/
 
 ## Usage
 
-Three different approaches are available to analyse your data: 
+Three different approaches are available: 
 
 - Overlap analysis
-- Active Module Identification (using DOMINO)
-- Random Walk with Restart (using multiXrank)
+- Active Modules Identification (AMI, using DOMINO)
+- Random Walk with Restart (RWR, using multiXrank)
 
 ```console
 $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
@@ -50,18 +53,19 @@ $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
 
 ## Examples
 
-Three approaches are implemented to study the relationships between Rare Diseases (from WikiPathways (WP)) and genes targeted by chemicals factors (extracted
-from CTD database):
+Three approaches are implemented to study relationships between Rare Diseases (from WikiPathways (WP)) and genes 
+targeted by chemicals (extracted from CTD database).
 
 ### Overlap analysis
 
-This method computes the overlap between target genes and Rare Disease pathways. It is looking for direct associations, i.e., target genes that are part of pathways.
+This method computes the overlap between target genes and Rare Disease pathways. It is looking for direct associations, 
+i.e., target genes that are part of pathways.
 
 ```console
 $ odamnet overlap --chemicalsFile FILENAME
 ```
 
-### Active Module Identification
+### Active Module Identification (AMI)
 
 Target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
 Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + linked genes)
@@ -71,7 +75,7 @@ and Rare Disease pathways.
 $ odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
 ```
 
-### Random Walk with Restart
+### Random Walk with Restart (RWR)
 
 #### Network and bipartite creation
 
@@ -94,3 +98,4 @@ $ odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath P
 
 [ODAMNet documentation]: https://odamnet.readthedocs.io/
 [bioconda]: https://bioconda.github.io/index.html
+[EJPRD]: https://www.ejprarediseases.org/

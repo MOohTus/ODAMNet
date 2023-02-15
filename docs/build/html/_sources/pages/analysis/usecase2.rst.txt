@@ -110,8 +110,8 @@ on this analysis and one more (REAC:R-HSA-2022377).
 
 .. _useCase2_AMI:
 
-AMI
-=====================
+Active Modules Identification (AMI)
+====================================
 
 This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
 overlap analysis between each AM identified and Rare Diseases pathways from WP.
@@ -247,8 +247,8 @@ Some network are enriched with the same pathways whereas other contain genes inv
 
 .. _useCase2_RWR:
 
-RWR
-=====================
+Random Walk with Restart (RWR)
+===============================
 
 The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
 
