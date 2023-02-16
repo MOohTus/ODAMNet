@@ -9,17 +9,17 @@ Principle
 
 .. note::
 
-    | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
+    | Active Module Identification (AMI) is performed using DOMINO [1]_. The analysis is running on their server [2]_.
     | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
-DOMINO is looking for **Active Modules** (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
+DOMINO is looking for **active modules** in a network (e.g. protein-protein interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-First, target genes are defined as **Active Genes**. Then DOMINO tries to **identify active modules**.
+First, target genes are defined as **active genes**. Then DOMINO tries to **identify active modules**.
 
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent **distinct functional modules** and can reveal biological processes involved in a specific condition.
 
-Finally, we performed an **overlap analysis** between each AM and pathways of interest.
+Finally, we performed an **overlap analysis** between each active module and pathways of interest.
 
 DOMINO algorithm overview
 ----------------------------
@@ -45,8 +45,8 @@ Usage
 -------
 
 By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: *data extracted from requests*).
-You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
-extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
+You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare disease pathways** are
+extracted from **WikiPathway** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 You can provide your own **target genes file** and **pathways/processes of interest**
 (:numref:`dominoUsageFig`: *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
@@ -65,7 +65,7 @@ You can provide your own **target genes file** and **pathways/processes of inter
 Input parameters for the Active Modules Identification
 --------------------------------------------------------
 
-| To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
 The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.
@@ -97,7 +97,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
 
         --GMT FILENAME
             Tab-delimited file that describes gene sets of pathways/processes of interest.
-            Pathways/processes can come from several sources (e.g. WP and GO\:BP).
+            Pathways/processes can come from several sources (e.g. WikiPathways and GO\:BP).
             [:ref:`FORMAT <pathways>`]
             **[required]**
 
