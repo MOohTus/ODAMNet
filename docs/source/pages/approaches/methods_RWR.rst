@@ -167,7 +167,7 @@ Complexes network is constructed from the fusion of Hu.map and Corum using OmniP
 Reactome network
 """"""""""""""""""""
 
-This network is extracted from NDEs and corresponding to the Human Reactome data. It's composed of:
+This network is extracted from NDEx and corresponds to the Human Reactome data. It's composed of:
 
 - 7,926 nodes
 
