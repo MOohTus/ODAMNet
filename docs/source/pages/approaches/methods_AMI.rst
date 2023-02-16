@@ -46,7 +46,7 @@ Usage
 
 By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare disease pathways** are
-extracted from **WikiPathway** automatically too. You can give some optional parameters to custom the selection of target genes.
+extracted from **WikiPathways** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 You can provide your own **target genes file** and **pathways/processes of interest**
 (:numref:`dominoUsageFig`: *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
