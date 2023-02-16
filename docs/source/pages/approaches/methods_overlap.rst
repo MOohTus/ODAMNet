@@ -7,13 +7,11 @@ Overlap analysis
 Principle
 ------------
 
-.. note::
-
-    This approach is the one implemented in Ozisik *et al.,* [1]_ .
 
 The overlap analysis calculates the **overlap** between **target genes** and **pathways of interest**.
 In other words, it looks for target genes that are part of pathways, i.e. **direct overlap**
-(:numref:`overviewFig` - left part).
+(:numref:`overviewFig` - left part). This approach is presented in Ozisik *et al.,* [1]_ for a
+specific use case.
 
 First, an **overlap** between target genes and all the pathways is computed. Then, a **statistical significance**
 is calculated using an **hypergeometric test**. Finally, a **Benjamini-Hochberg** (BH adjusted) correction is applied
