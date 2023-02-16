@@ -26,9 +26,9 @@ By default, the data are directly extracted by requests on databases (:numref:`o
 The user gives the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. The user can also provide
 optional parameters to customize the selection of target genes.
 
-All **Rare Disease pathways** are extracted from **WikiPathways** (WP) automatically.
+All **rare disease pathways** are extracted from **WikiPathways** automatically.
 
-In addition, the user can provide their own **target genes** and **pathways/processes of interest** files
+In addition, the user can provide their own **target genes** and **pathways/processes of interest**
 (:numref:`overlapFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _overlapFig:
@@ -38,14 +38,14 @@ In addition, the user can provide their own **target genes** and **pathways/proc
 
     : Input and output files/parameters of overlap analysis
 
-    There are two ways to extract target genes: from automatic request (pink boxes) or provided by the user (green boxes).
-    Required files/parameters have solid border line and optional files/parameters have dash border line.
+    There are two ways to extract target genes: from automatic request (pink boxes) or from the files provided by the user (green boxes).
+    Required files/parameters have solid border line and optional files/parameters have dashed border line.
     Output files in pink are created only if the input data are extracted from requests.
 
 Input parameters for the overlap analysis
 -------------------------------------------
 
-| To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
 
 The ``--outputPath`` parameter is used for both data extraction.
@@ -117,4 +117,4 @@ Use-cases command lines
 References
 ------------
 
-.. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
+.. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10:395.
