@@ -13,8 +13,8 @@ Principle
     :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 This method measures the **proximity** of every gene within a multilayer to target genes. Every target gene is
-defined as a **seed**. The walk starts with a seed selected **randomly**. The proximity is represented by a score that could be use
-for multiple analysis. More the score is high, more the node is closed to the seed.
+defined as a **seed**. The walk starts with a **randomly** selected seed. The proximity is represented by a score that can be used
+for multiple analysis. Higher score corrsponds to smaller distance and better connection between the node and the seed.
 
 It's a kind of **diffusion analysis** from the genes through different molecular interactions (:numref:`overviewFig` - right part).
 
@@ -23,7 +23,7 @@ It's a kind of **diffusion analysis** from the genes through different molecular
 Usage
 -------
 
-By default, data are extracted directly by request databases (:numref:`RWRUsageFig`: *data extracted from requests*).
+By default, data are extracted directly by querying databases (:numref:`RWRUsageFig`: *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**.
 
 You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data extracted from users*) with ``--targetGenesFile``.
@@ -35,8 +35,8 @@ You can provide your own **target genes file** (:numref:`RWRUsageFig`: *data ext
 
     : Input and output files/parameters of Random Walk with Restart analysis
 
-    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
-    Required files/parameters have solid border line and optional files/parameters have dash border line.
+    There are two ways to extract target genes: from automatic request (pink boxes) or from the files provided by the user (green boxes).
+    Required files/parameters have solid border line and optional files/parameters have dashed border line.
     Output files in pink are created only if the input data are extracted from requests.
 
 Input parameters for the RWR analysis
@@ -71,7 +71,7 @@ Input parameters for the RWR analysis
             **[required]**
 
 --configPath PATH
-    MultiXrank needs a configuration file. It could be short (only file names) or very details (file names + parameters).
+    MultiXrank needs a configuration file. It can be short (with only file names) or very detailed (with file names + parameters).
     The file contains at least paths of networks, bipartite and seed files. **[required]**
 
     | For more details : [:ref:`FORMAT <configFile>`] - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
