@@ -19,7 +19,7 @@ $ python3 -m pip install odamnet
 
 ### From Conda - *It's ongoing*
 
-It available in [bioconda][bioconda] too.
+It is available in [bioconda][bioconda] too.
 
 ```console
 $ conda install odamnet
