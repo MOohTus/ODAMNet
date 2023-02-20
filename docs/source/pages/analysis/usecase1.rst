@@ -8,13 +8,17 @@ Use-case 1: data are extracted automatically with requests
 
     This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_.
 
-We want to study the relationship between chemicals (hormones, vitamins etc.) and Rare Diseases.
+We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and Rare Diseases (RD).
 
-**Genes**, that are targeted by the interested chemicals, are extracted **directly** from **CTD database**.
-**Rare Diseases pathways** are extracted from **WikiPathways** website.
-We choose to use as chemical of interest, the **vitamin A**.
+**Target genes**, that are targeted by the interested chemicals, are extracted **directly** from the |ctd|_ [2]_.
+**Rare Diseases pathways** are extracted from **WikiPathways** [3]_ (WP) website_.
+We choose to use **vitamin A** as chemical of interest in this first use-case.
 
-This section presents you how to perform the three different approaches proposed.
+This section presents you how to apply the three different approaches proposed.
+
+.. _ctd: http://ctdbase.org/
+.. |ctd| replace:: **CTD database**
+.. _website: https://www.wikipathways.org/
 
 .. _useCase1_overlap:
 
@@ -50,7 +54,7 @@ Several files are generated:
 
 - ``Overlap_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare diseases pathways.
 
-For more details about these file, see :doc:`../formats/Output` page.
+For more details about these files, see the :doc:`../formats/Output` page.
 
 Results of overlap analysis with data extracted automatically from databases
 -------------------------------------------------------------------------------
@@ -61,19 +65,20 @@ CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
 We extracted genes that are targeted by **vitamin A** and by its child molecules. Request results are presented in the
-following :ref:`Table 2 <useCase1OverlapCTD>`. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others child molecules).
+following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target genes associated to 10 molecules (
+vitamin A + nine others child molecules).
 
 .. _useCase1OverlapCTD:
 .. table:: CTD request results
     :align: center
 
-    +---------------------------------------+---------------------+-----------------+
-    |                                       | Number of molecules | Number of genes |
-    +=======================================+=====================+=================+
-    |          Request result               |          10         |      7,765      |
-    +---------------------------------------+---------------------+-----------------+
-    | After filtering by publication number |          7          |      2,143      |
-    +---------------------------------------+---------------------+-----------------+
+    +===================================================+=====================+========================+
+    |                                                   | Number of molecules | Number of target genes |
+    +===================================================+=====================+========================+
+    |          Request result                           |          10         |      7,765             |
+    +---------------------------------------------------+---------------------+------------------------+
+    | After filtering by associated publications number |          7          |      2,143             |
+    +---------------------------------------------------+---------------------+------------------------+
 
 WikiPathways request results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,11 +101,11 @@ All pathways labeled as Rare Diseases are extracted from WikiPathways. Request r
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes overlap significantly **28 Rare Diseases pathways** (pAdjusted <= 0.05). The top 5 of results are presented in
-:ref:`Table 4 <useCase1OverlapTop5>`.
+We obtained a significant overlap between the vitamin A target genes and **28 rare disease pathways** (pAdjusted <= 0.05).
+The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1OverlapTop5>`.
 
 .. _useCase1OverlapTop5:
-.. table:: Top 5 of RD pathways significantly overlapped by target genes
+.. table:: Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways
     :align: center
 
     +------------+--------------------------------------------------+--------------+------------------+
@@ -117,6 +122,7 @@ Target genes overlap significantly **28 Rare Diseases pathways** (pAdjusted <= 0
     |   WP4879   | Overlap between signal transduction pathways ... |   7.80e-07   |        25        |
     +------------+--------------------------------------------------+--------------+------------------+
 
+%MT% - Changer ici voir pdf anais
 Ozisik *et al.,* [1]_ identified four pathways, related to CAKUT disease. All of them are significantly overlapped by vitamin A
 target genes. We retrieve one of them in the top 5 (**WP5053**). Two others are significantly overlapped in our analysis
 (:ref:`Table 5 <useCase1OverlapCAKUT>`):
@@ -145,7 +151,7 @@ target genes and pathways is smaller. It affects the pvalue calculation and decr
 Active Modules Identification (AMI)
 ======================================
 
-This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
+DOMINO identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. After that, we perform an
 overlap analysis between each AM identified and Rare Diseases pathways from WP.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
@@ -156,7 +162,7 @@ Running active modules identification with data extracted automatically from dat
 
    :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
 
-As before, we want to extract genes that are targeted by vitamin A and its child molecules. The **chemicalsFile.csv** file
+We want to extract genes that are targeted by vitamin A and its child molecules. The **chemicalsFile.csv** file
 [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A and we set ``--directAssociation`` parameter to ``False``.
 We keep only vitamin-gene interactions with at least to associated publications (``--nbPub 2``).
 
@@ -599,7 +605,7 @@ Rare disease pathways identified
 ====================================
 
 Approaches give us a list of RD pathways significantly connected to vitamin A target genes. To easily compare results,
-we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
+we use orsum [4]_. Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
 
 .. code-block:: bash
 
@@ -618,4 +624,6 @@ we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase1
 References
 ============
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
-.. [2] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+.. [2] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
+.. [3] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
+.. [4] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.

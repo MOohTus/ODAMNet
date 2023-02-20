@@ -8,13 +8,17 @@ Use-case 1: data are extracted automatically with requests
 
     This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_.
 
-We want to study the relationship between chemicals (hormones, vitamins etc.) and Rare Diseases.
+We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and Rare Diseases (RD).
 
-**Genes**, that are targeted by the interested chemicals, are extracted **directly** from **CTD database**.
-**Rare Diseases pathways** are extracted from **WikiPathways** website.
+**Target genes**, that are targeted by the interested chemicals, are extracted **directly** from the |ctd|_ [2]_.
+**Rare Diseases pathways** are extracted from **WikiPathways** [3]_ (WP) website_ .
 We choose to use as chemical of interest, the **vitamin A**.
 
 This section presents you how to perform the three different approaches proposed.
+
+.. _ctd: http://ctdbase.org/
+.. |ctd| replace:: **CTD database**
+.. _website: https://www.wikipathways.org/
 
 .. _useCase1_overlap:
 
@@ -618,4 +622,6 @@ we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase1
 References
 ============
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
-.. [2] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+.. [2] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
+.. [3] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
+.. [4] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.

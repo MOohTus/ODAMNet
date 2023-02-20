@@ -62,7 +62,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-overlap-analysis">Input parameters for the overlap analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#use-cases-command-line">Use-cases command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-cases-command-lines">Use-cases command lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -118,8 +118,8 @@
 <p class="admonition-title">Note</p>
 <p>This approach is the one implemented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> .</p>
 </div>
-<p>This method calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways of interest</strong>.
-In other words, it looks for genes that are part of pathways, i.e. <strong>direct overlap</strong>
+<p>The overlap analysis calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways of interest</strong>.
+In other words, it looks for target genes that are part of pathways, i.e. <strong>direct overlap</strong>
 (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
 <p>First, an <strong>overlap</strong> between target genes and all the pathways is computed. Then, a <strong>statistical significance</strong>
 is calculated using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied
@@ -127,17 +127,18 @@ to correct the pvalues.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data extracted from requests</em>).
-You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
-extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
-<p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong> (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: <em>data extracted from users</em>)
-with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
+<p>By default, the data are directly extracted by requests on databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data extracted from requests</em>).
+The user gives the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. The user can also provide
+optional parameters to customize the selection of target genes.</p>
+<p>All <strong>Rare Disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically.</p>
+<p>In addition, the user can provide their own <strong>target genes</strong> and <strong>pathways/processes of interest</strong> files
+(<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <figure class="align-center" id="id3">
 <span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/OverlapAnalysis_graph.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files/parameters of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>There are two ways to extract target genes: from request (pink boxes) or provided by the user (green boxes).
+<p>There are two ways to extract target genes: from automatic request (pink boxes) or provided by the user (green boxes).
 Required files/parameters have solid border line and optional files/parameters have dash border line.
 Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
@@ -197,8 +198,8 @@ It should be in the same order than the GMT file.
 </dd>
 </dl>
 </section>
-<section id="use-cases-command-line">
-<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this heading"></a></h2>
+<section id="use-cases-command-lines">
+<h2>Use-cases command lines<a class="headerlink" href="#use-cases-command-lines" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>overlap<span class="w"> </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--directAssociation<span class="w"> </span>FALSE<span class="w"> </span><span class="se">\</span>

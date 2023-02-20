@@ -9,20 +9,20 @@ Principle
 
 .. note::
 
-    | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
+    | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on the domino server [2]_.
     | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
 DOMINO is looking for **Active Modules** (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-First, target genes are defined as **Active Genes**. Then DOMINO tries to **identify active modules**.
+First, DOMINO defines target genes as **Active Genes**. From them, DOMINO tries to **identify active modules** through a network.
 
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
-Ideally, they will represent **distinct functional modules** and can reveal biological processes involved in a specific condition.
+Ideally, they will represent **functional modules** and can thereby reveal biological processes involved in a specific condition.
 
-Finally, we performed an **overlap analysis** between each AM and pathways of interest.
+Finally, we performed an **overlap analysis** between each AM identified by DOMINO and pathways of interest.
 
-DOMINO algorithm overview
-----------------------------
+Overview of the DOMINO algorithm
+-----------------------------------
 
 The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 
@@ -33,23 +33,23 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 
     : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
 
-| **A -** The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.
-| **B -** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
-| **C -** The most active sub-slice is identified on each relevant slices.
-| **D -** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
-| **E -** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05).
+| **A - Step 0:** The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.
+| **B - Step 1:** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
+| **C - Step 2a:** The most active sub-slice is identified on each relevant slices.
+| **D - Step 2b:** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
+| **E - Step 3:** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05).
 
-*For more details, refer to the DOMINO's publication* [1]_.
+*For more details, see to the DOMINO's publication* [1]_.
 
 Usage
 -------
 
-By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: *data extracted from requests*).
+By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: section *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
 extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 You can provide your own **target genes file** and **pathways/processes of interest**
-(:numref:`dominoUsageFig`: *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+(:numref:`dominoUsageFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _dominoUsageFig:
 .. figure:: ../../pictures/DOMINO_graph.png
@@ -124,15 +124,15 @@ Networks available
 
 .. warning::
 
-    Be careful when using networks from NDEx: gene IDs format are not always consistent between networks and data from
+    Be careful when using networks from NDEx: gene IDs format are not always consistent between the networks and data from
     CTD or other input gene lists and pathways.
     CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
-    gene name format. It's similar with GMT files.
+    gene name format. The same constraint exists for GMT files.
 
-Protein-Protein Interaction network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Protein-Protein Interaction (PPI) network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We provide with the script a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
+We provide a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
 **gene symbols**. You can give it to the script using the required parameter ``-n, --networkFile``.
 
 It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:
@@ -147,8 +147,8 @@ It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following 
     AAMP	ppi	TK1
 
 
-Personal network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+User-provided network
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. caution::
 

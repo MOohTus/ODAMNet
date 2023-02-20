@@ -16,7 +16,7 @@ ODAMNet is available as python package. You can easily install it using ``pip``.
 From Conda - *It's ongoing*
 --------------------------------
 
-It available in `bioconda <https://bioconda.github.io/index.html>`_ using ``conda``.
+It is available in `bioconda <https://bioconda.github.io/index.html>`_ using ``conda``.
 
 .. code-block:: bash
 

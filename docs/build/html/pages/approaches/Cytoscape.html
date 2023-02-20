@@ -62,7 +62,7 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_RWR.html">Random Walk with Restart</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Network visualisation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#active-modules-identification-ami-network-visualisation">Active Modules Identification (AMI) network visualisation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-analysis-rwr-network-visualisation">Random Walk with Restart analysis (RWR) network visualisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-rwr-analysis-network-visualisation">Random Walk with Restart (RWR) analysis network visualisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -109,23 +109,22 @@
              
   <section id="network-visualisation">
 <h1>Network visualisation<a class="headerlink" href="#network-visualisation" title="Permalink to this heading"></a></h1>
-<p>You can visualise network results using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Here, we describe steps that we used to create network visualisations.</p>
+<p>You can visualise network results using Cytoscape <a class="footnote-reference brackets" href="#id8" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Here, we describe the steps that we used to create network visualisations.</p>
 <section id="active-modules-identification-ami-network-visualisation">
 <span id="networkami"></span><h2>Active Modules Identification (AMI) network visualisation<a class="headerlink" href="#active-modules-identification-ami-network-visualisation" title="Permalink to this heading"></a></h2>
-<p>On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
-network representation with Cytoscape.</p>
+<p>On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them with Cytoscape.</p>
 <p>The following <a class="reference internal" href="#cytoscapeami"><span class="std std-numref">Fig. 7</span></a> is an example of visualisation:</p>
-<figure class="align-center" id="id13">
+<figure class="align-center" id="id11">
 <span id="cytoscapeami"></span><img alt="example1 AMI" src="../../_images/example1_DOMINO_AMnetwork.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">: Visualisation of AM using Cytoscape <a class="footnote-reference brackets" href="#id8" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> and Omics Visualizer <a class="footnote-reference brackets" href="#id9" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>To create the same visualisation of AM, use the following steps:</p>
 <ol class="arabic">
 <li><p><strong>Import Network</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModulesNetwork.txt</span></code></p></li>
 <li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_activeModules.txt</span></code></p></li>
-<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id10" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <strong>table</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
+<li><p><strong>Omics Visualizer</strong> <a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> <strong>table</strong> from File: <code class="docutils literal notranslate"><span class="pre">DOMINO_*_overlapAMresults4Cytoscape.txt</span></code></p></li>
 <li><p>Manage table <strong>connections</strong>: link network and the previous table with right identifiers</p>
 <blockquote>
 <div><ul class="simple">
@@ -149,19 +148,20 @@ network representation with Cytoscape.</p>
 </li>
 <li><p><strong>Filter</strong>: Select nodes with <code class="docutils literal notranslate"><span class="pre">overlapSignificant</span> <span class="pre">=</span> <span class="pre">True</span></code></p></li>
 <li><p><strong>New Network</strong>: From Selected Nodes, All Edges</p></li>
-<li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and Legend Creator <a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
+<li><p>Add <strong>legends</strong> using Omics Visualizer <a class="footnote-reference brackets" href="#id9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and Legend Creator <a class="footnote-reference brackets" href="#id10" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
 </ol>
-<p><em>To run AM identification with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-ami"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-ami"><span class="std std-ref">Use-case 2</span></a>.</p>
+<p><em>To run AM identification with data extracted from requests, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-ami"><span class="std std-ref">Use-case 1</span></a> <em>or with
+data provided by user, see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-ami"><span class="std std-ref">Use-case 2</span></a>.</p>
 </section>
-<section id="random-walk-with-restart-analysis-rwr-network-visualisation">
-<span id="networkrwr"></span><h2>Random Walk with Restart analysis (RWR) network visualisation<a class="headerlink" href="#random-walk-with-restart-analysis-rwr-network-visualisation" title="Permalink to this heading"></a></h2>
-<p>To explore a network, we use a Random Walk with Restart <a class="footnote-reference brackets" href="#id12" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> approach. As results, each node has a score. You can
-visualise these scores using a network representation with Cytoscape.</p>
+<section id="random-walk-with-restart-rwr-analysis-network-visualisation">
+<span id="networkrwr"></span><h2>Random Walk with Restart (RWR) analysis network visualisation<a class="headerlink" href="#random-walk-with-restart-rwr-analysis-network-visualisation" title="Permalink to this heading"></a></h2>
+<p>The Random Walk with Restart (RWR) analysis gives in output a score for each node. Theses score are used to selected
+the most relevant connections between nodes. You can visualise theses connections with Cytoscape.</p>
 <p>The following <a class="reference internal" href="#cytoscaperwr"><span class="std std-numref">Fig. 8</span></a> is an example of visualisation:</p>
-<figure class="align-center" id="id14">
+<figure class="align-center" id="id12">
 <span id="cytoscaperwr"></span><img alt="useCase 1 RWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id9" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">: Visualisation of network using Cytoscape <a class="footnote-reference brackets" href="#id8" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>To visualise the RWR results using network representation, use the following steps:</p>
@@ -227,8 +227,8 @@ awk<span class="w"> </span>-F<span class="s2">&quot;\t&quot;</span><span class="
 <li><p>Edit and Remove Duplicate Edges</p></li>
 <li><p><strong>Style</strong>:</p></li>
 </ol>
-<table class="docutils align-default" id="id15">
-<caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id15" title="Permalink to this table"></a></caption>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Network Style</span><a class="headerlink" href="#id13" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head stub"></th>
 <th class="head"><p>All Nodes</p></th>
@@ -274,28 +274,25 @@ awk<span class="w"> </span>-F<span class="s2">&quot;\t&quot;</span><span class="
 <ol class="arabic simple" start="12">
 <li><p>Change network layout (here is yFiles Organic Layout)</p></li>
 </ol>
-<p><em>To perform a RWR with data requested, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-rwr"><span class="std std-ref">Use-case 1</span></a> <em>or with your data see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-rwr"><span class="std std-ref">Use-case 2</span></a>.</p>
+<p><em>To perform a RWR with data extracted from requests, see</em> <a class="reference internal" href="../analysis/usecase1.html#usecase1-ami"><span class="std std-ref">Use-case 1</span></a> <em>or with
+data provided by user, see</em> <a class="reference internal" href="../analysis/usecase2.html#usecase2-ami"><span class="std std-ref">Use-case 2</span></a>.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id9" role="note">
+<aside class="footnote brackets" id="id8" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id8">3</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id7">3</a>)</span>
 <p>Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., … &amp; Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.</p>
 </aside>
-<aside class="footnote brackets" id="id10" role="note">
+<aside class="footnote brackets" id="id9" role="note">
 <span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>)</span>
 <p>Legeay, M., Doncheva, N. T., Morris, J. H., &amp; Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.</p>
 </aside>
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id10" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">3</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://github.com/cytoscape/legend-creator">https://github.com/cytoscape/legend-creator</a></p>
-</aside>
-<aside class="footnote brackets" id="id12" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">4</a><span class="fn-bracket">]</span></span>
-<p>Baptista, A., Gonzalez, A., &amp; Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.</p>
 </aside>
 </aside>
 </section>
