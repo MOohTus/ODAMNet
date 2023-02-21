@@ -264,8 +264,8 @@ Target genes are defined as **active genes** by DOMINO. We give **2,143 active g
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between AM and RD pathways. We found **16 pathways** that are significantly overlapped
-by **7 Active Modules** (padjusted <= 0.05).
+Then, we perform an overlap analysis between AM and RD pathways. We found significant overlap between **16 pathways** and
+**7 active modules** (padjusted <= 0.05).
 
 .. _useCase1AMIOverlap:
 .. table:: Overlap results between AM and RD pathways
@@ -320,27 +320,29 @@ a network representation (:numref:`dominoUsage1Fig`). To know how to create this
    :alt: usecase1 AMI
    :align: center
 
-   : Network visualisation of Active modules which are enriched by RD pathways
+   : Network visualisation of the 7 active modules
 
-Some network are enriched with the same pathways whereas other contain genes involved in different pathways. Target genes
-(i.e. active genes, grey nodes) could be part of pathways as non-target genes (white nodes).
+Some active modules are enriched with the same pathways whereas other contain genes involved in different pathways.
+In the :numref:`dominoUsage1Fig`, target genes are represented by grey nodes and others genes by white nodes.
 
 .. _useCase1_RWR:
 
 Random Walk with Restart (RWR)
 =================================
 
-The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
+The third approach, Random Walk with Restart (RWR), is applied into two different networks compositions:
 
-1. Multiplex (PPI + Complex + Reactome) and Rare Disease pathways network connected to genes nodes
-2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite
+1. Multilayer network with three molecular layers + rare disease pathways network connected to nodes
+2. Multilayer network with three molecular layers + disease-disease similarity network linked with a bipartite
 
-*For more details about RWR, see* :doc:`../approaches/methods_RWR`.
+The RWR is performed using multiXrank.
+
+*For more details about RWR and multiXrank, see* :doc:`../approaches/methods_RWR`.
 
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
 
-| To know how to create the Rare Disease pathways network network: see :ref:`pathwaysOfInterestNet`.
+| To know how to create the Rare Disease pathways network: see :ref:`pathwaysOfInterestNet`.
 | To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
 Whatever the network used, we want to extract target genes of vitamin A and its child molecules (``--directAssociation False``).
@@ -351,8 +353,7 @@ MultiXrank needs a configuration file (``--configPath``) and the networks path (
 default parameters.
 
 The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
-(``--top 10``).
+You need to give the SIF name (``--sifFileName``) to save the top nodes based on the score calculated by the RWR (``--top 10``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -467,7 +468,7 @@ We use the default parameters, whatever the networks used.
 Rare Disease pathways network analysis
 """"""""""""""""""""""""""""""""""""""""""
 
-*In this part, we present results found for the first multiplex composition: multiplex + RD pathways.*
+*In this part, we present results found for the first multilayer network composition: multilayer network + RD pathways.*
 
 First, target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
 
@@ -596,16 +597,17 @@ You can represent the results with a network as shown in the :numref:`useCase1_s
    :alt: usecase 1 simNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multilayer and disease-disease similarity network
+   : Results from RWR through the molecular multiplex and disease-disease similarity network
 
     Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
 
 
-Rare disease pathways identified
-====================================
+Results comparison
+======================
 
-Approaches give us a list of RD pathways significantly connected to vitamin A target genes. To easily compare results,
-we use orsum [4]_. Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
+We compare results obtained with the three different approaches (overlap, active modules identification and random walk
+with restart), using orsum [4]_.
+Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
 
 .. code-block:: bash
 
