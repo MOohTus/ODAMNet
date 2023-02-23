@@ -44,8 +44,8 @@ To create the same visualisation of AM, use the following steps:
 8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-*To run AM identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>` *or with
-data provided by user, see* :ref:`Use-case 2 <useCase2_AMI>`.
+*To run AM identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 .. _networkRWR:
 
@@ -147,8 +147,8 @@ To visualise the RWR results using network representation, use the following ste
 
 12. Change network layout (here is yFiles Organic Layout)
 
-*To perform a RWR with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>` *or with
-data provided by user, see* :ref:`Use-case 2 <useCase2_AMI>`.
+*To perform a RWR with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 References
 --------------------------------------------------

@@ -49,16 +49,16 @@ You give the ``--chemicalsFile`` and the **target genes** are extracted from **C
 extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
 
 You can provide your own **target genes file** and **pathways/processes of interest**
-(:numref:`dominoUsageFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+(:numref:`dominoUsageFig`: section *data provided by users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _dominoUsageFig:
-.. figure:: ../../pictures/DOMINO_graph.png
+.. figure:: ../../pictures/Overview_AMI.png
     :alt: domino analysis
     :align: center
 
     : Input and output files/parameters of Active Modules Identification
 
-    There are two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    There are two ways to extract target genes : from request (pink boxes) or provided by users (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
@@ -66,7 +66,7 @@ Input parameters for the Active Modules Identification
 --------------------------------------------------------
 
 | To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
-| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
+| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
 The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.
 
@@ -89,7 +89,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
             You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
             Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
@@ -185,7 +185,7 @@ Use-cases command lines
                                     --networkFile useCases/InputData/PPI_network_2016.sif \
                                     --outputPath useCases/OutputResults_useCase1/
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         .. code-block:: bash
 

@@ -23,22 +23,22 @@ Usage
 -------
 
 By default, the data are directly extracted by requests on databases (:numref:`overlapFig`: section *data extracted from requests*).
-The user gives the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. The user can also provide
+The users give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. The users can also provide
 optional parameters to customize the selection of target genes.
 
 All **Rare Disease pathways** are extracted from **WikiPathways** (WP) automatically.
 
-In addition, the user can provide their own **target genes** and **pathways/processes of interest** files
-(:numref:`overlapFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
+In addition, the users can provide their own **target genes** and **pathways/processes of interest** files
+(:numref:`overlapFig`: section *data provided by users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _overlapFig:
-.. figure:: ../../pictures/OverlapAnalysis_graph.png
+.. figure:: ../../pictures/Overview_OverlapAnalysis.png
     :alt: overlap analysis
     :align: center
 
     : Input and output files/parameters of overlap analysis
 
-    There are two ways to extract target genes: from automatic request (pink boxes) or provided by the user (green boxes).
+    There are two ways to extract target genes: from automatic request (pink boxes) or provided by users (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
@@ -46,7 +46,7 @@ Input parameters for the overlap analysis
 -------------------------------------------
 
 | To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
-| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
+| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
 The ``--outputPath`` parameter is used for both data extraction.
 
@@ -69,7 +69,7 @@ The ``--outputPath`` parameter is used for both data extraction.
             You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
             Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
@@ -105,7 +105,7 @@ Use-cases command lines
                                     --nbPub 2 \
                                     --outputPath useCases/OutputResults_useCase1/
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         .. code-block:: bash
 

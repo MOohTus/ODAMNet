@@ -189,7 +189,7 @@ Configuration file
 --configPath PATH
     Configuration file required by multiXrank tool [1]_. It could be short or very detailed (g.e. with tuned parameters).
     The short one contains the network and bipartite trees and the path of the seed file.
-    If the user want more details, see the multiXrank's documentation:
+    If users want more details, see the multiXrank's documentation:
     :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
     :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
 

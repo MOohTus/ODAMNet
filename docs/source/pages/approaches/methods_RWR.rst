@@ -26,16 +26,16 @@ Usage
 By default, data are extracted directly by request databases (:numref:`RWRUsageFig`: section *data extracted from requests*).
 You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**.
 
-You can provide your own **target genes file** (:numref:`RWRUsageFig`: section *data extracted from users*) with ``--targetGenesFile``.
+You can provide your own **target genes file** (:numref:`RWRUsageFig`: section *data provided by users*) with ``--targetGenesFile``.
 
 .. _RWRUsageFig:
-.. figure:: ../../pictures/multixrank_graph.png
+.. figure:: ../../pictures/Overview_RWR.png
     :alt: RWR analysis
     :align: center
 
     : Input and output files/parameters of Random Walk with Restart analysis
 
-    There is two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+    There is two ways to extract target genes : from request (pink boxes) or provided by users (green boxes).
     Required files/parameters have solid border line and optional files/parameters have dash border line.
     Output files in pink are created only if the input data are extracted from requests.
 
@@ -43,7 +43,7 @@ Input parameters for the RWR analysis
 ----------------------------------------
 
 | To extract target genes from **CTD**, see parameters on the ``Data extracted from requests`` tab.
-| To provide **your own** target genes, see parameters on the ``Data extracted from user`` tab.
+| To provide **your own** target genes, see parameters on the ``Data provided by users`` tab.
 
 .. tabs::
 
@@ -64,7 +64,7 @@ Input parameters for the RWR analysis
             You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
             Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
@@ -112,7 +112,7 @@ Use-cases command lines
                                         --top 10 \
                                         --outputPath useCases/OutputResults_useCase1/
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         .. code-block:: bash
 
@@ -213,7 +213,7 @@ Moreover, you can provide your own pathways/processes of interest file using ``-
                                             --bipartitePath useCases/InputData/bipartite/ \
                                             --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
                                             --outputPath useCases/OutputResults_useCase1
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         .. code-block:: bash
 
