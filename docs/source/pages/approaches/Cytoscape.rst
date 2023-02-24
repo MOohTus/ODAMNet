@@ -2,15 +2,14 @@
 Network visualisation
 ================================
 
-You can visualise network results using Cytoscape [1]_. Here, we describe steps that we used to create network visualisations.
+You can visualise network results using Cytoscape [1]_. Here, we describe the steps that we used to create network visualisations.
 
 .. _networkAMI:
 
-Active Modules Identification (AMI) network visualisation
+Active Modules Identification network visualisation
 ------------------------------------------------------------
 
-On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them using
-network representation with Cytoscape.
+On the Active Modules Identification analysis, several active modules are generated. You can visualise them with Cytoscape.
 
 The following :numref:`cytoscapeAMI` is an example of visualisation:
 
@@ -19,9 +18,9 @@ The following :numref:`cytoscapeAMI` is an example of visualisation:
     :alt: example1 AMI
     :align: center
 
-    : Visualisation of AM using Cytoscape [1]_ and Omics Visualizer [2]_
+    : Visualisation of active modules identified using Cytoscape [1]_ and Omics Visualizer [2]_
 
-To create the same visualisation of AM, use the following steps:
+To create the same visualisation of active modules, use the following steps:
 
 1. **Import Network** from File: ``DOMINO_*_activeModulesNetwork.txt``
 2. **Import Table** from File: ``DOMINO_*_activeModules.txt``
@@ -45,15 +44,16 @@ To create the same visualisation of AM, use the following steps:
 8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-*To run AM identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>` *or with your data see* :ref:`Use-case 2 <useCase2_AMI>`.
+*To run Active Module Identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 .. _networkRWR:
 
-Random Walk with Restart analysis (RWR) network visualisation
+Random Walk with Restart analysis network visualisation
 ----------------------------------------------------------------
 
-To explore a network, we use a Random Walk with Restart [4]_ approach. As results, each node has a score. You can
-visualise these scores using a network representation with Cytoscape.
+The Random Walk with Restart (RWR) analysis gives in output a score for each node. Theses score are used to selected
+the most relevant connections between nodes. You can visualise theses connections with Cytoscape.
 
 The following :numref:`cytoscapeRWR` is an example of visualisation:
 
@@ -147,7 +147,8 @@ To visualise the RWR results using network representation, use the following ste
 
 12. Change network layout (here is yFiles Organic Layout)
 
-*To perform a RWR with data requested, see* :ref:`Use-case 1 <useCase1_RWR>` *or with your data see* :ref:`Use-case 2 <useCase2_RWR>`.
+*To perform a RWR with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 References
 --------------------------------------------------
@@ -155,4 +156,3 @@ References
 .. [1] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
 .. [2] Legeay, M., Doncheva, N. T., Morris, J. H., & Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.
 .. [3] https://github.com/cytoscape/legend-creator
-.. [4] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.

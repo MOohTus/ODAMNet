@@ -8,20 +8,24 @@ Use-case 1: data are extracted automatically with requests
 
     This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_.
 
-We want to study the relationship between chemicals (hormones, vitamins etc.) and Rare Diseases.
+We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and rare diseases.
 
-**Genes**, that are targeted by the interested chemicals, are extracted **directly** from **CTD database**.
-**Rare Diseases pathways** are extracted from **WikiPathways** website.
-We choose to use as chemical of interest, the **vitamin A**.
+**Target genes**, that are targeted by the interested chemicals, are extracted **directly** from the |ctd|_ [2]_ (CTD).
+**Rare disease pathways** are extracted from **WikiPathways** [3]_ (WP) website_.
+We choose to use **vitamin A** as chemical of interest in this first use-case.
 
-This section presents you how to perform the three different approaches proposed.
+This section presents you how to apply the three different approaches proposed.
+
+.. _ctd: http://ctdbase.org/
+.. |ctd| replace:: **the Comparative Toxicogenomics Database**
+.. _website: https://www.wikipathways.org/
 
 .. _useCase1_overlap:
 
 Overlap analysis
 =====================
 
-This approach calculates the overlap between genes targeted by vitamin A, and Rare Diseases pathways
+This approach calculates the overlap between genes targeted by vitamin A, and rare disease pathways
 (see :doc:`../approaches/methods_overlap` section for more details).
 
 Running overlap analysis with data extracted automatically from databases
@@ -45,12 +49,12 @@ Several files are generated:
   the first file contains **results from CTD** request and the second one contains the filtered (by publications number) results.
 
 - ``WP_RareDiseases_request_2022_09_07.gmt`` and ``WP_allPathways_request_2022_09_07.gmt``:
-  the first file contains all the **human rare diseases pathways** from WikiPathways request
+  the first file contains all the **human rare disease pathways** from WikiPathways request
   and the second file contains **background source file names**.
 
-- ``Overlap_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare diseases pathways.
+- ``Overlap_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare disease pathways.
 
-For more details about these file, see :doc:`../formats/Output` page.
+For more details about these files, see the :doc:`../formats/Output` page.
 
 Results of overlap analysis with data extracted automatically from databases
 -------------------------------------------------------------------------------
@@ -61,25 +65,26 @@ CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
 We extracted genes that are targeted by **vitamin A** and by its child molecules. Request results are presented in the
-following :ref:`Table 2 <useCase1OverlapCTD>`. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others child molecules).
+following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target genes associated to 10 molecules (
+vitamin A + nine others child molecules).
 
 .. _useCase1OverlapCTD:
 .. table:: CTD request results
     :align: center
 
-    +---------------------------------------+---------------------+-----------------+
-    |                                       | Number of molecules | Number of genes |
-    +=======================================+=====================+=================+
-    |          Request result               |          10         |      7,765      |
-    +---------------------------------------+---------------------+-----------------+
-    | After filtering by publication number |          7          |      2,143      |
-    +---------------------------------------+---------------------+-----------------+
+    +---------------------------------------------------+---------------------+------------------------+
+    |                                                   | Number of molecules | Number of target genes |
+    +===================================================+=====================+========================+
+    |          Request result                           |          10         |      7,765             |
+    +---------------------------------------------------+---------------------+------------------------+
+    | After filtering by associated publications number |          7          |      2,143             |
+    +---------------------------------------------------+---------------------+------------------------+
 
 WikiPathways request results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All pathways labeled as Rare Diseases are extracted from WikiPathways. Request results are presented in the following
-:ref:`Table 3 <useCase1OverlapWP>`. The request extracts 104 Rare Disease pathways.
+All pathways labeled as rare disease are extracted from WikiPathways. Request results are presented in the following
+:ref:`Table 3 <useCase1OverlapWP>`. The request extracts 104 rare disease pathways.
 
 .. _useCase1OverlapWP:
 .. table:: WikiPathways request results
@@ -88,7 +93,7 @@ All pathways labeled as Rare Diseases are extracted from WikiPathways. Request r
     +------------------------+-----------------+------------------+------------------+
     |                        | Pathways number | Min genes number | Max genes number |
     +========================+=================+==================+==================+
-    | Rare Diseases Pathways |       104       |         3        |        436       |
+    | Rare Disease Pathways  |       104       |         3        |        436       |
     +------------------------+-----------------+------------------+------------------+
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
@@ -96,11 +101,11 @@ All pathways labeled as Rare Diseases are extracted from WikiPathways. Request r
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes overlap significantly **28 Rare Diseases pathways** (pAdjusted <= 0.05). The top 5 of results are presented in
-:ref:`Table 4 <useCase1OverlapTop5>`.
+We obtained a significant overlap between the vitamin A target genes and **28 rare disease pathways** (pAdjusted <= 0.05).
+The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1OverlapTop5>`.
 
 .. _useCase1OverlapTop5:
-.. table:: Top 5 of RD pathways significantly overlapped by target genes
+.. table:: Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways
     :align: center
 
     +------------+--------------------------------------------------+--------------+------------------+
@@ -117,6 +122,7 @@ Target genes overlap significantly **28 Rare Diseases pathways** (pAdjusted <= 0
     |   WP4879   | Overlap between signal transduction pathways ... |   7.80e-07   |        25        |
     +------------+--------------------------------------------------+--------------+------------------+
 
+%MT% - Changer ici voir pdf anais
 Ozisik *et al.,* [1]_ identified four pathways, related to CAKUT disease. All of them are significantly overlapped by vitamin A
 target genes. We retrieve one of them in the top 5 (**WP5053**). Two others are significantly overlapped in our analysis
 (:ref:`Table 5 <useCase1OverlapCAKUT>`):
@@ -145,8 +151,8 @@ target genes and pathways is smaller. It affects the pvalue calculation and decr
 Active Modules Identification (AMI)
 ======================================
 
-This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
-overlap analysis between each AM identified and Rare Diseases pathways from WP.
+DOMINO identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. After that, we perform an
+overlap analysis between each AM identified and rare disease pathways from WP.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
 Running active modules identification with data extracted automatically from databases
@@ -156,7 +162,7 @@ Running active modules identification with data extracted automatically from dat
 
    :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
 
-As before, we want to extract genes that are targeted by vitamin A and its child molecules. The **chemicalsFile.csv** file
+We want to extract genes that are targeted by vitamin A and its child molecules. The **chemicalsFile.csv** file
 [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A and we set ``--directAssociation`` parameter to ``False``.
 We keep only vitamin-gene interactions with at least to associated publications (``--nbPub 2``).
 
@@ -178,12 +184,12 @@ Several files are generated:
   the first file contains **results from CTD** request and the second one contains the filtered (by publications number) results.
 
 - ``WP_RareDiseases_request_2022_09_07.gmt`` and ``WP_allPathways_request_2022_09_07.gmt``:
-  the first file contains all the **human rare diseases pathways** from WikiPathways request
+  the first file contains all the **human rare disease pathways** from WikiPathways request
   and the second file contains **background source file names**.
 
 - ``DOMINO_inputGeneList_D014801.txt``: list target genes used for the AM identification.
 
-- ``Overlap_AM_*_D014801_withRDWP.csv``: results of the overlap analysis between target genes and Rare Diseases pathways.
+- ``Overlap_AM_*_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare disease pathways.
   One file per AM.
 
 - ``DOMINO_D014801_activeModulesNetwork.txt``, ``DOMINO_D014801_overlapAMresults4Cytoscape.txt``, ``DOMINO_D014801_activeModules.txt``
@@ -218,8 +224,8 @@ following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target gene
 WikiPathways request results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All pathways labeled as Rare Diseases are extracted from WikiPathways. Request results are presented in the following
-:ref:`Table 7 <useCase1AMIWP>`. The request extracts 104 Rare Disease pathways.
+All pathways labeled as rare disease are extracted from WikiPathways. Request results are presented in the following
+:ref:`Table 7 <useCase1AMIWP>`. The request extracts 104 rare disease pathways.
 
 .. _useCase1AMIWP:
 .. table:: WikiPathways request results
@@ -237,7 +243,7 @@ Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Target genes are defined as **active genes** by DOMINO. We give **2,143 active genes** as input. DOMINO found
-**13 Active Modules** (:ref:`Table 8 <useCase1AMIResults>`).
+**13 active modules** (:ref:`Table 8 <useCase1AMIResults>`).
 
 .. _useCase1AMIResults:
 .. table:: Composition of AMs found by DOMINO
@@ -258,11 +264,11 @@ Target genes are defined as **active genes** by DOMINO. We give **2,143 active g
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between AM and RD pathways. We found **16 pathways** that are significantly overlapped
-by **7 Active Modules** (padjusted <= 0.05).
+Then, we perform an overlap analysis between AM and rare disease pathways. We found significant overlap between **16 pathways** and
+**7 active modules** (padjusted <= 0.05).
 
 .. _useCase1AMIOverlap:
-.. table:: Overlap results between AM and RD pathways
+.. table:: Overlap results between AM and rare disease pathways
     :align: center
 
     +------------+---------------------------------------------------------------------------------+
@@ -314,27 +320,29 @@ a network representation (:numref:`dominoUsage1Fig`). To know how to create this
    :alt: usecase1 AMI
    :align: center
 
-   : Network visualisation of Active modules which are enriched by RD pathways
+   : Network visualisation of the 7 active modules
 
-Some network are enriched with the same pathways whereas other contain genes involved in different pathways. Target genes
-(i.e. active genes, grey nodes) could be part of pathways as non-target genes (white nodes).
+Some active modules are enriched with the same pathways whereas other contain genes involved in different pathways.
+In the :numref:`dominoUsage1Fig`, target genes are represented by grey nodes and others genes by white nodes.
 
 .. _useCase1_RWR:
 
 Random Walk with Restart (RWR)
 =================================
 
-The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
+The third approach, Random Walk with Restart (RWR), is applied into two different networks compositions:
 
-1. Multiplex (PPI + Complex + Reactome) and Rare Disease pathways network connected to genes nodes
-2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite
+1. Multilayer network with three molecular layers + rare disease pathways network connected to nodes
+2. Multilayer network with three molecular layers + disease-disease similarity network linked with a bipartite
 
-*For more details about RWR, see* :doc:`../approaches/methods_RWR`.
+The RWR is performed using multiXrank.
+
+*For more details about RWR and multiXrank, see* :doc:`../approaches/methods_RWR`.
 
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
 
-| To know how to create the Rare Disease pathways network network: see :ref:`pathwaysOfInterestNet`.
+| To know how to create the rare disease pathways network: see :ref:`pathwaysOfInterestNet`.
 | To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
 Whatever the network used, we want to extract target genes of vitamin A and its child molecules (``--directAssociation False``).
@@ -345,8 +353,7 @@ MultiXrank needs a configuration file (``--configPath``) and the networks path (
 default parameters.
 
 The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
-(``--top 10``).
+You need to give the SIF name (``--sifFileName``) to save the top nodes based on the score calculated by the RWR (``--top 10``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -359,7 +366,7 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 
     .. tabs::
 
-        .. group-tab:: Rare Disease pathways network
+        .. group-tab:: Rare disease pathways network
 
             .. code-block:: bash
                 :emphasize-lines: 9,11
@@ -424,7 +431,7 @@ Several files are generated:
     - ``config_minimal_useCase1.yml`` and ``seeds.txt``: copies of the input files
 
     - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
-      the RD pathways network (depends of the network folder name).
+      the rare disease pathways network (depends of the network folder name).
 
     - ``resultsNetwork_useCase1.sif``: SIF file that contains the network result
 
@@ -458,10 +465,10 @@ Random Walk with Restart results
 
 We use the default parameters, whatever the networks used.
 
-Rare Disease pathways network analysis
+Rare disease pathways network analysis
 """"""""""""""""""""""""""""""""""""""""""
 
-*In this part, we present results found for the first multiplex composition: multiplex + RD pathways.*
+*In this part, we present results found for the first multilayer network composition: multilayer network + rare disease pathways.*
 
 First, target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
 
@@ -541,7 +548,7 @@ shown on the :numref:`useCase1_orsum`.
    :alt: usecase 1 pathwaysNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multilayer and Rare Disease pathways network
+   : Results from RWR through the molecular multilayer and rare disease pathways network
 
     Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
 
@@ -590,16 +597,17 @@ You can represent the results with a network as shown in the :numref:`useCase1_s
    :alt: usecase 1 simNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multilayer and disease-disease similarity network
+   : Results from RWR through the molecular multiplex and disease-disease similarity network
 
     Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
 
 
-Rare disease pathways identified
-====================================
+Results comparison
+======================
 
-Approaches give us a list of RD pathways significantly connected to vitamin A target genes. To easily compare results,
-we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
+We compare results obtained with the three different approaches (overlap, active modules identification and random walk
+with restart), using orsum [4]_.
+Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
 
 .. code-block:: bash
 
@@ -618,4 +626,6 @@ we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase1
 References
 ============
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
-.. [2] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+.. [2] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
+.. [3] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
+.. [4] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
