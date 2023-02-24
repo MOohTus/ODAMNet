@@ -73,7 +73,7 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -114,13 +114,10 @@
 <span id="overlap"></span><h1>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h1>
 <section id="principle">
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This approach is the one implemented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> .</p>
-</div>
 <p>The overlap analysis calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways of interest</strong>.
 In other words, it looks for target genes that are part of pathways, i.e. <strong>direct overlap</strong>
-(<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part).</p>
+(<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part). This approach is presented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for a
+specific use case.</p>
 <p>First, an <strong>overlap</strong> between target genes and all the pathways is computed. Then, a <strong>statistical significance</strong>
 is calculated using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied
 to correct the pvalues.</p>
@@ -130,9 +127,9 @@ to correct the pvalues.</p>
 <p>By default, the data are directly extracted by requests on databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data extracted from requests</em>).
 The users give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from the <strong>Comparative Toxicogenomics Database</strong> (CTD).
 The users can also provide optional parameters to customize the selection of target genes.</p>
-<p>All <strong>rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically.</p>
-<p>In addition, the users can provide their own <strong>target genes</strong> and <strong>pathways/processes of interest</strong> files
-(<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
+<p>All <strong>rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> automatically.</p>
+<p>In addition, the users can provide their own <strong>target genes</strong> and <strong>pathways/processes of interest</strong>.
+(<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <figure class="align-center" id="id3">
 <span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/Overview_OverlapAnalysis.png" />
 <figcaption>
@@ -150,7 +147,7 @@ Optional input are represented with dash border line boxes.
 <section id="input-parameters-for-the-overlap-analysis">
 <h2>Input parameters for the overlap analysis<a class="headerlink" href="#input-parameters-for-the-overlap-analysis" title="Permalink to this heading"></a></h2>
 <div class="line-block">
-<div class="line">To extract target genes from <strong>CTD</strong> and rare disease pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To extract target genes from <strong>CTD</strong> and rare disease pathways from <strong>WikiPathways</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">users</span></code> tab.</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is used for both data extraction.</p>
@@ -222,7 +219,7 @@ It should be in the same order than the GMT file.
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., &amp; Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.</p>
+<p>Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., &amp; Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10:395.</p>
 </aside>
 </aside>
 </section>

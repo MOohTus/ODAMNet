@@ -69,7 +69,7 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -110,20 +110,20 @@
 <h1>Overview of the approaches<a class="headerlink" href="#overview-of-the-approaches" title="Permalink to this heading"></a></h1>
 <section id="goal">
 <h2>Goal<a class="headerlink" href="#goal" title="Permalink to this heading"></a></h2>
-<p>Our goal is to uncover <strong>molecular relationships between chemicals</strong> (e.g. vitamins, hormones etc …) and <strong>rare diseases</strong>.
-To this end, we implement <strong>different approaches</strong>.</p>
+<p>Our goal is to uncover <strong>molecular relationships between chemicals</strong> (e.g. vitamins, hormones etc.) and <strong>rare diseases</strong>.
+To this end, we implement <strong>three approaches</strong>.</p>
 <p>Data are extracted <strong>automatically</strong> from the <strong>Comparative Toxicogenomics Database</strong> (CTD) <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for target genes of
-chemicals and <strong>WikiPathways</strong> (WP) <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for rare disease pathways (see <a class="reference internal" href="../analysis/usecase1.html#usecase1"><span class="std std-ref">Use-case 1: data are extracted automatically with requests</span></a>).</p>
+chemicals and <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for rare disease pathways (see <a class="reference internal" href="../analysis/usecase1.html#usecase1"><span class="std std-ref">Use-case 1: data are extracted automatically with requests</span></a>).</p>
 <p>We propose three different approaches to uncover molecular relationships between genes which are targeted by chemicals and rare
 diseases (<a class="reference internal" href="#overviewfig"><span class="std std-numref">Fig. 1</span></a>):</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="methods_overlap.html#overlap"><span class="std std-ref">Overlap analysis</span></a>: chemical target genes are part of a rare disease pathway</p></li>
-<li><p><a class="reference internal" href="methods_AMI.html#ami"><span class="std std-ref">Active Module Identification</span></a>: chemical target genes and/or linked genes are part of a rare disease pathway</p></li>
-<li><p><a class="reference internal" href="methods_RWR.html#rwr"><span class="std std-ref">Random Walk with Restart</span></a>: diffusion from a chemical target gene</p></li>
+<li><p><a class="reference internal" href="methods_AMI.html#ami"><span class="std std-ref">Active Module Identification</span></a>: chemical target genes and/or linked genes that form a module are part of a rare disease pathway</p></li>
+<li><p><a class="reference internal" href="methods_RWR.html#rwr"><span class="std std-ref">Random Walk with Restart</span></a>: diffusion from chemical target genes</p></li>
 </ul>
 </div></blockquote>
-<p>Theses three approaches are <strong>complementary</strong> and perform <strong>network exploration</strong> at different level of interactions.</p>
+<p>These three approaches are <strong>complementary</strong> and they perform <strong>network exploration</strong> at different level of interactions.</p>
 <figure class="align-center" id="id5">
 <span id="overviewfig"></span><img alt="methods overview" src="../../_images/MethodsOverview.png" />
 <figcaption>
@@ -131,7 +131,7 @@ diseases (<a class="reference internal" href="#overviewfig"><span class="std std
 </figcaption>
 </figure>
 <p>Moreover, the approaches can be used with user-provided input files instead of files fetched with automatic requests.
-Take a look at <a class="reference internal" href="../analysis/usecase2.html#usecase2"><span class="std std-ref">Use-case 2: data are provided directly by users</span></a>, if you want to use your own input files.</p>
+Take a look at <a class="reference internal" href="../analysis/usecase2.html#usecase2"><span class="std std-ref">Use-case 2: data are provided by the user</span></a>, if you want to use your own input files.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>

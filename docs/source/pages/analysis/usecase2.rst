@@ -230,7 +230,7 @@ by **6 active modules** (padjusted <= 0.05).
 We found a pathway that was not found with the overlap approach (**REAC:R-HSA-8853659**).
 
 Visualisation of active module identification results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We visualised the result using a network representation (:numref:`dominoUsage2Fig`). To know how to create this figure,
 see the :ref:`networkAMI` section.

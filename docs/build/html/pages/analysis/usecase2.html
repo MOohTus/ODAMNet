@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Use-case 2: data are provided directly by users &mdash; ODAMNet 1 documentation</title>
+  <title>Use-case 2: data are provided by the user &mdash; ODAMNet 1 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -66,7 +66,7 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Use-case 2: data are provided directly by users</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use-case 2: data are provided by the user</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#context">Context</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-overlap-analysis-with-data-provided-by-users">Running overlap analysis with data provided by users</a></li>
@@ -83,7 +83,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id11">Data provided by users description</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#active-modules-identification-results">Active Modules Identification results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id13">Overlap analysis results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#visualisation-of-am-results">Visualisation of AM results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualisation-of-active-module-identification-results">Visualisation of active module identification results</a></li>
 </ul>
 </li>
 </ul>
@@ -126,7 +126,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Use-case 2: data are provided directly by users</li>
+      <li class="breadcrumb-item active">Use-case 2: data are provided by the user</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/pages/analysis/usecase2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,12 +136,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="use-case-2-data-are-provided-directly-by-users">
-<span id="usecase2"></span><h1>Use-case 2: data are provided directly by users<a class="headerlink" href="#use-case-2-data-are-provided-directly-by-users" title="Permalink to this heading"></a></h1>
+  <section id="use-case-2-data-are-provided-by-the-user">
+<span id="usecase2"></span><h1>Use-case 2: data are provided by the user<a class="headerlink" href="#use-case-2-data-are-provided-by-the-user" title="Permalink to this heading"></a></h1>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Permalink to this heading"></a></h2>
 <p>In the context of the EJP-RD project, an overlap analysis between genes targeted by vitamins A and D and pathways
-related to CAKUT disease was performed (Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id15" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).</p>
+related to CAKUT was performed (Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id15" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).</p>
 <p>For the vitamin A analysis, data was retrieved from several sources: target genes come from
 the <a class="reference external" href="https://ctdbase.org/">Comparative Toxicogenomics Database (CTD)</a> <a class="footnote-reference brackets" href="#id16" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and the study of Balmer and
 Blomhoff <a class="footnote-reference brackets" href="#id17" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and pathways/processes of interest come from WikiPathways (WP) <a class="footnote-reference brackets" href="#id18" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, Reactome <a class="footnote-reference brackets" href="#id19" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and Gene Ontology (GO) <a class="footnote-reference brackets" href="#id20" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id21" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
@@ -262,8 +262,8 @@ on this analysis and one more (REAC:R-HSA-2022377).</p>
 </section>
 <section id="active-modules-identification-ami">
 <span id="usecase2-ami"></span><h2>Active Modules Identification (AMI)<a class="headerlink" href="#active-modules-identification-ami" title="Permalink to this heading"></a></h2>
-<p>This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
-overlap analysis between each AM identified and Rare Diseases pathways from WP.
+<p>This approach identifies active modules through a protein-protein interaction (PPI) network. Then it performs an
+overlap analysis between each identified active module and rare disease pathway from WikiPathways.
 For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
 <section id="running-active-modules-identification-with-data-provided-by-users">
 <h3>Running active modules identification with data provided by users<a class="headerlink" href="#running-active-modules-identification-with-data-provided-by-users" title="Permalink to this heading"></a></h3>
@@ -272,7 +272,7 @@ For more detail, see <a class="reference internal" href="../approaches/methods_A
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Results of DOMINO cannot be reproduced when using the DOMINO’s server.</p>
 </div>
 <p>As before, users provide target genes (<code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>) and pathways of interest (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> - [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]).</p>
-<p>We will identify AM using a Protein-Protein Interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
+<p>We will identify active modules using a protein-protein interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
@@ -283,9 +283,9 @@ For more detail, see <a class="reference internal" href="../approaches/methods_A
 </div>
 <p>Several files are generated :</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_inputGeneList_D014801.txt</span></code>: genes targeted by vitamin A, used for the AM identification.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_inputGeneList_D014801.txt</span></code>: genes targeted by vitamin A, used for the active module identification.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Overlap_AM_*_genesList_withpathOfInterest.csv</span></code>: results of the overlap analysis between target genes and pathways of
-interest provided by users. One file per AM.</p></li>
+interest provided by the user. One file per active module.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_activeModulesNetwork.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_overlapAMresults4Cytoscape.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_activeModules.txt</span></code>
 , <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_activeModulesNetworkMetrics.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_signOverlap.txt</span></code>: some statistics are
 calculated and saved into files. Theses files are useful for visualisation.</p></li>
@@ -324,7 +324,7 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 <p>Target genes are defined as <strong>active genes</strong> by DOMINO. We give <strong>521 active genes</strong> as input. DOMINO found
 <strong>18 Active Modules</strong> (<a class="reference internal" href="#usecase2amiresults"><span class="std std-ref">Table 16</span></a>).</p>
 <span id="usecase2amiresults"></span><table class="docutils align-center" id="id25">
-<caption><span class="caption-number">Table 16 </span><span class="caption-text">Composition of AMs found by DOMINO</span><a class="headerlink" href="#id25" title="Permalink to this table"></a></caption>
+<caption><span class="caption-number">Table 16 </span><span class="caption-text">Composition of active modules found by DOMINO</span><a class="headerlink" href="#id25" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Min number</p></th>
@@ -350,10 +350,10 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </section>
 <section id="id13">
 <h4>Overlap analysis results<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
-<p>Then, we perform an overlap analysis between AM and pathways of interest. We found <strong>7 pathways</strong> that are significantly overlapped
-by <strong>6 Active Modules</strong> (padjusted &lt;= 0.05).</p>
+<p>Then, we perform an overlap analysis between active modules and pathways of interest. We found <strong>7 pathways</strong> that are significantly overlapped
+by <strong>6 active modules</strong> (padjusted &lt;= 0.05).</p>
 <span id="usecase2amioverlap"></span><table class="docutils align-center" id="id26">
-<caption><span class="caption-number">Table 17 </span><span class="caption-text">Overlap analysis between AM and pathways of interest provided by users</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Overlap analysis between active module and pathways of interest provided by users</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>termID</p></th>
 <th class="head"><p>termTitle</p></th>
@@ -385,10 +385,10 @@ by <strong>6 Active Modules</strong> (padjusted &lt;= 0.05).</p>
 </table>
 <p>We found a pathway that was not found with the overlap approach (<strong>REAC:R-HSA-8853659</strong>).</p>
 </section>
-<section id="visualisation-of-am-results">
-<h4>Visualisation of AM results<a class="headerlink" href="#visualisation-of-am-results" title="Permalink to this heading"></a></h4>
+<section id="visualisation-of-active-module-identification-results">
+<h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
 <p>We visualised the result using a network representation (<a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>). To know how to create this figure,
-see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Modules Identification network visualisation</span></a> section.</p>
+see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
 <figure class="align-center" id="id27">
 <span id="dominousage2fig"></span><img alt="usecase2 AMI" src="../../_images/useCase2_DOMINO_network.png" />
 <figcaption>

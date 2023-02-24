@@ -12,7 +12,7 @@ We want to study the molecular relationship between chemicals (hormones, vitamin
 
 **Target genes**, that are targeted by the chemicals of interest, are extracted **directly** from the |ctd|_ [2]_ (CTD).
 **Rare disease pathways** are extracted from **WikiPathways** [3]_ website_.
-We choose to use as chemical of interest, the **vitamin A**n
+We choose to use as chemical of interest, the **vitamin A**.
 
 This section presents you how to apply the three different approaches proposed.
 
@@ -233,7 +233,7 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
     +------------------------+-----------------+------------------+------------------+
     |                        | Pathways number | Min genes number | Max genes number |
     +========================+=================+==================+==================+
-    | Rare Disease Pathways |       104       |         3        |        436       |
+    | Rare Disease Pathways  |       104       |         3        |        436       |
     +------------------------+-----------------+------------------+------------------+
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
@@ -309,7 +309,7 @@ Then, we perform an overlap analysis between active modules and rare disease pat
 **Two pathways** related to CAKUT disease are found with this approach (in bold in the :ref:`Table 9 <useCase1AMIResults>`).
 
 Visualisation of active module identification results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It could be interesting to visualise the active modules found and add on them the overlap results. To do that, we used
 a network representation (:numref:`dominoUsage1Fig`). To know how to create this figure, see the :ref:`networkAMI` section.

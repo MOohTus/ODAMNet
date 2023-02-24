@@ -9,12 +9,12 @@ Principle
 
 .. note::
 
-    | Active Modules Identification is performed using DOMINO [1]_. The analysis is running on the domino server [2]_.
+    | Active Module Identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
     | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
-DOMINO is looking for **active modules** in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
+DOMINO is looking for **active modules** in a network (e.g. protein-protein interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-First, DOMINO defines target genes as **active genes**. From them, DOMINO tries to **identify active modules** through a network.
+First, target genes are defined as **active genes**. Then DOMINO tries to **identify active modules**.
 
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent **functional modules** and can thereby reveal biological processes involved in a specific condition.
@@ -66,7 +66,7 @@ You can provide your own **target genes file** and **pathways/processes of inter
 Input parameters for the Active Modules Identification
 --------------------------------------------------------
 
-| To extract target genes from **CTD** and rare disease pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
 The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.
@@ -98,7 +98,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
 
         --GMT FILENAME
             Tab-delimited file that describes gene sets of pathways/processes of interest.
-            Pathways/processes can come from several sources (e.g. WP and GO\:BP).
+            Pathways/processes can come from several sources (e.g. WikiPathways and GO\:BP).
             [:ref:`FORMAT <pathways>`]
             **[required]**
 
