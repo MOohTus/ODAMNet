@@ -180,7 +180,7 @@ Pathways of interest network
 
 This kind of network can be build using the ``networkCreation`` method.
 
-By default, the network is build using rare disease pathways extracted automatically from WikiPathways (WP).
+By default, the network is build using rare disease pathways extracted automatically from WikiPathways.
 
 --networksPath PATH
     Output repository name where the pathways network will be saved.

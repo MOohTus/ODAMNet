@@ -116,34 +116,41 @@ The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1O
     +------------+--------------------------------------------------+--------------+------------------+
     |   WP2447   | Amyotrophic lateral sclerosis (ALS)              |   1.04e-11   |        25        |
     +------------+--------------------------------------------------+--------------+------------------+
-    | **WP5053** | **Development of ureteric collection system**    | **2.61e-08** |      **28**      |
+    |   WP5053   | Development of ureteric collection system        |   2.61e-08   |        28        |
     +------------+--------------------------------------------------+--------------+------------------+
     |   WP4879   | Overlap between signal transduction pathways ... |   7.80e-07   |        25        |
     +------------+--------------------------------------------------+--------------+------------------+
 
-%MT% - Changer ici voir pdf anais
-Ozisik *et al.,* [1]_ identified four pathways, related to CAKUT disease. All of them are significantly overlapped by vitamin A
-target genes. We retrieve one of them in the top 5 (**WP5053**). Two others are significantly overlapped in our analysis
-(:ref:`Table 5 <useCase1OverlapCAKUT>`):
+In the previous analysis [1]_, significant overlaps were identified between four CAKUT pathways and the vitamin A target
+genes. With updated target genes data, we retrieve a significant overlap between three CAKUT pathways and the target genes.
+THe results are shown in the (:ref:`Table 5 <useCase1OverlapCAKUT>`):
 
 .. _useCase1OverlapCAKUT:
 .. table:: CAKUT pathways overlap results
     :align: center
 
-    +------------+-----------------------------------------------+--------------+------------------+
-    | PathwayIDs |                  PathwayNames                 |   pAdjusted  | IntersectionSize |
-    +============+===============================================+==============+==================+
-    | **WP5053** | **Development of ureteric collection system** | **2.61e-08** |      **28**      |
-    +------------+-----------------------------------------------+--------------+------------------+
-    | **WP4830** | **GDNF/RET signaling axis**                   | **1.99e-05** |      **13**      |
-    +------------+-----------------------------------------------+--------------+------------------+
-    | **WP4823** | **Genes controlling nephrogenesis**           | **8.72e-05** |      **18**      |
-    +------------+-----------------------------------------------+--------------+------------------+
-    |   WP5052   | Nephrogenesis                                 |     0.09     |         6        |
-    +------------+-----------------------------------------------+--------------+------------------+
+    +------------+-----------------------------------------------+---------------------------------+---------------------------------+
+    |            |                                               |         Current analysis        |          Ozisik's paper         |
+    +============+===============================================+==============+==================+==============+==================+
+    | PathwayIDs |                  PathwayNames                 |   pAdjusted  | IntersectionSize |   pAdjusted  | IntersectionSize |
+    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
+    | **WP5053** | **Development of ureteric collection system** | **2.61e-08** |        28        | **1.59e-05** |        16        |
+    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
+    | **WP4830** |          **GDNF/RET signaling axis**          | **1.99e-05** |        13        | **1.57e-03** |         8        |
+    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
+    | **WP4823** |      **Genes controlling nephrogenesis**      | **8.72e-05** |        18        | **1.84e-05** |        15        |
+    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
+    |   WP5052   |                 Nephrogenesis                 |     0.09     |         6        | **1.90e-04** |         8        |
+    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
 
-The WP5052 pathway is not significant anymore (compare to Ozisik *et al.,* [1]_ results) because the number of genes between
-target genes and pathways is smaller. It affects the p-value calculation and decreases bellow our 0.05 threshold.
+The increasing of the intersection size can be explained by the target gene size. The previous work extracted 1,086
+target genes and in this current work we extracted 2,143 target genes.
+
+The overlap between `Nephrogenesis` pathway and target genes is not found significant anymore. Number of target genes
+shared with the pathway is smaller. It affects the p-value and decreases it below the 0.05 threshold.
+It can be explained by the fact that on of the two missing genes is not related to human. So it cannot be extracted by
+the request. And the other gene has only one publication that relates association with vitamin A. So it is not kept
+during filtering.
 
 .. _useCase1_AMI:
 
@@ -151,7 +158,7 @@ Active Modules Identification (AMI)
 ======================================
 
 DOMINO identifies active modules through a protein-protein interaction (PPI) network. After that, we perform an
-overlap analysis between each identified active modules and rare disease pathways from WikiPathways.
+overlap analysis between each identified active module and rare disease pathways from WikiPathways.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
 Running Active Module Identification with data extracted automatically from databases
@@ -205,8 +212,9 @@ Results of Active Module identification with data extracted automatically from d
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant molecules. Request results are presented in the
-following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine other descendant molecules).
+We extracted genes that are targeted by **vitamin A** and by its descendant molecules. Request results are presented in
+the following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target genes associated to 10 molecules
+(vitamin A + nine other descendant molecules).
 
 .. _useCase1AMICTD:
 .. table:: CTD request results
@@ -241,7 +249,7 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are defined as **active genes** by DOMINO. We give **2,143 active genes** as input. DOMINO found
+Target genes are defined as **active genes** by DOMINO. We give **2,143 target genes** as input. DOMINO found
 **13 active modules** (:ref:`Table 8 <useCase1AMIResults>`).
 
 .. _useCase1AMIResults:
@@ -263,11 +271,11 @@ Target genes are defined as **active genes** by DOMINO. We give **2,143 active g
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between active modules and rare disease pathways. We found significant overlap between **16 pathways** and
-**7 active modules** (padjusted <= 0.05).
+Then, we perform an overlap analysis between active modules and rare disease pathways. We found significant overlap
+between **16 pathways** and **7 active modules** (padjusted <= 0.05).
 
 .. _useCase1AMIOverlap:
-.. table:: Overlap results between active module and rare disease pathways
+.. table:: Overlap results between active modules and rare disease pathways
     :align: center
 
     +------------+---------------------------------------------------------------------------------+
@@ -311,7 +319,7 @@ Then, we perform an overlap analysis between active modules and rare disease pat
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It could be interesting to visualise the active modules found and add on them the overlap results. To do that, we used
+It could be interesting to visualise the active modules identified and add on them the overlap results. To do that, we used
 a network representation (:numref:`dominoUsage1Fig`). To know how to create this figure, see the :ref:`networkAMI` section.
 
 .. _dominoUsage1Fig:

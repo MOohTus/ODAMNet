@@ -93,7 +93,7 @@ It's composed of 9 columns:
 Pathways of interest
 =======================
 
-By default, WikiPathays (WP) is automatically requested to extract rare disease pathways. Moreover, you can give your own
+By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
 --GMT FILENAME

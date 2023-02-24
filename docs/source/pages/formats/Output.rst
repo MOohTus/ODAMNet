@@ -8,7 +8,7 @@ Request file results
 ==================================================
 
 ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
-Database (CTD) and rare disease pathways are extracted from WikiPathways (WP).
+Database (CTD) and rare disease pathways are extracted from WikiPathways.
 It implies creation of output files that contain results of these requests.
 
 .. _CTDrequestOuput:
@@ -57,10 +57,10 @@ This is an example of this file:
 
 .. _WPrequestOuput:
 
-WP request file results
---------------------------
+WikiPathways request file results
+---------------------------------------
 
-When you request WP to extract the rare disease pathways, two files are created whatever the approach chosen.
+When you request WikiPathways to extract the rare disease pathways, two files are created whatever the approach chosen.
 
 WP_RareDiseases_request_DATE.gmt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

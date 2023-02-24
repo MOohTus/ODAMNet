@@ -12,7 +12,7 @@ related to CAKUT was performed (Ozisik *et al.*, 2021 [1]_).
 
 For the vitamin A analysis, data was retrieved from several sources: target genes come from
 the `Comparative Toxicogenomics Database (CTD) <https://ctdbase.org/>`_ [2]_ and the study of Balmer and
-Blomhoff [3]_, and pathways/processes of interest come from WikiPathways (WP) [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_.
+Blomhoff [3]_, and pathways/processes of interest come from WikiPathways [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_.
 
 For this use-case, we used data from this paper:
 
@@ -73,7 +73,7 @@ Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are pre
     |        Sources       |    3   |
     +----------------------+--------+
 
-Pathways of interests come from Reactome and WP and processes of interest come from Biological Process (Gene Ontology).
+Pathways of interests come from Reactome and WikiPathways and processes of interest come from Biological Process (Gene Ontology).
 
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -175,7 +175,7 @@ Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are pre
     |        Sources       |    3   |
     +----------------------+--------+
 
-Pathways of interests come from Reactome and WP and processes of interest come from Biological Process (Gene Ontology).
+Pathways of interests come from Reactome and WikiPathways and processes of interest come from Biological Process (Gene Ontology).
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
