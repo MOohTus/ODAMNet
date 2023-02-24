@@ -128,19 +128,21 @@ to correct the pvalues.</p>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>By default, the data are directly extracted by requests on databases (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data extracted from requests</em>).
-The users give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. The users can also provide
-optional parameters to customize the selection of target genes.</p>
-<p>All <strong>Rare Disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically.</p>
+The users give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from the <strong>Comparative Toxicogenomics Database</strong> (CTD).
+The users can also provide optional parameters to customize the selection of target genes.</p>
+<p>All <strong>rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically.</p>
 <p>In addition, the users can provide their own <strong>target genes</strong> and <strong>pathways/processes of interest</strong> files
 (<a class="reference internal" href="#overlapfig"><span class="std std-numref">Fig. 2</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <figure class="align-center" id="id3">
 <span id="overlapfig"></span><img alt="overlap analysis" src="../../_images/Overview_OverlapAnalysis.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output files/parameters of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output of overlap analysis</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>There are two ways to extract target genes: from automatic request (pink boxes) or provided by users (green boxes).
-Required files/parameters have solid border line and optional files/parameters have dash border line.
-Output files in pink are created only if the input data are extracted from requests.</p>
+<p>(Left part) - Target genes and rare disease pathways can be extracted using automatic request.
+Required input are represented with pink solid border line boxes. The users can also provide their own data.
+Required input are represented with green solid border line boxes.
+Optional input are represented with dash border line boxes.
+(Right part) - Output files that are in pink are created only if the input data are extracted from request.</p>
 </div>
 </figcaption>
 </figure>
@@ -148,7 +150,7 @@ Output files in pink are created only if the input data are extracted from reque
 <section id="input-parameters-for-the-overlap-analysis">
 <h2>Input parameters for the overlap analysis<a class="headerlink" href="#input-parameters-for-the-overlap-analysis" title="Permalink to this heading"></a></h2>
 <div class="line-block">
-<div class="line">To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To extract target genes from <strong>CTD</strong> and rare disease pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">users</span></code> tab.</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is used for both data extraction.</p>

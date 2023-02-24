@@ -9,17 +9,17 @@ Principle
 
 .. note::
 
-    | Active Modules (AM) identification is performed using DOMINO [1]_. The analysis is running on the domino server [2]_.
+    | Active Modules Identification is performed using DOMINO [1]_. The analysis is running on the domino server [2]_.
     | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
-DOMINO is looking for **Active Modules** (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
+DOMINO is looking for **active modules** in a network (e.g. Protein-Protein Interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-First, DOMINO defines target genes as **Active Genes**. From them, DOMINO tries to **identify active modules** through a network.
+First, DOMINO defines target genes as **active genes**. From them, DOMINO tries to **identify active modules** through a network.
 
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent **functional modules** and can thereby reveal biological processes involved in a specific condition.
 
-Finally, we performed an **overlap analysis** between each AM identified by DOMINO and pathways of interest.
+Finally, we performed an **overlap analysis** between each active module identified by DOMINO and pathways of interest.
 
 Overview of the DOMINO algorithm
 -----------------------------------
@@ -36,8 +36,8 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 | **A - Step 0:** The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.
 | **B - Step 1:** The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.
 | **C - Step 2a:** The most active sub-slice is identified on each relevant slices.
-| **D - Step 2b:** The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.
-| **E - Step 3:** The final set of AM is identified (under a threshold of Bonferroni qval<=0.05).
+| **D - Step 2b:** The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.
+| **E - Step 3:** The final set of active module is identified (under a threshold of Bonferroni qval<=0.05).
 
 *For more details, see to the DOMINO's publication* [1]_.
 
@@ -45,8 +45,9 @@ Usage
 -------
 
 By default, data are extracted directly by requesting databases (:numref:`dominoUsageFig`: section *data extracted from requests*).
-You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. **Rare Disease pathways** are
-extracted from **WP** automatically too. You can give some optional parameters to custom the selection of target genes.
+You give the ``--chemicalsFile`` and the **target genes** are extracted from the **Comparative Toxicogenomics Database** (CTD).
+**Rare disease pathways** are extracted from **WikiPathways** (WP) automatically too.
+You can give some optional parameters to custom the selection of target genes.
 
 You can provide your own **target genes file** and **pathways/processes of interest**
 (:numref:`dominoUsageFig`: section *data provided by users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
@@ -65,7 +66,7 @@ You can provide your own **target genes file** and **pathways/processes of inter
 Input parameters for the Active Modules Identification
 --------------------------------------------------------
 
-| To extract target genes from **CTD** and RD pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
+| To extract target genes from **CTD** and rare disease pathways from **WP**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
 The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--outputPath`` are optional.

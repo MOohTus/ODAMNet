@@ -6,10 +6,10 @@ You can visualise network results using Cytoscape [1]_. Here, we describe the st
 
 .. _networkAMI:
 
-Active Modules Identification (AMI) network visualisation
+Active Modules Identification network visualisation
 ------------------------------------------------------------
 
-On the Active Modules (AM) Identification analysis, several AM are generated. You can visualise them with Cytoscape.
+On the Active Modules Identification analysis, several active modules are generated. You can visualise them with Cytoscape.
 
 The following :numref:`cytoscapeAMI` is an example of visualisation:
 
@@ -18,9 +18,9 @@ The following :numref:`cytoscapeAMI` is an example of visualisation:
     :alt: example1 AMI
     :align: center
 
-    : Visualisation of AM using Cytoscape [1]_ and Omics Visualizer [2]_
+    : Visualisation of active modules identified using Cytoscape [1]_ and Omics Visualizer [2]_
 
-To create the same visualisation of AM, use the following steps:
+To create the same visualisation of active modules, use the following steps:
 
 1. **Import Network** from File: ``DOMINO_*_activeModulesNetwork.txt``
 2. **Import Table** from File: ``DOMINO_*_activeModules.txt``
@@ -44,12 +44,12 @@ To create the same visualisation of AM, use the following steps:
 8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-*To run AM identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*To run Active Module Identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
 *or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 .. _networkRWR:
 
-Random Walk with Restart (RWR) analysis network visualisation
+Random Walk with Restart analysis network visualisation
 ----------------------------------------------------------------
 
 The Random Walk with Restart (RWR) analysis gives in output a score for each node. Theses score are used to selected

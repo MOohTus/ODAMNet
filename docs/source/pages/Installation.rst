@@ -52,7 +52,7 @@ Three different approaches are available:
 
    odamnet [overlap|domino|multixrank] [ARGS]
 
-Before running the RWR approach, you could need to create a network using your pathways of interest:
+Before running the Random Walk with Restart approach, you could need to create a network using your pathways of interest:
 
 .. code-block:: bash
 

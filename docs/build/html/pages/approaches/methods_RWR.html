@@ -131,7 +131,7 @@
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The Random Walk is performed using multiXrank <a class="footnote-reference brackets" href="#id9" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> –
+<p>The Random Walk with Restart is performed using multiXrank <a class="footnote-reference brackets" href="#id9" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> –
 <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></p>
 </div>
 <p>The Random Walk with Restart (RWR) approach measures the <strong>proximity</strong> between target genes and all the nodes (e.g. genes,
@@ -143,10 +143,10 @@ is represented by a score that could be use for multiple analysis. More the scor
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>By default, data are extracted directly by request databases (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: section <em>data extracted from requests</em>).
-You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>.</p>
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from the <strong>Comparative Toxicogenomics Database</strong> (CTD).</p>
 <p>You can provide your own <strong>target genes file</strong> (<a class="reference internal" href="#rwrusagefig"><span class="std std-numref">Fig. 5</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>.</p>
 <figure class="align-center" id="id12">
-<span id="rwrusagefig"></span><img alt="RWR analysis" src="../../_images/Overview_RWR.png" />
+<span id="rwrusagefig"></span><img alt="Random Walk with Restart analysis" src="../../_images/Overview_RWR.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output files/parameters of Random Walk with Restart analysis</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
 <div class="legend">
@@ -256,7 +256,7 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <figure class="align-center" id="id13">
 <span id="rwrfig"></span><img alt="RWR networks" src="../../_images/NetworkAvailable_RWR.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk with restart into two different network compositions</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk with Restart into two different network compositions</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <section id="molecular-multilayer">
@@ -289,7 +289,7 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <section id="pathways-of-interest-network">
 <span id="pathwaysofinterestnet"></span><h3>Pathways of interest network<a class="headerlink" href="#pathways-of-interest-network" title="Permalink to this heading"></a></h3>
 <p>This kind of network can be build using the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
-<p>By default, the network is build using Rare Diseases pathways extracted automatically from WP.</p>
+<p>By default, the network is build using rare disease pathways extracted automatically from WikiPathways (WP).</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
 <dd><p>Output repository name where the pathways network will be saved.</p>

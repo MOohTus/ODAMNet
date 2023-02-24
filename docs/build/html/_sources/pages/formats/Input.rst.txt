@@ -13,7 +13,7 @@ Target genes
 
         Two ways exist to extract the list of target genes:
 
-        :ref:`chemicalsFile`: give chemical IDs file as input and request CTD database
+        :ref:`chemicalsFile`: give chemical IDs file as input and request the Comparative Toxicogenomics Database (CTD)
         :ref:`targetGenesFile`: give your own target genes file
 
 .. tip::
@@ -93,7 +93,7 @@ It's composed of 9 columns:
 Pathways of interest
 =======================
 
-By default, WP is automatically requested to extract Rare Diseases pathways. Moreover, you can give your own 
+By default, WikiPathays (WP) is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
 --GMT FILENAME

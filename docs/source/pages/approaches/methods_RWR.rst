@@ -9,7 +9,7 @@ Principle
 
 .. note::
 
-    The Random Walk is performed using multiXrank [1]_ --
+    The Random Walk with Restart is performed using multiXrank [1]_ --
     :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 The Random Walk with Restart (RWR) approach measures the **proximity** between target genes and all the nodes (e.g. genes,
@@ -24,13 +24,13 @@ Usage
 -------
 
 By default, data are extracted directly by request databases (:numref:`RWRUsageFig`: section *data extracted from requests*).
-You give the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**.
+You give the ``--chemicalsFile`` and the **target genes** are extracted from the **Comparative Toxicogenomics Database** (CTD).
 
 You can provide your own **target genes file** (:numref:`RWRUsageFig`: section *data provided by users*) with ``--targetGenesFile``.
 
 .. _RWRUsageFig:
 .. figure:: ../../pictures/Overview_RWR.png
-    :alt: RWR analysis
+    :alt: Random Walk with Restart analysis
     :align: center
 
     : Input and output files/parameters of Random Walk with Restart analysis
@@ -141,7 +141,7 @@ We propose to run the RWR on two different multilayer networks:
     :alt: RWR networks
     :align: center
 
-    : Random Walk with restart into two different network compositions
+    : Random Walk with Restart into two different network compositions
 
 Molecular multilayer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,7 +180,7 @@ Pathways of interest network
 
 This kind of network can be build using the ``networkCreation`` method.
 
-By default, the network is build using Rare Diseases pathways extracted automatically from WP.
+By default, the network is build using rare disease pathways extracted automatically from WikiPathways (WP).
 
 --networksPath PATH
     Output repository name where the pathways network will be saved.

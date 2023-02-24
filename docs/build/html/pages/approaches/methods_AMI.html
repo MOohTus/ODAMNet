@@ -124,15 +124,15 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="line-block">
-<div class="line">Active Modules (AM) identification is performed using DOMINO <a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on the domino server <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
+<div class="line">Active Modules Identification is performed using DOMINO <a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on the domino server <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
 <div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/Shamir-Lab/domino_web">DOMINO web GitHub</a> – <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-globe" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg> <a class="reference external" href="http://domino.cs.tau.ac.il/">DOMINO server</a></div>
 </div>
 </div>
-<p>DOMINO is looking for <strong>Active Modules</strong> (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
-<p>First, DOMINO defines target genes as <strong>Active Genes</strong>. From them, DOMINO tries to <strong>identify active modules</strong> through a network.</p>
+<p>DOMINO is looking for <strong>active modules</strong> in a network (e.g. Protein-Protein Interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
+<p>First, DOMINO defines target genes as <strong>active genes</strong>. From them, DOMINO tries to <strong>identify active modules</strong> through a network.</p>
 <p>Active modules are <strong>subnetworks</strong> identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent <strong>functional modules</strong> and can thereby reveal biological processes involved in a specific condition.</p>
-<p>Finally, we performed an <strong>overlap analysis</strong> between each AM identified by DOMINO and pathways of interest.</p>
+<p>Finally, we performed an <strong>overlap analysis</strong> between each active module identified by DOMINO and pathways of interest.</p>
 </section>
 <section id="overview-of-the-domino-algorithm">
 <h2>Overview of the DOMINO algorithm<a class="headerlink" href="#overview-of-the-domino-algorithm" title="Permalink to this heading"></a></h2>
@@ -147,16 +147,17 @@ Ideally, they will represent <strong>functional modules</strong> and can thereby
 <div class="line"><strong>A - Step 0:</strong> The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.</div>
 <div class="line"><strong>B - Step 1:</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
 <div class="line"><strong>C - Step 2a:</strong> The most active sub-slice is identified on each relevant slices.</div>
-<div class="line"><strong>D - Step 2b:</strong> The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.</div>
-<div class="line"><strong>E - Step 3:</strong> The final set of AM is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
+<div class="line"><strong>D - Step 2b:</strong> The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.</div>
+<div class="line"><strong>E - Step 3:</strong> The final set of active module is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
 </div>
 <p><em>For more details, see to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data extracted from requests</em>).
-You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
-extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from the <strong>Comparative Toxicogenomics Database</strong> (CTD).
+<strong>Rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically too.
+You can give some optional parameters to custom the selection of target genes.</p>
 <p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong>
 (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <figure class="align-center" id="id18">
@@ -174,7 +175,7 @@ Output files in pink are created only if the input data are extracted from reque
 <section id="input-parameters-for-the-active-modules-identification">
 <h2>Input parameters for the Active Modules Identification<a class="headerlink" href="#input-parameters-for-the-active-modules-identification" title="Permalink to this heading"></a></h2>
 <div class="line-block">
-<div class="line">To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To extract target genes from <strong>CTD</strong> and rare disease pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">users</span></code> tab.</div>
 </div>
 <p>The network file is required <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> whereas <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> are optional.</p>
