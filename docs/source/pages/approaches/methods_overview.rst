@@ -5,14 +5,14 @@ Overview of the approaches
 Goal
 ======
 
-Our goal is to uncover **relationships between chemicals** (e.g. vitamins, hormones etc.) and **rare diseases**.
+Our goal is to uncover **molecular relationships between chemicals** (e.g. vitamins, hormones etc.) and **rare diseases**.
 To this end, we implement **three approaches**.
 
 Data are extracted **automatically** from the **Comparative Toxicogenomics Database** (CTD) [1]_ for target genes of
-chemicals and **WikiPathways** [2]_ for Rare Disease pathways (see :ref:`usecase1`).
+chemicals and **WikiPathways** [2]_ for rare disease pathways (see :ref:`usecase1`).
 
-We propose three different approaches to uncover relationships between genes which are targeted by chemicals and Rare
-Diseases (:numref:`overviewFig`):
+We propose three different approaches to uncover molecular relationships between genes which are targeted by chemicals and rare
+diseases (:numref:`overviewFig`):
 
     - :ref:`overlap`: chemical target genes are part of a rare disease pathway
     - :ref:`AMI`: chemical target genes and/or linked genes that form a module are part of a rare disease pathway
