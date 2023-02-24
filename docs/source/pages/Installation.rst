@@ -52,7 +52,7 @@ Three different approaches are available:
 
    odamnet [overlap|domino|multixrank] [ARGS]
 
-Before running the RWR approach, you could need to create a network using your pathways of interest:
+The RWR approach requires the bipartite network of gene - rare disease associations. You can create this network using your pathways of interest:
 
 .. code-block:: bash
 

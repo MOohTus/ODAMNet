@@ -65,13 +65,13 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Input.html">Input files</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Output files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ctd-and-wikipathways-request-file-results">CTD and WikiPathways request file results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#request-file-results">Request file results</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#ctd-request-file-results">CTD request file results</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ctd-request-meshid-date-tsv">CTD_request_MeSHID_DATE.tsv</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ctd-requestfiltered-meshid-date-tsv">CTD_requestFiltered_MeSHID_DATE.tsv</a></li>
@@ -138,8 +138,11 @@
              
   <section id="output-files">
 <h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h1>
-<section id="ctd-and-wikipathways-request-file-results">
-<span id="requestoutput"></span><h2>CTD and WikiPathways request file results<a class="headerlink" href="#ctd-and-wikipathways-request-file-results" title="Permalink to this heading"></a></h2>
+<section id="request-file-results">
+<span id="requestoutput"></span><h2>Request file results<a class="headerlink" href="#request-file-results" title="Permalink to this heading"></a></h2>
+<p>ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
+Database (CTD) and rare disease pathways are extracted from WikiPathways (WP).
+It implies creation of output files that contain results of these requests.</p>
 <section id="ctd-request-file-results">
 <span id="ctdrequestouput"></span><h3>CTD request file results<a class="headerlink" href="#ctd-request-file-results" title="Permalink to this heading"></a></h3>
 <p>When you request CTD to extract the target genes, two files are created, whatever the approach you choose.</p>
@@ -179,10 +182,10 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 </section>
 <section id="wp-request-file-results">
 <span id="wprequestouput"></span><h3>WP request file results<a class="headerlink" href="#wp-request-file-results" title="Permalink to this heading"></a></h3>
-<p>When you request WikiPathways to extract the Rare Diseases pathways, two files are created whatever the approach chosen.</p>
+<p>When you request WP to extract the rare disease pathways, two files are created whatever the approach chosen.</p>
 <section id="wp-rarediseases-request-date-gmt">
 <h4>WP_RareDiseases_request_DATE.gmt<a class="headerlink" href="#wp-rarediseases-request-date-gmt" title="Permalink to this heading"></a></h4>
-<p>This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
+<p>This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as rare diseases are
 extracted and save into this GMT file.</p>
 <p>GMT file is a tab-separated file:</p>
 <ul class="simple">
@@ -238,10 +241,10 @@ WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;
 </section>
 <section id="active-module-identification">
 <span id="amioutput"></span><h2>Active Module Identification<a class="headerlink" href="#active-module-identification" title="Permalink to this heading"></a></h2>
-<p>When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of Active Modules found.</p>
+<p>When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of active modules found.</p>
 <section id="domino-inputgenelist-meshid-txt">
 <h3>DOMINO_inputGeneList_MeSHID.txt<a class="headerlink" href="#domino-inputgenelist-meshid-txt" title="Permalink to this heading"></a></h3>
-<p>This file contains the list of target genes. There are used as Active Genes for the analysis.</p>
+<p>This file contains the list of target genes. There are used as active genes for the analysis.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CCND1
 CDKN1A
 BAD
@@ -252,8 +255,8 @@ KRT18
 </section>
 <section id="overlap-am-x-meshid-withrdwp-csv">
 <h3>Overlap_AM_X_MeSHID_withRDWP.csv<a class="headerlink" href="#overlap-am-x-meshid-withrdwp-csv" title="Permalink to this heading"></a></h3>
-<p>This is the result file of the overlap analysis. The number of this file depends of the number of Active Modules found.
-In the file name, the <em>X</em> represents the AM number. See the <a class="reference internal" href="#overlapoutput"><span class="std std-ref">Overlap output</span></a> part for more details.</p>
+<p>This is the result file of the overlap analysis. The number of this file depends of the number of active modules found.
+In the file name, the <em>X</em> represents the active module number. See the <a class="reference internal" href="#overlapoutput"><span class="std std-ref">Overlap output</span></a> part for more details.</p>
 </section>
 <section id="domino-meshid-overlapamresults4cytoscape-txt">
 <h3>DOMINO_MeSHID_overlapAMresults4Cytoscape.txt<a class="headerlink" href="#domino-meshid-overlapamresults4cytoscape-txt" title="Permalink to this heading"></a></h3>
@@ -280,7 +283,7 @@ FN1 6       WP5087  Malignant pleural mesothelioma  4.823470963219471e-11
 </section>
 <section id="domino-meshid-activemodulesnetwork-txt">
 <h3>DOMINO_MeSHID_activeModulesNetwork.txt<a class="headerlink" href="#domino-meshid-activemodulesnetwork-txt" title="Permalink to this heading"></a></h3>
-<p>This file contains details of each AM found. It contains four columns:</p>
+<p>This file contains details of each active module found. It contains four columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">source</span></code>: node 1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>: node 2</p></li>
@@ -299,11 +302,11 @@ CDT1        GMNN    ppi     1
 </section>
 <section id="domino-meshid-activemodulesnetworkmetrics-txt">
 <h3>DOMINO_MeSHID_activeModulesNetworkMetrics.txt<a class="headerlink" href="#domino-meshid-activemodulesnetworkmetrics-txt" title="Permalink to this heading"></a></h3>
-<p>Some metrics are calculated such as number of edges and nodes for each AM identified.</p>
+<p>Some metrics are calculated such as number of edges and nodes for each acitve module identified.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code>: active module number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code>: number of edges in the AM</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : number of nodes in the AM</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code>: number of edges in the active module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : number of nodes in the active module</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveGenesNumber</span></code>: number of active genes (target genes)</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AMINumber   EdgesNumber     NodesNumber     ActiveGenesNumber
@@ -320,7 +323,7 @@ CDT1        GMNN    ppi     1
 <li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : Gene symbol</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveModule</span></code> : active module number</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveGene</span></code> : True if the gene was used as active gene</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">overlapSignificant</span></code> : True if the AM has significant overlap results</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overlapSignificant</span></code> : True if the active module has significant overlap results</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geneSymbol  ActiveModule    activeGene      overlapSignificant
 NPAT        1       False   False
