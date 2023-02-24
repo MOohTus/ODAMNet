@@ -1,14 +1,14 @@
 .. _usecase2:
 
 =====================================================
-Use-case 2: data are provided directly by users
+Use-case 2: data are provided by the user
 =====================================================
 
 Context
 ==========
 
 In the context of the EJP-RD project, an overlap analysis between genes targeted by vitamins A and D and pathways
-related to CAKUT disease was performed (Ozisik *et al.*, 2021 [1]_).
+related to CAKUT was performed (Ozisik *et al.*, 2021 [1]_).
 
 For the vitamin A analysis, data was retrieved from several sources: target genes come from
 the `Comparative Toxicogenomics Database (CTD) <https://ctdbase.org/>`_ [2]_ and the study of Balmer and
@@ -113,8 +113,8 @@ on this analysis and one more (REAC:R-HSA-2022377).
 Active Modules Identification (AMI)
 ====================================
 
-This approach identifies Active Modules (AM) through a Protein-Protein Interaction (PPI) network. Then it performs an
-overlap analysis between each AM identified and Rare Diseases pathways from WP.
+This approach identifies active modules through a protein-protein interaction (PPI) network. Then it performs an
+overlap analysis between each identified active module and rare disease pathway from WikiPathways.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
 Running active modules identification with data provided by users
@@ -126,7 +126,7 @@ Running active modules identification with data provided by users
 
 As before, users provide target genes (``--targetGenesFile``) and pathways of interest (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
 
-We will identify AM using a Protein-Protein Interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
+We will identify active modules using a protein-protein interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
@@ -140,10 +140,10 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 Several files are generated :
 
-- ``DOMINO_inputGeneList_D014801.txt``: genes targeted by vitamin A, used for the AM identification.
+- ``DOMINO_inputGeneList_D014801.txt``: genes targeted by vitamin A, used for the active module identification.
 
 - ``Overlap_AM_*_genesList_withpathOfInterest.csv``: results of the overlap analysis between target genes and pathways of
-  interest provided by users. One file per AM.
+  interest provided by the user. One file per active module.
 
 - ``DOMINO_genesList_activeModulesNetwork.txt``, ``DOMINO_genesList_overlapAMresults4Cytoscape.txt``, ``DOMINO_genesList_activeModules.txt``
   , ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and ``DOMINO_genesList_signOverlap.txt``: some statistics are
@@ -184,7 +184,7 @@ Target genes are defined as **active genes** by DOMINO. We give **521 active gen
 **18 Active Modules** (:ref:`Table 16 <useCase2AMIResults>`).
 
 .. _useCase2AMIResults:
-.. table:: Composition of AMs found by DOMINO
+.. table:: Composition of active modules found by DOMINO
     :align: center
 
     +--------------+------------+------------+
@@ -202,11 +202,11 @@ Target genes are defined as **active genes** by DOMINO. We give **521 active gen
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between AM and pathways of interest. We found **7 pathways** that are significantly overlapped
-by **6 Active Modules** (padjusted <= 0.05).
+Then, we perform an overlap analysis between active modules and pathways of interest. We found **7 pathways** that are significantly overlapped
+by **6 active modules** (padjusted <= 0.05).
 
 .. _useCase2AMIOverlap:
-.. table:: Overlap analysis between AM and pathways of interest provided by users
+.. table:: Overlap analysis between active module and pathways of interest provided by users
     :align: center
 
     +------------------------+-------------------------------------------+
@@ -229,7 +229,7 @@ by **6 Active Modules** (padjusted <= 0.05).
 
 We found a pathway that was not found with the overlap approach (**REAC:R-HSA-8853659**).
 
-Visualisation of AM results
+Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We visualised the result using a network representation (:numref:`dominoUsage2Fig`). To know how to create this figure,
