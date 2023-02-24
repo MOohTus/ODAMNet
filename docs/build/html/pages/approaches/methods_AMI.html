@@ -61,16 +61,16 @@
 <li class="toctree-l1"><a class="reference internal" href="methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Active Module Identification</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#domino-algorithm-overview">DOMINO algorithm overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-domino-algorithm">Overview of the DOMINO algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-active-modules-identification">Input parameters for the Active Modules Identification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#networks-available">Networks available</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#protein-protein-interaction-network">Protein-Protein Interaction network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#personal-network">Personal network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protein-protein-interaction-ppi-network">Protein-Protein Interaction (PPI) network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-provided-network">User-provided network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#networks-from-ndex-database">Networks from NDEx database</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#use-cases-command-line">Use-cases command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-cases-command-lines">Use-cases command lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
@@ -80,7 +80,7 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -124,18 +124,18 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="line-block">
-<div class="line">Active Modules (AM) identification is performed using DOMINO <a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on their server <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
+<div class="line">Active Modules Identification is performed using DOMINO <a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on the domino server <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
 <div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/Shamir-Lab/domino_web">DOMINO web GitHub</a> – <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-globe" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg> <a class="reference external" href="http://domino.cs.tau.ac.il/">DOMINO server</a></div>
 </div>
 </div>
-<p>DOMINO is looking for <strong>Active Modules</strong> (AM) in a network (e.g. Protein-Protein Interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
-<p>First, target genes are defined as <strong>Active Genes</strong>. Then DOMINO tries to <strong>identify active modules</strong>.</p>
+<p>DOMINO is looking for <strong>active modules</strong> in a network (e.g. Protein-Protein Interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
+<p>First, DOMINO defines target genes as <strong>active genes</strong>. From them, DOMINO tries to <strong>identify active modules</strong> through a network.</p>
 <p>Active modules are <strong>subnetworks</strong> identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
-Ideally, they will represent <strong>distinct functional modules</strong> and can reveal biological processes involved in a specific condition.</p>
-<p>Finally, we performed an <strong>overlap analysis</strong> between each AM and pathways of interest.</p>
+Ideally, they will represent <strong>functional modules</strong> and can thereby reveal biological processes involved in a specific condition.</p>
+<p>Finally, we performed an <strong>overlap analysis</strong> between each active module identified by DOMINO and pathways of interest.</p>
 </section>
-<section id="domino-algorithm-overview">
-<h2>DOMINO algorithm overview<a class="headerlink" href="#domino-algorithm-overview" title="Permalink to this heading"></a></h2>
+<section id="overview-of-the-domino-algorithm">
+<h2>Overview of the DOMINO algorithm<a class="headerlink" href="#overview-of-the-domino-algorithm" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference internal" href="#dominomethodfig"><span class="std std-numref">Fig. 3</span></a> is an overview of the DOMINO algorithm.</p>
 <figure class="align-center" id="id17">
 <span id="dominomethodfig"></span><img alt="DOMINO method" src="../../_images/DOMINO_method.jpg" />
@@ -144,27 +144,28 @@ Ideally, they will represent <strong>distinct functional modules</strong> and ca
 </figcaption>
 </figure>
 <div class="line-block">
-<div class="line"><strong>A -</strong> The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.</div>
-<div class="line"><strong>B -</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
-<div class="line"><strong>C -</strong> The most active sub-slice is identified on each relevant slices.</div>
-<div class="line"><strong>D -</strong> The sub-slices are split into putative Active Modules (AM) using the Newmann-Girvan modularity algorithm.</div>
-<div class="line"><strong>E -</strong> The final set of AM is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
+<div class="line"><strong>A - Step 0:</strong> The network is clustered into disjoint and highly connected subnetworks (slices) with the Louvain algorithm, based on modularity optimization.</div>
+<div class="line"><strong>B - Step 1:</strong> The relevant slices (where active genes are over-represented) are detected using the Hypergeometric test. Pvalue are corrected with the FDR method.</div>
+<div class="line"><strong>C - Step 2a:</strong> The most active sub-slice is identified on each relevant slices.</div>
+<div class="line"><strong>D - Step 2b:</strong> The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.</div>
+<div class="line"><strong>E - Step 3:</strong> The final set of active module is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
 </div>
-<p><em>For more details, refer to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p><em>For more details, see to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from requests</em>).
-You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from <strong>CTD</strong>. <strong>Rare Disease pathways</strong> are
-extracted from <strong>WP</strong> automatically too. You can give some optional parameters to custom the selection of target genes.</p>
+<p>By default, data are extracted directly by requesting databases (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data extracted from requests</em>).
+You give the <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> and the <strong>target genes</strong> are extracted from the <strong>Comparative Toxicogenomics Database</strong> (CTD).
+<strong>Rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> (WP) automatically too.
+You can give some optional parameters to custom the selection of target genes.</p>
 <p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong>
-(<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: <em>data extracted from users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
+(<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <figure class="align-center" id="id18">
-<span id="dominousagefig"></span><img alt="domino analysis" src="../../_images/DOMINO_graph.png" />
+<span id="dominousagefig"></span><img alt="domino analysis" src="../../_images/Overview_AMI.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output files/parameters of Active Modules Identification</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>There are two ways to extract target genes : from request (pink boxes) or provided by the user (green boxes).
+<p>There are two ways to extract target genes : from request (pink boxes) or provided by users (green boxes).
 Required files/parameters have solid border line and optional files/parameters have dash border line.
 Output files in pink are created only if the input data are extracted from requests.</p>
 </div>
@@ -174,12 +175,12 @@ Output files in pink are created only if the input data are extracted from reque
 <section id="input-parameters-for-the-active-modules-identification">
 <h2>Input parameters for the Active Modules Identification<a class="headerlink" href="#input-parameters-for-the-active-modules-identification" title="Permalink to this heading"></a></h2>
 <div class="line-block">
-<div class="line">To extract target genes from <strong>CTD</strong> and RD pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
-<div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">user</span></code> tab.</div>
+<div class="line">To extract target genes from <strong>CTD</strong> and rare disease pathways from <strong>WP</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">extracted</span> <span class="pre">from</span> <span class="pre">requests</span></code> tab.</div>
+<div class="line">To provide <strong>your own</strong> target genes and pathways/processes files, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">users</span></code> tab.</div>
 </div>
 <p>The network file is required <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> whereas <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> are optional.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 You can give several chemicals in the same line : they will be grouped for the analysis.
@@ -198,7 +199,7 @@ You can define a minimum number of publications to keep target genes.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
-</div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><dl class="option-list">
+</div><div aria-labelledby="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of target genes. One gene per line. [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>]
 <strong>[required]</strong></p>
@@ -235,14 +236,14 @@ the UUID of the network (e.g. <code class="docutils literal notranslate"><span c
 <h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Be careful when using networks from NDEx: gene IDs format are not always consistent between networks and data from
+<p>Be careful when using networks from NDEx: gene IDs format are not always consistent between the networks and data from
 CTD or other input gene lists and pathways.
 CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
-gene name format. It’s similar with GMT files.</p>
+gene name format. The same constraint exists for GMT files.</p>
 </div>
-<section id="protein-protein-interaction-network">
-<h3>Protein-Protein Interaction network<a class="headerlink" href="#protein-protein-interaction-network" title="Permalink to this heading"></a></h3>
-<p>We provide with the script a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id14" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, November 2016). The gene name format is
+<section id="protein-protein-interaction-ppi-network">
+<h3>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h3>
+<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id14" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, November 2016). The gene name format is
 <strong>gene symbols</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 <p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
@@ -254,8 +255,8 @@ gene name format. It’s similar with GMT files.</p>
 </pre></div>
 </div>
 </section>
-<section id="personal-network">
-<h3>Personal network<a class="headerlink" href="#personal-network" title="Permalink to this heading"></a></h3>
+<section id="user-provided-network">
+<h3>User-provided network<a class="headerlink" href="#user-provided-network" title="Permalink to this heading"></a></h3>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
@@ -274,17 +275,17 @@ the script using the required parameter <code class="docutils literal notranslat
 <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>.</p>
 </section>
 </section>
-<section id="use-cases-command-line">
-<h2>Use-cases command line<a class="headerlink" href="#use-cases-command-line" title="Permalink to this heading"></a></h2>
+<section id="use-cases-command-lines">
+<h2>Use-cases command lines<a class="headerlink" href="#use-cases-command-lines" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tab" tabindex="-1">Data extracted from user</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-1-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--directAssociation<span class="w"> </span>FALSE<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--nbPub<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--networkFile<span class="w"> </span>useCases/InputData/PPI_network_2016.sif<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase1/
 </pre></div>
 </div>
-</div><div aria-labelledby="tab-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" name="RGF0YSBleHRyYWN0ZWQgZnJvbSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
+</div><div aria-labelledby="tab-1-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--backgroundFile<span class="w"> </span>useCases/InputData/PathwaysOfInterestBackground.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--networkFile<span class="w"> </span>useCases/InputData/PPI_network_2016.sif<span class="w"> </span><span class="se">\</span>

@@ -27,7 +27,7 @@ Overlap analysis
 This approach calculates the overlap between genes targeted by vitamin A, and the pathways of interest
 (see :doc:`../approaches/methods_overlap` section for more details).
 
-Running overlap analysis with data provided by the user
+Running overlap analysis with data provided by users
 ----------------------------------------------------------
 
 The target genes file is provided by the ``--targetGenesFile`` parameter and contains a list of genes targeted
@@ -49,12 +49,12 @@ target genes and CAKUT related pathways/processes.
 
 For more details about these files, see :doc:`../formats/Output` page.
 
-Results of overlap analysis with data provided by user
+Results of overlap analysis with data provided by users
 ---------------------------------------------------------
 
 *request on the 07th of September 2022*
 
-Data provided by user description
+Data provided by users description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 13 <useCase2DataOverview>`.
@@ -117,14 +117,14 @@ This approach identifies active modules through a protein-protein interaction (P
 overlap analysis between each identified active module and rare disease pathway from WikiPathways.
 For more detail, see :doc:`../approaches/methods_AMI` section.
 
-Running active modules identification with data provided by user
+Running active modules identification with data provided by users
 -------------------------------------------------------------------
 
 .. warning::
 
    :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
 
-As before, user provide target genes (``--targetGenesFile``) and pathways of interest (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
+As before, users provide target genes (``--targetGenesFile``) and pathways of interest (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
 
 We will identify active modules using a protein-protein interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
 
@@ -151,12 +151,12 @@ Several files are generated :
 
 For more details about these file, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`).
 
-Results of active module identification with data provided by user
+Results of active module identification with data provided by users
 --------------------------------------------------------------------
 
 *request on the 07th of September 2022*
 
-Data provided by user description
+Data provided by users description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 15 <useCase2DataOverviewAMI>`.
@@ -206,7 +206,7 @@ Then, we perform an overlap analysis between active modules and pathways of inte
 by **6 active modules** (padjusted <= 0.05).
 
 .. _useCase2AMIOverlap:
-.. table:: Overlap analysis between active module and pathways of interest provided by user
+.. table:: Overlap analysis between active module and pathways of interest provided by users
     :align: center
 
     +------------------------+-------------------------------------------+
@@ -257,13 +257,13 @@ The third approach, Random Walk with Restart (RWR), is applied into two differen
 
 *For more details about RWR, see* :doc:`../approaches/methods_RWR`.
 
-Running Random Walk analysis with data provided by user
+Running Random Walk analysis with data provided by users
 -----------------------------------------------------------
 
 | To know how to create the pathways of interest network: see :ref:`pathwaysOfInterestNet`.
 | To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
-Whatever the network used, target genes file is provided by the user using ``--targetGenesFile`` [:ref:`FORMAT <targetGenesFile>`].
+Whatever the network used, target genes file is provided by users using ``--targetGenesFile`` [:ref:`FORMAT <targetGenesFile>`].
 
 MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
 default parameters.
@@ -347,10 +347,10 @@ Several files are generated into ``RWR_genesList/`` folder:
 
 For more details about these file, see :doc:`../formats/Output` page.
 
-Results of Random Walk analysis with data provided by user
+Results of Random Walk analysis with data provided by users
 -------------------------------------------------------------
 
-We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** provided by user.
+We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** provided by users.
 
 Pathways of interest network analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
