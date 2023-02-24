@@ -4,8 +4,12 @@ Output files
 
 .. _requestOutput:
 
-CTD and WikiPathways request file results
+Request file results
 ==================================================
+
+ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
+Database (CTD) and rare disease pathways are extracted from WikiPathways (WP).
+It implies creation of output files that contain results of these requests.
 
 .. _CTDrequestOuput:
 
@@ -56,12 +60,12 @@ This is an example of this file:
 WP request file results
 --------------------------
 
-When you request WikiPathways to extract the Rare Diseases pathways, two files are created whatever the approach chosen.
+When you request WP to extract the rare disease pathways, two files are created whatever the approach chosen.
 
 WP_RareDiseases_request_DATE.gmt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as Rare Diseases are
+This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as rare diseases are
 extracted and save into this GMT file.
 
 GMT file is a tab-separated file:
@@ -126,12 +130,12 @@ This file contains the results of the overlap analysis. The number of this file 
 Active Module Identification
 ==================================================
 
-When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of Active Modules found.
+When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of active modules found.
 
 DOMINO_inputGeneList_MeSHID.txt
 ----------------------------------
 
-This file contains the list of target genes. There are used as Active Genes for the analysis.
+This file contains the list of target genes. There are used as active genes for the analysis.
 
 .. code-block:: none
 
@@ -144,8 +148,8 @@ This file contains the list of target genes. There are used as Active Genes for 
 Overlap_AM_X_MeSHID_withRDWP.csv
 -----------------------------------
 
-This is the result file of the overlap analysis. The number of this file depends of the number of Active Modules found.
-In the file name, the *X* represents the AM number. See the :ref:`Overlap output <overlapOutput>` part for more details.
+This is the result file of the overlap analysis. The number of this file depends of the number of active modules found.
+In the file name, the *X* represents the active module number. See the :ref:`Overlap output <overlapOutput>` part for more details.
 
 DOMINO_MeSHID_overlapAMresults4Cytoscape.txt
 ----------------------------------------------
@@ -174,7 +178,7 @@ This file is created to be given to Cytoscape for the visualisation. It contains
 DOMINO_MeSHID_activeModulesNetwork.txt
 ----------------------------------------
 
-This file contains details of each AM found. It contains four columns:
+This file contains details of each active module found. It contains four columns:
 
 - ``source``: node 1
 - ``target``: node 2
@@ -195,11 +199,11 @@ This is an example of the file:
 DOMINO_MeSHID_activeModulesNetworkMetrics.txt
 -----------------------------------------------
 
-Some metrics are calculated such as number of edges and nodes for each AM identified.
+Some metrics are calculated such as number of edges and nodes for each acitve module identified.
 
 - ``AMINumber``: active module number
-- ``EdgesNumber``: number of edges in the AM
-- ``NodesNumber`` : number of nodes in the AM
+- ``EdgesNumber``: number of edges in the active module
+- ``NodesNumber`` : number of nodes in the active module
 - ``ActiveGenesNumber``: number of active genes (target genes)
 
 .. code-block:: none
@@ -217,7 +221,7 @@ This file is created to be given to Cytoscape for the visualisation. It contains
 - ``GeneSymbol`` : Gene symbol
 - ``ActiveModule`` : active module number
 - ``ActiveGene`` : True if the gene was used as active gene
-- ``overlapSignificant`` : True if the AM has significant overlap results
+- ``overlapSignificant`` : True if the active module has significant overlap results
 
 .. code-block:: none
 

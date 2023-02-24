@@ -7,13 +7,11 @@ Overlap analysis
 Principle
 ------------
 
-.. note::
-
-    This approach is the one implemented in Ozisik *et al.,* [1]_ .
 
 The overlap analysis calculates the **overlap** between **target genes** and **pathways of interest**.
 In other words, it looks for target genes that are part of pathways, i.e. **direct overlap**
-(:numref:`overviewFig` - left part).
+(:numref:`overviewFig` - left part). This approach is presented in Ozisik *et al.,* [1]_ for a
+specific use case.
 
 First, an **overlap** between target genes and all the pathways is computed. Then, a **statistical significance**
 is calculated using an **hypergeometric test**. Finally, a **Benjamini-Hochberg** (BH adjusted) correction is applied
@@ -23,30 +21,32 @@ Usage
 -------
 
 By default, the data are directly extracted by requests on databases (:numref:`overlapFig`: section *data extracted from requests*).
-The user gives the ``--chemicalsFile`` and the **target genes** are extracted from **CTD**. The user can also provide
-optional parameters to customize the selection of target genes.
+The users give the ``--chemicalsFile`` and the **target genes** are extracted from the **Comparative Toxicogenomics Database** (CTD).
+The users can also provide optional parameters to customize the selection of target genes.
 
 All **rare disease pathways** are extracted from **WikiPathways** automatically.
 
-In addition, the user can provide their own **target genes** and **pathways/processes of interest**
+In addition, the users can provide their own **target genes** and **pathways/processes of interest**.
 (:numref:`overlapFig`: section *data extracted from users*) with ``--targetGenesFile`` and ``--GMT``, ``--backgroundFile``.
 
 .. _overlapFig:
-.. figure:: ../../pictures/OverlapAnalysis_graph.png
+.. figure:: ../../pictures/Overview_OverlapAnalysis.png
     :alt: overlap analysis
     :align: center
 
-    : Input and output files/parameters of overlap analysis
+    : Input and output of overlap analysis
 
-    There are two ways to extract target genes: from automatic request (pink boxes) or from the files provided by the user (green boxes).
-    Required files/parameters have solid border line and optional files/parameters have dashed border line.
-    Output files in pink are created only if the input data are extracted from requests.
+    (Left part) - Target genes and rare disease pathways can be extracted using automatic request.
+    Required input are represented with pink solid border line boxes. The users can also provide their own data.
+    Required input are represented with green solid border line boxes.
+    Optional input are represented with dash border line boxes.
+    (Right part) - Output files that are in pink are created only if the input data are extracted from request.
 
 Input parameters for the overlap analysis
 -------------------------------------------
 
 | To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
-| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data extracted from user`` tab.
+| To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
 The ``--outputPath`` parameter is used for both data extraction.
 
@@ -69,7 +69,7 @@ The ``--outputPath`` parameter is used for both data extraction.
             You can define a minimum number of publications to keep target genes.
             ``[default: 2]``
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
             Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
@@ -105,7 +105,7 @@ Use-cases command lines
                                     --nbPub 2 \
                                     --outputPath useCases/OutputResults_useCase1/
 
-    .. group-tab:: Data extracted from user
+    .. group-tab:: Data provided by users
 
         .. code-block:: bash
 
