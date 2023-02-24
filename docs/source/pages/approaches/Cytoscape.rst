@@ -6,10 +6,10 @@ You can visualise network results using Cytoscape [1]_. Here, we describe the st
 
 .. _networkAMI:
 
-Active Modules Identification network visualisation
+Active Module Identification network visualisation
 ------------------------------------------------------------
 
-On the Active Modules Identification analysis, several active modules are generated. You can visualise them with Cytoscape.
+On the Active Module Identification analysis, several modules are generated. You can visualise them using with Cytoscape.
 
 The following :numref:`cytoscapeAMI` is an example of visualisation:
 
@@ -44,7 +44,7 @@ To create the same visualisation of active modules, use the following steps:
 8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-*To run Active Module Identification with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
+*To run an Active Module Identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>`
 *or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
 
 .. _networkRWR:
@@ -156,3 +156,4 @@ References
 .. [1] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
 .. [2] Legeay, M., Doncheva, N. T., Morris, J. H., & Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.
 .. [3] https://github.com/cytoscape/legend-creator
+.. [4] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
