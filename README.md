@@ -1,7 +1,7 @@
 # README
 
 The goal of this project is to develop computational approaches to analyse the links and overlaps between chemicals
-and Rare Diseases.
+and rare diseases.
 
 The [ODAMNet documentation][ODAMNet documentation] is available in ReadTheDocs.
 
@@ -44,8 +44,8 @@ $ python3 -m pip install -e ODAMNet/
 Three different approaches are available: 
 
 - Overlap analysis
-- Active Modules Identification (AMI, using DOMINO)
-- Random Walk with Restart (RWR, using multiXrank)
+- Active Modules Identification (AMI, using [DOMINO][DOMINO])
+- Random Walk with Restart (RWR, using [multiXrank][multiXrank])
 
 ```console
 $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
@@ -53,12 +53,12 @@ $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
 
 ## Examples
 
-Three approaches are implemented to study relationships between Rare Diseases (from WikiPathways (WP)) and genes 
-targeted by chemicals (extracted from CTD database).
+Three approaches are implemented to study relationships between rare diseases (from [WikiPathways][WikiPathways]) and genes 
+targeted by chemicals (extracted from [CTD database][CTD]).
 
 ### Overlap analysis
 
-This method computes the overlap between target genes and Rare Disease pathways. It is looking for direct associations, 
+This method computes the overlap between target genes and rare disease pathways. It is looking for direct associations, 
 i.e., target genes that are part of pathways.
 
 ```console
@@ -67,9 +67,9 @@ $ odamnet overlap --chemicalsFile FILENAME
 
 ### Active Module Identification (AMI)
 
-Target genes are defined as "active genes" to search for Active Modules (AM) on a molecular network (e.g.
-Protein-Protein Interaction network, PPI). Then, an overlap analysis is performed between AM (containing target genes + linked genes)
-and Rare Disease pathways.
+Target genes are defined as "active genes" to search for active modules on a molecular network (e.g.
+protein-protein interaction network, PPI). Then, an overlap analysis is performed between active modules (containing target genes + linked genes)
+and rare disease pathways.
 
 ```console
 $ odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
@@ -80,7 +80,7 @@ $ odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
 #### Network and bipartite creation
 
 To perform a Random Walk with Restart through molecular multilayer and diseases network, you need to create a disease network
-and link it to the multilayer (i.e. with the bipartite). This network will not have connection between diseases (i.e. disconnected network).
+and link it to the multilayer (i.e. with the bipartite). This network will not have any connection between diseases (i.e. disconnected network).
 Diseases will be only connected with genes (in the multilayer) that are involved in disease pathways.
 
 ```console
@@ -99,3 +99,7 @@ $ odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath P
 [ODAMNet documentation]: https://odamnet.readthedocs.io/
 [bioconda]: https://bioconda.github.io/index.html
 [EJPRD]: https://www.ejprarediseases.org/
+[DOMINO]: http://domino.cs.tau.ac.il
+[multiXrank]: https://multixrank-doc.readthedocs.io/en/latest/index.html
+[WikiPathways]: https://www.wikipathways.org/
+[CTD]: https://ctdbase.org/
