@@ -64,7 +64,7 @@
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by the user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided directly by users</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
 <ul>
@@ -96,7 +96,6 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-odamnet.WP_functions">WP functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#odamnet.WP_functions.readRequestResultsWP"><code class="docutils literal notranslate"><span class="pre">readRequestResultsWP()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#odamnet.WP_functions.rareDiseasesWPrequest_tmp"><code class="docutils literal notranslate"><span class="pre">rareDiseasesWPrequest_tmp()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#odamnet.WP_functions.rareDiseasesWPrequest"><code class="docutils literal notranslate"><span class="pre">rareDiseasesWPrequest()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#odamnet.WP_functions.allHumanGenesFromWP"><code class="docutils literal notranslate"><span class="pre">allHumanGenesFromWP()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#odamnet.WP_functions.readGMTFile"><code class="docutils literal notranslate"><span class="pre">readGMTFile()</span></code></a></li>
@@ -432,8 +431,8 @@ Extract genes, names and IDs of pathways.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="odamnet.WP_functions.rareDiseasesWPrequest_tmp">
-<span class="sig-prename descclassname"><span class="pre">odamnet.WP_functions.</span></span><span class="sig-name descname"><span class="pre">rareDiseasesWPrequest_tmp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#odamnet.WP_functions.rareDiseasesWPrequest_tmp" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="odamnet.WP_functions.rareDiseasesWPrequest">
+<span class="sig-prename descclassname"><span class="pre">odamnet.WP_functions.</span></span><span class="sig-name descname"><span class="pre">rareDiseasesWPrequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#odamnet.WP_functions.rareDiseasesWPrequest" title="Permalink to this definition"></a></dt>
 <dd><p>Function requests WikiPathway database.</p>
 <p>Search all WikiPathways related to Rare Diseases.
 Focus on pathways related with Homo sapiens.
@@ -441,26 +440,6 @@ Write results into result file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>WPgenesDict</strong> (<em>dictionary</em>) – Dict of genes for each RD WikiPathway</p></li>
-<li><p><strong>WPnamesDict</strong> (<em>dictionary</em>) – Dict of names for each RD WikiPathway</p></li>
-<li><p><strong>pathwayOfInterestList</strong> (<em>list</em>) – Pathway names list</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="odamnet.WP_functions.rareDiseasesWPrequest">
-<span class="sig-prename descclassname"><span class="pre">odamnet.WP_functions.</span></span><span class="sig-name descname"><span class="pre">rareDiseasesWPrequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputPath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#odamnet.WP_functions.rareDiseasesWPrequest" title="Permalink to this definition"></a></dt>
-<dd><p>Replace rareDiseasesWPrequest_tmp until we understand
-why is happening with WP …</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>outputPath</strong> (<em>str</em>) – Folder path to save the results (no use)</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
