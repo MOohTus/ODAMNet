@@ -1,6 +1,6 @@
 # README
 
-ODAMNet, a Python package to study molecular relationship between environmental factors (called chemicals here) and 
+ODAMNet is a Python package to study molecular relationship between environmental factors (called chemicals here) and 
 rare diseases. 
 
 The [ODAMNet documentation][ODAMNet documentation] is available in ReadTheDocs.
@@ -55,8 +55,8 @@ $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
 
 ## Examples
 
-Three approaches are implemented to study relationships between rare diseases (extracted automatically from 
-[WikiPathways][WikiPathways]) and genes targeted by chemicals (extracted automatically from [CTD database][CTD]).
+Three approaches are implemented to study relationships between genes targeted by chemicals (extracted automatically 
+from [CTD database][CTD]) and rare diseases (extracted automatically from [WikiPathways][WikiPathways]).
 
 ### Overlap analysis
 
@@ -71,9 +71,11 @@ $ odamnet overlap --chemicalsFile FILENAME
 
 ### Active Module Identification (AMI)
 
-An Active Module Identification is performed using DOMINO tool. DOMINO defines target genes as *active genes* to search 
-for active modules using a biological network (e.g. protein-protein interaction network, PPI). 
-Then, an overlap analysis is performed between identified active modules and rare disease pathways. 
+The Active Module Identification is performed using DOMINO tool. 
+
+DOMINO defines target genes as *active genes* to search for active modules using a biological network 
+(e.g. protein-protein interaction network, PPI). Then, an overlap analysis is performed between identified active 
+modules and rare disease pathways. 
 
 Give your chemicals list and your biological network into `--chemicalsFile` and `--networkFile` respectively. 
 
@@ -106,8 +108,9 @@ Random Walk with Restart mesures the proximity of every node (e.g. genes and dis
 multilayer network. The multilayer network is composed of molecular multiplex and rare disease pathway network (the one 
 created previously). 
 
-Give your chemicals list into `--chemicalsFile` input. MultiXrank needs a configuration file (), networks directory (),
-the target genes file () and a name to write the result into network file (). 
+Give your chemicals list into `--chemicalsFile` input. 
+MultiXrank needs a configuration file (`--configPath`), networks directory (`--networksPath`),
+the target genes file (`--seedsFile`) and a name to write the result into network file (`--sifFileName`). 
 
 ```console
 $ odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
