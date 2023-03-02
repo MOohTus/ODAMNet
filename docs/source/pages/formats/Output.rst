@@ -111,9 +111,9 @@ This file contains the results of the overlap analysis. The number of this file 
 - ``TargetSize``: Number of genes that interact with chemical and are in the background gene set
 - ``IntersectionSize``: Number of target genes that are inside the pathway
 - ``BackgroundSizes``: Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)
-- ``pValue``: pvalue of the overlap between target genes and pathways of interest (i.e. hypergeometric test)
+- ``pValue``: pvalue of the overlap between target genes and pathways/processes of interest (i.e. hypergeometric test)
 - ``pAdjusted``: adjusted pvalue (i.e. multitest correction)
-- ``Intersection``: list of genes shared between targeted genes and pathway of interest (space-separated)
+- ``Intersection``: list of genes shared between targeted genes and pathways/processes of interest (space-separated)
 
 .. code-block:: none
 

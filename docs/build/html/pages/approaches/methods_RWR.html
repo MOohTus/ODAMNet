@@ -72,7 +72,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#reactome-pathway-network">Reactome pathway network</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#pathways-of-interest-network">Pathways of interest network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pathways-processes-of-interest-network">Pathways/processes of interest network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#disease-disease-similarity-network">Disease-disease similarity network</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#disease-disease-similarity-network-creation">Disease-disease similarity network creation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#gene-disease-bipartite">Gene-disease bipartite</a></li>
@@ -167,7 +167,7 @@ Output files in pink are created only if the input data are extracted from reque
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
-You can give several chemicals in the same line : they will be grouped for the analysis.
+Each line contains one or several chemical IDs, separated by “;”.
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
@@ -178,8 +178,9 @@ You can give several chemicals in the same line : they will be grouped for the a
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>Publications can be associated with chemical interactions.
-You can define a minimum number of publications to keep target genes.
+<dd><p>Each interaction between target gene and chemical can be associated with publications.
+You can filter these interactions according the number of publication associated.
+You can define a minimum number of publications.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
@@ -250,7 +251,7 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 </div>
 <p>We propose to run the RWR on two different multilayer networks:</p>
 <ul class="simple">
-<li><p>multilayer network with three molecular layers + pathways of interest network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
+<li><p>multilayer network with three molecular layers + pathways/processes of interest network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
 <li><p>multilayer network with three molecular layers + disease-disease similarity network (<a class="reference internal" href="#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
 </ul>
 <figure class="align-center" id="id13">
@@ -259,13 +260,15 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">: Random Walk with Restart into two different network compositions</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
+<p><em>multiXrank need network as input. So we create the pathways/processes of interest network, even if it’s a disconnected</em>
+<em>network (without link between nodes).</em></p>
 <section id="molecular-multilayer">
 <h3>Molecular multilayer<a class="headerlink" href="#molecular-multilayer" title="Permalink to this heading"></a></h3>
 <section id="protein-protein-interaction-ppi-network">
 <h4>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h4>
 <p>The Protein-Protein Interaction (PPI) network is obtained from fusion of three datasets : APID, Hi-Union and Lit-BM. It’s composed of:</p>
 <ul class="simple">
-<li><p>14,703 nodes (proteins)</p></li>
+<li><p>14,703 nodes</p></li>
 <li><p>143,653 edges</p></li>
 </ul>
 </section>
@@ -286,19 +289,19 @@ on the Random Walk analysis. <strong>[required]</strong></p>
 </ul>
 </section>
 </section>
-<section id="pathways-of-interest-network">
-<span id="pathwaysofinterestnet"></span><h3>Pathways of interest network<a class="headerlink" href="#pathways-of-interest-network" title="Permalink to this heading"></a></h3>
+<section id="pathways-processes-of-interest-network">
+<span id="pathwaysofinterestnet"></span><h3>Pathways/processes of interest network<a class="headerlink" href="#pathways-processes-of-interest-network" title="Permalink to this heading"></a></h3>
 <p>This kind of network can be build using the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
 <p>By default, the network is build using rare disease pathways extracted automatically from WikiPathways.</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>Output repository name where the pathways network will be saved.</p>
+<dd><p>Output repository name where the pathways/processes network will be saved.</p>
 </dd>
 <dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
 <dd><p>Output repository name where the bipartite gene-pathway will be saved.</p>
 </dd>
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
-<dd><p>You can give a name to the pathway network. It’s a SIF file but each pathway of interest is link to itself.
+<dd><p>You can give a name to the pathway network. It’s a SIF file but each pathway/processes of interest is link to itself.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.sif]</span></code></p>
 </dd>
 <dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>

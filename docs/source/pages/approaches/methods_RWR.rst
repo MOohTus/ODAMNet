@@ -51,7 +51,7 @@ Input parameters for the RWR analysis
 
         -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
-            You can give several chemicals in the same line : they will be grouped for the analysis.
+            Each line contains one or several chemical IDs, separated by ";".
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
@@ -60,8 +60,9 @@ Input parameters for the RWR analysis
             | ``[default: True]``
 
         --nbPub INTEGER
-            Publications can be associated with chemical interactions.
-            You can define a minimum number of publications to keep target genes.
+            Each interaction between target gene and chemical can be associated with publications.
+            You can filter these interactions according the number of publication associated.
+            You can define a minimum number of publications.
             ``[default: 2]``
 
     .. group-tab:: Data provided by users
@@ -133,7 +134,7 @@ Networks available
 
 We propose to run the RWR on two different multilayer networks:
 
-- multilayer network with three molecular layers + pathways of interest network (:numref:`RWRFig` - left part)
+- multilayer network with three molecular layers + pathways/processes of interest network (:numref:`RWRFig` - left part)
 - multilayer network with three molecular layers + disease-disease similarity network (:numref:`RWRFig` - right part)
 
 .. _RWRFig:
@@ -143,6 +144,9 @@ We propose to run the RWR on two different multilayer networks:
 
     : Random Walk with Restart into two different network compositions
 
+*multiXrank need network as input. So we create the pathways/processes of interest network, even if it's a disconnected*
+*network (without link between nodes).*
+
 Molecular multilayer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -151,7 +155,7 @@ Protein-Protein Interaction (PPI) network
 
 The Protein-Protein Interaction (PPI) network is obtained from fusion of three datasets : APID, Hi-Union and Lit-BM. It's composed of:
 
-- 14,703 nodes (proteins)
+- 14,703 nodes
 
 - 143,653 edges
 
@@ -175,21 +179,21 @@ This network is extracted from NDEx and corresponds to the Human Reactome data. 
 
 .. _pathwaysOfInterestNet:
 
-Pathways of interest network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pathways/processes of interest network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This kind of network can be build using the ``networkCreation`` method.
 
 By default, the network is build using rare disease pathways extracted automatically from WikiPathways.
 
 --networksPath PATH
-    Output repository name where the pathways network will be saved.
+    Output repository name where the pathways/processes network will be saved.
 
 --bipartitePath PATH
     Output repository name where the bipartite gene-pathway will be saved.
 
 --networksName FILENAME
-    You can give a name to the pathway network. It's a SIF file but each pathway of interest is link to itself.
+    You can give a name to the pathway network. It's a SIF file but each pathway/processes of interest is link to itself.
     ``[default: WP_RareDiseasesNetwork.sif]``
 
 --bipartiteName FILENAME

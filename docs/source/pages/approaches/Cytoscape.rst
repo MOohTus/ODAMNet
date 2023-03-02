@@ -2,6 +2,13 @@
 Network visualisation
 ================================
 
+Results can be visualise using network representation with Cytoscape [1]_.
+
+In this page, there is a tutorial step by step, to reproduce exactly the visualisation that you can find in the
+documentation.
+
+
+
 You can visualise network results using Cytoscape [1]_. Here, we describe the steps that we used to create network visualisations.
 
 .. _networkAMI:
@@ -89,7 +96,7 @@ To visualise the RWR results using network representation, use the following ste
    How create the **resultsSelected.txt** file ?
 
    The ``highestScore`` is the highest score in ``multiplex_1.tsv`` file and the ``gmtFile`` is the gmt file of
-   pathways of interest.
+   pathways/processes of interest.
 
    .. code-block:: bash
 

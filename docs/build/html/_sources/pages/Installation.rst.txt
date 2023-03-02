@@ -7,7 +7,7 @@ To use ODAMNet you need ``python>=3.9``.
 From PyPi
 -------------------------------
 
-ODAMNet is available as python package. You can easily install it using ``pip``.
+ODAMNet is available as Python package. You can easily install it using ``pip``.
 
 .. code-block:: bash
 
@@ -52,7 +52,8 @@ Three different approaches are available:
 
    odamnet [overlap|domino|multixrank] [ARGS]
 
-The RWR approach requires the bipartite network of gene - rare disease associations. You can create this network using your pathways of interest:
+The RWR approach requires the bipartite network of gene - rare disease associations. You can create this network using
+your pathways/processes of interest:
 
 .. code-block:: bash
 

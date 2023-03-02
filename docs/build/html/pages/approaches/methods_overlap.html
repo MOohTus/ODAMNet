@@ -114,11 +114,11 @@
 <span id="overlap"></span><h1>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h1>
 <section id="principle">
 <h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading"></a></h2>
-<p>The overlap analysis calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways of interest</strong>.
-In other words, it looks for target genes that are part of pathways, i.e. <strong>direct overlap</strong>
+<p>The overlap analysis calculates the <strong>overlap</strong> between <strong>target genes</strong> and <strong>pathways/processes of interest</strong>.
+In other words, it looks for target genes that are part of pathways/processes, i.e. <strong>direct overlap</strong>
 (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - left part). This approach is presented in Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for a
 specific use case.</p>
-<p>First, an <strong>overlap</strong> between target genes and all the pathways is computed. Then, a <strong>statistical significance</strong>
+<p>First, an <strong>overlap</strong> between target genes and all the pathways/processes is computed. Then, a <strong>statistical significance</strong>
 is calculated using an <strong>hypergeometric test</strong>. Finally, a <strong>Benjamini-Hochberg</strong> (BH adjusted) correction is applied
 to correct the pvalues.</p>
 </section>
@@ -155,7 +155,7 @@ Optional input are represented with dash border line boxes.
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
-You can give several chemicals in the same line : they will be grouped for the analysis.
+Each line contains one or several chemical IDs, separated by “;”.
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
@@ -166,8 +166,9 @@ You can give several chemicals in the same line : they will be grouped for the a
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>Publications can be associated with chemical interactions.
-You can define a minimum number of publications to keep target genes.
+<dd><p>Each interaction between target gene and chemical can be associated with publications.
+You can filter these interactions according the number of publication associated.
+You can define a minimum number of publications.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>

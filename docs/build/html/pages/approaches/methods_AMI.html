@@ -129,10 +129,11 @@
 </div>
 </div>
 <p>DOMINO is looking for <strong>active modules</strong> in a network (e.g. protein-protein interaction (PPI) network) (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - middle part).</p>
-<p>First, target genes are defined as <strong>active genes</strong>. Then DOMINO tries to <strong>identify active modules</strong>.</p>
+<p>First, DOMINO defines target genes as <strong>active genes</strong>. Then DOMINO tries to <strong>identify active modules</strong>.</p>
 <p>Active modules are <strong>subnetworks</strong> identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent <strong>functional modules</strong> and can thereby reveal biological processes involved in a specific condition.</p>
-<p>Finally, we performed an <strong>overlap analysis</strong> between each active module identified by DOMINO and pathways of interest.</p>
+<p>Finally, we performed an <strong>overlap analysis</strong> between each active module identified by DOMINO and pathways/processes
+of interest.</p>
 </section>
 <section id="overview-of-the-domino-algorithm">
 <h2>Overview of the DOMINO algorithm<a class="headerlink" href="#overview-of-the-domino-algorithm" title="Permalink to this heading"></a></h2>
@@ -183,7 +184,7 @@ Output files in pink are created only if the input data are extracted from reque
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
-You can give several chemicals in the same line : they will be grouped for the analysis.
+Each line contains one or several chemical IDs, separated by “;”.
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
@@ -194,8 +195,9 @@ You can give several chemicals in the same line : they will be grouped for the a
 </div>
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
-<dd><p>Publications can be associated with chemical interactions.
-You can define a minimum number of publications to keep target genes.
+<dd><p>Each interaction between target gene and chemical can be associated with publications.
+You can filter these interactions according the number of publication associated.
+You can define a minimum number of publications.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>
@@ -236,10 +238,9 @@ the UUID of the network (e.g. <code class="docutils literal notranslate"><span c
 <h2>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Be careful when using networks from NDEx: gene IDs format are not always consistent between the networks and data from
-CTD or other input gene lists and pathways.
-CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
-gene name format. The same constraint exists for GMT files.</p>
+<p>Be careful when using networks: <strong>gene IDs</strong> format are not always consistent between networks, target genes and
+pathways/processes of interest.
+If data are extracted by request, target genes and genes in pathways/processes of interest are in <strong>HGNC</strong> format.</p>
 </div>
 <section id="protein-protein-interaction-ppi-network">
 <h3>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h3>

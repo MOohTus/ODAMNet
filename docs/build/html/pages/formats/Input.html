@@ -76,7 +76,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ctd-file">3. CTD file</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#pathways-of-interest">Pathways of interest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pathways-processes-of-interest">Pathways/processes of interest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#networks">Networks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#active-module-identification-input-network">Active Module Identification input network</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#random-walk-with-restart-input-network">Random Walk with Restart input network</a></li>
@@ -142,7 +142,7 @@
 </div>
 <dl class="option-list">
 <dt><kbd><span class="option">-c</span>, <span class="option">--chemicalsFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Contains a list of chemicals. They have to be in MeSH identifiers (e.g. D014801).
+<dd><p>Contains a list of chemicals. They have to be in <strong>MeSH</strong> identifiers (e.g. D014801).
 Each line contains one or several chemical IDs, separated by “;”.</p>
 </dd>
 </dl>
@@ -151,6 +151,9 @@ D014212
 C009166
 </pre></div>
 </div>
+<p>Target genes will be extracted from CTD for each line and the three approaches will be performed on each line separatly.
+If they are multiple chemicals into one line, target genes of each chemical will be extracted and used as only one list
+of target genes as input of the three approaches.</p>
 </section>
 <section id="target-genes-file">
 <span id="targetgenesfile"></span><h3>2. Target genes file<a class="headerlink" href="#target-genes-file" title="Permalink to this heading"></a></h3>
@@ -197,13 +200,13 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 </div>
 </section>
 </section>
-<section id="pathways-of-interest">
-<span id="pathways"></span><h2>Pathways of interest<a class="headerlink" href="#pathways-of-interest" title="Permalink to this heading"></a></h2>
+<section id="pathways-processes-of-interest">
+<span id="pathways"></span><h2>Pathways/processes of interest<a class="headerlink" href="#pathways-processes-of-interest" title="Permalink to this heading"></a></h2>
 <p>By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code>). You need to provided the ontology source of them too (<code class="docutils literal notranslate"><span class="pre">backgroundFile</span></code>).</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
-<dd><p>It’s a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
+<dd><p>It’s a tab-delimited file that describes gene sets of pathways/processes of interest. Pathways can come from several sources.
 Each row represents a gene set.</p>
 </dd>
 </dl>

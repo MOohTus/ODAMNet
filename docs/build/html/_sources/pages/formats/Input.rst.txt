@@ -31,7 +31,7 @@ Target genes
 
 
 -c, --chemicalsFile FILENAME
-    Contains a list of chemicals. They have to be in MeSH identifiers (e.g. D014801).
+    Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
     Each line contains one or several chemical IDs, separated by ";".
 
 .. code-block:: none
@@ -39,6 +39,10 @@ Target genes
             D014801;D014807
             D014212
             C009166
+
+Target genes will be extracted from CTD for each line and the three approaches will be performed on each line separatly.
+If they are multiple chemicals into one line, target genes of each chemical will be extracted and used as only one list
+of target genes as input of the three approaches.
 
 .. _targetGenesFile:
 
@@ -90,14 +94,14 @@ It's composed of 9 columns:
 
 .. _pathways:
 
-Pathways of interest
-=======================
+Pathways/processes of interest
+=================================
 
 By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
 --GMT FILENAME
-    It's a tab-delimited file that describes gene sets of pathways of interest. Pathways can come from several sources.
+    It's a tab-delimited file that describes gene sets of pathways/processes of interest. Pathways can come from several sources.
     Each row represents a gene set.
 
 There are at least, three columns:

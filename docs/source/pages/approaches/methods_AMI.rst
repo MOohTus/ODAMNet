@@ -14,12 +14,13 @@ Principle
 
 DOMINO is looking for **active modules** in a network (e.g. protein-protein interaction (PPI) network) (:numref:`overviewFig` - middle part).
 
-First, target genes are defined as **active genes**. Then DOMINO tries to **identify active modules**.
+First, DOMINO defines target genes as **active genes**. Then DOMINO tries to **identify active modules**.
 
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent **functional modules** and can thereby reveal biological processes involved in a specific condition.
 
-Finally, we performed an **overlap analysis** between each active module identified by DOMINO and pathways of interest.
+Finally, we performed an **overlap analysis** between each active module identified by DOMINO and pathways/processes
+of interest.
 
 Overview of the DOMINO algorithm
 -----------------------------------
@@ -77,7 +78,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
 
         -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
-            You can give several chemicals in the same line : they will be grouped for the analysis.
+            Each line contains one or several chemical IDs, separated by ";".
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
@@ -86,8 +87,9 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
             | ``[default: True]``
 
         --nbPub INTEGER
-            Publications can be associated with chemical interactions.
-            You can define a minimum number of publications to keep target genes.
+            Each interaction between target gene and chemical can be associated with publications.
+            You can filter these interactions according the number of publication associated.
+            You can define a minimum number of publications.
             ``[default: 2]``
 
     .. group-tab:: Data provided by users
@@ -125,10 +127,9 @@ Networks available
 
 .. warning::
 
-    Be careful when using networks from NDEx: gene IDs format are not always consistent between the networks and data from
-    CTD or other input gene lists and pathways.
-    CTD returns gene symbols (i.e. HGNC), so the network need to contains gene symbols and not ensembl IDs or any other
-    gene name format. The same constraint exists for GMT files.
+    Be careful when using networks: **gene IDs** format are not always consistent between networks, target genes and
+    pathways/processes of interest.
+    If data are extracted by request, target genes and genes in pathways/processes of interest are in **HGNC** format.
 
 Protein-Protein Interaction (PPI) network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

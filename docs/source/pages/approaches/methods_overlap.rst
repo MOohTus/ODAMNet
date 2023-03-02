@@ -8,12 +8,12 @@ Principle
 ------------
 
 
-The overlap analysis calculates the **overlap** between **target genes** and **pathways of interest**.
-In other words, it looks for target genes that are part of pathways, i.e. **direct overlap**
+The overlap analysis calculates the **overlap** between **target genes** and **pathways/processes of interest**.
+In other words, it looks for target genes that are part of pathways/processes, i.e. **direct overlap**
 (:numref:`overviewFig` - left part). This approach is presented in Ozisik *et al.,* [1]_ for a
 specific use case.
 
-First, an **overlap** between target genes and all the pathways is computed. Then, a **statistical significance**
+First, an **overlap** between target genes and all the pathways/processes is computed. Then, a **statistical significance**
 is calculated using an **hypergeometric test**. Finally, a **Benjamini-Hochberg** (BH adjusted) correction is applied
 to correct the pvalues.
 
@@ -56,7 +56,7 @@ The ``--outputPath`` parameter is used for both data extraction.
 
         -c, --chemicalsFile FILENAME
             Contains a list of chemicals. They have to be in **MeSH** identifiers (e.g. D014801).
-            You can give several chemicals in the same line : they will be grouped for the analysis.
+            Each line contains one or several chemical IDs, separated by ";".
             [:ref:`FORMAT <chemicalsFile>`] **[required]**
 
         --directAssociation BOOLEAN
@@ -65,8 +65,9 @@ The ``--outputPath`` parameter is used for both data extraction.
             | ``[default: True]``
 
         --nbPub INTEGER
-            Publications can be associated with chemical interactions.
-            You can define a minimum number of publications to keep target genes.
+            Each interaction between target gene and chemical can be associated with publications.
+            You can filter these interactions according the number of publication associated.
+            You can define a minimum number of publications.
             ``[default: 2]``
 
     .. group-tab:: Data provided by users
