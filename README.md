@@ -1,17 +1,17 @@
 # README
 
-The goal of this project is to develop computational approaches to analyse the links and overlaps between chemicals
-and rare diseases.
+ODAMNet, a Python package to study molecular relationship between environmental factors (called chemicals here) and 
+rare diseases. 
 
 The [ODAMNet documentation][ODAMNet documentation] is available in ReadTheDocs.
 
-This project was created within the framework of the [EJRP-RD project][EJPRD].
+This tool was created within the framework of the [EJRP-RD project][EJPRD].
 
 ## Installation 
 
 ### From PyPi
 
-ODAMNet is available as python package. You can easily install it using `pip`.
+ODAMNet is available as [Python package][pypi]. You can easily install it using `pip`.
 
 ```console
 $ python3 -m pip install odamnet
@@ -39,6 +39,8 @@ $ git clone https://github.com/MOohTus/ODAMNet.git
 $ python3 -m pip install -e ODAMNet/
 ```
 
+*If it's not working, try to update pip using pip install pip --upgrade*
+
 ## Usage
 
 Three different approaches are available: 
@@ -53,13 +55,15 @@ $ odamnet [overlap|domino|multixrank|networkCreation] [ARGS]
 
 ## Examples
 
-Three approaches are implemented to study relationships between rare diseases (from [WikiPathways][WikiPathways]) and genes 
-targeted by chemicals (extracted from [CTD database][CTD]).
+Three approaches are implemented to study relationships between rare diseases (extracted automatically from 
+[WikiPathways][WikiPathways]) and genes targeted by chemicals (extracted automatically from [CTD database][CTD]).
 
 ### Overlap analysis
 
 This method computes the overlap between target genes and rare disease pathways. It is looking for direct associations, 
-i.e., target genes that are part of pathways.
+i.e., target genes that are part of rare disease pathways.
+
+Give your chemicals list into `--chemicalsFile` input. 
 
 ```console
 $ odamnet overlap --chemicalsFile FILENAME
@@ -67,9 +71,11 @@ $ odamnet overlap --chemicalsFile FILENAME
 
 ### Active Module Identification (AMI)
 
-Target genes are defined as "active genes" to search for active modules on a molecular network (e.g.
-protein-protein interaction network, PPI). Then, an overlap analysis is performed between active modules (containing target genes + linked genes)
-and rare disease pathways.
+An Active Module Identification is performed using DOMINO tool. DOMINO defines target genes as *active genes* to search 
+for active modules using a biological network (e.g. protein-protein interaction network, PPI). 
+Then, an overlap analysis is performed between identified active modules and rare disease pathways. 
+
+Give your chemicals list and your biological network into `--chemicalsFile` and `--networkFile` respectively. 
 
 ```console
 $ odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
@@ -77,29 +83,47 @@ $ odamnet domino --chemicalsFile FILENAME --networkFile FILENAME
 
 ### Random Walk with Restart (RWR)
 
+The Random Walk with Restart is performed using multiXrank Python package.
+
 #### Network and bipartite creation
 
-To perform a Random Walk with Restart through molecular multilayer and diseases network, you need to create a disease network
-and link it to the multilayer (i.e. with the bipartite). This network will not have any connection between diseases (i.e. disconnected network).
-Diseases will be only connected with genes (in the multilayer) that are involved in disease pathways.
+MultiXrank need networks as input. You need to create a network with the rare disease pathways. This network will not 
+have any connection between disease nodes (i.e. disconnected network). Disease nodes will be only connected with gene 
+nodes that are involved in disease pathways using a bipartite.  
+
+Give a path to save generated disease network and disease-gene bipartite using `--networksPath` and `--bipartitePath` 
+respectively.
 
 ```console
 $ odamnet networkCreation --networksPath PATH --bipartitePath PATH
 ```
 
+*Rare disease pathways are extracted automatically from WikiPathways.*
+
 #### multiXrank
 
-The third approach mesures the proximity of every nodes (g.e. genes, diseases) to the target genes within a multilayer network.
-The walk starts from target genes and diffuses through the multilayer composed of different molecular interactions to the disease.
+Random Walk with Restart mesures the proximity of every node (e.g. genes and diseases) to the target genes within a 
+multilayer network. The multilayer network is composed of molecular multiplex and rare disease pathway network (the one 
+created previously). 
+
+Give your chemicals list into `--chemicalsFile` input. MultiXrank needs a configuration file (), networks directory (),
+the target genes file () and a name to write the result into network file (). 
 
 ```console
 $ odamnet multixrank --chemicalsFile FILENAME --configPath PATH --networksPath PATH --seedsFile FILENAME --sifFileName FILENAME
 ```
 
+*We provide a molecular multiplex into the useCases directory in the [GitHub page][git].*
+
+*You can also have more details about the configuration file in the [documentation page][doc].*
+
 [ODAMNet documentation]: https://odamnet.readthedocs.io/
+[pypi]: https://pypi.org/project/ODAMNet/
 [bioconda]: https://bioconda.github.io/index.html
 [EJPRD]: https://www.ejprarediseases.org/
 [DOMINO]: http://domino.cs.tau.ac.il
 [multiXrank]: https://multixrank-doc.readthedocs.io/en/latest/index.html
 [WikiPathways]: https://www.wikipathways.org/
 [CTD]: https://ctdbase.org/
+[doc]: https://odamnet.readthedocs.io/en/latest/pages/formats/Input.html#configuration-file
+[git]: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
