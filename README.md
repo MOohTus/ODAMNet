@@ -109,6 +109,7 @@ multilayer network. The multilayer network is composed of molecular multiplex an
 created previously). 
 
 Give your chemicals list into `--chemicalsFile` input. 
+
 MultiXrank needs a configuration file (`--configPath`), networks directory (`--networksPath`),
 the target genes file (`--seedsFile`) and a name to write the result into network file (`--sifFileName`). 
 
