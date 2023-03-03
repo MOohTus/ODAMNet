@@ -36,10 +36,9 @@ In addition, the users can provide their own **target genes** and **pathways/pro
 
     : Input and output of overlap analysis
 
-    (Left part) - Target genes and rare disease pathways can be extracted using automatic request.
-    Required input are represented with pink solid border line boxes. The users can also provide their own data.
-    Required input are represented with green solid border line boxes.
-    Optional input are represented with dash border line boxes.
+    (Left part) - Target genes and rare disease pathways can be extracted using automatic request. The users can also
+    provide their own data. Required input are represented with pink and green solid border line boxes whereas optional
+    input are represented with dashed border line boxes.
     (Right part) - Output files that are in pink are created only if the input data are extracted from request.
 
 Input parameters for the overlap analysis

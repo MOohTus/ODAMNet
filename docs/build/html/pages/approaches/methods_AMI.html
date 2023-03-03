@@ -124,7 +124,7 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <div class="line-block">
-<div class="line">Active Module Identification is performed using DOMINO <a class="footnote-reference brackets" href="#id11" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on their server <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
+<div class="line">Active Module Identification (AMI) is performed using DOMINO <a class="footnote-reference brackets" href="#id12" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The analysis is running on their server <a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</div>
 <div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/Shamir-Lab/domino_web">DOMINO web GitHub</a> – <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-globe" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 00-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 004.666 5.5 11.13 11.13 0 01-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 01-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 01-.857-1.215A9.637 9.637 0 015.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 011.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0110.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 004.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 00-.353-.552 6.506 6.506 0 014.666 5.5zM8 0a8 8 0 100 16A8 8 0 008 0z"></path></svg> <a class="reference external" href="http://domino.cs.tau.ac.il/">DOMINO server</a></div>
 </div>
 </div>
@@ -138,10 +138,10 @@ of interest.</p>
 <section id="overview-of-the-domino-algorithm">
 <h2>Overview of the DOMINO algorithm<a class="headerlink" href="#overview-of-the-domino-algorithm" title="Permalink to this heading"></a></h2>
 <p>The <a class="reference internal" href="#dominomethodfig"><span class="std std-numref">Fig. 3</span></a> is an overview of the DOMINO algorithm.</p>
-<figure class="align-center" id="id17">
+<figure class="align-center" id="id18">
 <span id="dominomethodfig"></span><img alt="DOMINO method" src="../../_images/DOMINO_method.jpg" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id11" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">: Schematic illustration of DOMINO (Fig3 from DOMINO’s paper <a class="footnote-reference brackets" href="#id12" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>)</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <div class="line-block">
@@ -151,7 +151,7 @@ of interest.</p>
 <div class="line"><strong>D - Step 2b:</strong> The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.</div>
 <div class="line"><strong>E - Step 3:</strong> The final set of active module is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
 </div>
-<p><em>For more details, see to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id11" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p><em>For more details, see to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id12" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
@@ -161,14 +161,15 @@ You give the <code class="docutils literal notranslate"><span class="pre">--chem
 You can give some optional parameters to custom the selection of target genes.</p>
 <p>You can provide your own <strong>target genes file</strong> and <strong>pathways/processes of interest</strong>
 (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data provided by users</em>) with <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>, <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
-<figure class="align-center" id="id18">
+<figure class="align-center" id="id19">
 <span id="dominousagefig"></span><img alt="domino analysis" src="../../_images/Overview_AMI.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output files/parameters of Active Modules Identification</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output of Active Modules Identification (AMI)</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>There are two ways to extract target genes : from request (pink boxes) or provided by users (green boxes).
-Required files/parameters have solid border line and optional files/parameters have dash border line.
-Output files in pink are created only if the input data are extracted from requests.</p>
+<p>(Left part) - Target genes and rare disease pathways can be extracted using automatic request. The users can also
+provide their own data. Required input are represented with pink and green solid border line boxes whereas optional
+input are represented with dashed border line boxes.
+(Right part) - Output files that are in pink are created only if the input data are extracted from request.</p>
 </div>
 </figcaption>
 </figure>
@@ -222,10 +223,10 @@ It should be in the same order than the GMT file.
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Network file name. It’s SIF file [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+<dd><p>Network file name. The file is in SIF format [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--netUUID <var>TEXT</var></span></kbd></dt>
-<dd><p>You can use a network extracted automatically from <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a class="footnote-reference brackets" href="#id13" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. You have to provide
+<dd><p>You can use a network extracted automatically from <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a class="footnote-reference brackets" href="#id14" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. You have to provide
 the UUID of the network (e.g. <code class="docutils literal notranslate"><span class="pre">079f4c66-3b77-11ec-b3be-0ac135e8bacf</span></code>).</p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
@@ -244,9 +245,9 @@ If data are extracted by request, target genes and genes in pathways/processes o
 </div>
 <section id="protein-protein-interaction-ppi-network">
 <h3>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h3>
-<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id14" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, November 2016). The gene name format is
-<strong>gene symbols</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
-<p>It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:</p>
+<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, November 2016). The gene name format is
+<strong>HGCN</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+<p>It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">VPS52</span>
 <span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">BHLHE40</span>
@@ -262,7 +263,7 @@ If data are extracted by request, target genes and genes in pathways/processes o
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
-<p>You can use any network that you want or have. It has to be in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> and you can give it to
+<p>You can use your own network. The network file has to be in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> and you can give it to
 the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 </section>
 <section id="networks-from-ndex-database">
@@ -271,8 +272,8 @@ the script using the required parameter <code class="docutils literal notranslat
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
-<p>You can directly request NDEx <a class="footnote-reference brackets" href="#id13" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="reference external" href="https://www.ndexbio.org/">website</a> and extract the network that you want to use
-(REST API <a class="footnote-reference brackets" href="#id13" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id15" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> <sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>). You need to specify the network UUID using the optional parameter
+<p>You can directly request <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a class="footnote-reference brackets" href="#id14" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> and extract the network that you want to use
+(REST API <a class="footnote-reference brackets" href="#id14" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id16" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> <sup>,</sup> <a class="footnote-reference brackets" href="#id17" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>). You need to specify the network UUID using the optional parameter
 <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>.</p>
 </section>
 </section>
@@ -298,30 +299,30 @@ the script using the required parameter <code class="docutils literal notranslat
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id11" role="note">
+<aside class="footnote brackets" id="id12" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>,<a role="doc-backlink" href="#id4">3</a>)</span>
 <p>Levi, H., Elkon, R., &amp; Shamir, R. (2021). DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology, 17(1), e9593.</p>
 </aside>
-<aside class="footnote brackets" id="id12" role="note">
+<aside class="footnote brackets" id="id13" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Levi, H., Rahmanian, N., Elkon, R., &amp; Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.</p>
 </aside>
-<aside class="footnote brackets" id="id13" role="note">
+<aside class="footnote brackets" id="id14" role="note">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id7">2</a>,<a role="doc-backlink" href="#id8">3</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id8">2</a>,<a role="doc-backlink" href="#id9">3</a>)</span>
 <p>Pratt et al. NDEx, the Network Data Exchange. Cell Systems, Vol. 1, Issue 4: 302-305 (2015).</p>
 </aside>
-<aside class="footnote brackets" id="id14" role="note">
+<aside class="footnote brackets" id="id15" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">4</a><span class="fn-bracket">]</span></span>
 <p>Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., … &amp; Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.</p>
 </aside>
-<aside class="footnote brackets" id="id15" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">5</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">5</a><span class="fn-bracket">]</span></span>
 <p>Pillich et al. NDEx: A Community Resource for Sharing and Publishing of Biological Networks. Methods Mol Biol, 1558: 271-301 (2017).</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">6</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">6</a><span class="fn-bracket">]</span></span>
 <p>Pratt et al. NDEx 2.0: A Clearinghouse for Research on Cancer Pathways. Cancer Res. Nov 1;77(21):e58-e61 (2017).</p>
 </aside>
 </aside>

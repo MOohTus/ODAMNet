@@ -33,11 +33,12 @@ You can provide your own **target genes file** (:numref:`RWRUsageFig`: section *
     :alt: Random Walk with Restart analysis
     :align: center
 
-    : Input and output files/parameters of Random Walk with Restart analysis
+    : Input and output of Random Walk with Restart (RWR) analysis
 
-    There are two ways to extract target genes: from automatic request (pink boxes) or from the files provided by the user (green boxes).
-    Required files/parameters have solid border line and optional files/parameters have dashed border line.
-    Output files in pink are created only if the input data are extracted from requests.
+    (Left part) - Target genes and rare disease pathways can be extracted using automatic request. The users can also
+    provide their own data. Required input are represented with pink and green solid border line boxes whereas optional
+    input are represented with dashed border line boxes.
+    (Right part) - Output files that are in pink are created only if the input data are extracted from request.
 
 Input parameters for the RWR analysis
 ----------------------------------------
@@ -85,7 +86,7 @@ Input parameters for the RWR analysis
     on the Random Walk analysis. **[required]**
 
 --sifFileName FILENAME
-    Output file name to save the result into a SIF file. **[required]**
+    Output file name to save the result into a SIF file format. **[required]**
 
 --top INTEGER
     Top nodes that will be saved into the output network (into SIF file).
@@ -186,6 +187,9 @@ This kind of network can be build using the ``networkCreation`` method.
 
 By default, the network is build using rare disease pathways extracted automatically from WikiPathways.
 
+The created network will be a disconnected network (i.e. no link between nodes). To have a proper SIF format, every nodes
+will be link to itself.
+
 --networksPath PATH
     Output repository name where the pathways/processes network will be saved.
 
@@ -193,7 +197,7 @@ By default, the network is build using rare disease pathways extracted automatic
     Output repository name where the bipartite gene-pathway will be saved.
 
 --networksName FILENAME
-    You can give a name to the pathway network. It's a SIF file but each pathway/processes of interest is link to itself.
+    You can give a name to the pathway network. The created file will be in SIF file format.
     ``[default: WP_RareDiseasesNetwork.sif]``
 
 --bipartiteName FILENAME
@@ -237,12 +241,12 @@ Disease-disease similarity network creation
 """"""""""""""""""""""""""""""""""""""""""""""
 
 | *Data was download on the 2022/06/11.*
-| *Annotations* (|annot|_) *and ontologies* (|onto|_) *are coming from HPO.*
+| |annot|_ *and* |onto|_ *are coming from HPO.*
 
 .. _annot: https://hpo.jax.org/app/data/annotation
-.. |annot| replace:: *website*
+.. |annot| replace:: *Annotations*
 .. _onto: https://hpo.jax.org/app/data/ontology
-.. |onto| replace:: *website*
+.. |onto| replace:: *ontologies*
 
 We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is defined as
 a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO).
@@ -262,10 +266,10 @@ Gene-disease bipartite
 """"""""""""""""""""""""
 
 | *Data was download on the 2022/09/27.*
-| *Association between genes and diseases file is coming from HPO* (|assos|_)
+| |assos|_ *between genes and diseases file is coming from HPO*
 
 .. _assos: https://hpo.jax.org/app/data/annotation
-.. |assos| replace:: *website*
+.. |assos| replace:: *Associations*
 
 
 The **molecular multilayer network** is connected to the **disease-disease similarity network** with the **gene-disease bipartite**.

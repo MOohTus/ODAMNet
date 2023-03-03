@@ -273,7 +273,7 @@ MultiXrank needs a configuration file (``--configPath``) and the networks path (
 default parameters.
 
 The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF name (``--sifFileName``) to save the network results and the top number of results too
+You need to give the SIF file name (``--sifFileName``) to save the network results and the top number of results too
 (``--top 10``).
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
@@ -347,7 +347,7 @@ Several files are generated into ``RWR_genesList/`` folder:
     - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
       the disease network (depends of the network folder name).
 
-    - ``resultsNetwork_useCase2.sif``: SIF file that contains the network result
+    - ``resultsNetwork_useCase2.sif``: SIF file name that contains the network result
 
 For more details about these file, see :doc:`../formats/Output` page.
 

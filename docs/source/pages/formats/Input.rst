@@ -76,7 +76,7 @@ It's composed of 9 columns:
 - ``ChemicalName``: name of the query input or its child molecule
 - ``ChemicalId``: MeSH ID of the query or its child molecule
 - ``CasRN``: CasRN ID of the query or its child molecule
-- ``GeneSymbol``: symbol of genes connected to the query or its child molecule
+- ``GeneSymbol``: names of genes that are connected to the query or its child molecule
 - ``GeneId``: gene ID (HGCN)
 - ``Organism``: organism name
 - ``OrganismId``: organism ID
@@ -149,7 +149,7 @@ Active Module Identification input network
 ---------------------------------------------
 
 -n, --networkFile FILENAME
-    Network file name in SIF (Simple Interaction File) format.
+    Network file name. The file is in SIF (Simple Interaction File) format.
     It's a tab-delimited file.
 
 There are three columns: source node, interaction type, target node.
@@ -167,7 +167,7 @@ More details for `SIF file format <http://wiki.biouml.org/index.php/SIF_(file_fo
 
 .. warning::
 
-   :octicon:`alert;2em` By default, the analysis is running using **gene symbols HGCN**. Pay attention of the gene IDs inside the network file.
+   :octicon:`alert;2em` By default, the analysis is running using the **HGCN** gene ids. Pay attention of the gene IDs inside the network file.
 
 .. _GR:
 

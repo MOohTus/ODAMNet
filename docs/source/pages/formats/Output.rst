@@ -34,7 +34,7 @@ These filtered data are used for the analysis.
 - ``ChemicalName``: name of the query input or its child chemicals
 - ``ChemicalId``: MeSH ID of the query or its child chemicals
 - ``CasRN``: CasRN ID of the query or its child chemicals
-- ``GeneSymbol``: gene symbol that is connected to the query or its child chemicals
+- ``GeneSymbol``: gene name that is connected to the query or its child chemicals
 - ``GeneId``: gene ID of this gene (HGCN)
 - ``Organism``: organism name where comes from the gene
 - ``OrganismId``: organism ID
@@ -218,7 +218,7 @@ DOMINO_MeSHID_activeModules.txt
 
 This file is created to be given to Cytoscape for the visualisation. It contains four columns :
 
-- ``GeneSymbol`` : Gene symbol
+- ``GeneSymbol`` : Gene name
 - ``ActiveModule`` : active module number
 - ``ActiveGene`` : True if the gene was used as active gene
 - ``overlapSignificant`` : True if the active module has significant overlap results
@@ -270,7 +270,7 @@ resultsNetwork_useCase1.sif
 ---------------------------------
 
 The name of this network file depends on what you give in input (``--sifFileName``). See :ref:`RWR` for more details.
-It's a SIF file format [:ref:`FORMAT <SIF>`] and contains three columns:
+The network file is a SIF format [:ref:`FORMAT <SIF>`] and contains three columns:
 
 - ``source node``: node names
 - ``link source``: source of the link (which multiplex or bipartite)

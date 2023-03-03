@@ -160,7 +160,7 @@ These filtered data are used for the analysis.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its child chemicals</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its child chemicals</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: gene symbol that is connected to the query or its child chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: gene name that is connected to the query or its child chemicals</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: gene ID of this gene (HGCN)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name where comes from the gene</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code>: organism ID</p></li>
@@ -320,7 +320,7 @@ CDT1        GMNN    ppi     1
 <h3>DOMINO_MeSHID_activeModules.txt<a class="headerlink" href="#domino-meshid-activemodules-txt" title="Permalink to this heading"></a></h3>
 <p>This file is created to be given to Cytoscape for the visualisation. It contains four columns :</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : Gene symbol</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : Gene name</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveModule</span></code> : active module number</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveGene</span></code> : True if the gene was used as active gene</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">overlapSignificant</span></code> : True if the active module has significant overlap results</p></li>
@@ -368,7 +368,7 @@ multiplex. It contains three columns:</p>
 <section id="resultsnetwork-usecase1-sif">
 <h3>resultsNetwork_useCase1.sif<a class="headerlink" href="#resultsnetwork-usecase1-sif" title="Permalink to this heading"></a></h3>
 <p>The name of this network file depends on what you give in input (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>). See <a class="reference internal" href="../approaches/methods_RWR.html#rwr"><span class="std std-ref">Random Walk with Restart</span></a> for more details.
-It’s a SIF file format [<a class="reference internal" href="Input.html#sif"><span class="std std-ref">FORMAT</span></a>] and contains three columns:</p>
+The network file is a SIF format [<a class="reference internal" href="Input.html#sif"><span class="std std-ref">FORMAT</span></a>] and contains three columns:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">node</span></code>: node names</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">source</span></code>: source of the link (which multiplex or bipartite)</p></li>

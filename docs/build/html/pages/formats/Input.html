@@ -184,7 +184,7 @@ This file is created automatically when you give a chemicals file.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its child molecule</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its child molecule</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its child molecule</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: symbol of genes connected to the query or its child molecule</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: names of genes that are connected to the query or its child molecule</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: gene ID (HGCN)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code>: organism ID</p></li>
@@ -248,7 +248,7 @@ hsapiens.WP.name.gmt
 <span id="sif"></span><h3>Active Module Identification input network<a class="headerlink" href="#active-module-identification-input-network" title="Permalink to this heading"></a></h3>
 <dl class="option-list">
 <dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Network file name in SIF (Simple Interaction File) format.
+<dd><p>Network file name. The file is in SIF (Simple Interaction File) format.
 It’s a tab-delimited file.</p>
 </dd>
 </dl>
@@ -264,7 +264,7 @@ AAMP        ppi     TK1
 <p>More details for <a class="reference external" href="http://wiki.biouml.org/index.php/SIF_(file_format)">SIF file format</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> By default, the analysis is running using <strong>gene symbols HGCN</strong>. Pay attention of the gene IDs inside the network file.</p>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> By default, the analysis is running using the <strong>HGCN</strong> gene ids. Pay attention of the gene IDs inside the network file.</p>
 </div>
 </section>
 <section id="random-walk-with-restart-input-network">

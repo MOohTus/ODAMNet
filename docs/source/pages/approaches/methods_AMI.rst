@@ -9,7 +9,7 @@ Principle
 
 .. note::
 
-    | Active Module Identification is performed using DOMINO [1]_. The analysis is running on their server [2]_.
+    | Active Module Identification (AMI) is performed using DOMINO [1]_. The analysis is running on their server [2]_.
     | :octicon:`mark-github;1em` `DOMINO web GitHub <https://github.com/Shamir-Lab/domino_web>`_ -- :octicon:`globe;1em` `DOMINO server <http://domino.cs.tau.ac.il/>`_
 
 DOMINO is looking for **active modules** in a network (e.g. protein-protein interaction (PPI) network) (:numref:`overviewFig` - middle part).
@@ -58,11 +58,12 @@ You can provide your own **target genes file** and **pathways/processes of inter
     :alt: domino analysis
     :align: center
 
-    : Input and output files/parameters of Active Modules Identification
+    : Input and output of Active Modules Identification (AMI)
 
-    There are two ways to extract target genes : from request (pink boxes) or provided by users (green boxes).
-    Required files/parameters have solid border line and optional files/parameters have dash border line.
-    Output files in pink are created only if the input data are extracted from requests.
+    (Left part) - Target genes and rare disease pathways can be extracted using automatic request. The users can also
+    provide their own data. Required input are represented with pink and green solid border line boxes whereas optional
+    input are represented with dashed border line boxes.
+    (Right part) - Output files that are in pink are created only if the input data are extracted from request.
 
 Input parameters for the Active Modules Identification
 --------------------------------------------------------
@@ -111,7 +112,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
             **[required]**
 
 -n, --networkFile FILENAME
-    Network file name. It's SIF file [:ref:`FORMAT <SIF>`] **[required]**
+    Network file name. The file is in SIF format [:ref:`FORMAT <SIF>`] **[required]**
 
 --netUUID TEXT
     You can use a network extracted automatically from `NDEx <https://www.ndexbio.org/#/>`_ [3]_. You have to provide
@@ -135,9 +136,9 @@ Protein-Protein Interaction (PPI) network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We provide a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
-**gene symbols**. You can give it to the script using the required parameter ``-n, --networkFile``.
+**HGCN**. You can give it to the script using the required parameter ``-n, --networkFile``.
 
-It contains 66 971 interactions (edges) and 12 621 genes (nodes). The following part gives you an overview of the file:
+It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:
 
 .. code-block::
 
@@ -156,7 +157,7 @@ User-provided network
 
     :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
 
-You can use any network that you want or have. It has to be in :ref:`SIF format <SIF>` and you can give it to
+You can use your own network. The network file has to be in :ref:`SIF format <SIF>` and you can give it to
 the script using the required parameter ``-n, --networkFile``.
 
 
@@ -167,7 +168,7 @@ Networks from NDEx database
 
     :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
 
-You can directly request NDEx [3]_ `website <https://www.ndexbio.org/>`_ and extract the network that you want to use
+You can directly request `NDEx <https://www.ndexbio.org/#/>`_ [3]_ and extract the network that you want to use
 (REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
 ``--netUUID``. The network will be save into a :ref:`SIF file <SIF>`.
 

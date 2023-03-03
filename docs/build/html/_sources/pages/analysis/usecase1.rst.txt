@@ -122,29 +122,30 @@ The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1O
     +------------+--------------------------------------------------+--------------+------------------+
 
 In the previous analysis [1]_, significant overlaps were identified between four CAKUT pathways and the vitamin A target
-genes. With updated target genes data, we retrieve a significant overlap between three CAKUT pathways and the target genes.
-THe results are shown in the (:ref:`Table 5 <useCase1OverlapCAKUT>`):
+genes. With updated target genes data proposed here, we also retrieve a significant overlap for three of these four
+CAKUT pathways.
+The results are shown in the (:ref:`Table 5 <useCase1OverlapCAKUT>`):
 
 .. _useCase1OverlapCAKUT:
 .. table:: CAKUT pathways overlap results
     :align: center
 
-    +------------+-----------------------------------------------+---------------------------------+---------------------------------+
-    |            |                                               |         Current analysis        |          Ozisik's paper         |
-    +============+===============================================+==============+==================+==============+==================+
-    | PathwayIDs |                  PathwayNames                 |   pAdjusted  | IntersectionSize |   pAdjusted  | IntersectionSize |
-    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
-    | **WP5053** | **Development of ureteric collection system** | **2.61e-08** |        28        | **1.59e-05** |        16        |
-    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
-    | **WP4830** |          **GDNF/RET signaling axis**          | **1.99e-05** |        13        | **1.57e-03** |         8        |
-    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
-    | **WP4823** |      **Genes controlling nephrogenesis**      | **8.72e-05** |        18        | **1.84e-05** |        15        |
-    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
-    |   WP5052   |                 Nephrogenesis                 |     0.09     |         6        | **1.90e-04** |         8        |
-    +------------+-----------------------------------------------+--------------+------------------+--------------+------------------+
+    +-----------+---------------------------------------+-------------------+---------------------+
+    |           |                                       |  Current analysis |Ozisik *et al.*, 2021|
+    +-----------+---------------------------------------+------------+------+------------+--------+
+    |PathwayIDs |PathwayNames                           | pAdjusted  |Inter | pAdjusted  | Inter  |
+    +===========+=======================================+============+======+============+========+
+    |  WP5053   |Development of ureteric collection ... |**2.61e-08**|28    |**1.59e-05**|    16  |
+    +-----------+---------------------------------------+------------+------+------------+--------+
+    |  WP4830   |GDNF/RET signaling axis                |**1.99e-05**|13    |**1.57e-03**|     8  |
+    +-----------+---------------------------------------+------------+------+------------+--------+
+    |  WP4823   |Genes controlling nephrogenesis        |**8.72e-05**|18    |**1.84e-05**|    15  |
+    +-----------+---------------------------------------+------------+------+------------+--------+
+    |  WP5052   |Nephrogenesis                          |    0.09    |6     |**1.90e-04**|     8  |
+    +-----------+---------------------------------------+------------+------+------------+--------+
 
-The increasing of the intersection size can be explained by the target gene size. The previous work extracted 1,086
-target genes and in this current work we extracted 2,143 target genes.
+The increase of the intersection size (*Inter column*) can be explained by the target gene size. The previous work
+extracted 1,086 target genes and in this current work we extracted 2,143 target genes.
 
 The overlap between `Nephrogenesis` pathway and target genes is not found significant anymore. Number of target genes
 shared with the pathway is smaller. It affects the p-value and decreases it below the 0.05 threshold.
@@ -166,7 +167,8 @@ Running Active Module Identification with data extracted automatically from data
 
 .. warning::
 
-   :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
+   :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server. Indeed, DOMINO server
+    doesn't allow to set the random seed. This random seed is changed every new analysis.
 
 We want to extract genes that are targeted by vitamin A and its descendant molecules. The **chemicalsFile.csv** file
 [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A and we set ``--directAssociation`` parameter to ``False``.
@@ -319,18 +321,29 @@ between **16 pathways** and **7 active modules** (padjusted <= 0.05).
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It could be interesting to visualise the active modules identified and add on them the overlap results. To do that, we used
-a network representation (:numref:`dominoUsage1Fig`). To know how to create this figure, see the :ref:`networkAMI` section.
+It could be interesting to visualise the active modules identified and add on them the overlap results. To create this
+visualisation, we use Cytoscape [5]_. To know how to create this figure, see the :ref:`networkAMI` section.
+
+We found a significant overlap between seven active modules and rare disease pathways. For sake fo visualisation, we
+selected only three of them and displayed them in the :numref:`dominoUsage1Fig`. You can find a cytoscape project file
+.cys in GitHub_.
+
+.. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
 
 .. _dominoUsage1Fig:
-.. figure:: ../../pictures/example1_DOMINO_AMnetwork.png
+.. figure:: ../../pictures/UseCase1_AMI.png
    :alt: usecase1 AMI
    :align: center
 
-   : Network visualisation of the 7 active modules
+   : Network visualisation of 3 active modules and their associated rare disease pathways
 
-Some active modules are enriched with the same pathways whereas other contain genes involved in different pathways.
-In the :numref:`dominoUsage1Fig`, target genes are represented by grey nodes and others genes by white nodes.
+    Genes are represented by nodes. Grey nodes are the target genes. Overlap results between active modules and
+    rare disease pathways as displayed using donuts color around nodes. Each color corresponds to a rare disease.
+
+As you can see in the :numref:`dominoUsage1Fig`, topology of modules can be different and associated rare disease
+pathways varies. For instance, the module on the right is very connected and contains genes that are part of
+neurodegenerative diseases as Alzheimer or Amyotrophic Lateral Sclerosis (ALS). Whereas, the module on the middle is
+sparser and it contains genes that are part only of Hippo-Merlin signaling dysregulation disease pathway.
 
 .. _useCase1_RWR:
 
@@ -344,7 +357,7 @@ The third approach, Random Walk with Restart (RWR), is applied into two differen
 
 The RWR is performed using multiXrank.
 
-*For more details about RWR and multiXrank, see* :doc:`../approaches/methods_RWR`.
+*For more details about RWR, multiXrank and multilayers composition see* :doc:`../approaches/methods_RWR`.
 
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
@@ -360,7 +373,7 @@ MultiXrank needs a configuration file (``--configPath``) and the networks path (
 default parameters.
 
 The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF name (``--sifFileName``) to save the top nodes based on the score calculated by the RWR (``--top 10``).
+You need to give the SIF file name (``--sifFileName``) to save the top nodes based on the score calculated by the RWR (``--top 10``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -440,7 +453,7 @@ Several files are generated:
     - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
       the rare disease pathways network (depends of the network folder name).
 
-    - ``resultsNetwork_useCase1.sif``: SIF file that contains the network result
+    - ``resultsNetwork_useCase1.sif``: SIF file name that contains the network result
 
 For more details about these file, see :doc:`../formats/Output` page.
 
@@ -477,7 +490,10 @@ Rare disease pathways network analysis
 
 *In this part, we present results found for the first multilayer network composition: multilayer network + rare disease pathways.*
 
-First, target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
+First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
+target genes.
+
+target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
 
 The gene with the highest score is ``VCAM1`` with ``score = 0.0002083975629882177`` (it's a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
@@ -636,3 +652,4 @@ References
 .. [2] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
 .. [3] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
 .. [4] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+.. [5] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
