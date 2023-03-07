@@ -9,7 +9,7 @@ This tool was created within the framework of the [EJRP-RD project][EJPRD].
 
 ## Installation 
 
-### From PyPi
+### From PyPI
 
 ODAMNet is available as [Python package][pypi]. You can easily install it using `pip`.
 
