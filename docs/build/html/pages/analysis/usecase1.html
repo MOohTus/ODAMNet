@@ -146,7 +146,7 @@
 </div>
 <p>We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and rare diseases.</p>
 <p><strong>Target genes</strong>, that are targeted by the chemicals of interest, are extracted <strong>directly</strong> from the <a class="reference external" href="http://ctdbase.org/"><strong>the Comparative Toxicogenomics Database</strong></a> <a class="footnote-reference brackets" href="#id12" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (CTD).
-<strong>Rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> <a class="reference external" href="https://www.wikipathways.org/">website</a>.
+<strong>Rare disease pathways</strong> are extracted from <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id13" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.
 We choose to use as chemical of interest, the <strong>vitamin A</strong>.</p>
 <p>This section presents you how to apply the three different approaches proposed.</p>
 <section id="overlap-analysis">
@@ -174,7 +174,7 @@ the first file contains all the <strong>human rare disease pathways</strong> fro
 and the second file contains <strong>background source file names</strong>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Overlap_D014801_withRDWP.csv</span></code>: results of the overlap analysis between target genes and rare disease pathways.</p></li>
 </ul>
-<p>For more details about these files, see the <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
+<p class="italic">For more details about these files, see the <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </section>
 <section id="results-of-overlap-analysis-with-data-extracted-automatically-from-databases">
 <h3>Results of overlap analysis with data extracted automatically from databases<a class="headerlink" href="#results-of-overlap-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this heading"></a></h3>
@@ -372,7 +372,7 @@ One file per active module.</p></li>
 , <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_signOverlap.txt</span></code>: some statistics are
 calculated and saved into files. Theses files are useful for visualisation.</p></li>
 </ul>
-<p>For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#requestoutput"><span class="std std-ref">Request file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis</span></a>, <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">Active Module Identification</span></a>)</p>
+<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#requestoutput"><span class="std std-ref">Request file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis</span></a>, <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">Active Module Identification</span></a>)</p>
 </section>
 <section id="results-of-active-module-identification-with-data-extracted-automatically-from-databases">
 <h3>Results of Active Module identification with data extracted automatically from databases<a class="headerlink" href="#results-of-active-module-identification-with-data-extracted-automatically-from-databases" title="Permalink to this heading"></a></h3>
@@ -456,7 +456,7 @@ the following <a class="reference internal" href="#usecase1amictd"><span class="
 </tr>
 </tbody>
 </table>
-<p><em>See `DOMINO_D014801_activeModulesNetworkMetrics.txt file for more details.</em></p>
+<p class="italic">See <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> file for more details.</p>
 </section>
 <section id="id7">
 <h4>Overlap analysis results<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
@@ -556,7 +556,7 @@ sparser and it contains genes that are part only of Hippo-Merlin signaling dysre
 <li><p>Multilayer network with three molecular layers + disease-disease similarity network linked with a bipartite</p></li>
 </ol>
 <p>The RWR is performed using multiXrank.</p>
-<p><em>For more details about RWR, multiXrank and multilayers composition see</em> <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
+<p class="italic">For more details about RWR, multiXrank and multilayer network composition see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
 <section id="running-random-walk-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running Random Walk analysis with data extracted automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this heading"></a></h3>
 <div class="line-block">
@@ -571,7 +571,7 @@ default parameters.</p>
 <p>The target genes are set as seeds for the walk and saved into a file <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code>.
 You need to give the SIF file name (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>) to save the top nodes based on the score calculated by the RWR (<code class="docutils literal notranslate"><span class="pre">--top</span> <span class="pre">10</span></code>).</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
-<p>If you need more details about the input format files, see <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">Random Walk with Restart input network</span></a> and <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a> parts.</p>
+<p class="italic">If you need more details about the input format files, see <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">Random Walk with Restart input network</span></a> and <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a> parts.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Whatever the networks used, the <strong>command line is the same</strong>. But you have to <strong>change</strong> the network name inside the
@@ -632,14 +632,14 @@ the first file contains <strong>results from CTD</strong> request and the second
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code>: copies of the input files</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: score for each feature. 1 corresponds to the multiplex and 2 to
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: score for each feature. 1 corresponds to the multiplex network  and 2 to
 the rare disease pathways network (depends of the network folder name).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code>: SIF file name that contains the network result</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
-<p>For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
+<p class="italic">For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </section>
 <section id="results-of-random-walk-analysis-with-data-extracted-automatically-from-databases">
 <h3>Results of Random Walk analysis with data extracted automatically from databases<a class="headerlink" href="#results-of-random-walk-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this heading"></a></h3>
@@ -673,7 +673,7 @@ following <a class="reference internal" href="#usecase1rwrctd"><span class="std 
 <p>We use the default parameters, whatever the networks used.</p>
 <section id="rare-disease-pathways-network-analysis">
 <h5>Rare disease pathways network analysis<a class="headerlink" href="#rare-disease-pathways-network-analysis" title="Permalink to this heading"></a></h5>
-<p><em>In this part, we present results found for the first multilayer network composition: multilayer network + rare disease pathways.</em></p>
+<p><em>In this part, we present results found for the first multilayer network composition: multiplex network + rare disease pathways network.</em></p>
 <p>First, multiXrank uses target genes as <em>seeds</em> to start the walk. Over 1,988 target genes are used over 2,143 extracted
 target genes.</p>
 <p>target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
@@ -805,7 +805,7 @@ shown on the <a class="reference internal" href="#usecase1-orsum"><span class="s
 <figure class="align-center" id="id27">
 <span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the molecular multilayer and rare disease pathways network</span><a class="headerlink" href="#id27" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">: Results from RWR through the multiplex network and rare disease pathways network</span><a class="headerlink" href="#id27" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -816,7 +816,7 @@ shown on the <a class="reference internal" href="#usecase1-orsum"><span class="s
 </section>
 <section id="disease-disease-similarity-network">
 <h5>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this heading"></a></h5>
-<p><em>In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.</em></p>
+<p><em>In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.</em></p>
 <p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
 <p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table 12</span></a>).</p>
 <span id="usecase1-diseasesrwr"></span><table class="docutils align-center" id="id28">
@@ -874,7 +874,7 @@ shown on the <a class="reference internal" href="#usecase1-orsum"><span class="s
 <figure class="align-center" id="id29">
 <span id="usecase1-simnetworkrwr"></span><img alt="usecase 1 simNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1_simNet.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">: Results from RWR through the molecular multiplex and disease-disease similarity network</span><a class="headerlink" href="#id29" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">: Results from RWR through the multiplex network and disease-disease similarity network</span><a class="headerlink" href="#id29" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.</p>

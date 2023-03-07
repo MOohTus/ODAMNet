@@ -11,14 +11,15 @@ Use-case 1: data are extracted automatically with requests
 We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and rare diseases.
 
 **Target genes**, that are targeted by the chemicals of interest, are extracted **directly** from the |ctd|_ [2]_ (CTD).
-**Rare disease pathways** are extracted from **WikiPathways** [3]_ website_.
+**Rare disease pathways** are extracted from |wp| [3]_.
 We choose to use as chemical of interest, the **vitamin A**.
 
 This section presents you how to apply the three different approaches proposed.
 
 .. _ctd: http://ctdbase.org/
 .. |ctd| replace:: **the Comparative Toxicogenomics Database**
-.. _website: https://www.wikipathways.org/
+.. _wp: https://www.wikipathways.org/
+.. |wp| replace:: **WikiPathways**
 
 .. _useCase1_overlap:
 
@@ -54,7 +55,9 @@ Several files are generated:
 
 - ``Overlap_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare disease pathways.
 
-For more details about these files, see the :doc:`../formats/Output` page.
+.. cssclass:: italic
+
+    For more details about these files, see the :doc:`../formats/Output` page.
 
 Results of overlap analysis with data extracted automatically from databases
 -------------------------------------------------------------------------------
@@ -204,7 +207,9 @@ Several files are generated:
   , ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` and ``DOMINO_D014801_signOverlap.txt``: some statistics are
   calculated and saved into files. Theses files are useful for visualisation.
 
-For more details about these files, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`)
+.. cssclass:: italic
+
+    For more details about these files, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`)
 
 Results of Active Module identification with data extracted automatically from databases
 -------------------------------------------------------------------------------------------
@@ -268,7 +273,9 @@ Target genes are defined as **active genes** by DOMINO. We give **2,143 target g
     | Active Genes |      8     |     35     |
     +--------------+------------+------------+
 
-*See `DOMINO_D014801_activeModulesNetworkMetrics.txt file for more details.*
+.. cssclass:: italic
+
+    See ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file for more details.
 
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -357,7 +364,9 @@ The third approach, Random Walk with Restart (RWR), is applied into two differen
 
 The RWR is performed using multiXrank.
 
-*For more details about RWR, multiXrank and multilayers composition see* :doc:`../approaches/methods_RWR`.
+.. cssclass:: italic
+
+    For more details about RWR, multiXrank and multilayer network composition see :doc:`../approaches/methods_RWR`.
 
 Running Random Walk analysis with data extracted automatically from databases
 --------------------------------------------------------------------------------
@@ -377,7 +386,9 @@ You need to give the SIF file name (``--sifFileName``) to save the top nodes bas
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
-If you need more details about the input format files, see :ref:`GR` and :ref:`configFile` parts.
+.. cssclass:: italic
+
+    If you need more details about the input format files, see :ref:`GR` and :ref:`configFile` parts.
 
 .. tip::
 
@@ -450,12 +461,14 @@ Several files are generated:
 
     - ``config_minimal_useCase1.yml`` and ``seeds.txt``: copies of the input files
 
-    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
+    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex network  and 2 to
       the rare disease pathways network (depends of the network folder name).
 
     - ``resultsNetwork_useCase1.sif``: SIF file name that contains the network result
 
-For more details about these file, see :doc:`../formats/Output` page.
+.. cssclass:: italic
+
+    For more details about these file, see :doc:`../formats/Output` page.
 
 Results of Random Walk analysis with data extracted automatically from databases
 -----------------------------------------------------------------------------------
@@ -488,7 +501,7 @@ We use the default parameters, whatever the networks used.
 Rare disease pathways network analysis
 """"""""""""""""""""""""""""""""""""""""""
 
-*In this part, we present results found for the first multilayer network composition: multilayer network + rare disease pathways.*
+*In this part, we present results found for the first multilayer network composition: multiplex network + rare disease pathways network.*
 
 First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
 target genes.
@@ -571,7 +584,7 @@ shown on the :numref:`useCase1_orsum`.
    :alt: usecase 1 pathwaysNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multilayer and rare disease pathways network
+   : Results from RWR through the multiplex network and rare disease pathways network
 
     Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
 
@@ -579,7 +592,7 @@ shown on the :numref:`useCase1_orsum`.
 Disease-Disease similarity network
 """""""""""""""""""""""""""""""""""""
 
-*In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.*
+*In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.*
 
 First, target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
 
@@ -620,7 +633,7 @@ You can represent the results with a network as shown in the :numref:`useCase1_s
    :alt: usecase 1 simNetworkRWR
    :align: center
 
-   : Results from RWR through the molecular multiplex and disease-disease similarity network
+   : Results from RWR through the multiplex network and disease-disease similarity network
 
     Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
 

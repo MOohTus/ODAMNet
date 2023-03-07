@@ -51,8 +51,10 @@ To create the same visualisation of active modules, use the following steps:
 8. **New Network**: From Selected Nodes, All Edges
 9. Add **legends** using Omics Visualizer [2]_ and Legend Creator [3]_
 
-*To run an Active Module Identification with data requested, see* :ref:`Use-case 1 <useCase1_AMI>`
-*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
+.. cssclass:: italic
+
+    To run an Active Module Identification with data requested, see :ref:`Use-case 1 <useCase1_AMI>`
+    or with data provided by users, see :ref:`Use-case 2 <useCase2_AMI>`.
 
 .. _networkRWR:
 
@@ -137,7 +139,7 @@ To visualise the RWR results using network representation, use the following ste
           | False: FFFFFF
         - DD3497
     *   - Label Front Size
-        - 20
+        - 20boldlink
         - 50
     *   - Shape
         - Ellipse
@@ -154,8 +156,10 @@ To visualise the RWR results using network representation, use the following ste
 
 12. Change network layout (here is yFiles Organic Layout)
 
-*To perform a RWR with data extracted from requests, see* :ref:`Use-case 1 <useCase1_AMI>`
-*or with data provided by users, see* :ref:`Use-case 2 <useCase2_AMI>`.
+.. cssclass:: italic
+
+    To perform a RWR with data extracted from requests, see :ref:`Use-case 1 <useCase1_AMI>`
+    or with data provided by users, see :ref:`Use-case 2 <useCase2_AMI>`.
 
 References
 --------------------------------------------------
