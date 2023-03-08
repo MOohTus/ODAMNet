@@ -156,7 +156,7 @@ We choose to use as chemical of interest, the <strong>vitamin A</strong>.</p>
 <section id="running-overlap-analysis-with-data-extracted-automatically-from-databases">
 <h3>Running overlap analysis with data extracted automatically from databases<a class="headerlink" href="#running-overlap-analysis-with-data-extracted-automatically-from-databases" title="Permalink to this heading"></a></h3>
 <p>The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A. We want to extract genes that are targeted by vitamin A
-and by its descendant molecules. So, the <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+and by its descendant chemicals. So, the <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 We keep only interactions which have at least two associated publications(<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).
 Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>overlap<span class="w"> </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
@@ -181,13 +181,14 @@ and the second file contains <strong>background source file names</strong>.</p><
 <p><em>request on the 07th of September 2022</em></p>
 <section id="ctd-request-results">
 <h4>CTD request results<a class="headerlink" href="#ctd-request-results" title="Permalink to this heading"></a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant molecules. Request results are presented in the
-following <a class="reference internal" href="#usecase1overlapctd"><span class="std std-ref">Table 2</span></a>. The request extracts 7,765 target genes associated to 10 molecules (vitamin A + nine other descendant molecules).</p>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant chemicals. Request results are presented in the
+following <a class="reference internal" href="#usecase1overlapctd"><span class="std std-ref">Table 2</span></a>. The request extracts 7,765 target genes associated to 10 chemicals
+(vitamin A + nine other descendant chemicals).</p>
 <span id="usecase1overlapctd"></span><table class="docutils align-center" id="id16">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id16" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Number of molecules</p></th>
+<th class="head"><p>Number of chemicals</p></th>
 <th class="head"><p>Number of target genes</p></th>
 </tr>
 </thead>
@@ -229,6 +230,8 @@ following <a class="reference internal" href="#usecase1overlapctd"><span class="
 </tr>
 </tbody>
 </table>
+<p>To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
+That why we extracted also all human pathways from WikiPathways.</p>
 </section>
 <section id="overlap-analysis-results">
 <h4>Overlap analysis results<a class="headerlink" href="#overlap-analysis-results" title="Permalink to this heading"></a></h4>
@@ -346,7 +349,7 @@ For more detail, see <a class="reference internal" href="../approaches/methods_A
 </dd>
 </dl>
 </div>
-<p>We want to extract genes that are targeted by vitamin A and its descendant molecules. The <strong>chemicalsFile.csv</strong> file
+<p>We want to extract genes that are targeted by vitamin A and its descendant chemicals. The <strong>chemicalsFile.csv</strong> file
 [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A and we set <code class="docutils literal notranslate"><span class="pre">--directAssociation</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
 We keep only vitamin-gene interactions with at least to associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
 <p>We identify active modules using a protein-protein interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
@@ -379,14 +382,14 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 <p><em>request on the 07th of September 2022</em></p>
 <section id="id5">
 <h4>CTD request results<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant molecules. Request results are presented in
-the following <a class="reference internal" href="#usecase1amictd"><span class="std std-ref">Table 6</span></a>. The request extract 7,765 target genes associated to 10 molecules
-(vitamin A + nine other descendant molecules).</p>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant chemicals. Request results are presented in
+the following <a class="reference internal" href="#usecase1amictd"><span class="std std-ref">Table 6</span></a>. The request extract 7,765 target genes associated to 10 chemicals
+(vitamin A + nine other descendant chemicals).</p>
 <span id="usecase1amictd"></span><table class="docutils align-center" id="id20">
 <caption><span class="caption-number">Table 6 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id20" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Number of molecules</p></th>
+<th class="head"><p>Number of chemicals</p></th>
 <th class="head"><p>Number of genes</p></th>
 </tr>
 </thead>
@@ -428,6 +431,8 @@ the following <a class="reference internal" href="#usecase1amictd"><span class="
 </tr>
 </tbody>
 </table>
+<p>To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
+That why we extracted also all human pathways from WikiPathways.</p>
 </section>
 <section id="active-modules-identification-results">
 <h4>Active Modules Identification results<a class="headerlink" href="#active-modules-identification-results" title="Permalink to this heading"></a></h4>
@@ -524,7 +529,7 @@ between <strong>16 pathways</strong> and <strong>7 active modules</strong> (padj
 </section>
 <section id="visualisation-of-active-module-identification-results">
 <h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
-<p>It could be interesting to visualise the active modules identified and add on them the overlap results. To create this
+<p>It could be interesting to visualise the identified active modules and add on them the overlap results. To create this
 visualisation, we use Cytoscape <a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. To know how to create this figure, see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
 <p>We found a significant overlap between seven active modules and rare disease pathways. For sake fo visualisation, we
 selected only three of them and displayed them in the <a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>. You can find a cytoscape project file
@@ -563,7 +568,7 @@ sparser and it contains genes that are part only of Hippo-Merlin signaling dysre
 <div class="line">To know how to create the rare disease pathways network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</div>
 <div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
 </div>
-<p>Whatever the network used, we want to extract target genes of vitamin A and its descendant molecules (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
+<p>Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
 The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
 Then, we keep vitamin-gene interaction with at least 2 associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
 <p>MultiXrank needs a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) and the networks path (<code class="docutils literal notranslate"><span class="pre">--networksPath</span></code>). We run the analysis with
@@ -646,13 +651,14 @@ the rare disease pathways network (depends of the network folder name).</p></li>
 <p><em>request on the 07th of September 2022</em></p>
 <section id="id9">
 <h4>CTD request results<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
-<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant molecules. Request results are presented in the
-following <a class="reference internal" href="#usecase1rwrctd"><span class="std std-ref">Table 10</span></a>. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others descendant molecules).</p>
+<p>We extracted genes that are targeted by <strong>vitamin A</strong> and by its descendant chemicals. Request results are presented in the
+following <a class="reference internal" href="#usecase1rwrctd"><span class="std std-ref">Table 10</span></a>. The request extract 7,765 target genes associated to 10 chemicals
+(vitamin A + nine others descendant chemicals).</p>
 <span id="usecase1rwrctd"></span><table class="docutils align-center" id="id25">
 <caption><span class="caption-number">Table 10 </span><span class="caption-text">CTD request results</span><a class="headerlink" href="#id25" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
-<th class="head"><p>Number of molecules</p></th>
+<th class="head"><p>Number of chemicals</p></th>
 <th class="head"><p>Number of genes</p></th>
 </tr>
 </thead>
@@ -676,7 +682,6 @@ following <a class="reference internal" href="#usecase1rwrctd"><span class="std 
 <p><em>In this part, we present results found for the first multilayer network composition: multiplex network + rare disease pathways network.</em></p>
 <p>First, multiXrank uses target genes as <em>seeds</em> to start the walk. Over 1,988 target genes are used over 2,143 extracted
 target genes.</p>
-<p>target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
 <p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
@@ -817,7 +822,8 @@ shown on the <a class="reference internal" href="#usecase1-orsum"><span class="s
 <section id="disease-disease-similarity-network">
 <h5>Disease-Disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this heading"></a></h5>
 <p><em>In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.</em></p>
-<p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">1,988/2,143</span></code> genes are used.</p>
+<p>First, multiXrank uses target genes as <em>seeds</em> to start the walk. Over 1,988 target genes are used over 2,143 extracted
+target genes.</p>
 <p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table 12</span></a>).</p>
 <span id="usecase1-diseasesrwr"></span><table class="docutils align-center" id="id28">
 <caption><span class="caption-number">Table 12 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id28" title="Permalink to this table"></a></caption>

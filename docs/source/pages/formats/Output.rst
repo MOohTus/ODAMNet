@@ -27,16 +27,16 @@ CTD_requestFiltered_MeSHID_DATE.tsv
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This file has the same format as the file before but it contains the filtered data. This file can be filtered using the
-publication number associated to an interaction between chemical and gene (``--nbPub`` parameter).
+publication number associated to an interaction between chemical and target gene (``--nbPub`` parameter).
 These filtered data are used for the analysis.
 
 - ``Input``: chemical query name (from the chemical file)
-- ``ChemicalName``: name of the query input or its child chemicals
-- ``ChemicalId``: MeSH ID of the query or its child chemicals
-- ``CasRN``: CasRN ID of the query or its child chemicals
-- ``GeneSymbol``: gene name that is connected to the query or its child chemicals
-- ``GeneId``: gene ID of this gene (HGCN)
-- ``Organism``: organism name where comes from the gene
+- ``ChemicalName``: name of the query input or its descendant chemicals
+- ``ChemicalId``: MeSH ID of the query or its descendant chemicals
+- ``CasRN``: CasRN ID of the query or its descendant chemicals
+- ``GeneSymbol``: target gene name that is connected to the query or its descendant chemicals
+- ``GeneId``: target gene ID (HGCN)
+- ``Organism``: organism name where comes from the target gene
 - ``OrganismId``: organism ID
 - ``PubMedIds``: PubMed IDs of the publication associated to this connection
 
@@ -108,7 +108,7 @@ This file contains the results of the overlap analysis. The number of this file 
 - ``PathwayNames``: Pathway name
 - ``PathwayBackgroundNames``: Source of the pathway (e.g. Wikipathways)
 - ``PathwaySizes``: Number of genes inside the pathway
-- ``TargetSize``: Number of genes that interact with chemical and are in the background gene set
+- ``TargetSize``: Number of target genes (i.e. that interact with chemical) that are in the background gene set
 - ``IntersectionSize``: Number of target genes that are inside the pathway
 - ``BackgroundSizes``: Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)
 - ``pValue``: pvalue of the overlap between target genes and pathways/processes of interest (i.e. hypergeometric test)
@@ -135,7 +135,7 @@ When you run the Active Module Identification analysis, at least six results fil
 DOMINO_inputGeneList_MeSHID.txt
 ----------------------------------
 
-This file contains the list of target genes. There are used as active genes for the analysis.
+This file contains the list of target genes. DOMINO defines them as active genes for the analysis.
 
 .. code-block:: none
 
@@ -199,12 +199,12 @@ This is an example of the file:
 DOMINO_MeSHID_activeModulesNetworkMetrics.txt
 -----------------------------------------------
 
-Some metrics are calculated such as number of edges and nodes for each acitve module identified.
+Some metrics are calculated such as number of edges and nodes for each identified active module.
 
 - ``AMINumber``: active module number
 - ``EdgesNumber``: number of edges in the active module
 - ``NodesNumber`` : number of nodes in the active module
-- ``ActiveGenesNumber``: number of active genes (target genes)
+- ``ActiveGenesNumber``: number of target genes
 
 .. code-block:: none
 
@@ -220,7 +220,7 @@ This file is created to be given to Cytoscape for the visualisation. It contains
 
 - ``GeneSymbol`` : Gene name
 - ``ActiveModule`` : active module number
-- ``ActiveGene`` : True if the gene was used as active gene
+- ``ActiveGene`` : True if it's target gene
 - ``overlapSignificant`` : True if the active module has significant overlap results
 
 .. code-block:: none

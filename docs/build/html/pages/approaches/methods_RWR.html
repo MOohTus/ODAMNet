@@ -137,7 +137,7 @@
 <p>The Random Walk with Restart (RWR) approach measures the <strong>proximity</strong> between target genes and all the nodes (e.g. genes,
 diseases …) that are present in a multilayer network. All target genes are considered as <strong>seeds</strong> to start a walk. The proximity
 is represented by a score that can be use for multiple analysis. Higher score corrsponds to smaller distance and better connection between the node and the seeds.</p>
-<p>RWR is a <strong>diffusion analysis</strong> from the genes through different molecular interactions (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - right part).</p>
+<p>RWR is a <strong>diffusion analysis</strong> from target genes through different molecular interactions (<a class="reference internal" href="methods_overview.html#overviewfig"><span class="std std-numref">Fig. 1</span></a> - right part).</p>
 <p><em>For more details, see the multiXrank’s paper</em> <a class="footnote-reference brackets" href="#id9" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="usage">
@@ -174,7 +174,7 @@ Each line contains one or several chemical IDs, separated by “;”.
 <dt><kbd><span class="option">--directAssociation <var>BOOLEAN</var></span></kbd></dt>
 <dd><div class="line-block">
 <div class="line"><code class="docutils literal notranslate"><span class="pre">TRUE</span></code>: extract chemicals data, which are in the chemicalsFile, from CTD</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their child molecules data from CTD</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">FALSE</span></code>: extract chemicals and their descendant chemicals data from CTD</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">True]</span></code></div>
 </div>
 </dd>
@@ -187,7 +187,7 @@ You can define a minimum number of publications.
 </dl>
 </div><div aria-labelledby="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tabpanel" tabindex="0"><dl class="option-list">
 <dt><kbd><span class="option">-t</span>, <span class="option">--targetGenesFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Contains a list of target genes. One gene per line. [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>]
+<dd><p>Contains a list of target genes. One target gene per line. [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>]
 <strong>[required]</strong></p>
 </dd>
 </dl>

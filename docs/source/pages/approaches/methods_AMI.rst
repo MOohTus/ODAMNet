@@ -19,7 +19,7 @@ First, DOMINO defines target genes as **active genes**. Then DOMINO tries to **i
 Active modules are **subnetworks** identified as relevant and composed of active genes (i.e. target genes) and other associated genes.
 Ideally, they will represent **functional modules** and can thereby reveal biological processes involved in a specific condition.
 
-Finally, we performed an **overlap analysis** between each active module identified by DOMINO and pathways/processes
+Finally, we performed an **overlap analysis** between each identified active module by DOMINO and pathways/processes
 of interest.
 
 Overview of the DOMINO algorithm
@@ -84,7 +84,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
 
         --directAssociation BOOLEAN
             | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
-            | ``FALSE``: extract chemicals and their child molecules data from CTD
+            | ``FALSE``: extract chemicals and their descendant chemicals data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
@@ -96,7 +96,7 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
     .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
+            Contains a list of target genes. One target gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
         --GMT FILENAME

@@ -153,16 +153,16 @@ It implies creation of output files that contain results of these requests.</p>
 <section id="ctd-requestfiltered-meshid-date-tsv">
 <h4>CTD_requestFiltered_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-requestfiltered-meshid-date-tsv" title="Permalink to this heading"></a></h4>
 <p>This file has the same format as the file before but it contains the filtered data. This file can be filtered using the
-publication number associated to an interaction between chemical and gene (<code class="docutils literal notranslate"><span class="pre">--nbPub</span></code> parameter).
+publication number associated to an interaction between chemical and target gene (<code class="docutils literal notranslate"><span class="pre">--nbPub</span></code> parameter).
 These filtered data are used for the analysis.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Input</span></code>: chemical query name (from the chemical file)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: gene name that is connected to the query or its child chemicals</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: gene ID of this gene (HGCN)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name where comes from the gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalName</span></code>: name of the query input or its descendant chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ChemicalId</span></code>: MeSH ID of the query or its descendant chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CasRN</span></code>: CasRN ID of the query or its descendant chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code>: target gene name that is connected to the query or its descendant chemicals</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GeneId</span></code>: target gene ID (HGCN)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Organism</span></code>: organism name where comes from the target gene</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OrganismId</span></code>: organism ID</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PubMedIds</span></code>: PubMed IDs of the publication associated to this connection</p></li>
 </ul>
@@ -221,7 +221,7 @@ WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 <li><p><code class="docutils literal notranslate"><span class="pre">PathwayNames</span></code>: Pathway name</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PathwayBackgroundNames</span></code>: Source of the pathway (e.g. Wikipathways)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PathwaySizes</span></code>: Number of genes inside the pathway</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TargetSize</span></code>: Number of genes that interact with chemical and are in the background gene set</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TargetSize</span></code>: Number of target genes (i.e. that interact with chemical) that are in the background gene set</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IntersectionSize</span></code>: Number of target genes that are inside the pathway</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">BackgroundSizes</span></code>: Number of genes in the background gene sets (e.g. genes from all human pathways in WikiPathways)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pValue</span></code>: pvalue of the overlap between target genes and pathways/processes of interest (i.e. hypergeometric test)</p></li>
@@ -244,7 +244,7 @@ WP4686;Leucine, isoleucine and valine metabolism;WikiPathway_2022_08_01;24;1721;
 <p>When you run the Active Module Identification analysis, at least six results files are created. The number depends of the number of active modules found.</p>
 <section id="domino-inputgenelist-meshid-txt">
 <h3>DOMINO_inputGeneList_MeSHID.txt<a class="headerlink" href="#domino-inputgenelist-meshid-txt" title="Permalink to this heading"></a></h3>
-<p>This file contains the list of target genes. There are used as active genes for the analysis.</p>
+<p>This file contains the list of target genes. DOMINO defines them as active genes for the analysis.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>CCND1
 CDKN1A
 BAD
@@ -302,12 +302,12 @@ CDT1        GMNN    ppi     1
 </section>
 <section id="domino-meshid-activemodulesnetworkmetrics-txt">
 <h3>DOMINO_MeSHID_activeModulesNetworkMetrics.txt<a class="headerlink" href="#domino-meshid-activemodulesnetworkmetrics-txt" title="Permalink to this heading"></a></h3>
-<p>Some metrics are calculated such as number of edges and nodes for each acitve module identified.</p>
+<p>Some metrics are calculated such as number of edges and nodes for each identified active module.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AMINumber</span></code>: active module number</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">EdgesNumber</span></code>: number of edges in the active module</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NodesNumber</span></code> : number of nodes in the active module</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGenesNumber</span></code>: number of active genes (target genes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGenesNumber</span></code>: number of target genes</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AMINumber   EdgesNumber     NodesNumber     ActiveGenesNumber
 1   357     93      35
@@ -322,7 +322,7 @@ CDT1        GMNN    ppi     1
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">GeneSymbol</span></code> : Gene name</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ActiveModule</span></code> : active module number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGene</span></code> : True if the gene was used as active gene</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ActiveGene</span></code> : True if it’s target gene</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">overlapSignificant</span></code> : True if the active module has significant overlap results</p></li>
 </ul>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geneSymbol  ActiveModule    activeGene      overlapSignificant

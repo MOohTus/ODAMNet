@@ -33,7 +33,7 @@ Running overlap analysis with data extracted automatically from databases
 ----------------------------------------------------------------------------
 
 The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A. We want to extract genes that are targeted by vitamin A
-and by its descendant molecules. So, the ``--directAssociation`` parameter is set to ``False``.
+and by its descendant chemicals. So, the ``--directAssociation`` parameter is set to ``False``.
 We keep only interactions which have at least two associated publications(``--nbPub 2``).
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -67,15 +67,16 @@ Results of overlap analysis with data extracted automatically from databases
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant molecules. Request results are presented in the
-following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target genes associated to 10 molecules (vitamin A + nine other descendant molecules).
+We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in the
+following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target genes associated to 10 chemicals
+(vitamin A + nine other descendant chemicals).
 
 .. _useCase1OverlapCTD:
 .. table:: CTD request results
     :align: center
 
     +---------------------------------------------------+---------------------+------------------------+
-    |                                                   | Number of molecules | Number of target genes |
+    |                                                   | Number of chemicals | Number of target genes |
     +===================================================+=====================+========================+
     |          Request result                           |          10         |      7,765             |
     +---------------------------------------------------+---------------------+------------------------+
@@ -99,6 +100,9 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
     +------------------------+-----------------+------------------+------------------+
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
+
+To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
+That why we extracted also all human pathways from WikiPathways.
 
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -173,7 +177,7 @@ Running Active Module Identification with data extracted automatically from data
    :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server. Indeed, DOMINO server
     doesn't allow to set the random seed. This random seed is changed every new analysis.
 
-We want to extract genes that are targeted by vitamin A and its descendant molecules. The **chemicalsFile.csv** file
+We want to extract genes that are targeted by vitamin A and its descendant chemicals. The **chemicalsFile.csv** file
 [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A and we set ``--directAssociation`` parameter to ``False``.
 We keep only vitamin-gene interactions with at least to associated publications (``--nbPub 2``).
 
@@ -219,16 +223,16 @@ Results of Active Module identification with data extracted automatically from d
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant molecules. Request results are presented in
-the following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target genes associated to 10 molecules
-(vitamin A + nine other descendant molecules).
+We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in
+the following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target genes associated to 10 chemicals
+(vitamin A + nine other descendant chemicals).
 
 .. _useCase1AMICTD:
 .. table:: CTD request results
     :align: center
 
     +---------------------------------------+---------------------+-----------------+
-    |                                       | Number of molecules | Number of genes |
+    |                                       | Number of chemicals | Number of genes |
     +=======================================+=====================+=================+
     |          Request result               |          10         |      7,765      |
     +---------------------------------------+---------------------+-----------------+
@@ -252,6 +256,9 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
     +------------------------+-----------------+------------------+------------------+
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
+
+To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
+That why we extracted also all human pathways from WikiPathways.
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -328,7 +335,7 @@ between **16 pathways** and **7 active modules** (padjusted <= 0.05).
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It could be interesting to visualise the active modules identified and add on them the overlap results. To create this
+It could be interesting to visualise the identified active modules and add on them the overlap results. To create this
 visualisation, we use Cytoscape [5]_. To know how to create this figure, see the :ref:`networkAMI` section.
 
 We found a significant overlap between seven active modules and rare disease pathways. For sake fo visualisation, we
@@ -374,7 +381,7 @@ Running Random Walk analysis with data extracted automatically from databases
 | To know how to create the rare disease pathways network: see :ref:`pathwaysOfInterestNet`.
 | To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
-Whatever the network used, we want to extract target genes of vitamin A and its descendant molecules (``--directAssociation False``).
+Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (``--directAssociation False``).
 The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A.
 Then, we keep vitamin-gene interaction with at least 2 associated publications (``--nbPub 2``).
 
@@ -478,15 +485,16 @@ Results of Random Walk analysis with data extracted automatically from databases
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant molecules. Request results are presented in the
-following :ref:`Table 10 <useCase1RWRCTD>`. The request extract 7,765 target genes associated to 10 molecules (vitamin A + nine others descendant molecules).
+We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in the
+following :ref:`Table 10 <useCase1RWRCTD>`. The request extract 7,765 target genes associated to 10 chemicals
+(vitamin A + nine others descendant chemicals).
 
 .. _useCase1RWRCTD:
 .. table:: CTD request results
     :align: center
 
     +----------------------------------+---------------------+-----------------+
-    |                                  | Number of molecules | Number of genes |
+    |                                  | Number of chemicals | Number of genes |
     +==================================+=====================+=================+
     |          Request result          |          10         |      7,765      |
     +----------------------------------+---------------------+-----------------+
@@ -505,8 +513,6 @@ Rare disease pathways network analysis
 
 First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
 target genes.
-
-target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
 
 The gene with the highest score is ``VCAM1`` with ``score = 0.0002083975629882177`` (it's a seed). This score helps
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
@@ -594,7 +600,8 @@ Disease-Disease similarity network
 
 *In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.*
 
-First, target genes are used as seed to start the walk: ``1,988/2,143`` genes are used.
+First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
+target genes.
 
 We selected the top 10 of diseases (:ref:`Table 12 <useCase1_diseasesRWR>`).
 

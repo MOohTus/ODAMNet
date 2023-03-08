@@ -60,7 +60,7 @@ The ``--outputPath`` parameter is used for both data extraction.
 
         --directAssociation BOOLEAN
             | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
-            | ``FALSE``: extract chemicals and their child molecules data from CTD
+            | ``FALSE``: extract chemicals and their descendant chemicals data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
@@ -72,7 +72,7 @@ The ``--outputPath`` parameter is used for both data extraction.
     .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
+            Contains a list of target genes. One target gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
         --GMT FILENAME

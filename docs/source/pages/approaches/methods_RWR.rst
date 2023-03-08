@@ -16,7 +16,7 @@ The Random Walk with Restart (RWR) approach measures the **proximity** between t
 diseases ...) that are present in a multilayer network. All target genes are considered as **seeds** to start a walk. The proximity
 is represented by a score that can be use for multiple analysis. Higher score corrsponds to smaller distance and better connection between the node and the seeds.
 
-RWR is a **diffusion analysis** from the genes through different molecular interactions (:numref:`overviewFig` - right part).
+RWR is a **diffusion analysis** from target genes through different molecular interactions (:numref:`overviewFig` - right part).
 
 *For more details, see the multiXrank's paper* [1]_.
 
@@ -57,7 +57,7 @@ Input parameters for the RWR analysis
 
         --directAssociation BOOLEAN
             | ``TRUE``: extract chemicals data, which are in the chemicalsFile, from CTD
-            | ``FALSE``: extract chemicals and their child molecules data from CTD
+            | ``FALSE``: extract chemicals and their descendant chemicals data from CTD
             | ``[default: True]``
 
         --nbPub INTEGER
@@ -69,7 +69,7 @@ Input parameters for the RWR analysis
     .. group-tab:: Data provided by users
 
         -t, --targetGenesFile FILENAME
-            Contains a list of target genes. One gene per line. [:ref:`FORMAT <targetGenesFile>`]
+            Contains a list of target genes. One target gene per line. [:ref:`FORMAT <targetGenesFile>`]
             **[required]**
 
 --configPath PATH

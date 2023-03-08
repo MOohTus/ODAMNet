@@ -50,7 +50,7 @@ of target genes as input of the three approaches.
 ---------------------
 
 -t, --targetGenesFile FILENAME
-    Contains a list of target genes of interest. One gene per line.
+    Contains a list of target genes of interest. One target gene per line.
 
 .. code-block:: none
 
@@ -73,11 +73,11 @@ of target genes as input of the three approaches.
 It's composed of 9 columns:
 
 - ``Input``: query input (e.g chemical IDs from chemicals file)
-- ``ChemicalName``: name of the query input or its child molecule
-- ``ChemicalId``: MeSH ID of the query or its child molecule
-- ``CasRN``: CasRN ID of the query or its child molecule
-- ``GeneSymbol``: names of genes that are connected to the query or its child molecule
-- ``GeneId``: gene ID (HGCN)
+- ``ChemicalName``: name of the query input or its descendant chemicals
+- ``ChemicalId``: MeSH ID of the query or its descendant chemicals
+- ``CasRN``: CasRN ID of the query or its descendant chemicals
+- ``GeneSymbol``: names of target genes that are connected to the query or its descendant chemicals
+- ``GeneId``: target gene ID (HGCN)
 - ``Organism``: organism name
 - ``OrganismId``: organism ID
 - ``PubMedIds``: PubMed IDs of publications that talk about this connection

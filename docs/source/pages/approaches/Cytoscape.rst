@@ -25,7 +25,7 @@ The following :numref:`cytoscapeAMI` is an example of visualisation:
     :alt: example1 AMI
     :align: center
 
-    : Visualisation of active modules identified using Cytoscape [1]_ and Omics Visualizer [2]_
+    : Visualisation of identified active modules using Cytoscape [1]_ and Omics Visualizer [2]_
 
 To create the same visualisation of active modules, use the following steps:
 
