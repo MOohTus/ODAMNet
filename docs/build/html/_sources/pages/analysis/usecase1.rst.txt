@@ -11,7 +11,7 @@ Use-case 1: data are extracted automatically with requests
 We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and rare diseases.
 
 **Target genes**, that are targeted by the chemicals of interest, are extracted **directly** from the |ctd|_ [2]_ (CTD).
-**Rare disease pathways** are extracted from |wp| [3]_.
+**Rare disease pathways** are extracted from |wp|_ [3]_.
 We choose to use as chemical of interest, the **vitamin A**.
 
 This section presents you how to apply the three different approaches proposed.

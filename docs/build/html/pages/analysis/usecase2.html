@@ -71,7 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-overlap-analysis-with-data-provided-by-users">Running overlap analysis with data provided by users</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#results-of-overlap-analysis-with-data-provided-by-users">Results of overlap analysis with data provided by users</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#data-provided-by-users-description">Data provided by users description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-provided-by-users-overview">Data provided by users overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#overlap-analysis-results">Overlap analysis results</a></li>
 </ul>
 </li>
@@ -80,9 +80,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#active-modules-identification-ami">Active Modules Identification (AMI)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-active-modules-identification-with-data-provided-by-users">Running active modules identification with data provided by users</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#results-of-active-module-identification-with-data-provided-by-users">Results of active module identification with data provided by users</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Data provided by users description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-provided-by-users-description">Data provided by users description</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#active-modules-identification-results">Active Modules Identification results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">Overlap analysis results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Overlap analysis results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visualisation-of-active-module-identification-results">Visualisation of active module identification results</a></li>
 </ul>
 </li>
@@ -141,47 +141,43 @@
 <span id="usecase2"></span><h1>Use-case 2: data are provided by the user<a class="headerlink" href="#use-case-2-data-are-provided-by-the-user" title="Permalink to this heading"></a></h1>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Permalink to this heading"></a></h2>
-<p>In the context of the EJP-RD project, an overlap analysis between genes targeted by vitamins A and D and pathways/processes
-related to CAKUT was performed (Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id15" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).</p>
-<p>For the vitamin A analysis, data was retrieved from several sources: target genes come from
-the <a class="reference external" href="https://ctdbase.org/">Comparative Toxicogenomics Database (CTD)</a> <a class="footnote-reference brackets" href="#id16" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> and the study of Balmer and
-Blomhoff <a class="footnote-reference brackets" href="#id17" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, and pathways/processes of interest come from WikiPathways <a class="footnote-reference brackets" href="#id18" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, Reactome <a class="footnote-reference brackets" href="#id19" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and Gene Ontology (GO) <a class="footnote-reference brackets" href="#id20" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id21" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
-<p>For this use-case, we used data from this paper:</p>
-<ul class="simple">
-<li><p>target genes : genes targeted by vitamin A from the study of Balmer and Blomhoff <a class="footnote-reference brackets" href="#id17" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>,</p></li>
-<li><p>pathways/processes of interest : list of pathways and processes related to CAKUT disease.</p></li>
-</ul>
+<p>This use-case illustrates how to use ODAMNet with data provided by users.</p>
+<p>We use data from Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id18" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. Results from paper and results found with ODAMNet are compared.</p>
+<p><strong>Vitamin A target genes</strong> are coming from Balmer and Blomhoff <a class="footnote-reference brackets" href="#id20" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> paper and <strong>pathways/processes</strong> related to CAKUT
+are coming from <a class="reference external" href="https://www.wikipathways.org/">WikiPathways</a> <a class="footnote-reference brackets" href="#id21" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, <a class="reference external" href="https://reactome.org/">Reactome</a> <a class="footnote-reference brackets" href="#id22" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and <a class="reference external" href="http://geneontology.org/">Gene Ontology</a> (GO) <a class="footnote-reference brackets" href="#id23" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id24" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Input data are available in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData">GitHub</a>.</p>
 </section>
 <section id="overlap-analysis">
-<span id="usecase2-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h2>
-<p>This approach calculates the overlap between genes targeted by vitamin A, and the pathways/processes of interest
-(see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section for more details).</p>
+<h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h2>
+<p>This approach calculates the overlap between genes targeted by vitamin A, and the pathways/processes related to CAKUT.</p>
+<p class="italic">For more details, see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section.</p>
 <section id="running-overlap-analysis-with-data-provided-by-users">
 <h3>Running overlap analysis with data provided by users<a class="headerlink" href="#running-overlap-analysis-with-data-provided-by-users" title="Permalink to this heading"></a></h3>
-<p>The target genes file is provided by the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter and contains a list of genes targeted
-by the vitamin A [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>]. Pathways/processes of interest (here, pathways and processes
-related to CAKUT disease) are given by the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]. You need to provide the
-background genes of each source: give a file with the list of
-those files using <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter.</p>
+<p>Target genes file is given using the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains the list of vitamin A target genes
+[<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>].</p>
+<p>Pathways/processes related to CAKUT are given using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]. Background genes
+of each source of pathways/processes is required (<code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter). The file contains the list of
+background files.</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>overlap<span class="w"> </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--backgroundFile<span class="w"> </span>useCases/InputData/PathwaysOfInterestBackground.txt<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase2/
+<span class="w">                </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--backgroundFile<span class="w"> </span>useCases/InputData/PathwaysOfInterestBackground.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase2/
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">Overlap_genesList_withpathOfInterest.csv</span></code> file is created. It contains results of the overlap analysis between
 target genes and CAKUT related pathways/processes.</p>
-<p>For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
+<p class="italic">For more details about this file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </section>
 <section id="results-of-overlap-analysis-with-data-provided-by-users">
 <h3>Results of overlap analysis with data provided by users<a class="headerlink" href="#results-of-overlap-analysis-with-data-provided-by-users" title="Permalink to this heading"></a></h3>
-<p><em>request on the 07th of September 2022</em></p>
-<section id="data-provided-by-users-description">
-<h4>Data provided by users description<a class="headerlink" href="#data-provided-by-users-description" title="Permalink to this heading"></a></h4>
-<p>Data come from the Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id15" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> paper. Details of the data are presented in the <a class="reference internal" href="#usecase2dataoverview"><span class="std std-ref">Table 13</span></a>.</p>
-<span id="usecase2dataoverview"></span><table class="docutils align-center" id="id22">
-<caption><span class="caption-number">Table 13 </span><span class="caption-text">Input data overview</span><a class="headerlink" href="#id22" title="Permalink to this table"></a></caption>
+<p><em>Request made the 07th of September 2022</em></p>
+<section id="data-provided-by-users-overview">
+<h4>Data provided by users overview<a class="headerlink" href="#data-provided-by-users-overview" title="Permalink to this heading"></a></h4>
+<p>Target genes are coming from Balmer and Blomhoff <a class="footnote-reference brackets" href="#id20" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Pathways of interests are coming from Reactome <a class="footnote-reference brackets" href="#id22" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> and
+WikiPathways <a class="footnote-reference brackets" href="#id21" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and processes of interest are coming from Biological Process (GO) <a class="footnote-reference brackets" href="#id23" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id24" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
+<p>Details of input data are presented in the <a class="reference internal" href="#usecase2dataoverview"><span class="std std-ref">Table 13</span></a>.</p>
+<span id="usecase2dataoverview"></span><table class="docutils align-center" id="id26">
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Overview of data provided by users</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Number</p></th>
@@ -199,15 +195,13 @@ target genes and CAKUT related pathways/processes.</p>
 </tr>
 </tbody>
 </table>
-<p>Pathways of interests are coming from Reactome and WikiPathways and processes of interest are coming from Biological
-Process (Gene Ontology).</p>
 </section>
 <section id="overlap-analysis-results">
 <h4>Overlap analysis results<a class="headerlink" href="#overlap-analysis-results" title="Permalink to this heading"></a></h4>
-<p>We found significant overlap between target genes and <cite>8 pathways/processes`</cite> related to CAKUT disease (pAdjusted &lt;= 0.05).
-Results are presented in <a class="reference internal" href="#usecase2overlap"><span class="std std-ref">Table 14</span></a>.</p>
-<span id="usecase2overlap"></span><table class="docutils align-center" id="id23">
-<caption><span class="caption-number">Table 14 </span><span class="caption-text">Results of overlap analysis between target genes and CAKUT disease</span><a class="headerlink" href="#id23" title="Permalink to this table"></a></caption>
+<p>ODAMNet found significant overlap between target genes and <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">pathways/processes</span></code> related to CAKUT disease (pAdjusted &lt;= 0.05).
+Results are presented in the <a class="reference internal" href="#usecase2overlap"><span class="std std-ref">Table 14</span></a>.</p>
+<span id="usecase2overlap"></span><table class="docutils align-center" id="id27">
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Results of overlap analysis between target genes and CAKUT disease</span><a class="headerlink" href="#id27" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>PathwayIDs</p></th>
 <th class="head"><p>PathwayNames</p></th>
@@ -258,22 +252,18 @@ Results are presented in <a class="reference internal" href="#usecase2overlap"><
 </tr>
 </tbody>
 </table>
-<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id15" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> identified seven pathways/processes related to CAKUT disease. All of them have been retrieved
-on this analysis and one more (REAC:R-HSA-2022377).</p>
+<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id18" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> identified 7 pathways/processes related to CAKUT disease over 12. ODAMNet found these 7
+pathways/processes and another one (REAC:R-HSA-2022377).</p>
 </section>
 </section>
 </section>
 <section id="active-modules-identification-ami">
 <span id="usecase2-ami"></span><h2>Active Modules Identification (AMI)<a class="headerlink" href="#active-modules-identification-ami" title="Permalink to this heading"></a></h2>
-<p>This approach identifies active modules through a protein-protein interaction (PPI) network. Then it performs an
-overlap analysis between each identified active module and rare disease pathway from WikiPathways.
-For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
+<p>ODAMNet identifies active modules using a protein-protein interaction (PPI) network with DOMINO <a class="footnote-reference brackets" href="#id25" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>. Then, it performs
+an overlap analysis between each identified active module and pathways/processes related to CAKUT.</p>
+<p class="italic">For more detail, see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> section.</p>
 <section id="running-active-modules-identification-with-data-provided-by-users">
 <h3>Running active modules identification with data provided by users<a class="headerlink" href="#running-active-modules-identification-with-data-provided-by-users" title="Permalink to this heading"></a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Results of DOMINO cannot be reproduced when using the DOMINO’s server.</p>
-</div>
 <p>As before, users provide target genes (<code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>) and pathways/processes of interest
 (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> - [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]).</p>
 <p>We will identify active modules using a protein-protein interaction (PPI) network named <code class="docutils literal notranslate"><span class="pre">PPI_network_2016.sif</span></code> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>].</p>
@@ -298,12 +288,12 @@ calculated and saved into files. Theses files are useful for visualisation.</p><
 </section>
 <section id="results-of-active-module-identification-with-data-provided-by-users">
 <h3>Results of active module identification with data provided by users<a class="headerlink" href="#results-of-active-module-identification-with-data-provided-by-users" title="Permalink to this heading"></a></h3>
-<p><em>request on the 07th of September 2022</em></p>
-<section id="id11">
-<h4>Data provided by users description<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
-<p>Data come from the Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id15" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> paper. Details of the data are presented in the <a class="reference internal" href="#usecase2dataoverviewami"><span class="std std-ref">Table 15</span></a>.</p>
-<span id="usecase2dataoverviewami"></span><table class="docutils align-center" id="id24">
-<caption><span class="caption-number">Table 15 </span><span class="caption-text">Input data overview</span><a class="headerlink" href="#id24" title="Permalink to this table"></a></caption>
+<p><em>Request made the 07th of September 2022</em></p>
+<section id="data-provided-by-users-description">
+<h4>Data provided by users description<a class="headerlink" href="#data-provided-by-users-description" title="Permalink to this heading"></a></h4>
+<p>Data come from the Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id18" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> paper. Details of the data are presented in the <a class="reference internal" href="#usecase2dataoverviewami"><span class="std std-ref">Table 15</span></a>.</p>
+<span id="usecase2dataoverviewami"></span><table class="docutils align-center" id="id28">
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">Input data overview</span><a class="headerlink" href="#id28" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Number</p></th>
@@ -326,10 +316,17 @@ Process (Gene Ontology).</p>
 </section>
 <section id="active-modules-identification-results">
 <h4>Active Modules Identification results<a class="headerlink" href="#active-modules-identification-results" title="Permalink to this heading"></a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<dl class="simple">
+<dt><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> DOMINO <a class="footnote-reference brackets" href="#id25" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> server doesn’t allow to set the random seed. That why, results cannot be reproduced</dt><dd><p>identically.</p>
+</dd>
+</dl>
+</div>
 <p>Target genes are defined as <strong>active genes</strong> by DOMINO. We give <strong>521 active genes</strong> as input. DOMINO found
 <strong>18 Active Modules</strong> (<a class="reference internal" href="#usecase2amiresults"><span class="std std-ref">Table 16</span></a>).</p>
-<span id="usecase2amiresults"></span><table class="docutils align-center" id="id25">
-<caption><span class="caption-number">Table 16 </span><span class="caption-text">Composition of active modules found by DOMINO</span><a class="headerlink" href="#id25" title="Permalink to this table"></a></caption>
+<span id="usecase2amiresults"></span><table class="docutils align-center" id="id29">
+<caption><span class="caption-number">Table 16 </span><span class="caption-text">Composition of active modules found by DOMINO</span><a class="headerlink" href="#id29" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Min number</p></th>
@@ -353,12 +350,12 @@ Process (Gene Ontology).</p>
 </table>
 <p><em>See DOMINO_genesList_activeModulesNetworkMetrics.txt file for more details.</em></p>
 </section>
-<section id="id13">
-<h4>Overlap analysis results<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<section id="id16">
+<h4>Overlap analysis results<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h4>
 <p>Then, we perform an overlap analysis between active modules and pathways/processes of interest. We found <strong>7 pathways/processes</strong>
 that are significantly overlapped by <strong>6 active modules</strong> (padjusted &lt;= 0.05).</p>
-<span id="usecase2amioverlap"></span><table class="docutils align-center" id="id26">
-<caption><span class="caption-number">Table 17 </span><span class="caption-text">Overlap analysis between active module and pathways/processes of interest provided by users</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
+<span id="usecase2amioverlap"></span><table class="docutils align-center" id="id30">
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">Overlap analysis between active module and pathways/processes of interest provided by users</span><a class="headerlink" href="#id30" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>termID</p></th>
 <th class="head"><p>termTitle</p></th>
@@ -394,10 +391,10 @@ that are significantly overlapped by <strong>6 active modules</strong> (padjuste
 <h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
 <p>We visualised the result using a network representation (<a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>). To know how to create this figure,
 see the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
-<figure class="align-center" id="id27">
+<figure class="align-center" id="id31">
 <span id="dominousage2fig"></span><img alt="usecase2 AMI" src="../../_images/useCase2_DOMINO_network.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">: Network visualisation of Active modules which are enriched in CAKUT disease pathways/processes</span><a class="headerlink" href="#id27" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">: Network visualisation of Active modules which are enriched in CAKUT disease pathways/processes</span><a class="headerlink" href="#id31" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Some network are enriched with the same pathways/processes whereas other contain genes involved in different pathways/processes. Target genes
@@ -499,8 +496,8 @@ the disease network (depends of the network folder name).</p></li>
 us to select a list of pathways/processes. All pathways/processes with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
 <p>According this highest score, <strong>4 pathways/processes</strong> are selected (<a class="reference internal" href="#usecase2-pathwaysrwr"><span class="std std-ref">Table 18</span></a>).</p>
-<span id="usecase2-pathwaysrwr"></span><table class="docutils align-center" id="id28">
-<caption><span class="caption-number">Table 18 </span><span class="caption-text">pathways/processes linked to target genes</span><a class="headerlink" href="#id28" title="Permalink to this table"></a></caption>
+<span id="usecase2-pathwaysrwr"></span><table class="docutils align-center" id="id32">
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">pathways/processes linked to target genes</span><a class="headerlink" href="#id32" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>node</p></th>
 <th class="head"><p>pathway</p></th>
@@ -528,10 +525,10 @@ with target genes (i.e. seeds).</p>
 </table>
 <p>Two pathways not found with the previous approaches, are link to target genes: <code class="docutils literal notranslate"><span class="pre">REAC:R-HSA-195721</span></code> and <code class="docutils literal notranslate"><span class="pre">REAC:R-HSA-157118</span></code>.
 You can visualise the results with a network as shown on the <a class="reference internal" href="#usecase2-pathwaysnetworkrwr"><span class="std std-numref">Fig. 14</span></a>.</p>
-<figure class="align-center" id="id29">
+<figure class="align-center" id="id33">
 <span id="usecase2-pathwaysnetworkrwr"></span><img alt="usecase 2 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways/processes of interest network</span><a class="headerlink" href="#id29" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways/processes of interest network</span><a class="headerlink" href="#id33" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Pathways/processes of interest are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -545,8 +542,8 @@ You can visualise the results with a network as shown on the <a class="reference
 <p><em>In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.</em></p>
 <p>First, target genes are used as seed to start the walk: <code class="docutils literal notranslate"><span class="pre">483/521</span></code> genes are used.</p>
 <p>We selected the top 10 of diseases (<a class="reference internal" href="#usecase2-diseasesrwr"><span class="std std-ref">Table 19</span></a>).</p>
-<span id="usecase2-diseasesrwr"></span><table class="docutils align-center" id="id30">
-<caption><span class="caption-number">Table 19 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id30" title="Permalink to this table"></a></caption>
+<span id="usecase2-diseasesrwr"></span><table class="docutils align-center" id="id34">
+<caption><span class="caption-number">Table 19 </span><span class="caption-text">Diseases linked to target genes</span><a class="headerlink" href="#id34" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>node</p></th>
 <th class="head"><p>Diseases</p></th>
@@ -597,10 +594,10 @@ You can visualise the results with a network as shown on the <a class="reference
 </tbody>
 </table>
 <p>You can represent the results with a network as shown in the <a class="reference internal" href="#usecase2-simnetworkrwr"><span class="std std-numref">Fig. 15</span></a>.</p>
-<figure class="align-center" id="id31">
+<figure class="align-center" id="id35">
 <span id="usecase2-simnetworkrwr"></span><img alt="usecase 2 simNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase2_simNet.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id31" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id35" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -614,53 +611,61 @@ You can visualise the results with a network as shown on the <a class="reference
 <section id="rare-disease-pathways-identified">
 <h2>Rare disease pathways identified<a class="headerlink" href="#rare-disease-pathways-identified" title="Permalink to this heading"></a></h2>
 <p>Approaches give us a list of CAKUT pathways/processes significantly connected to vitamin A target genes. To easily compare results,
-we use orsum <a class="footnote-reference brackets" href="#id16" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Results are displayed into a heatmap in the <a class="reference internal" href="#usecase2-orsum"><span class="std std-numref">Fig. 16</span></a>.</p>
+we use orsum <a class="footnote-reference brackets" href="#id19" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Results are displayed into a heatmap in the <a class="reference internal" href="#usecase2-orsum"><span class="std std-numref">Fig. 16</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py<span class="w">    </span>--gmt<span class="w"> </span>00_Data/hsapiens_background.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">            </span>--files<span class="w"> </span>Overlap_genesList_withpathOfInterest.4Orsum<span class="w"> </span>DOMINO_genesList_signOverlap.4Orsum<span class="w"> </span>pathwaysResults.4Orsum<span class="w"> </span><span class="se">\</span>
 <span class="w">            </span>--fileAliases<span class="w"> </span>Overlap<span class="w"> </span>DOMINO<span class="w"> </span>multiXrank<span class="w"> </span><span class="se">\</span>
 <span class="w">            </span>--outputFolder<span class="w"> </span>useCase2Comparison/
 </pre></div>
 </div>
-<figure class="align-center" id="id32">
+<figure class="align-center" id="id36">
 <span id="usecase2-orsum"></span><img alt="usecase2 orsum" src="../../_images/useCase2_orsum.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">: Comparison of use-case 2 results using orsum</span><a class="headerlink" href="#id32" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">: Comparison of use-case 2 results using orsum</span><a class="headerlink" href="#id36" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id15" role="note">
+<aside class="footnote brackets" id="id18" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id9">2</a>,<a role="doc-backlink" href="#id10">3</a>,<a role="doc-backlink" href="#id12">4</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id12">2</a>,<a role="doc-backlink" href="#id14">3</a>)</span>
 <p>Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., &amp; Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.</p>
 </aside>
-<aside class="footnote brackets" id="id16" role="note">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id14">2</a>)</span>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">2</a><span class="fn-bracket">]</span></span>
 <p>Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.</p>
 </aside>
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id20" role="note">
 <span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id8">2</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id7">2</a>)</span>
 <p>Balmer, J. E., &amp; Blomhoff, R. (2002). Gene expression regulation by retinoic acid. Journal of lipid research, 43(11), 1773-1808.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id21" role="note">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
 <p>Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., … &amp; Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id22" role="note">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id8">2</a>)</span>
 <p>Jassal, B., Matthews, L., Viteri, G., Gong, C., Lorente, P., Fabregat, A., … &amp; D’Eustachio, P. (2020). The reactome pathway knowledgebase. Nucleic acids research, 48(D1), D498-D503.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id23" role="note">
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id10">2</a>)</span>
 <p>Ashburner et al. Gene ontology: tool for the unification of biology. Nat Genet. May 2000;25(1):25-9</p>
 </aside>
-<aside class="footnote brackets" id="id21" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id24" role="note">
+<span class="label"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id11">2</a>)</span>
 <p>The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334</p>
+</aside>
+<aside class="footnote brackets" id="id25" role="note">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id13">1</a>,<a role="doc-backlink" href="#id15">2</a>)</span>
+<p>Levi, H., Rahmanian, N., Elkon, R., &amp; Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.</p>
 </aside>
 </aside>
 </section>

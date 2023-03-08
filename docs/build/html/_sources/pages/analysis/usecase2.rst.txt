@@ -7,61 +7,73 @@ Use-case 2: data are provided by the user
 Context
 ==========
 
-In the context of the EJP-RD project, an overlap analysis between genes targeted by vitamins A and D and pathways/processes
-related to CAKUT was performed (Ozisik *et al.*, 2021 [1]_).
+This use-case illustrates how to use ODAMNet with data provided by users.
 
-For the vitamin A analysis, data was retrieved from several sources: target genes come from
-the `Comparative Toxicogenomics Database (CTD) <https://ctdbase.org/>`_ [2]_ and the study of Balmer and
-Blomhoff [3]_, and pathways/processes of interest come from WikiPathways [4]_, Reactome [5]_ and Gene Ontology (GO) [6]_:sup:`,` [7]_.
+We use data from Ozisik *et al.*, 2021 [1]_. Results from paper and results found with ODAMNet are compared.
 
-For this use-case, we used data from this paper:
+**Vitamin A target genes** are coming from Balmer and Blomhoff [3]_ paper and **pathways/processes** related to CAKUT
+are coming from |wiki|_ [4]_, |reac|_ [5]_ and |go|_ (GO) [6]_:sup:`,` [7]_. Input data are available in |git|_.
 
-- target genes : genes targeted by vitamin A from the study of Balmer and Blomhoff [3]_,
-- pathways/processes of interest : list of pathways and processes related to CAKUT disease.
+.. _wiki: https://www.wikipathways.org/
+.. |wiki| replace:: WikiPathways
+.. _reac: https://reactome.org/
+.. |reac| replace:: Reactome
+.. _go: http://geneontology.org/
+.. |go| replace:: Gene Ontology
+.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |git| replace:: GitHub
 
-.. _useCase2_overlap:
 
 Overlap analysis
 =====================
 
-This approach calculates the overlap between genes targeted by vitamin A, and the pathways/processes of interest
-(see :doc:`../approaches/methods_overlap` section for more details).
+This approach calculates the overlap between genes targeted by vitamin A, and the pathways/processes related to CAKUT.
+
+.. cssclass:: italic
+
+    For more details, see :doc:`../approaches/methods_overlap` section.
 
 Running overlap analysis with data provided by users
 ----------------------------------------------------------
 
-The target genes file is provided by the ``--targetGenesFile`` parameter and contains a list of genes targeted
-by the vitamin A [:ref:`FORMAT <targetGenesFile>`]. Pathways/processes of interest (here, pathways and processes
-related to CAKUT disease) are given by the ``--GMT`` parameter [:ref:`FORMAT <pathways>`]. You need to provide the
-background genes of each source: give a file with the list of
-those files using ``--backgroundFile`` parameter.
+Target genes file is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
+[:ref:`FORMAT <targetGenesFile>`].
+
+Pathways/processes related to CAKUT are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`]. Background genes
+of each source of pathways/processes is required (``--backgroundFile`` parameter). The file contains the list of
+background files.
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 .. code-block:: bash
 
         odamnet overlap --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
-                                --GMT useCases/InputData/PathwaysOfInterest.gmt \
-                                --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
-                                --outputPath useCases/OutputResults_useCase2/
+                        --GMT useCases/InputData/PathwaysOfInterest.gmt \
+                        --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
+                        --outputPath useCases/OutputResults_useCase2/
 
 ``Overlap_genesList_withpathOfInterest.csv`` file is created. It contains results of the overlap analysis between
 target genes and CAKUT related pathways/processes.
 
-For more details about these files, see :doc:`../formats/Output` page.
+.. cssclass:: italic
+
+    For more details about this file, see :doc:`../formats/Output` page.
 
 Results of overlap analysis with data provided by users
 ---------------------------------------------------------
 
-*request on the 07th of September 2022*
+*Request made the 07th of September 2022*
 
-Data provided by users description
+Data provided by users overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 13 <useCase2DataOverview>`.
+Target genes are coming from Balmer and Blomhoff [3]_. Pathways of interests are coming from Reactome [5]_ and
+WikiPathways [4]_ and processes of interest are coming from Biological Process (GO) [6]_:sup:`,` [7]_.
+
+Details of input data are presented in the :ref:`Table 13 <useCase2DataOverview>`.
 
 .. _useCase2DataOverview:
-.. table:: Input data overview
+.. table:: Overview of data provided by users
     :align: center
 
     +----------------------+--------+
@@ -74,14 +86,11 @@ Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are pre
     |        Sources       |    3   |
     +----------------------+--------+
 
-Pathways of interests are coming from Reactome and WikiPathways and processes of interest are coming from Biological
-Process (Gene Ontology).
-
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We found significant overlap between target genes and `8 pathways/processes`` related to CAKUT disease (pAdjusted <= 0.05).
-Results are presented in :ref:`Table 14 <useCase2Overlap>`.
+ODAMNet found significant overlap between target genes and ``8 pathways/processes`` related to CAKUT disease (pAdjusted <= 0.05).
+Results are presented in the :ref:`Table 14 <useCase2Overlap>`.
 
 .. _useCase2Overlap:
 .. table:: Results of overlap analysis between target genes and CAKUT disease
@@ -107,24 +116,23 @@ Results are presented in :ref:`Table 14 <useCase2Overlap>`.
     |   REAC:R-HSA-2022377  | Metabolism of Angiotensinogen to ...   |     0.04  |         3        |
     +-----------------------+----------------------------------------+-----------+------------------+
 
-Ozisik *et al.,* [1]_ identified seven pathways/processes related to CAKUT disease. All of them have been retrieved
-on this analysis and one more (REAC:R-HSA-2022377).
+Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 12. ODAMNet found these 7
+pathways/processes and another one (REAC:R-HSA-2022377).
 
 .. _useCase2_AMI:
 
 Active Modules Identification (AMI)
 ====================================
 
-This approach identifies active modules through a protein-protein interaction (PPI) network. Then it performs an
-overlap analysis between each identified active module and rare disease pathway from WikiPathways.
-For more detail, see :doc:`../approaches/methods_AMI` section.
+ODAMNet identifies active modules using a protein-protein interaction (PPI) network with DOMINO [8]_. Then, it performs
+an overlap analysis between each identified active module and pathways/processes related to CAKUT.
+
+.. cssclass:: italic
+
+    For more detail, see :doc:`../approaches/methods_AMI` section.
 
 Running active modules identification with data provided by users
 -------------------------------------------------------------------
-
-.. warning::
-
-   :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server.
 
 As before, users provide target genes (``--targetGenesFile``) and pathways/processes of interest
 (``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
@@ -157,7 +165,7 @@ For more details about these file, see :doc:`../formats/Output` page (:ref:`requ
 Results of active module identification with data provided by users
 --------------------------------------------------------------------
 
-*request on the 07th of September 2022*
+*Request made the 07th of September 2022*
 
 Data provided by users description
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,6 +191,11 @@ Process (Gene Ontology).
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. warning::
+
+   :octicon:`alert;2em` DOMINO [8]_ server doesn't allow to set the random seed. That why, results cannot be reproduced
+    identically.
 
 Target genes are defined as **active genes** by DOMINO. We give **521 active genes** as input. DOMINO found
 **18 Active Modules** (:ref:`Table 16 <useCase2AMIResults>`).
@@ -475,3 +488,4 @@ References
 .. [5] Jassal, B., Matthews, L., Viteri, G., Gong, C., Lorente, P., Fabregat, A., ... & D’Eustachio, P. (2020). The reactome pathway knowledgebase. Nucleic acids research, 48(D1), D498-D503.
 .. [6] Ashburner et al. Gene ontology: tool for the unification of biology. Nat Genet. May 2000;25(1):25-9
 .. [7] The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334
+.. [8] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
