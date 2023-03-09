@@ -7,9 +7,11 @@ Use-case 2: data are provided by the user
 Context
 ==========
 
-This use-case illustrates how to use ODAMNet with data provided by users.
+In Ozisik *et al.*, 2021 [1]_ paper, an overlap analysis is performed between vitamin A and D target genes and processes
+related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT).
 
-We use data from Ozisik *et al.*, 2021 [1]_. Results from paper and results found with ODAMNet are compared.
+In this use-case, we illustrate how to use ODAMNet with data provided by user. We use data from Ozisik *et al.*,
+2021 [1]_ paper. Results are compared with those found in the Ozisik *et al.*, 2021 [1]_ paper.
 
 **Vitamin A target genes** are coming from Balmer and Blomhoff [3]_ paper and **pathways/processes** related to CAKUT
 are coming from |wiki|_ [4]_, |reac|_ [5]_ and |go|_ (GO) [6]_:sup:`,` [7]_. Input data are available in |git|_.
@@ -23,6 +25,7 @@ are coming from |wiki|_ [4]_, |reac|_ [5]_ and |go|_ (GO) [6]_:sup:`,` [7]_. Inp
 .. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
 .. |git| replace:: GitHub
 
+.. _useCase2_overlap:
 
 Overlap analysis
 =====================
@@ -57,12 +60,10 @@ target genes and CAKUT related pathways/processes.
 
 .. cssclass:: italic
 
-    For more details about this file, see :doc:`../formats/Output` page.
+    For more details about this output file, see :doc:`../formats/Output` page.
 
 Results of overlap analysis with data provided by users
 ---------------------------------------------------------
-
-*Request made the 07th of September 2022*
 
 Data provided by users overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,20 +77,20 @@ Details of input data are presented in the :ref:`Table 13 <useCase2DataOverview>
 .. table:: Overview of data provided by users
     :align: center
 
-    +----------------------+--------+
-    |                      | Number |
-    +======================+========+
-    |     Target genes     |   521  |
-    +----------------------+--------+
-    | Pathways of interest |   12   |
-    +----------------------+--------+
-    |        Sources       |    3   |
-    +----------------------+--------+
+    +-------------------------------------+--------+
+    |                                     | Number |
+    +=====================================+========+
+    |     Vitamin A target genes          |   521  |
+    +-------------------------------------+--------+
+    | Pathways/processes related to CAKUT |   12   |
+    +-------------------------------------+--------+
+    |        Pathways/processes sources   |    3   |
+    +-------------------------------------+--------+
 
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ODAMNet found significant overlap between target genes and ``8 pathways/processes`` related to CAKUT disease (pAdjusted <= 0.05).
+ODAMNet found significant overlap between target genes and ``7 pathways/processes`` related to CAKUT disease (pAdjusted <= 0.05).
 Results are presented in the :ref:`Table 14 <useCase2Overlap>`.
 
 .. _useCase2Overlap:
@@ -99,25 +100,23 @@ Results are presented in the :ref:`Table 14 <useCase2Overlap>`.
     +-----------------------+----------------------------------------+-----------+------------------+
     |       PathwayIDs      |                  PathwayNames          |  pValue   | IntersectionSize |
     +=======================+========================================+===========+==================+
-    |       GO:0072001      |            renal system development    |  6.65e-18 |        43        |
+    |       GO:0072001      |            renal system development    |  8.64e-17 |        43        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    |       GO:0001822      |               kidney development       |  7.90e-17 |        41        |
+    |       GO:0001822      |               kidney development       |  5.14e-16 |        41        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    |       GO:0060993      |              kidney morphogenesis      |  1.92e-12 |        20        |
+    |       GO:0060993      |              kidney morphogenesis      |  8.33e-12 |        20        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    |       WP:WP5053       | Development of ureteric collection ... | 2.278e-08 |        15        |
+    |       WP:WP5053       | Development of ureteric collection ... |  7.37e-08 |        15        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    |       WP:WP4823       |     Genes controlling nephrogenesis    |  1.11e-04 |        10        |
+    |       WP:WP4823       |     Genes controlling nephrogenesis    |  2.89e-04 |        10        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    | PMC5748921-PMC6115658 |               CAKUT causal genes       | 1.06e-03  |         6        |
+    | PMC5748921-PMC6115658 |               CAKUT causal genes       | 2.30e-03  |         6        |
     +-----------------------+----------------------------------------+-----------+------------------+
-    |       WP:WP4830       |            GDNF/RET signalling axis    | 8.30e-03  |         5        |
-    +-----------------------+----------------------------------------+-----------+------------------+
-    |   REAC:R-HSA-2022377  | Metabolism of Angiotensinogen to ...   |     0.04  |         3        |
+    |       WP:WP4830       |            GDNF/RET signalling axis    | 1.54e-02  |         5        |
     +-----------------------+----------------------------------------+-----------+------------------+
 
-Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 12. ODAMNet found these 7
-pathways/processes and another one (REAC:R-HSA-2022377).
+Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 12. ODAMNet found the same 7
+pathways/processes.
 
 .. _useCase2_AMI:
 
@@ -125,7 +124,7 @@ Active Modules Identification (AMI)
 ====================================
 
 ODAMNet identifies active modules using a protein-protein interaction (PPI) network with DOMINO [8]_. Then, it performs
-an overlap analysis between each identified active module and pathways/processes related to CAKUT.
+an overlap analysis between each identified active modules and pathways/processes related to CAKUT.
 
 .. cssclass:: italic
 
@@ -134,96 +133,104 @@ an overlap analysis between each identified active module and pathways/processes
 Running active modules identification with data provided by users
 -------------------------------------------------------------------
 
-As before, users provide target genes (``--targetGenesFile``) and pathways/processes of interest
-(``--GMT`` and ``--backgroundFile`` - [:ref:`FORMAT <pathways>`]).
+Target genes file is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
+[:ref:`FORMAT <targetGenesFile>`].
 
-We will identify active modules using a protein-protein interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
+Pathways/processes related to CAKUT are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`]. Background genes
+of each source of pathways/processes is required (``--backgroundFile`` parameter). The file contains the list of
+background files.
+
+AMI is performed on a protein-protein interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
+The PPI network file is provided using ``--networkFile`` parameter. The PPI network is available in |git|_.
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
 .. code-block:: bash
 
         odamnet domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
-                                --GMT useCases/InputData/PathwaysOfInterest.gmt \
-                                --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
-                                --networkFile useCases/InputData/PPI_network_2016.sif \
-                                --outputPath useCases/OutputResults_useCase2
+                        --GMT useCases/InputData/PathwaysOfInterest.gmt \
+                        --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
+                        --networkFile useCases/InputData/PPI_network_2016.sif \
+                        --outputPath useCases/OutputResults_useCase2
 
-Several files are generated :
+Several files are generated:
 
 - ``DOMINO_inputGeneList_D014801.txt``: genes targeted by vitamin A, used for the active module identification.
 
 - ``Overlap_AM_*_genesList_withpathOfInterest.csv``: results of the overlap analysis between target genes and pathways/processes of
-  interest provided by the user. One file per active module.
+  related to CAKUT. One file per active module.
 
-- ``DOMINO_genesList_activeModulesNetwork.txt``, ``DOMINO_genesList_overlapAMresults4Cytoscape.txt``, ``DOMINO_genesList_activeModules.txt``
-  , ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and ``DOMINO_genesList_signOverlap.txt``: some statistics are
-  calculated and saved into files. Theses files are useful for visualisation.
+- ``DOMINO_genesList_activeModulesNetwork.txt``, ``DOMINO_genesList_overlapAMresults4Cytoscape.txt``,
+  ``DOMINO_genesList_activeModules.txt``, ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and
+  ``DOMINO_genesList_signOverlap.txt``: some statistics are calculated and saved into files. Theses files are useful
+  for visualisation.
 
-For more details about these file, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`).
+.. cssclass:: italic
+
+    For more details about output files, see :doc:`../formats/Output` page (:ref:`overlapOutput`, :ref:`AMIOutput`).
 
 Results of active module identification with data provided by users
---------------------------------------------------------------------
+----------------------------------------------------------------------
 
-*Request made the 07th of September 2022*
-
-Data provided by users description
+Data provided by users overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Data come from the Ozisik *et al.*, 2021 [1]_ paper. Details of the data are presented in the :ref:`Table 15 <useCase2DataOverviewAMI>`.
+Target genes are coming from Balmer and Blomhoff [3]_. Pathways of interests are coming from Reactome [5]_ and
+WikiPathways [4]_ and processes of interest are coming from Biological Process (GO) [6]_:sup:`,` [7]_.
+
+Details of input data are presented in the :ref:`Table 15 <useCase2DataOverviewAMI>`.
 
 .. _useCase2DataOverviewAMI:
-.. table:: Input data overview
+.. table:: Overview of data provided by users
     :align: center
 
-    +--------------------------------+--------+
-    |                                | Number |
-    +================================+========+
-    |     Target genes               |   521  |
-    +--------------------------------+--------+
-    | Pathways/processes of interest |   12   |
-    +--------------------------------+--------+
-    |        Sources                 |    3   |
-    +--------------------------------+--------+
-
-Pathways of interests are coming from Reactome and WikiPathways and processes of interest are coming from Biological
-Process (Gene Ontology).
+    +-------------------------------------+--------+
+    |                                     | Number |
+    +=====================================+========+
+    |     Vitamin A target genes          |   521  |
+    +-------------------------------------+--------+
+    | Pathways/processes related to CAKUT |   12   |
+    +-------------------------------------+--------+
+    |        Pathways/processes sources   |    3   |
+    +-------------------------------------+--------+
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
-   :octicon:`alert;2em` DOMINO [8]_ server doesn't allow to set the random seed. That why, results cannot be reproduced
-    identically.
+   :octicon:`alert;2em` DOMINO [8]_ server doesn't allow to set the random seed. That why, results cannot be reproduced identically.
 
-Target genes are defined as **active genes** by DOMINO. We give **521 active genes** as input. DOMINO found
-**18 Active Modules** (:ref:`Table 16 <useCase2AMIResults>`).
+Target genes (521 in total) are defined as **active genes** by DOMINO [8]_. Using the PPI network, DOMINO found
+**18 active modules** over-represented by target genes, presented in the :ref:`Table 16 <useCase2AMIResults>`.
 
 .. _useCase2AMIResults:
-.. table:: Composition of active modules found by DOMINO
+.. table:: Composition of the 18 identified active modules by DOMINO
     :align: center
 
-    +--------------+------------+------------+
-    |              | Min number | Max number |
-    +==============+============+============+
-    |     Edges    |     5      |     157    |
-    +--------------+------------+------------+
-    |     Nodes    |     5      |     79     |
-    +--------------+------------+------------+
-    | Active Genes |     3      |     21     |
-    +--------------+------------+------------+
+    +--------------+----------------+----------------+
+    |              | Minimum number | Maximum number |
+    +==============+================+================+
+    |     Edges    |     5          |     157        |
+    +--------------+----------------+----------------+
+    |     Nodes    |     5          |     79         |
+    +--------------+----------------+----------------+
+    | Target genes |     3          |     21         |
+    +--------------+----------------+----------------+
 
-*See DOMINO_genesList_activeModulesNetworkMetrics.txt file for more details.*
+.. cssclass:: italic
+
+    See ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` file for more details.
 
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between active modules and pathways/processes of interest. We found **7 pathways/processes**
-that are significantly overlapped by **6 active modules** (padjusted <= 0.05).
+After identification of active modules, ODAMNet performs an overlap analysis between each identified active modules and
+pathways/processes related to CAKUT. Significant overlaps are found between **6 active modules** and **7 pathways/processes**
+related to CAKUT (padjusted <= 0.05).
 
 .. _useCase2AMIOverlap:
-.. table:: Overlap analysis between active module and pathways/processes of interest provided by users
+.. table:: Overlap analysis between active modules and pathways/processes related to CAKUT
     :align: center
 
     +------------------------+-------------------------------------------+
@@ -244,23 +251,40 @@ that are significantly overlapped by **6 active modules** (padjusted <= 0.05).
     | WP:WP5053              | Development of ureteric collection system |
     +------------------------+-------------------------------------------+
 
-We found a pathway that was not found with the overlap approach (**REAC:R-HSA-8853659**).
+The **REAC:R-HSA-8853659** Reactome pathway was not identified with the overlap approach used in the Ozisik
+*et al.,* [1]_ paper.
 
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We visualised the result using a network representation (:numref:`dominoUsage2Fig`). To know how to create this figure,
-see the :ref:`networkAMI` section.
+Visualization can help to identify overlap between active modules and pathways/processes related to CAKUT. The
+:numref:`dominoUsage2Fig` presents the 6 active modules that have a significant overlap with pathways/processes related
+to CAKUT.
 
 .. _dominoUsage2Fig:
 .. figure:: ../../pictures/useCase2_DOMINO_network.png
    :alt: usecase2 AMI
    :align: center
 
-   : Network visualisation of Active modules which are enriched in CAKUT disease pathways/processes
+   : Visualization of active modules that have a significant overlap with pathways/processes related to CAKUT.
+   This figure is created using Cytoscape [9]_. Target genes are in grey.
 
-Some network are enriched with the same pathways/processes whereas other contain genes involved in different pathways/processes. Target genes
-(i.e. active genes, grey spheres) could be part of pathways/processes as non-target genes (white spheres).
+As you can see in the :numref:`dominoUsage2Fig`, topology of modules is different and associated pathways/processes
+varies. Target genes are in grey and others are in white.
+
+For instance, the first active module (top left in the :numref:`dominoUsage2Fig`) is very connected and contains genes
+involved in only one pathway related to CAKUT (*RET signaling*). Here, the connection between target genes and CAKUT
+disease is indirect. Indeed, genes involved in the pathway are not genes targeted by vitamin A. That why we didn't found
+this pathways with the overlap approach (see :ref:`Use-case 2 overlap results <useCase2_overlap>`).
+
+The last active module (bottom right in the :numref:`dominoUsage2Fig`) is sparse and contains genes involved in several
+pathways/processes related to CAKUT (all the 7 pathways/processes identified). Some genes are targeted by vitamin A,
+others don't. Three genes seem to play key roles because they are part of several pathways/processes as **RET**, **STAT1**
+or **GDNF** that is not a target gene (white node).
+
+.. cssclass:: italic
+
+    To know how to create this figure, see the :ref:`networkAMI` section.
 
 .. _useCase2_RWR:
 
@@ -489,3 +513,4 @@ References
 .. [6] Ashburner et al. Gene ontology: tool for the unification of biology. Nat Genet. May 2000;25(1):25-9
 .. [7] The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334
 .. [8] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
+.. [9] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
