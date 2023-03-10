@@ -258,29 +258,36 @@ Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Visualization can help to identify overlap between active modules and pathways/processes related to CAKUT. The
-:numref:`dominoUsage2Fig` presents the 6 active modules that have a significant overlap with pathways/processes related
-to CAKUT.
+:numref:`dominoUsage2Fig` presents active modules that have a significant overlap with pathways/processes related to
+CAKUT. For better visualization, only 3 over the 6 identified active modules are displayed. You can retrieve the complete
+figure in the |gitAMI|_.
+
+.. _gitAMI: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |gitAMI| replace:: GitHub page
 
 .. _dominoUsage2Fig:
 .. figure:: ../../pictures/useCase2_DOMINO_network.png
    :alt: usecase2 AMI
    :align: center
 
-   : Visualization of active modules that have a significant overlap with pathways/processes related to CAKUT.
+   : Visualization of 3 active modules that have a significant overlap with pathways/processes related to CAKUT.
    This figure is created using Cytoscape [9]_. Target genes are in grey.
 
 As you can see in the :numref:`dominoUsage2Fig`, topology of modules is different and associated pathways/processes
 varies. Target genes are in grey and others are in white.
 
-For instance, the first active module (top left in the :numref:`dominoUsage2Fig`) is very connected and contains genes
-involved in only one pathway related to CAKUT (*RET signaling*). Here, the connection between target genes and CAKUT
-disease is indirect. Indeed, genes involved in the pathway are not genes targeted by vitamin A. That why we didn't found
-this pathways with the overlap approach (see :ref:`Use-case 2 overlap results <useCase2_overlap>`).
+The first active module (left in the :numref:`dominoUsage2Fig`) is very connected and contains genes involved in
+only one pathway related to CAKUT (*RET signaling*). Here, the connection between target genes and CAKUT disease is
+indirect. Indeed, genes involved in the pathway are not genes targeted by vitamin A. That why we didn't found this
+pathways with the overlap approach (see :ref:`Use-case 2 overlap results <useCase2_overlap>`).
 
-The last active module (bottom right in the :numref:`dominoUsage2Fig`) is sparse and contains genes involved in several
+The second active module (middle in the :numref:`dominoUsage2Fig`) is sparse and contains genes involved in several
 pathways/processes related to CAKUT (all the 7 pathways/processes identified). Some genes are targeted by vitamin A,
 others don't. Three genes seem to play key roles because they are part of several pathways/processes as **RET**, **STAT1**
 or **GDNF** that is not a target gene (white node).
+
+The third active module (right in the :numref:`dominoUsage2Fig`) contains target genes and genes involved essentially
+in kidney development.
 
 .. cssclass:: italic
 
@@ -291,31 +298,42 @@ or **GDNF** that is not a target gene (white node).
 Random Walk with Restart (RWR)
 ===============================
 
-The third approach, Random Walk with Restart (RWR), is applied into two different multilayer compositions:
+.. note::
 
-1. Multiplex (PPI + Complex + Reactome) and pathways/processes of interest network connected to genes nodes
-2. Multiplex (PPI + Complex + Reactome) and Disease-Disease similarity network linked with a bipartite
+    | **Multilayer** is a network with several layers where layers contain different nodes types
+    | **Multiplex** is a network with several layers (multilayer) where layers contain same type of nodes
 
-*For more details about RWR, see* :doc:`../approaches/methods_RWR`.
+The third approach implemented in ODAMNet is a Random Walk with Restart analysis (RWR). RWR is applied using
+multiXrank [10]_ through a multilayer composed of genes and diseases nodes.
+
+We applied RWR using two different multilayer compositions:
+
+- **Multilayer 1**: Multiplex + pathways/processes related to CAKUT network
+- **Multilayer 2**: Multiplex + disease-disease similarity network
+
+Used multilayers will be detailed in corresponding section results.
+
+.. cssclass:: italic
+
+    For more details about RWR, see :doc:`../approaches/methods_RWR`.
 
 Running Random Walk analysis with data provided by users
 -----------------------------------------------------------
 
-| To know how to create the pathways/processes of interest network: see :ref:`pathwaysOfInterestNet`.
-| To know how to create the disease-disease similarity network: see :ref:`DDnet`.
+Target genes files is given using ``--targetGenesFile`` parameter. The file contains list of genes targeted by vitamin
+A [:ref:`FORMAT <targetGenesFile>`].
 
-Whatever the network used, target genes file is provided by users using ``--targetGenesFile`` [:ref:`FORMAT <targetGenesFile>`].
+To perform RWR, multiXrank [10]_ needs a configuration file given using ``--configPath`` parameter. This configuration
+file contains path of different networks and target genes files used. The configuration file might contains parameters
+for RWR analysis. We run the RWR analysis with default parameters.
 
-MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
-default parameters.
+MultiXrank needs also the networks directory path given using ``--networksPath`` parameter. MultiXrank defines target
+genes as seeds for the walk. Target genes will be saved into a file given using ``--seedsFile`` parameter.
 
-The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF file name (``--sifFileName``) to save the network results and the top number of results too
-(``--top 10``).
+Two others parameters are required: number to select top nodes in each layer (``--top``) and file name to saved result
+network which contains top nodes of each layers and their relationships (``--sifFileName``).
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
-
-If you need more details about the input format files, see :ref:`GR` and :ref:`configFile` parts.
 
 .. tip::
 
@@ -370,26 +388,46 @@ If you need more details about the input format files, see :ref:`GR` and :ref:`c
 .. code-block:: bash
 
     odamnet multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
-                                --configPath useCases/InputData/config_minimal_useCase2.yml \
-                                --networksPath useCases/InputData/ \
-                                --seedsFile useCases/InputData/seeds.txt \
-                                --sifFileName resultsNetwork_useCase2.sif \
-                                --top 10 \
-                                --outputPath useCases/OutputResults_useCase2/
+                        --configPath useCases/InputData/config_minimal_useCase2.yml \
+                        --networksPath useCases/InputData/ \
+                        --seedsFile useCases/InputData/seeds.txt \
+                        --sifFileName resultsNetwork_useCase2.sif \
+                        --top 10 \
+                        --outputPath useCases/OutputResults_useCase2/
 
 Several files are generated into ``RWR_genesList/`` folder:
 
-    - ``config_minimal_useCase2.yml`` and ``seeds.txt``: copies of the input files
+- ``config_minimal_useCase2.yml`` and ``seeds.txt``: copies of the input configuration and seed files
 
-    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex and 2 to
-      the disease network (depends of the network folder name).
+- ``multiplex_1.tsv`` and ``multiplex_2.tsv``: result files that contain RWR score for each node. multiplex_1
+  corresponds to the gene multiplex and multiplex_2 corresponds to the disease network
 
-    - ``resultsNetwork_useCase2.sif``: SIF file name that contains the network result
+- ``resultsNetwork_useCase2.sif``: SIF file name that contains the network result
 
-For more details about these file, see :doc:`../formats/Output` page.
+.. cssclass:: italic
+
+    | For more details about the input files, see :ref:`GR` section.
+    | For more details about the output files, see :doc:`../formats/Output` page.
 
 Results of Random Walk analysis with data provided by users
 -------------------------------------------------------------
+
+Data provided by users overview
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Target genes are coming from Balmer and Blomhoff [3]_. There are **521 vitamin A target genes**.
+
+Multilayer 1 is composed of:
+
+- multiplex network (
+
+
+
+
+
+| To know how to create the pathways/processes of interest network: see :ref:`pathwaysOfInterestNet`.
+| To know how to create the disease-disease similarity network: see :ref:`DDnet`.
+
 
 We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** provided by users.
 
@@ -514,3 +552,5 @@ References
 .. [7] The Gene Ontology resource: enriching a GOld mine. Nucleic Acids Res. Jan 2021;49(D1):D325-D334
 .. [8] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
 .. [9] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
+.. [10] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
+
