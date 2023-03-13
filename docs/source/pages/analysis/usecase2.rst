@@ -82,7 +82,7 @@ Details of input data are presented in the :ref:`Table 13 <useCase2DataOverview>
     +=====================================+========+
     |     Vitamin A target genes          |   521  |
     +-------------------------------------+--------+
-    | Pathways/processes related to CAKUT |   12   |
+    | Pathways/processes related to CAKUT |   13   |
     +-------------------------------------+--------+
     |        Pathways/processes sources   |    3   |
     +-------------------------------------+--------+
@@ -115,7 +115,7 @@ Results are presented in the :ref:`Table 14 <useCase2Overlap>`.
     |       WP:WP4830       |            GDNF/RET signalling axis    | 1.54e-02  |         5        |
     +-----------------------+----------------------------------------+-----------+------------------+
 
-Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 12. ODAMNet found the same 7
+Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 13. ODAMNet found the same 7
 pathways/processes.
 
 .. _useCase2_AMI:
@@ -189,7 +189,7 @@ Details of input data are presented in the :ref:`Table 15 <useCase2DataOverviewA
     +=====================================+========+
     |     Vitamin A target genes          |   521  |
     +-------------------------------------+--------+
-    | Pathways/processes related to CAKUT |   12   |
+    | Pathways/processes related to CAKUT |   13   |
     +-------------------------------------+--------+
     |        Pathways/processes sources   |    3   |
     +-------------------------------------+--------+
@@ -252,7 +252,7 @@ related to CAKUT (padjusted <= 0.05).
     +------------------------+-------------------------------------------+
 
 The **REAC:R-HSA-8853659** Reactome pathway was not identified with the overlap approach used in the Ozisik
-*et al.,* [1]_ paper.
+*et al.* [1]_ paper.
 
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -417,22 +417,55 @@ Data provided by users overview
 
 Target genes are coming from Balmer and Blomhoff [3]_. There are **521 vitamin A target genes**.
 
-Multilayer 1 is composed of:
+**Multilayer 1** contains:
 
-- multiplex network (
+- multiplex network
+
+    - PPI (14,703 nodes and 143,653 edges)
+    - molecular complexes (8,537 nodes and 63,531 edges)
+    - Reactome pathways (7,926 nodes and 194,500 edges)
+
+- pathways/processes related to CAKUT network (13 nodes and 0 edges)
+
+These two networks are linked using bipartite that contains 1,655 associations (866 genes and 13 pathways/processes).
+
+.. cssclass:: italic
+
+    For more details about the pathways/processes of interest network: see :ref:`pathwaysOfInterestNet`.
+
+**Multilayer 2** contains:
+
+- multiplex network
+
+    - PPI (14,703 nodes and 143,653 edges)
+    - molecular complexes (8,537 nodes and 63,531 edges)
+    - Reactome pathways (7,926 nodes and 194,500 edges)
+
+- disease-disease similarity network (8,264 nodes and 33,925 edges)
+
+These two networks are linked using bipartite that contains 6,534 associations (4,483 genes and 5,878 diseases).
+
+.. cssclass:: italic
+
+    For more details about the disease-disease similarity network: see :ref:`DDnet`.
+
+Multilayer 1 : Pathways/processes related to CAKUT network
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+
+    In this part, we present results found using the Multilayer 1: multiplex + pathways/processed related to CAKUT
+    network
+
+MultiXrank [10]_ defines **483** target genes over the 521 as seeds to start the walk. For each node (genes or
+pathways/processes related to CAKUT), multiXrank calculates a RWR score. Based on this score, we selected the 10 top of
+node scores.
 
 
 
 
 
-| To know how to create the pathways/processes of interest network: see :ref:`pathwaysOfInterestNet`.
-| To know how to create the disease-disease similarity network: see :ref:`DDnet`.
 
-
-We use the default parameters, whatever the networks used. For reminder, we have **521 target genes** provided by users.
-
-Pathways/processes of interest network analysis
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *In this part, we present results found for the first multiplex composition: multiplex + pathways/processes of interest.*
 
