@@ -13,6 +13,7 @@ import json
 import ndex2
 import requests
 import os
+import re
 import multixrank
 import fnmatch
 import pandas as pd
@@ -427,8 +428,8 @@ def downloadNDExNetwork(networkUUID, outputFileName):
     client_resp = client.get_network_as_cx_stream(networkUUID)
 
     # Convert downloaded network to NiceCXNetwork object
+    print('\nExtract network with UUID : ' + networkUUID)
     net_cx = ndex2.create_nice_cx_from_raw_cx(json.loads(client_resp.content))
-    print('Extract network with UUID : ' + networkUUID)
     net_cx.print_summary()
 
     # Convert to pandas dataframe

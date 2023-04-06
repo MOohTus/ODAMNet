@@ -33,14 +33,21 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 @click.version_option(__version__)
 def main():
     """
-    [OPTIONS] = overlap | domino | multixrank | networkCreation
+    [OPTIONS] =
+    overlap | domino | multixrank | networkCreation | networkDownloading
 
-    Analyse the relationship between chemicals and Rare Diseases.
+    Analyse the molecular relationships between chemicals and rare diseases.
     Select the approach you want to perform:
 
-    overlap | domino | multixrank
+    odamnet [overlap | domino | multixrank] -h
 
-    If you need to create a network with the pathways of interest, select : networkCreation
+    To create a pathways/processes network and its bipartite network:
+
+    odamnet networkCreation -h
+
+    To download networks from NDEx:
+
+    odamnet networkDownloading -h
     """
     pass
 
@@ -196,52 +203,6 @@ def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUI
                                      analysisName=analysisName)
 
 
-@main.command('networkCreation', short_help='Network and its bipartite creation', context_settings=CONTEXT_SETTINGS)
-@click.option('--networksPath', 'networksPath', type=click.Path(), required=True,
-              help='Output path to save the network')
-@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
-              metavar='FILENAME', help='Network output name')
-@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True,
-              help='Output path to save the bipartite')
-@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
-              show_default=True, metavar='FILENAME', help='Bipartite output name')
-@click.option('--GMT', 'pathOfInterestGMT', type=click.File(),
-              help='Pathways of interest in GMT like format (e.g. from WP request).')
-@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
-              help='Output path name (for complementary output files)')
-def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
-    """
-    Creates network SIF file from WP request or pathways of interest given in GMT file.
-    """
-    # Parameters
-    outputPath = os.path.join(outputPath, 'OutputCreateNetwork')
-    networkFileName = networksPath + '/' + networksName
-    bipartiteFileName = bipartitePath + '/' + bipartiteName
-
-    # Check if outputPath exist and create it if it does not exist
-    if not os.path.exists(outputPath):
-        os.makedirs(outputPath, exist_ok=True)
-    # Check if networksPath exist and create it if it does not exist
-    if not os.path.exists(networksPath):
-        os.makedirs(networksPath, exist_ok=True)
-    # Check if bipartitePath exist and create it if it does not exist
-    if not os.path.exists(bipartitePath):
-        os.makedirs(bipartitePath, exist_ok=True)
-
-    # Extract pathways of interest
-    if pathOfInterestGMT:
-        # From file
-        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
-    else:
-        # From request
-        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
-
-    # Create network and bipartite
-    methods.createNetworkandBipartiteFiles(bipartiteName=bipartiteFileName,
-                                           networkName=networkFileName,
-                                           pathOfInterestGenesDict=pathOfInterestGenesDict)
-
-
 @main.command(short_help='Random Walk with Restart analysis', context_settings=CONTEXT_SETTINGS)
 @optgroup.group('Extract target genes list from', cls=RequiredMutuallyExclusiveOptionGroup, help='Choice the way to extract target genes')
 @optgroup.option('-c', '--chemicalsFile', 'chemicalsFile', type=click.File(), help='Chemicals file name')
@@ -328,6 +289,68 @@ def multiXrank(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPu
         shutil.copyfile(configPath, analysisOutputPath + '/' + os.path.basename(configPath))
         methods.RWR(configPath=configPath, networksPath=networksPath, outputPath=analysisOutputPath,
                     sifPathName=sifPathName, top=top)
+
+
+@main.command('networkCreation', short_help='Network and its bipartite creation', context_settings=CONTEXT_SETTINGS)
+@click.option('--networksPath', 'networksPath', type=click.Path(), required=True,
+              help='Output path to save the network')
+@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
+              metavar='FILENAME', help='Network output name')
+@click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True,
+              help='Output path to save the bipartite')
+@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
+              show_default=True, metavar='FILENAME', help='Bipartite output name')
+@click.option('--GMT', 'pathOfInterestGMT', type=click.File(),
+              help='Pathways of interest in GMT like format (e.g. from WP request).')
+@click.option('-o', '--outputPath', 'outputPath', type=click.Path(), default='OutputResults', show_default=True,
+              help='Output path name (for complementary output files)')
+def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
+    """
+    Creates network SIF file from WP request or pathways of interest given in GMT file.
+    """
+    # Parameters
+    outputPath = os.path.join(outputPath, 'OutputCreateNetwork')
+    networkFileName = networksPath + '/' + networksName
+    bipartiteFileName = bipartitePath + '/' + bipartiteName
+
+    # Check if outputPath exist and create it if it does not exist
+    if not os.path.exists(outputPath):
+        os.makedirs(outputPath, exist_ok=True)
+    # Check if networksPath exist and create it if it does not exist
+    if not os.path.exists(networksPath):
+        os.makedirs(networksPath, exist_ok=True)
+    # Check if bipartitePath exist and create it if it does not exist
+    if not os.path.exists(bipartitePath):
+        os.makedirs(bipartitePath, exist_ok=True)
+
+    # Extract pathways of interest
+    if pathOfInterestGMT:
+        # From file
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList = WP.readGMTFile(GMTFile=pathOfInterestGMT)
+    else:
+        # From request
+        pathOfInterestGenesDict, pathOfInterestNamesDict, pathwayOfInterestList = WP.rareDiseasesWPrequest(outputPath=outputPath)
+
+    # Create network and bipartite
+    methods.createNetworkandBipartiteFiles(bipartiteName=bipartiteFileName,
+                                           networkName=networkFileName,
+                                           pathOfInterestGenesDict=pathOfInterestGenesDict)
+
+
+@main.command('networkDownloading', short_help='Download networks from NDEx', context_settings=CONTEXT_SETTINGS)
+@click.option('--netUUID', 'networkUUID', type=str, help='NDEx network ID', required=True)
+@click.option('--networkFile', 'networkFileName', type=str, metavar='FILENAME', required=True, help='Network file name')
+def networkDownloading(networkUUID, networkFileName):
+    """
+    Download networks from NDEx using the UUID network.
+    """
+    # Check if network already exist
+    if os.path.exists(networkFileName):
+        print('\nNetwork file already exists. Rename or remove network file.')
+        exit()
+
+    # Extract network from NDEx website
+    methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName)
 
 
 if __name__ == '__main__':
