@@ -13,7 +13,6 @@ import json
 import ndex2
 import requests
 import os
-import re
 import multixrank
 import fnmatch
 import pandas as pd

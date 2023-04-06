@@ -40,6 +40,14 @@ Network creation
    :nested: full
    :commands: networkCreation
 
+Network downloading
+======================
+
+.. click:: odamnet.odamnet:networkDownloading
+   :prog: odamnet networkDownloading
+   :nested: full
+   :commands: networkDownloading
+
 .. important::
 
     ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**.
