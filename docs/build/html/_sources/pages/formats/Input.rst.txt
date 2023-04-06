@@ -121,6 +121,10 @@ The GMT file is organized as follow:
 
 More details for `GMT file format <https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29>`_.
 
+.. warning::
+
+    :octicon:`alert;2em` GMT file **must doesn't** contain **empty columns**.
+
 --backgroundFile FILENAME
     This file contains the list of the different background file source. They have to be in the same order that they 
     appear on the GMT file. Each file is a GMT file (see above). 
