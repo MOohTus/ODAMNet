@@ -159,7 +159,7 @@ def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUI
             exit()
     else:
         if networkUUID:
-            methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName)
+            methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName, simplify=False)
         else:
             print('Network file doesn\'t exist. Add the network UUID to request NEDx or give another network file.')
             exit()
@@ -340,9 +340,11 @@ def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartiteP
 @main.command('networkDownloading', short_help='Download networks from NDEx', context_settings=CONTEXT_SETTINGS)
 @click.option('--netUUID', 'networkUUID', type=str, help='NDEx network ID', required=True)
 @click.option('--networkFile', 'networkFileName', type=str, metavar='FILENAME', required=True, help='Network file name')
-def networkDownloading(networkUUID, networkFileName):
+@click.option('--simple', 'simple', type=bool, default=False, help='Remove interaction column and header')
+def networkDownloading(networkUUID, networkFileName, simple):
     """
     Download networks from NDEx using the UUID network.
+    Create a tab separated file with three columns: node1, interaction type and node2
     """
     # Check if network already exist
     if os.path.exists(networkFileName):
@@ -350,7 +352,7 @@ def networkDownloading(networkUUID, networkFileName):
         exit()
 
     # Extract network from NDEx website
-    methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName)
+    methods.downloadNDExNetwork(networkUUID=networkUUID, outputFileName=networkFileName, simplify=simple)
 
 
 if __name__ == '__main__':

@@ -413,12 +413,16 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
             networkOutputFile.write('\n')
 
 
-def downloadNDExNetwork(networkUUID, outputFileName):
+def downloadNDExNetwork(networkUUID, outputFileName, simplify):
     """
     Download network from NDEx website
+    Create a tab separated file with three columns: node1, interaction type and node2
+    With header
+
 
     :param str networkUUID: Network ID
     :param FILENAME outputFileName: SIF file name to write network
+    :param boolean simplify: if True, remove header and the interaction column
     """
     # Create NDEx2 python client
     client = ndex2.client.Ndex2()
@@ -434,4 +438,10 @@ def downloadNDExNetwork(networkUUID, outputFileName):
     # Convert to pandas dataframe
     df = net_cx.to_pandas_dataframe()
     df.columns = ['node_1', 'link', 'node_2']
-    df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')
+
+    # True - Remove interaction columns + header
+    if simplify:
+        df = df.drop(columns=['link'])
+        df.to_csv(outputFileName, index=False, header=False, sep='\t')
+    else:
+        df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')
