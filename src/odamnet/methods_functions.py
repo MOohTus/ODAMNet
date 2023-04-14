@@ -148,6 +148,9 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     :param str sifPathName: Result file name path to write SIF result file
     :param int top: Number of results to report in SIF file
     """
+    # Parameters
+    outputFileName = outputPath + "/RWR_top" + str(top) + ".txt"
+
     # Analysis
     with alive_bar(title='Random walks through the networks', theme='musical') as bar:
         multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
@@ -155,6 +158,12 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
         multixrank_obj.write_ranking(ranking_df, path=outputPath)
         multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
         bar()
+
+    # Select top of disease
+    disease_df = ranking_df[ranking_df['multiplex'] == "2"]
+    disease_df_sort = disease_df.sort_values(by=['score'], ascending=False)
+    disease_df_sort = disease_df_sort.drop(columns=['multiplex', 'layer'])
+    disease_df_sort[0:top].to_csv(outputFileName, index=False, sep='\t')
 
 
 def DOMINO(genesFileName, networkFileName, outputPath, featureName):
