@@ -148,6 +148,9 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
     :param str sifPathName: Result file name path to write SIF result file
     :param int top: Number of results to report in SIF file
     """
+    # Parameters
+    outputFileName = outputPath + "/RWR_top" + str(top) + ".txt"
+
     # Analysis
     with alive_bar(title='Random walks through the networks', theme='musical') as bar:
         multixrank_obj = multixrank.Multixrank(config=configPath, wdir=networksPath)
@@ -155,6 +158,12 @@ def RWR(configPath, networksPath, outputPath, sifPathName, top):
         multixrank_obj.write_ranking(ranking_df, path=outputPath)
         multixrank_obj.to_sif(ranking_df, path=sifPathName, top=top)
         bar()
+
+    # Select top of disease
+    disease_df = ranking_df[ranking_df['multiplex'] == "2"]
+    disease_df_sort = disease_df.sort_values(by=['score'], ascending=False)
+    disease_df_sort = disease_df_sort.drop(columns=['multiplex', 'layer'])
+    disease_df_sort[0:top].to_csv(outputFileName, index=False, sep='\t')
 
 
 def DOMINO(genesFileName, networkFileName, outputPath, featureName):
@@ -413,12 +422,16 @@ def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGen
             networkOutputFile.write('\n')
 
 
-def downloadNDExNetwork(networkUUID, outputFileName):
+def downloadNDExNetwork(networkUUID, outputFileName, simplify):
     """
     Download network from NDEx website
+    Create a tab separated file with three columns: node1, interaction type and node2
+    With header
+
 
     :param str networkUUID: Network ID
     :param FILENAME outputFileName: SIF file name to write network
+    :param boolean simplify: if True, remove header and the interaction column
     """
     # Create NDEx2 python client
     client = ndex2.client.Ndex2()
@@ -427,11 +440,17 @@ def downloadNDExNetwork(networkUUID, outputFileName):
     client_resp = client.get_network_as_cx_stream(networkUUID)
 
     # Convert downloaded network to NiceCXNetwork object
+    print('\nExtract network with UUID : ' + networkUUID)
     net_cx = ndex2.create_nice_cx_from_raw_cx(json.loads(client_resp.content))
-    print('Extract network with UUID : ' + networkUUID)
     net_cx.print_summary()
 
     # Convert to pandas dataframe
     df = net_cx.to_pandas_dataframe()
     df.columns = ['node_1', 'link', 'node_2']
-    df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')
+
+    # True - Remove interaction columns + header
+    if simplify:
+        df = df.drop(columns=['link'])
+        df.to_csv(outputFileName, index=False, header=False, sep='\t')
+    else:
+        df.to_csv(outputFileName, index=False, sep='\t', na_rep='linked')
