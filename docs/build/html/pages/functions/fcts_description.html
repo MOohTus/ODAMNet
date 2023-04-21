@@ -63,7 +63,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
@@ -269,13 +269,16 @@ Create a disconnected network between pathways of interest</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="odamnet.methods_functions.downloadNDExNetwork">
-<span class="sig-prename descclassname"><span class="pre">odamnet.methods_functions.</span></span><span class="sig-name descname"><span class="pre">downloadNDExNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">networkUUID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFileName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#odamnet.methods_functions.downloadNDExNetwork" title="Permalink to this definition"></a></dt>
-<dd><p>Download network from NDEx website</p>
+<span class="sig-prename descclassname"><span class="pre">odamnet.methods_functions.</span></span><span class="sig-name descname"><span class="pre">downloadNDExNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">networkUUID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputFileName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simplify</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#odamnet.methods_functions.downloadNDExNetwork" title="Permalink to this definition"></a></dt>
+<dd><p>Download network from NDEx website
+Create a tab separated file with three columns: node1, interaction type and node2
+With header</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>networkUUID</strong> (<em>str</em>) – Network ID</p></li>
 <li><p><strong>outputFileName</strong> (<em>FILENAME</em>) – SIF file name to write network</p></li>
+<li><p><strong>simplify</strong> (<em>boolean</em>) – if True, remove header and the interaction column</p></li>
 </ul>
 </dd>
 </dl>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Running Random Walk analysis with data retrieved automatically from databases &mdash; ODAMNet 1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODAMNet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overview.html">Overview of the approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_RWR.html">Random Walk with Restart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/Cytoscape.html">Network visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecase2.html">Use-case 2: data are provided by the user</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODAMNet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Running Random Walk analysis with data retrieved automatically from databases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/pages/analysis/Extrat.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p><strong>*</strong> EXTRACT <strong>*</strong></p>
+<p>In this use-case, we propose to use two different multilayer networks:</p>
+<p>The third approach, Random Walk with Restart (RWR), is applied into two different networks compositions:</p>
+<ol class="arabic simple">
+<li><p>Multilayer network with three molecular layers + rare disease pathways network connected to nodes</p></li>
+<li><p>Multilayer network with three molecular layers + disease-disease similarity network linked with a bipartite</p></li>
+</ol>
+<p>The RWR is performed using multiXrank.</p>
+<section id="running-random-walk-analysis-with-data-retrieved-automatically-from-databases">
+<h1>Running Random Walk analysis with data retrieved automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h1>
+<div class="line-block">
+<div class="line">To know how to create the rare disease pathways network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</div>
+<div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
+</div>
+<p>Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
+The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
+Then, we keep vitamin-gene interaction with at least 2 associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
+<p>MultiXrank needs a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) and the networks path (<code class="docutils literal notranslate"><span class="pre">--networksPath</span></code>). We run the analysis with
+default parameters.</p>
+<p>The target genes are set as seeds for the walk and saved into a file <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code>.
+You need to give the SIF file name (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>) to save the top nodes based on the score calculated by the RWR (<code class="docutils literal notranslate"><span class="pre">--top</span> <span class="pre">10</span></code>).</p>
+<p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
+<p class="italic">If you need more details about the input format files, see <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">Random Walk with Restart input network</span></a> and <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a> parts.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Whatever the networks used, the <strong>command line is the same</strong>. But you have to <strong>change</strong> the network name inside the
+<strong>configuration file</strong>.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" name="UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" role="tab" tabindex="0">Rare disease pathways network</button><button aria-controls="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tab" tabindex="-1">Disease-Disease similarity network</button></div><div aria-labelledby="tab-0-UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" class="sphinx-tabs-panel group-tab" id="panel-0-UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" name="UmFyZSBkaXNlYXNlIHBhdGh3YXlzIG5ldHdvcms=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>multiplex:
+<span class="w">     </span><span class="m">1</span>:
+<span class="w">         </span>layers:
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/Complexes_Nov2020.gr
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/PPI_Jan2021.gr
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/Reactome_Nov2020.gr
+<span class="w">     </span><span class="m">2</span>:
+<span class="w">         </span>layers:
+<span class="hll"><span class="w">             </span>-<span class="w"> </span>multiplex/2/WP_RareDiseasesNetwork_fromRequest.sif
+</span><span class="w"> </span>bipartite:
+<span class="hll"><span class="w">     </span>bipartite/Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv:
+</span><span class="w">         </span>source:<span class="w"> </span><span class="m">2</span>
+<span class="w">         </span>target:<span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>seed:
+<span class="w">     </span>seeds.txt
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" name="RGlzZWFzZS1EaXNlYXNlIHNpbWlsYXJpdHkgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>multiplex:
+<span class="w">     </span><span class="m">1</span>:
+<span class="w">         </span>layers:
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/Complexes_Nov2020.gr
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/PPI_Jan2021.gr
+<span class="w">             </span>-<span class="w"> </span>multiplex/1/Reactome_Nov2020.gr
+<span class="w">     </span><span class="m">2</span>:
+<span class="w">         </span>layers:
+<span class="hll"><span class="w">             </span>-<span class="w"> </span>multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
+</span><span class="w"> </span>bipartite:
+<span class="hll"><span class="w">     </span>bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
+</span><span class="w">         </span>source:<span class="w"> </span><span class="m">2</span>
+<span class="w">         </span>target:<span class="w"> </span><span class="m">1</span>
+<span class="w"> </span>seed:
+<span class="w">     </span>seeds.txt
+</pre></div>
+</div>
+</div></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>multixrank<span class="w">  </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--directAssociation<span class="w"> </span>FALSE<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--nbPub<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--configPath<span class="w"> </span>useCases/InputData/config_minimal_useCase1.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--networksPath<span class="w"> </span>useCases/InputData/<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--seedsFile<span class="w"> </span>useCases/InputData/seeds.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--sifFileName<span class="w"> </span>resultsNetwork_useCase1.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--top<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase1/
+</pre></div>
+</div>
+<p>Several files are generated:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
+the first file contains <strong>results from CTD</strong> request and the second one contains the filtered (by publications number) results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RWR_D014801/</span></code> folder with the walk results:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code>: copies of the input files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: score for each feature. 1 corresponds to the multiplex network  and 2 to
+the rare disease pathways network (depends of the network folder name).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code>: SIF file name that contains the network result</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p class="italic">For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
+<p>We use the default parameters, whatever the networks used.</p>
+<p><em>In this part, we present results found for the first multilayer network composition: multiplex network + rare disease pathways network.</em></p>
+<p>First, multiXrank uses target genes as <em>seeds</em> to start the walk. Over 1,988 target genes are used over 2,143 retrieved
+target genes.</p>
+<p>The gene with the highest score is <code class="docutils literal notranslate"><span class="pre">VCAM1</span></code> with <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">0.0002083975629882177</span></code> (it’s a seed). This score helps
+us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
+with target genes (i.e. seeds).</p>
+<p>According this highest score, <strong>27 pathways</strong> are selected (<a class="reference internal" href="usecase1.html#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
+<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id1">
+<caption><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>node</p></th>
+<th class="head"><p>pathways</p></th>
+<th class="head"><p>score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>WP5087</p></td>
+<td><p>Malignant pleural mesothelioma</p></td>
+<td><p>0.002871</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4673</p></td>
+<td><p>Male infertility</p></td>
+<td><p>0.000868</p></td>
+</tr>
+<tr class="row-even"><td><p>WP5124</p></td>
+<td><p>Alzheimer’s disease</p></td>
+<td><p>0.000775</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP2059</p></td>
+<td><p>Alzheimer’s disease and miRNA effects</p></td>
+<td><p>0.000775</p></td>
+</tr>
+<tr class="row-even"><td><p>WP4298</p></td>
+<td><p>Acute viral myocarditis</p></td>
+<td><p>0.000731</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4746</p></td>
+<td><p>Thyroid hormones production and peripheral …</p></td>
+<td><p>0.000622</p></td>
+</tr>
+<tr class="row-even"><td><p>WP3584</p></td>
+<td><p>MECP2 and associated Rett syndrome</p></td>
+<td><p>0.000601</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP5224</p></td>
+<td><p>2q37 copy number variation syndrome</p></td>
+<td><p>0.000567</p></td>
+</tr>
+<tr class="row-even"><td><p>WP4549</p></td>
+<td><p>Fragile X syndrome</p></td>
+<td><p>0.000555</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4657</p></td>
+<td><p>22q11.2 copy number variation syndrome</p></td>
+<td><p>0.000522</p></td>
+</tr>
+<tr class="row-even"><td><p>WP4541</p></td>
+<td><p>Hippo-Merlin signaling dysregulation</p></td>
+<td><p>0.000521</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4932</p></td>
+<td><p>7q11.23 copy number variation syndrome</p></td>
+<td><p>0.000492</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>WP5053</strong></p></td>
+<td><p><strong>Development of ureteric collection system</strong></p></td>
+<td><p><strong>0.000454</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4949</p></td>
+<td><p>16p11.2 proximal deletion syndrome</p></td>
+<td><p>0.000442</p></td>
+</tr>
+<tr class="row-even"><td><p>WP5114</p></td>
+<td><p>Nucleotide excision repair in xeroderma pigmentosum</p></td>
+<td><p>0.000394</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4312</p></td>
+<td><p>Rett syndrome causing genes</p></td>
+<td><p>0.000393</p></td>
+</tr>
+<tr class="row-even"><td><p>WP2447</p></td>
+<td><p>Amyotrophic lateral sclerosis (ALS)</p></td>
+<td><p>0.000384</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4879</p></td>
+<td><p>Overlap between signal transduction pathways …</p></td>
+<td><p>0.000328</p></td>
+</tr>
+<tr class="row-even"><td><p>WP4906</p></td>
+<td><p>3q29 copy number variation syndrome</p></td>
+<td><p>0.000305</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4540</p></td>
+<td><p>Hippo signaling regulation pathways</p></td>
+<td><p>0.000303</p></td>
+</tr>
+<tr class="row-even"><td><p>WP5222</p></td>
+<td><p>2q13 copy number variation syndrome</p></td>
+<td><p>0.000284</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP3995</p></td>
+<td><p>Prion disease pathway</p></td>
+<td><p>0.000280</p></td>
+</tr>
+<tr class="row-even"><td><p>WP3998</p></td>
+<td><p>Prader-Willi and Angelman syndrome</p></td>
+<td><p>0.000247</p></td>
+</tr>
+<tr class="row-odd"><td><p>WP4803</p></td>
+<td><p>Ciliopathies</p></td>
+<td><p>0.000244</p></td>
+</tr>
+<tr class="row-even"><td><p>WP2371</p></td>
+<td><p>Parkinson’s disease pathway</p></td>
+<td><p>0.000231</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>WP4823</strong></p></td>
+<td><p><strong>Genes controlling nephrogenesis</strong></p></td>
+<td><p><strong>0.000221</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>WP4545</p></td>
+<td><p>Oxysterols derived from cholesterol</p></td>
+<td><p>0.000214</p></td>
+</tr>
+</tbody>
+</table>
+<p>Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
+shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
+<figure class="align-center" id="id2">
+<span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
+<figcaption>
+<p><span class="caption-text">: Results from RWR through the multiplex network and rare disease pathways network</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<div class="legend">
+<blockquote>
+<div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
+</div></blockquote>
+</div>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Térézol.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

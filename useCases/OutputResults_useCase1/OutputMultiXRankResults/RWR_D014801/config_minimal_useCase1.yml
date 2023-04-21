@@ -1,0 +1,15 @@
+multiplex:
+    1:
+        layers:
+            - multiplex/1/Complexes_gene_names_190123.tsv
+            - multiplex/1/Pathways_reactome_gene_names_190123.tsv
+            - multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv
+    2:
+        layers:
+            - multiplex/2/RareDiseasePathways_network_useCase1.tsv
+bipartite:
+    bipartite/Bipartite_RareDiseasePathways_geneSymbols_useCase1.tsv:
+        source: 2
+        target: 1
+seed:
+    seeds.txt

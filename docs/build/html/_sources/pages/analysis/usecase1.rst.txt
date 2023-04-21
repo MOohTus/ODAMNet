@@ -1,78 +1,75 @@
 .. _usecase1:
 
 ============================================================
-Use-case 1: data are extracted automatically with requests
+Use-case 1: data are retrieved automatically with requests
 ============================================================
 
 .. note::
 
     This analysis is inspired by the study carried out by Ozisik *et al.,* [1]_.
 
-We want to study the molecular relationship between chemicals (hormones, vitamins etc.) and rare diseases.
+In this use-case, we want to study the molecular relationship between **vitamin A** and **rare diseases**.
 
-**Target genes**, that are targeted by the chemicals of interest, are extracted **directly** from the |ctd|_ [2]_ (CTD).
-**Rare disease pathways** are extracted from |wp|_ [3]_.
-We choose to use as chemical of interest, the **vitamin A**.
+Vitamin A **target genes** are retrieved **directly** from the |ctd|_ [2]_ (CTD).
+**Rare disease pathways** are retrieved from |wp|_ [3]_.
 
 This section presents you how to apply the three different approaches proposed.
-
-.. _ctd: http://ctdbase.org/
-.. |ctd| replace:: **the Comparative Toxicogenomics Database**
-.. _wp: https://www.wikipathways.org/
-.. |wp| replace:: **WikiPathways**
 
 .. _useCase1_overlap:
 
 Overlap analysis
 =====================
 
-This approach calculates the overlap between genes targeted by vitamin A, and rare disease pathways
-(see :doc:`../approaches/methods_overlap` section for more details).
+The Overlap analysis searches interesting genes between vitamin A target genes and genes involved in rare disease
+pathways (see :doc:`../approaches/methods_overlap` section for more details).
 
-Running overlap analysis with data extracted automatically from databases
+Running Overlap analysis with data retrieved automatically from databases
 ----------------------------------------------------------------------------
 
-The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A. We want to extract genes that are targeted by vitamin A
-and by its descendant chemicals. So, the ``--directAssociation`` parameter is set to ``False``.
-We keep only interactions which have at least two associated publications(``--nbPub 2``).
+The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A (D014801). We retrieved
+from CTD, genes targeted by the vitamin A and its descendant chemicals (``--directAssociation FALSE``). We keep only
+vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
+
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 .. code-block:: bash
 
         odamnet overlap --chemicalsFile useCases/InputData/chemicalsFile.csv \
-                                --directAssociation FALSE \
-                                --nbPub 2 \
-                                --outputPath useCases/OutputResults_useCase1/
+                        --directAssociation FALSE \
+                        --nbPub 2 \
+                        --outputPath useCases/OutputResults_useCase1/
 
 Several files are generated:
 
 - ``CTD_request_D014801_2022_09_07.tsv`` and ``CTD_requestFiltered_D014801_2022_09_07.tsv``:
-  the first file contains **results from CTD** request and the second one contains the results filtered by the publication number.
+  the first file contains **results from CTD** request and the second one contains the results filtered using the
+  publication number.
 
 - ``WP_RareDiseases_request_2022_09_07.gmt`` and ``WP_allPathways_request_2022_09_07.gmt``:
-  the first file contains all the **human rare disease pathways** from WikiPathways request
-  and the second file contains **background source file names**.
+  the first file contains **human rare disease pathways** and the second file contains **all human pathways** retrieved
+  in WikiPathways.
 
-- ``Overlap_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare disease pathways.
+- ``Overlap_D014801_withRDWP.csv``: results of the Overlap analysis between vitamin A target genes and rare disease
+  pathways.
 
 .. cssclass:: italic
 
     For more details about these files, see the :doc:`../formats/Output` page.
 
-Results of overlap analysis with data extracted automatically from databases
+Results of overlap analysis with data retrieved automatically from databases
 -------------------------------------------------------------------------------
 
-*request on the 07th of September 2022*
+*Requests made on September 7th, 2022*
 
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in the
-following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target genes associated to 10 chemicals
-(vitamin A + nine other descendant chemicals).
+We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
+(:ref:`Table 2 <useCase1OverlapCTD>`). Chemical - gene associations are kept if they have at least two publications for
+human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1OverlapCTD:
-.. table:: CTD request results
+.. table:: Vitamin A target genes retrieved from CTD
     :align: center
 
     +---------------------------------------------------+---------------------+------------------------+
@@ -86,11 +83,13 @@ following :ref:`Table 2 <useCase1OverlapCTD>`. The request extracts 7,765 target
 WikiPathways request results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All pathways labeled as rare disease are extracted from WikiPathways. Request results are presented in the following
-:ref:`Table 3 <useCase1OverlapWP>`. The request extracts 104 rare disease pathways.
+All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved 104 rare disease pathways
+(:ref:`Table 3 <useCase1OverlapWP>`). All human pathways are also retrieved from WikiPathways
+(:ref:`Table 3 <useCase1OverlapWP>`). We use these pathways to create background gene sets that are used for statistical
+analysis.
 
 .. _useCase1OverlapWP:
-.. table:: WikiPathways request results
+.. table:: Pathways retrieval from WikiPathways
     :align: center
 
     +------------------------+-----------------+------------------+------------------+
@@ -101,14 +100,12 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
 
-To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
-That why we extracted also all human pathways from WikiPathways.
-
 Overlap analysis results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We obtained a significant overlap between the vitamin A target genes and **28 rare disease pathways** (pAdjusted <= 0.05).
-The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1OverlapTop5>`.
+We performed an Overlap analysis between vitamin A target genes (2,143) and rare disease pathways (104). We obtained
+significant overlap between target genes and **28 rare disease pathways** (pAdjusted <= 0.05). The top 5 is presented in
+:ref:`Table 4 <useCase1OverlapTop5>`.
 
 .. _useCase1OverlapTop5:
 .. table:: Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways
@@ -128,19 +125,18 @@ The top 5 of these significant overlaps is presented in :ref:`Table 4 <useCase1O
     |   WP4879   | Overlap between signal transduction pathways ... |   7.80e-07   |        25        |
     +------------+--------------------------------------------------+--------------+------------------+
 
-In the previous analysis [1]_, significant overlaps were identified between four CAKUT pathways and the vitamin A target
-genes. With updated target genes data proposed here, we also retrieve a significant overlap for three of these four
-CAKUT pathways.
-The results are shown in the (:ref:`Table 5 <useCase1OverlapCAKUT>`):
+In a previous analysis [1]_, significant overlaps were identified between 4 CAKUT pathways and vitamin A target genes.
+With updated target genes data proposed here, we also retrieved significant overlap for 3 of these 4 CAKUT pathways
+(:ref:`Table 5 <useCase1OverlapCAKUT>`).
 
 .. _useCase1OverlapCAKUT:
-.. table:: CAKUT pathways overlap results
+.. table:: Overlap analysis results between vitamin A target genes and CAKUT pathways
     :align: center
 
     +-----------+---------------------------------------+-------------------+---------------------+
     |           |                                       |  Current analysis |Ozisik *et al.*, 2021|
     +-----------+---------------------------------------+------------+------+------------+--------+
-    |PathwayIDs |PathwayNames                           | pAdjusted  |Inter | pAdjusted  | Inter  |
+    |PathwayIDs |Pathway Names                          | pAdjusted  |Inter | pAdjusted  | Inter  |
     +===========+=======================================+============+======+============+========+
     |  WP5053   |Development of ureteric collection ... |**2.61e-08**|28    |**1.59e-05**|    16  |
     +-----------+---------------------------------------+------------+------+------------+--------+
@@ -151,25 +147,26 @@ The results are shown in the (:ref:`Table 5 <useCase1OverlapCAKUT>`):
     |  WP5052   |Nephrogenesis                          |    0.09    |6     |**1.90e-04**|     8  |
     +-----------+---------------------------------------+------------+------+------------+--------+
 
-The increase of the intersection size (*Inter column*) can be explained by the target gene size. The previous work
-extracted 1,086 target genes and in this current work we extracted 2,143 target genes.
+The increase of the intersection size (*Inter column*) can be explained by the target gene size. In the previous work
+[1]_, we retrieved 1,086 target genes and in this current work we retrieved 2,143 target genes.
 
-The overlap between `Nephrogenesis` pathway and target genes is not found significant anymore. Number of target genes
+The overlap between *Nephrogenesis* pathway and target genes is not found significant anymore. Number of target genes
 shared with the pathway is smaller. It affects the p-value and decreases it below the 0.05 threshold.
-It can be explained by the fact that on of the two missing genes is not related to human. So it cannot be extracted by
+It can be explained by the fact that one of the two missing genes is not related to human. So it cannot be retrieved by
 the request. And the other gene has only one publication that relates association with vitamin A. So it is not kept
 during filtering.
 
 .. _useCase1_AMI:
 
-Active Modules Identification (AMI)
+Active Module Identification (AMI)
 ======================================
 
-DOMINO identifies active modules through a protein-protein interaction (PPI) network. After that, we perform an
-overlap analysis between each identified active module and rare disease pathways from WikiPathways.
-For more detail, see :doc:`../approaches/methods_AMI` section.
+The Active Module Identification (AMI) approach identifies active module that contains high number of vitamin A target
+genes using a Protein-Protein interaction (PPI) network. AMI is performed using DOMINO [4]_. Then, an Overlap analysis
+is applied between identified active modules and rare disease pathways. See see :doc:`../approaches/methods_AMI`
+section for more details.
 
-Running Active Module Identification with data extracted automatically from databases
+Running Active Module Identification with data retrieved automatically from databases
 -----------------------------------------------------------------------------------------
 
 .. warning::
@@ -177,35 +174,40 @@ Running Active Module Identification with data extracted automatically from data
    :octicon:`alert;2em` Results of DOMINO cannot be reproduced when using the DOMINO's server. Indeed, DOMINO server
     doesn't allow to set the random seed. This random seed is changed every new analysis.
 
-We want to extract genes that are targeted by vitamin A and its descendant chemicals. The **chemicalsFile.csv** file
-[:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A and we set ``--directAssociation`` parameter to ``False``.
-We keep only vitamin-gene interactions with at least to associated publications (``--nbPub 2``).
+The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A (D014801). We retrieved
+from CTD, genes targeted by the vitamin A and its descendant chemicals (``--directAssociation FALSE``). We keep only
+vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
 
-We identify active modules using a protein-protein interaction (PPI) network named ``PPI_network_2016.sif`` [:ref:`FORMAT <SIF>`].
+We download automatically a PPI network [:ref:`FORMAT <SIF>`] from NDEx [5]_ using the ``--netUUID`` parameter
+(UUID bfac0486-cefe-11ed-a79c-005056ae23aa, version 1.0). We named the PPI network `PPI_HiUnion_LitBM_APID_gene_names_190123.tsv`
+(``--networkFile``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 .. code-block:: bash
 
-        odamnet domino  --chemicalsFile useCases/InputData/chemicalsFile.csv \
-                                --directAssociation FALSE \
-                                --nbPub 2 \
-                                --networkFile useCases/InputData/PPI_network_2016.sif \
-                                --outputPath useCases/OutputResults_useCase1/
+        odamnet domino  --chemicalsFile useCases/InputData/chemicalsFiles.csv \
+                        --directAssociation FALSE \
+                        --nbPub 2 \
+                        --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                        --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \
+                        --outputPath useCases/OutputResults_useCase1
+
 
 Several files are generated:
 
 - ``CTD_request_D014801_2022_09_07.tsv`` and ``CTD_requestFiltered_D014801_2022_09_07.tsv``:
-  the first file contains **results from CTD** request and the second one contains the filtered (by publications number) results.
+  the first file contains **results from CTD** request and the second one contains the results filtered using the
+  publication number.
 
 - ``WP_RareDiseases_request_2022_09_07.gmt`` and ``WP_allPathways_request_2022_09_07.gmt``:
-  the first file contains all the **human rare disease pathways** from WikiPathways request
-  and the second file contains **background source file names**.
+  the first file contains **human rare disease pathways** and the second file contains **all human pathways** retrieved
+  in WikiPathways.
 
-- ``DOMINO_inputGeneList_D014801.txt``: list target genes used for the active module identification.
+- ``DOMINO_inputGeneList_D014801.txt``: vitamin A target genes list used for the active module identification.
 
-- ``Overlap_AM_*_D014801_withRDWP.csv``: results of the overlap analysis between target genes and rare disease pathways.
-  One file per active module.
+- ``Overlap_AM_*_D014801_withRDWP.csv``: results of the Overlap analysis between identified active modules genes and
+  rare disease pathways. There is one file per active module.
 
 - ``DOMINO_D014801_activeModulesNetwork.txt``, ``DOMINO_D014801_overlapAMresults4Cytoscape.txt``, ``DOMINO_D014801_activeModules.txt``
   , ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` and ``DOMINO_D014801_signOverlap.txt``: some statistics are
@@ -213,22 +215,23 @@ Several files are generated:
 
 .. cssclass:: italic
 
-    For more details about these files, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`, :ref:`AMIOutput`)
+    For more details about these files, see :doc:`../formats/Output` page (:ref:`requestOutput`, :ref:`overlapOutput`,
+    :ref:`AMIOutput`)
 
-Results of Active Module identification with data extracted automatically from databases
+Results of Active Module identification with data retrieved automatically from databases
 -------------------------------------------------------------------------------------------
 
-*request on the 07th of September 2022*
+*Requests made on September 7th, 2022*
 
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in
-the following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target genes associated to 10 chemicals
-(vitamin A + nine other descendant chemicals).
+We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
+(:ref:`Table 6 <useCase1AMICTD>`). Chemical - gene associations are kept if they have at least two publications for
+human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1AMICTD:
-.. table:: CTD request results
+.. table:: Vitamin A target genes retrieved from CTD
     :align: center
 
     +---------------------------------------+---------------------+-----------------+
@@ -242,11 +245,12 @@ the following :ref:`Table 6 <useCase1AMICTD>`. The request extract 7,765 target 
 WikiPathways request results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All pathways labeled as rare disease are extracted from WikiPathways. Request results are presented in the following
-:ref:`Table 7 <useCase1AMIWP>`. The request extracts 104 rare disease pathways.
+All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved 104 rare disease pathways
+(:ref:`Table 7 <useCase1AMIWP>`). All human pathways are also retrieved from WikiPathways (:ref:`Table 7 <useCase1AMIWP>`).
+We use these pathways to create background gene sets that are used for statistical analysis.
 
 .. _useCase1AMIWP:
-.. table:: WikiPathways request results
+.. table:: Pathways retrieval from WikiPathways
     :align: center
 
     +------------------------+-----------------+------------------+------------------+
@@ -257,17 +261,23 @@ All pathways labeled as rare disease are extracted from WikiPathways. Request re
     | All Human WikiPathways |      1,281      |         1        |        484       |
     +------------------------+-----------------+------------------+------------------+
 
-To perform overlap analysis, we need background genes. Here, background genes are all human genes that are in WikiPathways.
-That why we extracted also all human pathways from WikiPathways.
+PPI network information
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The PPI network is automatically downloaded from NDEx_. It was build from 3 datasets: Lit-BM, Hi-Union and APID. It
+contains 15,390 nodes and 131,087 edges.
+
+[METTRE UNE REF SUR PLUS D'EXPLICATION ?]
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are defined as **active genes** by DOMINO. We give **2,143 target genes** as input. DOMINO found
-**13 active modules** (:ref:`Table 8 <useCase1AMIResults>`).
+DOMINO defines vitamin A target genes as active genes and searches active modules enriched in active genes. Over the
+2,143 target genes retrieved from CTD, 1,937 are found in the PPI and used as active genes by DOMINO. DOMINO identified
+**12 active modules** enriched in vitamin A target genes (:ref:`Table 8 <useCase1AMIResults>`).
 
 .. _useCase1AMIResults:
-.. table:: Composition of active modules found by DOMINO
+.. table:: Composition of the active modules identified enriched in vitamin A target genes by DOMINO
     :align: center
 
     +--------------+------------+------------+
@@ -285,212 +295,144 @@ Target genes are defined as **active genes** by DOMINO. We give **2,143 target g
     See ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` file for more details.
 
 Overlap analysis results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, we perform an overlap analysis between active modules and rare disease pathways. We found significant overlap
-between **16 pathways** and **7 active modules** (padjusted <= 0.05).
+Then, we perform an Overlap analysis between identified active modules (12) and rare disease pathways (104). We obtained
+significant overlap between **6 active modules** and **19 rare disease pathways** (pAdjusted <= 0.05). The top 5 is
+presented in :ref:`Table 9 <useCase1AMIOverlap>`.
 
 .. _useCase1AMIOverlap:
-.. table:: Overlap results between active modules and rare disease pathways
+.. table:: Top 5 of the significant overlaps between identified active modules and rare disease pathways
     :align: center
 
-    +------------+---------------------------------------------------------------------------------+
-    | termID     | termTitle                                                                       |
-    +============+=================================================================================+
-    | WP2059     | Alzheimer's disease and miRNA effects                                           |
-    +------------+---------------------------------------------------------------------------------+
-    | WP2447     | Amyotrophic lateral sclerosis (ALS)                                             |
-    +------------+---------------------------------------------------------------------------------+
-    | WP3853     | ERK pathway in Huntington's disease                                             |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4298     | Acute viral myocarditis                                                         |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4541     | Hippo-Merlin signaling dysregulation                                            |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4549     | Fragile X syndrome                                                              |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4746     | Thyroid hormones production and peripheral downstream signaling effects         |
-    +------------+---------------------------------------------------------------------------------+
-    | **WP4823** | **Genes controlling nephrogenesis**                                             |
-    +------------+---------------------------------------------------------------------------------+
-    | **WP4830** | **GDNF/RET signaling axis**                                                     |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4844     | Influence of laminopathies on Wnt signaling                                     |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4879     | Overlap between signal transduction pathways contributing to LMNA laminopathies |
-    +------------+---------------------------------------------------------------------------------+
-    | WP4950     | 16p11.2 distal deletion syndrome                                                |
-    +------------+---------------------------------------------------------------------------------+
-    | WP5087     | Malignant pleural mesothelioma                                                  |
-    +------------+---------------------------------------------------------------------------------+
-    | WP5102     | Familial partial lipodystrophy                                                  |
-    +------------+---------------------------------------------------------------------------------+
-    | WP5124     | Alzheimer's disease                                                             |
-    +------------+---------------------------------------------------------------------------------+
-    | WP5269     | Genetic causes of PSVD/INCPH                                                    |
-    +------------+---------------------------------------------------------------------------------+
+    +------------+--------------------------------------------------------------------+----------+
+    | Pathway IDs| Pathway Names                                                      | pAdjusted|
+    +============+====================================================================+==========+
+    | WP5087     | Malignant pleural mesothelioma                                     | 2.78e-25 |
+    +------------+--------------------------------------------------------------------+----------+
+    | WP4541     | Hippo-Merlin signaling dysregulation                               | 4.37e-07 |
+    +------------+--------------------------------------------------------------------+----------+
+    | WP4577     | Neurodegeneration with brain iron accumulation (NBIA) subtypes ... | 2.84e-06 |
+    +------------+--------------------------------------------------------------------+----------+
+    | WP5053     | Development of ureteric collection system                          | 1.23e-05 |
+    +------------+--------------------------------------------------------------------+----------+
+    | WP4540     | Hippo signaling regulation pathways                                | 1.55e-05 |
+    +------------+--------------------------------------------------------------------+----------+
 
-**Two pathways** related to CAKUT disease are found with this approach (in bold in the :ref:`Table 9 <useCase1AMIResults>`).
+Duplicates between active modules results are removed and we keep the more significant ones.
+
+.. cssclass:: italic
+
+    See ``DOMINO_D014801_signOverlap.txt`` file for more details.
 
 Visualisation of active module identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It could be interesting to visualise the identified active modules and add on them the overlap results. To create this
-visualisation, we use Cytoscape [5]_. To know how to create this figure, see the :ref:`networkAMI` section.
+We created a visualisation of active module identification results (:numref:`dominoUsage1Fig`) using Cytoscape [5]_.
 
-We found a significant overlap between seven active modules and rare disease pathways. For sake fo visualisation, we
-selected only three of them and displayed them in the :numref:`dominoUsage1Fig`. You can find a cytoscape project file
-.cys in GitHub_.
-
-.. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+We found a significant overlap between **6 active modules** and **19 rare disease pathways**. For sake of visualisation,
+we selected only three of them (:numref:`dominoUsage1Fig`). You can find the entire visualisation in the cytoscape
+project called ``AMI_visualisation.cys`` in GitHub_.
 
 .. _dominoUsage1Fig:
-.. figure:: ../../pictures/UseCase1_AMI.png
+.. figure:: ../../pictures/UseCase1/UseCase1_AMI.png
    :alt: usecase1 AMI
    :align: center
 
-   : Network visualisation of 3 active modules and their associated rare disease pathways
+   : Visualisation of 3 active modules and their associated rare disease pathways
 
-    Genes are represented by nodes. Grey nodes are the target genes. Overlap results between active modules and
-    rare disease pathways as displayed using donuts color around nodes. Each color corresponds to a rare disease.
+    Genes are represented by nodes. Grey nodes are the target genes, white nodes are non-target genes. Overlap results
+    between active modules and rare disease pathways as displayed using donuts color around nodes. Each color
+    corresponds to a rare disease.
+    Creation steps are explained in the :ref:`networkAMI` section.
 
-As you can see in the :numref:`dominoUsage1Fig`, topology of modules can be different and associated rare disease
-pathways varies. For instance, the module on the right is very connected and contains genes that are part of
-neurodegenerative diseases as Alzheimer or Amyotrophic Lateral Sclerosis (ALS). Whereas, the module on the middle is
-sparser and it contains genes that are part only of Hippo-Merlin signaling dysregulation disease pathway.
+Module topology is different between modules and associated rare diseases pathways also vary (:numref:`dominoUsage1Fig`).
+For instance, the module on the right is very connected and contains genes that are involved in a lot of rare disease
+pathways. Genes, such as PTEN, are part of at least 5 pathways. The two other modules are sparser. The module in the
+middle contains genes involved only in *Development of ureteric collection system*.
 
 .. _useCase1_RWR:
 
 Random Walk with Restart (RWR)
 =================================
 
-The third approach, Random Walk with Restart (RWR), is applied into two different networks compositions:
-
-1. Multilayer network with three molecular layers + rare disease pathways network connected to nodes
-2. Multilayer network with three molecular layers + disease-disease similarity network linked with a bipartite
-
-The RWR is performed using multiXrank.
+The Random Walk with Restart approach mesures proximities between vitamin A target genes and rare disease pathways. To
+calculate these proximities (RWR scores), we used multiXrank [6]_ and multilayer networks. The multilayer network is
+composed of three gene networks and one rare disease pathways network. Genes nodes are connected to disease nodes if
+they are involved in.
 
 .. cssclass:: italic
 
-    For more details about RWR, multiXrank and multilayer network composition see :doc:`../approaches/methods_RWR`.
+    For more details about RWR, multiXrank and multilayer network see :doc:`../approaches/methods_RWR`.
 
-Running Random Walk analysis with data extracted automatically from databases
+Running Random Walk analysis with data retrieved automatically from databases
 --------------------------------------------------------------------------------
 
-| To know how to create the rare disease pathways network: see :ref:`pathwaysOfInterestNet`.
-| To know how to create the disease-disease similarity network: see :ref:`DDnet`.
+The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A (D014801). We retrieved
+from CTD, genes targeted by the vitamin A and its descendant chemicals (``--directAssociation FALSE``). We keep only
+vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
 
-Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (``--directAssociation False``).
-The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A.
-Then, we keep vitamin-gene interaction with at least 2 associated publications (``--nbPub 2``).
+MultiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis parameters.
+We used multiXrank with default parameters.
 
-MultiXrank needs a configuration file (``--configPath``) and the networks path (``--networksPath``). We run the analysis with
-default parameters.
-
-The target genes are set as seeds for the walk and saved into a file ``--seedsFile examples/InputData/seeds.txt``.
-You need to give the SIF file name (``--sifFileName``) to save the top nodes based on the score calculated by the RWR (``--top 10``).
+We provided a name file to store vitamin A target genes (i.e. seeds) ``--seedsFile examples/InputData/seeds.txt`` and
+also a SIF file name (``--sifFileName``) to save the top nodes based on RWR score (``--top 20``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
-
-.. cssclass:: italic
-
-    If you need more details about the input format files, see :ref:`GR` and :ref:`configFile` parts.
-
-.. tip::
-
-    Whatever the networks used, the **command line is the same**. But you have to **change** the network name inside the
-    **configuration file**.
-
-    .. tabs::
-
-        .. group-tab:: Rare disease pathways network
-
-            .. code-block:: bash
-                :emphasize-lines: 9,11
-
-                 multiplex:
-                     1:
-                         layers:
-                             - multiplex/1/Complexes_Nov2020.gr
-                             - multiplex/1/PPI_Jan2021.gr
-                             - multiplex/1/Reactome_Nov2020.gr
-                     2:
-                         layers:
-                             - multiplex/2/WP_RareDiseasesNetwork_fromRequest.sif
-                 bipartite:
-                     bipartite/Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv:
-                         source: 2
-                         target: 1
-                 seed:
-                     seeds.txt
-
-        .. group-tab:: Disease-Disease similarity network
-
-            .. code-block:: bash
-               :emphasize-lines: 9,11
-
-                multiplex:
-                    1:
-                        layers:
-                            - multiplex/1/Complexes_Nov2020.gr
-                            - multiplex/1/PPI_Jan2021.gr
-                            - multiplex/1/Reactome_Nov2020.gr
-                    2:
-                        layers:
-                            - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
-                bipartite:
-                    bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
-                        source: 2
-                        target: 1
-                seed:
-                    seeds.txt
-
 
 .. code-block:: bash
 
     odamnet multixrank  --chemicalsFile useCases/InputData/chemicalsFile.csv \
-                                --directAssociation FALSE \
-                                --nbPub 2 \
-                                --configPath useCases/InputData/config_minimal_useCase1.yml \
-                                --networksPath useCases/InputData/ \
-                                --seedsFile useCases/InputData/seeds.txt \
-                                --sifFileName resultsNetwork_useCase1.sif \
-                                --top 10 \
-                                --outputPath useCases/OutputResults_useCase1/
+                        --directAssociation FALSE \
+                        --nbPub 2 \
+                        --configPath useCases/InputData/config_minimal_useCase1.yml \
+                        --networksPath useCases/InputData/ \
+                        --seedsFile useCases/InputData/seeds.txt \
+                        --sifFileName UseCase1_RWR_network.sif \
+                        --top 20 \
+                        --outputPath useCases/OutputResults_useCase1/
+
+.. tip::
+
+    | Multiplex network is downloaded directly from NDEx (:ref:`ICI`)
+    | Creation of the rare disease pathways network (:ref:`pathwaysOfInterestNet`)
+    | Configuration file explanation and example (:ref:`configFile)
+
 
 Several files are generated:
 
 - ``CTD_request_D014801_2022_09_07.tsv`` and ``CTD_requestFiltered_D014801_2022_09_07.tsv``:
-  the first file contains **results from CTD** request and the second one contains the filtered (by publications number) results.
+  the first file contains **results from CTD** request and the second one contains the filtered by publication number.
 
-- ``RWR_D014801/`` folder with the walk results:
+- ``RWR_D014801/`` folder with the RWR results:
 
     - ``config_minimal_useCase1.yml`` and ``seeds.txt``: copies of the input files
 
-    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: score for each feature. 1 corresponds to the multiplex network  and 2 to
-      the rare disease pathways network (depends of the network folder name).
+    - ``multiplex_1.tsv`` and ``multiplex_2.tsv``: RWR scores for each multilayer. 1 is multiplex network RWR scores
+      and 2 is the rare disease pathways network RWR scores.
 
-    - ``resultsNetwork_useCase1.sif``: SIF file name that contains the network result
+    - ``UseCase1_RWR_network.sif``: SIF file name that contains the network result
+
+    - ``RWR_top20.txt``: Top 20 of rare disease pathways
 
 .. cssclass:: italic
 
     For more details about these file, see :doc:`../formats/Output` page.
 
-Results of Random Walk analysis with data extracted automatically from databases
+Results of Random Walk analysis with data retrieved automatically from databases
 -----------------------------------------------------------------------------------
 
-*request on the 07th of September 2022*
+*Requests made on September 7th, 2022*
 
 CTD request results
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-We extracted genes that are targeted by **vitamin A** and by its descendant chemicals. Request results are presented in the
-following :ref:`Table 10 <useCase1RWRCTD>`. The request extract 7,765 target genes associated to 10 chemicals
-(vitamin A + nine others descendant chemicals).
+We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
+(:ref:`Table 10 <useCase1RWRCTD>`). Chemical - gene associations are kept if they have at least two publications for
+human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1RWRCTD:
-.. table:: CTD request results
+.. table:: Vitamin A target genes retrieved from CTD
     :align: center
 
     +----------------------------------+---------------------+-----------------+
@@ -504,86 +446,35 @@ following :ref:`Table 10 <useCase1RWRCTD>`. The request extract 7,765 target gen
 Random Walk with Restart results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We use the default parameters, whatever the networks used.
+Analysis with rare disease pathways network
+"""""""""""""""""""""""""""""""""""""""""""""
 
-Rare disease pathways network analysis
-""""""""""""""""""""""""""""""""""""""""""
+We used a multilayer network composed of three genes network and one rare disease pathways network
+(:ref:`pathwaysOfInterestNet`).
 
-*In this part, we present results found for the first multilayer network composition: multiplex network + rare disease pathways network.*
-
-First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
-target genes.
-
-The gene with the highest score is ``VCAM1`` with ``score = 0.0002083975629882177`` (it's a seed). This score helps
-us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
-with target genes (i.e. seeds).
-
-According this highest score, **27 pathways** are selected (:ref:`Table 11 <useCase1_pathwaysRWR>`).
+multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
+the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
+pathways are prioritized. We select the top 20 and present the top 5 (:ref:`Table 11 <useCase1_pathwaysRWR>`).
 
 .. _useCase1_pathwaysRWR:
-.. table:: Pathways linked to target genes
+.. table:: Rare disease prioritization using RWR score. The top 5 is displayed.
     :align: center
 
     +------------+-----------------------------------------------------+--------------+
-    | node       | pathways                                            | score        |
+    | Node       | Pathway Names                                       |  RWR score   |
     +============+=====================================================+==============+
-    | WP5087     | Malignant pleural mesothelioma                      | 0.002871     |
+    | WP5087     | Malignant pleural mesothelioma                      | 2.85e-03     |
     +------------+-----------------------------------------------------+--------------+
-    | WP4673     | Male infertility                                    | 0.000868     |
+    | WP4673     | Male infertility                                    | 9.02e-04     |
     +------------+-----------------------------------------------------+--------------+
-    | WP5124     | Alzheimer's disease                                 | 0.000775     |
+    | WP2059     | Alzheimer's disease and miRNA effects               | 7.76e-04     |
     +------------+-----------------------------------------------------+--------------+
-    | WP2059     | Alzheimer's disease and miRNA effects               | 0.000775     |
+    | WP5124     | Alzheimer's disease                                 | 7.76e-04     |
     +------------+-----------------------------------------------------+--------------+
     | WP4298     | Acute viral myocarditis                             | 0.000731     |
     +------------+-----------------------------------------------------+--------------+
-    | WP4746     | Thyroid hormones production and peripheral ...      | 0.000622     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP3584     | MECP2 and associated Rett syndrome                  | 0.000601     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP5224     | 2q37 copy number variation syndrome                 | 0.000567     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4549     | Fragile X syndrome                                  | 0.000555     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4657     | 22q11.2 copy number variation syndrome              | 0.000522     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4541     | Hippo-Merlin signaling dysregulation                | 0.000521     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4932     | 7q11.23 copy number variation syndrome              | 0.000492     |
-    +------------+-----------------------------------------------------+--------------+
-    | **WP5053** | **Development of ureteric collection system**       | **0.000454** |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4949     | 16p11.2 proximal deletion syndrome                  | 0.000442     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP5114     | Nucleotide excision repair in xeroderma pigmentosum | 0.000394     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4312     | Rett syndrome causing genes                         | 0.000393     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP2447     | Amyotrophic lateral sclerosis (ALS)                 | 0.000384     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4879     | Overlap between signal transduction pathways ...    | 0.000328     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4906     | 3q29 copy number variation syndrome                 | 0.000305     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4540     | Hippo signaling regulation pathways                 | 0.000303     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP5222     | 2q13 copy number variation syndrome                 | 0.000284     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP3995     | Prion disease pathway                               | 0.000280     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP3998     | Prader-Willi and Angelman syndrome                  | 0.000247     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4803     | Ciliopathies                                        | 0.000244     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP2371     | Parkinson's disease pathway                         | 0.000231     |
-    +------------+-----------------------------------------------------+--------------+
-    | **WP4823** | **Genes controlling nephrogenesis**                 | **0.000221** |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4545     | Oxysterols derived from cholesterol                 | 0.000214     |
-    +------------+-----------------------------------------------------+--------------+
 
-Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
-shown on the :numref:`useCase1_orsum`.
+We created a visualisation of the results (:numref:`useCase1_pathwaysNetworkRWR`) using Cytoscape [5]_.
 
 .. _useCase1_pathwaysNetworkRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
@@ -595,12 +486,12 @@ shown on the :numref:`useCase1_orsum`.
     Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
 
 
-Disease-Disease similarity network
-"""""""""""""""""""""""""""""""""""""
+Extra : analysis with disease-disease similarity network
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 *In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.*
 
-First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 extracted
+First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 retrieved
 target genes.
 
 We selected the top 10 of diseases (:ref:`Table 12 <useCase1_diseasesRWR>`).
@@ -671,5 +562,16 @@ References
 .. [1] Ozisik, O., Ehrhart, F., Evelo, C. T., Mantovani, A., & Baudot, A. (2021). Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research, 10.
 .. [2] Davis AP, Grondin CJ, Johnson RJ, Sciaky D, Wiegers J, Wiegers TC, Mattingly CJ The Comparative Toxicogenomics Database: update 2021. Nucleic Acids Res. 2021.
 .. [3] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
-.. [4] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+.. [4] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
 .. [5] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
+.. [6] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
+
+.. [9] Ozisik, O., Térézol, M., & Baudot, A. (2022). orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics, 23(1), 1-12.
+
+
+.. _ctd: http://ctdbase.org/
+.. |ctd| replace:: **the Comparative Toxicogenomics Database**
+.. _wp: https://www.wikipathways.org/
+.. |wp| replace:: **WikiPathways**
+.. _NDEx: https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa
+.. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys

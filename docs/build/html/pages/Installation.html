@@ -64,7 +64,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analysis/usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
@@ -106,8 +106,8 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>To use ODAMNet you need <code class="docutils literal notranslate"><span class="pre">python&gt;=3.9</span></code>.</p>
 <section id="from-pypi">
-<h2>From PyPi<a class="headerlink" href="#from-pypi" title="Permalink to this heading"></a></h2>
-<p>ODAMNet is available as Python package. You can easily install it using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<h2>From PyPI<a class="headerlink" href="#from-pypi" title="Permalink to this heading"></a></h2>
+<p>ODAMNet is available as <a class="reference external" href="https://pypi.org/project/ODAMNet/">PyPI</a>. You can easily install it using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>odamnet
 </pre></div>
 </div>
@@ -141,8 +141,8 @@
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Overlap analysis</p></li>
-<li><p>Active Modules Identification (AMI, using DOMINO)</p></li>
-<li><p>Random Walk with Restart (RWR, using multiXrank)</p></li>
+<li><p>Active Modules Identification (AMI, using <a class="reference external" href="http://domino.cs.tau.ac.il">DOMINO</a>)</p></li>
+<li><p>Random Walk with Restart (RWR, using <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/index.html">multiXrank</a>)</p></li>
 </ol>
 </div></blockquote>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span><span class="o">[</span>overlap<span class="p">|</span>domino<span class="p">|</span>multixrank<span class="o">]</span><span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>
@@ -151,6 +151,10 @@
 <p>The RWR approach requires the bipartite network of gene - rare disease associations. You can create this network using
 your pathways/processes of interest:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkCreation<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>
+</pre></div>
+</div>
+<p>Biological networks can be download directly from <a class="reference external" href="https://www.ndexbio.org/">NDEx</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>
 </pre></div>
 </div>
 <p>You can display help:</p>

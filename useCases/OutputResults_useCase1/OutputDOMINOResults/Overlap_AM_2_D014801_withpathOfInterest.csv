@@ -1,0 +1,105 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+WP4879;Overlap between signal transduction pathways contributing to LMNA laminopathies;WP_allPathways_request_2022_09_07.gmt;57;56;5;12399;5.483307470325929e-06;0.0005702639769138966;CEBPA CEBPB CEBPD JUNB RUNX2
+WP4844;Influence of laminopathies on Wnt signaling;WP_allPathways_request_2022_09_07.gmt;37;56;4;12399;2.2059747371209767e-05;0.0011471068633029078;CEBPA CEBPB CEBPD RUNX2
+WP4932;7q11.23 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;113;56;3;12399;0.014396019734941395;0.49906201747796836;ATF4 EIF2AK3 USF1
+WP2059;Alzheimer's disease and miRNA effects;WP_allPathways_request_2022_09_07.gmt;275;56;3;12399;0.1274437468809587;1.0;ATF4 DDIT3 EIF2AK3
+WP5103;Progeria-associated lipodystrophy;WP_allPathways_request_2022_09_07.gmt;22;56;0;12399;1.0;1.0;
+WP5102;Familial partial lipodystrophy;WP_allPathways_request_2022_09_07.gmt;30;56;1;12399;0.12712343924601585;1.0;CEBPA
+WP5101;Congenital generalized lipodystrophy;WP_allPathways_request_2022_09_07.gmt;18;56;0;12399;1.0;1.0;
+WP5087;Malignant pleural mesothelioma;WP_allPathways_request_2022_09_07.gmt;436;56;5;12399;0.046348422305859616;1.0;ATF2 ATF3 DDIT3 FOSL1 JUN
+WP5074;Kallmann syndrome;WP_allPathways_request_2022_09_07.gmt;24;56;0;12399;1.0;1.0;
+WP5053;Development of ureteric collection system;WP_allPathways_request_2022_09_07.gmt;60;56;1;12399;0.2383385859572268;1.0;ETV4
+WP5052;Nephrogenesis;WP_allPathways_request_2022_09_07.gmt;18;56;0;12399;1.0;1.0;
+WP5037;Riboflavin and CoQ disorders;WP_allPathways_request_2022_09_07.gmt;14;56;0;12399;1.0;1.0;
+WP5031;Biotin metabolism, including IMDs;WP_allPathways_request_2022_09_07.gmt;9;56;0;12399;1.0;1.0;
+WP4971;Phosphoinositides metabolism;WP_allPathways_request_2022_09_07.gmt;49;56;0;12399;1.0;1.0;
+WP5104;Acquired partial lipodystrophy / Barraquer-Simons syndrome;WP_allPathways_request_2022_09_07.gmt;10;56;0;12399;1.0;1.0;
+WP4950;16p11.2 distal deletion syndrome;WP_allPathways_request_2022_09_07.gmt;33;56;1;12399;0.13892650292482236;1.0;NFATC2
+WP4949;16p11.2 proximal deletion syndrome;WP_allPathways_request_2022_09_07.gmt;81;56;1;12399;0.307782684160014;1.0;MAZ
+WP4947;Nitric oxide metabolism in cystic fibrosis;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP4942;15q13.3 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;32;56;0;12399;1.0;1.0;
+WP4940;15q11.2 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;10;56;0;12399;1.0;1.0;
+WP4906;3q29 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;75;56;1;12399;0.2886023821351628;1.0;JUN
+WP4905;1q21.1 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;36;56;0;12399;1.0;1.0;
+WP4871;Kisspeptin/kisspeptin receptor system in the ovary;WP_allPathways_request_2022_09_07.gmt;39;56;0;12399;1.0;1.0;
+WP5030;Ethylmalonic encephalopathy;WP_allPathways_request_2022_09_07.gmt;3;56;0;12399;1.0;1.0;
+WP4842;Mammalian disorder of sexual development;WP_allPathways_request_2022_09_07.gmt;25;56;1;12399;0.10709760630875746;1.0;SOX9
+WP5108;Familial  hyperlipidemia type 1;WP_allPathways_request_2022_09_07.gmt;18;56;0;12399;1.0;1.0;
+WP5110;Familial hyperlipidemia type 3;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP5224;2q37 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;168;56;1;12399;0.534977462712029;1.0;JUN
+WP5223;2q21.1 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;42;56;0;12399;1.0;1.0;
+WP5222;2q13 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;68;56;0;12399;1.0;1.0;
+WP5221;2q11.2 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;65;56;0;12399;1.0;1.0;
+WP5202;Alstrom syndrome;WP_allPathways_request_2022_09_07.gmt;33;56;0;12399;1.0;1.0;
+WP5200;Dravet syndrome;WP_allPathways_request_2022_09_07.gmt;24;56;0;12399;1.0;1.0;
+WP5195;Disorders in ketolysis;WP_allPathways_request_2022_09_07.gmt;5;56;0;12399;1.0;1.0;
+WP5193;Cholesterol synthesis disorders;WP_allPathways_request_2022_09_07.gmt;18;56;0;12399;1.0;1.0;
+WP5190;Creatine pathway;WP_allPathways_request_2022_09_07.gmt;5;56;0;12399;1.0;1.0;
+WP5189;Copper metabolism;WP_allPathways_request_2022_09_07.gmt;4;56;0;12399;1.0;1.0;
+WP5109;Familial hyperlipidemia type 2;WP_allPathways_request_2022_09_07.gmt;16;56;1;12399;0.06990776611380059;1.0;USF1
+WP5178;Disorders of fructose metabolism;WP_allPathways_request_2022_09_07.gmt;14;56;0;12399;1.0;1.0;
+WP5175;Disorders in ketone body synthesis;WP_allPathways_request_2022_09_07.gmt;5;56;0;12399;1.0;1.0;
+WP5173;Disorders of galactose metabolism ;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP5171;Leukotriene metabolic pathway;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP5169;Hemesynthesis defects and porphyrias;WP_allPathways_request_2022_09_07.gmt;9;56;0;12399;1.0;1.0;
+WP5166;Glyoxylate metabolism;WP_allPathways_request_2022_09_07.gmt;11;56;0;12399;1.0;1.0;
+WP5124;Alzheimer's disease;WP_allPathways_request_2022_09_07.gmt;262;56;3;12399;0.11461956297312462;1.0;ATF4 DDIT3 EIF2AK3
+WP5120;Inclusion body myositis;WP_allPathways_request_2022_09_07.gmt;11;56;0;12399;1.0;1.0;
+WP5114;Nucleotide excision repair in xeroderma pigmentosum ;WP_allPathways_request_2022_09_07.gmt;74;56;0;12399;1.0;1.0;
+WP5112;Familial hyperlipidemia type 5;WP_allPathways_request_2022_09_07.gmt;15;56;0;12399;1.0;1.0;
+WP5111;Familial hyperlipidemia type 4;WP_allPathways_request_2022_09_07.gmt;22;56;0;12399;1.0;1.0;
+WP5176;Disorders of bile acid synthesis and biliary transport;WP_allPathways_request_2022_09_07.gmt;20;56;0;12399;1.0;1.0;
+WP4830;GDNF/RET signaling axis;WP_allPathways_request_2022_09_07.gmt;23;56;0;12399;1.0;1.0;
+WP4823;Genes controlling nephrogenesis;WP_allPathways_request_2022_09_07.gmt;44;56;1;12399;0.18087845595683577;1.0;ETV4
+WP4814;Somatic sex determination;WP_allPathways_request_2022_09_07.gmt;14;56;1;12399;0.061439021506116236;1.0;SOX9
+WP4299;Lamin A-processing pathway;WP_allPathways_request_2022_09_07.gmt;3;56;0;12399;1.0;1.0;
+WP4298;Acute viral myocarditis;WP_allPathways_request_2022_09_07.gmt;85;56;0;12399;1.0;1.0;
+WP4297;Thiamine metabolic pathways;WP_allPathways_request_2022_09_07.gmt;9;56;0;12399;1.0;1.0;
+WP4292;Methionine metabolism leading to sulfur amino acids and related disorders;WP_allPathways_request_2022_09_07.gmt;11;56;0;12399;1.0;1.0;
+WP4288;MTHFR deficiency;WP_allPathways_request_2022_09_07.gmt;24;56;0;12399;1.0;1.0;
+WP4271;Vitamin B12 disorders;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP4259;Disorders of folate metabolism and transport;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP4236;Krebs cycle disorders;WP_allPathways_request_2022_09_07.gmt;7;56;0;12399;1.0;1.0;
+WP4228;Vitamin B6-dependent and responsive disorders;WP_allPathways_request_2022_09_07.gmt;4;56;0;12399;1.0;1.0;
+WP4225;Pyrimidine metabolism and related diseases;WP_allPathways_request_2022_09_07.gmt;17;56;0;12399;1.0;1.0;
+WP4312;Rett syndrome causing genes;WP_allPathways_request_2022_09_07.gmt;48;56;1;12399;0.1956304990217412;1.0;GABBR2
+WP4224;Purine metabolism and related disorders;WP_allPathways_request_2022_09_07.gmt;22;56;0;12399;1.0;1.0;
+WP4157;GABA metabolism (aka GHB);WP_allPathways_request_2022_09_07.gmt;6;56;0;12399;1.0;1.0;
+WP4156;Biosynthesis and regeneration of tetrahydrobiopterin and catabolism of phenylalanine;WP_allPathways_request_2022_09_07.gmt;10;56;0;12399;1.0;1.0;
+WP4153;Degradation pathway of sphingolipids, including diseases;WP_allPathways_request_2022_09_07.gmt;15;56;0;12399;1.0;1.0;
+WP3998;Prader-Willi and Angelman syndrome;WP_allPathways_request_2022_09_07.gmt;68;56;0;12399;1.0;1.0;
+WP3995;Prion disease pathway;WP_allPathways_request_2022_09_07.gmt;33;56;1;12399;0.13892650292482236;1.0;BATF
+WP3853;ERK pathway in Huntington's disease;WP_allPathways_request_2022_09_07.gmt;15;56;0;12399;1.0;1.0;
+WP3584;MECP2 and associated Rett syndrome;WP_allPathways_request_2022_09_07.gmt;73;56;1;12399;0.2820936929714346;1.0;CEBPD
+WP3569;Fanconi Anemia Pathway;WP_allPathways_request_2022_09_07.gmt;39;56;0;12399;1.0;1.0;
+WP2447;Amyotrophic lateral sclerosis (ALS);WP_allPathways_request_2022_09_07.gmt;38;56;0;12399;1.0;1.0;
+WP2371;Parkinson's disease pathway;WP_allPathways_request_2022_09_07.gmt;47;56;0;12399;1.0;1.0;
+WP4220;Neurotransmitter disorders;WP_allPathways_request_2022_09_07.gmt;4;56;0;12399;1.0;1.0;
+WP4320;Effect of progerin on genes involved in Hutchinson-Gilford progeria syndrome;WP_allPathways_request_2022_09_07.gmt;37;56;0;12399;1.0;1.0;
+WP4504;Cysteine and methionine catabolism;WP_allPathways_request_2022_09_07.gmt;15;56;0;12399;1.0;1.0;
+WP4506;Tyrosine metabolism and related disorders;WP_allPathways_request_2022_09_07.gmt;5;56;0;12399;1.0;1.0;
+WP4804;Cholesterol biosynthesis with skeletal dysplasias;WP_allPathways_request_2022_09_07.gmt;7;56;0;12399;1.0;1.0;
+WP4803;Ciliopathies;WP_allPathways_request_2022_09_07.gmt;184;56;0;12399;1.0;1.0;
+WP4792;Purine metabolism;WP_allPathways_request_2022_09_07.gmt;13;56;0;12399;1.0;1.0;
+WP4746;Thyroid hormones production and peripheral downstream signaling effects;WP_allPathways_request_2022_09_07.gmt;92;56;1;12399;0.34163637105303574;1.0;ATF2
+WP4688;Serine metabolism;WP_allPathways_request_2022_09_07.gmt;8;56;0;12399;1.0;1.0;
+WP4686;Leucine, isoleucine and valine metabolism;WP_allPathways_request_2022_09_07.gmt;24;56;0;12399;1.0;1.0;
+WP4673;Male infertility;WP_allPathways_request_2022_09_07.gmt;145;56;1;12399;0.4832649777886277;1.0;NFE2L2
+WP4657;22q11.2 copy number variation syndrome;WP_allPathways_request_2022_09_07.gmt;149;56;0;12399;1.0;1.0;
+WP4656;Joubert syndrome;WP_allPathways_request_2022_09_07.gmt;76;56;1;12399;0.2918349581303396;1.0;ATF4
+WP4595;Urea cycle and associated pathways;WP_allPathways_request_2022_09_07.gmt;24;56;0;12399;1.0;1.0;
+WP4577;Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway;WP_allPathways_request_2022_09_07.gmt;44;56;0;12399;1.0;1.0;
+WP4549;Fragile X syndrome;WP_allPathways_request_2022_09_07.gmt;112;56;1;12399;0.3990726987439738;1.0;AKAP5
+WP4545;Oxysterols derived from cholesterol;WP_allPathways_request_2022_09_07.gmt;46;56;1;12399;0.18828739129570693;1.0;DBP
+WP4541;Hippo-Merlin signaling dysregulation;WP_allPathways_request_2022_09_07.gmt;120;56;0;12399;1.0;1.0;
+WP4540;Hippo signaling regulation pathways;WP_allPathways_request_2022_09_07.gmt;98;56;0;12399;1.0;1.0;
+WP4535;Envelope proteins and their potential roles in EDMD physiopathology;WP_allPathways_request_2022_09_07.gmt;46;56;0;12399;1.0;1.0;
+WP4524;Alternative pathway of fetal androgen synthesis;WP_allPathways_request_2022_09_07.gmt;11;56;0;12399;1.0;1.0;
+WP4523;Classical pathway of steroidogenesis with glucocorticoid and mineralocorticoid metabolism;WP_allPathways_request_2022_09_07.gmt;16;56;0;12399;1.0;1.0;
+WP4522;Metabolic pathway of LDL, HDL and TG, including diseases;WP_allPathways_request_2022_09_07.gmt;17;56;0;12399;1.0;1.0;
+WP4521;Glycosylation and related congenital defects;WP_allPathways_request_2022_09_07.gmt;25;56;0;12399;1.0;1.0;
+WP4519;Cerebral organic acidurias, including diseases;WP_allPathways_request_2022_09_07.gmt;8;56;0;12399;1.0;1.0;
+WP4518;Gamma-glutamyl cycle for the biosynthesis and degradation of glutathione, including diseases;WP_allPathways_request_2022_09_07.gmt;6;56;0;12399;1.0;1.0;
+WP4507;Molybdenum cofactor (Moco) biosynthesis;WP_allPathways_request_2022_09_07.gmt;7;56;0;12399;1.0;1.0;
+WP5234;Bardet-Biedl syndrome;WP_allPathways_request_2022_09_07.gmt;88;56;0;12399;1.0;1.0;
+WP5269;Genetic causes of PSVD/INCPH;WP_allPathways_request_2022_09_07.gmt;37;56;0;12399;1.0;1.0;

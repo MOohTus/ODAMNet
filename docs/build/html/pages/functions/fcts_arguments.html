@@ -64,7 +64,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are extracted automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
@@ -517,7 +517,8 @@ False: Extract target genes from chemicals + its child chemicals</p>
 <h2>Network downloading<a class="headerlink" href="#network-downloading" title="Permalink to this heading"></a></h2>
 <section id="odamnet-networkdownloading">
 <h3>odamnet networkDownloading<a class="headerlink" href="#odamnet-networkdownloading" title="Permalink to this heading"></a></h3>
-<p>Download networks from NDEx using the UUID network.</p>
+<p>Download networks from NDEx using the UUID network.
+Create a tab separated file with three columns: node1, interaction type and node2</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
 </pre></div>
 </div>
@@ -532,6 +533,12 @@ False: Extract target genes from chemicals + its child chemicals</p>
 <dt class="sig sig-object std" id="cmdoption-odamnet-networkDownloading-networkFile">
 <span id="cmdoption-odamnet-networkdownloading-networkfile"></span><span class="sig-name descname"><span class="pre">--networkFile</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;FILENAME&gt;</span></span><a class="headerlink" href="#cmdoption-odamnet-networkDownloading-networkFile" title="Permalink to this definition"></a></dt>
 <dd><p><strong>Required</strong> Network file name</p>
+</dd></dl>
+
+<dl class="std option">
+<dt class="sig sig-object std" id="cmdoption-odamnet-networkDownloading-simple">
+<span id="cmdoption-odamnet-networkdownloading-simple"></span><span class="sig-name descname"><span class="pre">--simple</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;simple&gt;</span></span><a class="headerlink" href="#cmdoption-odamnet-networkDownloading-simple" title="Permalink to this definition"></a></dt>
+<dd><p>Remove interaction column and header</p>
 </dd></dl>
 
 </section>
