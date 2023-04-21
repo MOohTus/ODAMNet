@@ -1,14 +1,14 @@
 multiplex:
     1:
         layers:
-            - multiplex/1/Complexes_Nov2020.gr
-            - multiplex/1/PPI_Jan2021.gr
-            - multiplex/1/Reactome_Nov2020.gr
+            - multiplex/1/Complexes_gene_names_190123.tsv
+            - multiplex/1/Pathways_reactome_gene_names_190123.tsv
+            - multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv
     2:
         layers:
-            - multiplex/2/WP_RareDiseasesNetwork_fromRequest.sif
+            - multiplex/2/RareDiseasePathways_network_useCase1.tsv
 bipartite:
-    bipartite/Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv:
+    bipartite/Bipartite_RareDiseasePathways_geneSymbols_useCase1.tsv:
         source: 2
         target: 1
 seed:
