@@ -394,9 +394,9 @@ Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
 .. tip::
 
-    | Multiplex network is downloaded directly from NDEx (:ref:`ICI`)
-    | Creation of the rare disease pathways network (:ref:`pathwaysOfInterestNet`)
-    | Configuration file explanation and example (:ref:`configFile)
+    | - Multiplex network is downloaded directly from NDEx (:ref:`ICI`)
+    | - Creation of the rare disease pathways network (:ref:`pathwaysOfInterestNet`)
+    | - Configuration file explanation and example (:ref:`configFile`)
 
 
 Several files are generated:
@@ -474,88 +474,93 @@ pathways are prioritized. We select the top 20 and present the top 5 (:ref:`Tabl
     | WP4298     | Acute viral myocarditis                             | 0.000731     |
     +------------+-----------------------------------------------------+--------------+
 
-We created a visualisation of the results (:numref:`useCase1_pathwaysNetworkRWR`) using Cytoscape [5]_.
+We created a visualisation of the results (:numref:`useCase1_pathwaysNetworkRWR`) using Cytoscape [5]_. You can
+retrieved the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase1_pathwaysNetworkRWR`
+presents the top 5 of rare disease pathways, ordered by RWR score.
 
 .. _useCase1_pathwaysNetworkRWR:
-.. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
+.. figure:: ../../pictures/UseCase1/UseCase1_RWR_top5.png
    :alt: usecase 1 pathwaysNetworkRWR
    :align: center
 
-   : Results from RWR through the multiplex network and rare disease pathways network
+   : Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network
 
-    Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
-
+    Rare disease pathways are in pink triangles. Target genes are in grey and non-target genes are in white.
 
 Extra : analysis with disease-disease similarity network
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-*In this part, we present results found for the second multilayer network composition: multiplex network + disease-disease network.*
+.. tip::
 
-First, multiXrank uses target genes as *seeds* to start the walk. Over 1,988 target genes are used over 2,143 retrieved
-target genes.
+    Same command line, but you need to change configuration file :octicon:`alert;2em`.
 
-We selected the top 10 of diseases (:ref:`Table 12 <useCase1_diseasesRWR>`).
+We also propose to run an RWR approach using a disease-disease similarity network. In this network, rare diseases are
+linked together according their phenotype similarity whereas in the previous network they were not at all connected.
+
+We used a multilayer network composed of three genes network and one disease-disease similarity network (:ref:`ICI`).
+
+multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
+the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
+prioritized. We select the top 20 and present the top 5 (:ref:`Table 12 <useCase1_diseasesRWR>`).
 
 .. _useCase1_diseasesRWR:
-.. table:: Diseases linked to target genes
+.. table:: Rare disease prioritization using RWR score. The top 5 is displayed.
     :align: center
 
     +-------------+-----------------------------------------+----------+
     | node        | Disease name                            | score    |
     +=============+=========================================+==========+
-    | OMIM:601626 | Leukemia, acute myeloid                 | 0.000161 |
+    | OMIM:601626 | Leukemia, acute myeloid                 | 1.68e-04 |
     +-------------+-----------------------------------------+----------+
-    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 0.000155 |
+    | OMIM:114500 | Colorectal cancer                       | 1.61e-04 |
     +-------------+-----------------------------------------+----------+
-    | OMIM:114500 | Colorectal cancer                       | 0.000153 |
+    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 1.60e-04 |
     +-------------+-----------------------------------------+----------+
-    | OMIM:211980 | Lung cancer, susceptibility to          | 0.000117 |
+    | OMIM:114480 | Breast cancer                           | 1.20e-04 |
     +-------------+-----------------------------------------+----------+
-    | OMIM:600807 | Asthma, susceptibility to               | 0.000103 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:114480 | Breast cancer                           | 0.000087 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:601665 | OBESITY                                 | 0.000067 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:114550 | Hepatocellular carcinoma                | 0.000066 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:613659 | Gastric cancer, somatic                 | 0.000064 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:180300 | Rheumatoid arthritis                    | 0.000064 |
+    | OMIM:211980 | Lung cancer, susceptibility to          | 1.16e-04 |
     +-------------+-----------------------------------------+----------+
 
-You can represent the results with a network as shown in the :numref:`useCase1_simNetworkRWR`.
+We created a visualisation of the results (:numref:`useCase1_simNetworkRWR`) using Cytoscape [5]_. You can retrieved
+the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase1_simNetworkRWR` presents the
+top 5 of rare disease pathways, ordered by RWR score.
 
 .. _useCase1_simNetworkRWR:
-.. figure:: ../../pictures/RWR_pathwaysNet_useCase1_simNet.png
+.. figure:: ../../pictures/UseCase1/UseCase1_RWR_top5_sim.png
    :alt: usecase 1 simNetworkRWR
    :align: center
 
-   : Results from RWR through the multiplex network and disease-disease similarity network
+   : Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network
 
-    Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
+    Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white.
 
+Overlap, AMI and RWR results comparison
+===========================================
 
-Results comparison
-======================
-
-We compare results obtained with the three different approaches (overlap, active modules identification and random walk
-with restart), using orsum [4]_.
-Results are displayed into a heatmap in the :numref:`useCase1_orsum`.
+We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
+and Random Walk with Restart (RWR). We used orsum [4]_, a Python package to filter and integrate enrichment analysis
+from several analyses. The main result is a heatmap, presented in :numref:`useCase1_orsum`.
 
 .. code-block:: bash
 
-    orsum.py    --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt \
-                --files Overlap_D014801_withRDWP.4Orsum DOMINO_D014801_signOverlap.4Orsum diseasesResults.4Orsum \
-                --fileAliases Overlap DOMINO multiXrank \
-                --outputFolder useCase1Comparison/
+    orsum.py --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt \
+             --files 00_Data/Overlap_D014801.4Orsum 00_Data/DOMINO_D014801.4Orsum 00_Data/RWR_D014801.4Orsum
+             --fileAliases Overlap AMI RWR \
+             --maxRepSize 0 \
+             --outputFolder UseCase1_D014801_orsum
 
 .. _useCase1_orsum:
-.. figure:: ../../pictures/useCase1_orsum.png
+.. figure:: ../../pictures/UseCase1/UseCase1_orsum.png
    :alt: usecase1 orsum
    :align: center
 
-   : Comparison of use-case 1 results using orsum
+   : Overlap, AMI and RWR results integration and comparison using orsum
+
+The ``--maxRepSize`` parameter is set to 0 to consider each term as is own representative term.
+
+Some rare disease pathways are retrieved associated with vitamin A by all the three approaches such as
+*Malignant pleural mesothelioma* or *Acute viral myocarditis*. Some other rare disease pathways are retrieved associated
+with vitamin A only by one (*NBIA subtypes pathway*) or two (*Male infertility*).
 
 References
 ============

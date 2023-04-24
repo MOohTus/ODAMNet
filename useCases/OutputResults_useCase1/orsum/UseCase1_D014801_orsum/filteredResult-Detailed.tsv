@@ -1,0 +1,77 @@
+Representing term id	Representing term name	Representing term rank	Overlap term id	Overlap term name	Overlap term rank	AMI term id	AMI term name	AMI term rank	RWR term id	RWR term name	RWR term rank
+WP5087	Malignant pleural mesothelioma	1
+			WP5087	Malignant pleural mesothelioma	1	WP5087	Malignant pleural mesothelioma	1	WP5087	Malignant pleural mesothelioma	1
+WP4298	Acute viral myocarditis	2
+			WP4298	Acute viral myocarditis	2	WP4298	Acute viral myocarditis	9	WP4298	Acute viral myocarditis	5
+WP4541	Hippo-Merlin signaling dysregulation	2
+			WP4541	Hippo-Merlin signaling dysregulation	13	WP4541	Hippo-Merlin signaling dysregulation	2	WP4541	Hippo-Merlin signaling dysregulation	11
+WP4673	Male infertility	2
+			WP4673	Male infertility	16				WP4673	Male infertility	2
+WP2447	Amyotrophic lateral sclerosis (ALS)	3
+			WP2447	Amyotrophic lateral sclerosis (ALS)	3	WP2447	Amyotrophic lateral sclerosis (ALS)	8	WP2447	Amyotrophic lateral sclerosis (ALS)	17
+WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	3
+						WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	3			
+WP2059	Alzheimer's disease and miRNA effects	3
+			WP2059	Alzheimer's disease and miRNA effects	8	WP2059	Alzheimer's disease and miRNA effects	11	WP2059	Alzheimer's disease and miRNA effects	3
+WP5053	Development of ureteric collection system	4
+			WP5053	Development of ureteric collection system	4	WP5053	Development of ureteric collection system	4	WP5053	Development of ureteric collection system	13
+WP5124	Alzheimer's disease	4
+			WP5124	Alzheimer's disease	6	WP5124	Alzheimer's disease	10	WP5124	Alzheimer's disease	4
+WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	5
+			WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	5	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	12	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	18
+WP4540	Hippo signaling regulation pathways	5
+			WP4540	Hippo signaling regulation pathways	24	WP4540	Hippo signaling regulation pathways	5	WP4540	Hippo signaling regulation pathways	20
+WP3998	Prader-Willi and Angelman syndrome	6
+						WP3998	Prader-Willi and Angelman syndrome	6			
+WP3584	MECP2 and associated Rett syndrome	6
+			WP3584	MECP2 and associated Rett syndrome	7	WP3584	MECP2 and associated Rett syndrome	19	WP3584	MECP2 and associated Rett syndrome	6
+WP4549	Fragile X syndrome	7
+			WP4549	Fragile X syndrome	14	WP4549	Fragile X syndrome	7	WP4549	Fragile X syndrome	8
+WP4746	Thyroid hormones production and peripheral downstream signaling effects	7
+			WP4746	Thyroid hormones production and peripheral downstream signaling effects	10				WP4746	Thyroid hormones production and peripheral downstream signaling effects	7
+WP3995	Prion disease pathway	9
+			WP3995	Prion disease pathway	9						
+WP5224	2q37 copy number variation syndrome	9
+									WP5224	2q37 copy number variation syndrome	9
+WP4657	22q11.2 copy number variation syndrome	10
+									WP4657	22q11.2 copy number variation syndrome	10
+WP4830	GDNF/RET signaling axis	11
+			WP4830	GDNF/RET signaling axis	11						
+WP4823	Genes controlling nephrogenesis	12
+			WP4823	Genes controlling nephrogenesis	12						
+WP4932	7q11.23 copy number variation syndrome	12
+									WP4932	7q11.23 copy number variation syndrome	12
+WP4844	Influence of laminopathies on Wnt signaling	13
+			WP4844	Influence of laminopathies on Wnt signaling	23	WP4844	Influence of laminopathies on Wnt signaling	13			
+WP4906	3q29 copy number variation syndrome	14
+						WP4906	3q29 copy number variation syndrome	14	WP4906	3q29 copy number variation syndrome	19
+WP4949	16p11.2 proximal deletion syndrome	14
+						WP4949	16p11.2 proximal deletion syndrome	15	WP4949	16p11.2 proximal deletion syndrome	14
+WP4871	Kisspeptin/kisspeptin receptor system in the ovary	15
+			WP4871	Kisspeptin/kisspeptin receptor system in the ovary	15						
+WP5114	Nucleotide excision repair in xeroderma pigmentosum 	15
+									WP5114	Nucleotide excision repair in xeroderma pigmentosum 	15
+WP5120	Inclusion body myositis	16
+			WP5120	Inclusion body myositis	28	WP5120	Inclusion body myositis	16			
+WP4312	Rett syndrome causing genes	16
+									WP4312	Rett syndrome causing genes	16
+WP3853	ERK pathway in Huntington's disease	17
+			WP3853	ERK pathway in Huntington's disease	17	WP3853	ERK pathway in Huntington's disease	18			
+WP4971	Phosphoinositides metabolism	17
+						WP4971	Phosphoinositides metabolism	17			
+WP5102	Familial partial lipodystrophy	18
+			WP5102	Familial partial lipodystrophy	18						
+WP4288	MTHFR deficiency	19
+			WP4288	MTHFR deficiency	19						
+WP5103	Progeria-associated lipodystrophy	20
+			WP5103	Progeria-associated lipodystrophy	20						
+WP5269	Genetic causes of PSVD/INCPH	21
+			WP5269	Genetic causes of PSVD/INCPH	21						
+WP5074	Kallmann syndrome	22
+			WP5074	Kallmann syndrome	22						
+WP5110	Familial hyperlipidemia type 3	25
+			WP5110	Familial hyperlipidemia type 3	25						
+WP4224	Purine metabolism and related disorders	26
+			WP4224	Purine metabolism and related disorders	26						
+WP2371	Parkinson's disease pathway	27
+			WP2371	Parkinson's disease pathway	27						

@@ -200,3 +200,7 @@ shown on the :numref:`useCase1_orsum`.
    : Results from RWR through the multiplex network and rare disease pathways network
 
     Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
+
+awk -F"\t" 'NR==FNR{a[$1]; next} {if($1 in a){print $1"\t"$2}}' RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt
+
+awk -F"\t" 'NR==FNR{a[$1]; next} {if($1 in a){print $1"\t"$2}}' RWR_top20.txt ../../../../../DiseaseNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa > diseasesDescription.txt
