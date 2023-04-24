@@ -25,7 +25,13 @@ This project was created within the framework of the `EJRP-RD project <https://w
    pages/approaches/methods_overlap
    pages/approaches/methods_AMI
    pages/approaches/methods_RWR
-   pages/approaches/Cytoscape
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Networks
+
+   pages/network/Network
+   pages/network/Cytoscape
 
 .. toctree::
    :maxdepth: 2

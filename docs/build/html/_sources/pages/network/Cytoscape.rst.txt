@@ -1,5 +1,5 @@
 ================================
-Network visualisation
+Networks visualisation
 ================================
 
 Results can be visualise using network representation with Cytoscape [1]_.

@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Use-case 2: data are provided by the user" href="usecase2.html" />
-    <link rel="prev" title="Network visualisation" href="../approaches/Cytoscape.html" /> 
+    <link rel="prev" title="Networks visualisation" href="../network/Cytoscape.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,7 +60,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../approaches/Cytoscape.html">Network visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html">Networks downloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-creation">Networks creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-used">Networks used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Cytoscape.html">Networks visualisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul class="current">
@@ -530,7 +536,7 @@ project called <code class="docutils literal notranslate"><span class="pre">AMI_
 <div><p>Genes are represented by nodes. Grey nodes are the target genes, white nodes are non-target genes. Overlap results
 between active modules and rare disease pathways as displayed using donuts color around nodes. Each color
 corresponds to a rare disease.
-Creation steps are explained in the <a class="reference internal" href="../approaches/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
+Creation steps are explained in the <a class="reference internal" href="../network/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
 </div></blockquote>
 </div>
 </figcaption>
@@ -574,7 +580,7 @@ also a SIF file name (<code class="docutils literal notranslate"><span class="pr
 <p class="admonition-title">Tip</p>
 <div class="line-block">
 <div class="line">- Multiplex network is downloaded directly from NDEx (<span class="xref std std-ref">ICI</span>)</div>
-<div class="line">- Creation of the rare disease pathways network (<a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>)</div>
+<div class="line">- Creation of the rare disease pathways network (<a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>)</div>
 <div class="line">- Configuration file explanation and example (<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a>)</div>
 </div>
 </div>
@@ -629,7 +635,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 <section id="analysis-with-rare-disease-pathways-network">
 <h5>Analysis with rare disease pathways network<a class="headerlink" href="#analysis-with-rare-disease-pathways-network" title="Permalink to this heading"></a></h5>
 <p>We used a multilayer network composed of three genes network and one rare disease pathways network
-(<a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>).</p>
+(<a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>).</p>
 <p>multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
 pathways are prioritized. We select the top 20 and present the top 5 (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
@@ -805,7 +811,7 @@ with vitamin A only by one (<em>NBIA subtypes pathway</em>) or two (<em>Male inf
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../approaches/Cytoscape.html" class="btn btn-neutral float-left" title="Network visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../network/Cytoscape.html" class="btn btn-neutral float-left" title="Networks visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="usecase2.html" class="btn btn-neutral float-right" title="Use-case 2: data are provided by the user" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

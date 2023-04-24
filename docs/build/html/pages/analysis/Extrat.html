@@ -59,7 +59,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overlap.html">Overlap analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_AMI.html">Active Module Identification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../approaches/methods_RWR.html">Random Walk with Restart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../approaches/Cytoscape.html">Network visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html">Networks downloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-creation">Networks creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-used">Networks used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/Cytoscape.html">Networks visualisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
@@ -112,8 +118,8 @@
 <section id="running-random-walk-analysis-with-data-retrieved-automatically-from-databases">
 <h1>Running Random Walk analysis with data retrieved automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h1>
 <div class="line-block">
-<div class="line">To know how to create the rare disease pathways network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</div>
-<div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
+<div class="line">To know how to create the rare disease pathways network: see <a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</div>
+<div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../network/Network.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
 </div>
 <p>Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
 The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
@@ -200,8 +206,8 @@ target genes.</p>
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
 <p>According this highest score, <strong>27 pathways</strong> are selected (<a class="reference internal" href="usecase1.html#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
-<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id1">
-<caption><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
+<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id2">
+<caption><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>node</p></th>
 <th class="head"><p>pathways</p></th>
@@ -321,10 +327,10 @@ with target genes (i.e. seeds).</p>
 </table>
 <p>Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
 shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
-<figure class="align-center" id="id2">
+<figure class="align-center" id="id3">
 <span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
 <figcaption>
-<p><span class="caption-text">: Results from RWR through the multiplex network and rare disease pathways network</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+<p><span class="caption-text">: Results from RWR through the multiplex network and rare disease pathways network</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -334,6 +340,26 @@ shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><
 </figure>
 <p>awk -F”t” ‘NR==FNR{a[$1]; next} {if($1 in a){print $1”t”$2}}’ RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt</p>
 <p>awk -F”t” ‘NR==FNR{a[$1]; next} {if($1 in a){print $1”t”$2}}’ RWR_top20.txt ../../../../../DiseaseNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa &gt; diseasesDescription.txt</p>
+</section>
+<section id="networks-available">
+<h1>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We use the multilayer network from multiXrank’s paper <a href="#id5"><span class="problematic" id="id1">[1]_</span></a>.</p>
+</div>
+<p>We propose to run the RWR on two different multilayer networks:</p>
+<ul class="simple">
+<li><p>multilayer network with three molecular layers + pathways/processes of interest network (<a class="reference internal" href="../approaches/methods_RWR.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
+<li><p>multilayer network with three molecular layers + disease-disease similarity network (<a class="reference internal" href="../approaches/methods_RWR.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
+</ul>
+<figure class="align-center" id="id4">
+<span id="rwrfig"></span><img alt="RWR networks" src="../../_images/NetworkAvailable_RWR.png" />
+<figcaption>
+<p><span class="caption-text">: Random Walk with Restart into two different network compositions</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><em>multiXrank need network as input. So we create the pathways/processes of interest network, even if it’s a disconnected</em>
+<em>network (without link between nodes).</em></p>
 </section>
 
 

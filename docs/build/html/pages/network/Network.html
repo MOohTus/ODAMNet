@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Networks downloading &mdash; ODAMNet 1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/tabs.js"></script>
+        <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Networks visualisation" href="Cytoscape.html" />
+    <link rel="prev" title="Random Walk with Restart" href="../approaches/methods_RWR.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ODAMNet
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Installation.html#usage">Usage</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Approaches</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overview.html">Overview of the approaches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_overlap.html">Overlap analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_AMI.html">Active Module Identification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../approaches/methods_RWR.html">Random Walk with Restart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Networks</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Networks downloading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-network-downloading">Input parameters for network downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-case-command-lines">Use-case command lines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#networks-creation">Networks creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pathways-processes-of-interest-network">Pathways/processes of interest network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Input parameters for network downloading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Use-case command lines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#networks-used">Networks used</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#genes-multilayer-network">Genes multilayer network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#protein-protein-interaction-ppi-network">Protein-Protein Interaction (PPI) network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#molecular-complexes-network">Molecular complexes network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reactome-pathways-network">Reactome pathways network</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Use-case command lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#disease-disease-similarity-network">Disease-disease similarity network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#disease-disease-similarity-network-creation">Disease-disease similarity network creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gene-disease-bipartite">Gene-disease bipartite</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Cytoscape.html">Networks visualisation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">File formats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Input.html">Input files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formats/Output.html">Output files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Code description</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_arguments.html">Input parameters for each approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functions/fcts_description.html">Code functions in details</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ODAMNet</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Networks downloading</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/pages/network/Network.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="networks-downloading">
+<span id="netdownloading"></span><h1>Networks downloading<a class="headerlink" href="#networks-downloading" title="Permalink to this heading"></a></h1>
+<section id="principle">
+<h2>Principle<a class="headerlink" href="#principle" title="Permalink to this heading"></a></h2>
+<p>You can download biological networks from NDEx <a class="footnote-reference brackets" href="#id14" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using <code class="docutils literal notranslate"><span class="pre">networkDownloading</span></code> function available in ODAMNet.</p>
+</section>
+<section id="input-parameters-for-network-downloading">
+<h2>Input parameters for network downloading<a class="headerlink" href="#input-parameters-for-network-downloading" title="Permalink to this heading"></a></h2>
+<dl class="option-list">
+<dt><kbd><span class="option">--netUUID <var>TEXT</var></span></kbd></dt>
+<dd><p>NDEx network ID <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
+<dd><p>Output file name to save the downloaded network <strong>[required]</strong></p>
+</dd>
+<dt><kbd><span class="option">--simple <var>BOOLEAN</var></span></kbd></dt>
+<dd><div class="line-block">
+<div class="line">if TRUE, create a file with two columns and no header (<em>for RWR approach</em>) [<span class="xref std std-ref">NETFORMAT</span>]</div>
+<div class="line">if FALSE, create a file with three columns and header (<em>for AMI approach</em>) [<span class="xref std std-ref">NETFORMAT</span>]</div>
+</div>
+</dd>
+</dl>
+<p>For the use-cases, we downloaded three biological networks.</p>
+</section>
+<section id="use-case-command-lines">
+<h2>Use-case command lines<a class="headerlink" href="#use-case-command-lines" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w">  </span>--netUUID<span class="w"> </span>bfac0486-cefe-11ed-a79c-005056ae23aa<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--networkFile<span class="w"> </span>useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--simple<span class="w"> </span>True
+</pre></div>
+</div>
+</section>
+</section>
+<section id="networks-creation">
+<span id="netcreation"></span><h1>Networks creation<a class="headerlink" href="#networks-creation" title="Permalink to this heading"></a></h1>
+<section id="pathways-processes-of-interest-network">
+<span id="pathwaysofinterestnet"></span><h2>Pathways/processes of interest network<a class="headerlink" href="#pathways-processes-of-interest-network" title="Permalink to this heading"></a></h2>
+<p>This kind of network can be build using the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> method.</p>
+<p>By default, the network is build using rare disease pathways extracted automatically from WikiPathways.</p>
+<p>The created network will be a disconnected network (i.e. no link between nodes). To have a proper SIF format, every nodes
+will be link to itself.</p>
+<dl class="option-list">
+<dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the pathways/processes network will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
+<dd><p>Output repository name where the bipartite gene-pathway will be saved.</p>
+</dd>
+<dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the pathway network. The created file will be in SIF file format.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.sif]</span></code></p>
+</dd>
+<dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>
+<dd><p>You can give a name to the bipartite. It’s a tab-separated file.
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv]</span></code></p>
+</dd>
+<dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
+<dd><p>Name of the folder to save complementary results (i.e. request results)
+<code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
+</dd>
+</dl>
+<p>Moreover, you can provide your own pathways/processes of interest file using <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tab" tabindex="0">Data extracted from requests</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tab" tabindex="-1">Data provided by users</button></div><div aria-labelledby="tab-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" name="RGF0YSBleHRyYWN0ZWQgZnJvbSByZXF1ZXN0cw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkCreation<span class="w"> </span>--networksPath<span class="w"> </span>useCases/InputData/multiplex/2/<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--networksName<span class="w"> </span>WP_RareDiseasesNetwork_fromRequest.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--bipartitePath<span class="w"> </span>useCases/InputData/bipartite/<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--bipartiteName<span class="w"> </span>Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase1
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" name="RGF0YSBwcm92aWRlZCBieSB1c2Vycw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkCreation<span class="w"> </span>--networksPath<span class="w"> </span>useCases/InputData/multiplex/2/<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--networksName<span class="w"> </span>pathwaysOfInterestNetwork_fromPaper.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--bipartitePath<span class="w"> </span>useCases/InputData/bipartite/<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--bipartiteName<span class="w"> </span>Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
+<span class="w">                                </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase2
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="id2">
+<h2>Principle<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
+</section>
+<section id="id3">
+<h2>Input parameters for network downloading<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+</section>
+<section id="id4">
+<h2>Use-case command lines<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="networks-used">
+<span id="netused"></span><h1>Networks used<a class="headerlink" href="#networks-used" title="Permalink to this heading"></a></h1>
+<section id="genes-multilayer-network">
+<h2>Genes multilayer network<a class="headerlink" href="#genes-multilayer-network" title="Permalink to this heading"></a></h2>
+<section id="protein-protein-interaction-ppi-network">
+<h3>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h3>
+<p>The Protein-Protein Interaction (PPI) network is obtained from fusion of three datasets : APID, Hi-Union <a class="footnote-reference brackets" href="#id15" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>
+and Lit-BM <a class="footnote-reference brackets" href="#id16" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. It’s composed of:</p>
+<ul class="simple">
+<li><p>15,390 3 nodes</p></li>
+<li><p>131,087 edges</p></li>
+<li><p>UUID: bfac0486-cefe-11ed-a79c-005056ae23aa</p></li>
+</ul>
+</section>
+<section id="molecular-complexes-network">
+<h3>Molecular complexes network<a class="headerlink" href="#molecular-complexes-network" title="Permalink to this heading"></a></h3>
+<p>Molecular complexes network is constructed from the fusion of Hu.map <a class="footnote-reference brackets" href="#id17" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and Corum <a class="footnote-reference brackets" href="#id18" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. It’s composed of:</p>
+<ul class="simple">
+<li><p>8,497 nodes</p></li>
+<li><p>62,073 edges</p></li>
+<li><p>UUID: 419ae651-cf05-11ed-a79c-005056ae23aa</p></li>
+</ul>
+</section>
+<section id="reactome-pathways-network">
+<h3>Reactome pathways network<a class="headerlink" href="#reactome-pathways-network" title="Permalink to this heading"></a></h3>
+<p>The Reactome pathways network was build using data derived from Reactome protein-protein interaction data <a class="footnote-reference brackets" href="#id19" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.
+It’s composed of:</p>
+<ul class="simple">
+<li><p>4,598 nodes</p></li>
+<li><p>19,292 edges</p></li>
+<li><p>UUID: b13e9620-cefd-11ed-a79c-005056ae23aa</p></li>
+</ul>
+</section>
+</section>
+<section id="id10">
+<h2>Use-case command lines<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h2>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-UFBJIG5ldHdvcms=" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-1-UFBJIG5ldHdvcms=" name="UFBJIG5ldHdvcms=" role="tab" tabindex="0">PPI network</button><button aria-controls="panel-1-TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" name="TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" role="tab" tabindex="-1">Molecular complexes network</button><button aria-controls="panel-1-UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-1-UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" name="UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" role="tab" tabindex="-1">Reactome pathways network</button></div><div aria-labelledby="tab-1-UFBJIG5ldHdvcms=" class="sphinx-tabs-panel group-tab" id="panel-1-UFBJIG5ldHdvcms=" name="UFBJIG5ldHdvcms=" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w">  </span>--netUUID<span class="w"> </span>bfac0486-cefe-11ed-a79c-005056ae23aa<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--networkFile<span class="w"> </span>useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--simple<span class="w"> </span>True
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" name="TW9sZWN1bGFyIGNvbXBsZXhlcyBuZXR3b3Jr" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w">  </span>--netUUID<span class="w"> </span>419ae651-cf05-11ed-a79c-005056ae23aa<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--networkFile<span class="w"> </span>useCases/InputData/multiplex/1/Complexes_gene_names_190123.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--simple<span class="w"> </span>True
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-1-UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" name="UmVhY3RvbWUgcGF0aHdheXMgbmV0d29yaw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkDownloading<span class="w">  </span>--netUUID<span class="w"> </span>b13e9620-cefd-11ed-a79c-005056ae23aa<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--networkFile<span class="w"> </span>useCases/InputData/multiplex/1/Pathways_reactome_gene_names_190123.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                            </span>--simple<span class="w"> </span>True
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="disease-disease-similarity-network">
+<span id="ddnet"></span><h2>Disease-disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this heading"></a></h2>
+<section id="disease-disease-similarity-network-creation">
+<h3>Disease-disease similarity network creation<a class="headerlink" href="#disease-disease-similarity-network-creation" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line"><em>Data was download on the 2022/06/11.</em></div>
+<div class="line"><a class="reference external" href="https://hpo.jax.org/app/data/annotation"><em>Annotations</em></a> <em>and</em> <a class="reference external" href="https://hpo.jax.org/app/data/ontology"><em>ontologies</em></a> <em>are coming from HPO.</em></div>
+</div>
+<p>We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is defined as
+a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO).</p>
+<p>The similarity score is calculated based on the number of shared phenotypes between two diseases (<a class="footnote-reference brackets" href="#id16" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id15" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id14" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).
+Every pairs of diseases will have a similarity score. For each disease we selected the 5 most similar diseases to
+create the network.</p>
+<p>The <strong>disease-disease</strong> network contains 33,925 edges and 8,264 diseases.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="line-block">
+<div class="line">You can use any network and multilayer network as input.</div>
+<div class="line"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg> Be careful with the configuration file and the gene IDs used.</div>
+</div>
+</div>
+</section>
+<section id="gene-disease-bipartite">
+<h3>Gene-disease bipartite<a class="headerlink" href="#gene-disease-bipartite" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line"><em>Data was download on the 2022/09/27.</em></div>
+<div class="line"><a class="reference external" href="https://hpo.jax.org/app/data/annotation"><em>Associations</em></a> <em>between genes and diseases file is coming from HPO</em></div>
+</div>
+<p>The <strong>molecular multilayer network</strong> is connected to the <strong>disease-disease similarity network</strong> with the <strong>gene-disease bipartite</strong>.
+The bipartite contains 6,564 associations (4,483 genes and 5,878 diseases).</p>
+<section id="references">
+<h4>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h4>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id13">2</a>)</span>
+<p>NDEx</p>
+</aside>
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id5">1</a>,<a role="doc-backlink" href="#id12">2</a>)</span>
+<p>PPI Network</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id11">2</a>)</span>
+<p>PPI Network</p>
+</aside>
+<aside class="footnote brackets" id="id17" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">4</a><span class="fn-bracket">]</span></span>
+<p>Molecular complexes Network</p>
+</aside>
+<aside class="footnote brackets" id="id18" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">5</a><span class="fn-bracket">]</span></span>
+<p>Molecular complexes Network</p>
+</aside>
+<aside class="footnote brackets" id="id19" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">6</a><span class="fn-bracket">]</span></span>
+<p>Reactome Network</p>
+</aside>
+</aside>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../approaches/methods_RWR.html" class="btn btn-neutral float-left" title="Random Walk with Restart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Cytoscape.html" class="btn btn-neutral float-right" title="Networks visualisation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Térézol.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

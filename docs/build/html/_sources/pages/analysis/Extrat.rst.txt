@@ -204,3 +204,25 @@ shown on the :numref:`useCase1_orsum`.
 awk -F"\t" 'NR==FNR{a[$1]; next} {if($1 in a){print $1"\t"$2}}' RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt
 
 awk -F"\t" 'NR==FNR{a[$1]; next} {if($1 in a){print $1"\t"$2}}' RWR_top20.txt ../../../../../DiseaseNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa > diseasesDescription.txt
+
+Networks available
+--------------------
+
+.. note::
+
+    We use the multilayer network from multiXrank's paper [1]_.
+
+We propose to run the RWR on two different multilayer networks:
+
+- multilayer network with three molecular layers + pathways/processes of interest network (:numref:`RWRFig` - left part)
+- multilayer network with three molecular layers + disease-disease similarity network (:numref:`RWRFig` - right part)
+
+.. _RWRFig:
+.. figure:: ../../pictures/NetworkAvailable_RWR.png
+    :alt: RWR networks
+    :align: center
+
+    : Random Walk with Restart into two different network compositions
+
+*multiXrank need network as input. So we create the pathways/processes of interest network, even if it's a disconnected*
+*network (without link between nodes).*
