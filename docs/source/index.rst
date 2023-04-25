@@ -30,8 +30,10 @@ This project was created within the framework of the `EJRP-RD project <https://w
    :maxdepth: 2
    :caption: Networks
 
-   pages/network/Network
-   pages/network/Cytoscape
+   pages/network/NetworkDownloading
+   pages/network/NetworkCreation
+   pages/network/NetworkUsed
+   pages/network/NetworkVisualisation
 
 .. toctree::
    :maxdepth: 2

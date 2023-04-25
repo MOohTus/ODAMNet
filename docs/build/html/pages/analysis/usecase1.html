@@ -27,7 +27,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Use-case 2: data are provided by the user" href="usecase2.html" />
-    <link rel="prev" title="Networks visualisation" href="../network/Cytoscape.html" /> 
+    <link rel="prev" title="Networks visualisation" href="../network/NetworkVisualisation.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -63,10 +63,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Networks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html">Networks downloading</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-creation">Networks creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-used">Networks used</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Cytoscape.html">Networks visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkDownloading.html">Networks downloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkCreation.html">Networks creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkUsed.html">Networks used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkVisualisation.html">Networks visualisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul class="current">
@@ -450,7 +450,7 @@ We use these pathways to create background gene sets that are used for statistic
 <h4>PPI network information<a class="headerlink" href="#ppi-network-information" title="Permalink to this heading"></a></h4>
 <p>The PPI network is automatically downloaded from <a class="reference external" href="https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa">NDEx</a>. It was build from 3 datasets: Lit-BM, Hi-Union and APID. It
 contains 15,390 nodes and 131,087 edges.</p>
-<p>[METTRE UNE REF SUR PLUS D’EXPLICATION ?]</p>
+<p>[<span class="xref std std-ref">ici</span> METTRE UNE REF SUR PLUS D’EXPLICATION ?]</p>
 </section>
 <section id="active-modules-identification-results">
 <h4>Active Modules Identification results<a class="headerlink" href="#active-modules-identification-results" title="Permalink to this heading"></a></h4>
@@ -523,25 +523,25 @@ presented in <a class="reference internal" href="#usecase1amioverlap"><span clas
 </section>
 <section id="visualisation-of-active-module-identification-results">
 <h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
-<p>We created a visualisation of active module identification results (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
+<p>We created a visualisation of active module identification results (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 20</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
 <p>We found a significant overlap between <strong>6 active modules</strong> and <strong>19 rare disease pathways</strong>. For sake of visualisation,
-we selected only three of them (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>). You can find the entire visualisation in the cytoscape
+we selected only three of them (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 20</span></a>). You can find the entire visualisation in the cytoscape
 project called <code class="docutils literal notranslate"><span class="pre">AMI_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>.</p>
 <figure class="align-center" id="id32">
 <span id="dominousage1fig"></span><img alt="usecase1 AMI" src="../../_images/UseCase1_AMI.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">: Visualisation of 3 active modules and their associated rare disease pathways</span><a class="headerlink" href="#id32" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">: Visualisation of 3 active modules and their associated rare disease pathways</span><a class="headerlink" href="#id32" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Genes are represented by nodes. Grey nodes are the target genes, white nodes are non-target genes. Overlap results
 between active modules and rare disease pathways as displayed using donuts color around nodes. Each color
 corresponds to a rare disease.
-Creation steps are explained in the <a class="reference internal" href="../network/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
+Creation steps are explained in the <a class="reference internal" href="../network/NetworkVisualisation.html#networkami"><span class="std std-ref">Random Walk with Restart analysis network visualisation</span></a> section.</p>
 </div></blockquote>
 </div>
 </figcaption>
 </figure>
-<p>Module topology is different between modules and associated rare diseases pathways also vary (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 9</span></a>).
+<p>Module topology is different between modules and associated rare diseases pathways also vary (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 20</span></a>).
 For instance, the module on the right is very connected and contains genes that are involved in a lot of rare disease
 pathways. Genes, such as PTEN, are part of at least 5 pathways. The two other modules are sparser. The module in the
 middle contains genes involved only in <em>Development of ureteric collection system</em>.</p>
@@ -580,7 +580,7 @@ also a SIF file name (<code class="docutils literal notranslate"><span class="pr
 <p class="admonition-title">Tip</p>
 <div class="line-block">
 <div class="line">- Multiplex network is downloaded directly from NDEx (<span class="xref std std-ref">ICI</span>)</div>
-<div class="line">- Creation of the rare disease pathways network (<a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>)</div>
+<div class="line">- Creation of the rare disease pathways network (<a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>)</div>
 <div class="line">- Configuration file explanation and example (<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a>)</div>
 </div>
 </div>
@@ -635,7 +635,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 <section id="analysis-with-rare-disease-pathways-network">
 <h5>Analysis with rare disease pathways network<a class="headerlink" href="#analysis-with-rare-disease-pathways-network" title="Permalink to this heading"></a></h5>
 <p>We used a multilayer network composed of three genes network and one rare disease pathways network
-(<a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>).</p>
+(<a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>).</p>
 <p>multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
 pathways are prioritized. We select the top 20 and present the top 5 (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
@@ -670,13 +670,13 @@ pathways are prioritized. We select the top 20 and present the top 5 (<a class="
 </tr>
 </tbody>
 </table>
-<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 10</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can
-retrieved the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 10</span></a>
+<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 21</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can
+retrieved the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 21</span></a>
 presents the top 5 of rare disease pathways, ordered by RWR score.</p>
 <figure class="align-center" id="id35">
 <span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/UseCase1_RWR_top5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">: Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network</span><a class="headerlink" href="#id35" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">: Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network</span><a class="headerlink" href="#id35" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Rare disease pathways are in pink triangles. Target genes are in grey and non-target genes are in white.</p>
@@ -728,13 +728,13 @@ prioritized. We select the top 20 and present the top 5 (<a class="reference int
 </tr>
 </tbody>
 </table>
-<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 11</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can retrieved
-the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 11</span></a> presents the
+<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 22</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can retrieved
+the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 22</span></a> presents the
 top 5 of rare disease pathways, ordered by RWR score.</p>
 <figure class="align-center" id="id37">
 <span id="usecase1-simnetworkrwr"></span><img alt="usecase 1 simNetworkRWR" src="../../_images/UseCase1_RWR_top5_sim.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">: Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network</span><a class="headerlink" href="#id37" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">: Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network</span><a class="headerlink" href="#id37" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white.</p>
@@ -750,7 +750,7 @@ top 5 of rare disease pathways, ordered by RWR score.</p>
 <h2>Overlap, AMI and RWR results comparison<a class="headerlink" href="#overlap-ami-and-rwr-results-comparison" title="Permalink to this heading"></a></h2>
 <p>We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
 and Random Walk with Restart (RWR). We used orsum <a class="footnote-reference brackets" href="#id20" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, a Python package to filter and integrate enrichment analysis
-from several analyses. The main result is a heatmap, presented in <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 12</span></a>.</p>
+from several analyses. The main result is a heatmap, presented in <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 23</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py<span class="w"> </span>--gmt<span class="w"> </span>00_Data/WP_RareDiseases_request_2022_09_07.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>--files<span class="w"> </span>00_Data/Overlap_D014801.4Orsum<span class="w"> </span>00_Data/DOMINO_D014801.4Orsum<span class="w"> </span>00_Data/RWR_D014801.4Orsum
 <span class="w">         </span>--fileAliases<span class="w"> </span>Overlap<span class="w"> </span>AMI<span class="w"> </span>RWR<span class="w"> </span><span class="se">\</span>
@@ -761,7 +761,7 @@ from several analyses. The main result is a heatmap, presented in <a class="refe
 <figure class="align-center" id="id38">
 <span id="usecase1-orsum"></span><img alt="usecase1 orsum" src="../../_images/UseCase1_orsum.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">: Overlap, AMI and RWR results integration and comparison using orsum</span><a class="headerlink" href="#id38" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">: Overlap, AMI and RWR results integration and comparison using orsum</span><a class="headerlink" href="#id38" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The <code class="docutils literal notranslate"><span class="pre">--maxRepSize</span></code> parameter is set to 0 to consider each term as is own representative term.</p>
@@ -811,7 +811,7 @@ with vitamin A only by one (<em>NBIA subtypes pathway</em>) or two (<em>Male inf
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../network/Cytoscape.html" class="btn btn-neutral float-left" title="Networks visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../network/NetworkVisualisation.html" class="btn btn-neutral float-left" title="Networks visualisation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="usecase2.html" class="btn btn-neutral float-right" title="Use-case 2: data are provided by the user" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

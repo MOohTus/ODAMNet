@@ -267,7 +267,7 @@ PPI network information
 The PPI network is automatically downloaded from NDEx_. It was build from 3 datasets: Lit-BM, Hi-Union and APID. It
 contains 15,390 nodes and 131,087 edges.
 
-[METTRE UNE REF SUR PLUS D'EXPLICATION ?]
+[:ref:`ici` METTRE UNE REF SUR PLUS D'EXPLICATION ?]
 
 Active Modules Identification results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -64,10 +64,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Networks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html">Networks downloading</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-creation">Networks creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Network.html#networks-used">Networks used</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../network/Cytoscape.html">Networks visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkDownloading.html">Networks downloading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkCreation.html">Networks creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkUsed.html">Networks used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network/NetworkVisualisation.html">Networks visualisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul class="current">
@@ -396,29 +396,29 @@ related to CAKUT (padjusted &lt;= 0.05).</p>
 <section id="visualisation-of-active-module-identification-results">
 <h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
 <p>Visualization can help to identify overlap between active modules and pathways/processes related to CAKUT. The
-<a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a> presents active modules that have a significant overlap with pathways/processes related to
+<a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 24</span></a> presents active modules that have a significant overlap with pathways/processes related to
 CAKUT. For better visualization, only 3 over the 6 identified active modules are displayed. You can retrieve the complete
 figure in the <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData">GitHub page</a>.</p>
 <figure class="align-center" id="id48">
 <span id="dominousage2fig"></span><img alt="usecase2 AMI" src="../../_images/useCase2_DOMINO_network.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">: Visualization of 3 active modules that have a significant overlap with pathways/processes related to CAKUT.
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">: Visualization of 3 active modules that have a significant overlap with pathways/processes related to CAKUT.
 This figure is created using Cytoscape <a class="footnote-reference brackets" href="#id41" id="id26" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>. Target genes are in grey.</span><a class="headerlink" href="#id48" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
-<p>As you can see in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>, topology of modules is different and associated pathways/processes
+<p>As you can see in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 24</span></a>, topology of modules is different and associated pathways/processes
 varies. Target genes are in grey and others are in white.</p>
-<p>The first active module (left in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>) is very connected and contains genes involved in
+<p>The first active module (left in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 24</span></a>) is very connected and contains genes involved in
 only one pathway related to CAKUT (<em>RET signaling</em>). Here, the connection between target genes and CAKUT disease is
 indirect. Indeed, genes involved in the pathway are not genes targeted by vitamin A. That why we didn’t found this
 pathways with the overlap approach (see <a class="reference internal" href="#usecase2-overlap"><span class="std std-ref">Use-case 2 overlap results</span></a>).</p>
-<p>The second active module (middle in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>) is sparse and contains genes involved in several
+<p>The second active module (middle in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 24</span></a>) is sparse and contains genes involved in several
 pathways/processes related to CAKUT (all the 7 pathways/processes identified). Some genes are targeted by vitamin A,
 others don’t. Three genes seem to play key roles because they are part of several pathways/processes as <strong>RET</strong>, <strong>STAT1</strong>
 or <strong>GDNF</strong> that is not a target gene (white node).</p>
-<p>The third active module (right in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 13</span></a>) contains target genes and genes involved essentially
+<p>The third active module (right in the <a class="reference internal" href="#dominousage2fig"><span class="std std-numref">Fig. 24</span></a>) contains target genes and genes involved essentially
 in kidney development.</p>
-<p class="italic">To know how to create this figure, see the <a class="reference internal" href="../network/Cytoscape.html#networkami"><span class="std std-ref">Active Module Identification network visualisation</span></a> section.</p>
+<p class="italic">To know how to create this figure, see the <a class="reference internal" href="../network/NetworkVisualisation.html#networkami"><span class="std std-ref">Random Walk with Restart analysis network visualisation</span></a> section.</p>
 </section>
 </section>
 </section>
@@ -533,7 +533,7 @@ corresponds to the gene multiplex and multiplex_2 corresponds to the disease net
 <li><p>pathways/processes related to CAKUT network (13 nodes and 0 edges)</p></li>
 </ul>
 <p>These two networks are linked using bipartite that contains 1,655 associations (866 genes and 13 pathways/processes).</p>
-<p class="italic">For more details about the pathways/processes of interest network: see <a class="reference internal" href="../network/Network.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</p>
+<p class="italic">For more details about the pathways/processes of interest network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</p>
 <p><strong>Multilayer 2</strong> contains:</p>
 <ul>
 <li><p>multiplex network</p>
@@ -548,7 +548,7 @@ corresponds to the gene multiplex and multiplex_2 corresponds to the disease net
 <li><p>disease-disease similarity network (8,264 nodes and 33,925 edges)</p></li>
 </ul>
 <p>These two networks are linked using bipartite that contains 6,534 associations (4,483 genes and 5,878 diseases).</p>
-<p class="italic">For more details about the disease-disease similarity network: see <a class="reference internal" href="../network/Network.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</p>
+<p class="italic">For more details about the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</p>
 </section>
 <section id="multilayer-1-pathways-processes-related-to-cakut-network">
 <h4>Multilayer 1 : Pathways/processes related to CAKUT network<a class="headerlink" href="#multilayer-1-pathways-processes-related-to-cakut-network" title="Permalink to this heading"></a></h4>
@@ -594,11 +594,11 @@ with target genes (i.e. seeds).</p>
 </tbody>
 </table>
 <p>Two pathways not found with the previous approaches, are link to target genes: <code class="docutils literal notranslate"><span class="pre">REAC:R-HSA-195721</span></code> and <code class="docutils literal notranslate"><span class="pre">REAC:R-HSA-157118</span></code>.
-You can visualise the results with a network as shown on the <a class="reference internal" href="#usecase2-pathwaysnetworkrwr"><span class="std std-numref">Fig. 14</span></a>.</p>
+You can visualise the results with a network as shown on the <a class="reference internal" href="#usecase2-pathwaysnetworkrwr"><span class="std std-numref">Fig. 25</span></a>.</p>
 <figure class="align-center" id="id50">
 <span id="usecase2-pathwaysnetworkrwr"></span><img alt="usecase 2 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways/processes of interest network</span><a class="headerlink" href="#id50" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">: Results from RWR through the molecular multilayer and pathways/processes of interest network</span><a class="headerlink" href="#id50" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Pathways/processes of interest are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -663,11 +663,11 @@ You can visualise the results with a network as shown on the <a class="reference
 </tr>
 </tbody>
 </table>
-<p>You can represent the results with a network as shown in the <a class="reference internal" href="#usecase2-simnetworkrwr"><span class="std std-numref">Fig. 15</span></a>.</p>
+<p>You can represent the results with a network as shown in the <a class="reference internal" href="#usecase2-simnetworkrwr"><span class="std std-numref">Fig. 26</span></a>.</p>
 <figure class="align-center" id="id52">
 <span id="usecase2-simnetworkrwr"></span><img alt="usecase 2 simNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase2_simNet.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id52" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">: Results from RWR through the molecular multilayer and disease-disease similarity network</span><a class="headerlink" href="#id52" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.</p>
@@ -681,7 +681,7 @@ You can visualise the results with a network as shown on the <a class="reference
 <section id="rare-disease-pathways-identified">
 <h2>Rare disease pathways identified<a class="headerlink" href="#rare-disease-pathways-identified" title="Permalink to this heading"></a></h2>
 <p>Approaches give us a list of CAKUT pathways/processes significantly connected to vitamin A target genes. To easily compare results,
-we use orsum <a class="footnote-reference brackets" href="#id34" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Results are displayed into a heatmap in the <a class="reference internal" href="#usecase2-orsum"><span class="std std-numref">Fig. 16</span></a>.</p>
+we use orsum <a class="footnote-reference brackets" href="#id34" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Results are displayed into a heatmap in the <a class="reference internal" href="#usecase2-orsum"><span class="std std-numref">Fig. 27</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py<span class="w">    </span>--gmt<span class="w"> </span>00_Data/hsapiens_background.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">            </span>--files<span class="w"> </span>Overlap_genesList_withpathOfInterest.4Orsum<span class="w"> </span>DOMINO_genesList_signOverlap.4Orsum<span class="w"> </span>pathwaysResults.4Orsum<span class="w"> </span><span class="se">\</span>
 <span class="w">            </span>--fileAliases<span class="w"> </span>Overlap<span class="w"> </span>DOMINO<span class="w"> </span>multiXrank<span class="w"> </span><span class="se">\</span>
@@ -691,7 +691,7 @@ we use orsum <a class="footnote-reference brackets" href="#id34" id="id32" role=
 <figure class="align-center" id="id53">
 <span id="usecase2-orsum"></span><img alt="usecase2 orsum" src="../../_images/useCase2_orsum.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">: Comparison of use-case 2 results using orsum</span><a class="headerlink" href="#id53" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">: Comparison of use-case 2 results using orsum</span><a class="headerlink" href="#id53" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 </section>
