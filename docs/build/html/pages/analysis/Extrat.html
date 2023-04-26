@@ -118,8 +118,8 @@
 <section id="running-random-walk-analysis-with-data-retrieved-automatically-from-databases">
 <h1>Running Random Walk analysis with data retrieved automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h1>
 <div class="line-block">
-<div class="line">To know how to create the rare disease pathways network: see <a class="reference internal" href="../approaches/methods_RWR.html#pathwaysofinterestnet"><span class="std std-ref">Pathways/processes of interest network</span></a>.</div>
-<div class="line">To know how to create the disease-disease similarity network: see <a class="reference internal" href="../approaches/methods_RWR.html#ddnet"><span class="std std-ref">Disease-disease similarity network</span></a>.</div>
+<div class="line">To know how to create the rare disease pathways network: see <span class="xref std std-ref">pathwaysOfInterestNet</span>.</div>
+<div class="line">To know how to create the disease-disease similarity network: see <span class="xref std std-ref">DDnet</span>.</div>
 </div>
 <p>Whatever the network used, we want to extract target genes of vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">False</span></code>).
 The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A.
@@ -206,8 +206,15 @@ target genes.</p>
 us to select a list of pathways. All pathways with a score bigger than this score are extracted and considered as connected
 with target genes (i.e. seeds).</p>
 <p>According this highest score, <strong>27 pathways</strong> are selected (<a class="reference internal" href="usecase1.html#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
-<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id2">
-<caption><span class="caption-text">Pathways linked to target genes</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
+<p>_useCase1_pathwaysRWR:
+.. table:: Pathways linked to target genes</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">align<span class="colon">:</span></dt>
+<dd class="field-odd"><p>center</p>
+</dd>
+</dl>
+<table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>node</p></th>
 <th class="head"><p>pathways</p></th>
@@ -325,19 +332,25 @@ with target genes (i.e. seeds).</p>
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 <p>Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
-shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><span class="std std-numref">Fig. 23</span></a>.</p>
-<figure class="align-center" id="id3">
-<span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/RWR_pathwaysNet_useCase1.png" />
-<figcaption>
-<p><span class="caption-text">: Results from RWR through the multiplex network and rare disease pathways network</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
-<div class="legend">
+shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><span class="std std-numref">Fig. 22</span></a>.</p>
+<p>_useCase1_pathwaysNetworkRWR:
+.. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">alt<span class="colon">:</span></dt>
+<dd class="field-odd"><p>usecase 1 pathwaysNetworkRWR</p>
+</dd>
+<dt class="field-even">align<span class="colon">:</span></dt>
+<dd class="field-even"><p>center</p>
+</dd>
+</dl>
+<p>: Results from RWR through the multiplex network and rare disease pathways network</p>
 <blockquote>
 <div><p>Disease pathways are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.</p>
 </div></blockquote>
-</div>
-</figcaption>
-</figure>
+</div></blockquote>
 <p>awk -F”t” ‘NR==FNR{a[$1]; next} {if($1 in a){print $1”t”$2}}’ RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt</p>
 <p>awk -F”t” ‘NR==FNR{a[$1]; next} {if($1 in a){print $1”t”$2}}’ RWR_top20.txt ../../../../../DiseaseNetworks/hpo_disease_net/00_Data/phenotype_2022_06_11_diseaseNames.hpoa &gt; diseasesDescription.txt</p>
 </section>
@@ -345,21 +358,70 @@ shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><
 <h1>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We use the multilayer network from multiXrank’s paper <a href="#id5"><span class="problematic" id="id1">[1]_</span></a>.</p>
+<p>We use the multilayer network from multiXrank’s paper <a href="#id8"><span class="problematic" id="id1">[1]_</span></a>.</p>
 </div>
 <p>We propose to run the RWR on two different multilayer networks:</p>
 <ul class="simple">
-<li><p>multilayer network with three molecular layers + pathways/processes of interest network (<a class="reference internal" href="../approaches/methods_RWR.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
-<li><p>multilayer network with three molecular layers + disease-disease similarity network (<a class="reference internal" href="../approaches/methods_RWR.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
+<li><p>multilayer network with three molecular layers + pathways/processes of interest network (<a class="reference internal" href="../network/NetworkUsed.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - left part)</p></li>
+<li><p>multilayer network with three molecular layers + disease-disease similarity network (<a class="reference internal" href="../network/NetworkUsed.html#rwrfig"><span class="std std-numref">Fig. 6</span></a> - right part)</p></li>
 </ul>
-<figure class="align-center" id="id4">
-<span id="rwrfig"></span><img alt="RWR networks" src="pictures/NetworkAvailable_RWR.png" />
-<figcaption>
-<p><span class="caption-text">: Random Walk with Restart into two different network compositions</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
-</figcaption>
-</figure>
+<p>_RWRFig:
+.. figure:: ../../pictures/NetworkAvailable_RWR.png</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">alt<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RWR networks</p>
+</dd>
+<dt class="field-even">align<span class="colon">:</span></dt>
+<dd class="field-even"><p>center</p>
+</dd>
+</dl>
+<p>: Random Walk with Restart into two different network compositions</p>
+</div></blockquote>
 <p><em>multiXrank need network as input. So we create the pathways/processes of interest network, even if it’s a disconnected</em>
 <em>network (without link between nodes).</em></p>
+</section>
+<section id="id2">
+<h1>Networks available<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful when using networks: <strong>gene IDs</strong> format are not always consistent between networks, target genes and
+pathways/processes of interest.
+If data are extracted by request, target genes and genes in pathways/processes of interest are in <strong>HGNC</strong> format.</p>
+</div>
+<section id="protein-protein-interaction-ppi-network">
+<h2>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h2>
+<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a href="#id9"><span class="problematic" id="id3">[4]_</span></a>, November 2016). The gene name format is
+<strong>HGCN</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+<p>It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
+<span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">VPS52</span>
+<span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">BHLHE40</span>
+<span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">AEN</span>
+<span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">C8orf33</span>
+<span class="n">AAMP</span>        <span class="n">ppi</span>     <span class="n">TK1</span>
+</pre></div>
+</div>
+</section>
+<section id="user-provided-network">
+<h2>User-provided network<a class="headerlink" href="#user-provided-network" title="Permalink to this heading"></a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
+</div>
+<p>You can use your own network. The network file has to be in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> and you can give it to
+the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
+</section>
+<section id="networks-from-ndex-database">
+<h2>Networks from NDEx database<a class="headerlink" href="#networks-from-ndex-database" title="Permalink to this heading"></a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
+</div>
+<p>You can directly request <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a href="#id10"><span class="problematic" id="id4">[3]_</span></a> and extract the network that you want to use
+(REST API <a href="#id11"><span class="problematic" id="id5">[3]_</span></a><sup>,</sup> <a href="#id12"><span class="problematic" id="id6">[5]_</span></a> <sup>,</sup> <a href="#id13"><span class="problematic" id="id7">[6]_</span></a>). You need to specify the network UUID using the optional parameter
+<code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>.</p>
+</section>
 </section>
 
 

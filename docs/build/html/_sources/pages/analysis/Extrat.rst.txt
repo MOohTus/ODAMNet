@@ -127,7 +127,7 @@ with target genes (i.e. seeds).
 
 According this highest score, **27 pathways** are selected (:ref:`Table 11 <useCase1_pathwaysRWR>`).
 
-.. _useCase1_pathwaysRWR:
+_useCase1_pathwaysRWR:
 .. table:: Pathways linked to target genes
     :align: center
 
@@ -192,7 +192,7 @@ According this highest score, **27 pathways** are selected (:ref:`Table 11 <useC
 Two pathways related to CAKUT disease are found: WP5053 and WP4823. You can visualise the results with a network as
 shown on the :numref:`useCase1_orsum`.
 
-.. _useCase1_pathwaysNetworkRWR:
+_useCase1_pathwaysNetworkRWR:
 .. figure:: ../../pictures/RWR_pathwaysNet_useCase1.png
    :alt: usecase 1 pathwaysNetworkRWR
    :align: center
@@ -217,7 +217,7 @@ We propose to run the RWR on two different multilayer networks:
 - multilayer network with three molecular layers + pathways/processes of interest network (:numref:`RWRFig` - left part)
 - multilayer network with three molecular layers + disease-disease similarity network (:numref:`RWRFig` - right part)
 
-.. _RWRFig:
+_RWRFig:
 .. figure:: ../../pictures/NetworkAvailable_RWR.png
     :alt: RWR networks
     :align: center
@@ -226,3 +226,52 @@ We propose to run the RWR on two different multilayer networks:
 
 *multiXrank need network as input. So we create the pathways/processes of interest network, even if it's a disconnected*
 *network (without link between nodes).*
+
+Networks available
+-----------------------------------
+
+.. warning::
+
+    Be careful when using networks: **gene IDs** format are not always consistent between networks, target genes and
+    pathways/processes of interest.
+    If data are extracted by request, target genes and genes in pathways/processes of interest are in **HGNC** format.
+
+Protein-Protein Interaction (PPI) network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We provide a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
+**HGCN**. You can give it to the script using the required parameter ``-n, --networkFile``.
+
+It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:
+
+.. code-block::
+
+    node_1	link	node_2
+    AAMP	ppi	VPS52
+    AAMP	ppi	BHLHE40
+    AAMP	ppi	AEN
+    AAMP	ppi	C8orf33
+    AAMP	ppi	TK1
+
+
+User-provided network
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. caution::
+
+    :octicon:`alert;2em;` gene IDs need to correspond with the target genes list and GMT files !!
+
+You can use your own network. The network file has to be in :ref:`SIF format <SIF>` and you can give it to
+the script using the required parameter ``-n, --networkFile``.
+
+
+Networks from NDEx database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. caution::
+
+    :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
+
+You can directly request `NDEx <https://www.ndexbio.org/#/>`_ [3]_ and extract the network that you want to use
+(REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
+``--netUUID``. The network will be save into a :ref:`SIF file <SIF>`.

@@ -68,6 +68,11 @@ You can provide your own **target genes file** and **pathways/processes of inter
 Input parameters for the Active Modules Identification
 --------------------------------------------------------
 
+.. warning::
+
+    - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
+    - When data are retrieved by requests, **HGNC** IDs are used.
+
 | To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 
@@ -122,57 +127,6 @@ The network file is required ``--networkFile`` whereas ``--netUUID`` and ``--out
     Name of the folder to save results.
     ``[default: OutputResults]``
 
-
-Networks available
------------------------------------
-
-.. warning::
-
-    Be careful when using networks: **gene IDs** format are not always consistent between networks, target genes and
-    pathways/processes of interest.
-    If data are extracted by request, target genes and genes in pathways/processes of interest are in **HGNC** format.
-
-Protein-Protein Interaction (PPI) network
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We provide a PPI network (from the Valdeolivas *et al.,* paper [4]_, November 2016). The gene name format is
-**HGCN**. You can give it to the script using the required parameter ``-n, --networkFile``.
-
-It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:
-
-.. code-block::
-
-    node_1	link	node_2
-    AAMP	ppi	VPS52
-    AAMP	ppi	BHLHE40
-    AAMP	ppi	AEN
-    AAMP	ppi	C8orf33
-    AAMP	ppi	TK1
-
-
-User-provided network
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. caution::
-
-    :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
-
-You can use your own network. The network file has to be in :ref:`SIF format <SIF>` and you can give it to
-the script using the required parameter ``-n, --networkFile``.
-
-
-Networks from NDEx database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. caution::
-
-    :octicon:`alert;2em;sd-text-info` gene IDs need to correspond with the target genes list and GMT files !!
-
-You can directly request `NDEx <https://www.ndexbio.org/#/>`_ [3]_ and extract the network that you want to use
-(REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
-``--netUUID``. The network will be save into a :ref:`SIF file <SIF>`.
-
-
 Use-cases command lines
 -------------------------
 
@@ -204,6 +158,3 @@ References
 .. [1] Levi, H., Elkon, R., & Shamir, R. (2021). DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology, 17(1), e9593.
 .. [2] Levi, H., Rahmanian, N., Elkon, R., & Shamir, R. (2022). The DOMINO web-server for active module identification analysis. Bioinformatics, 38(8), 2364-2366.
 .. [3] Pratt et al. NDEx, the Network Data Exchange. Cell Systems, Vol. 1, Issue 4: 302-305 (2015).
-.. [4] Valdeolivas, A., Tichit, L., Navarro, C., Perrin, S., Odelin, G., Levy, N., ... & Baudot, A. (2019). Random walk with restart on multiplex and heterogeneous biological networks. Bioinformatics, 35(3), 497-505.
-.. [5] Pillich et al. NDEx: A Community Resource for Sharing and Publishing of Biological Networks. Methods Mol Biol, 1558: 271-301 (2017).
-.. [6] Pratt et al. NDEx 2.0: A Clearinghouse for Research on Cancer Pathways. Cancer Res. Nov 1;77(21):e58-e61 (2017).

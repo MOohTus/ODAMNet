@@ -44,6 +44,11 @@ In addition, the users can provide their own **target genes** and **pathways/pro
 Input parameters for the overlap analysis
 -------------------------------------------
 
+.. warning::
+
+    - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
+    - When data are retrieved by requests, **HGNC** IDs are used.
+
 | To extract target genes from **CTD** and rare disease pathways from **WikiPathways**, see parameters on the ``Data extracted from requests`` tab.
 | To provide **your own** target genes and pathways/processes files, see parameters on the ``Data provided by users`` tab.
 

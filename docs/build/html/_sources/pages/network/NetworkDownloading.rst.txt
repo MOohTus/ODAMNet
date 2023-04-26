@@ -4,6 +4,11 @@
 Networks downloading
 ================================
 
+.. warning::
+
+    - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
+    - When data are retrieved by requests, **HGNC** IDs are used.
+
 Principle
 ===========
 

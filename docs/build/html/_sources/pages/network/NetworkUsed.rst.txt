@@ -4,6 +4,11 @@
 Networks used
 ================================
 
+.. warning::
+
+    - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
+    - When data are retrieved by requests, **HGNC** IDs are used.
+
 In this section, we present networks used in the use-cases.
 
 We propose to apply the random walk with restart (RWR) approach on two different multilayers.
@@ -14,8 +19,8 @@ We propose to apply the random walk with restart (RWR) approach on two different
     :align: center
 
     : Multilayers composition: On the left, multilayer is composed of genes multilayer network and pathways/processes
-      of interest network (disconnected network). On the right, the multilayer is composed of genes multiplayer network
-      and disease-disease similarity network.
+    of interest network (disconnected network). On the right, the multilayer is composed of genes multiplayer network
+    and disease-disease similarity network.
 
 Multilayers are composed of:
 
@@ -42,6 +47,8 @@ APID [3]_. It's composed of:
 - 131,087 edges
 
 - UUID: |netPPI|_
+
+*This network is also used for the active module identification approach.*
 
 Molecular complexes network
 -----------------------------
