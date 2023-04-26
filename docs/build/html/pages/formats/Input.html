@@ -70,7 +70,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Use-cases</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are retrieved automatically with requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../analysis/usecase1.html">Use-case 1: data are retrieved automatically by queries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analysis/usecase2.html">Use-case 2: data are provided by the user</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">File formats</span></p>
@@ -210,7 +210,7 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens
 <span id="pathways"></span><h2>Pathways/processes of interest<a class="headerlink" href="#pathways-processes-of-interest" title="Permalink to this heading"></a></h2>
 <p>By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (<code class="docutils literal notranslate"><span class="pre">--GMT</span></code>). You need to provided the ontology source of them too (<code class="docutils literal notranslate"><span class="pre">backgroundFile</span></code>).</p>
-<dl class="option-list">
+<dl class="option-list" id="gmtfile">
 <dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
 <dd><p>It’s a tab-delimited file that describes gene sets of pathways/processes of interest. Pathways can come from several sources.
 Each row represents a gene set.</p>
@@ -234,7 +234,7 @@ WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 <p class="admonition-title">Warning</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> GMT file <strong>must doesn’t</strong> contain <strong>empty columns</strong>.</p>
 </div>
-<dl class="option-list">
+<dl class="option-list" id="bgfile">
 <dt><kbd><span class="option">--backgroundFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>This file contains the list of the different background file source. They have to be in the same order that they
 appear on the GMT file. Each file is a GMT file (see above).</p>

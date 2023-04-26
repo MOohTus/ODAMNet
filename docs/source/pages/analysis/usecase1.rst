@@ -1,7 +1,7 @@
 .. _usecase1:
 
 ============================================================
-Use-case 1: data are retrieved automatically with requests
+Use-case 1: data are retrieved automatically by queries
 ============================================================
 
 .. note::

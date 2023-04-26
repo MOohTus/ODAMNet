@@ -1,7 +1,3 @@
-.. _netCreation:
-
-_pathwaysOfInterestNet:
-
 ================================
 Networks creation
 ================================
@@ -44,7 +40,7 @@ Use-case command lines
 
 .. tabs::
 
-    .. group-tab:: Data retrieved by requests
+    .. group-tab:: Data retrieved by queries
 
         .. code-block:: bash
 
@@ -54,7 +50,7 @@ Use-case command lines
                                     --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
                                     --outputPath useCases/OutputResults_useCase1
 
-    .. group-tab:: Data provided by users
+    .. group-tab:: Data provided by user
 
         .. code-block:: bash
 
@@ -68,4 +64,4 @@ Use-case command lines
 References
 ============
 
-.. [1] Martens, M., Ammar, A., Riutta, A., Waagmeester, A., Slenter, D. N., Hanspers, K., ... & Kutmon, M. (2021). WikiPathways: connecting communities. Nucleic acids research, 49(D1), D613-D621.
+.. [1] Martens M, Ammar A, Riutta A *et al.*. WikiPathways: connecting communities. Nucleic acids research. 2021.

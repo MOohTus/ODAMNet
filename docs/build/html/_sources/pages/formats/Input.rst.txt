@@ -100,6 +100,8 @@ Pathways/processes of interest
 By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
+.. _GMTFile:
+
 --GMT FILENAME
     It's a tab-delimited file that describes gene sets of pathways/processes of interest. Pathways can come from several sources.
     Each row represents a gene set.
@@ -124,6 +126,8 @@ More details for `GMT file format <https://software.broadinstitute.org/cancer/so
 .. warning::
 
     :octicon:`alert;2em` GMT file **must doesn't** contain **empty columns**.
+
+.. _bgFile:
 
 --backgroundFile FILENAME
     This file contains the list of the different background file source. They have to be in the same order that they 

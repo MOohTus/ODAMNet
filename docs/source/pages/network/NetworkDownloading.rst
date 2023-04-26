@@ -1,5 +1,3 @@
-.. _netDownloading:
-
 ================================
 Networks downloading
 ================================
@@ -7,7 +5,7 @@ Networks downloading
 .. warning::
 
     - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
-    - When data are retrieved by requests, **HGNC** IDs are used.
+    - When data are retrieved by queries, **HGNC** IDs are used.
 
 Principle
 ===========
@@ -83,11 +81,10 @@ Use-case command lines
 References
 ============
 
-.. [1] Pratt D, Chen J, Welker D, et al. NDEx, the Network Data Exchange. Cell Syst. 2015;1(4):302-305. doi:10.1016/j.cels.2015.10.001
-.. [2] Pillich RT, Chen J, Churas C, et al. NDEx: Accessing Network Models and Streamlining Network Biology Workflows. Curr Protoc. 2021;1(9):e258. doi:10.1002/cpz1.258
-.. [3] Baptista, A., Gonzalez, A., & Baudot, A. (2022). Universal multilayer network exploration by random walk with restart. Communications Physics, 5(1), 1-9.
-.. [4] Levi, H., Elkon, R., & Shamir, R. (2021). DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology, 17(1), e9593.
-
+.. [1] Pratt D, Chen J, Welker *et al.*. NDEx, the Network Data Exchange. Cell Systems. 2015.
+.. [2] Pillich RT, Chen J, Churas C, *et al.*. NDEx: Accessing Network Models and Streamlining Network Biology Workflows. Current Protocol. 2021.
+.. [3] Baptista A, Gonzalez A & Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.
+.. [4] Levi H, Elkon R & Shamir R. DOMINO: a network‐based active module identification algorithm with reduced rate of false calls. Molecular systems biology. 2021.
 
 .. _NDEx: https://www.ndexbio.org/
 .. |NDEx| replace:: Network Data Exchange

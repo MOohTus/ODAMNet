@@ -6,8 +6,9 @@
 ODAMNet documentation
 ==================================
 
-ODAMNet is a set of three different approaches to study the link between chemicals and Rare Diseases. These three
-approaches are **Overlap analysis**, **Diffusion analysis** using Random Walk with Restart and **Active Module Identification**.
+ODAMNet is a set of three different approaches to study the molecular relationship between chemicals and rare diseases.
+These three approaches are **Overlap analysis**, **diffusion analysis** using random walk with restart and
+**active module identification**.
 
 This project was created within the framework of the `EJRP-RD project <https://www.ejprarediseases.org/>`_.
 

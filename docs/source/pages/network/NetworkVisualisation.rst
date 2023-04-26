@@ -15,7 +15,7 @@ Active module identification results visualisation
 
     .. cssclass:: italic
 
-        To run an Active Module Identification with data requested, see :ref:`Use-case 1 <useCase1_AMI>`
+        To run an Active Module Identification with data retrieved by queries, see :ref:`Use-case 1 <useCase1_AMI>`
         or with data provided by users, see :ref:`Use-case 2 <useCase2_AMI>`.
 
 The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
@@ -290,8 +290,5 @@ To visualise the RWR results using network representation, use the following ste
 
 References
 =============
-.. [1] Shannon, P., Markiel, A., Ozier, O., Baliga, N. S., Wang, J. T., Ramage, D., ... & Ideker, T. (2003). Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), 2498-2504.
-.. [2] Legeay, M., Doncheva, N. T., Morris, J. H., & Jensen, L. J. (2020). Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research, 9.
-
-_networkAMI:
-_networkRWR:
+.. [1] Shannon P, Markiel A, Ozier O *et al.*. Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research. 2003.
+.. [2] Legeay M, Doncheva NT, Morris JH  *et al.*. Visualize omics data on networks with Omics Visualizer, a Cytoscape App. F1000Research. 2020.
