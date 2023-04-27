@@ -41,6 +41,7 @@ The ``--top`` and ``--outputPath`` parameters are optional.
 .. figure:: ../../pictures/Approaches/RWR_Overwiew.png
     :alt: RWRUsageFig
     :align: center
+    :scale: 25
 
     : Input and output of Random Walk with Restart (RWR)
 

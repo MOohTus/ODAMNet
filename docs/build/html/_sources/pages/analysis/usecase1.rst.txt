@@ -8,9 +8,9 @@ Use-case 1: data are retrieved automatically by queries
 
 In this use-case, we want to study the molecular relationship between **vitamin A** and **rare diseases**.
 
-Vitamin A **target genes** are retrieved **directly** from the |ctd|_ [2]_ (CTD).
-**Rare disease pathways** are retrieved from |wp|_ [3]_. Biological **networks** used are also downloaded automatically
-from |ndex|_ [4]_.
+Vitamin A **target genes** are retrieved **directly** from the |ctd|_ [2]_ (CTD). **Rare disease pathways** are
+retrieved from |wp|_ [3]_. Biological **networks** used are also downloaded automatically from |ndex|_ [4]_. Input data
+are available in |git|_.
 
 This section presents you how to apply the three different approaches proposed.
 
@@ -180,8 +180,8 @@ from CTD, genes targeted by the vitamin A and its descendant chemicals (``--dire
 vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
 
 We download automatically a PPI network [:ref:`FORMAT <SIF>`] from NDEx [4]_ using the ``--netUUID`` parameter
-(UUID bfac0486-cefe-11ed-a79c-005056ae23aa, version 1.0). We named the PPI network `PPI_HiUnion_LitBM_APID_gene_names_190123.tsv`
-(``--networkFile``).
+(UUID bfac0486-cefe-11ed-a79c-005056ae23aa, version 1.0). We named the PPI network `PPI_HiUnion_LitBM_APID_gene_names_190123.sif`
+(``--networkFile``). Network name should have **.sif** extension.
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -190,7 +190,7 @@ Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
         odamnet domino  --chemicalsFile useCases/InputData/chemicalsFiles.csv \
                         --directAssociation FALSE \
                         --nbPub 2 \
-                        --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                        --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.sif \
                         --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \
                         --outputPath useCases/OutputResults_useCase1
 
@@ -284,7 +284,6 @@ DOMINO defines vitamin A target genes as active genes and searches active module
     :align: center
     :widths: 60 25 25
 
-
     +--------------+------------+------------+
     |              | Min number | Max number |
     +==============+============+============+
@@ -343,7 +342,7 @@ project called ``AMI_visualisation.cys`` in GitHub_.
 .. figure:: ../../pictures/UseCase1/UseCase1_AMI.png
    :alt: useCase1_AMIFig
    :align: center
-   :scale: 50
+   :scale: 45
 
    : Visualisation of 3 active modules and their associated rare disease pathways
 
@@ -362,15 +361,11 @@ Random Walk with Restart (RWR)
 =================================
 
 The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and rare disease pathways.
-To calculate these proximities (RWR scores), we used multiXrank [7]_ and multilayer networks.
+To calculate these proximities (RWR scores), we used multiXrank [7]_ and multilayer networks. See
+:doc:`../approaches/methods_RWR page for more details.
 
 The multilayer network is composed of three gene networks and one rare disease pathways network. Genes nodes are
-connected to disease nodes if they are involved in.
-
-.. cssclass:: italic
-
-    For more details about RWR, multiXrank and multilayer network see :doc:`../approaches/methods_RWR` and
-    :doc:`../network/NetworkUsed` pages.
+connected to disease nodes if they are involved in. See :doc:`../network/NetworkUsed` page for more details.
 
 Running RWR with data retrieved automatically from databases
 ----------------------------------------------------------------
@@ -495,7 +490,8 @@ disease pathways, ordered by RWR score.
 
    : Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network
 
-    Rare disease pathways are in pink triangles. Target genes are in grey and non-target genes are in white.
+    Rare disease pathways are in pink triangles. Target genes are in grey and non-target genes are in white. Creation
+    steps are explained in the :ref:`cytoscape_RWR` section.
 
 Extra : analysis with disease-disease similarity network
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -545,7 +541,8 @@ top 5 of rare disease pathways, ordered by RWR score.
 
    : Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network
 
-    Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white.
+    Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white. Creation
+    steps are explained in the :ref:`cytoscape_RWR` section.
 
 Overlap, AMI and RWR results comparison
 ===========================================
@@ -587,7 +584,8 @@ References
 .. [7] Baptista A, Gonzalez A & Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.
 .. [8] Ozisik O, Térézol M & Baudot A. orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics. 2022.
 
-
+.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |git| replace:: GitHub
 .. _ctd: http://ctdbase.org/
 .. |ctd| replace:: **the Comparative Toxicogenomics Database**
 .. _wp: https://www.wikipathways.org/

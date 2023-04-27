@@ -26,6 +26,7 @@ The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
 .. figure:: ../../pictures/UseCase1/UseCase1_AMI.png
     :alt: AMI network visualisation
     :align: center
+    :scale: 45
 
     : Use-case 1 AMI analysis visualisation (from :numref:`useCase1_AMIFig`). We use Cytoscape [1]_ to create network
     visualisation and Omics Visualizer [2]_ to add overlap results to active modules.
@@ -129,6 +130,8 @@ Step by step guidelines
 
     : Step 5 - Add legend using Omics Visualizer [2]_
 
+.. _cytoscape_RWR:
+
 Random walk with restart results visualisation
 ================================================
 
@@ -145,6 +148,7 @@ The :numref:`cytoscapeRWR` is an example of RWR results visualisation.
 .. figure:: ../../pictures/UseCase1/UseCase1_RWR_top5.png
     :alt: cytoscapeRWR
     :align: center
+    :scale: 70
 
     : Use-case 1 RWR analysis visualisation (from :numref:`useCase1_RWRWPFig`). We use Cytoscape [1]_ to
     create network visualisation.

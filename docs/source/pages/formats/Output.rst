@@ -93,8 +93,8 @@ This GMT file contains all the human disease pathways from WikiPathways. The  fo
 
 .. _overlapOutput:
 
-Overlap analysis
-==================================================
+Overlap analysis output file
+================================
 
 Only one file is created with this approach.
 

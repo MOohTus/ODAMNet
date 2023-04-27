@@ -32,6 +32,8 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 .. figure:: ../../pictures/Approaches/AMI_DOMINO_method.jpg
     :alt: DOMINO method
     :align: center
+    :scale: 30
+
 
     : Schematic illustration of DOMINO (Fig3 from DOMINO's paper [1]_)
 
@@ -61,6 +63,7 @@ The network file is required ``--networkFile`` whereas ``--outputPath`` is optio
 .. figure:: ../../pictures/Approaches/AMI_Overwiew.png
     :alt: dominoUsageFig
     :align: center
+    :scale: 25
 
     : Input and output of Active Modules Identification (AMI)
 

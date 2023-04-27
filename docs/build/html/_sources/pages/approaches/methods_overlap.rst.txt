@@ -33,6 +33,7 @@ The ``--outputPath`` parameter is used whatever how data are retrieved.
 .. figure:: ../../pictures/Approaches/Overlap_Overwiew.png
     :alt: overlapUsageFig
     :align: center
+    :scale: 25
 
     : Input and output of overlap analysis
 

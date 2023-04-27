@@ -72,6 +72,10 @@ These two parameters are **required**.
 Use-case command lines
 ========================
 
+.. warning::
+
+    If ``--simple FALSE``, network file name should has ``.sif`` extension
+
 .. code-block:: bash
 
     odamnet networkDownloading  --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \

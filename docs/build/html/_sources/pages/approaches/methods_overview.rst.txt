@@ -24,6 +24,7 @@ These three approaches are **complementary** and they perform **network explorat
 .. figure:: ../../pictures/Approaches/Overview_approaches.png
     :alt: overviewFig
     :align: center
+    :scale: 22
 
     : Overview of the three approaches implemented in ODAMNet
 
