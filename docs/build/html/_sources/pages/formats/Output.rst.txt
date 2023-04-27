@@ -2,18 +2,18 @@
 Output files
 ==================================================
 
-.. _requestOutput:
+.. _queryOutput:
 
-Request file results
+Query file results
 ==================================================
 
 ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
 Database (CTD) and rare disease pathways are extracted from WikiPathways.
 It implies creation of output files that contain results of these requests.
 
-.. _CTDrequestOuput:
+.. _CTDqueryOuput:
 
-CTD request file results
+CTD query file results
 --------------------------
 
 When you request CTD to extract the target genes, two files are created, whatever the approach you choose.

@@ -32,7 +32,7 @@ You can also provided your own pathways/processes of interest using ``--GMT`` pa
     ``[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]``
 
 -o, --outputPath PATH
-    Name of the folder to save complementary results (i.e. request results)
+    Name of the folder to save complementary results (i.e. query results)
     ``[default: OutputResults]``
 
 Use-case command lines

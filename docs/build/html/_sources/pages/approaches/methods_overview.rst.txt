@@ -9,7 +9,7 @@ Our goal is to uncover **molecular relationships between chemicals** (e.g. vitam
 To this end, we implement **three approaches**.
 
 Data are retrieved **automatically** from the **Comparative Toxicogenomics Database** (CTD) [1]_ for target genes of
-chemicals and **WikiPathways** [2]_ for rare disease pathways (see :ref:`usecase1`).
+chemicals and **WikiPathways** [2]_ for rare disease pathways (see :doc:`../analysis/usecase1`).
 
 We propose three different approaches to uncover molecular relationships between genes which are targeted by chemicals and rare
 diseases (:numref:`overviewFig`):
@@ -27,8 +27,8 @@ These three approaches are **complementary** and they perform **network explorat
 
     : Overview of the three approaches implemented in ODAMNet
 
-Moreover, the approaches can be used with user-provided input files instead of files fetched with automatic requests.
-Take a look at :ref:`usecase2`, if you want to use your own input files.
+Moreover, the approaches can be used with user-provided input files instead of files fetched with automatic queries.
+Take a look at :doc:`../analysis/usecase2`, if you want to use your own input files.
 
 References
 ==============

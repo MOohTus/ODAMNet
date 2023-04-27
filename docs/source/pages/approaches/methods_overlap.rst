@@ -20,7 +20,7 @@ Usage
 -------
 
 By default, data are directly retrieved from databases using queries (:numref:`overlapUsageFig`: section *data retrieved*
-*by queries*). **Chemical target genes** are retrieved from the |ctd|_ [2]_ (CTD) using ``--chemicalsFile`` parameter.
+*by queries*). **Chemical target genes** are retrieved from |ctd|_ [2]_ (CTD) using ``--chemicalsFile`` parameter.
 All **rare disease pathways** are retrieved from |wp|_ [3]_ automatically.
 
 In addition, the user can provide their own **target genes** and **pathways/processes of interest**

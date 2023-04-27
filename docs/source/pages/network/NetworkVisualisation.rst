@@ -8,6 +8,8 @@ Cytoscape [1]_.
 This page contains a guideline, step by step, to create network visualisation of results such as those presented in
 this documentation.
 
+.. _cytoscape_AMI:
+
 Active module identification results visualisation
 ====================================================
 
@@ -16,7 +18,7 @@ Active module identification results visualisation
     .. cssclass:: italic
 
         To run an Active Module Identification with data retrieved by queries, see :ref:`Use-case 1 <useCase1_AMI>`
-        or with data provided by users, see :ref:`Use-case 2 <useCase2_AMI>`.
+        or with data provided by user, see :ref:`Use-case 2 <useCase2_AMI>`.
 
 The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
 
@@ -25,7 +27,7 @@ The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
     :alt: AMI network visualisation
     :align: center
 
-    : Use-case 1 AMI analysis visualisation (from :numref:`dominoUsage1Fig`). We use Cytoscape [1]_ to create network
+    : Use-case 1 AMI analysis visualisation (from :numref:`useCase1_AMIFig`). We use Cytoscape [1]_ to create network
     visualisation and Omics Visualizer [2]_ to add overlap results to active modules.
 
 Step by step guidelines
@@ -134,8 +136,8 @@ Random walk with restart results visualisation
 
     .. cssclass:: italic
 
-        To perform a RWR with data extracted from requests, see :ref:`Use-case 1 <useCase1_RWR>` or with data
-        provided by users, see :ref:`Use-case 2 <useCase2_RWR>`.
+        To perform a RWR with data retrieved by queries, see :ref:`Use-case 1 <useCase1_RWR>` or with data
+        provided by user, see :ref:`Use-case 2 <useCase2_RWR>`.
 
 The :numref:`cytoscapeRWR` is an example of RWR results visualisation.
 
@@ -144,7 +146,7 @@ The :numref:`cytoscapeRWR` is an example of RWR results visualisation.
     :alt: cytoscapeRWR
     :align: center
 
-    : Use-case 1 RWR analysis visualisation (from :numref:`useCase1_pathwaysNetworkRWR`). We use Cytoscape [1]_ to
+    : Use-case 1 RWR analysis visualisation (from :numref:`useCase1_RWRWPFig`). We use Cytoscape [1]_ to
     create network visualisation.
 
 Step by step guidelines
@@ -250,7 +252,7 @@ To visualise the RWR results using network representation, use the following ste
 
 - Change the style of nodes
 
-.. list-table:: Network Style
+.. list-table:: - Network Style
     :header-rows: 1
     :stub-columns: 1
 

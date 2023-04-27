@@ -26,6 +26,8 @@ Multilayers are composed of:
 
 - genes multilayer network + disease-disease similarity network (:numref:`multilayerCompo` - right part)
 
+.. _genesMultilayerNet:
+
 Genes multilayer network
 ===========================
 
@@ -101,6 +103,8 @@ Use-case command lines
                                         --networkFile useCases/InputData/multiplex/1/Pathways_reactome_gene_names_190123.tsv \
                                         --simple True
 
+.. _pathwaysOfInterestNet:
+
 Pathways/processes of interest network
 ========================================
 
@@ -114,6 +118,8 @@ or processes related to Congenital Anomalies of the Kidney and Urinary Tract (CA
 CAKUT.
 
 To know how to create these two networks, see the :doc:`../network/NetworkCreation` page.
+
+.. _similarityNet:
 
 Disease-disease similarity network
 ====================================

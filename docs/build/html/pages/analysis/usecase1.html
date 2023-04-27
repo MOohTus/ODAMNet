@@ -73,32 +73,32 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use-case 1: data are retrieved automatically by queries</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#overlap-analysis">Overlap analysis</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#running-overlap-analysis-with-data-retrieved-automatically-from-databases">Running Overlap analysis with data retrieved automatically from databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#results-of-overlap-analysis-with-data-retrieved-automatically-from-databases">Results of overlap analysis with data retrieved automatically from databases</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ctd-request-results">CTD request results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#wikipathways-request-results">WikiPathways request results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results-of-overlap-analysis-with-data-retrieved-automatically-from-databases">Results of Overlap analysis with data retrieved automatically from databases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ctd-query-results">CTD query results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wikipathways-query-results">WikiPathways query results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#overlap-analysis-results">Overlap analysis results</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#active-module-identification-ami">Active Module Identification (AMI)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#running-active-module-identification-with-data-retrieved-automatically-from-databases">Running Active Module Identification with data retrieved automatically from databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#results-of-active-module-identification-with-data-retrieved-automatically-from-databases">Results of Active Module identification with data retrieved automatically from databases</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id8">CTD request results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">WikiPathways request results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-ami-with-data-retrieved-automatically-from-databases">Running AMI with data retrieved automatically from databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results-of-ami-with-data-retrieved-automatically-from-databases">Results of AMI with data retrieved automatically from databases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">CTD query results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">WikiPathways query results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ppi-network-information">PPI network information</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#active-modules-identification-results">Active Modules Identification results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Overlap analysis results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ami-results">AMI results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Overlap analysis results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visualisation-of-active-module-identification-results">Visualisation of active module identification results</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#random-walk-with-restart-rwr">Random Walk with Restart (RWR)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#running-random-walk-analysis-with-data-retrieved-automatically-from-databases">Running Random Walk analysis with data retrieved automatically from databases</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#results-of-random-walk-analysis-with-data-retrieved-automatically-from-databases">Results of Random Walk analysis with data retrieved automatically from databases</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id13">CTD request results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#random-walk-with-restart-results">Random Walk with Restart results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-rwr-with-data-retrieved-automatically-from-databases">Running RWR with data retrieved automatically from databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#results-of-rwr-with-data-retrieved-automatically-from-databases">Results of RWR with data retrieved automatically from databases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id14">CTD query results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rwr-results">RWR results</a></li>
 </ul>
 </li>
 </ul>
@@ -145,19 +145,20 @@
            <div itemprop="articleBody">
              
   <section id="use-case-1-data-are-retrieved-automatically-by-queries">
-<span id="usecase1"></span><h1>Use-case 1: data are retrieved automatically by queries<a class="headerlink" href="#use-case-1-data-are-retrieved-automatically-by-queries" title="Permalink to this heading"></a></h1>
+<h1>Use-case 1: data are retrieved automatically by queries<a class="headerlink" href="#use-case-1-data-are-retrieved-automatically-by-queries" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This analysis is inspired by the study carried out by Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id17" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>This analysis is inspired by the study carried out by Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id18" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </div>
 <p>In this use-case, we want to study the molecular relationship between <strong>vitamin A</strong> and <strong>rare diseases</strong>.</p>
-<p>Vitamin A <strong>target genes</strong> are retrieved <strong>directly</strong> from the <a class="reference external" href="http://ctdbase.org/"><strong>the Comparative Toxicogenomics Database</strong></a> <a class="footnote-reference brackets" href="#id18" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (CTD).
-<strong>Rare disease pathways</strong> are retrieved from <a class="reference external" href="https://www.wikipathways.org/"><strong>WikiPathways</strong></a> <a class="footnote-reference brackets" href="#id19" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<p>Vitamin A <strong>target genes</strong> are retrieved <strong>directly</strong> from the <a class="reference external" href="http://ctdbase.org/"><strong>the Comparative Toxicogenomics Database</strong></a> <a class="footnote-reference brackets" href="#id19" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (CTD).
+<strong>Rare disease pathways</strong> are retrieved from <a class="reference external" href="https://www.wikipathways.org/"><strong>WikiPathways</strong></a> <a class="footnote-reference brackets" href="#id20" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. Biological <strong>networks</strong> used are also downloaded automatically
+from <a class="reference external" href="https://www.ndexbio.org/"><strong>the Network Data Exchange</strong></a> <a class="footnote-reference brackets" href="#id21" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
 <p>This section presents you how to apply the three different approaches proposed.</p>
 <section id="overlap-analysis">
 <span id="usecase1-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h2>
-<p>The Overlap analysis searches interesting genes between vitamin A target genes and genes involved in rare disease
-pathways (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> section for more details).</p>
+<p>The Overlap analysis searches intersecting genes between vitamin A target genes and genes involved in rare disease
+pathways (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> page for more details).</p>
 <section id="running-overlap-analysis-with-data-retrieved-automatically-from-databases">
 <h3>Running Overlap analysis with data retrieved automatically from databases<a class="headerlink" href="#running-overlap-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
 <p>The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A (D014801). We retrieved
@@ -173,7 +174,7 @@ vitamin A - gene interactions which have at least two associated publications (<
 <p>Several files are generated:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
-the first file contains <strong>results from CTD</strong> request and the second one contains the results filtered using the
+the first file contains <strong>results from CTD</strong> query and the second one contains the results filtered using the
 publication number.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code>:
 the first file contains <strong>human rare disease pathways</strong> and the second file contains <strong>all human pathways</strong> retrieved
@@ -184,15 +185,15 @@ pathways.</p></li>
 <p class="italic">For more details about these files, see the <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </section>
 <section id="results-of-overlap-analysis-with-data-retrieved-automatically-from-databases">
-<h3>Results of overlap analysis with data retrieved automatically from databases<a class="headerlink" href="#results-of-overlap-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
-<p><em>Requests made on September 7th, 2022</em></p>
-<section id="ctd-request-results">
-<h4>CTD request results<a class="headerlink" href="#ctd-request-results" title="Permalink to this heading"></a></h4>
+<h3>Results of Overlap analysis with data retrieved automatically from databases<a class="headerlink" href="#results-of-overlap-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
+<p><em>Queries made on September 7th, 2022</em></p>
+<section id="ctd-query-results">
+<h4>CTD query results<a class="headerlink" href="#ctd-query-results" title="Permalink to this heading"></a></h4>
 <p>We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
-(<a class="reference internal" href="#usecase1overlapctd"><span class="std std-ref">Table 2</span></a>). Chemical - gene associations are kept if they have at least two publications for
+(<a class="reference internal" href="#usecase1-overlapctd"><span class="std std-ref">Table 2</span></a>). Chemical - gene associations are kept if they have at least two publications for
 human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).</p>
-<span id="usecase1overlapctd"></span><table class="docutils align-center" id="id24">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id24" title="Permalink to this table"></a></caption>
+<span id="usecase1-overlapctd"></span><table class="docutils align-center" id="id26">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">- Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Number of chemicals</p></th>
@@ -200,7 +201,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Request result</p></td>
+<tr class="row-even"><td><p>Query result</p></td>
 <td><p>10</p></td>
 <td><p>7,765</p></td>
 </tr>
@@ -211,14 +212,14 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 </tbody>
 </table>
 </section>
-<section id="wikipathways-request-results">
-<h4>WikiPathways request results<a class="headerlink" href="#wikipathways-request-results" title="Permalink to this heading"></a></h4>
+<section id="wikipathways-query-results">
+<h4>WikiPathways query results<a class="headerlink" href="#wikipathways-query-results" title="Permalink to this heading"></a></h4>
 <p>All human pathways labeled as “rare disease” are retrieved from WikiPathways. We retrieved 104 rare disease pathways
-(<a class="reference internal" href="#usecase1overlapwp"><span class="std std-ref">Table 3</span></a>). All human pathways are also retrieved from WikiPathways
-(<a class="reference internal" href="#usecase1overlapwp"><span class="std std-ref">Table 3</span></a>). We use these pathways to create background gene sets that are used for statistical
+(<a class="reference internal" href="#usecase1-overlapwp"><span class="std std-ref">Table 3</span></a>). All human pathways are also retrieved from WikiPathways
+(<a class="reference internal" href="#usecase1-overlapwp"><span class="std std-ref">Table 3</span></a>). We use these pathways to create background gene sets used for statistical
 analysis.</p>
-<span id="usecase1overlapwp"></span><table class="docutils align-center" id="id25">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">Pathways retrieval from WikiPathways</span><a class="headerlink" href="#id25" title="Permalink to this table"></a></caption>
+<span id="usecase1-overlapwp"></span><table class="docutils align-center" id="id27">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">- Pathways retrieval from WikiPathways</span><a class="headerlink" href="#id27" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Pathways number</p></th>
@@ -244,9 +245,9 @@ analysis.</p>
 <h4>Overlap analysis results<a class="headerlink" href="#overlap-analysis-results" title="Permalink to this heading"></a></h4>
 <p>We performed an Overlap analysis between vitamin A target genes (2,143) and rare disease pathways (104). We obtained
 significant overlap between target genes and <strong>28 rare disease pathways</strong> (pAdjusted &lt;= 0.05). The top 5 is presented in
-<a class="reference internal" href="#usecase1overlaptop5"><span class="std std-ref">Table 4</span></a>.</p>
-<span id="usecase1overlaptop5"></span><table class="docutils align-center" id="id26">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways</span><a class="headerlink" href="#id26" title="Permalink to this table"></a></caption>
+<a class="reference internal" href="#usecase1-overlaptop5"><span class="std std-ref">Table 4</span></a>.</p>
+<span id="usecase1-overlaptop5"></span><table class="docutils align-center" id="id28">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">- Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways</span><a class="headerlink" href="#id28" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>PathwayIDs</p></th>
 <th class="head"><p>PathwayNames</p></th>
@@ -282,11 +283,13 @@ significant overlap between target genes and <strong>28 rare disease pathways</s
 </tr>
 </tbody>
 </table>
-<p>In a previous analysis <a class="footnote-reference brackets" href="#id17" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, significant overlaps were identified between 4 CAKUT pathways and vitamin A target genes.
-With updated target genes data proposed here, we also retrieved significant overlap for 3 of these 4 CAKUT pathways
-(<a class="reference internal" href="#usecase1overlapcakut"><span class="std std-ref">Table 5</span></a>).</p>
-<span id="usecase1overlapcakut"></span><table class="docutils align-center" id="id27">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Overlap analysis results between vitamin A target genes and CAKUT pathways</span><a class="headerlink" href="#id27" title="Permalink to this table"></a></caption>
+<p>In a previous analysis <a class="footnote-reference brackets" href="#id18" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, an overlap analysis was performed between vitamin A and Congenital Anomalies of the Kidney
+and Urinary Tract (CAKUT). Four pathways related to CAKUT were identified in WikiPathways. Significant overlaps were
+identified between these four CAKUT pathways and vitamin A target genes.</p>
+<p>With updated target genes data proposed here, we also retrieved significant overlap for 3 of these 4 CAKUT pathways
+(<a class="reference internal" href="#usecase1-overlapcakut"><span class="std std-ref">Table 5</span></a>).</p>
+<span id="usecase1-overlapcakut"></span><table class="docutils align-center" id="id29">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">- Overlap analysis results between vitamin A target genes and CAKUT pathways</span><a class="headerlink" href="#id29" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"></th>
@@ -333,11 +336,11 @@ With updated target genes data proposed here, we also retrieved significant over
 </tbody>
 </table>
 <p>The increase of the intersection size (<em>Inter column</em>) can be explained by the target gene size. In the previous work
-<a class="footnote-reference brackets" href="#id17" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, we retrieved 1,086 target genes and in this current work we retrieved 2,143 target genes.</p>
+<a class="footnote-reference brackets" href="#id18" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, we retrieved 1,086 target genes and in this current work we retrieved 2,143 target genes.</p>
 <p>The overlap between <em>Nephrogenesis</em> pathway and target genes is not found significant anymore. Number of target genes
 shared with the pathway is smaller. It affects the p-value and decreases it below the 0.05 threshold.
 It can be explained by the fact that one of the two missing genes is not related to human. So it cannot be retrieved by
-the request. And the other gene has only one publication that relates association with vitamin A. So it is not kept
+the queri. And the other gene has only one publication that relates association with vitamin A. So it is not kept
 during filtering.</p>
 </section>
 </section>
@@ -345,22 +348,19 @@ during filtering.</p>
 <section id="active-module-identification-ami">
 <span id="usecase1-ami"></span><h2>Active Module Identification (AMI)<a class="headerlink" href="#active-module-identification-ami" title="Permalink to this heading"></a></h2>
 <p>The Active Module Identification (AMI) approach identifies active module that contains high number of vitamin A target
-genes using a Protein-Protein interaction (PPI) network. AMI is performed using DOMINO <a class="footnote-reference brackets" href="#id20" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. Then, an Overlap analysis
-is applied between identified active modules and rare disease pathways. See see <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a>
-section for more details.</p>
-<section id="running-active-module-identification-with-data-retrieved-automatically-from-databases">
-<h3>Running Active Module Identification with data retrieved automatically from databases<a class="headerlink" href="#running-active-module-identification-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
+genes using a protein-protein interaction (PPI) network. AMI is performed using DOMINO <a class="footnote-reference brackets" href="#id22" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Then, an Overlap analysis
+is applied between identified active modules and rare disease pathways. See <a class="reference internal" href="../approaches/methods_AMI.html"><span class="doc">Active Module Identification</span></a> page for
+more details.</p>
+<section id="running-ami-with-data-retrieved-automatically-from-databases">
+<h3>Running AMI with data retrieved automatically from databases<a class="headerlink" href="#running-ami-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<dl class="simple">
-<dt><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Results of DOMINO cannot be reproduced when using the DOMINO’s server. Indeed, DOMINO server</dt><dd><p>doesn’t allow to set the random seed. This random seed is changed every new analysis.</p>
-</dd>
-</dl>
+<p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> When using DOMINO server, <strong>results cannot be identically reproduced</strong>. Indeed, DOMINO server doesn’t allow to set the random seed. This random seed changes every new analysis.</p>
 </div>
 <p>The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A (D014801). We retrieved
 from CTD, genes targeted by the vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">FALSE</span></code>). We keep only
 vitamin A - gene interactions which have at least two associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
-<p>We download automatically a PPI network [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] from NDEx <a class="footnote-reference brackets" href="#id21" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> using the <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> parameter
+<p>We download automatically a PPI network [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] from NDEx <a class="footnote-reference brackets" href="#id21" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> using the <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> parameter
 (UUID bfac0486-cefe-11ed-a79c-005056ae23aa, version 1.0). We named the PPI network <cite>PPI_HiUnion_LitBM_APID_gene_names_190123.tsv</cite>
 (<code class="docutils literal notranslate"><span class="pre">--networkFile</span></code>).</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
@@ -375,7 +375,7 @@ vitamin A - gene interactions which have at least two associated publications (<
 <p>Several files are generated:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
-the first file contains <strong>results from CTD</strong> request and the second one contains the results filtered using the
+the first file contains <strong>results from CTD</strong> query and the second one contains the results filtered using the
 publication number.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseases_request_2022_09_07.gmt</span></code> and <code class="docutils literal notranslate"><span class="pre">WP_allPathways_request_2022_09_07.gmt</span></code>:
 the first file contains <strong>human rare disease pathways</strong> and the second file contains <strong>all human pathways</strong> retrieved
@@ -387,19 +387,19 @@ rare disease pathways. There is one file per active module.</p></li>
 , <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_signOverlap.txt</span></code>: some statistics are
 calculated and saved into files. Theses files are useful for visualisation.</p></li>
 </ul>
-<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#requestoutput"><span class="std std-ref">Request file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis</span></a>,
+<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#queryoutput"><span class="std std-ref">Query file results</span></a>, <a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis</span></a>,
 <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">Active Module Identification</span></a>)</p>
 </section>
-<section id="results-of-active-module-identification-with-data-retrieved-automatically-from-databases">
-<h3>Results of Active Module identification with data retrieved automatically from databases<a class="headerlink" href="#results-of-active-module-identification-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
-<p><em>Requests made on September 7th, 2022</em></p>
-<section id="id8">
-<h4>CTD request results<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h4>
+<section id="results-of-ami-with-data-retrieved-automatically-from-databases">
+<h3>Results of AMI with data retrieved automatically from databases<a class="headerlink" href="#results-of-ami-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
+<p><em>Queries made on September 7th, 2022</em></p>
+<section id="id9">
+<h4>CTD query results<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
 <p>We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
-(<a class="reference internal" href="#usecase1amictd"><span class="std std-ref">Table 6</span></a>). Chemical - gene associations are kept if they have at least two publications for
+(<a class="reference internal" href="#usecase1-amictd"><span class="std std-ref">Table 6</span></a>). Chemical - gene associations are kept if they have at least two publications for
 human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).</p>
-<span id="usecase1amictd"></span><table class="docutils align-center" id="id28">
-<caption><span class="caption-number">Table 6 </span><span class="caption-text">Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id28" title="Permalink to this table"></a></caption>
+<span id="usecase1-amictd"></span><table class="docutils align-center" id="id30">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">- Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id30" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Number of chemicals</p></th>
@@ -407,7 +407,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Request result</p></td>
+<tr class="row-even"><td><p>Query result</p></td>
 <td><p>10</p></td>
 <td><p>7,765</p></td>
 </tr>
@@ -418,13 +418,13 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 </tbody>
 </table>
 </section>
-<section id="id9">
-<h4>WikiPathways request results<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h4>
+<section id="id10">
+<h4>WikiPathways query results<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
 <p>All human pathways labeled as “rare disease” are retrieved from WikiPathways. We retrieved 104 rare disease pathways
-(<a class="reference internal" href="#usecase1amiwp"><span class="std std-ref">Table 7</span></a>). All human pathways are also retrieved from WikiPathways (<a class="reference internal" href="#usecase1amiwp"><span class="std std-ref">Table 7</span></a>).
-We use these pathways to create background gene sets that are used for statistical analysis.</p>
-<span id="usecase1amiwp"></span><table class="docutils align-center" id="id29">
-<caption><span class="caption-number">Table 7 </span><span class="caption-text">Pathways retrieval from WikiPathways</span><a class="headerlink" href="#id29" title="Permalink to this table"></a></caption>
+(<a class="reference internal" href="#usecase1-amiwp"><span class="std std-ref">Table 7</span></a>). All human pathways are also retrieved from WikiPathways
+(<a class="reference internal" href="#usecase1-amiwp"><span class="std std-ref">Table 7</span></a>). We use these pathways to create background gene sets used for statistical analysis.</p>
+<span id="usecase1-amiwp"></span><table class="docutils align-center" id="id31">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">- Pathways retrieval from WikiPathways</span><a class="headerlink" href="#id31" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Pathways number</p></th>
@@ -450,15 +450,20 @@ We use these pathways to create background gene sets that are used for statistic
 <h4>PPI network information<a class="headerlink" href="#ppi-network-information" title="Permalink to this heading"></a></h4>
 <p>The PPI network is automatically downloaded from <a class="reference external" href="https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa">NDEx</a>. It was build from 3 datasets: Lit-BM, Hi-Union and APID. It
 contains 15,390 nodes and 131,087 edges.</p>
-<p>[<span class="xref std std-ref">ici</span> METTRE UNE REF SUR PLUS D’EXPLICATION ?]</p>
+<p class="italic">For more details about the PPI network, see <a class="reference internal" href="../network/NetworkUsed.html#ppinet"><span class="std std-ref">Protein-Protein Interaction (PPI) network</span></a> section.</p>
 </section>
-<section id="active-modules-identification-results">
-<h4>Active Modules Identification results<a class="headerlink" href="#active-modules-identification-results" title="Permalink to this heading"></a></h4>
+<section id="ami-results">
+<h4>AMI results<a class="headerlink" href="#ami-results" title="Permalink to this heading"></a></h4>
 <p>DOMINO defines vitamin A target genes as active genes and searches active modules enriched in active genes. Over the
 2,143 target genes retrieved from CTD, 1,937 are found in the PPI and used as active genes by DOMINO. DOMINO identified
-<strong>12 active modules</strong> enriched in vitamin A target genes (<a class="reference internal" href="#usecase1amiresults"><span class="std std-ref">Table 8</span></a>).</p>
-<span id="usecase1amiresults"></span><table class="docutils align-center" id="id30">
-<caption><span class="caption-number">Table 8 </span><span class="caption-text">Composition of the active modules identified enriched in vitamin A target genes by DOMINO</span><a class="headerlink" href="#id30" title="Permalink to this table"></a></caption>
+<strong>12 active modules</strong> enriched in vitamin A target genes (<a class="reference internal" href="#usecase1-amiresults"><span class="std std-ref">Table 8</span></a>).</p>
+<span id="usecase1-amiresults"></span><table class="docutils align-center" id="id32">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">- Composition of the active modules identified enriched in vitamin A target genes by DOMINO</span><a class="headerlink" href="#id32" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Min number</p></th>
@@ -474,7 +479,7 @@ contains 15,390 nodes and 131,087 edges.</p>
 <td><p>17</p></td>
 <td><p>93</p></td>
 </tr>
-<tr class="row-even"><td><p>Active Genes</p></td>
+<tr class="row-even"><td><p>Target genes</p></td>
 <td><p>8</p></td>
 <td><p>35</p></td>
 </tr>
@@ -482,13 +487,13 @@ contains 15,390 nodes and 131,087 edges.</p>
 </table>
 <p class="italic">See <code class="docutils literal notranslate"><span class="pre">DOMINO_D014801_activeModulesNetworkMetrics.txt</span></code> file for more details.</p>
 </section>
-<section id="id10">
-<h4>Overlap analysis results<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<section id="id11">
+<h4>Overlap analysis results<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h4>
 <p>Then, we perform an Overlap analysis between identified active modules (12) and rare disease pathways (104). We obtained
 significant overlap between <strong>6 active modules</strong> and <strong>19 rare disease pathways</strong> (pAdjusted &lt;= 0.05). The top 5 is
-presented in <a class="reference internal" href="#usecase1amioverlap"><span class="std std-ref">Table 9</span></a>.</p>
-<span id="usecase1amioverlap"></span><table class="docutils align-center" id="id31">
-<caption><span class="caption-number">Table 9 </span><span class="caption-text">Top 5 of the significant overlaps between identified active modules and rare disease pathways</span><a class="headerlink" href="#id31" title="Permalink to this table"></a></caption>
+presented in <a class="reference internal" href="#usecase1-amioverlap"><span class="std std-ref">Table 9</span></a>.</p>
+<span id="usecase1-amioverlap"></span><table class="docutils align-center" id="id33">
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">- Top 5 of the significant overlaps between identified active modules and rare disease pathways</span><a class="headerlink" href="#id33" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Pathway IDs</p></th>
 <th class="head"><p>Pathway Names</p></th>
@@ -523,46 +528,46 @@ presented in <a class="reference internal" href="#usecase1amioverlap"><span clas
 </section>
 <section id="visualisation-of-active-module-identification-results">
 <h4>Visualisation of active module identification results<a class="headerlink" href="#visualisation-of-active-module-identification-results" title="Permalink to this heading"></a></h4>
-<p>We created a visualisation of active module identification results (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 19</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
+<p>We created a visualisation of active module identification results (<a class="reference internal" href="#usecase1-amifig"><span class="std std-numref">Fig. 19</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id23" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
 <p>We found a significant overlap between <strong>6 active modules</strong> and <strong>19 rare disease pathways</strong>. For sake of visualisation,
-we selected only three of them (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 19</span></a>). You can find the entire visualisation in the cytoscape
-project called <code class="docutils literal notranslate"><span class="pre">AMI_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>.</p>
-<figure class="align-center" id="id32">
-<span id="dominousage1fig"></span><img alt="usecase1 AMI" src="../../_images/UseCase1_AMI.png" />
+we selected only three of them (<a class="reference internal" href="#usecase1-amifig"><span class="std std-numref">Fig. 19</span></a>). You can find the entire visualisation in the cytoscape
+project called <code class="docutils literal notranslate"><span class="pre">AMI_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/">GitHub</a>.</p>
+<figure class="align-center" id="id34">
+<span id="usecase1-amifig"></span><a class="reference internal image-reference" href="../../_images/UseCase1_AMI.png"><img alt="useCase1_AMIFig" src="../../_images/UseCase1_AMI.png" style="width: 759.5px; height: 393.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">: Visualisation of 3 active modules and their associated rare disease pathways</span><a class="headerlink" href="#id32" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">: Visualisation of 3 active modules and their associated rare disease pathways</span><a class="headerlink" href="#id34" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Genes are represented by nodes. Grey nodes are the target genes, white nodes are non-target genes. Overlap results
-between active modules and rare disease pathways as displayed using donuts color around nodes. Each color
-corresponds to a rare disease.
-Creation steps are explained in the <span class="xref std std-ref">networkAMI</span> section.</p>
+between active modules and rare disease pathways are displayed using donuts color around nodes. Each color
+corresponds to a rare disease pathways. Creation steps are explained in the <a class="reference internal" href="../network/NetworkVisualisation.html#cytoscape-ami"><span class="std std-ref">Active module identification results visualisation</span></a> section.</p>
 </div></blockquote>
 </div>
 </figcaption>
 </figure>
-<p>Module topology is different between modules and associated rare diseases pathways also vary (<a class="reference internal" href="#dominousage1fig"><span class="std std-numref">Fig. 19</span></a>).
+<p>Module topology is different between modules and associated rare diseases pathways also vary (<a class="reference internal" href="#usecase1-amifig"><span class="std std-numref">Fig. 19</span></a>).
 For instance, the module on the right is very connected and contains genes that are involved in a lot of rare disease
-pathways. Genes, such as PTEN, are part of at least 5 pathways. The two other modules are sparser. The module in the
+pathways. Genes, such as <em>PTEN</em>, are part of at least 5 pathways. The two other modules are sparser. The module in the
 middle contains genes involved only in <em>Development of ureteric collection system</em>.</p>
 </section>
 </section>
 </section>
 <section id="random-walk-with-restart-rwr">
 <span id="usecase1-rwr"></span><h2>Random Walk with Restart (RWR)<a class="headerlink" href="#random-walk-with-restart-rwr" title="Permalink to this heading"></a></h2>
-<p>The Random Walk with Restart approach mesures proximities between vitamin A target genes and rare disease pathways. To
-calculate these proximities (RWR scores), we used multiXrank <a class="footnote-reference brackets" href="#id22" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a> and multilayer networks. The multilayer network is
-composed of three gene networks and one rare disease pathways network. Genes nodes are connected to disease nodes if
-they are involved in.</p>
-<p class="italic">For more details about RWR, multiXrank and multilayer network see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
-<section id="running-random-walk-analysis-with-data-retrieved-automatically-from-databases">
-<h3>Running Random Walk analysis with data retrieved automatically from databases<a class="headerlink" href="#running-random-walk-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
+<p>The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and rare disease pathways.
+To calculate these proximities (RWR scores), we used multiXrank <a class="footnote-reference brackets" href="#id24" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> and multilayer networks.</p>
+<p>The multilayer network is composed of three gene networks and one rare disease pathways network. Genes nodes are
+connected to disease nodes if they are involved in.</p>
+<p class="italic">For more details about RWR, multiXrank and multilayer network see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> and
+<a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> pages.</p>
+<section id="running-rwr-with-data-retrieved-automatically-from-databases">
+<h3>Running RWR with data retrieved automatically from databases<a class="headerlink" href="#running-rwr-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
 <p>The <strong>chemicalsFile.csv</strong> file [<a class="reference internal" href="../formats/Input.html#chemicalsfile"><span class="std std-ref">FORMAT</span></a>] contains the MeSH ID of vitamin A (D014801). We retrieved
 from CTD, genes targeted by the vitamin A and its descendant chemicals (<code class="docutils literal notranslate"><span class="pre">--directAssociation</span> <span class="pre">FALSE</span></code>). We keep only
 vitamin A - gene interactions which have at least two associated publications (<code class="docutils literal notranslate"><span class="pre">--nbPub</span> <span class="pre">2</span></code>).</p>
 <p>MultiXrank needs as input a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) that contains path of networks and analysis parameters.
 We used multiXrank with default parameters.</p>
-<p>We provided a name file to store vitamin A target genes (i.e. seeds) <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code> and
+<p>We provided a name file to save vitamin A target genes (i.e. seeds) <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">examples/InputData/seeds.txt</span></code> and
 also a SIF file name (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>) to save the top nodes based on RWR score (<code class="docutils literal notranslate"><span class="pre">--top</span> <span class="pre">20</span></code>).</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase1/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>multixrank<span class="w">  </span>--chemicalsFile<span class="w"> </span>useCases/InputData/chemicalsFile.csv<span class="w"> </span><span class="se">\</span>
@@ -579,39 +584,39 @@ also a SIF file name (<code class="docutils literal notranslate"><span class="pr
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <div class="line-block">
-<div class="line">- Multiplex network is downloaded directly from NDEx (<span class="xref std std-ref">ICI</span>)</div>
-<div class="line">- Creation of the rare disease pathways network (<span class="xref std std-ref">pathwaysOfInterestNet</span>)</div>
-<div class="line">- Configuration file explanation and example (<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a>)</div>
+<div class="line">- Downloading of multiplex network from NDEx: <a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> + <a class="reference internal" href="../network/NetworkDownloading.html"><span class="doc">Networks downloading</span></a></div>
+<div class="line">- Creation of the rare disease pathways network: <a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> +  <a class="reference internal" href="../network/NetworkCreation.html"><span class="doc">Networks creation</span></a></div>
+<div class="line">- Configuration file explanation and example: <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Configuration file</span></a> section</div>
 </div>
 </div>
 <p>Several files are generated:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">CTD_request_D014801_2022_09_07.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">CTD_requestFiltered_D014801_2022_09_07.tsv</span></code>:
-the first file contains <strong>results from CTD</strong> request and the second one contains the filtered by publication number.</p></li>
+the first file contains <strong>results from CTD</strong> query and the second one contains the filtered by publication number.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RWR_D014801/</span></code> folder with the RWR results:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">config_minimal_useCase1.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">seeds.txt</span></code>: copies of the input files</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: RWR scores for each multilayer. 1 is multiplex network RWR scores
-and 2 is the rare disease pathways network RWR scores.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code>: RWR scores for each multilayer. 1 is the genes multilayer network RWR
+scores and 2 is the rare disease pathways network RWR scores.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">UseCase1_RWR_network.sif</span></code>: SIF file name that contains the network result</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">RWR_top20.txt</span></code>: Top 20 of rare disease pathways</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RWR_topX.txt</span></code>: Top X of rare disease pathways</p></li>
 </ul>
 </div></blockquote>
 </li>
 </ul>
 <p class="italic">For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
 </section>
-<section id="results-of-random-walk-analysis-with-data-retrieved-automatically-from-databases">
-<h3>Results of Random Walk analysis with data retrieved automatically from databases<a class="headerlink" href="#results-of-random-walk-analysis-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
-<p><em>Requests made on September 7th, 2022</em></p>
-<section id="id13">
-<h4>CTD request results<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h4>
+<section id="results-of-rwr-with-data-retrieved-automatically-from-databases">
+<h3>Results of RWR with data retrieved automatically from databases<a class="headerlink" href="#results-of-rwr-with-data-retrieved-automatically-from-databases" title="Permalink to this heading"></a></h3>
+<p><em>Queries made on September 7th, 2022</em></p>
+<section id="id14">
+<h4>CTD query results<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h4>
 <p>We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
-(<a class="reference internal" href="#usecase1rwrctd"><span class="std std-ref">Table 10</span></a>). Chemical - gene associations are kept if they have at least two publications for
+(<a class="reference internal" href="#usecase1-rwrctd"><span class="std std-ref">Table 10</span></a>). Chemical - gene associations are kept if they have at least two publications for
 human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).</p>
-<span id="usecase1rwrctd"></span><table class="docutils align-center" id="id33">
-<caption><span class="caption-number">Table 10 </span><span class="caption-text">Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id33" title="Permalink to this table"></a></caption>
+<span id="usecase1-rwrctd"></span><table class="docutils align-center" id="id35">
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">- Vitamin A target genes retrieved from CTD</span><a class="headerlink" href="#id35" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Number of chemicals</p></th>
@@ -630,17 +635,23 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 </tbody>
 </table>
 </section>
-<section id="random-walk-with-restart-results">
-<h4>Random Walk with Restart results<a class="headerlink" href="#random-walk-with-restart-results" title="Permalink to this heading"></a></h4>
+<section id="rwr-results">
+<h4>RWR results<a class="headerlink" href="#rwr-results" title="Permalink to this heading"></a></h4>
 <section id="analysis-with-rare-disease-pathways-network">
 <h5>Analysis with rare disease pathways network<a class="headerlink" href="#analysis-with-rare-disease-pathways-network" title="Permalink to this heading"></a></h5>
 <p>We used a multilayer network composed of three genes network and one rare disease pathways network
-(<span class="xref std std-ref">pathwaysOfInterestNet</span>).</p>
+(<a class="reference internal" href="../network/NetworkUsed.html#multilayercompo"><span class="std std-numref">Fig. 6</span></a> - left, <a class="reference internal" href="../network/NetworkUsed.html#genesmultilayernet"><span class="std std-ref">Genes multilayer network</span></a> and
+<a class="reference internal" href="../network/NetworkUsed.html#pathwaysofinterestnet"><span class="std std-ref">rare disease pathways network</span></a>).</p>
 <p>multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
-pathways are prioritized. We select the top 20 and present the top 5 (<a class="reference internal" href="#usecase1-pathwaysrwr"><span class="std std-ref">Table 11</span></a>).</p>
-<span id="usecase1-pathwaysrwr"></span><table class="docutils align-center" id="id34">
-<caption><span class="caption-number">Table 11 </span><span class="caption-text">Rare disease prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id34" title="Permalink to this table"></a></caption>
+pathways are prioritized. We selected the top 20 and presented the top 5 (<a class="reference internal" href="#usecase1-rwrwp"><span class="std std-ref">Table 11</span></a>).</p>
+<span id="usecase1-rwrwp"></span><table class="docutils align-center" id="id36">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">- Rare disease prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id36" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Node</p></th>
 <th class="head"><p>Pathway Names</p></th>
@@ -670,13 +681,13 @@ pathways are prioritized. We select the top 20 and present the top 5 (<a class="
 </tr>
 </tbody>
 </table>
-<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 20</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can
-retrieved the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-pathwaysnetworkrwr"><span class="std std-numref">Fig. 20</span></a>
-presents the top 5 of rare disease pathways, ordered by RWR score.</p>
-<figure class="align-center" id="id35">
-<span id="usecase1-pathwaysnetworkrwr"></span><img alt="usecase 1 pathwaysNetworkRWR" src="../../_images/UseCase1_RWR_top5.png" />
+<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-rwrwpfig"><span class="std std-numref">Fig. 20</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id23" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>. You can retrieved it in the
+cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/">GitHub</a>. The <a class="reference internal" href="#usecase1-rwrwpfig"><span class="std std-numref">Fig. 20</span></a> presents the top 5 of rare
+disease pathways, ordered by RWR score.</p>
+<figure class="align-center" id="id37">
+<span id="usecase1-rwrwpfig"></span><a class="reference internal image-reference" href="../../_images/UseCase1_RWR_top5.png"><img alt="useCase1_RWRWPFig" src="../../_images/UseCase1_RWR_top5.png" style="width: 692.3px; height: 543.9px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">: Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network</span><a class="headerlink" href="#id35" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">: Top 5 of the rare disease pathways prioritized using RWR score using a (disconnected) rare disease pathways network</span><a class="headerlink" href="#id37" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Rare disease pathways are in pink triangles. Target genes are in grey and non-target genes are in white.</p>
@@ -689,16 +700,22 @@ presents the top 5 of rare disease pathways, ordered by RWR score.</p>
 <h5>Extra : analysis with disease-disease similarity network<a class="headerlink" href="#extra-analysis-with-disease-disease-similarity-network" title="Permalink to this heading"></a></h5>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Same command line, but you need to change configuration file <svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg>.</p>
+<p><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Same command line, but you need to change <strong>configuration file</strong>.</p>
 </div>
-<p>We also propose to run an RWR approach using a disease-disease similarity network. In this network, rare diseases are
+<p>We also propose to run an RWR approach using a <strong>disease-disease similarity network</strong>. In this network, rare diseases are
 linked together according their phenotype similarity whereas in the previous network they were not at all connected.</p>
-<p>We used a multilayer network composed of three genes network and one disease-disease similarity network (<span class="xref std std-ref">ICI</span>).</p>
+<p>We used a multilayer network composed of three genes network and one disease-disease similarity network
+(<a class="reference internal" href="../network/NetworkUsed.html#multilayercompo"><span class="std std-numref">Fig. 6</span></a> - right, <a class="reference internal" href="../network/NetworkUsed.html#genesmultilayernet"><span class="std std-ref">Genes multilayer network</span></a>, <a class="reference internal" href="../network/NetworkUsed.html#similaritynet"><span class="std std-ref">Disease-disease similarity network</span></a>).</p>
 <p>multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
-prioritized. We select the top 20 and present the top 5 (<a class="reference internal" href="#usecase1-diseasesrwr"><span class="std std-ref">Table 12</span></a>).</p>
-<span id="usecase1-diseasesrwr"></span><table class="docutils align-center" id="id36">
-<caption><span class="caption-number">Table 12 </span><span class="caption-text">Rare disease prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id36" title="Permalink to this table"></a></caption>
+prioritized. We selected the top 20 and presented the top 5 (<a class="reference internal" href="#usecase1-rwrsim"><span class="std std-ref">Table 12</span></a>).</p>
+<span id="usecase1-rwrsim"></span><table class="docutils align-center" id="id38">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">- Rare disease prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id38" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>node</p></th>
 <th class="head"><p>Disease name</p></th>
@@ -728,13 +745,13 @@ prioritized. We select the top 20 and present the top 5 (<a class="reference int
 </tr>
 </tbody>
 </table>
-<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 21</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id21" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. You can retrieved
-the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/AMI_visualisation.cys">GitHub</a>. The <a class="reference internal" href="#usecase1-simnetworkrwr"><span class="std std-numref">Fig. 21</span></a> presents the
+<p>We created a visualisation of the results (<a class="reference internal" href="#usecase1-rwrsimfig"><span class="std std-numref">Fig. 21</span></a>) using Cytoscape <a class="footnote-reference brackets" href="#id23" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>. You can retrieved it in
+the cytoscape project called <code class="docutils literal notranslate"><span class="pre">RWR_visualisation.cys</span></code> in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/">GitHub</a>. The <a class="reference internal" href="#usecase1-rwrsimfig"><span class="std std-numref">Fig. 21</span></a> presents the
 top 5 of rare disease pathways, ordered by RWR score.</p>
-<figure class="align-center" id="id37">
-<span id="usecase1-simnetworkrwr"></span><img alt="usecase 1 simNetworkRWR" src="../../_images/UseCase1_RWR_top5_sim.png" />
+<figure class="align-center" id="id39">
+<span id="usecase1-rwrsimfig"></span><a class="reference internal image-reference" href="../../_images/UseCase1_RWR_top5_sim.png"><img alt="usecase 1 simNetworkRWR" src="../../_images/UseCase1_RWR_top5_sim.png" style="width: 700.0px; height: 489.99999999999994px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">: Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network</span><a class="headerlink" href="#id37" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">: Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network</span><a class="headerlink" href="#id39" title="Permalink to this image"></a></p>
 <div class="legend">
 <blockquote>
 <div><p>Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white.</p>
@@ -749,7 +766,7 @@ top 5 of rare disease pathways, ordered by RWR score.</p>
 <section id="overlap-ami-and-rwr-results-comparison">
 <h2>Overlap, AMI and RWR results comparison<a class="headerlink" href="#overlap-ami-and-rwr-results-comparison" title="Permalink to this heading"></a></h2>
 <p>We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
-and Random Walk with Restart (RWR). We used orsum <a class="footnote-reference brackets" href="#id20" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, a Python package to filter and integrate enrichment analysis
+and Random Walk with Restart (RWR). We used orsum <a class="footnote-reference brackets" href="#id25" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, a Python package to filter and integrate enrichment analysis
 from several analyses. The main result is a heatmap, presented in <a class="reference internal" href="#usecase1-orsum"><span class="std std-numref">Fig. 22</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py<span class="w"> </span>--gmt<span class="w"> </span>00_Data/WP_RareDiseases_request_2022_09_07.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>--files<span class="w"> </span>00_Data/Overlap_D014801.4Orsum<span class="w"> </span>00_Data/DOMINO_D014801.4Orsum<span class="w"> </span>00_Data/RWR_D014801.4Orsum
@@ -758,49 +775,53 @@ from several analyses. The main result is a heatmap, presented in <a class="refe
 <span class="w">         </span>--outputFolder<span class="w"> </span>UseCase1_D014801_orsum
 </pre></div>
 </div>
-<figure class="align-center" id="id38">
-<span id="usecase1-orsum"></span><img alt="usecase1 orsum" src="../../_images/UseCase1_orsum.png" />
+<figure class="align-center" id="id40">
+<span id="usecase1-orsum"></span><a class="reference internal image-reference" href="../../_images/UseCase1_orsum.png"><img alt="usecase1 orsum" src="../../_images/UseCase1_orsum.png" style="width: 733.5px; height: 815.5px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">: Overlap, AMI and RWR results integration and comparison using orsum</span><a class="headerlink" href="#id38" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">: Overlap analysis (Overlap), Active module identification (AMI) and Random walk with restart (RWR) results integration and comparison using orsum</span><a class="headerlink" href="#id40" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>The <code class="docutils literal notranslate"><span class="pre">--maxRepSize</span></code> parameter is set to 0 to consider each term as is own representative term.</p>
 <p>Some rare disease pathways are retrieved associated with vitamin A by all the three approaches such as
 <em>Malignant pleural mesothelioma</em> or <em>Acute viral myocarditis</em>. Some other rare disease pathways are retrieved associated
-with vitamin A only by one (<em>NBIA subtypes pathway</em>) or two (<em>Male infertility</em>).</p>
+with vitamin A only by one (<em>NBIA subtypes pathway</em>) or two (<em>Male infertility</em>) approaches.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id17" role="note">
+<aside class="footnote brackets" id="id18" role="note">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id4">2</a>,<a role="doc-backlink" href="#id5">3</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id5">2</a>,<a role="doc-backlink" href="#id6">3</a>)</span>
 <p>Ozisik O, Ehrhart F, Evelo C <em>et al.</em>. Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research. 2021.</p>
 </aside>
-<aside class="footnote brackets" id="id18" role="note">
+<aside class="footnote brackets" id="id19" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Davis AP, Grondin CJ, Johnson RJ <em>et al.</em>. The Comparative Toxicogenomics Database: update 2021. Nucleic acids research. 2021.</p>
 </aside>
-<aside class="footnote brackets" id="id19" role="note">
+<aside class="footnote brackets" id="id20" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>Martens M, Ammar A, Riutta A <em>et al.</em>. WikiPathways: connecting communities. Nucleic acids research. 2021.</p>
 </aside>
-<aside class="footnote brackets" id="id20" role="note">
-<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id16">2</a>)</span>
-<p>Levi H, Rahmanian N, Elkon R <em>et al.</em>. The DOMINO web-server for active module identification analysis. Bioinformatics. 2022.</p>
-</aside>
 <aside class="footnote brackets" id="id21" role="note">
-<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id7">1</a>,<a role="doc-backlink" href="#id11">2</a>,<a role="doc-backlink" href="#id14">3</a>,<a role="doc-backlink" href="#id15">4</a>)</span>
-<p>Shannon P, Markiel A, Ozier O <em>et al.</em>. Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research. 2003.</p>
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id8">2</a>)</span>
+<p>Pratt D, Chen J, Welker <em>et al.</em>. NDEx, the Network Data Exchange. Cell Systems. 2015.</p>
 </aside>
 <aside class="footnote brackets" id="id22" role="note">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">6</a><span class="fn-bracket">]</span></span>
-<p>Baptista A, Gonzalez A &amp; Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">5</a><span class="fn-bracket">]</span></span>
+<p>Levi H, Rahmanian N, Elkon R <em>et al.</em>. The DOMINO web-server for active module identification analysis. Bioinformatics. 2022.</p>
 </aside>
 <aside class="footnote brackets" id="id23" role="note">
-<span class="label"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id12">1</a>,<a role="doc-backlink" href="#id15">2</a>,<a role="doc-backlink" href="#id16">3</a>)</span>
+<p>Shannon P, Markiel A, Ozier O <em>et al.</em>. Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research. 2003.</p>
+</aside>
+<aside class="footnote brackets" id="id24" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">7</a><span class="fn-bracket">]</span></span>
+<p>Baptista A, Gonzalez A &amp; Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.</p>
+</aside>
+<aside class="footnote brackets" id="id25" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">8</a><span class="fn-bracket">]</span></span>
 <p>Ozisik O, Térézol M &amp; Baudot A. orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics. 2022.</p>
 </aside>
 </aside>
