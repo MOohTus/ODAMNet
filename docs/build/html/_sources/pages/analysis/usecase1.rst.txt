@@ -329,10 +329,10 @@ Duplicates between active modules results are removed and we keep the more signi
 
     See ``DOMINO_D014801_signOverlap.txt`` file for more details.
 
-Visualisation of active module identification results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Visualisation of AMI results
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We created a visualisation of active module identification results (:numref:`useCase1_AMIFig`) using Cytoscape [6]_.
+We created a visualisation of AMI results (:numref:`useCase1_AMIFig`) using Cytoscape [6]_.
 
 We found a significant overlap between **6 active modules** and **19 rare disease pathways**. For sake of visualisation,
 we selected only three of them (:numref:`useCase1_AMIFig`). You can find the entire visualisation in the cytoscape
@@ -362,7 +362,7 @@ Random Walk with Restart (RWR)
 
 The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and rare disease pathways.
 To calculate these proximities (RWR scores), we used multiXrank [7]_ and multilayer networks. See
-:doc:`../approaches/methods_RWR page for more details.
+:doc:`../approaches/methods_RWR` page for more details.
 
 The multilayer network is composed of three gene networks and one rare disease pathways network. Genes nodes are
 connected to disease nodes if they are involved in. See :doc:`../network/NetworkUsed` page for more details.
@@ -377,7 +377,7 @@ vitamin A - gene interactions which have at least two associated publications (`
 MultiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis parameters.
 We used multiXrank with default parameters.
 
-We provided a name file to save vitamin A target genes (i.e. seeds) ``--seedsFile examples/InputData/seeds.txt`` and
+We provided a name file to save vitamin A target genes (i.e. seeds) ``--seedsFile useCases/InputData/seeds.txt`` and
 also a SIF file name (``--sifFileName``) to save the top nodes based on RWR score (``--top 20``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
@@ -451,32 +451,32 @@ RWR results
 Analysis with rare disease pathways network
 """""""""""""""""""""""""""""""""""""""""""""
 
-We used a multilayer network composed of three genes network and one rare disease pathways network
+We used a multilayer network composed of three gene networks and one rare disease pathways network
 (:numref:`multilayerCompo` - left, :ref:`genesMultilayerNet` and
-:ref:`rare disease pathways network<pathwaysOfInterestNet>`).
+:ref:`Rare disease pathways network<pathwaysOfInterestNet>`).
 
 multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
 pathways are prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 11 <useCase1_RWRWP>`).
 
 .. _useCase1_RWRWP:
-.. table:: - Rare disease prioritization using RWR score. The top 5 is displayed.
+.. table:: - Rare disease pathways prioritization using RWR score. The top 5 is displayed.
     :align: center
     :widths: 25 50 25
 
-    +------------+-----------------------------------------------------+--------------+
-    | Node       | Pathway Names                                       |  RWR score   |
-    +============+=====================================================+==============+
-    | WP5087     | Malignant pleural mesothelioma                      | 2.85e-03     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4673     | Male infertility                                    | 9.02e-04     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP2059     | Alzheimer's disease and miRNA effects               | 7.76e-04     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP5124     | Alzheimer's disease                                 | 7.76e-04     |
-    +------------+-----------------------------------------------------+--------------+
-    | WP4298     | Acute viral myocarditis                             | 0.000731     |
-    +------------+-----------------------------------------------------+--------------+
+    +---------------------+------------------------------------------+--------------+
+    | Nodes (pathway IDs) | Pathway Names                            |  RWR scores  |
+    +=====================+==========================================+==============+
+    | WP5087              | Malignant pleural mesothelioma           | 2.85e-03     |
+    +---------------------+------------------------------------------+--------------+
+    | WP4673              | Male infertility                         | 9.02e-04     |
+    +---------------------+------------------------------------------+--------------+
+    | WP2059              | Alzheimer's disease and miRNA effects    | 7.76e-04     |
+    +---------------------+------------------------------------------+--------------+
+    | WP5124              | Alzheimer's disease                      | 7.76e-04     |
+    +---------------------+------------------------------------------+--------------+
+    | WP4298              | Acute viral myocarditis                  | 0.000731     |
+    +---------------------+------------------------------------------+--------------+
 
 We created a visualisation of the results (:numref:`useCase1_RWRWPFig`) using Cytoscape [6]_. You can retrieved it in the
 cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase1_RWRWPFig` presents the top 5 of rare
@@ -515,19 +515,19 @@ prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 12 <use
     :align: center
     :widths: 25 50 25
 
-    +-------------+-----------------------------------------+----------+
-    | node        | Disease name                            | score    |
-    +=============+=========================================+==========+
-    | OMIM:601626 | Leukemia, acute myeloid                 | 1.68e-04 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:114500 | Colorectal cancer                       | 1.61e-04 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 1.60e-04 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:114480 | Breast cancer                           | 1.20e-04 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:211980 | Lung cancer, susceptibility to          | 1.16e-04 |
-    +-------------+-----------------------------------------+----------+
+    +---------------------+-----------------------------------------+------------+
+    | Nodes (disease IDs) | Disease Names                           | RWR scores |
+    +=====================+=========================================+============+
+    | OMIM:601626         | Leukemia, acute myeloid                 | 1.68e-04   |
+    +---------------------+-----------------------------------------+------------+
+    | OMIM:114500         | Colorectal cancer                       | 1.61e-04   |
+    +---------------------+-----------------------------------------+------------+
+    | OMIM:125853         | Diabetes mellitus, noninsulin-dependent | 1.60e-04   |
+    +---------------------+-----------------------------------------+------------+
+    | OMIM:114480         | Breast cancer                           | 1.20e-04   |
+    +---------------------+-----------------------------------------+------------+
+    | OMIM:211980         | Lung cancer, susceptibility to          | 1.16e-04   |
+    +---------------------+-----------------------------------------+------------+
 
 We created a visualisation of the results (:numref:`useCase1_RWRSimFig`) using Cytoscape [6]_. You can retrieved it in
 the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase1_RWRSimFig` presents the
@@ -535,7 +535,7 @@ top 5 of rare disease pathways, ordered by RWR score.
 
 .. _useCase1_RWRSimFig:
 .. figure:: ../../pictures/UseCase1/UseCase1_RWR_top5_sim.png
-   :alt: usecase 1 simNetworkRWR
+   :alt: useCase1_RWRSimFig
    :align: center
    :scale: 70
 
@@ -554,14 +554,14 @@ from several analyses. The main result is a heatmap, presented in :numref:`useCa
 .. code-block:: bash
 
     orsum.py --gmt 00_Data/WP_RareDiseases_request_2022_09_07.gmt \
-             --files 00_Data/Overlap_D014801.4Orsum 00_Data/DOMINO_D014801.4Orsum 00_Data/RWR_D014801.4Orsum
+             --files 00_Data/Overlap_D014801.4Orsum 00_Data/DOMINO_D014801.4Orsum 00_Data/RWR_D014801.4Orsum \
              --fileAliases Overlap AMI RWR \
              --maxRepSize 0 \
              --outputFolder UseCase1_D014801_orsum
 
 .. _useCase1_orsum:
 .. figure:: ../../pictures/UseCase1/UseCase1_orsum.png
-   :alt: usecase1 orsum
+   :alt: useCase1_orsum
    :align: center
    :scale: 50
 

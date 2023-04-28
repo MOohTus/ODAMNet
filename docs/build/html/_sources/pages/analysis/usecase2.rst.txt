@@ -109,7 +109,7 @@ pathways/processes.
 
 .. _useCase2_AMI:
 
-Active Modules Identification (AMI)
+Active Module Identification (AMI)
 ====================================
 
 The Active Module Identification (AMI) approach identifies active module that contains high number of vitamin A target
@@ -172,7 +172,7 @@ WikiPathways [4]_ and processes of interest are coming from Biological Process (
 Data are presented in the :ref:`Table 15 <useCase2_AMIDataOverview>`.
 
 .. _useCase2_AMIDataOverview:
-.. table:: Overview of data provided by user
+.. table:: - Overview of data provided by user
     :align: center
 
     +-------------------------------------+--------+
@@ -217,357 +217,266 @@ DOMINO defines vitamin A target genes as active genes and searches active module
 Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After identification of active modules, ODAMNet performs an overlap analysis between each identified active modules and
-pathways/processes related to CAKUT. Significant overlaps are found between **6 active modules** and **7 pathways/processes**
-related to CAKUT (padjusted <= 0.05).
+Then, we perform an Overlap analysis between identified active modules (21) and pathways/processes related to CAKUT
+(13). We obtained significant overlap between **6 idantified active modules** and **6 pathways/processes**
+(pAdjusted <= 0.05). Results are presented in :ref:`Table 17 <useCase2_AMIOverlap>`
+
+Duplicates between active modules results are removed and we keep the more significant ones.
 
 .. _useCase2_AMIOverlap:
-.. table:: Overlap analysis between active modules and pathways/processes related to CAKUT
+.. table:: - Significant overlaps between identified active modules and pathways/processes related to CAKUT
     :align: center
 
-    +------------------------+-------------------------------------------+
-    | termID                 | termTitle                                 |
-    +========================+===========================================+
-    | GO:0001822             | kidney development                        |
-    +------------------------+-------------------------------------------+
-    | GO:0060993             | kidney morphogenesis                      |
-    +------------------------+-------------------------------------------+
-    | GO:0072001             | renal system development                  |
-    +------------------------+-------------------------------------------+
-    | **REAC:R-HSA-8853659** | **RET signaling**                         |
-    +------------------------+-------------------------------------------+
-    | WP:WP4823              | Genes controlling nephrogenesis           |
-    +------------------------+-------------------------------------------+
-    | WP:WP4830              | GDNF/RET signalling axis                  |
-    +------------------------+-------------------------------------------+
-    | WP:WP5053              | Development of ureteric collection system |
-    +------------------------+-------------------------------------------+
+    +------------------------+-------------------------------------------+--------------+
+    | Pathway IDs            | Pathway Names                             | pAdjusted    |
+    +========================+===========================================+==============+
+    | GO:0072001             | renal system development                  | 2.66e-03     |
+    +------------------------+-------------------------------------------+--------------+
+    | GO:0001822             | kidney development                        | 2.66e-03     |
+    +------------------------+-------------------------------------------+--------------+
+    | GO:0060993             | kidney morphogenesis                      | 2.66e-03     |
+    +------------------------+-------------------------------------------+--------------+
+    | **REAC:R-HSA-8853659** | **RET signaling**                         | **5.19e-03** |
+    +------------------------+-------------------------------------------+--------------+
+    | WP:WP5053              | Development of ureteric collection system | 3.21e-02     |
+    +------------------------+-------------------------------------------+--------------+
+    | **REAC:R-HSA-195721**  | **Signaling by WNT**                      | **3.47e-02** |
+    +------------------------+-------------------------------------------+--------------+
 
-The **REAC:R-HSA-8853659** Reactome pathway was not identified with the overlap approach used in the Ozisik
-*et al.* [1]_ paper.
+The *RET signaling* and *Signaling by WNT* reactome pathways were not identified with the overlap approach in the
+previous study [1]_ neither with the ODAMNet Overlap analysis.
 
-Visualisation of active module identification results
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. cssclass:: italic
 
-Visualization can help to identify overlap between active modules and pathways/processes related to CAKUT. The
-:numref:`useCase2_AMIFig` presents active modules that have a significant overlap with pathways/processes related to
-CAKUT. For better visualization, only 3 over the 6 identified active modules are displayed. You can retrieve the complete
-figure in the |gitAMI|_.
+    See ``DOMINO_genesList_signOverlap.txt`` file for more details.
+
+Visualisation of AMI results
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We created a visualisation of AMI results (:numref:`useCase1_AMIFig`) using Cytoscape [9]_.
+
+We found a significant overlap between **6 active modules** and **6 pathways/processes** related to CAKUT. For sake of
+visualisation, we selected only three of them (:numref:`useCase2_AMIFig`). You can find the entire visualisation in the
+cytoscape project called ``AMI_visualisation.cys`` in GitHub_.
 
 .. _useCase2_AMIFig:
-.. figure:: ../../pictures/useCase2_DOMINO_network.png
+.. figure:: ../../pictures/UseCase2/UseCase2_AMI.png
    :alt: useCase2_AMIFig
    :align: center
    :scale: 50
 
+   : Visualisation of 3 active modules and their associated pathways/processes related to CAKUT
 
-   : Visualization of 3 active modules that have a significant overlap with pathways/processes related to CAKUT.
-   This figure is created using Cytoscape [9]_. Target genes are in grey.
+   Genes are represented by nodes. Grey nodes are target genes, white nodes are non-target genes. Overlap results
+   between active modules and rare disease pathways are displayed using donuts color around nodes. Each color
+   corresponds to a rare disease pathways. Creation steps are explained in the :ref:`cytoscape_AMI` section.
 
-As you can see in the :numref:`useCase2_AMIFig`, topology of modules is different and associated pathways/processes
-varies. Target genes are in grey and others are in white.
+Module topology is different between modules and associated rare diseases pathways also vary
+(:numref:`useCase2_AMIFig`).
 
 The first active module (left in the :numref:`useCase2_AMIFig`) is very connected and contains genes involved in
-only one pathway related to CAKUT (*RET signaling*). Here, the connection between target genes and CAKUT disease is
-indirect. Indeed, genes involved in the pathway are not genes targeted by vitamin A. That why we didn't found this
-pathways with the overlap approach (see :ref:`Use-case 2 overlap results <useCase2_overlap>`).
+several pathways and processes related to CAKUT. Association between vitamin A and *RET signaling* reactome pathway is
+indirect. Indeed, genes involved in this pathway are not genes targeted by vitamin A. That explains why we didn't found
+this pathways with the Overlap analysis (see :ref:`Use-case 2 overlap results <useCase2_overlap>`).
 
-The second active module (middle in the :numref:`useCase2_AMIFig`) is sparse and contains genes involved in several
-pathways/processes related to CAKUT (all the 7 pathways/processes identified). Some genes are targeted by vitamin A,
-others don't. Three genes seem to play key roles because they are part of several pathways/processes as **RET**, **STAT1**
-or **GDNF** that is not a target gene (white node).
+The second active module (middle in the :numref:`useCase2_AMIFig`) is also highly connected but its contains genes
+involved only in one pathways/processes related to CAKUT (*Development of ureteric collection system*).
 
-The third active module (right in the :numref:`useCase2_AMIFig`) contains target genes and genes involved essentially
-in kidney development.
-
-.. cssclass:: italic
-
-    To know how to create this figure, see the :ref:`cytoscape_AMI` section.
+The third active module (right in the :numref:`useCase2_AMIFig`) is sparser. It contains target genes and non-target
+genes involved in *kidney morphogenesis* and *Signaling by WNT*.
 
 .. _useCase2_RWR:
 
 Random Walk with Restart (RWR)
 ===============================
 
-.. note::
+The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and pathways/processes
+related to CAKUT. To calculate these proximities (RWR scores), we used multiXrank [10]_ and multilayer networks. See
+:doc:`../approaches/methods_RWR` page for more details.
 
-    | **Multilayer** is a network with several layers where layers contain different nodes types
-    | **Multiplex** is a network with several layers (multilayer) where layers contain same type of nodes
+The multilayer network is composed of three gene networks and one pathways/processes related to CAKUT network. Genes
+nodes are connected to pathways/processes nodes if they are involved in. See :doc:`../network/NetworkUsed` page for
+more details.
 
-The third approach implemented in ODAMNet is a Random Walk with Restart analysis (RWR). RWR is applied using
-multiXrank [10]_ through a multilayer composed of genes and diseases nodes.
+Running RWR with data provided by user
+-----------------------------------------
 
-We applied RWR using two different multilayer compositions:
+Target genes file is given using ``--targetGenesFile`` parameter. IT contains list of vitamin A target genes
+[:ref:`FORMAT <targetGenesFile>`].
 
-- **Multilayer 1**: Multiplex + pathways/processes related to CAKUT network
-- **Multilayer 2**: Multiplex + disease-disease similarity network
+MultiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis
+parameters. We used multiXrank with default parameters.
 
-Used multilayers will be detailed in corresponding section results.
-
-.. cssclass:: italic
-
-    For more details about RWR, see :doc:`../approaches/methods_RWR`.
-
-Running Random Walk analysis with data provided by user
------------------------------------------------------------
-
-Target genes files is given using ``--targetGenesFile`` parameter. The file contains list of genes targeted by vitamin
-A [:ref:`FORMAT <targetGenesFile>`].
-
-To perform RWR, multiXrank [10]_ needs a configuration file given using ``--configPath`` parameter. This configuration
-file contains path of different networks and target genes files used. The configuration file might contains parameters
-for RWR analysis. We run the RWR analysis with default parameters.
-
-MultiXrank needs also the networks directory path given using ``--networksPath`` parameter. MultiXrank defines target
-genes as seeds for the walk. Target genes will be saved into a file given using ``--seedsFile`` parameter.
-
-Two others parameters are required: number to select top nodes in each layer (``--top``) and file name to saved result
-network which contains top nodes of each layers and their relationships (``--sifFileName``).
+We provided a name file to save vitamin A target genes (i.e. seeds) ``--sifFileName useCases/InputData/seeds.txt`` and
+also a SIF file name (``--sifFileName``) to save the top nodes based on RWR score (``--top 20``).
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
-.. tip::
-
-    Whatever the networks used, the **command line is the same**. But you have to **change** the network name inside the
-    **configuration file**.
-
-    .. tabs::
-
-        .. group-tab:: Pathways/processes of interest network
-
-            .. code-block:: bash
-                :emphasize-lines: 9,11
-
-                 multiplex:
-                     1:
-                         layers:
-                             - multiplex/1/Complexes_Nov2020.gr
-                             - multiplex/1/PPI_Jan2021.gr
-                             - multiplex/1/Reactome_Nov2020.gr
-                     2:
-                         layers:
-                             - multiplex/2/pathwaysOfInterestNetwork_fromPaper.sif
-                 bipartite:
-                     bipartite/Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv:
-                         source: 2
-                         target: 1
-                 seed:
-                     seeds.txt
-
-        .. group-tab:: Disease-Disease similarity network
-
-            .. code-block:: bash
-               :emphasize-lines: 9,11
-
-                multiplex:
-                    1:
-                        layers:
-                            - multiplex/1/Complexes_Nov2020.gr
-                            - multiplex/1/PPI_Jan2021.gr
-                            - multiplex/1/Reactome_Nov2020.gr
-                    2:
-                        layers:
-                            - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
-                bipartite:
-                    bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
-                        source: 2
-                        target: 1
-                seed:
-                    seeds.txt
-
-
 .. code-block:: bash
 
-    odamnet multixrank  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
-                        --configPath useCases/InputData/config_minimal_useCase2.yml \
-                        --networksPath useCases/InputData/ \
-                        --seedsFile useCases/InputData/seeds.txt \
-                        --sifFileName resultsNetwork_useCase2.sif \
-                        --top 10 \
-                        --outputPath useCases/OutputResults_useCase2/
+    odamnet multixrank      --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
+                            --configPath useCases/InputData/config_minimal_useCase2.yml \
+                            --networksPath useCases/InputData/ \
+                            --seedsFile useCases/InputData/seeds.txt \
+                            --sifFileName UseCase2_RWR_network.sif \
+                            --top 5 \
+                            --outputPath useCases/OutputResults_useCase2
+
+.. tip::
+
+    | - Downloading of multiplex network from NDEx: :doc:`../network/NetworkUsed` + :doc:`../network/NetworkDownloading`
+    | - Creation of the pathways/processes network: :doc:`../network/NetworkUsed` +  :doc:`../network/NetworkCreation`
+    | - Configuration file explanation and example: :ref:`configFile` section
 
 Several files are generated into ``RWR_genesList/`` folder:
 
-- ``config_minimal_useCase2.yml`` and ``seeds.txt``: copies of the input configuration and seed files
+- ``config_minimal_useCase2.yml`` and ``seeds.txt``: copies of the input files
 
-- ``multiplex_1.tsv`` and ``multiplex_2.tsv``: result files that contain RWR score for each node. multiplex_1
-  corresponds to the gene multiplex and multiplex_2 corresponds to the disease network
+- ``multiplex_1.tsv`` and ``multiplex_2.tsv``: RWR scores for each multilayer. 1 is the genes multilayer network RWR
+  scores and 2 is the pathways/processes related to CAKUT network RWR scores.
 
-- ``resultsNetwork_useCase2.sif``: SIF file name that contains the network result
+- ``UseCase2_RWR_network.sif``: SIF file name that contains the network result
+
+- ``RWR_topX.txt``: Top X of pathways/processes related to CAKUT
 
 .. cssclass:: italic
 
-    | For more details about the input files, see :ref:`GR` section.
-    | For more details about the output files, see :doc:`../formats/Output` page.
+    For more details about these file, see :doc:`../formats/Output` page.
 
-Results of Random Walk analysis with data provided by user
--------------------------------------------------------------
+Results of RWR with data provided by user
+-----------------------------------------------
 
 Data provided by user overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Target genes are coming from Balmer and Blomhoff [3]_. There are **521 vitamin A target genes**.
 
-**Multilayer 1** contains:
+RWR results
+~~~~~~~~~~~~~~
 
-- multiplex network
+Analysis with pathways/processes related to CAKUT network
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    - PPI (14,703 nodes and 143,653 edges)
-    - molecular complexes (8,537 nodes and 63,531 edges)
-    - Reactome pathways (7,926 nodes and 194,500 edges)
+We used a multilayer network composed of three gene networks and one pathways/processes related to CAKUT network
+(:numref:`multilayerCompo` - left, :ref:`genesMultilayerNet` and :ref:`Rare disease pathways network<pathwaysOfInterestNet>`).
 
-- pathways/processes related to CAKUT network (13 nodes and 0 edges)
-
-These two networks are linked using bipartite that contains 1,655 associations (866 genes and 13 pathways/processes).
-
-.. cssclass:: italic
-
-    For more details about the pathways/processes of interest network: see :ref:`pathwaysOfInterestNet`.
-
-**Multilayer 2** contains:
-
-- multiplex network
-
-    - PPI (14,703 nodes and 143,653 edges)
-    - molecular complexes (8,537 nodes and 63,531 edges)
-    - Reactome pathways (7,926 nodes and 194,500 edges)
-
-- disease-disease similarity network (8,264 nodes and 33,925 edges)
-
-These two networks are linked using bipartite that contains 6,534 associations (4,483 genes and 5,878 diseases).
-
-.. cssclass:: italic
-
-    For more details about the disease-disease similarity network: see :ref:`DDnet`.
-
-Multilayer 1 : Pathways/processes related to CAKUT network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note::
-
-    In this part, we present results found using the Multilayer 1: multiplex + pathways/processed related to CAKUT
-    network
-
-MultiXrank [10]_ defines **483** target genes over the 521 as seeds to start the walk. For each node (genes or
-pathways/processes related to CAKUT), multiXrank calculates a RWR score. Based on this score, we selected the 10 top of
-node scores.
-
-
-
-
-
-
-
-*In this part, we present results found for the first multiplex composition: multiplex + pathways/processes of interest.*
-
-First, target genes are used as seed to start the walk: ``483/521`` genes are used.
-
-The gene with the highest score is ``ASMT`` with ``score = 0.0006682735081574565`` (it's a seed). This score helps
-us to select a list of pathways/processes. All pathways/processes with a score bigger than this score are extracted and considered as connected
-with target genes (i.e. seeds).
-
-According this highest score, **4 pathways/processes** are selected (:ref:`Table 18 <useCase2_RWRpathOfInt>`).
+multiXrank defined vitamin A target genes as seeds. Over the 521 target genes, 480 are found in the multilayer and
+used as seeds. Using the RWR scores (i.e. proximity score with the target genes), pathways/processes related to CAKUT
+are prioritized. We selected the top 5 (:ref:`Table 18 <useCase2_RWRpathOfInt>`).
 
 .. _useCase2_RWRpathOfInt:
-.. table:: pathways/processes linked to target genes
+.. table:: - Pathways/processes related to CAKUT prioritization using RWR score. The top 5 is displayed.
     :align: center
+    :widths: 25 50 25
 
-    +-----------------------+--------------------------+--------------+
-    | node                  | pathway                  | score        |
-    +=======================+==========================+==============+
-    | GO:0072001            | renal system development | 0.002101     |
-    +-----------------------+--------------------------+--------------+
-    | GO:0001822            | kidney development       | 0.001847     |
-    +-----------------------+--------------------------+--------------+
-    | **REAC:R-HSA-195721** | **Signaling by WNT**     | **0.001660** |
-    +-----------------------+--------------------------+--------------+
-    | **REAC:R-HSA-157118** | **Signaling by NOTCH**   | **0.001140** |
-    +-----------------------+--------------------------+--------------+
+    +-----------------------+-------------------------------------------+--------------+
+    | Nodes (pathway IDs)   | Pathway Names                             | RWR scores   |
+    +=======================+===========================================+==============+
+    | GO:0072001            | renal system development                  | 2.12e-03     |
+    +-----------------------+-------------------------------------------+--------------+
+    | GO:0001822            | kidney development                        | 1.86e-03     |
+    +-----------------------+-------------------------------------------+--------------+
+    | **REAC:R-HSA-195721** | **Signaling by WNT**                      | **1.69e-03** |
+    +-----------------------+-------------------------------------------+--------------+
+    | **REAC:R-HSA-157118** | **Signaling by NOTCH**                    | **1.19e-03** |
+    +-----------------------+-------------------------------------------+--------------+
+    | WP:WP5053             | Development of ureteric collection system | 6.46e-04     |
+    +-----------------------+-------------------------------------------+--------------+
 
-Two pathways not found with the previous approaches, are link to target genes: ``REAC:R-HSA-195721`` and ``REAC:R-HSA-157118``.
-You can visualise the results with a network as shown on the :numref:`useCase2_RWRpathOfIntFig`.
+We created a visualisation of the results (:numref:`useCase2_RWRWPFig`) using Cytoscape [9]_. You can retrieved it in
+the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase2_RWRWPFig` presents the top 5
+of pathways/processes related to CAKUT, ordered by RWR score.
 
 .. _useCase2_RWRpathOfIntFig:
-.. figure:: ../../pictures/RWR_pathwaysNet_useCase2.png
+.. figure:: ../../pictures/UseCase2/UseCase2_RWR_top5.png
    :alt: useCase2_RWRpathOfIntFig
    :align: center
    :scale: 70
 
+   : Top 5 of the pathways/processes related to CAKUT prioritized using RWR score using a (disconnected)
+   pathways/processes related to CAKUT network
 
-   : Results from RWR through the molecular multilayer and pathways/processes of interest network
+   Pathways/processes related to CAKUT are in pink triangles. Target genes are in grey and non-target genes are in
+   white. Creation steps are explained in the :ref:`cytoscape_RWR` section.
 
-    Pathways/processes of interest are represented by triangle nodes in pink, genes are represented by white nodes and target genes by grey nodes.
+Extra : analysis with disease-disease similarity network
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Disease-Disease similarity network
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. tip::
 
-*In this part, we present results found for the second multiplex composition: multiplex + disease-disease network.*
+    :octicon:`alert;1.5em` Same command line, but you need to change :ref:`configuration file <configFile>`.
 
-First, target genes are used as seed to start the walk: ``483/521`` genes are used.
+We also propose to run an RWR approach using a **disease-disease similarity network**. In this network, rare diseases
+are linked together according their phenotype similarity whereas in the previous network they were not at all connected.
 
-We selected the top 10 of diseases (:ref:`Table 19 <useCase2_RWRSim>`).
+We used a multilayer network composed of three genes network and one disease-disease similarity network
+(:numref:`multilayerCompo` - right, :ref:`genesMultilayerNet`, :ref:`similarityNet`).
+
+multiXrank defined vitamin A target genes as seeds. Over the 521 target genes retrieved from CTD, 480 are found in
+the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
+prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 19 <useCase2_RWRSim>`).
 
 .. _useCase2_RWRSim:
-.. table:: Diseases linked to target genes
+.. table:: - Rare disease prioritization using RWR score. The top 5 is displayed.
     :align: center
 
-    +-------------+-----------------------------------------+----------+
-    | node        | Diseases                                | score    |
-    +=============+=========================================+==========+
-    | OMIM:178500 | Pulmonary fibrosis, idiopathic          | 0.000334 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:125853 | Diabetes mellitus, noninsulin-dependent | 0.000301 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:215600 | Cirrhosis, familial                     | 0.000255 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:613659 | Gastric cancer, somatic                 | 0.000235 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:211980 | Lung cancer, susceptibility to          | 0.000230 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:104300 | Alzheimer disease                       | 0.000224 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:168600 | Parkinson disease, late-onset           | 0.000192 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:601859 | Autoimmune lymphoproliferative syndrome | 0.000182 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:601665 | OBESITY                                 | 0.000181 |
-    +-------------+-----------------------------------------+----------+
-    | OMIM:171300 | PHEOCHROMOCYTOMA                        | 0.000145 |
-    +-------------+-----------------------------------------+----------+
+    +---------------------+-----------------------------------------+---------------+
+    | Nodes (disease IDs) | Disease Names                           | RWR scores    |
+    +=====================+=========================================+===============+
+    | OMIM:178500         | Pulmonary fibrosis, idiopathic          | 3.47e-04      |
+    +---------------------+-----------------------------------------+---------------+
+    | OMIM:125853         | Diabetes mellitus, noninsulin-dependent | 3.13e-04      |
+    +---------------------+-----------------------------------------+---------------+
+    | OMIM:215600         | Cirrhosis, familial                     | 2.73e-04      |
+    +---------------------+-----------------------------------------+---------------+
+    | OMIM:613659         | Gastric cancer, somatic                 | 2.38e-04      |
+    +---------------------+-----------------------------------------+---------------+
+    | OMIM:104300         | Alzheimer disease                       | 2.34e-04      |
+    +---------------------+-----------------------------------------+---------------+
 
-You can represent the results with a network as shown in the :numref:`useCase2_RWRSimFig`.
+We created a visualisation of the results (:numref:`useCase2_RWRSimFig`) using Cytoscape [9]_. You can retrieved it in
+the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase2_RWRSimFig` presents the
+top 5 of rare disease pathways, ordered by RWR score.
 
 .. _useCase2_RWRSimFig:
-.. figure:: ../../pictures/RWR_pathwaysNet_useCase2_simNet.png
+.. figure:: ../../pictures/UseCase2/UseCase2_RWR_top5_sim.png
    :alt: useCase2_RWRSimFig
    :align: center
    :scale: 70
 
+   : Top 5 of the rare disease prioritized using RWR score using disease-disease similarity network
 
-   : Results from RWR through the molecular multilayer and disease-disease similarity network
+    Rare disease are in pink triangles. Target genes are in grey and non-target genes are in white. Creation
+    steps are explained in the :ref:`cytoscape_RWR` section.
 
-    Diseases are represented by triangle pink nodes, genes are represented by white nodes and target genes by grey nodes.
+Overlap, AMI and RWR results comparison
+===========================================
 
-Rare disease pathways identified
-====================================
-
-Approaches give us a list of CAKUT pathways/processes significantly connected to vitamin A target genes. To easily compare results,
-we use orsum [2]_. Results are displayed into a heatmap in the :numref:`useCase2_orsum`.
+We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
+and Random Walk with Restart (RWR). We used orsum [2]_, a Python package to filter and integrate enrichment analysis
+from several analyses. The main result is a heatmap, presented in :numref:`useCase2_orsum`.
 
 .. code-block:: bash
 
-    orsum.py    --gmt 00_Data/hsapiens_background.gmt \
-                --files Overlap_genesList_withpathOfInterest.4Orsum DOMINO_genesList_signOverlap.4Orsum pathwaysResults.4Orsum \
-                --fileAliases Overlap DOMINO multiXrank \
-                --outputFolder useCase2Comparison/
+    orsum.py --gmt 00_Data/hsapiens_background.gmt \
+             --files 00_Data/Overlap.4Orsum 00_Data/DOMINO.4Orsum 00_Data/RWR_top5.4Orsum \
+             --fileAliases Overlap AMI RWR \
+             --maxRepSize 0 \
+             --outputFolder UseCase2_orsum
 
 .. _useCase2_orsum:
-.. figure:: ../../pictures/useCase2_orsum.png
-   :alt: usecase2 orsum
+.. figure:: ../../pictures/UseCase2/UseCase2_orsum.png
+   :alt: useCase2_orsum
    :align: center
-   :scale: 50
+   :scale: 30
 
-   : Comparison of use-case 2 results using orsum
+   : Overlap analysis (Overlap), Active module identification (AMI) and Random walk with restart (RWR) results integration and comparison using orsum
+
+The ``--maxRepSize`` parameter is set to 0 to consider each term as is own representative term.
+
+Some pathways/processes related to CAKUT are retrieved associated with vitamin A by all the three approaches such as
+*renal system development* and *kidney development*. Some other are retrieved associated with vitamin A only by one
+(*RET signaling*) or two (*Signaling by WNT*) approaches.
 
 References
 ============
@@ -595,7 +504,6 @@ References
 .. |reac| replace:: Reactome
 .. _go: http://geneontology.org/
 .. |go| replace:: Gene Ontology
-.. _gitAMI: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
-.. |gitAMI| replace:: GitHub page
 .. _NDExPPI: https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa
 .. |NDExPPI| replace:: NDEx
+.. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/

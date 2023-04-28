@@ -7,21 +7,21 @@ Output files
 Query file results
 ==================================================
 
-ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
-Database (CTD) and rare disease pathways are extracted from WikiPathways.
-It implies creation of output files that contain results of these requests.
+ODAMNet can retrieve automatically data using queries. Target genes are retrieved from the Comparative Toxicogenomics
+Database (CTD) and rare disease pathways are retrieved from WikiPathways.
+It implies creation of output files that contain results of these queries.
 
 .. _CTDqueryOuput:
 
 CTD query file results
 --------------------------
 
-When you request CTD to extract the target genes, two files are created, whatever the approach you choose.
+When you query CTD to retrieve the target genes, two files are created, whatever the approach you choose.
 
 CTD_request_MeSHID_DATE.tsv
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains the results from the request sent to CTD.
+This file contains the results from the query sent to CTD.
 
 CTD_requestFiltered_MeSHID_DATE.tsv
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,20 +53,20 @@ This is an example of this file:
     d014801	Vitamin A	D014801	11103-57-4	AKR1B1	231	Homo sapiens	9606	19014918
     d014801	Vitamin A	D014801	11103-57-4	AKR1B10	57016	Homo sapiens	9606	19014918
 
-*The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the request (aaaa_mm_dd).*
+*The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the query (aaaa_mm_dd).*
 
 .. _WPrequestOuput:
 
 WikiPathways request file results
 ---------------------------------------
 
-When you request WikiPathways to extract the rare disease pathways, two files are created whatever the approach chosen.
+When you query WikiPathways to retrieve the rare disease pathways, two files are created whatever the approach chosen.
 
 WP_RareDiseases_request_DATE.gmt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as rare diseases are
-extracted and save into this GMT file.
+This file contains the results of the query sent to WikiPathways. All the disease pathways labeled as rare diseases are
+retrieved and save into this GMT file.
 
 GMT file is a tab-separated file:
 
@@ -89,7 +89,7 @@ WP_allPathways_request_DATE.gmt
 
 This GMT file contains all the human disease pathways from WikiPathways. The  format is similar at the previous one.
 
-*The file name is composed of the *DATE* of the request (aaaa_mm_dd).*
+*The file name is composed of the *DATE* of the query (aaaa_mm_dd).*
 
 .. _overlapOutput:
 

@@ -79,7 +79,7 @@ Use-case command lines
 .. code-block:: bash
 
     odamnet networkDownloading  --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \
-                                --networkFile useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                                --networkFile useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.gr \
                                 --simple True
 
 References

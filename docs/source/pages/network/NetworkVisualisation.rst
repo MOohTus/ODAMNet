@@ -169,7 +169,7 @@ To visualise the RWR results using network representation, use the following ste
 
     : Step 1 - Import files
 
-- **Import Network** from File: ``resultsNetwork_useCase1.sif``
+- **Import Network** from File: ``UseCase1_RWR_network.sif``
 - **Import Table** from File: ``multiplex_1.tsv`` and ``multiplex_2.tsv``
 - **Import Table** from File: ``seeds.4Cytoscape``
 
@@ -193,7 +193,7 @@ To visualise the RWR results using network representation, use the following ste
 
    .. code-block:: bash
 
-        awk -F"\t" 'NR==FNR{a[$1]; next} {if($1 in a){print $1"\t"$2}}' RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt > diseasesDescription.txt
+        awk -F"\t" 'NR==FNR{a[$1]=$2; next} {if($1 in a){print $1"\t"$2"\t"a[$1]}}' RWR_top20.txt ../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt > diseasesDescription.txt
 
 2. Management of nodes table
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,6 +227,7 @@ To visualise the RWR results using network representation, use the following ste
 
     - Sort by ``score`` (decrease) and select the 5th first rare disease pathways
     - Fill ``keep`` column with ``=True``
+    - Fill ``label`` column with ``=$pathways`` and apply to selected nodes
 
 3. Create new network
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

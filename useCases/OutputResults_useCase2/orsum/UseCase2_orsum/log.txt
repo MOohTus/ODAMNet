@@ -1,0 +1,27 @@
+orsum 1.5.0
+
+gmt:	00_Data/hsapiens_background.gmt
+files:	['00_Data/Overlap.4Orsum', '00_Data/DOMINO.4Orsum', '00_Data/RWR_top5.4Orsum']
+fileAliases:	['Overlap', 'AMI', 'RWR']
+outputFolder:	UseCase2_orsum
+maxRepSize:	0
+maxTermSize:	1000000
+minTermSize:	10
+numberOfTermsToPlot:	50
+
+
+Processing 00_Data/Overlap.4Orsum
+1 term is not in GMT, it is removed.
+
+Processing 00_Data/DOMINO.4Orsum
+
+Processing 00_Data/RWR_top5.4Orsum
+
+Initial term number (recurring terms in different lists are not merged yet, each one is counted): 17
+
+Same terms in multiple lists are unified
+Representing term number: 9
+
+Superterms represent their less significant (worse ranked) subterms. This includes equal terms, i.e. the terms that annotate exactly the same set of genes.
+Representing term number:9
+

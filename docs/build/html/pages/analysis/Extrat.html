@@ -358,7 +358,7 @@ shown on the <a class="reference internal" href="usecase1.html#usecase1-orsum"><
 <h1>Networks available<a class="headerlink" href="#networks-available" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We use the multilayer network from multiXrank’s paper <a href="#id8"><span class="problematic" id="id1">[1]_</span></a>.</p>
+<p>We use the multilayer network from multiXrank’s paper <a href="#id10"><span class="problematic" id="id1">[1]_</span></a>.</p>
 </div>
 <p>We propose to run the RWR on two different multilayer networks:</p>
 <ul class="simple">
@@ -391,7 +391,7 @@ If data are extracted by request, target genes and genes in pathways/processes o
 </div>
 <section id="protein-protein-interaction-ppi-network">
 <h2>Protein-Protein Interaction (PPI) network<a class="headerlink" href="#protein-protein-interaction-ppi-network" title="Permalink to this heading"></a></h2>
-<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a href="#id9"><span class="problematic" id="id3">[4]_</span></a>, November 2016). The gene name format is
+<p>We provide a PPI network (from the Valdeolivas <em>et al.,</em> paper <a href="#id11"><span class="problematic" id="id3">[4]_</span></a>, November 2016). The gene name format is
 <strong>HGCN</strong>. You can give it to the script using the required parameter <code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--networkFile</span></code>.</p>
 <p>It contains 66,971 interactions (edges) and 12,621 genes (nodes). The following part gives you an overview of the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node_1</span>      <span class="n">link</span>    <span class="n">node_2</span>
@@ -418,10 +418,43 @@ the script using the required parameter <code class="docutils literal notranslat
 <p class="admonition-title">Caution</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert sd-text-info" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> gene IDs need to correspond with the target genes list and GMT files !!</p>
 </div>
-<p>You can directly request <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a href="#id10"><span class="problematic" id="id4">[3]_</span></a> and extract the network that you want to use
-(REST API <a href="#id11"><span class="problematic" id="id5">[3]_</span></a><sup>,</sup> <a href="#id12"><span class="problematic" id="id6">[5]_</span></a> <sup>,</sup> <a href="#id13"><span class="problematic" id="id7">[6]_</span></a>). You need to specify the network UUID using the optional parameter
+<p>You can directly request <a class="reference external" href="https://www.ndexbio.org/#/">NDEx</a> <a href="#id12"><span class="problematic" id="id4">[3]_</span></a> and extract the network that you want to use
+(REST API <a href="#id13"><span class="problematic" id="id5">[3]_</span></a><sup>,</sup> <a href="#id14"><span class="problematic" id="id6">[5]_</span></a> <sup>,</sup> <a href="#id15"><span class="problematic" id="id7">[6]_</span></a>). You need to specify the network UUID using the optional parameter
 <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code>. The network will be save into a <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line"><strong>Multilayer</strong> is a network with several layers where layers contain different nodes types</div>
+<div class="line"><strong>Multiplex</strong> is a network with several layers (multilayer) where layers contain same type of nodes</div>
+</div>
+</div>
+<p>The third approach implemented in ODAMNet is a Random Walk with Restart analysis (RWR). RWR is applied using
+multiXrank <a href="#id16"><span class="problematic" id="id8">[10]_</span></a> through a multilayer composed of genes and diseases nodes.</p>
+<p>We applied RWR using two different multilayer compositions:</p>
+<ul class="simple">
+<li><p><strong>Multilayer 1</strong>: Multiplex + pathways/processes related to CAKUT network</p></li>
+<li><p><strong>Multilayer 2</strong>: Multiplex + disease-disease similarity network</p></li>
+</ul>
+<p>Used multilayers will be detailed in corresponding section results.</p>
+<p class="italic">For more details about RWR, see <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a>.</p>
 </section>
+</section>
+<section id="running-random-walk-analysis-with-data-provided-by-user">
+<h1>Running Random Walk analysis with data provided by user<a class="headerlink" href="#running-random-walk-analysis-with-data-provided-by-user" title="Permalink to this heading"></a></h1>
+<p>Target genes files is given using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. The file contains list of genes targeted by vitamin
+A [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>].</p>
+<p>To perform RWR, multiXrank <a href="#id17"><span class="problematic" id="id9">[10]_</span></a> needs a configuration file given using <code class="docutils literal notranslate"><span class="pre">--configPath</span></code> parameter. This configuration
+file contains path of different networks and target genes files used. The configuration file might contains parameters
+for RWR analysis. We run the RWR analysis with default parameters.</p>
+<p>MultiXrank needs also the networks directory path given using <code class="docutils literal notranslate"><span class="pre">--networksPath</span></code> parameter. MultiXrank defines target
+genes as seeds for the walk. Target genes will be saved into a file given using <code class="docutils literal notranslate"><span class="pre">--seedsFile</span></code> parameter.</p>
+<p>Two others parameters are required: number to select top nodes in each layer (<code class="docutils literal notranslate"><span class="pre">--top</span></code>) and file name to saved result
+network which contains top nodes of each layers and their relationships (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>).</p>
+<p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
+<div class="italic line-block">
+<div class="line">For more details about the input files, see <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">Random Walk with Restart input network</span></a> section.</div>
+<div class="line">For more details about the output files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</div>
+</div>
 </section>
 
 

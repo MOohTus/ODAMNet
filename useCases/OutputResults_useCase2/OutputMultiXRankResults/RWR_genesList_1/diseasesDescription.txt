@@ -1,0 +1,20 @@
+OMIM:104300	Alzheimer disease	0.0002343237291905913
+OMIM:125853	Diabetes mellitus, noninsulin-dependent	0.00031280922413426556
+OMIM:168600	Parkinson disease, late-onset	0.00019282926578458357
+OMIM:171300	PHEOCHROMOCYTOMA	0.0001446689902218234
+OMIM:178500	Pulmonary fibrosis, idiopathic	0.000347314227568672
+OMIM:203200	Albinism, oculocutaneous, type II	0.00014050412666528236
+OMIM:211980	Lung cancer, susceptibility to	0.00023374333639800116
+OMIM:215600	Cirrhosis, familial	0.0002730134384573178
+OMIM:261680	Phosphoenolpyruvate carboxykinase deficiency, cytosolic	0.00013789078663341503
+OMIM:265120	Surfactant metabolism dysfunction, pulmonary, 1	0.00013793836158404463
+OMIM:274400	Thyroid hormonogenesis, genetic defect in, 1	0.0001381005416303829
+OMIM:275120	Thyrotropin-Releasing hormone deficiency	0.00013733707504588126
+OMIM:601665	OBESITY	0.0001898579417179444
+OMIM:601859	Autoimmune lymphoproliferative syndrome	0.00018420657525837982
+OMIM:604117	Vohwinkel syndrome, variant form	0.0001374596766236085
+OMIM:608747	Insulin-Like growth factor I deficiency	0.00014490022845444817
+OMIM:610476	Arrhythmogenic right ventricular dysplasia, familial, 11	0.00013560634105440266
+OMIM:613330	Spondylo-Megaepiphyseal-Metaphyseal dysplasia	0.0001374857833941456
+OMIM:613659	Gastric cancer, somatic	0.00023852501301039589
+OMIM:619165	Oculocutaneous albinism, type VIII	0.00013968425100640143

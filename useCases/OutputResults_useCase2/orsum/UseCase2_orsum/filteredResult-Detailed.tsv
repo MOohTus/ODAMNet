@@ -1,0 +1,19 @@
+Representing term id	Representing term name	Representing term rank	Overlap term id	Overlap term name	Overlap term rank	AMI term id	AMI term name	AMI term rank	RWR term id	RWR term name	RWR term rank
+GO:0072001	GO:0072001 - renal system development	1
+			GO:0072001	GO:0072001 - renal system development	1	GO:0072001	GO:0072001 - renal system development	1	GO:0072001	GO:0072001 - renal system development	1
+GO:0001822	GO:0001822 - kidney development	2
+			GO:0001822	GO:0001822 - kidney development	2	GO:0001822	GO:0001822 - kidney development	2	GO:0001822	GO:0001822 - kidney development	2
+GO:0060993	GO:0060993 - kidney morphogenesis	3
+			GO:0060993	GO:0060993 - kidney morphogenesis	3	GO:0060993	GO:0060993 - kidney morphogenesis	3			
+REAC:R-HSA-195721	REAC:R-HSA-195721 - Signaling by WNT	3
+						REAC:R-HSA-195721	REAC:R-HSA-195721 - Signaling by WNT	6	REAC:R-HSA-195721	REAC:R-HSA-195721 - Signaling by WNT	3
+WP:WP5053	WP:WP5053 - Development of ureteric collection system	4
+			WP:WP5053	WP:WP5053 - Development of ureteric collection system	4	WP:WP5053	WP:WP5053 - Development of ureteric collection system	5	WP:WP5053	WP:WP5053 - Development of ureteric collection system	5
+REAC:R-HSA-8853659	REAC:R-HSA-8853659 - RET signaling	4
+						REAC:R-HSA-8853659	REAC:R-HSA-8853659 - RET signaling	4			
+REAC:R-HSA-157118	REAC:R-HSA-157118 - Signaling by NOTCH	4
+									REAC:R-HSA-157118	REAC:R-HSA-157118 - Signaling by NOTCH	4
+WP:WP4823	WP:WP4823 - Genes controlling nephrogenesis	5
+			WP:WP4823	WP:WP4823 - Genes controlling nephrogenesis	5						
+WP:WP4830	WP:WP4830 - GDNF/RET signalling axis	6
+			WP:WP4830	WP:WP4830 - GDNF/RET signalling axis	6						

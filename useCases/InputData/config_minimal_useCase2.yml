@@ -1,14 +1,14 @@
 multiplex:
     1:
         layers:
-            - multiplex/1/Complexes_Nov2020.gr
-            - multiplex/1/PPI_Jan2021.gr
-            - multiplex/1/Reactome_Nov2020.gr
+            - multiplex/1/Complexes_gene_names_190123.gr
+            - multiplex/1/Pathways_reactome_gene_names_190123.gr
+            - multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.gr
     2:
         layers:
-            - multiplex/2/pathwaysOfInterestNetwork_fromPaper.sif
+            - multiplex/2/PathwaysOfInterest_network_useCase2.gr
 bipartite:
-    bipartite/Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv:
+    bipartite/Bipartite_pathOfInterest_geneSymbols_useCase2.gr:
         source: 2
         target: 1
 seed:

@@ -11,9 +11,9 @@ Target genes
 
 .. line-block::
 
-        Two ways exist to extract the list of target genes:
+        Two ways exist to retrieve the list of target genes:
 
-        :ref:`chemicalsFile`: give chemical IDs file as input and request the Comparative Toxicogenomics Database (CTD)
+        :ref:`chemicalsFile`: give chemical IDs file as input and query the Comparative Toxicogenomics Database (CTD)
         :ref:`targetGenesFile`: give your own target genes file
 
 .. tip::
@@ -27,7 +27,7 @@ Target genes
 
 .. tip::
 
-   Target genes are extracted from CTD in HGCN format.
+   Target genes are retrieved from CTD in HGCN format.
 
 
 -c, --chemicalsFile FILENAME
@@ -40,8 +40,8 @@ Target genes
             D014212
             C009166
 
-Target genes will be extracted from CTD for each line and the three approaches will be performed on each line separatly.
-If they are multiple chemicals into one line, target genes of each chemical will be extracted and used as only one list
+Target genes will be retrieved from CTD for each line and the three approaches will be performed on each line separatly.
+If they are multiple chemicals into one line, target genes of each chemical will be retrieved and used as only one list
 of target genes as input of the three approaches.
 
 .. _targetGenesFile:
@@ -67,7 +67,7 @@ of target genes as input of the three approaches.
 --------------
 
 --CTD_file FILENAME
-    It's a tab-separated file and contains results of request sent to CTD.
+    It's a tab-separated file and contains results of query sent to CTD.
     This file is created automatically when you give a chemicals file. 
 
 It's composed of 9 columns:
@@ -97,7 +97,7 @@ It's composed of 9 columns:
 Pathways/processes of interest
 =================================
 
-By default, WikiPathays is automatically requested to extract rare disease pathways. Moreover, you can give your own
+By default, WikiPathays is automatically queried to retrieve rare disease pathways. Moreover, you can give your own
 pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
 
 .. _GMTFile:
@@ -198,10 +198,62 @@ MultiXrank [1]_ accepts networks and bipartites in **.gr format**. It's a tab-de
 Configuration file
 =====================
 
+
+.. tip::
+
+    Whatever the networks used, the **command line is the same**. But you have to **change** the network name inside the
+    **configuration file**.
+
+    .. tabs::
+
+        .. group-tab:: Pathways/processes of interest network
+
+            .. code-block:: bash
+                :emphasize-lines: 9,11
+
+                 multiplex:
+                     1:
+                         layers:
+                             - multiplex/1/Complexes_Nov2020.gr
+                             - multiplex/1/PPI_Jan2021.gr
+                             - multiplex/1/Reactome_Nov2020.gr
+                     2:
+                         layers:
+                             - multiplex/2/pathwaysOfInterestNetwork_fromPaper.sif
+                 bipartite:
+                     bipartite/Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv:
+                         source: 2
+                         target: 1
+                 seed:
+                     seeds.txt
+
+        .. group-tab:: Disease-Disease similarity network
+
+            .. code-block:: bash
+               :emphasize-lines: 9,11
+
+                multiplex:
+                    1:
+                        layers:
+                            - multiplex/1/Complexes_Nov2020.gr
+                            - multiplex/1/PPI_Jan2021.gr
+                            - multiplex/1/Reactome_Nov2020.gr
+                    2:
+                        layers:
+                            - multiplex/2/DiseaseSimilarity_network_2022_06_11.txt
+                bipartite:
+                    bipartite/Bipartite_genes_to_OMIM_2022_09_27.txt:
+                        source: 2
+                        target: 1
+                seed:
+                    seeds.txt
+
+
+
 --configPath PATH
     Configuration file required by multiXrank tool [1]_. It could be short or very detailed (g.e. with tuned parameters).
     The short one contains the network and bipartite trees and the path of the seed file.
-    If users want more details, see the multiXrank's documentation:
+    If user want more details, see the multiXrank's documentation:
     :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
     :octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
 

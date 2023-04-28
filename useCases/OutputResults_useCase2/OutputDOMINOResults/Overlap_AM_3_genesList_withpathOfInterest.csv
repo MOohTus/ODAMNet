@@ -1,0 +1,14 @@
+PathwayIDs;PathwayNames;PathwayBackgroundNames;PathwaySizes;TargetSizes;IntersectionSize;BackgroundSizes;pValue;pAdjusted;Intersection
+REAC:R-HSA-8853659;RET signaling;hsapiens.REAC.name.gmt;38;52;3;10531;0.0008479843517768867;0.011023796573099527;GAB1 GFRA1 RET
+WP:WP4830;GDNF/RET signalling axis;hsapiens.WP.name.gmt;23;48;2;7411;0.009530090617410178;0.06194558901316616;GFRA1 RET
+WP:WP5053;Development of ureteric collection system;hsapiens.WP.name.gmt;47;48;2;7411;0.03691262367944681;0.15995470261093617;GFRA1 RET
+PMC5748921-PMC6115658;CAKUT causal genes;hsapiens.GO-BP.name.gmt;42;75;1;18089;0.1602906509884151;0.5209446157123491;RET
+WP:WP4823;Genes controlling nephrogenesis;hsapiens.WP.name.gmt;43;48;1;7411;0.24437355130743704;0.6353712333993363;RET
+GO:0072001;renal system development;hsapiens.GO-BP.name.gmt;315;75;1;18089;0.7329379066387214;1.0;RET
+GO:0001822;kidney development;hsapiens.GO-BP.name.gmt;306;75;1;18089;0.7225813778557444;1.0;RET
+GO:0060993;kidney morphogenesis;hsapiens.GO-BP.name.gmt;96;75;0;18089;1.0;1.0;
+REAC:R-HSA-2022377;Metabolism of Angiotensinogen to Angiotensins;hsapiens.REAC.name.gmt;18;52;0;10531;1.0;1.0;
+REAC:R-HSA-195721;Signaling by WNT;hsapiens.REAC.name.gmt;328;52;0;10531;1.0;1.0;
+REAC:R-HSA-157118;Signaling by NOTCH;hsapiens.REAC.name.gmt;233;52;1;10531;0.688477850904483;1.0;NBEA
+REAC:R-HSA-5358351;Signaling by Hedgehog;hsapiens.REAC.name.gmt;149;52;0;10531;1.0;1.0;
+WP:WP5052;Nephrogenesis;hsapiens.WP.name.gmt;17;48;0;7411;1.0;1.0;

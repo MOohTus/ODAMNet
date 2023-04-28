@@ -146,7 +146,7 @@ Examples of command lines with ``Data retrieved by queries`` and ``Data provided
             odamnet domino  --chemicalsFile useCases/InputData/chemicalsFiles.csv \
                             --directAssociation FALSE \
                             --nbPub 2 \
-                            --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                            --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.sif \
                             --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \
                             --outputPath useCases/OutputResults_useCase1
 
@@ -157,7 +157,7 @@ Examples of command lines with ``Data retrieved by queries`` and ``Data provided
             odamnet domino  --targetGenesFile useCases/InputData/VitA-Balmer2002-Genes.txt \
                             --GMT useCases/InputData/PathwaysOfInterest.gmt \
                             --backgroundFile useCases/InputData/PathwaysOfInterestBackground.txt \
-                            --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                            --networkFile useCases/InputData/PPI_HiUnion_LitBM_APID_gene_names_190123.sif \
                             --outputPath useCases/OutputResults_useCase2
 
 References

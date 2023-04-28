@@ -35,6 +35,8 @@ You can also provided your own pathways/processes of interest using ``--GMT`` pa
     Name of the folder to save complementary results (i.e. query results)
     ``[default: OutputResults]``
 
+[:ref:`output pour le format de sortie`]
+
 Use-case command lines
 ========================
 
@@ -45,9 +47,9 @@ Use-case command lines
         .. code-block:: bash
 
             odamnet networkCreation --networksPath useCases/InputData/multiplex/2/ \
-                                    --networksName WP_RareDiseasesNetwork_fromRequest.sif \
+                                    --networksName RareDiseasePathways_network_useCase1.gr \
                                     --bipartitePath useCases/InputData/bipartite/ \
-                                    --bipartiteName Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv \
+                                    --bipartiteName Bipartite_RareDiseasePathways_geneSymbols_useCase1.gr \
                                     --outputPath useCases/OutputResults_useCase1
 
     .. group-tab:: Data provided by user
@@ -55,9 +57,9 @@ Use-case command lines
         .. code-block:: bash
 
             odamnet networkCreation --networksPath useCases/InputData/multiplex/2/ \
-                                    --networksName pathwaysOfInterestNetwork_fromPaper.sif \
+                                    --networksName PathwaysOfInterest_network_useCase2.gr \
                                     --bipartitePath useCases/InputData/bipartite/ \
-                                    --bipartiteName Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv \
+                                    --bipartiteName Bipartite_pathOfInterest_geneSymbols_useCase2.gr \
                                     --GMT useCases/InputData/PathwaysOfInterest.gmt \
                                     --outputPath useCases/OutputResults_useCase2
 

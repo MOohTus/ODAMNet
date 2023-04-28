@@ -146,15 +146,15 @@
 <h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this heading"></a></h1>
 <section id="query-file-results">
 <span id="queryoutput"></span><h2>Query file results<a class="headerlink" href="#query-file-results" title="Permalink to this heading"></a></h2>
-<p>ODAMNet can extract automatically data using requests. Target genes are extracted from the Comparative Toxicogenomics
-Database (CTD) and rare disease pathways are extracted from WikiPathways.
-It implies creation of output files that contain results of these requests.</p>
+<p>ODAMNet can retrieve automatically data using queries. Target genes are retrieved from the Comparative Toxicogenomics
+Database (CTD) and rare disease pathways are retrieved from WikiPathways.
+It implies creation of output files that contain results of these queries.</p>
 <section id="ctd-query-file-results">
 <span id="ctdqueryouput"></span><h3>CTD query file results<a class="headerlink" href="#ctd-query-file-results" title="Permalink to this heading"></a></h3>
-<p>When you request CTD to extract the target genes, two files are created, whatever the approach you choose.</p>
+<p>When you query CTD to retrieve the target genes, two files are created, whatever the approach you choose.</p>
 <section id="ctd-request-meshid-date-tsv">
 <h4>CTD_request_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-request-meshid-date-tsv" title="Permalink to this heading"></a></h4>
-<p>This file contains the results from the request sent to CTD.</p>
+<p>This file contains the results from the query sent to CTD.</p>
 </section>
 <section id="ctd-requestfiltered-meshid-date-tsv">
 <h4>CTD_requestFiltered_MeSHID_DATE.tsv<a class="headerlink" href="#ctd-requestfiltered-meshid-date-tsv" title="Permalink to this heading"></a></h4>
@@ -183,16 +183,16 @@ d014801     Vitamin A       D014801 11103-57-4      AKR1B1  231     Homo sapiens
 d014801     Vitamin A       D014801 11103-57-4      AKR1B10 57016   Homo sapiens    9606    19014918
 </pre></div>
 </div>
-<p><em>The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the request (aaaa_mm_dd).</em></p>
+<p><em>The file name is composed of the MeSHID that corresponds to the query chemical and of the DATE of the query (aaaa_mm_dd).</em></p>
 </section>
 </section>
 <section id="wikipathways-request-file-results">
 <span id="wprequestouput"></span><h3>WikiPathways request file results<a class="headerlink" href="#wikipathways-request-file-results" title="Permalink to this heading"></a></h3>
-<p>When you request WikiPathways to extract the rare disease pathways, two files are created whatever the approach chosen.</p>
+<p>When you query WikiPathways to retrieve the rare disease pathways, two files are created whatever the approach chosen.</p>
 <section id="wp-rarediseases-request-date-gmt">
 <h4>WP_RareDiseases_request_DATE.gmt<a class="headerlink" href="#wp-rarediseases-request-date-gmt" title="Permalink to this heading"></a></h4>
-<p>This file contains the results of the request sent to WikiPathways. All the disease pathways labeled as rare diseases are
-extracted and save into this GMT file.</p>
+<p>This file contains the results of the query sent to WikiPathways. All the disease pathways labeled as rare diseases are
+retrieved and save into this GMT file.</p>
 <p>GMT file is a tab-separated file:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pathwayIDs</span></code>: first column is the WikiPathways ID</p></li>
@@ -211,7 +211,7 @@ WP5190      Creatine pathway        GAMT    SLC6A8  GATM    OAT     CK
 <section id="wp-allpathways-request-date-gmt">
 <h4>WP_allPathways_request_DATE.gmt<a class="headerlink" href="#wp-allpathways-request-date-gmt" title="Permalink to this heading"></a></h4>
 <p>This GMT file contains all the human disease pathways from WikiPathways. The  format is similar at the previous one.</p>
-<p><em>The file name is composed of the *DATE</em> of the request (aaaa_mm_dd).*</p>
+<p><em>The file name is composed of the *DATE</em> of the query (aaaa_mm_dd).*</p>
 </section>
 </section>
 </section>

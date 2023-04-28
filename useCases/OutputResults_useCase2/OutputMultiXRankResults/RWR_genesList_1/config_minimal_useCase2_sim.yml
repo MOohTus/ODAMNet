@@ -1,0 +1,15 @@
+multiplex:
+    1:
+        layers:
+            - multiplex/1/Complexes_gene_names_190123.gr
+            - multiplex/1/Pathways_reactome_gene_names_190123.gr
+            - multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.gr
+    2:
+        layers:
+            - multiplex/2/DiseaseSimilarity_network_2022_06_11.gr
+bipartite:
+    bipartite/Bipartite_genes_to_OMIM_2022_09_27.gr:
+        source: 2
+        target: 1
+seed:
+   seeds.txt

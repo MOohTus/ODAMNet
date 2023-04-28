@@ -1,0 +1,10 @@
+Representing term id	Representing term name	Representing term size	Representing term rank	Represented term number	Overlap term rank	AMI term rank	RWR term rank
+GO:0072001	GO:0072001 - renal system development	313	1	1	1	1	1
+GO:0001822	GO:0001822 - kidney development	304	2	1	2	2	2
+GO:0060993	GO:0060993 - kidney morphogenesis	95	3	1	3	3	None
+REAC:R-HSA-195721	REAC:R-HSA-195721 - Signaling by WNT	292	3	1	None	6	3
+WP:WP5053	WP:WP5053 - Development of ureteric collection system	47	4	1	4	5	5
+REAC:R-HSA-8853659	REAC:R-HSA-8853659 - RET signaling	38	4	1	None	4	None
+REAC:R-HSA-157118	REAC:R-HSA-157118 - Signaling by NOTCH	197	4	1	None	None	4
+WP:WP4823	WP:WP4823 - Genes controlling nephrogenesis	43	5	1	5	None	None
+WP:WP4830	WP:WP4830 - GDNF/RET signalling axis	23	6	1	6	None	None

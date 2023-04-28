@@ -283,7 +283,7 @@ create network visualisation.</span><a class="headerlink" href="#id19" title="Pe
 </figcaption>
 </figure>
 <ul>
-<li><p><strong>Import Network</strong> from File: <code class="docutils literal notranslate"><span class="pre">resultsNetwork_useCase1.sif</span></code></p></li>
+<li><p><strong>Import Network</strong> from File: <code class="docutils literal notranslate"><span class="pre">UseCase1_RWR_network.sif</span></code></p></li>
 <li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">multiplex_1.tsv</span></code> and <code class="docutils literal notranslate"><span class="pre">multiplex_2.tsv</span></code></p></li>
 <li><p><strong>Import Table</strong> from File: <code class="docutils literal notranslate"><span class="pre">seeds.4Cytoscape</span></code></p>
 <blockquote>
@@ -312,7 +312,7 @@ create network visualisation.</span><a class="headerlink" href="#id19" title="Pe
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>How create the <strong>diseasesDescription.txt</strong> file ?</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk<span class="w"> </span>-F<span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;NR==FNR{a[$1]; next} {if($1 in a){print $1&quot;\t&quot;$2}}&#39;</span><span class="w"> </span>RWR_top20.txt<span class="w"> </span>../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt<span class="w"> </span>&gt;<span class="w"> </span>diseasesDescription.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk<span class="w"> </span>-F<span class="s2">&quot;\t&quot;</span><span class="w"> </span><span class="s1">&#39;NR==FNR{a[$1]=$2; next} {if($1 in a){print $1&quot;\t&quot;$2&quot;\t&quot;a[$1]}}&#39;</span><span class="w"> </span>RWR_top20.txt<span class="w"> </span>../../OutputOverlapResults/WP_RareDiseases_request_2022_09_07.gmt<span class="w"> </span>&gt;<span class="w"> </span>diseasesDescription.txt
 </pre></div>
 </div>
 </div>
@@ -350,6 +350,7 @@ create network visualisation.</span><a class="headerlink" href="#id19" title="Pe
 <div><ul class="simple">
 <li><p>Sort by <code class="docutils literal notranslate"><span class="pre">score</span></code> (decrease) and select the 5th first rare disease pathways</p></li>
 <li><p>Fill <code class="docutils literal notranslate"><span class="pre">keep</span></code> column with <code class="docutils literal notranslate"><span class="pre">=True</span></code></p></li>
+<li><p>Fill <code class="docutils literal notranslate"><span class="pre">label</span></code> column with <code class="docutils literal notranslate"><span class="pre">=$pathways</span></code> and apply to selected nodes</p></li>
 </ul>
 </div></blockquote>
 </li>

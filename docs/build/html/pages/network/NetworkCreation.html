@@ -148,21 +148,22 @@ themself). The bipartite network connects genes nodes to rare disease pathway no
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">OutputResults]</span></code></p>
 </dd>
 </dl>
+<p>[<span class="xref std std-ref">output pour le format de sortie</span>]</p>
 </section>
 <section id="use-case-command-lines">
 <h2>Use-case command lines<a class="headerlink" href="#use-case-command-lines" title="Permalink to this heading"></a></h2>
 <div class="sphinx-tabs docutils container">
 <div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" aria-selected="true" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" name="RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" role="tab" tabindex="0">Data retrieved by queries</button><button aria-controls="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vy" aria-selected="false" class="sphinx-tabs-tab group-tab" id="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vy" name="RGF0YSBwcm92aWRlZCBieSB1c2Vy" role="tab" tabindex="-1">Data provided by user</button></div><div aria-labelledby="tab-0-RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" class="sphinx-tabs-panel group-tab" id="panel-0-RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" name="RGF0YSByZXRyaWV2ZWQgYnkgcXVlcmllcw==" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkCreation<span class="w"> </span>--networksPath<span class="w"> </span>useCases/InputData/multiplex/2/<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--networksName<span class="w"> </span>WP_RareDiseasesNetwork_fromRequest.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>--networksName<span class="w"> </span>RareDiseasePathways_network_useCase1.gr<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--bipartitePath<span class="w"> </span>useCases/InputData/bipartite/<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--bipartiteName<span class="w"> </span>Bipartite_WP_RareDiseases_geneSymbols_fromRequest.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>--bipartiteName<span class="w"> </span>Bipartite_RareDiseasePathways_geneSymbols_useCase1.gr<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase1
 </pre></div>
 </div>
 </div><div aria-labelledby="tab-0-RGF0YSBwcm92aWRlZCBieSB1c2Vy" class="sphinx-tabs-panel group-tab" hidden="true" id="panel-0-RGF0YSBwcm92aWRlZCBieSB1c2Vy" name="RGF0YSBwcm92aWRlZCBieSB1c2Vy" role="tabpanel" tabindex="0"><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>networkCreation<span class="w"> </span>--networksPath<span class="w"> </span>useCases/InputData/multiplex/2/<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--networksName<span class="w"> </span>pathwaysOfInterestNetwork_fromPaper.sif<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>--networksName<span class="w"> </span>PathwaysOfInterest_network_useCase2.gr<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--bipartitePath<span class="w"> </span>useCases/InputData/bipartite/<span class="w"> </span><span class="se">\</span>
-<span class="w">                        </span>--bipartiteName<span class="w"> </span>Bipartite_pathOfInterest_geneSymbols_fromPaper.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">                        </span>--bipartiteName<span class="w"> </span>Bipartite_pathOfInterest_geneSymbols_useCase2.gr<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">                        </span>--outputPath<span class="w"> </span>useCases/OutputResults_useCase2
 </pre></div>

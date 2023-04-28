@@ -86,7 +86,7 @@ Use-case command lines
         .. code-block:: bash
 
             odamnet networkDownloading  --netUUID bfac0486-cefe-11ed-a79c-005056ae23aa \
-                                        --networkFile useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.tsv \
+                                        --networkFile useCases/InputData/multiplex/1/PPI_HiUnion_LitBM_APID_gene_names_190123.gr \
                                         --simple True
 
     .. group-tab:: Molecular complexes network
@@ -94,7 +94,7 @@ Use-case command lines
         .. code-block:: bash
 
             odamnet networkDownloading  --netUUID 419ae651-cf05-11ed-a79c-005056ae23aa \
-                                        --networkFile useCases/InputData/multiplex/1/Complexes_gene_names_190123.tsv \
+                                        --networkFile useCases/InputData/multiplex/1/Complexes_gene_names_190123.gr \
                                         --simple True
 
     .. group-tab:: Reactome pathways network
@@ -102,7 +102,7 @@ Use-case command lines
         .. code-block:: bash
 
             odamnet networkDownloading  --netUUID b13e9620-cefd-11ed-a79c-005056ae23aa \
-                                        --networkFile useCases/InputData/multiplex/1/Pathways_reactome_gene_names_190123.tsv \
+                                        --networkFile useCases/InputData/multiplex/1/Pathways_reactome_gene_names_190123.gr \
                                         --simple True
 
 .. _pathwaysOfInterestNet:

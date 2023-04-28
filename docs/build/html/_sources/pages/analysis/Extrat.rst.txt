@@ -275,3 +275,52 @@ Networks from NDEx database
 You can directly request `NDEx <https://www.ndexbio.org/#/>`_ [3]_ and extract the network that you want to use
 (REST API [3]_:sup:`,` [5]_ :sup:`,` [6]_). You need to specify the network UUID using the optional parameter
 ``--netUUID``. The network will be save into a :ref:`SIF file <SIF>`.
+
+
+.. note::
+
+    | **Multilayer** is a network with several layers where layers contain different nodes types
+    | **Multiplex** is a network with several layers (multilayer) where layers contain same type of nodes
+
+The third approach implemented in ODAMNet is a Random Walk with Restart analysis (RWR). RWR is applied using
+multiXrank [10]_ through a multilayer composed of genes and diseases nodes.
+
+We applied RWR using two different multilayer compositions:
+
+- **Multilayer 1**: Multiplex + pathways/processes related to CAKUT network
+- **Multilayer 2**: Multiplex + disease-disease similarity network
+
+Used multilayers will be detailed in corresponding section results.
+
+.. cssclass:: italic
+
+    For more details about RWR, see :doc:`../approaches/methods_RWR`.
+
+Running Random Walk analysis with data provided by user
+-----------------------------------------------------------
+
+Target genes files is given using ``--targetGenesFile`` parameter. The file contains list of genes targeted by vitamin
+A [:ref:`FORMAT <targetGenesFile>`].
+
+To perform RWR, multiXrank [10]_ needs a configuration file given using ``--configPath`` parameter. This configuration
+file contains path of different networks and target genes files used. The configuration file might contains parameters
+for RWR analysis. We run the RWR analysis with default parameters.
+
+MultiXrank needs also the networks directory path given using ``--networksPath`` parameter. MultiXrank defines target
+genes as seeds for the walk. Target genes will be saved into a file given using ``--seedsFile`` parameter.
+
+Two others parameters are required: number to select top nodes in each layer (``--top``) and file name to saved result
+network which contains top nodes of each layers and their relationships (``--sifFileName``).
+
+Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
+
+
+
+
+
+
+
+.. cssclass:: italic
+
+    | For more details about the input files, see :ref:`GR` section.
+    | For more details about the output files, see :doc:`../formats/Output` page.
