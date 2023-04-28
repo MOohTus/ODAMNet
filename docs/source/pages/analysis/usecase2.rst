@@ -218,7 +218,7 @@ Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Then, we perform an Overlap analysis between identified active modules (21) and pathways/processes related to CAKUT
-(13). We obtained significant overlap between **6 idantified active modules** and **6 pathways/processes**
+(13). We obtained significant overlap between **6 identified active modules** and **6 pathways/processes**
 (pAdjusted <= 0.05). Results are presented in :ref:`Table 17 <useCase2_AMIOverlap>`
 
 Duplicates between active modules results are removed and we keep the more significant ones.

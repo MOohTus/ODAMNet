@@ -45,7 +45,7 @@ Protein-Protein Interaction (PPI) network
 The Protein-Protein Interaction (PPI) network is obtained from fusion of three datasets : Hi-Union and Lit-BM [2]_ and
 APID [3]_. It's composed of:
 
-- 15,390 3 nodes
+- 15,390 nodes
 
 - 131,087 edges
 
