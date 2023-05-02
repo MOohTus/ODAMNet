@@ -2,10 +2,12 @@
 Output files
 ==================================================
 
+This page is dedicated to output files created by ODAMNet.
+
 .. _queryOutput:
 
 Query file results
-==================================================
+=====================
 
 ODAMNet can retrieve automatically data using queries. Target genes are retrieved from the Comparative Toxicogenomics
 Database (CTD) and rare disease pathways are retrieved from WikiPathways.

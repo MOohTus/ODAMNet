@@ -11,9 +11,9 @@ related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT).
 In this use-case, we illustrate how to use ODAMNet with data provided by user. We use data from Ozisik *et al.*,
 2021 [1]_ paper. Results are compared with those found in the Ozisik *et al.*, 2021 [1]_ paper.
 
-**Vitamin A target genes** are coming from Balmer and Blomhoff [3]_ paper and **pathways/processes** related to CAKUT
-are coming from |wiki|_ [4]_, |reac|_ [5]_ and |go|_ (GO) [6]_:sup:`,` [7]_. Biological networks used are presented in
-the :doc:`../network/NetworkUsed` page and are coming from the |NDEx|_ (NDEx) [11]_. Input data are available in |git|_.
+**Vitamin A target genes** are coming from Balmer and Blomhoff [2]_ paper and **pathways/processes** related to CAKUT
+are coming from |wiki|_ [3]_, |reac|_ [4]_ and |go|_ (GO) [5]_:sup:`,` [6]_. Biological networks used are presented in
+the :doc:`../network/NetworkUsed` page and are coming from the |NDEx|_ (NDEx) [7]_. Input data are available in |git|_.
 
 .. _useCase2_overlap:
 
@@ -55,8 +55,8 @@ Results of Overlap analysis with data provided by user
 Data provided by user overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are coming from Balmer and Blomhoff [3]_. Pathways of interests are coming from Reactome [5]_ and
-WikiPathways [4]_ and processes of interest are coming from Biological Process (GO) [6]_:sup:`,` [7]_.
+Target genes are coming from Balmer and Blomhoff [2]_. Pathways of interests are coming from Reactome [4]_ and
+WikiPathways [3]_ and processes of interest are coming from Biological Process (GO) [5]_:sup:`,` [6]_.
 Data are presented in the :ref:`Table 13 <useCase2_OverlapDataOverview>`.
 
 .. _useCase2_OverlapDataOverview:
@@ -131,7 +131,7 @@ Pathways/processes related to CAKUT are given using the ``--GMT`` parameter [:re
 of each source of pathways/processes is required (``--backgroundFile`` parameter). The file contains the list of
 background file names.
 
-We used a PPI network [:ref:`FORMAT <SIF>`] previously downloaded from NDEx [11]_. The PPI network file is provided
+We used a PPI network [:ref:`FORMAT <SIF>`] previously downloaded from NDEx [7]_. The PPI network file is provided
 using ``--networkFile`` parameter. See :doc:`../network/NetworkDownloading` section. Network name should have
 **.sif** extension.
 
@@ -167,8 +167,8 @@ Results of AMI with data provided by user
 Data provided by user overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are coming from Balmer and Blomhoff [3]_. Pathways of interests are coming from Reactome [5]_ and
-WikiPathways [4]_ and processes of interest are coming from Biological Process (GO) [6]_:sup:`,` [7]_.
+Target genes are coming from Balmer and Blomhoff [2]_. Pathways of interests are coming from Reactome [4]_ and
+WikiPathways [3]_ and processes of interest are coming from Biological Process (GO) [5]_:sup:`,` [6]_.
 Data are presented in the :ref:`Table 15 <useCase2_AMIDataOverview>`.
 
 .. _useCase2_AMIDataOverview:
@@ -218,7 +218,7 @@ Overlap analysis results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Then, we perform an Overlap analysis between identified active modules (21) and pathways/processes related to CAKUT
-(13). We obtained significant overlap between **6 idantified active modules** and **6 pathways/processes**
+(13). We obtained significant overlap between **6 identified active modules** and **6 pathways/processes**
 (pAdjusted <= 0.05). Results are presented in :ref:`Table 17 <useCase2_AMIOverlap>`
 
 Duplicates between active modules results are removed and we keep the more significant ones.
@@ -349,7 +349,7 @@ Results of RWR with data provided by user
 Data provided by user overview
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Target genes are coming from Balmer and Blomhoff [3]_. There are **521 vitamin A target genes**.
+Target genes are coming from Balmer and Blomhoff [2]_. There are **521 vitamin A target genes**.
 
 RWR results
 ~~~~~~~~~~~~~~
@@ -453,7 +453,7 @@ Overlap, AMI and RWR results comparison
 ===========================================
 
 We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
-and Random Walk with Restart (RWR). We used orsum [2]_, a Python package to filter and integrate enrichment analysis
+and Random Walk with Restart (RWR). We used orsum [11]_, a Python package to filter and integrate enrichment analysis
 from several analyses. The main result is a heatmap, presented in :numref:`useCase2_orsum`.
 
 .. code-block:: bash
@@ -482,28 +482,27 @@ References
 ============
 
 .. [1] Ozisik O, Ehrhart F, Evelo C *et al.*. Overlap of vitamin A and vitamin D target genes with CAKUT-related processes. F1000Research. 2021.
-.. [2] Davis AP, Grondin CJ, Johnson RJ *et al.*. The Comparative Toxicogenomics Database: update 2021. Nucleic acids research. 2021.
-.. [3] Balmer JE & Blomhoff R. Gene expression regulation by retinoic acid. Journal of lipid research. 2002.
-.. [4] Martens M, Ammar A, Riutta A *et al.*. WikiPathways: connecting communities. Nucleic acids research. 2021.
-.. [5] Jassal B, Matthews L, Viteri G *et al.*. The reactome pathway knowledgebase. Nucleic acids research. 2020.
+.. [2] Balmer JE & Blomhoff R. Gene expression regulation by retinoic acid. Journal of lipid research. 2002.
+.. [3] Martens M, Ammar A, Riutta A *et al.*. WikiPathways: connecting communities. Nucleic acids research. 2021.
+.. [4] Jassal B, Matthews L, Viteri G *et al.*. The reactome pathway knowledgebase. Nucleic acids research. 2020.
+.. [5] The Gene Ontology Consortium. The Gene Ontology resource: enriching a GOld mine. Nucleic acids research. 2021.
 .. [6] Ashburner M, Ball CA, Blake JA *et al.*. Gene ontology: tool for the unification of biology. Nature Genetics. 2000.
-.. [7] The Gene Ontology Consortium. The Gene Ontology resource: enriching a GOld mine. Nucleic acids research. 2021.
+.. [7] Pratt D, Chen J, Welker *et al.*. NDEx, the Network Data Exchange. Cell Systems. 2015.
 .. [8] Levi H, Rahmanian N, Elkon R *et al.*. The DOMINO web-server for active module identification analysis. Bioinformatics. 2022.
 .. [9] Shannon P, Markiel A, Ozier O *et al.*. Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research. 2003.
 .. [10] Baptista A, Gonzalez A & Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.
-.. [11] Pratt D, Chen J, Welker *et al.*. NDEx, the Network Data Exchange. Cell Systems. 2015.
+.. [11] Ozisik O, Térézol M & Baudot A. orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics. 2022.
 
-
-.. _NDEx: https://www.ndexbio.org/
-.. |NDEx| replace:: Network Data Exchange
-.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
-.. |git| replace:: GitHub
 .. _wiki: https://www.wikipathways.org/
 .. |wiki| replace:: WikiPathways
 .. _reac: https://reactome.org/
 .. |reac| replace:: Reactome
 .. _go: http://geneontology.org/
 .. |go| replace:: Gene Ontology
+.. _NDEx: https://www.ndexbio.org/
+.. |NDEx| replace:: Network Data Exchange
+.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |git| replace:: GitHub
 .. _NDExPPI: https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa
 .. |NDExPPI| replace:: NDEx
 .. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/

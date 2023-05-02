@@ -324,3 +324,31 @@ Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
     | For more details about the input files, see :ref:`GR` section.
     | For more details about the output files, see :doc:`../formats/Output` page.
+
+
+By default, WikiPathays is automatically queried to retrieve rare disease pathways. Moreover, you can give your own
+pathways/processes of interest (``--GMT``). You need to provided the ontology source of them too (``backgroundFile``).
+
+
+
+
+
+
+
+
+
+.. tip::
+
+   Theses parameters, ``--GMT`` and ``--backgroundFile`` can be used for reproducibility.
+
+
+.. line-block::
+
+        Two ways exist to retrieve the list of target genes:
+
+        :ref:`chemicalsFile`: give chemical IDs file as input and query the Comparative Toxicogenomics Database (CTD)
+        :ref:`targetGenesFile`: give your own target genes file
+
+.. tip::
+
+   For reproducibility, you can give your own version of CTD file using ``--CTD_file`` [:ref:`FORMAT <CTD_file>`]

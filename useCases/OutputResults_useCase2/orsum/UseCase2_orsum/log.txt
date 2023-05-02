@@ -11,17 +11,16 @@ numberOfTermsToPlot:	50
 
 
 Processing 00_Data/Overlap.4Orsum
-1 term is not in GMT, it is removed.
 
 Processing 00_Data/DOMINO.4Orsum
 
 Processing 00_Data/RWR_top5.4Orsum
 
-Initial term number (recurring terms in different lists are not merged yet, each one is counted): 17
+Initial term number (recurring terms in different lists are not merged yet, each one is counted): 18
 
 Same terms in multiple lists are unified
-Representing term number: 9
+Representing term number: 10
 
 Superterms represent their less significant (worse ranked) subterms. This includes equal terms, i.e. the terms that annotate exactly the same set of genes.
-Representing term number:9
+Representing term number:10
 
