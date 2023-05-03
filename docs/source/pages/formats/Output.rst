@@ -36,8 +36,8 @@ Chemical target genes are retrieved from CTD. Two files are created:
     .. group-tab:: ``CTD_requestFiltered_MeSHID_DATE.tsv``
 
         This file contains the filtered query results. You can filter raw query results according the number of
-        publication associated to a chemical - gene association (``--nbPub`` parameter). :ref:`REF ICI ?` This file is
-        used for the analysis.
+        publication associated to a chemical - gene association (``--nbPub`` parameter). This file is used for the
+        analysis.
 
 These two files have the same format:
 
@@ -78,11 +78,11 @@ Rare disease pathways are retrieved from WikiPathways. Two GMT files are created
 
     .. group-tab:: ``WP_RareDiseases_request_DATE.gmt``
 
-        This file contains the rare disease pathways in GMT format [:ref:`FORMAT <GMT>`].
+        This file contains the rare disease pathways in :ref:`GMT format <GMTFile>`.
 
     .. group-tab:: ``WP_allPathways_request_DATE.gmt``
 
-        This file contains the human disease pathways in GMT format [:ref:`FORMAT <GMT>`].
+        This file contains the human disease pathways in :ref:`GMT format <GMTFile>`.
 
 GMT file is a tab-separated file:
 

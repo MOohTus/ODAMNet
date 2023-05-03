@@ -383,9 +383,9 @@ are prioritized. We selected the top 5 (:ref:`Table 18 <useCase2_RWRpathOfInt>`)
     | WP:WP5053             | Development of ureteric collection system | 6.46e-04     |
     +-----------------------+-------------------------------------------+--------------+
 
-We created a visualisation of the results (:numref:`useCase2_RWRWPFig`) using Cytoscape [9]_. You can retrieved it in
-the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase2_RWRWPFig` presents the top 5
-of pathways/processes related to CAKUT, ordered by RWR score.
+We created a visualisation of the results (:numref:`useCase2_RWRpathOfIntFig`) using Cytoscape [9]_. You can retrieved
+it in the cytoscape project called ``RWR_visualisation.cys`` in GitHub_. The :numref:`useCase2_RWRpathOfIntFig`
+presents the top 5 of pathways/processes related to CAKUT, ordered by RWR score.
 
 .. _useCase2_RWRpathOfIntFig:
 .. figure:: ../../pictures/UseCase2/UseCase2_RWR_top5.png

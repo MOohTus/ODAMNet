@@ -57,8 +57,6 @@ chemical will be retrieved and merged as unique target genes list.
 
 Chemical target genes are retrieved in **HGCN** format.
 
-[:ref:`XX`] mettre une ref sur la sortie qu'on a ?
-
 .. _targetgenesfile:
 
 2. Target genes file
@@ -103,8 +101,6 @@ This third way to retrieved target genes is well appropriate to do **reproducibl
     d014801	Vitamin A	D014801	11103-57-4	AKR1B10	57016	Homo sapiens	9606	19014918
 
 This kind of files is created as query results with query mode of ODAMNet.
-
-[:ref:`XX`] mettre une ref sur la sortie qu'on a ?
 
 .. _pathways:
 
@@ -238,11 +234,11 @@ In ODAMNet, two mains network format file are used:
 
 .. _SIF:
 
-Simple interaction file
--------------------------
+SIF file
+----------
 
-This network format is used in the Active module identification (AMI) approach (:ref:`REF?`). The SIF file contains
-three columns: source node, interaction type and target node, and an header. It's a tab-separated file.
+This network format is used in the :doc:`../approaches/methods_AMI` (AMI) approach. The SIF file contains three
+columns: source node, interaction type and target node, and an header. It's a tab-separated file.
 
 .. code-block:: none
 
@@ -253,17 +249,15 @@ three columns: source node, interaction type and target node, and an header. It'
     AAMP        ppi     C8orf33
     AAMP        ppi     TK1
 
-For more details, see |sifNet|_.
-
-(:ref:`REF?`) comment le créer ?
+For more details, see |sifNet|_ webpage.
 
 .. _GR:
 
-Graph file
-------------
+GR file
+----------
 
-This network format is used in the Random walk with restart (RWR) approach (:ref:`REF?`). The GR format contains two
-columns: source node and target node, without header. It's a tab-separated file.
+This network format is used in the :doc:`../approaches/methods_RWR` (RWR) approach. The GR format contains two columns:
+source node and target node, without header. It's a tab-separated file.
 
 .. code-block:: none
 
@@ -272,8 +266,6 @@ columns: source node and target node, without header. It's a tab-separated file.
     NFYB	NFYC
     BTRC	CUL1
     BTRC	SKP1
-
-(:ref:`REF?`) comment le créer ?
 
 .. _configFile:
 
@@ -285,7 +277,7 @@ could be short (see bellow) or very detailed with parameters.
 
 For more details about this file, see the multiXrank's documentation:
 :octicon:`mark-github;1em` `Github <https://github.com/anthbapt/multixrank>`_ /
-:octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_
+:octicon:`book;1em` `Documentation <https://multixrank-doc.readthedocs.io/en/latest/>`_.
 
 This is an example of short configuration file:
 
@@ -312,8 +304,6 @@ This is an example of short configuration file:
              seed:
                  seeds.txt
 
-        :ref:`ICI`
-
     .. group-tab:: Disease-Disease similarity network
 
         .. code-block:: bash
@@ -334,8 +324,6 @@ This is an example of short configuration file:
                     target: 1
             seed:
                 seeds.txt
-
-        :ref:`ICI`
 
 .. tip::
 

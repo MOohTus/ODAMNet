@@ -191,6 +191,14 @@ Select the approach you want to perform:</p>
 </dd></dl>
 
 </section>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code>, <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> and <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameters are exclusive, only one has to be use. This input is <strong>required</strong>.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameters have always to be <strong>given together</strong>.</p>
+</div>
 </section>
 <section id="overlap">
 <h2>Overlap<a class="headerlink" href="#overlap" title="Permalink to this heading"></a></h2>
@@ -478,7 +486,7 @@ False: Extract target genes from chemicals + its child chemicals</p>
 <dd><p>Network output name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseasesNetwork.sif</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">WP_RareDiseasesNetwork.gr</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -495,7 +503,7 @@ False: Extract target genes from chemicals + its child chemicals</p>
 <dd><p>Bipartite output name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Default<span class="colon">:</span></dt>
-<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Bipartite_WP_RareDiseases_geneSymbols.tsv</span></code></p>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">Bipartite_WP_RareDiseases_geneSymbols.gr</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -548,14 +556,6 @@ Create a tab separated file with three columns: node1, interaction type and node
 </dd></dl>
 
 </section>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code>, <code class="docutils literal notranslate"><span class="pre">--CTD_file</span></code> and <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameters are exclusive, only one has to be use. This input is <strong>required</strong>.</p>
-</div>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p><code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameters have always to be <strong>given together</strong>.</p>
-</div>
 </section>
 </section>
 

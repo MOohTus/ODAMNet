@@ -294,11 +294,11 @@ def multiXrank(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPu
 @main.command('networkCreation', short_help='Network and its bipartite creation', context_settings=CONTEXT_SETTINGS)
 @click.option('--networksPath', 'networksPath', type=click.Path(), required=True,
               help='Output path to save the network')
-@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.sif', show_default=True,
+@click.option('--networksName', 'networksName', type=str, default='WP_RareDiseasesNetwork.gr', show_default=True,
               metavar='FILENAME', help='Network output name')
 @click.option('--bipartitePath', 'bipartitePath', type=click.Path(), required=True,
               help='Output path to save the bipartite')
-@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.tsv',
+@click.option('--bipartiteName', 'bipartiteName', type=str, default='Bipartite_WP_RareDiseases_geneSymbols.gr',
               show_default=True, metavar='FILENAME', help='Bipartite output name')
 @click.option('--GMT', 'pathOfInterestGMT', type=click.File(),
               help='Pathways of interest in GMT like format (e.g. from WP request).')

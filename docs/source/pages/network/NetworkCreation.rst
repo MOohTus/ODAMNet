@@ -18,24 +18,22 @@ themself). The bipartite network connects genes nodes to rare disease pathway no
 You can also provided your own pathways/processes of interest using ``--GMT`` parameter.
 
 --networksPath PATH
-    Output repository name where the pathways/processes network will be saved **[requiered]**
+    Output repository name where the pathways/processes network is saved **[requiered]**
 
 --networksName FILENAME
-    File name to save the pathways/processes network. The created file will be in SIF file format.
-    ``[default: WP_RareDiseasesNetwork.sif]``
+    File name to save the pathways/processes network. The created network is in :ref:`GR format <GR>`.
+    ``[default: WP_RareDiseasesNetwork.gr]``
 
 --bipartitePath PATH
     Output repository name where the bipartite genes-pathways/processes is saved **[requiered]**
 
 --bipartiteName FILENAME
-    File name to save the bipartite. It's a tab-separated file.
-    ``[default: Bipartite_WP_RareDiseases_geneSymbols.tsv]``
+    File name to save the bipartite network. The created network is in :ref:`GR format <GR>`.
+    ``[default: Bipartite_WP_RareDiseases_geneSymbols.gr]``
 
 -o, --outputPath PATH
     Name of the folder to save complementary results (i.e. query results)
     ``[default: OutputResults]``
-
-[:ref:`output pour le format de sortie`]
 
 Use-case command lines
 ========================
