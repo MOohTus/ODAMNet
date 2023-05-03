@@ -153,7 +153,7 @@ Several files are generated:
   genes and pathways/processes of related to CAKUT. There is one file per active module.
 
 - ``DOMINO_genesList_activeModulesNetwork.txt``, ``DOMINO_genesList_overlapAMresults4Cytoscape.txt``,
-  ``DOMINO_genesList_activeModules.txt``, ``DOMINO_genesList_activeModulesNetworkMetrics.txt`` and
+  ``DOMINO_genesList_activeModules.txt``, ``DOMINO_genesList_activeModulesMetrics.txt`` and
   ``DOMINO_genesList_signOverlap.txt``: some statistics are calculated and saved into files. Theses files are useful
   for visualisation.
 

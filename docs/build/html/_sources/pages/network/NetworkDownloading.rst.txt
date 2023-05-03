@@ -36,6 +36,7 @@ These two parameters are **required**.
         - **Two** columns: node 1 and node 2
         - **Without header**
         - Network format file used by **multiXrank** [3]_ *(random walk with restart (RWR) approach).*
+        - :ref:`GR format <GR>`
 
         .. code-block:: none
 
@@ -54,6 +55,7 @@ These two parameters are **required**.
         - **Three** columns: node 1, interaction type, node 2
         - **With header**
         - Network format file used by **DOMINO** [4]_ *(active module identification (AMI) approach).*
+        - :ref:`SIF format <SIF>`
 
         .. code-block:: none
 

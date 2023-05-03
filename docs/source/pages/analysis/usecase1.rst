@@ -211,7 +211,7 @@ Several files are generated:
   rare disease pathways. There is one file per active module.
 
 - ``DOMINO_D014801_activeModulesNetwork.txt``, ``DOMINO_D014801_overlapAMresults4Cytoscape.txt``, ``DOMINO_D014801_activeModules.txt``
-  , ``DOMINO_D014801_activeModulesNetworkMetrics.txt`` and ``DOMINO_D014801_signOverlap.txt``: some statistics are
+  , ``DOMINO_D014801_activeModulesMetrics.txt`` and ``DOMINO_D014801_signOverlap.txt``: some statistics are
   calculated and saved into files. Theses files are useful for visualisation.
 
 .. cssclass:: italic

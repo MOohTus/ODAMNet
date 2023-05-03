@@ -276,7 +276,7 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFileName, pathOfInterestGenesD
 def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
     # Output file name
     AMoutput = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
-    metricsOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetworkMetrics.txt'
+    metricsOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesMetrics.txt'
     networkOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesNetwork.txt'
     overlapOutput = outputPath + '/DOMINO_' + featureName + '_overlapAMresults4Cytoscape.txt'
     pathwaysOverlapOutput = outputPath + '/DOMINO_' + featureName + '_signOverlap.txt'

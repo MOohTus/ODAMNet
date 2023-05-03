@@ -8,6 +8,14 @@ ODAMNet script
 .. click:: odamnet.odamnet:main
    :prog: odamnet
 
+.. important::
+
+    ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**.
+
+.. important::
+
+    ``--backgroundFile`` and ``--GMT`` parameters have always to be **given together**.
+
 Overlap
 =============
 
@@ -47,14 +55,6 @@ Network downloading
    :prog: odamnet networkDownloading
    :nested: full
    :commands: networkDownloading
-
-.. important::
-
-    ``--chemicalsFile``, ``--CTD_file`` and ``--targetGenesFile`` parameters are exclusive, only one has to be use. This input is **required**.
-
-.. important::
-
-    ``--backgroundFile`` and ``--GMT`` parameters have always to be **given together**.
 
 
 
