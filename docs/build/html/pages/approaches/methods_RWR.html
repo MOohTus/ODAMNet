@@ -63,7 +63,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Random Walk with Restart</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-rwr-analysis">Input parameters for the RWR analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-rwr">Input parameters for the RWR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-cases-command-lines">Use-cases command lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
@@ -147,16 +147,16 @@ network data. To create or download multiplayer network, see <a class="reference
 <figcaption>
 <p><span class="caption-number">Fig. 5 </span><span class="caption-text">: Input and output of Random Walk with Restart (RWR)</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>(Left part) - Chemical target genes are retrieved using automatic queries. The user can also provide their own data.
-Required input are represented with pink and green solid border line boxes whereas optional input are represented
-with dashed border line boxes.
-(Right part) - Output files that are in pink are created only if the input data are retrieved by queries.</p>
+<p>(Left part) - By default, chemical target genes are retrieved using automatic queries. The user can also provide
+their own data. Required input are represented with pink and green solid border line boxes whereas optional inputs
+are represented with dashed border line boxes.
+(Right part) - Output files in pink are created only if the input data are retrieved by queries.</p>
 </div>
 </figcaption>
 </figure>
 </section>
-<section id="input-parameters-for-the-rwr-analysis">
-<h2>Input parameters for the RWR analysis<a class="headerlink" href="#input-parameters-for-the-rwr-analysis" title="Permalink to this heading"></a></h2>
+<section id="input-parameters-for-the-rwr">
+<h2>Input parameters for the RWR<a class="headerlink" href="#input-parameters-for-the-rwr" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
@@ -165,7 +165,7 @@ with dashed border line boxes.
 </ul>
 </div>
 <div class="line-block">
-<div class="line">To use data retrieved from databases, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
+<div class="line">To use data <strong>retrieved from databases</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> data, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">user</span></code> tab.</div>
 </div>
 <div class="sphinx-tabs docutils container">
@@ -184,7 +184,7 @@ Each line contains one or several chemical IDs, separated by “;”.
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
 <dd><p>Each interaction between target gene and chemical can be associated with publications.
-You can filter these interactions according the number of publication associated.
+You can filter these interactions according the number of associated publications.
 You can define a minimum number of publications to keep an association.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
@@ -198,24 +198,24 @@ You can define a minimum number of publications to keep an association.
 </div></div>
 <dl class="option-list">
 <dt><kbd><span class="option">--configPath <var>PATH</var></span></kbd></dt>
-<dd><p>multiXrank needs a configuration file. It can be short (with only file names) or very detailed (with file names + parameters).
-The file contains at least paths of networks, bipartite and seed files. <strong>[required]</strong></p>
+<dd><p>multiXrank needs a configuration file. This file can be short (with only file names) or very detailed (with file
+names + parameters). It contains at least paths of networks, bipartite and seed files. <strong>[required]</strong></p>
 <div class="line-block">
-<div class="line">For more details : [<a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">FORMAT</span></a>] - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></div>
+<div class="line">For more details : <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">Config file format</span></a> - <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-mark-github" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg> <a class="reference external" href="https://github.com/anthbapt/multixrank">GitHub</a> <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M0 1.75A.75.75 0 01.75 1h4.253c1.227 0 2.317.59 3 1.501A3.744 3.744 0 0111.006 1h4.245a.75.75 0 01.75.75v10.5a.75.75 0 01-.75.75h-4.507a2.25 2.25 0 00-1.591.659l-.622.621a.75.75 0 01-1.06 0l-.622-.621A2.25 2.25 0 005.258 13H.75a.75.75 0 01-.75-.75V1.75zm8.755 3a2.25 2.25 0 012.25-2.25H14.5v9h-3.757c-.71 0-1.4.201-1.992.572l.004-7.322zm-1.504 7.324l.004-5.073-.002-2.253A2.25 2.25 0 005.003 2.5H1.5v9h3.757a3.75 3.75 0 011.994.574z"></path></svg> <a class="reference external" href="https://multixrank-doc.readthedocs.io/en/latest/">ReadTheDocs</a></div>
 </div>
 </dd>
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>Repository path where networks are saved. <strong>[required]</strong></p>
+<dd><p>Folder path where networks are saved. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--seedsFile <var>FILENAME</var></span></kbd></dt>
-<dd><p>Path name file to store seed list. This file contains the target genes list. They will be used as seed
-on the Random Walk analysis. <strong>[required]</strong></p>
+<dd><p>Path name file to store seed list. This file contains the target genes list. The given path needs to be the same
+given in the configuration file. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--sifFileName <var>FILENAME</var></span></kbd></dt>
 <dd><p>Output file name to save the result into a SIF file format. <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">--top <var>INTEGER</var></span></kbd></dt>
-<dd><p>Top nodes that will be saved into the output network (into SIF file).</p>
+<dd><p>Top nodes that will be saved into the output files.</p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
 <dd><p>Folder name to save results.

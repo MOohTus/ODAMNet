@@ -13,7 +13,11 @@ In this use-case, we illustrate how to use ODAMNet with data provided by user. W
 
 **Vitamin A target genes** are coming from Balmer and Blomhoff [2]_ paper and **pathways/processes** related to CAKUT
 are coming from |wiki|_ [3]_, |reac|_ [4]_ and |go|_ (GO) [5]_:sup:`,` [6]_. Biological networks used are presented in
-the :doc:`../network/NetworkUsed` page and are coming from the |NDEx|_ (NDEx) [7]_. Input data are available in |git|_.
+the :doc:`../network/NetworkUsed` page and are coming from the |NDEx|_ (NDEx) [7]_.
+
+|input|_ and |output|_ are available in GitHub.
+
+This section presents you how to apply the three different approaches proposed.
 
 .. _useCase2_overlap:
 
@@ -21,17 +25,17 @@ Overlap analysis
 =====================
 
 The Overlap analysis searches intersecting genes between vitamin A target genes and genes involved in pathways/processes
-related to CAKUT pathways (see :doc:`../approaches/methods_overlap` page for more details).
+related to CAKUT pathways. See :doc:`../approaches/methods_overlap` page for more details.
 
 Running Overlap analysis with data provided by user
 ----------------------------------------------------------
 
-Target genes file is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
+**Target genes file** is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
 [:ref:`FORMAT <targetGenesFile>`].
 
-Pathways/processes related to CAKUT are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`]. Background genes
-of each source of pathways/processes is required (``--backgroundFile`` parameter). The file contains the list of
-background file names.
+**Pathways/processes related to CAKUT** are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`].
+**Background genes** of each source of pathways/processes is required (``--backgroundFile`` parameter). The file
+contains the list of background file names.
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
@@ -80,8 +84,6 @@ We performed an Overlap analysis between vitamin A target genes (521) and pathwa
 obtained significant overlap between target genes and **7 pathways/processes** related to CAKUT (pAdjusted <= 0.05).
 Results are presented in the :ref:`Table 14 <useCase2_OverlapResults>`.
 
-Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways
-
 .. _useCase2_OverlapResults:
 .. table:: - Significant overlap results between vitamin A target genes and pathways/processes related tp CAKUT
     :align: center
@@ -104,8 +106,8 @@ Top 5 of the significant overlaps between the vitamin A target genes and rare di
     |       WP:WP4830       |            GDNF/RET signalling axis    | 1.54e-02  |         5        |
     +-----------------------+----------------------------------------+-----------+------------------+
 
-Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 13. ODAMNet found the same 7
-pathways/processes.
+Ozisik *et al.,* [1]_ identified 7 pathways/processes related to CAKUT disease over 13. ODAMNet found the **same 7**
+**pathways/processes.**
 
 .. _useCase2_AMI:
 
@@ -124,16 +126,16 @@ Running AMI with data provided by user
 
    :octicon:`alert;2em` When using DOMINO server, **results cannot be identically reproduced**. Indeed, DOMINO server doesn't allow to set the random seed. This random seed changes every new analysis.
 
-Target genes file is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
+**Target genes file** is given using the ``--targetGenesFile`` parameter. It contains the list of vitamin A target genes
 [:ref:`FORMAT <targetGenesFile>`].
 
-Pathways/processes related to CAKUT are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`]. Background genes
-of each source of pathways/processes is required (``--backgroundFile`` parameter). The file contains the list of
-background file names.
+**Pathways/processes related to CAKUT** are given using the ``--GMT`` parameter [:ref:`FORMAT <pathways>`].
+**Background genes** of each source of pathways/processes is required (``--backgroundFile`` parameter). The file
+contains the list of background file names.
 
-We used a PPI network [:ref:`FORMAT <SIF>`] previously downloaded from NDEx [7]_. The PPI network file is provided
-using ``--networkFile`` parameter. See :doc:`../network/NetworkDownloading` section. Network name should have
-**.sif** extension.
+We used a **PPI network** [:ref:`SIF`] previously downloaded from NDEx [7]_. The PPI network file is provided
+using ``--networkFile`` parameter (see :doc:`../network/NetworkDownloading` section). Network name should have **.sif**
+extension.
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
 
@@ -159,7 +161,7 @@ Several files are generated:
 
 .. cssclass:: italic
 
-    For more details about these files, see :doc:`../formats/Output` page (:ref:`overlapOutput` and :ref:`AMIOutput`)
+    For more details about these files, see :ref:`AMIOutput` section.
 
 Results of AMI with data provided by user
 ---------------------------------------------
@@ -219,9 +221,7 @@ Overlap analysis results
 
 Then, we perform an Overlap analysis between identified active modules (21) and pathways/processes related to CAKUT
 (13). We obtained significant overlap between **6 identified active modules** and **6 pathways/processes**
-(pAdjusted <= 0.05). Results are presented in :ref:`Table 17 <useCase2_AMIOverlap>`
-
-Duplicates between active modules results are removed and we keep the more significant ones.
+(pAdjusted <= 0.05). Results are presented in :ref:`Table 17 <useCase2_AMIOverlap>`.
 
 .. _useCase2_AMIOverlap:
 .. table:: - Significant overlaps between identified active modules and pathways/processes related to CAKUT
@@ -242,6 +242,8 @@ Duplicates between active modules results are removed and we keep the more signi
     +------------------------+-------------------------------------------+--------------+
     | **REAC:R-HSA-195721**  | **Signaling by WNT**                      | **3.47e-02** |
     +------------------------+-------------------------------------------+--------------+
+
+Duplicates between active modules results are removed and we keep the more significant ones.
 
 The *RET signaling* and *Signaling by WNT* reactome pathways were not identified with the overlap approach in the
 previous study [1]_ neither with the ODAMNet Overlap analysis.
@@ -271,7 +273,7 @@ cytoscape project called ``AMI_visualisation.cys`` in GitHub_.
    between active modules and rare disease pathways are displayed using donuts color around nodes. Each color
    corresponds to a rare disease pathways. Creation steps are explained in the :ref:`cytoscape_AMI` section.
 
-Module topology is different between modules and associated rare diseases pathways also vary
+Module topology is different between modules and associated pathways/processes related to CAKUT also vary
 (:numref:`useCase2_AMIFig`).
 
 The first active module (left in the :numref:`useCase2_AMIFig`) is very connected and contains genes involved in
@@ -290,9 +292,9 @@ genes involved in *kidney morphogenesis* and *Signaling by WNT*.
 Random Walk with Restart (RWR)
 ===============================
 
-The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and pathways/processes
-related to CAKUT. To calculate these proximities (RWR scores), we used multiXrank [10]_ and multilayer networks. See
-:doc:`../approaches/methods_RWR` page for more details.
+The Random Walk with Restart (RWR) approach mesures **proximities** between vitamin A target genes and
+**pathways/processes related to CAKUT**. To calculate these proximities (RWR scores), we used multiXrank [10]_ and
+multilayer networks. See :doc:`../approaches/methods_RWR` page for more details.
 
 The multilayer network is composed of three gene networks and one pathways/processes related to CAKUT network. Genes
 nodes are connected to pathways/processes nodes if they are involved in. See :doc:`../network/NetworkUsed` page for
@@ -301,13 +303,13 @@ more details.
 Running RWR with data provided by user
 -----------------------------------------
 
-Target genes file is given using ``--targetGenesFile`` parameter. IT contains list of vitamin A target genes
+**Target genes file** is given using ``--targetGenesFile`` parameter. It contains list of vitamin A target genes
 [:ref:`FORMAT <targetGenesFile>`].
 
-MultiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis
+multiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis
 parameters. We used multiXrank with default parameters.
 
-We provided a name file to save vitamin A target genes (i.e. seeds) ``--sifFileName useCases/InputData/seeds.txt`` and
+We provide a name file to save vitamin A target genes (i.e. seeds) ``--seedsFile useCases/InputData/seeds.txt`` and
 also a SIF file name (``--sifFileName``) to save the top nodes based on RWR score (``--top 20``).
 
 Results files are saved into ``useCases/OutputResults_useCase2/`` folder.
@@ -341,7 +343,7 @@ Several files are generated into ``RWR_genesList/`` folder:
 
 .. cssclass:: italic
 
-    For more details about these file, see :doc:`../formats/Output` page.
+    For more details about these files, see :ref:`RWROutput` section.
 
 Results of RWR with data provided by user
 -----------------------------------------------
@@ -357,12 +359,13 @@ RWR results
 Analysis with pathways/processes related to CAKUT network
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-We used a multilayer network composed of three gene networks and one pathways/processes related to CAKUT network
-(:numref:`multilayerCompo` - left, :ref:`genesMultilayerNet` and :ref:`Rare disease pathways network<pathwaysOfInterestNet>`).
+We used a multilayer network composed of **three gene networks** and **one pathways/processes related to CAKUT network**
+(:numref:`multilayerCompo` - left, :ref:`genesMultilayerNet` and
+:ref:`Rare disease pathways network<pathwaysOfInterestNet>`).
 
-multiXrank defined vitamin A target genes as seeds. Over the 521 target genes, 480 are found in the multilayer and
+multiXrank defines vitamin A target genes as seeds. Over the 521 target genes, 480 are found in the multilayer and
 used as seeds. Using the RWR scores (i.e. proximity score with the target genes), pathways/processes related to CAKUT
-are prioritized. We selected the top 5 (:ref:`Table 18 <useCase2_RWRpathOfInt>`).
+are prioritized. We selected the **top 5** (:ref:`Table 18 <useCase2_RWRpathOfInt>`).
 
 .. _useCase2_RWRpathOfInt:
 .. table:: - Pathways/processes related to CAKUT prioritization using RWR score. The top 5 is displayed.
@@ -404,17 +407,18 @@ Extra : analysis with disease-disease similarity network
 
 .. tip::
 
-    :octicon:`alert;1.5em` Same command line, but you need to change :ref:`configuration file <configFile>`.
+    :octicon:`alert;1.5em` Same command line, but needs to change **configuration file**.
 
 We also propose to run an RWR approach using a **disease-disease similarity network**. In this network, rare diseases
-are linked together according their phenotype similarity whereas in the previous network they were not at all connected.
+are linked together according their **phenotype similarity** whereas in the previous network they were not at all
+connected.
 
 We used a multilayer network composed of three genes network and one disease-disease similarity network
 (:numref:`multilayerCompo` - right, :ref:`genesMultilayerNet`, :ref:`similarityNet`).
 
-multiXrank defined vitamin A target genes as seeds. Over the 521 target genes retrieved from CTD, 480 are found in
+multiXrank defines vitamin A target genes as seeds. Over the 521 target genes retrieved from CTD, 480 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
-prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 19 <useCase2_RWRSim>`).
+prioritized. We selected the **top 20** and presented the top 5 (:ref:`Table 19 <useCase2_RWRSim>`).
 
 .. _useCase2_RWRSim:
 .. table:: - Rare disease prioritization using RWR score. The top 5 is displayed.
@@ -453,7 +457,7 @@ Overlap, AMI and RWR results comparison
 ===========================================
 
 We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
-and Random Walk with Restart (RWR). We used orsum [11]_, a Python package to filter and integrate enrichment analysis
+and Random Walk with Restart (RWR). We used **orsum** [11]_, a Python package to filter and integrate enrichment analysis
 from several analyses. The main result is a heatmap, presented in :numref:`useCase2_orsum`.
 
 .. code-block:: bash
@@ -501,8 +505,10 @@ References
 .. |go| replace:: Gene Ontology
 .. _NDEx: https://www.ndexbio.org/
 .. |NDEx| replace:: Network Data Exchange
-.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
-.. |git| replace:: GitHub
+.. _input: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |input| replace:: GitHub
+.. _output: https://github.com/MOohTus/ODAMNet/tree/main/useCases/OutputResults_useCase2
+.. |output| replace:: GitHub
 .. _NDExPPI: https://www.ndexbio.org/viewer/networks/bfac0486-cefe-11ed-a79c-005056ae23aa
 .. |NDExPPI| replace:: NDEx
 .. _GitHub: https://github.com/MOohTus/ODAMNet/tree/main/useCases/

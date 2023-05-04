@@ -45,20 +45,20 @@ The ``--top`` and ``--outputPath`` parameters are optional.
 
     : Input and output of Random Walk with Restart (RWR)
 
-    (Left part) - Chemical target genes are retrieved using automatic queries. The user can also provide their own data.
-    Required input are represented with pink and green solid border line boxes whereas optional input are represented
-    with dashed border line boxes.
-    (Right part) - Output files that are in pink are created only if the input data are retrieved by queries.
+    (Left part) - By default, chemical target genes are retrieved using automatic queries. The user can also provide
+    their own data. Required input are represented with pink and green solid border line boxes whereas optional inputs
+    are represented with dashed border line boxes.
+    (Right part) - Output files in pink are created only if the input data are retrieved by queries.
 
-Input parameters for the RWR analysis
-----------------------------------------
+Input parameters for the RWR
+------------------------------
 
 .. warning::
 
     - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
     - When data are retrieved by queries, **HGNC** IDs are used.
 
-| To use data retrieved from databases, see parameters on the ``Data retrieved by queries`` tab.
+| To use data **retrieved from databases**, see parameters on the ``Data retrieved by queries`` tab.
 | To provide **your own** data, see parameters on the ``Data provided by user`` tab.
 
 .. tabs::
@@ -77,7 +77,7 @@ Input parameters for the RWR analysis
 
         --nbPub INTEGER
             Each interaction between target gene and chemical can be associated with publications.
-            You can filter these interactions according the number of publication associated.
+            You can filter these interactions according the number of associated publications.
             You can define a minimum number of publications to keep an association.
             ``[default: 2]``
 
@@ -88,23 +88,23 @@ Input parameters for the RWR analysis
             **[required]**
 
 --configPath PATH
-    multiXrank needs a configuration file. It can be short (with only file names) or very detailed (with file names + parameters).
-    The file contains at least paths of networks, bipartite and seed files. **[required]**
+    multiXrank needs a configuration file. This file can be short (with only file names) or very detailed (with file
+    names + parameters). It contains at least paths of networks, bipartite and seed files. **[required]**
 
-    | For more details : [:ref:`FORMAT <configFile>`] - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
+    | For more details : :ref:`Config file format <configFile>` - :octicon:`mark-github;1em` `GitHub <https://github.com/anthbapt/multixrank>`_ :octicon:`book;1em` `ReadTheDocs <https://multixrank-doc.readthedocs.io/en/latest/>`_
 
 --networksPath PATH
-    Repository path where networks are saved. **[required]**
+    Folder path where networks are saved. **[required]**
 
 --seedsFile FILENAME
-    Path name file to store seed list. This file contains the target genes list. They will be used as seed
-    on the Random Walk analysis. **[required]**
+    Path name file to store seed list. This file contains the target genes list. The given path needs to be the same
+    given in the configuration file. **[required]**
 
 --sifFileName FILENAME
     Output file name to save the result into a SIF file format. **[required]**
 
 --top INTEGER
-    Top nodes that will be saved into the output network (into SIF file).
+    Top nodes that will be saved into the output files.
 
 -o, --outputPath PATH
     Folder name to save results.

@@ -61,7 +61,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Overlap analysis</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-overlap-analysis">Input parameters for the overlap analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-overlap-analysis">Input parameters for the Overlap analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-cases-command-lines">Use-cases command lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
@@ -133,24 +133,24 @@ to correct the pvalues.</p>
 <em>by queries</em>). <strong>Chemical target genes</strong> are retrieved from <a class="reference external" href="http://ctdbase.org/"><strong>the Comparative Toxicogenomics Database</strong></a> <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (CTD) using <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> parameter.
 All <strong>rare disease pathways</strong> are retrieved from <a class="reference external" href="https://www.wikipathways.org/"><strong>WikiPathways</strong></a> <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> automatically.</p>
 <p>In addition, the user can provide their own <strong>target genes</strong> and <strong>pathways/processes of interest</strong>
-(<a class="reference internal" href="#overlapusagefig"><span class="std std-numref">Fig. 2</span></a>: section <em>data provided by user</em>) using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>,
+(<a class="reference internal" href="#overlapusagefig"><span class="std std-numref">Fig. 2</span></a>: section <em>data provided by user</em>) using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> , <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> and
 <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--outputPath</span></code> parameter is used whatever how data are retrieved.</p>
 <figure class="align-center" id="id7">
 <span id="overlapusagefig"></span><a class="reference internal image-reference" href="../../_images/Overlap_Overwiew.png"><img alt="overlapUsageFig" src="../../_images/Overlap_Overwiew.png" style="width: 707.5px; height: 213.75px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output of overlap analysis</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">: Input and output of Overlap analysis</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>(Left part) - Chemical target genes and rare disease pathways are retrieved using automatic queries. The user can
-also provide their own data. Required input are represented with pink and green solid border line boxes whereas
-optional input are represented with dashed border line boxes.
-(Right part) - Output files that are in pink are created only if the input data are retrieved by queries.</p>
+<p>(Left part) - By default, chemical target genes and rare disease pathways are retrieved using automatic queries.
+The user can also provide their own data. Required inputs are represented with pink and green solid border line boxes
+whereas optional input are represented with dashed border line boxes.
+(Right part) - Output files in pink are created only if the input data are retrieved by queries.</p>
 </div>
 </figcaption>
 </figure>
 </section>
 <section id="input-parameters-for-the-overlap-analysis">
-<h2>Input parameters for the overlap analysis<a class="headerlink" href="#input-parameters-for-the-overlap-analysis" title="Permalink to this heading"></a></h2>
+<h2>Input parameters for the Overlap analysis<a class="headerlink" href="#input-parameters-for-the-overlap-analysis" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
@@ -159,7 +159,7 @@ optional input are represented with dashed border line boxes.
 </ul>
 </div>
 <div class="line-block">
-<div class="line">To use data retrieved from databases, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
+<div class="line">To use data <strong>retrieved from databases</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> data, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">user</span></code> tab.</div>
 </div>
 <div class="sphinx-tabs docutils container">
@@ -178,8 +178,8 @@ Each line contains one or several chemical IDs, separated by “;”
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
 <dd><p>Each interaction between target gene and chemical can be associated with publications.
-You can filter these interactions according the number of publication associated.
-You can define a minimum number of publications to keep an association.
+You can filter these interactions according the number of associated publications.
+You can define a minimum number of publications to keep an association
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
 </dl>

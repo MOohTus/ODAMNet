@@ -43,15 +43,15 @@ The :numref:`dominoMethodFig` is an overview of the DOMINO algorithm.
 | **D - Step 2b:** The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.
 | **E - Step 3:** The final set of active module is identified (under a threshold of Bonferroni qval<=0.05).
 
-*For more details, see to the DOMINO's publication* [1]_.
+*For more details, see the DOMINO's paper* [1]_.
 
 Usage
 -------
 
 By default, data are directly retrieved from databases using queries (:numref:`dominoUsageFig`: section *data retrieved*
 *by queries*). **Chemical target genes** are retrieved from the |ctd|_ [3]_ (CTD) using ``--chemicalsFile`` parameter.
-All **rare disease pathways** are retrieved from |wp|_ [4]_ automatically. The **biological network** is also downloaded
-from the |ndex|_ [5]_ using ``--netUUID`` and ``--networkFile`` parameters.
+All **rare disease pathways** are retrieved from |wp|_ [4]_ automatically. And the **biological network** is also
+downloaded from the |ndex|_ [5]_  (NDEx) using ``--netUUID`` and ``--networkFile`` parameters.
 
 You can provide your own **target genes**, **pathways/processes of interest** and **biological network**
 (:numref:`dominoUsageFig`: section *data provided by user*) using ``--targetGenesFile``, ``--GMT``,
@@ -67,20 +67,20 @@ The network file is required ``--networkFile`` whereas ``--outputPath`` is optio
 
     : Input and output of Active Modules Identification (AMI)
 
-    (Left part) - Chemical target genes, rare disease pathways and biological networks are retrieved using automatic
-    queries. The user can also provide their own data. Required input are represented with pink and green solid border
-    line boxes whereas optional input are represented with dashed border line boxes.
-    (Right part) - Output files that are in pink are created only if the input data are retrieved by queries.
+    (Left part) - By default, chemical target genes, rare disease pathways and biological networks are retrieved using
+    automatic queries. The user can also provide their own data. Required inputs are represented with pink and green
+    solid border line boxes whereas optional input are represented with dashed border line boxes.
+    (Right part) - Output files that are in pink, are created only if the input data are retrieved by queries.
 
-Input parameters for the Active Modules Identification
---------------------------------------------------------
+Input parameters for the AMI
+--------------------------------
 
 .. warning::
 
     - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
     - When data are retrieved by queries, **HGNC** IDs are used.
 
-| To use data retrieved from databases, see parameters on the ``Data retrieved by queries`` tab.
+| To use data **retrieved from databases**, see parameters on the ``Data retrieved by queries`` tab.
 | To provide **your own** data, see parameters on the ``Data provided by user`` tab.
 
 .. tabs::
@@ -99,7 +99,7 @@ Input parameters for the Active Modules Identification
 
         --nbPub INTEGER
             Each interaction between target gene and chemical can be associated with publications.
-            You can filter these interactions according the number of publication associated.
+            You can filter these interactions according the number of associated publications.
             You can define a minimum number of publications to keep an association.
             ``[default: 2]``
 
@@ -126,7 +126,7 @@ Input parameters for the Active Modules Identification
 
 -n, --networkFile FILENAME
     Network file name that contains network or to save network.
-    The file is in SIF format [:ref:`FORMAT <SIF>`] **[required]**
+    The file is in :ref:`SIF format <SIF>` **[required]**
 
 -o, --outputPath PATH
     Folder name to save results.

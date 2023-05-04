@@ -51,16 +51,16 @@ To run one of these approaches:
 
 .. code-block:: bash
 
-   odamnet [overlap|domino|multixrank] [ARGS]
+   odamnet [overlap | domino | multixrank] [ARGS]
 
 To create a disconnected rare disease pathways network and its corresponding gene - rare disease pathways bipartite
-network. This network may be used for the RWR approach.
+network (*these networks may be used for the RWR approach*):
 
 .. code-block:: bash
 
    odamnet networkCreation [ARGS]
 
-To download biological networks directly from NDEx_.
+To download biological networks directly from NDEx_:
 
 .. code-block:: bash
 

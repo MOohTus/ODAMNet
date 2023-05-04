@@ -152,19 +152,21 @@ related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT).</p>
 2021 <a class="footnote-reference brackets" href="#id33" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> paper. Results are compared with those found in the Ozisik <em>et al.</em>, 2021 <a class="footnote-reference brackets" href="#id33" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> paper.</p>
 <p><strong>Vitamin A target genes</strong> are coming from Balmer and Blomhoff <a class="footnote-reference brackets" href="#id34" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> paper and <strong>pathways/processes</strong> related to CAKUT
 are coming from <a class="reference external" href="https://www.wikipathways.org/">WikiPathways</a> <a class="footnote-reference brackets" href="#id35" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, <a class="reference external" href="https://reactome.org/">Reactome</a> <a class="footnote-reference brackets" href="#id36" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and <a class="reference external" href="http://geneontology.org/">Gene Ontology</a> (GO) <a class="footnote-reference brackets" href="#id37" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a><sup>,</sup> <a class="footnote-reference brackets" href="#id38" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>. Biological networks used are presented in
-the <a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> page and are coming from the <a class="reference external" href="https://www.ndexbio.org/">Network Data Exchange</a> (NDEx) <a class="footnote-reference brackets" href="#id39" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. Input data are available in <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData">GitHub</a>.</p>
+the <a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> page and are coming from the <a class="reference external" href="https://www.ndexbio.org/">Network Data Exchange</a> (NDEx) <a class="footnote-reference brackets" href="#id39" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p>
+<p><a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData">GitHub</a> and <a class="reference external" href="https://github.com/MOohTus/ODAMNet/tree/main/useCases/OutputResults_useCase2">GitHub</a> are available in GitHub.</p>
+<p>This section presents you how to apply the three different approaches proposed.</p>
 </section>
 <section id="overlap-analysis">
 <span id="usecase2-overlap"></span><h2>Overlap analysis<a class="headerlink" href="#overlap-analysis" title="Permalink to this heading"></a></h2>
 <p>The Overlap analysis searches intersecting genes between vitamin A target genes and genes involved in pathways/processes
-related to CAKUT pathways (see <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> page for more details).</p>
+related to CAKUT pathways. See <a class="reference internal" href="../approaches/methods_overlap.html"><span class="doc">Overlap analysis</span></a> page for more details.</p>
 <section id="running-overlap-analysis-with-data-provided-by-user">
 <h3>Running Overlap analysis with data provided by user<a class="headerlink" href="#running-overlap-analysis-with-data-provided-by-user" title="Permalink to this heading"></a></h3>
-<p>Target genes file is given using the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains the list of vitamin A target genes
+<p><strong>Target genes file</strong> is given using the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains the list of vitamin A target genes
 [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>].</p>
-<p>Pathways/processes related to CAKUT are given using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]. Background genes
-of each source of pathways/processes is required (<code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter). The file contains the list of
-background file names.</p>
+<p><strong>Pathways/processes related to CAKUT</strong> are given using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>].
+<strong>Background genes</strong> of each source of pathways/processes is required (<code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter). The file
+contains the list of background file names.</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>overlap<span class="w"> </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">                </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
@@ -208,7 +210,6 @@ Data are presented in the <a class="reference internal" href="#usecase2-overlapd
 <p>We performed an Overlap analysis between vitamin A target genes (521) and pathways/processes related to CAKUT (13). We
 obtained significant overlap between target genes and <strong>7 pathways/processes</strong> related to CAKUT (pAdjusted &lt;= 0.05).
 Results are presented in the <a class="reference internal" href="#usecase2-overlapresults"><span class="std std-ref">Table 14</span></a>.</p>
-<p>Top 5 of the significant overlaps between the vitamin A target genes and rare disease pathways</p>
 <span id="usecase2-overlapresults"></span><table class="docutils align-center" id="id45">
 <caption><span class="caption-number">Table 14 </span><span class="caption-text">- Significant overlap results between vitamin A target genes and pathways/processes related tp CAKUT</span><a class="headerlink" href="#id45" title="Permalink to this table"></a></caption>
 <thead>
@@ -256,8 +257,8 @@ Results are presented in the <a class="reference internal" href="#usecase2-overl
 </tr>
 </tbody>
 </table>
-<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id33" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> identified 7 pathways/processes related to CAKUT disease over 13. ODAMNet found the same 7
-pathways/processes.</p>
+<p>Ozisik <em>et al.,</em> <a class="footnote-reference brackets" href="#id33" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> identified 7 pathways/processes related to CAKUT disease over 13. ODAMNet found the <strong>same 7</strong>
+<strong>pathways/processes.</strong></p>
 </section>
 </section>
 </section>
@@ -273,14 +274,14 @@ more details.</p>
 <p class="admonition-title">Warning</p>
 <p><svg version="1.1" width="2.0em" height="2.0em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> When using DOMINO server, <strong>results cannot be identically reproduced</strong>. Indeed, DOMINO server doesn’t allow to set the random seed. This random seed changes every new analysis.</p>
 </div>
-<p>Target genes file is given using the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains the list of vitamin A target genes
+<p><strong>Target genes file</strong> is given using the <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains the list of vitamin A target genes
 [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>].</p>
-<p>Pathways/processes related to CAKUT are given using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>]. Background genes
-of each source of pathways/processes is required (<code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter). The file contains the list of
-background file names.</p>
-<p>We used a PPI network [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] previously downloaded from NDEx <a class="footnote-reference brackets" href="#id39" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The PPI network file is provided
-using <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> parameter. See <a class="reference internal" href="../network/NetworkDownloading.html"><span class="doc">Networks downloading</span></a> section. Network name should have
-<strong>.sif</strong> extension.</p>
+<p><strong>Pathways/processes related to CAKUT</strong> are given using the <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter [<a class="reference internal" href="../formats/Input.html#pathways"><span class="std std-ref">FORMAT</span></a>].
+<strong>Background genes</strong> of each source of pathways/processes is required (<code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> parameter). The file
+contains the list of background file names.</p>
+<p>We used a <strong>PPI network</strong> [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF file</span></a>] previously downloaded from NDEx <a class="footnote-reference brackets" href="#id39" id="id17" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The PPI network file is provided
+using <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> parameter (see <a class="reference internal" href="../network/NetworkDownloading.html"><span class="doc">Networks downloading</span></a> section). Network name should have <strong>.sif</strong>
+extension.</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>domino<span class="w">  </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
 <span class="w">                </span>--GMT<span class="w"> </span>useCases/InputData/PathwaysOfInterest.gmt<span class="w"> </span><span class="se">\</span>
@@ -299,7 +300,7 @@ genes and pathways/processes of related to CAKUT. There is one file per active m
 <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_signOverlap.txt</span></code>: some statistics are calculated and saved into files. Theses files are useful
 for visualisation.</p></li>
 </ul>
-<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page (<a class="reference internal" href="../formats/Output.html#overlapoutput"><span class="std std-ref">Overlap analysis output files</span></a> and <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">AMI output files</span></a>)</p>
+<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html#amioutput"><span class="std std-ref">AMI output files</span></a> section.</p>
 </section>
 <section id="results-of-ami-with-data-provided-by-user">
 <h3>Results of AMI with data provided by user<a class="headerlink" href="#results-of-ami-with-data-provided-by-user" title="Permalink to this heading"></a></h3>
@@ -369,8 +370,7 @@ APID. It contains 15,390 nodes and 131,087 edges.</p>
 <h4>Overlap analysis results<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h4>
 <p>Then, we perform an Overlap analysis between identified active modules (21) and pathways/processes related to CAKUT
 (13). We obtained significant overlap between <strong>6 identified active modules</strong> and <strong>6 pathways/processes</strong>
-(pAdjusted &lt;= 0.05). Results are presented in <a class="reference internal" href="#usecase2-amioverlap"><span class="std std-ref">Table 17</span></a></p>
-<p>Duplicates between active modules results are removed and we keep the more significant ones.</p>
+(pAdjusted &lt;= 0.05). Results are presented in <a class="reference internal" href="#usecase2-amioverlap"><span class="std std-ref">Table 17</span></a>.</p>
 <span id="usecase2-amioverlap"></span><table class="docutils align-center" id="id48">
 <caption><span class="caption-number">Table 17 </span><span class="caption-text">- Significant overlaps between identified active modules and pathways/processes related to CAKUT</span><a class="headerlink" href="#id48" title="Permalink to this table"></a></caption>
 <thead>
@@ -406,6 +406,7 @@ APID. It contains 15,390 nodes and 131,087 edges.</p>
 </tr>
 </tbody>
 </table>
+<p>Duplicates between active modules results are removed and we keep the more significant ones.</p>
 <p>The <em>RET signaling</em> and <em>Signaling by WNT</em> reactome pathways were not identified with the overlap approach in the
 previous study <a class="footnote-reference brackets" href="#id33" id="id25" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> neither with the ODAMNet Overlap analysis.</p>
 <p class="italic">See <code class="docutils literal notranslate"><span class="pre">DOMINO_genesList_signOverlap.txt</span></code> file for more details.</p>
@@ -427,7 +428,7 @@ corresponds to a rare disease pathways. Creation steps are explained in the <a c
 </div>
 </figcaption>
 </figure>
-<p>Module topology is different between modules and associated rare diseases pathways also vary
+<p>Module topology is different between modules and associated pathways/processes related to CAKUT also vary
 (<a class="reference internal" href="#usecase2-amifig"><span class="std std-numref">Fig. 23</span></a>).</p>
 <p>The first active module (left in the <a class="reference internal" href="#usecase2-amifig"><span class="std std-numref">Fig. 23</span></a>) is very connected and contains genes involved in
 several pathways and processes related to CAKUT. Association between vitamin A and <em>RET signaling</em> reactome pathway is
@@ -442,19 +443,19 @@ genes involved in <em>kidney morphogenesis</em> and <em>Signaling by WNT</em>.</
 </section>
 <section id="random-walk-with-restart-rwr">
 <span id="usecase2-rwr"></span><h2>Random Walk with Restart (RWR)<a class="headerlink" href="#random-walk-with-restart-rwr" title="Permalink to this heading"></a></h2>
-<p>The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and pathways/processes
-related to CAKUT. To calculate these proximities (RWR scores), we used multiXrank <a class="footnote-reference brackets" href="#id42" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> and multilayer networks. See
-<a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> page for more details.</p>
+<p>The Random Walk with Restart (RWR) approach mesures <strong>proximities</strong> between vitamin A target genes and
+<strong>pathways/processes related to CAKUT</strong>. To calculate these proximities (RWR scores), we used multiXrank <a class="footnote-reference brackets" href="#id42" id="id27" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a> and
+multilayer networks. See <a class="reference internal" href="../approaches/methods_RWR.html"><span class="doc">Random Walk with Restart</span></a> page for more details.</p>
 <p>The multilayer network is composed of three gene networks and one pathways/processes related to CAKUT network. Genes
 nodes are connected to pathways/processes nodes if they are involved in. See <a class="reference internal" href="../network/NetworkUsed.html"><span class="doc">Networks used</span></a> page for
 more details.</p>
 <section id="running-rwr-with-data-provided-by-user">
 <h3>Running RWR with data provided by user<a class="headerlink" href="#running-rwr-with-data-provided-by-user" title="Permalink to this heading"></a></h3>
-<p>Target genes file is given using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. IT contains list of vitamin A target genes
+<p><strong>Target genes file</strong> is given using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code> parameter. It contains list of vitamin A target genes
 [<a class="reference internal" href="../formats/Input.html#targetgenesfile"><span class="std std-ref">FORMAT</span></a>].</p>
-<p>MultiXrank needs as input a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) that contains path of networks and analysis
+<p>multiXrank needs as input a configuration file (<code class="docutils literal notranslate"><span class="pre">--configPath</span></code>) that contains path of networks and analysis
 parameters. We used multiXrank with default parameters.</p>
-<p>We provided a name file to save vitamin A target genes (i.e. seeds) <code class="docutils literal notranslate"><span class="pre">--sifFileName</span> <span class="pre">useCases/InputData/seeds.txt</span></code> and
+<p>We provide a name file to save vitamin A target genes (i.e. seeds) <code class="docutils literal notranslate"><span class="pre">--seedsFile</span> <span class="pre">useCases/InputData/seeds.txt</span></code> and
 also a SIF file name (<code class="docutils literal notranslate"><span class="pre">--sifFileName</span></code>) to save the top nodes based on RWR score (<code class="docutils literal notranslate"><span class="pre">--top</span> <span class="pre">20</span></code>).</p>
 <p>Results files are saved into <code class="docutils literal notranslate"><span class="pre">useCases/OutputResults_useCase2/</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>odamnet<span class="w"> </span>multixrank<span class="w">      </span>--targetGenesFile<span class="w"> </span>useCases/InputData/VitA-Balmer2002-Genes.txt<span class="w"> </span><span class="se">\</span>
@@ -482,7 +483,7 @@ scores and 2 is the pathways/processes related to CAKUT network RWR scores.</p><
 <li><p><code class="docutils literal notranslate"><span class="pre">UseCase2_RWR_network.sif</span></code>: SIF file name that contains the network result</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">RWR_topX.txt</span></code>: Top X of pathways/processes related to CAKUT</p></li>
 </ul>
-<p class="italic">For more details about these file, see <a class="reference internal" href="../formats/Output.html"><span class="doc">Output files</span></a> page.</p>
+<p class="italic">For more details about these files, see <a class="reference internal" href="../formats/Output.html#rwroutput"><span class="std std-ref">RWR output files</span></a> section.</p>
 </section>
 <section id="results-of-rwr-with-data-provided-by-user">
 <h3>Results of RWR with data provided by user<a class="headerlink" href="#results-of-rwr-with-data-provided-by-user" title="Permalink to this heading"></a></h3>
@@ -494,11 +495,12 @@ scores and 2 is the pathways/processes related to CAKUT network RWR scores.</p><
 <h4>RWR results<a class="headerlink" href="#rwr-results" title="Permalink to this heading"></a></h4>
 <section id="analysis-with-pathways-processes-related-to-cakut-network">
 <h5>Analysis with pathways/processes related to CAKUT network<a class="headerlink" href="#analysis-with-pathways-processes-related-to-cakut-network" title="Permalink to this heading"></a></h5>
-<p>We used a multilayer network composed of three gene networks and one pathways/processes related to CAKUT network
-(<a class="reference internal" href="../network/NetworkUsed.html#multilayercompo"><span class="std std-numref">Fig. 6</span></a> - left, <a class="reference internal" href="../network/NetworkUsed.html#genesmultilayernet"><span class="std std-ref">Genes multilayer network</span></a> and <a class="reference internal" href="../network/NetworkUsed.html#pathwaysofinterestnet"><span class="std std-ref">Rare disease pathways network</span></a>).</p>
-<p>multiXrank defined vitamin A target genes as seeds. Over the 521 target genes, 480 are found in the multilayer and
+<p>We used a multilayer network composed of <strong>three gene networks</strong> and <strong>one pathways/processes related to CAKUT network</strong>
+(<a class="reference internal" href="../network/NetworkUsed.html#multilayercompo"><span class="std std-numref">Fig. 6</span></a> - left, <a class="reference internal" href="../network/NetworkUsed.html#genesmultilayernet"><span class="std std-ref">Genes multilayer network</span></a> and
+<a class="reference internal" href="../network/NetworkUsed.html#pathwaysofinterestnet"><span class="std std-ref">Rare disease pathways network</span></a>).</p>
+<p>multiXrank defines vitamin A target genes as seeds. Over the 521 target genes, 480 are found in the multilayer and
 used as seeds. Using the RWR scores (i.e. proximity score with the target genes), pathways/processes related to CAKUT
-are prioritized. We selected the top 5 (<a class="reference internal" href="#usecase2-rwrpathofint"><span class="std std-ref">Table 18</span></a>).</p>
+are prioritized. We selected the <strong>top 5</strong> (<a class="reference internal" href="#usecase2-rwrpathofint"><span class="std std-ref">Table 18</span></a>).</p>
 <span id="usecase2-rwrpathofint"></span><table class="docutils align-center" id="id50">
 <caption><span class="caption-number">Table 18 </span><span class="caption-text">- Pathways/processes related to CAKUT prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id50" title="Permalink to this table"></a></caption>
 <colgroup>
@@ -554,15 +556,16 @@ white. Creation steps are explained in the <a class="reference internal" href=".
 <h5>Extra : analysis with disease-disease similarity network<a class="headerlink" href="#extra-analysis-with-disease-disease-similarity-network" title="Permalink to this heading"></a></h5>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Same command line, but you need to change <a class="reference internal" href="../formats/Input.html#configfile"><span class="std std-ref">configuration file</span></a>.</p>
+<p><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-alert" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 17.5a1 1 0 11-2 0 1 1 0 012 0zm-.25-8.25a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0v-4.5z"></path><path fill-rule="evenodd" d="M9.836 3.244c.963-1.665 3.365-1.665 4.328 0l8.967 15.504c.963 1.667-.24 3.752-2.165 3.752H3.034c-1.926 0-3.128-2.085-2.165-3.752L9.836 3.244zm3.03.751a1 1 0 00-1.732 0L2.168 19.499A1 1 0 003.034 21h17.932a1 1 0 00.866-1.5L12.866 3.994z"></path></svg> Same command line, but needs to change <strong>configuration file</strong>.</p>
 </div>
 <p>We also propose to run an RWR approach using a <strong>disease-disease similarity network</strong>. In this network, rare diseases
-are linked together according their phenotype similarity whereas in the previous network they were not at all connected.</p>
+are linked together according their <strong>phenotype similarity</strong> whereas in the previous network they were not at all
+connected.</p>
 <p>We used a multilayer network composed of three genes network and one disease-disease similarity network
 (<a class="reference internal" href="../network/NetworkUsed.html#multilayercompo"><span class="std std-numref">Fig. 6</span></a> - right, <a class="reference internal" href="../network/NetworkUsed.html#genesmultilayernet"><span class="std std-ref">Genes multilayer network</span></a>, <a class="reference internal" href="../network/NetworkUsed.html#similaritynet"><span class="std std-ref">Disease-disease similarity network</span></a>).</p>
-<p>multiXrank defined vitamin A target genes as seeds. Over the 521 target genes retrieved from CTD, 480 are found in
+<p>multiXrank defines vitamin A target genes as seeds. Over the 521 target genes retrieved from CTD, 480 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
-prioritized. We selected the top 20 and presented the top 5 (<a class="reference internal" href="#usecase2-rwrsim"><span class="std std-ref">Table 19</span></a>).</p>
+prioritized. We selected the <strong>top 20</strong> and presented the top 5 (<a class="reference internal" href="#usecase2-rwrsim"><span class="std std-ref">Table 19</span></a>).</p>
 <span id="usecase2-rwrsim"></span><table class="docutils align-center" id="id52">
 <caption><span class="caption-number">Table 19 </span><span class="caption-text">- Rare disease prioritization using RWR score. The top 5 is displayed.</span><a class="headerlink" href="#id52" title="Permalink to this table"></a></caption>
 <thead>
@@ -616,7 +619,7 @@ steps are explained in the <a class="reference internal" href="../network/Networ
 <section id="overlap-ami-and-rwr-results-comparison">
 <h2>Overlap, AMI and RWR results comparison<a class="headerlink" href="#overlap-ami-and-rwr-results-comparison" title="Permalink to this heading"></a></h2>
 <p>We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
-and Random Walk with Restart (RWR). We used orsum <a class="footnote-reference brackets" href="#id43" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>, a Python package to filter and integrate enrichment analysis
+and Random Walk with Restart (RWR). We used <strong>orsum</strong> <a class="footnote-reference brackets" href="#id43" id="id32" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>, a Python package to filter and integrate enrichment analysis
 from several analyses. The main result is a heatmap, presented in <a class="reference internal" href="#usecase2-orsum"><span class="std std-numref">Fig. 26</span></a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orsum.py<span class="w"> </span>--gmt<span class="w"> </span>00_Data/hsapiens_background.gmt<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>--files<span class="w"> </span>00_Data/Overlap.4Orsum<span class="w"> </span>00_Data/DOMINO.4Orsum<span class="w"> </span>00_Data/RWR_top5.4Orsum<span class="w"> </span><span class="se">\</span>

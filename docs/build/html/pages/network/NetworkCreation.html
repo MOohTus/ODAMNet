@@ -125,23 +125,28 @@ a <strong>bipartite network</strong>.</p>
 <section id="input-parameters-for-network-creation">
 <h2>Input parameters for network creation<a class="headerlink" href="#input-parameters-for-network-creation" title="Permalink to this heading"></a></h2>
 <p>By default, the <code class="docutils literal notranslate"><span class="pre">networkCreation</span></code> creates a rare disease pathways network (data are retrieved from WikiPathways <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
-automatically). The created network is disconnected and contains only self loop (i.e. rare disease pathways link to
+automatically). The created network is disconnected and contains only self loop (i.e. rare disease pathways linked to
 themself). The bipartite network connects genes nodes to rare disease pathway nodes.</p>
 <p>You can also provided your own pathways/processes of interest using <code class="docutils literal notranslate"><span class="pre">--GMT</span></code> parameter.</p>
 <dl class="option-list">
 <dt><kbd><span class="option">--networksPath <var>PATH</var></span></kbd></dt>
-<dd><p>Output repository name where the pathways/processes network is saved <strong>[requiered]</strong></p>
+<dd><p>Output folder name where the pathways/processes network is saved <strong>[requiered]</strong></p>
 </dd>
 <dt><kbd><span class="option">--networksName <var>FILENAME</var></span></kbd></dt>
 <dd><p>File name to save the pathways/processes network. The created network is in <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">GR format</span></a>.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">WP_RareDiseasesNetwork.gr]</span></code></p>
 </dd>
 <dt><kbd><span class="option">--bipartitePath <var>PATH</var></span></kbd></dt>
-<dd><p>Output repository name where the bipartite genes-pathways/processes is saved <strong>[requiered]</strong></p>
+<dd><p>Output folder name where the bipartite genes-pathways/processes is saved <strong>[requiered]</strong></p>
 </dd>
 <dt><kbd><span class="option">--bipartiteName <var>FILENAME</var></span></kbd></dt>
 <dd><p>File name to save the bipartite network. The created network is in <a class="reference internal" href="../formats/Input.html#gr"><span class="std std-ref">GR format</span></a>.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">Bipartite_WP_RareDiseases_geneSymbols.gr]</span></code></p>
+</dd>
+<dt><kbd><span class="option">--GMT <var>FILENAME</var></span></kbd></dt>
+<dd><p>Tab-delimited file that describes gene sets of pathways/processes of interest.
+Pathways/processes can come from several sources <em>(e.g. WP and GO:BP)</em>.
+[<a class="reference internal" href="../formats/Input.html#gmtfile"><span class="std std-ref">FORMAT</span></a>]</p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
 <dd><p>Name of the folder to save complementary results (i.e. query results)

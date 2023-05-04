@@ -207,14 +207,14 @@ It’s composed of:</p>
 </section>
 <section id="pathways-processes-of-interest-network">
 <span id="pathwaysofinterestnet"></span><h2>Pathways/processes of interest network<a class="headerlink" href="#pathways-processes-of-interest-network" title="Permalink to this heading"></a></h2>
-<p>In the use-case 1, we are using <strong>data retrieved from databases</strong>. So, we created a rare disease pathways network with
-data retrieved from WikiPathways <a class="footnote-reference brackets" href="#id19" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The network is composed of 104 nodes and the bipartite contains 4,612 interactions
-between genes and rare disease pathways.</p>
-<p>In the use-case 2, we are <strong>provided data from a previous study</strong> <a class="footnote-reference brackets" href="#id20" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>. We created a disconnected network with pathways
-or processes related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT) as nodes. The network is composed of
-13 nodes and the bipartite network contains 1,655 interactions between genes and pathways and processes related to
-CAKUT.</p>
-<p>To know how to create these two networks, see the <a class="reference internal" href="NetworkCreation.html"><span class="doc">Networks creation</span></a> page.</p>
+<p>In the <a class="reference internal" href="../analysis/usecase1.html#usecase1-rwr"><span class="std std-ref">use-case 1</span></a>, we are using <strong>data retrieved from databases</strong>. So, we created a rare disease
+pathways network with data retrieved from WikiPathways <a class="footnote-reference brackets" href="#id19" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>. The network is composed of 104 nodes and the bipartite
+contains 4,612 interactions between genes and rare disease pathways.</p>
+<p>In the <a class="reference internal" href="../analysis/usecase2.html#usecase2-rwr"><span class="std std-ref">use-case 2</span></a>, we are <strong>provided data from a previous study</strong> <a class="footnote-reference brackets" href="#id20" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>. We created a disconnected
+network with pathways and processes related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT) as nodes.
+The network is composed of 13 nodes and the bipartite network contains 1,655 interactions between genes and pathways
+and processes related to CAKUT.</p>
+<p class="italic">To know how to create these two networks, see the <a class="reference internal" href="NetworkCreation.html"><span class="doc">Networks creation</span></a> page.</p>
 </section>
 <section id="disease-disease-similarity-network">
 <span id="similaritynet"></span><h2>Disease-disease similarity network<a class="headerlink" href="#disease-disease-similarity-network" title="Permalink to this heading"></a></h2>
@@ -227,8 +227,8 @@ CAKUT.</p>
 <p>We constructed a disease-disease network based on the phenotype similarity between diseases. A disease is defined as
 a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO) <a class="footnote-reference brackets" href="#id21" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>.</p>
 <p>The similarity score is calculated based on the number of shared phenotypes between two diseases (<a class="footnote-reference brackets" href="#id22" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id23" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>, <a class="footnote-reference brackets" href="#id24" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a>).
-Every pairs of diseases will have a similarity score. For each disease we selected the 5 most similar diseases to
-create the network.</p>
+Every pairs of diseases have a similarity score. To create the network, we selected the 5 most similar diseases fo each
+disease.</p>
 <p>The <strong>disease-disease</strong> similarity network contains 33,925 edges and 8,264 diseases.</p>
 </section>
 <section id="gene-disease-bipartite">

@@ -9,8 +9,9 @@ Use-case 1: data are retrieved automatically by queries
 In this use-case, we want to study the molecular relationship between **vitamin A** and **rare diseases**.
 
 Vitamin A **target genes** are retrieved **directly** from the |ctd|_ [2]_ (CTD). **Rare disease pathways** are
-retrieved from |wp|_ [3]_. Biological **networks** used are also downloaded automatically from |ndex|_ [4]_. Input data
-are available in |git|_.
+retrieved from |wp|_ [3]_. Biological **networks** used are also downloaded automatically from |ndex|_ [4]_.
+
+|input|_ and |output|_ are available in GitHub.
 
 This section presents you how to apply the three different approaches proposed.
 
@@ -20,7 +21,7 @@ Overlap analysis
 =====================
 
 The Overlap analysis searches intersecting genes between vitamin A target genes and genes involved in rare disease
-pathways (see :doc:`../approaches/methods_overlap` page for more details).
+pathways. See :doc:`../approaches/methods_overlap` page for more details.
 
 Running Overlap analysis with data retrieved automatically from databases
 ----------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Running Overlap analysis with data retrieved automatically from databases
 The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH ID of vitamin A (D014801). We retrieved
 from CTD, genes targeted by the vitamin A and its descendant chemicals (``--directAssociation FALSE``). We keep only
 vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
+
+**Rare disease pathways** are retrieved automatically from WikiPathways.
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -53,7 +56,7 @@ Several files are generated:
 
 .. cssclass:: italic
 
-    For more details about these files, see the :doc:`../formats/Output` page.
+    For more details about these files, see :ref:`queryOutput` and :ref:`overlapOutput` sections.
 
 Results of Overlap analysis with data retrieved automatically from databases
 -------------------------------------------------------------------------------
@@ -65,7 +68,7 @@ CTD query results
 
 We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
 (:ref:`Table 2 <useCase1_OverlapCTD>`). Chemical - gene associations are kept if they have at least two publications for
-human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
+human. After filtering, we have **2,143 vitamin A target genes** for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1_OverlapCTD:
 .. table:: - Vitamin A target genes retrieved from CTD
@@ -82,7 +85,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 WikiPathways query results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved 104 rare disease pathways
+All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved **104 rare disease pathways**
 (:ref:`Table 3 <useCase1_OverlapWP>`). All human pathways are also retrieved from WikiPathways
 (:ref:`Table 3 <useCase1_OverlapWP>`). We use these pathways to create background gene sets used for statistical
 analysis.
@@ -154,9 +157,9 @@ The increase of the intersection size (*Inter column*) can be explained by the t
 
 The overlap between *Nephrogenesis* pathway and target genes is not found significant anymore. Number of target genes
 shared with the pathway is smaller. It affects the p-value and decreases it below the 0.05 threshold.
-It can be explained by the fact that one of the two missing genes is not related to human. So it cannot be retrieved by
-the queri. And the other gene has only one publication that relates association with vitamin A. So it is not kept
-during filtering.
+
+The smaller number of shared genes can be explained by the fact that one of the target gene is not related to human so
+it's not selected and the other one has only one publication associated and we keep those with at least two publications.
 
 .. _useCase1_AMI:
 
@@ -181,7 +184,7 @@ vitamin A - gene interactions which have at least two associated publications (`
 
 We download automatically a PPI network [:ref:`FORMAT <SIF>`] from NDEx [4]_ using the ``--netUUID`` parameter
 (UUID bfac0486-cefe-11ed-a79c-005056ae23aa, version 1.0). We named the PPI network `PPI_HiUnion_LitBM_APID_gene_names_190123.sif`
-(``--networkFile``). Network name should have **.sif** extension.
+(``--networkFile``). Network name should be with **.sif** extension.
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -216,8 +219,7 @@ Several files are generated:
 
 .. cssclass:: italic
 
-    For more details about these files, see :doc:`../formats/Output` page (:ref:`queryOutput`, :ref:`overlapOutput`,
-    :ref:`AMIOutput`)
+    For more details about these files, see :ref:`queryOutput` and :ref:`AMIOutput` sections.
 
 Results of AMI with data retrieved automatically from databases
 ------------------------------------------------------------------
@@ -229,7 +231,7 @@ CTD query results
 
 We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
 (:ref:`Table 6 <useCase1_AMICTD>`). Chemical - gene associations are kept if they have at least two publications for
-human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
+human. After filtering, we have **2,143 vitamin A target genes** for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1_AMICTD:
 .. table:: - Vitamin A target genes retrieved from CTD
@@ -246,7 +248,7 @@ human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vi
 WikiPathways query results
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved 104 rare disease pathways
+All human pathways labeled as "rare disease" are retrieved from WikiPathways. We retrieved **104 rare disease pathways**
 (:ref:`Table 7 <useCase1_AMIWP>`). All human pathways are also retrieved from WikiPathways
 (:ref:`Table 7 <useCase1_AMIWP>`). We use these pathways to create background gene sets used for statistical analysis.
 
@@ -360,8 +362,8 @@ middle contains genes involved only in *Development of ureteric collection syste
 Random Walk with Restart (RWR)
 =================================
 
-The Random Walk with Restart (RWR) approach mesures proximities between vitamin A target genes and rare disease pathways.
-To calculate these proximities (RWR scores), we used multiXrank [7]_ and multilayer networks. See
+The Random Walk with Restart (RWR) approach mesures **proximities** between vitamin A target genes and rare disease
+pathways. To calculate these proximities (RWR scores), we used multiXrank [7]_ and multilayer networks. See
 :doc:`../approaches/methods_RWR` page for more details.
 
 The multilayer network is composed of three gene networks and one rare disease pathways network. Genes nodes are
@@ -374,11 +376,11 @@ The **chemicalsFile.csv** file [:ref:`FORMAT <chemicalsFile>`] contains the MeSH
 from CTD, genes targeted by the vitamin A and its descendant chemicals (``--directAssociation FALSE``). We keep only
 vitamin A - gene interactions which have at least two associated publications (``--nbPub 2``).
 
-MultiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis parameters.
+multiXrank needs as input a configuration file (``--configPath``) that contains path of networks and analysis parameters.
 We used multiXrank with default parameters.
 
-We provided a name file to save vitamin A target genes (i.e. seeds) ``--seedsFile useCases/InputData/seeds.txt`` and
-also a SIF file name (``--sifFileName``) to save the top nodes based on RWR score (``--top 20``).
+We provide a name file to save vitamin A target genes (i.e. seeds) ``--seedsFile useCases/InputData/seeds.txt`` and
+also a SIF file name (``--sifFileName``) to save the top nodes based on RWR scores (``--top 20``).
 
 Results files are saved into ``useCases/OutputResults_useCase1/`` folder.
 
@@ -419,7 +421,7 @@ Several files are generated:
 
 .. cssclass:: italic
 
-    For more details about these file, see :doc:`../formats/Output` page.
+    For more details about these files, see :ref:`queryOutput` and :ref:`RWROutput` sections.
 
 Results of RWR with data retrieved automatically from databases
 -----------------------------------------------------------------
@@ -431,7 +433,7 @@ CTD query results
 
 We retrieved 7,765 genes targeted by 10 chemicals (vitamin A + nine descendant chemicals) in CTD
 (:ref:`Table 10 <useCase1_RWRCTD>`). Chemical - gene associations are kept if they have at least two publications for
-human. After filtering, we have 2,143 vitamin A target genes for 7 chemicals (vitamin A + its descendant molecules).
+human. After filtering, we have **2,143 vitamin A target genes** for 7 chemicals (vitamin A + its descendant molecules).
 
 .. _useCase1_RWRCTD:
 .. table:: - Vitamin A target genes retrieved from CTD
@@ -451,13 +453,13 @@ RWR results
 Analysis with rare disease pathways network
 """""""""""""""""""""""""""""""""""""""""""""
 
-We used a multilayer network composed of three gene networks and one rare disease pathways network
+We used a multilayer network composed of **three gene networks** and one **rare disease pathways network**
 (:numref:`multilayerCompo` - left, :ref:`genesMultilayerNet` and
 :ref:`Rare disease pathways network<pathwaysOfInterestNet>`).
 
-multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
+multiXrank defines vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease
-pathways are prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 11 <useCase1_RWRWP>`).
+pathways are prioritized. We selected the **top 20** and presented the top 5 (:ref:`Table 11 <useCase1_RWRWP>`).
 
 .. _useCase1_RWRWP:
 .. table:: - Rare disease pathways prioritization using RWR score. The top 5 is displayed.
@@ -498,17 +500,17 @@ Extra : analysis with disease-disease similarity network
 
 .. tip::
 
-    :octicon:`alert;1.5em` Same command line, but you need to change **configuration file**.
+    :octicon:`alert;1.5em` Same command line, but needs to change **configuration file**.
 
 We also propose to run an RWR approach using a **disease-disease similarity network**. In this network, rare diseases are
-linked together according their phenotype similarity whereas in the previous network they were not at all connected.
+linked together according their **phenotype similarity** whereas in the previous network they were not at all connected.
 
 We used a multilayer network composed of three genes network and one disease-disease similarity network
 (:numref:`multilayerCompo` - right, :ref:`genesMultilayerNet`, :ref:`similarityNet`).
 
-multiXrank defined vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
+multiXrank defines vitamin A target genes as seeds. Over the 2,143 target genes retrieved from CTD, 2,012 are found in
 the multilayer and used as seeds. Using the RWR scores (i.e. proximity score with the target genes), rare disease are
-prioritized. We selected the top 20 and presented the top 5 (:ref:`Table 12 <useCase1_RWRSim>`).
+prioritized. We selected the **top 20** and presented the top 5 (:ref:`Table 12 <useCase1_RWRSim>`).
 
 .. _useCase1_RWRSim:
 .. table:: - Rare disease prioritization using RWR score. The top 5 is displayed.
@@ -548,7 +550,7 @@ Overlap, AMI and RWR results comparison
 ===========================================
 
 We compare results obtained with the three different approaches: Overlap analysis, Active Module Identification (AMI)
-and Random Walk with Restart (RWR). We used orsum [8]_, a Python package to filter and integrate enrichment analysis
+and Random Walk with Restart (RWR). We used **orsum** [8]_, a Python package to filter and integrate enrichment analysis
 from several analyses. The main result is a heatmap, presented in :numref:`useCase1_orsum`.
 
 .. code-block:: bash
@@ -584,8 +586,10 @@ References
 .. [7] Baptista A, Gonzalez A & Baudot A. Universal multilayer network exploration by random walk with restart. Communications Physics. 2022.
 .. [8] Ozisik O, Térézol M & Baudot A. orsum: a Python package for filtering and comparing enrichment analyses using a simple principle. BMC bioinformatics. 2022.
 
-.. _git: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
-.. |git| replace:: GitHub
+.. _input: https://github.com/MOohTus/ODAMNet/tree/main/useCases/InputData
+.. |input| replace:: Input data
+.. _output: https://github.com/MOohTus/ODAMNet/tree/main/useCases/OutputResults_useCase1
+.. |output| replace:: Output results data
 .. _ctd: http://ctdbase.org/
 .. |ctd| replace:: **the Comparative Toxicogenomics Database**
 .. _wp: https://www.wikipathways.org/

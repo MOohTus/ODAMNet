@@ -107,10 +107,11 @@ This kind of files is created as query results with query mode of ODAMNet.
 Pathways/processes of interest
 =================================
 
-By default, ODAMNet retrieved all rare disease pathways and all human pathways from |wp|_ [2]_ using queries. Moreover,
-the user can also provide their own pathways/processes of interest.
+By default, ODAMNet retrieved all rare disease pathways and all human pathways from |wp|_ [2]_ using queries. Genes
+involved in rare disease pathways are retrieved in **HGCN** format.
 
-Two types of files are required by ODAMNet:
+Moreover, the user can also provide their own pathways/processes of interest. Two types of files are required by
+ODAMNet:
 
 --GMT FILENAME
     It's a tab-delimited file that describes gene sets of pathways/processes of interest. Pathways can come
@@ -141,7 +142,7 @@ The GMT file is organized as follow:
     WP5189	Copper metabolism	ATP7B	ATP7A	SLC11A2	SLC31A1
     WP5190	Creatine pathway	GAMT	SLC6A8	GATM	OAT	CK
 
-For more details, see |gmt|_.
+For more details, see |gmt|_ webpage.
 
 .. warning::
 
@@ -238,7 +239,7 @@ SIF file
 ----------
 
 This network format is used in the :doc:`../approaches/methods_AMI` (AMI) approach. The SIF file contains three
-columns: source node, interaction type and target node, and an header. It's a tab-separated file.
+columns: source node, interaction type and target node with header. It's a tab-separated file.
 
 .. code-block:: none
 
@@ -271,6 +272,10 @@ source node and target node, without header. It's a tab-separated file.
 
 Configuration file
 =====================
+
+.. warning::
+
+    :octicon:`alert;2em` Follow the same **folder tree** used in multiXrank
 
 To perform a RWR, multiXrank [3]_ needs a configuration file as input. This file contains path of networks used. It
 could be short (see bellow) or very detailed with parameters.

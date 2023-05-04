@@ -110,16 +110,18 @@ Use-case command lines
 Pathways/processes of interest network
 ========================================
 
-In the use-case 1, we are using **data retrieved from databases**. So, we created a rare disease pathways network with
-data retrieved from WikiPathways [7]_. The network is composed of 104 nodes and the bipartite contains 4,612 interactions
-between genes and rare disease pathways.
+In the :ref:`use-case 1 <useCase1_RWR>`, we are using **data retrieved from databases**. So, we created a rare disease
+pathways network with data retrieved from WikiPathways [7]_. The network is composed of 104 nodes and the bipartite
+contains 4,612 interactions between genes and rare disease pathways.
 
-In the use-case 2, we are **provided data from a previous study** [8]_. We created a disconnected network with pathways
-or processes related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT) as nodes. The network is composed of
-13 nodes and the bipartite network contains 1,655 interactions between genes and pathways and processes related to
-CAKUT.
+In the :ref:`use-case 2 <useCase2_RWR>`, we are **provided data from a previous study** [8]_. We created a disconnected
+network with pathways and processes related to Congenital Anomalies of the Kidney and Urinary Tract (CAKUT) as nodes.
+The network is composed of 13 nodes and the bipartite network contains 1,655 interactions between genes and pathways
+and processes related to CAKUT.
 
-To know how to create these two networks, see the :doc:`../network/NetworkCreation` page.
+.. cssclass:: italic
+
+    To know how to create these two networks, see the :doc:`../network/NetworkCreation` page.
 
 .. _similarityNet:
 
@@ -136,8 +138,8 @@ We constructed a disease-disease network based on the phenotype similarity betwe
 a set of phenotypes and each phenotype is associated to the Human Ontology Project IDs (HPO) [9]_.
 
 The similarity score is calculated based on the number of shared phenotypes between two diseases ([10]_, [11]_, [12]_).
-Every pairs of diseases will have a similarity score. For each disease we selected the 5 most similar diseases to
-create the network.
+Every pairs of diseases have a similarity score. To create the network, we selected the 5 most similar diseases fo each
+disease.
 
 The **disease-disease** similarity network contains 33,925 edges and 8,264 diseases.
 

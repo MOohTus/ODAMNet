@@ -16,7 +16,7 @@ ODAMNet. This function downloads biological networks using the NDEx2 Python clie
 Input parameters for network downloading
 ============================================
 
-To download biological networks, you needs the network ID ``--netUUID`` and a name to save the network ``--netUUID``.
+To download biological networks, you needs the network ID ``--netUUID`` and a name to save the network ``--networkFile``.
 These two parameters are **required**.
 
 --netUUID TEXT
@@ -26,8 +26,8 @@ These two parameters are **required**.
     Output file name to save the downloaded network **[required]**
 
 --simple BOOLEAN
-    | if TRUE, create a file with two columns and no header
-    | if FALSE, create a file with three columns and header
+    | if TRUE, creates a file with two columns without header
+    | if FALSE, creates a file with three columns with header
 
 .. tabs::
 

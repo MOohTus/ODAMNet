@@ -24,7 +24,7 @@ By default, data are directly retrieved from databases using queries (:numref:`o
 All **rare disease pathways** are retrieved from |wp|_ [3]_ automatically.
 
 In addition, the user can provide their own **target genes** and **pathways/processes of interest**
-(:numref:`overlapUsageFig`: section *data provided by user*) using ``--targetGenesFile`` and ``--GMT``,
+(:numref:`overlapUsageFig`: section *data provided by user*) using ``--targetGenesFile`` , ``--GMT`` and
 ``--backgroundFile``.
 
 The ``--outputPath`` parameter is used whatever how data are retrieved.
@@ -35,14 +35,14 @@ The ``--outputPath`` parameter is used whatever how data are retrieved.
     :align: center
     :scale: 25
 
-    : Input and output of overlap analysis
+    : Input and output of Overlap analysis
 
-    (Left part) - Chemical target genes and rare disease pathways are retrieved using automatic queries. The user can
-    also provide their own data. Required input are represented with pink and green solid border line boxes whereas
-    optional input are represented with dashed border line boxes.
-    (Right part) - Output files that are in pink are created only if the input data are retrieved by queries.
+    (Left part) - By default, chemical target genes and rare disease pathways are retrieved using automatic queries.
+    The user can also provide their own data. Required inputs are represented with pink and green solid border line boxes
+    whereas optional input are represented with dashed border line boxes.
+    (Right part) - Output files in pink are created only if the input data are retrieved by queries.
 
-Input parameters for the overlap analysis
+Input parameters for the Overlap analysis
 -------------------------------------------
 
 .. warning::
@@ -50,7 +50,7 @@ Input parameters for the overlap analysis
     - Gene IDs have to be **consistent** between input data *(target genes, GMT and networks)*
     - When data are retrieved by queries, **HGNC** IDs are used.
 
-| To use data retrieved from databases, see parameters on the ``Data retrieved by queries`` tab.
+| To use data **retrieved from databases**, see parameters on the ``Data retrieved by queries`` tab.
 | To provide **your own** data, see parameters on the ``Data provided by user`` tab.
 
 .. tabs::
@@ -69,8 +69,8 @@ Input parameters for the overlap analysis
 
         --nbPub INTEGER
             Each interaction between target gene and chemical can be associated with publications.
-            You can filter these interactions according the number of publication associated.
-            You can define a minimum number of publications to keep an association.
+            You can filter these interactions according the number of associated publications.
+            You can define a minimum number of publications to keep an association
             ``[default: 2]``
 
     .. group-tab:: Data provided by user

@@ -118,10 +118,11 @@
 <h2>Goal<a class="headerlink" href="#goal" title="Permalink to this heading"></a></h2>
 <p>Our goal is to uncover <strong>molecular relationships between chemicals</strong> (e.g. vitamins, hormones etc.) and <strong>rare diseases</strong>.
 To this end, we implement <strong>three approaches</strong>.</p>
-<p>Data are retrieved <strong>automatically</strong> from the <strong>Comparative Toxicogenomics Database</strong> (CTD) <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for target genes of
-chemicals and <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for rare disease pathways (see <a class="reference internal" href="../analysis/usecase1.html"><span class="doc">Use-case 1: data are retrieved automatically by queries</span></a>).</p>
-<p>We propose three different approaches to uncover molecular relationships between genes which are targeted by chemicals and rare
-diseases (<a class="reference internal" href="#overviewfig"><span class="std std-numref">Fig. 1</span></a>):</p>
+<p>Data are retrieved <strong>automatically</strong> from the <strong>Comparative Toxicogenomics Database</strong> (CTD) <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> for target genes of
+chemicals, <strong>WikiPathways</strong> <a class="footnote-reference brackets" href="#id5" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> for rare disease pathways and from <strong>the Network Data Exchange</strong> (NDEx) <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> for
+biological networks (see <a class="reference internal" href="../analysis/usecase1.html"><span class="doc">Use-case 1: data are retrieved automatically by queries</span></a>).</p>
+<p>We propose three different approaches to uncover molecular relationships between genes which are targeted by chemicals
+and rare diseases (<a class="reference internal" href="#overviewfig"><span class="std std-numref">Fig. 1</span></a>):</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><a class="reference internal" href="methods_overlap.html#overlap"><span class="std std-ref">Overlap analysis</span></a>: chemical target genes are part of a rare disease pathway</p></li>
@@ -130,10 +131,10 @@ diseases (<a class="reference internal" href="#overviewfig"><span class="std std
 </ul>
 </div></blockquote>
 <p>These three approaches are <strong>complementary</strong> and they perform <strong>network exploration</strong> at different level of interactions.</p>
-<figure class="align-center" id="id5">
+<figure class="align-center" id="id7">
 <span id="overviewfig"></span><a class="reference internal image-reference" href="../../_images/Overview_approaches.png"><img alt="overviewFig" src="../../_images/Overview_approaches.png" style="width: 707.74px; height: 428.78000000000003px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">: Overview of the three approaches implemented in ODAMNet</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">: Overview of the three approaches implemented in ODAMNet</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
 </figcaption>
 </figure>
 <p>Moreover, the approaches can be used with user-provided input files instead of files fetched with automatic queries.
@@ -142,13 +143,17 @@ Take a look at <a class="reference internal" href="../analysis/usecase2.html"><s
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading"></a></h2>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="note">
+<aside class="footnote brackets" id="id4" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Davis AP, Grondin CJ, Johnson RJ <em>et al.</em>. The Comparative Toxicogenomics Database: update 2021. Nucleic acids research. 2021.</p>
 </aside>
-<aside class="footnote brackets" id="id4" role="note">
+<aside class="footnote brackets" id="id5" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Martens M, Ammar A, Riutta A <em>et al.</em>. WikiPathways: connecting communities. Nucleic acids research. 2021.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Pratt D, Chen J, Welker <em>et al.</em>. NDEx, the Network Data Exchange. Cell Systems. 2015.</p>
 </aside>
 </aside>
 </section>

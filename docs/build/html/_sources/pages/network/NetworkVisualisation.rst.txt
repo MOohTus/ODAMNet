@@ -18,7 +18,7 @@ Active module identification results visualisation
     .. cssclass:: italic
 
         To run an Active Module Identification with data retrieved by queries, see :ref:`Use-case 1 <useCase1_AMI>`
-        or with data provided by user, see :ref:`Use-case 2 <useCase2_AMI>`.
+        and with data provided by user, see :ref:`Use-case 2 <useCase2_AMI>`.
 
 The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
 
@@ -33,6 +33,8 @@ The :numref:`cytoscapeAMI` is an example of AMI results visualisation.
 
 Step by step guidelines
 ---------------------------
+
+To visualise the AMI results using network representation, use the following steps:
 
 1. Import files
 ~~~~~~~~~~~~~~~~~~
@@ -139,7 +141,7 @@ Random walk with restart results visualisation
 
     .. cssclass:: italic
 
-        To perform a RWR with data retrieved by queries, see :ref:`Use-case 1 <useCase1_RWR>` or with data
+        To perform a RWR with data retrieved by queries, see :ref:`Use-case 1 <useCase1_RWR>` and with data
         provided by user, see :ref:`Use-case 2 <useCase2_RWR>`.
 
 The :numref:`cytoscapeRWR` is an example of RWR results visualisation.

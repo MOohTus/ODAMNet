@@ -63,7 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#principle">Principle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#overview-of-the-domino-algorithm">Overview of the DOMINO algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-active-modules-identification">Input parameters for the Active Modules Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#input-parameters-for-the-ami">Input parameters for the AMI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-cases-command-lines">Use-cases command lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
 </ul>
@@ -152,14 +152,14 @@ involved in a specific condition.</p>
 <div class="line"><strong>D - Step 2b:</strong> The sub-slices are split into putative active modules  using the Newmann-Girvan modularity algorithm.</div>
 <div class="line"><strong>E - Step 3:</strong> The final set of active module is identified (under a threshold of Bonferroni qval&lt;=0.05).</div>
 </div>
-<p><em>For more details, see to the DOMINO’s publication</em> <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p><em>For more details, see the DOMINO’s paper</em> <a class="footnote-reference brackets" href="#id8" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <p>By default, data are directly retrieved from databases using queries (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data retrieved</em>
 <em>by queries</em>). <strong>Chemical target genes</strong> are retrieved from the <a class="reference external" href="http://ctdbase.org/">Comparative Toxicogenomics Database</a> <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> (CTD) using <code class="docutils literal notranslate"><span class="pre">--chemicalsFile</span></code> parameter.
-All <strong>rare disease pathways</strong> are retrieved from <a class="reference external" href="https://www.wikipathways.org/">WikiPathways</a> <a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> automatically. The <strong>biological network</strong> is also downloaded
-from the <a class="reference external" href="https://www.ndexbio.org/#/">Network Data Exchange</a> <a class="footnote-reference brackets" href="#id12" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> using <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> parameters.</p>
+All <strong>rare disease pathways</strong> are retrieved from <a class="reference external" href="https://www.wikipathways.org/">WikiPathways</a> <a class="footnote-reference brackets" href="#id11" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> automatically. And the <strong>biological network</strong> is also
+downloaded from the <a class="reference external" href="https://www.ndexbio.org/#/">Network Data Exchange</a> <a class="footnote-reference brackets" href="#id12" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>  (NDEx) using <code class="docutils literal notranslate"><span class="pre">--netUUID</span></code> and <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code> parameters.</p>
 <p>You can provide your own <strong>target genes</strong>, <strong>pathways/processes of interest</strong> and <strong>biological network</strong>
 (<a class="reference internal" href="#dominousagefig"><span class="std std-numref">Fig. 4</span></a>: section <em>data provided by user</em>) using <code class="docutils literal notranslate"><span class="pre">--targetGenesFile</span></code>, <code class="docutils literal notranslate"><span class="pre">--GMT</span></code>,
 <code class="docutils literal notranslate"><span class="pre">--backgroundFile</span></code> and <code class="docutils literal notranslate"><span class="pre">--networkFile</span></code>.</p>
@@ -169,16 +169,16 @@ from the <a class="reference external" href="https://www.ndexbio.org/#/">Network
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">: Input and output of Active Modules Identification (AMI)</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
 <div class="legend">
-<p>(Left part) - Chemical target genes, rare disease pathways and biological networks are retrieved using automatic
-queries. The user can also provide their own data. Required input are represented with pink and green solid border
-line boxes whereas optional input are represented with dashed border line boxes.
-(Right part) - Output files that are in pink are created only if the input data are retrieved by queries.</p>
+<p>(Left part) - By default, chemical target genes, rare disease pathways and biological networks are retrieved using
+automatic queries. The user can also provide their own data. Required inputs are represented with pink and green
+solid border line boxes whereas optional input are represented with dashed border line boxes.
+(Right part) - Output files that are in pink, are created only if the input data are retrieved by queries.</p>
 </div>
 </figcaption>
 </figure>
 </section>
-<section id="input-parameters-for-the-active-modules-identification">
-<h2>Input parameters for the Active Modules Identification<a class="headerlink" href="#input-parameters-for-the-active-modules-identification" title="Permalink to this heading"></a></h2>
+<section id="input-parameters-for-the-ami">
+<h2>Input parameters for the AMI<a class="headerlink" href="#input-parameters-for-the-ami" title="Permalink to this heading"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul class="simple">
@@ -187,7 +187,7 @@ line boxes whereas optional input are represented with dashed border line boxes.
 </ul>
 </div>
 <div class="line-block">
-<div class="line">To use data retrieved from databases, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
+<div class="line">To use data <strong>retrieved from databases</strong>, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">retrieved</span> <span class="pre">by</span> <span class="pre">queries</span></code> tab.</div>
 <div class="line">To provide <strong>your own</strong> data, see parameters on the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">provided</span> <span class="pre">by</span> <span class="pre">user</span></code> tab.</div>
 </div>
 <div class="sphinx-tabs docutils container">
@@ -206,7 +206,7 @@ Each line contains one or several chemical IDs, separated by “;”
 </dd>
 <dt><kbd><span class="option">--nbPub <var>INTEGER</var></span></kbd></dt>
 <dd><p>Each interaction between target gene and chemical can be associated with publications.
-You can filter these interactions according the number of publication associated.
+You can filter these interactions according the number of associated publications.
 You can define a minimum number of publications to keep an association.
 <code class="docutils literal notranslate"><span class="pre">[default:</span> <span class="pre">2]</span></code></p>
 </dd>
@@ -236,7 +236,7 @@ It should be in the same order than the GMT file.
 <dl class="option-list">
 <dt><kbd><span class="option">-n</span>, <span class="option">--networkFile <var>FILENAME</var></span></kbd></dt>
 <dd><p>Network file name that contains network or to save network.
-The file is in SIF format [<a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">FORMAT</span></a>] <strong>[required]</strong></p>
+The file is in <a class="reference internal" href="../formats/Input.html#sif"><span class="std std-ref">SIF format</span></a> <strong>[required]</strong></p>
 </dd>
 <dt><kbd><span class="option">-o</span>, <span class="option">--outputPath <var>PATH</var></span></kbd></dt>
 <dd><p>Folder name to save results.

@@ -31,11 +31,11 @@ Chemical target genes are retrieved from CTD. Two files are created:
 
     .. group-tab:: ``CTD_request_MeSHID_DATE.tsv``
 
-        This file contains the raw query results.
+        This file contains the **raw query results**.
 
     .. group-tab:: ``CTD_requestFiltered_MeSHID_DATE.tsv``
 
-        This file contains the filtered query results. You can filter raw query results according the number of
+        This file contains the **filtered query results**. You can filter raw query results according the number of
         publication associated to a chemical - gene association (``--nbPub`` parameter). This file is used for the
         analysis.
 
@@ -78,11 +78,11 @@ Rare disease pathways are retrieved from WikiPathways. Two GMT files are created
 
     .. group-tab:: ``WP_RareDiseases_request_DATE.gmt``
 
-        This file contains the rare disease pathways in :ref:`GMT format <GMTFile>`.
+        This file contains the **rare disease pathways** in :ref:`GMT format <GMTFile>`.
 
     .. group-tab:: ``WP_allPathways_request_DATE.gmt``
 
-        This file contains the human disease pathways in :ref:`GMT format <GMTFile>`.
+        This file contains the **human disease pathways** in :ref:`GMT format <GMTFile>`.
 
 GMT file is a tab-separated file:
 
@@ -198,7 +198,7 @@ modules.
 
     .. group-tab:: ``*_activeModulesNetwork.txt``
 
-        This file contains details about each identified active module found. It contains four columns:
+        This file contains **details** about each identified active module found. It contains four columns:
 
         - ``source``: node 1
         - ``target``: node 2
@@ -218,7 +218,7 @@ modules.
 
     .. group-tab:: ``*_activeModulesMetrics.txt``
 
-        Some metrics are calculated for each identified active module.
+        Some **metrics** are calculated for each identified active module.
 
         - ``AMINumber``: active module number
         - ``EdgesNumber``: number of edges in the active module
@@ -236,7 +236,7 @@ modules.
 
     .. group-tab:: ``*_activeModules.txt``
 
-        This file is created to import in Cytoscape for the visualisation. It contains four columns :
+        This file is created to import in **Cytoscape** [5]_ for the visualisation. It contains four columns :
 
             - ``GeneSymbol`` : Gene name
             - ``ActiveModule`` : active module number
@@ -261,12 +261,12 @@ pathways/processes of interest.
 
     .. group-tab:: ``Overlap_AM_*.csv``
 
-        There are as many overlap files as identified active modules. This file contains the Overlap analysis results.
+        There are as many overlap files as identified active modules. This file contains the **Overlap analysis results**.
         See :ref:`overlapOutput` for more details.
 
     .. group-tab:: ``*_signOverlap.txt``
 
-        This file contains the significant overlap results between identified active modules and pathways/processes of
+        This file contains the **significant overlap results** between identified active modules and pathways/processes of
         interest. If two overlap are significant in several active modules, the best pvalue is conserved.
 
         It contains 2 columns: pathways/processes of interest and best adjusted pvalue.
@@ -282,7 +282,7 @@ pathways/processes of interest.
 
     .. group-tab:: ``*_overlapAMresults4Cytoscape.txt``
 
-        This file is created for the visualisation using Cytoscape [5]_. It contains five columns:
+        This file is created for the visualisation using **Cytoscape** [5]_. It contains five columns:
 
         - ``geneSymbol``: gene HCGN ID
         - ``AM_number``: Active module number
@@ -325,8 +325,8 @@ The other created files contain RWR results.
 
     .. group-tab:: ``multiplex_*.tsv``
 
-        There are as many multiplex output files as multiplexes used in the RWR analysis. This file contains three
-        columns:
+        There are as many multiplex output files as multiplexes used in the RWR analysis. It contains **RWR scores** for
+        each node and three columns:
 
         - ``multiplex``: multiplex folder name
         - ``node``: name of node inside the multiplex (e.g. target genes, pathways ...)
@@ -350,7 +350,8 @@ The other created files contain RWR results.
     .. group-tab:: ``UseCase1_RWR_network.sif``
 
         The name of this network file depends on what you give in input (``--sifFileName``). See :ref:`RWR` for more
-        details. The network file is a [:ref:`SIF format <SIF>`] and contains three columns:
+        details. This file is created for the visualisation using **Cytoscape** [5]_. This network file is a
+        [:ref:`SIF format <SIF>`] and contains three columns:
 
         - ``source node``: node names
         - ``link source``: source of the link (which multiplex or bipartite)
@@ -373,7 +374,7 @@ The other created files contain RWR results.
 
     .. group-tab:: ``RWR_top20.txt``
 
-        This file contains the list of the top X of pathways/processes of interests, according their RWR score.
+        This file contains the list of the **top X of pathways/processes of interests**, according their RWR score.
         You can choose the top number using the ``--top`` parameter.
 
         This is an example of this file:

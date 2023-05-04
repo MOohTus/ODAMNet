@@ -11,7 +11,7 @@ This tool was created within the framework of the [EJRP-RD project][EJPRD].
 
 ### From PyPI
 
-ODAMNet is available as [Python package][pypi]. You can easily install it using `pip`.
+ODAMNet is available in [Python package][pypi]. You can easily install it using `pip`.
 
 ```console
 $ python3 -m pip install odamnet
@@ -19,7 +19,7 @@ $ python3 -m pip install odamnet
 
 ### From Conda - *It's ongoing*
 
-It is available in [bioconda][bioconda] too.
+ODAMNet is also available in [bioconda][bioconda] using ``conda``.
 
 ```console
 $ conda install odamnet
