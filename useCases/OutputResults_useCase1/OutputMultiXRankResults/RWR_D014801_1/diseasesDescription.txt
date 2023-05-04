@@ -1,0 +1,20 @@
+OMIM:104300	Alzheimer disease
+OMIM:114480	Breast cancer
+OMIM:114500	Colorectal cancer
+OMIM:114550	Hepatocellular carcinoma
+OMIM:125853	Diabetes mellitus, noninsulin-dependent
+OMIM:164400	Spinocerebellar ataxia 1
+OMIM:180300	Rheumatoid arthritis
+OMIM:181500	SCHIZOPHRENIA
+OMIM:206900	Microphthalmia, syndromic 3
+OMIM:211980	Lung cancer, susceptibility to
+OMIM:215600	Cirrhosis, familial
+OMIM:600807	Asthma, susceptibility to
+OMIM:601626	Leukemia, acute myeloid
+OMIM:601665	OBESITY
+OMIM:601859	Autoimmune lymphoproliferative syndrome
+OMIM:602089	Hemangioma, capillary infantile
+OMIM:604571	Bare lymphocyte syndrome, type I
+OMIM:607785	Juvenile myelomonocytic leukemia
+OMIM:613659	Gastric cancer, somatic
+OMIM:615919	Ataxia-Telangiectasia-Like disorder 2

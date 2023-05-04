@@ -1,0 +1,149 @@
+geneSymbol	AM_number	termID	termTitle	overlap_padj
+CEBPA	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.0005702639769138966
+CEBPB	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.0005702639769138966
+CEBPD	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.0005702639769138966
+JUNB	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.0005702639769138966
+RUNX2	2	WP4879	Overlap between signal transduction pathways contributing to LMNA laminopathies	0.0005702639769138966
+CEBPA	2	WP4844	Influence of laminopathies on Wnt signaling	0.0011471068633029078
+CEBPB	2	WP4844	Influence of laminopathies on Wnt signaling	0.0011471068633029078
+CEBPD	2	WP4844	Influence of laminopathies on Wnt signaling	0.0011471068633029078
+RUNX2	2	WP4844	Influence of laminopathies on Wnt signaling	0.0011471068633029078
+BAX	6	WP2447	Amyotrophic lateral sclerosis (ALS)	5.554944515033575e-05
+BCL2	6	WP2447	Amyotrophic lateral sclerosis (ALS)	5.554944515033575e-05
+BCL2L1	6	WP2447	Amyotrophic lateral sclerosis (ALS)	5.554944515033575e-05
+BID	6	WP2447	Amyotrophic lateral sclerosis (ALS)	5.554944515033575e-05
+BAX	6	WP4298	Acute viral myocarditis	5.554944515033575e-05
+BCL2	6	WP4298	Acute viral myocarditis	5.554944515033575e-05
+BCL2L1	6	WP4298	Acute viral myocarditis	5.554944515033575e-05
+BID	6	WP4298	Acute viral myocarditis	5.554944515033575e-05
+BNIP2	6	WP4298	Acute viral myocarditis	5.554944515033575e-05
+BMP2	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+BMP4	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+BMP5	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+BMPR2	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+FST	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+GDF11	9	WP5053	Development of ureteric collection system	1.2298630252448874e-05
+GATA3	8	WP5053	Development of ureteric collection system	0.045732569663951644
+RARA	8	WP5053	Development of ureteric collection system	0.045732569663951644
+RARB	8	WP5053	Development of ureteric collection system	0.045732569663951644
+CHUK	11	WP2059	Alzheimer's disease and miRNA effects	0.01622474477980642
+CTNNB1	11	WP2059	Alzheimer's disease and miRNA effects	0.01622474477980642
+IKBKB	11	WP2059	Alzheimer's disease and miRNA effects	0.01622474477980642
+NFKB1	11	WP2059	Alzheimer's disease and miRNA effects	0.01622474477980642
+RELA	11	WP2059	Alzheimer's disease and miRNA effects	0.01622474477980642
+CHUK	11	WP5124	Alzheimer's disease	0.01622474477980642
+CTNNB1	11	WP5124	Alzheimer's disease	0.01622474477980642
+IKBKB	11	WP5124	Alzheimer's disease	0.01622474477980642
+NFKB1	11	WP5124	Alzheimer's disease	0.01622474477980642
+RELA	11	WP5124	Alzheimer's disease	0.01622474477980642
+NFKB1	11	WP5120	Inclusion body myositis	0.01622474477980642
+NFKB2	11	WP5120	Inclusion body myositis	0.01622474477980642
+IFNG	11	WP4298	Acute viral myocarditis	0.028714874859223815
+NFKB2	11	WP4298	Acute viral myocarditis	0.028714874859223815
+STAT1	11	WP4298	Acute viral myocarditis	0.028714874859223815
+CTNNB1	11	WP4540	Hippo signaling regulation pathways	0.03463360914107922
+PRKCB	11	WP4540	Hippo signaling regulation pathways	0.03463360914107922
+TCF7L1	11	WP4540	Hippo signaling regulation pathways	0.03463360914107922
+AKT1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+BECN1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+CCND2	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+CCNE1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+CD44	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+CDK4	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+EPHA2	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+FGFR4	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+HGF	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+HIF1A	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+LATS2	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAP2K3	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAP2K5	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAP2K6	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAP3K4	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAP3K5	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MAPK14	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MDM4	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+MYC	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+NF2	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+PDGFA	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+PDGFC	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+PDGFRA	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+PDGFRB	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+PTEN	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+RAF1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+RASSF1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+TEAD2	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+TERT	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+TSC1	3	WP5087	Malignant pleural mesothelioma	2.778369668213874e-25
+CD44	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+EPHA2	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+FGFR4	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+LATS2	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+MYC	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+NF2	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+PDGFRA	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+PDGFRB	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+TEAD2	3	WP4541	Hippo-Merlin signaling dysregulation	4.368084017694385e-07
+ATG14	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+BECN1	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+PIK3C3	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+PIK3R4	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+STK11	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+TSC1	3	WP4577	Neurodegeneration with brain iron accumulation (NBIA) subtypes pathway	2.839118197421641e-06
+EPHA2	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+FGFR4	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+LATS2	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+NF2	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+PDGFRA	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+PDGFRB	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+TEAD2	3	WP4540	Hippo signaling regulation pathways	1.5548940060147158e-05
+CCND2	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+CDK4	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+CDK6	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+CDKN2B	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+CDKN2C	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+MDM4	3	WP3998	Prader-Willi and Angelman syndrome	2.402556443667945e-05
+AKT1	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+ARAF	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+GRM1	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+NF1	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+PTEN	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+RAF1	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+TSC1	3	WP4549	Fragile X syndrome	2.5679624536520365e-05
+AKT1	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+ARAF	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+ATG14	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+BECN1	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+MAP3K5	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+PIK3C3	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+PIK3R4	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+RAF1	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+TNFRSF1A	3	WP5124	Alzheimer's disease	9.500024183521966e-05
+AKT1	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+ARAF	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+ATG14	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+BECN1	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+MAP3K5	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+PIK3C3	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+PIK3R4	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+RAF1	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+TNFRSF1A	3	WP2059	Alzheimer's disease and miRNA effects	0.00012289615802845824
+MAP2K6	3	WP2447	Amyotrophic lateral sclerosis (ALS)	0.0004534858474528446
+MAP3K5	3	WP2447	Amyotrophic lateral sclerosis (ALS)	0.0004534858474528446
+MAPK14	3	WP2447	Amyotrophic lateral sclerosis (ALS)	0.0004534858474528446
+TNFRSF1A	3	WP2447	Amyotrophic lateral sclerosis (ALS)	0.0004534858474528446
+AKT1	3	WP4906	3q29 copy number variation syndrome	0.005839842710083794
+HIF1A	3	WP4906	3q29 copy number variation syndrome	0.005839842710083794
+MYC	3	WP4906	3q29 copy number variation syndrome	0.005839842710083794
+NF2	3	WP4906	3q29 copy number variation syndrome	0.005839842710083794
+MAP2K3	3	WP4949	16p11.2 proximal deletion syndrome	0.0071037449775520345
+MAP2K6	3	WP4949	16p11.2 proximal deletion syndrome	0.0071037449775520345
+PTEN	3	WP4949	16p11.2 proximal deletion syndrome	0.0071037449775520345
+TAOK2	3	WP4949	16p11.2 proximal deletion syndrome	0.0071037449775520345
+PIK3C3	3	WP4971	Phosphoinositides metabolism	0.01690002440253709
+PIK3R4	3	WP4971	Phosphoinositides metabolism	0.01690002440253709
+PTEN	3	WP4971	Phosphoinositides metabolism	0.01690002440253709
+GRM1	3	WP3853	ERK pathway in Huntington's disease	0.020453220828632497
+RAF1	3	WP3853	ERK pathway in Huntington's disease	0.020453220828632497
+AKT1	3	WP3584	MECP2 and associated Rett syndrome	0.04485582037886129
+NF1	3	WP3584	MECP2 and associated Rett syndrome	0.04485582037886129
+PTEN	3	WP3584	MECP2 and associated Rett syndrome	0.04485582037886129

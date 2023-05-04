@@ -1,5 +1,0 @@
-## PREPARE FILES FOR ORSUM
-grep "PMC5748921-PMC6115658" ../../../InputData/PathwaysOfInterest.gmt | cat - hsapiens.*name.gmt | awk -F"\t" 'BEGIN{OFS="\t"} {$2=$1" - "$2; print $0}' > hsapiens_background.gmt
-LC_ALL=C awk -F";" '{if($9<=0.05){print $1}}' Overlap_genesList_withpathOfInterest.csv > Overlap.4Orsum
-cut -f1 DOMINO_genesList_signOverlap.txt > DOMINO.4Orsum
-cut -f1 RWR_top5.txt | sed '1d' > RWR_top5.4Orsum

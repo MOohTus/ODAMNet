@@ -1,1 +1,0 @@
-../../OutputMultiXRankResults/RWR_genesList/RWR_top5.txt
