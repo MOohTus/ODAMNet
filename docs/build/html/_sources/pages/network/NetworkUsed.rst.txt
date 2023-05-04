@@ -15,7 +15,7 @@ We propose to apply the random walk with restart (RWR) approach on two different
 .. figure:: ../../pictures/Networks/MultilayerComposition.png
     :alt: multilayerCompo
     :align: center
-    :scale: 60
+    :scale: 24
 
 
     : Multilayers composition: On the left, multilayer is composed of genes multilayer network and pathways/processes
