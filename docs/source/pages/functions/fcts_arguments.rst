@@ -5,7 +5,7 @@ Input parameters for each approach
 ODAMNet script
 =================
 
-.. click:: odamnet.odamnet:main
+.. click:: odamnet:main
    :prog: odamnet
 
 .. important::
@@ -19,7 +19,7 @@ ODAMNet script
 Overlap
 =============
 
-.. click:: odamnet.odamnet:overlap
+.. click:: odamnet:overlap
    :prog: odamnet overlap
    :nested: full
    :commands: overlap
