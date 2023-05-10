@@ -3,7 +3,7 @@ requires = ['setuptools>=59.8.0', 'wheel']
 build-backend = 'setuptools.build_meta'
 
 [project]
-name = 'odamnet'
+name = 'ODAMNet'
 authors = [{name = "Morgane Térézol"}]
 version = '1.0.2'
 description = 'Study the link between environmental factors and rare diseases'
