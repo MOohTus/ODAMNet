@@ -9,7 +9,6 @@ WikiPathways functions
 
 # Libraries
 import os.path
-import shutil as shutil
 from SPARQLWrapper import SPARQLWrapper, TSV
 from datetime import datetime
 from alive_progress import alive_bar

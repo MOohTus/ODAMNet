@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: Morgane T. and Ozan O.
+@author: Morgane Térézol. and Ozan Ozisik.
 
-Script of methods that we can apply to CTD and WP lists
-Adapted from overlapAnalysis.py from Ozan O. (Paper vitamin A)
+Methods can be applied to CTD and WP lists
+Adapted from overlapAnalysis.py from Ozisik et al., 2021
 """
 
 # Libraries
@@ -115,7 +115,7 @@ def overlap(targetGeneSet, pathOfInterestGenesDict, pathOfInterestNamesDict, pat
 def overlapAnalysis(targetGenesDict, pathOfInterestGenesDict, pathOfInterestNamesDict, pathwaysOfInterestList,
                     backgroundGenesDict, outputPath, analysisName):
     """
-    For each chemical given in input, calculate overlap.rst with RD WP.
+    Calculate overlap between target genes and pathways of interest.
 
     :param dict targetGenesDict: Dict composed of interaction genes list for each chemical
     :param dict pathOfInterestGenesDict: Dict of pathways of interest genes
@@ -139,14 +139,14 @@ def overlapAnalysis(targetGenesDict, pathOfInterestGenesDict, pathOfInterestName
 
 def RWR(configPath, networksPath, outputPath, sifPathName, top):
     """
-    Perform a Random Walk with Restart analysis on different multiplex and networks.
+    Perform a Random Walk with Restart analysis using multilayers.
     You have to specify seeds and networks.
 
     :param str configPath: Configuration file name path
     :param str networksPath: Networks path name
     :param str outputPath: Output folder path name
     :param str sifPathName: Result file name path to write SIF result file
-    :param int top: Number of results to report in SIF file
+    :param int top: Number of top results to report
     """
     # Parameters
     outputFileName = outputPath + "/RWR_top" + str(top) + ".txt"
@@ -175,7 +175,7 @@ def DOMINO(genesFileName, networkFileName, outputPath, featureName):
     :param outputPath: Output path name to save the results
     :param featureName: Feature name (g.e. chemical name)
     :return:
-        - **activeModulesDict** (*dict*) – Dict of active modules identified
+        - **activeModules_list** (*list*) – list of active modules identified
     """
     # Input file names
     data_dict = {
@@ -228,8 +228,8 @@ def DOMINO(genesFileName, networkFileName, outputPath, featureName):
 def DOMINOandOverlapAnalysis(featuresDict, networkFileName, pathOfInterestGenesDict, pathOfInterestNamesDict,
                              pathwaysOfInterestList, backgroundGenesDict, outputPath, analysisName):
     """
-    For each genes list, run an active module identification.
-    For each AM identified, run an overlap analysis against the pathways of interest.
+    Run an active module identification for each target genes list
+    Run an overlap analysis between identified active module and pathways of interest.
 
     :param featuresDict: Dict of list of genes
     :param networkFileName: Content of network file
@@ -274,6 +274,14 @@ def DOMINOandOverlapAnalysis(featuresDict, networkFileName, pathOfInterestGenesD
 
 
 def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
+    """
+    Create output file of the active module identification analysis
+
+    :param networkFileName: Content of network file
+    :param AMIFileName: AMI results file name
+    :param featureName: chemical ID
+    :param outputPath: Output path name to save results
+    """
     # Output file name
     AMoutput = outputPath + '/DOMINO_' + featureName + '_activeModules.txt'
     metricsOutput = outputPath + '/DOMINO_' + featureName + '_activeModulesMetrics.txt'
@@ -392,7 +400,7 @@ def DOMINOOutput(networkFileName, AMIFileName, featureName, outputPath):
 
 def createNetworkandBipartiteFiles(bipartiteName, networkName, pathOfInterestGenesDict):
     """
-    Create a bipartite between genes symbols and pathways of interest
+    Create a bipartite between target genes and pathways of interest
     Create a disconnected network between pathways of interest
 
     :param filename bipartiteName: Bipartite file name
@@ -426,8 +434,7 @@ def downloadNDExNetwork(networkUUID, outputFileName, simplify):
     """
     Download network from NDEx website
     Create a tab separated file with three columns: node1, interaction type and node2
-    With header
-
+    With header (SIF format)
 
     :param str networkUUID: Network ID
     :param FILENAME outputFileName: SIF file name to write network

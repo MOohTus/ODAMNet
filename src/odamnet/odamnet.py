@@ -70,7 +70,7 @@ def main():
               help='Output folder name to save results')
 def overlap(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, pathOfInterestGMT, backgroundFile, outputPath):
     """
-    Perform overlap analysis between genes targeted by chemicals and Rare Diseases pathways.
+    Perform Overlap analysis between genes targeted by chemicals and rare diseases pathways.
     """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputOverlapResults')
@@ -140,8 +140,11 @@ def overlap(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, 
 def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUID, directAssociation, nbPub, pathOfInterestGMT, backgroundFile,
            outputPath):
     """
-    DOMINO defines target genes as active genes and search active modules (AM) through a given network.
-    For each AM, an overlap analysis is performed against RD pathways (or pathways of interest).
+    Perform Active module identification analysis between genes targeted by chemicals and rare diseases pathways using
+    DOMINO.
+
+    1. DOMINO on network using target genes as seed
+    2. Overlap analysis between identified active modules and rare disease pahtways
     """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputDOMINOResults')
@@ -223,7 +226,7 @@ def DOMINO(chemicalsFile, CTD_file, targetGenesFile, networkFileName, networkUUI
 def multiXrank(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPub, configPath,
                networksPath, seedsFileName, outputPath, sifFileName, top):
     """
-    Performs a Random Walk with Restart analysis through heterogeneous multilayer using the target genes as seeds.
+    Performs a Random Walk with Restart analysis using multiXrank with genes and diseases multilayers.
     """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputMultiXRankResults')
@@ -306,7 +309,7 @@ def multiXrank(chemicalsFile, CTD_file, targetGenesFile, directAssociation, nbPu
               help='Output path name (for complementary output files)')
 def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartitePath, bipartiteName, outputPath):
     """
-    Creates network SIF file from WP request or pathways of interest given in GMT file.
+    Creates network (GR format) from WikiPathways request or pathways of interest given in GMT file.
     """
     # Parameters
     outputPath = os.path.join(outputPath, 'OutputCreateNetwork')
@@ -344,7 +347,7 @@ def createNetworkFiles(pathOfInterestGMT, networksPath, networksName, bipartiteP
 def networkDownloading(networkUUID, networkFileName, simple):
     """
     Download networks from NDEx using the UUID network.
-    Create a tab separated file with three columns: node1, interaction type and node2
+    Create SIF (3 columns with header) or GR (2 columns without header) network
     """
     # Check if network already exist
     if os.path.exists(networkFileName):

@@ -2,17 +2,19 @@
 # -*- coding: utf-8 -*-
 
 """
-@author: Morgane T.
+@author: Morgane Térézol.
 
 Custom click class to add some functionalities.
 """
 
+# Libraries
 import click
 
 # From : https://stackoverflow.com/questions/44247099/click-command-line-interfaces-make-options-required-if-other-optional-option-is
 # From : https://github.com/pallets/click/issues/513
 
 
+# Functions
 class RequiredIf(click.Option):
     """
     Add new parameter : RequiredIf
