@@ -4,3 +4,5 @@ sphinx-argparse-cli==1.11.0
 sphinx-tabs==3.4.1
 sphinx-rtd-theme==1.2.0
 sphinx_design==0.3.0
+click_option_group>=0.5.3
+click>=8.0.1
