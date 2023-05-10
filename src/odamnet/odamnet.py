@@ -21,11 +21,11 @@ from click_option_group import optgroup, RequiredMutuallyExclusiveOptionGroup
 import odamnet.customClick as customClick
 from alive_progress import alive_bar
 import shutil as shutil
-import importlib.metadata
+from importlib import metadata
 
 # Script version
-# __version__ = importlib.metadata.version(__package__ or __name__)
-__version__ = 1.2
+__version__ = metadata.version(__package__ or __name__)
+# __version__ = 1.2
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
