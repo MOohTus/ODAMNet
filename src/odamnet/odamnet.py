@@ -24,7 +24,8 @@ import shutil as shutil
 import importlib.metadata
 
 # Script version
-__version__ = importlib.metadata.version(__package__ or __name__)
+# __version__ = importlib.metadata.version(__package__ or __name__)
+__version__ = 1.2
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
