@@ -17,7 +17,7 @@ ODAMNet is available in [Python package][pypi]. You can easily install it using 
 $ python3 -m pip install odamnet
 ```
 
-### From Conda - *It's ongoing*
+### From Conda
 
 ODAMNet is also available in [bioconda][bioconda] using ``conda``.
 
