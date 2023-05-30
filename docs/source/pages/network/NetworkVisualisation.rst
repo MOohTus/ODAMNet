@@ -1,5 +1,5 @@
 ================================
-Networks visualisation
+Network visualisation
 ================================
 
 Results of active module identification (AMI) and random walk with restart (RWR) approaches can be visualised using

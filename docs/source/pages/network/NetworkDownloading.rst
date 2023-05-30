@@ -1,5 +1,5 @@
 ================================
-Networks downloading
+Network downloading
 ================================
 
 .. warning::

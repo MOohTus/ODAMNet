@@ -33,8 +33,8 @@ This project was created within the framework of the `EJRP-RD project <https://w
 
    pages/network/NetworkDownloading
    pages/network/NetworkCreation
-   pages/network/NetworkUsed
    pages/network/NetworkVisualisation
+   pages/network/NetworkUsed
 
 .. toctree::
    :maxdepth: 2

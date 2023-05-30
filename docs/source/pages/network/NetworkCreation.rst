@@ -1,5 +1,5 @@
 ================================
-Networks creation
+Network creation
 ================================
 
 Principle
