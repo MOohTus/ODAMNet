@@ -5,8 +5,8 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'ODAMNet'
 authors = [{name = "Morgane Térézol"}]
-version = '1.0.2'
-description = 'Study the link between environmental factors and rare diseases'
+version = '1.1.0'
+description = 'Study molecular relationships between chemicals and rare diseases'
 readme = {file = 'README.md', content-type = 'text/markdown'}
 requires-python = '>=3.9'
 license = {file = 'LICENSE'}
@@ -40,8 +40,8 @@ dependencies = [
 	'click_option_group>=0.5.3',
 	'click>=8.0.1',
 	'sphinx-tabs>=3.4.1',
-	'multixrank==0.1',
-	'ndex2==3.5.0',
+	'multixrank>=0.1',
+	'ndex2>=3.5.0',
 	'networkx==2.5'
 ]
 

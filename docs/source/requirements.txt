@@ -13,8 +13,8 @@ scipy>=1.7.3
 statsmodels>=0.13.2
 alive_progress>=2.4.1
 sphinx-tabs>=3.4.1
-multixrank==0.1
-ndex2==3.5.0
+multixrank>=0.1
+ndex2>=3.5.0
 networkx==2.5
 sphinx-autodoc-types==66.0.2
 sphinx-design==0.3.0

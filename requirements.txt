@@ -7,6 +7,6 @@ alive_progress>=2.4.1
 click_option_group>=0.5.3
 click>=8.0.1
 sphinx-tabs>=3.4.1
-multixrank==0.1
-ndex2==3.5.0
+multixrank>=0.1
+ndex2>=3.5.0
 networkx==2.5
