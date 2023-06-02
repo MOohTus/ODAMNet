@@ -1,2 +1,2 @@
 *.html linguist-detectable=false
-useCases/* linguist-vendored
+*hsapiens.GO-BP.name.gmt linguist-detectable=false
