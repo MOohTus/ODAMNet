@@ -2,3 +2,4 @@
 ./tests/* linguist-detectable=false
 ./docs/* linguist-detectable=false
 *.html linguist-detectable=false
+./useCases/OutputResults_useCase1/OutputMultiXRankResults/RWR_D014801/seeds.4Cytoscape linguist-detectable=false
