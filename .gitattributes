@@ -1,2 +1,4 @@
-./useCases/* linguist-language=python
+./useCases/* linguist-language=Python
+./tests/* linguist-detectable=false
+./docs/* linguist-detectable=false
 *.html linguist-detectable=false
