@@ -73,7 +73,7 @@ To display help:
    odamnet [-h] [--help]
 
 .. _PyPI: https://pypi.org/project/ODAMNet/
-.. _bioconda: https://bioconda.github.io/index.html
+.. _bioconda: https://anaconda.org/bioconda/odamnet
 .. _DOMINO: http://domino.cs.tau.ac.il
 .. _multiXrank: https://multixrank-doc.readthedocs.io/en/latest/index.html
 .. _NDEx: https://www.ndexbio.org/
