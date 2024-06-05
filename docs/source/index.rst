@@ -14,7 +14,7 @@ This project was created within the framework of the `EJRP-RD project <https://w
 
 If you use ODAMNet, **please cite our publication**:
 
-**Térézol M, Baudot A, Ozisik O**. ODAMNet: A Python package to identify molecular relationships between chemicals and rare diseases using overlap, active module and random walk approaches. SoftwareX. 2024;26:101701. doi: `10.1016/j.softx.2024.101701 <https://www.softxjournal.com/article/S2352-7110(24)00072-4/fulltext>`.
+**Térézol M, Baudot A, Ozisik O**. ODAMNet: A Python package to identify molecular relationships between chemicals and rare diseases using overlap, active module and random walk approaches. SoftwareX. 2024;26:101701. doi: `10.1016/j.softx.2024.101701 <https://www.softxjournal.com/article/S2352-7110(24)00072-4/fulltext>`_.
 
 .. toctree::
    :caption: Quickstart
