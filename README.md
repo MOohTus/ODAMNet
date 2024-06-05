@@ -7,6 +7,10 @@ The [ODAMNet documentation][ODAMNet documentation] is available in ReadTheDocs.
 
 This tool was created within the framework of the [EJRP-RD project][EJPRD].
 
+If you use ODAMNet, please cite our publication:
+
+>Térézol M, Baudot A, Ozisik O. ODAMNet: A Python package to identify molecular relationships between chemicals and rare diseases using overlap, active module and random walk approaches. SoftwareX. 2024;26:101701. doi: [10.1016/j.softx.2024.101701][doi].
+
 ## Installation 
 
 ### From PyPI
@@ -128,7 +132,7 @@ $ odamnet networkDownloading --netUUID TEXT --networkFile FILENAME
 
 [ODAMNet documentation]: https://odamnet.readthedocs.io/
 [pypi]: https://pypi.org/project/ODAMNet/
-[bioconda]: https://bioconda.github.io/index.html
+[bioconda]: https://anaconda.org/bioconda/odamnet
 [EJPRD]: https://www.ejprarediseases.org/
 [DOMINO]: http://domino.cs.tau.ac.il
 [multiXrank]: https://multixrank-doc.readthedocs.io/en/latest/index.html
@@ -136,3 +140,4 @@ $ odamnet networkDownloading --netUUID TEXT --networkFile FILENAME
 [CTD]: https://ctdbase.org/
 [NDEx]: https://www.ndexbio.org/
 [doc]: https://odamnet.readthedocs.io/en/latest/pages/formats/Input.html#configuration-file
+[doi]: https://www.softxjournal.com/article/S2352-7110(24)00072-4/fulltext
