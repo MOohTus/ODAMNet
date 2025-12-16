@@ -140,4 +140,4 @@ $ odamnet networkDownloading --netUUID TEXT --networkFile FILENAME
 [CTD]: https://ctdbase.org/
 [NDEx]: https://www.ndexbio.org/
 [doc]: https://odamnet.readthedocs.io/en/latest/pages/formats/Input.html#configuration-file
-[doi]: https://www.softxjournal.com/article/S2352-7110(24)00072-4/fulltext
+[doi]: https://doi.org/10.1016/j.softx.2024.101701
